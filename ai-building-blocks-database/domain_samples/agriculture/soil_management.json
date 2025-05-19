@@ -1,0 +1,28 @@
+[
+    {
+      "id": "SOIL-101",
+      "content": "Field #3 (Loam soil): pH is 6.8, contains moderate organic matter. Recommend adding 2 tons/acre compost to boost fertility.",
+      "metadata": "Farm: GreenValley, Last tested: 2025-01-15, Amendment schedule: Spring 2025"
+    },
+    {
+      "id": "SOIL-102",
+      "content": "Field #7 (Sandy soil) in the western plot has low water retention. Advised planting rye cover crops post-harvest to reduce erosion.",
+      "metadata": "Farm: GreenValley, Slope: 3%, Next cover crop seeding: 2025-09-01"
+    },
+    {
+      "id": "SOIL-103",
+      "content": "Clay soil near the southern riverbend requires drainage channels. Raised beds can help prevent waterlogging.",
+      "metadata": "Farm: BlueCreek, Water table: high, recommended bed height: 10 inches"
+    },
+    {
+      "id": "SOIL-104",
+      "content": "Field #10 has slightly alkaline soil (pH 7.9). Suggest adding sulfur to lower pH and rotating with legumes to improve structure.",
+      "metadata": "Region: Sunrise Farm, pH check: 7.9, last test date: 2024-11-30"
+    },
+    {
+      "id": "SOIL-105",
+      "content": "Peat soil in Marshfield area is high in organic matter but may need lime application to reduce acidity.",
+      "metadata": "Farm: Marshfield North, pH approx 5.5, recommended lime: 1 ton/acre"
+    }
+  ]
+  

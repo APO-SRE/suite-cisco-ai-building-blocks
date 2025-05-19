@@ -1,0 +1,28 @@
+[
+    {
+      "id": "BILL-301",
+      "content": "Invoice #INV-1001 for Frank Huang (CUST-201), Basic Mobile, $25 + taxes, due 2025-02-15.",
+      "metadata": "Paid on 2025-02-14, next cycle 2025-03-15"
+    },
+    {
+      "id": "BILL-302",
+      "content": "Invoice #INV-1002 for Gina Rossi (CUST-202), Family Mobile, $60 + line fees, partial payment $30 made.",
+      "metadata": "Due 2025-03-25, late fee if not paid by 2025-04-05"
+    },
+    {
+      "id": "BILL-303",
+      "content": "Invoice #INV-1003 for Hiro Tanaka (CUST-203), combined billing for home fiber + basic mobile, $70 total.",
+      "metadata": "Issued 2025-03-10, due 2025-03-30, discount applied for bundling"
+    },
+    {
+      "id": "BILL-304",
+      "content": "Invoice #INV-1004 for Ivy Kim (CUST-204), business broadband $100 + tax, net 15 days.",
+      "metadata": "Generated 2025-02-20, next auto-pay 2025-03-07"
+    },
+    {
+      "id": "BILL-305",
+      "content": "Invoice #INV-1005 for Jeff Teeter (CUST-205), unlimited mobile $80, international calls $10 extra.",
+      "metadata": "Due 2025-04-05, usage flagged for high data"
+    }
+  ]
+  

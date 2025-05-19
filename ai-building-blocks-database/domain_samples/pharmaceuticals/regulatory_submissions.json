@@ -1,0 +1,28 @@
+[
+    {
+      "id": "RS-301",
+      "content": "IND application for ‘NeoCure’ Phase II expansion. Submitted to Agency X. Additional safety data required.",
+      "metadata": "Ref: PR-101, submission date: 2025-02-05, status: Under review"
+    },
+    {
+      "id": "RS-302",
+      "content": "Fast-track request for ‘Viraxin-B.’ Preliminary efficacy in animal models. Agency response pending.",
+      "metadata": "Ref: PR-102, filed: 2025-01-30, classification: confidential"
+    },
+    {
+      "id": "RS-303",
+      "content": "510(k) submission for injection device integration (PR-104). US FDA needs design verification docs.",
+      "metadata": "Submitted: 2025-02-20, synergy with MedTech, next milestone: Q3 2025"
+    },
+    {
+      "id": "RS-304",
+      "content": "ANDA for generic antibiotic ‘Ampiclox-XYZ’ (PR-105). Stability data included. Potential 3-year shelf life label.",
+      "metadata": "Filing date: 2025-03-05, bridging from reference product, code: ANDA-AMP"
+    },
+    {
+      "id": "RS-305",
+      "content": "Supplemental NDA for patch formula changes (Analge-Patch). Seeks less skin irritation claim.",
+      "metadata": "Ref: PR-103, filed: 2025-02-25, waiting lab toxicity results"
+    }
+  ]
+  

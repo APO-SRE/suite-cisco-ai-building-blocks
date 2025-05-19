@@ -1,0 +1,28 @@
+[
+    {
+      "id": "HS-301",
+      "content": "Lakeview Resort housekeeping roster for wedding block: rooms 101-110 daily 10 AM refresh, linen change every 2 days.",
+      "metadata": "Ref: booking_records.json (BOOK-201), staff lead: Frank Huang"
+    },
+    {
+      "id": "HS-302",
+      "content": "Urban Plaza Hotel: conference hall cleaning post-event, midnight to 2 AM, plus standard room service daily at 9 AM.",
+      "metadata": "Ref: booking_records.json (BOOK-202), staff shift: Eve Crew"
+    },
+    {
+      "id": "HS-303",
+      "content": "Beachside Inn family suites require kids amenity check. Daily vacuum and extra towel supply at noon.",
+      "metadata": "Ref: booking_records.json (BOOK-203), staff lead: Gina Rossi"
+    },
+    {
+      "id": "HS-304",
+      "content": "Mountain Lodge cabin deep-clean post check-out. Fireplace ash disposal, log replenishment daily at 8 AM.",
+      "metadata": "Ref: booking_records.json (BOOK-204), staff lead: Hiro Tanaka"
+    },
+    {
+      "id": "HS-305",
+      "content": "Airport Express Suites housekeeping for long-stay business guests: weekly sheet change, daily trash removal at 11 AM.",
+      "metadata": "Ref: booking_records.json (BOOK-205), staff lead: Ivy Kim"
+    }
+  ]
+  

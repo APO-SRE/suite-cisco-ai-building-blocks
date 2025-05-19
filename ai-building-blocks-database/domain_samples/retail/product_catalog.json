@@ -1,0 +1,28 @@
+[
+    {
+      "id": "PROD-101",
+      "content": "Men's Running Shoes, brand: FleetStep, style code: FS-100R. Price $75.",
+      "metadata": "Category: Footwear, posted: 2025-01-10, manager: Alice Brown (PM-1001)"
+    },
+    {
+      "id": "PROD-102",
+      "content": "Women's Yoga Pants, brand: ZenWear, style code: ZW-200Y. Price $50.",
+      "metadata": "Category: Apparel, posted: 2025-02-01, manager: Bob Chen (PM-2001)"
+    },
+    {
+      "id": "PROD-103",
+      "content": "Bluetooth Headphones, brand: AudioTop, model: AT-HearX. Price $90.",
+      "metadata": "Category: Electronics, posted: 2025-03-05, manager: Carol Lim (PM-3002)"
+    },
+    {
+      "id": "PROD-104",
+      "content": "Smartwatch, brand: TechTime, model: TT-Smart. Price $120.",
+      "metadata": "Category: Electronics, posted: 2025-01-20, manager: David Parker (PM-4001)"
+    },
+    {
+      "id": "PROD-105",
+      "content": "Unisex Hoodie, brand: CozyCotton, style code: CC-300H. Price $60.",
+      "metadata": "Category: Apparel, posted: 2025-02-15, manager: Emily Stone (PM-5001)"
+    }
+  ]
+  

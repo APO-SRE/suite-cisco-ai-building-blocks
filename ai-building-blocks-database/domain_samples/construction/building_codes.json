@@ -1,0 +1,28 @@
+[
+    {
+      "id": "BC-201",
+      "content": "Local ordinance requires seismic reinforcement for structures over 3 stories. Lateral bracing mandatory.",
+      "metadata": "Region: WestTown, code rev date: 2024-12-01"
+    },
+    {
+      "id": "BC-202",
+      "content": "Fire code mandates sprinkler systems for commercial buildings exceeding 5,000 sq ft. Annual inspection required.",
+      "metadata": "Applies to phases from project_phases.json (PH-102, PH-105)"
+    },
+    {
+      "id": "BC-203",
+      "content": "Elevator safety: must comply with ASME A17.1. Routine maintenance records demanded every 6 months.",
+      "metadata": "Relevant for multi-level projects, code cross-ref: Elevator-22"
+    },
+    {
+      "id": "BC-204",
+      "content": "Historic district rules: no major exterior alterations without approval. Materials must preserve original facade.",
+      "metadata": "Region: OldTown, project code examples: None so far"
+    },
+    {
+      "id": "BC-205",
+      "content": "Green building code encourages solar-ready roofs, low-flow fixtures, and recycled materials usage.",
+      "metadata": "Voluntary for residences but mandatory for city-funded jobs"
+    }
+  ]
+  

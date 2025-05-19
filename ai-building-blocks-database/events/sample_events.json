@@ -1,0 +1,376 @@
+[
+  {
+    "id": "7865432789",
+    "event_id": "7865432789",
+    "event_name": "Spaces Boundary Crossing",
+    "event_type": "boundary_crossing",
+    "content": "Boundary crossing detected in zone zone_abc123 at Staircase-002 on floor 4 in building SF012. Timestamp: 2024-09-09T12:34:56Z. Camera ID: MV12N 0c:8d:db:00:81:d7. Additional info: cisco_ai=observability_data.",
+    "embedding": [],
+    "additional_info": {
+      "zone_id": "zone_abc123",
+      "timestamp": "2024-09-09T12:34:56Z",
+      "camera_id": "MV12N 0c:8d:db:00:81:d7",
+      "building": "SF012",
+      "floor": "4",
+      "location": "Staircase-002",
+      "cisco_ai": "observability_data"
+    }
+  },
+  {
+    "id": "4498771132",
+    "event_id": "4498771132",
+    "event_name": "Spaces Motion Detected",
+    "event_type": "motion_detected",
+    "content": "Motion detected in zone zone_def456 at Lobby-001 on floor 1 in building NY098. Timestamp: 2024-09-09T14:00:00Z. Camera ID: MV72N 0c:8d:db:00:82:ef. Additional info: cisco_ai=analytics_data.",
+    "embedding": [],
+    "additional_info": {
+      "zone_id": "zone_def456",
+      "timestamp": "2024-09-09T14:00:00Z",
+      "camera_id": "MV72N 0c:8d:db:00:82:ef",
+      "building": "NY098",
+      "floor": "1",
+      "location": "Lobby-001",
+      "cisco_ai": "analytics_data"
+    }
+  },
+  {
+    "id": "5186309421",
+    "event_id": "5186309421",
+    "event_name": "Spaces Asset Removed",
+    "event_type": "asset_removed",
+    "content": "Asset removed in zone zone_lmn345 at Storage-010 on floor 2 in building TX201. Timestamp: 2024-09-09T15:10:22Z. Camera ID: MV22N 0c:8d:db:11:22:33. Additional info: cisco_ai=inventory_data.",
+    "embedding": [],
+    "additional_info": {
+      "zone_id": "zone_lmn345",
+      "timestamp": "2024-09-09T15:10:22Z",
+      "camera_id": "MV22N 0c:8d:db:11:22:33",
+      "building": "TX201",
+      "floor": "2",
+      "location": "Storage-010",
+      "cisco_ai": "inventory_data"
+    }
+  },
+  {
+    "id": "6321557409",
+    "event_id": "6321557409",
+    "event_name": "Spaces Boundary Crossing",
+    "event_type": "boundary_crossing",
+    "content": "Boundary crossing detected in zone zone_pqr789 at Main Entrance on floor 3 in building SF033. Timestamp: 2024-09-09T16:45:11Z. Camera ID: MV12N 0c:8d:db:11:44:55. Additional info: cisco_ai=observability_data.",
+    "embedding": [],
+    "additional_info": {
+      "zone_id": "zone_pqr789",
+      "timestamp": "2024-09-09T16:45:11Z",
+      "camera_id": "MV12N 0c:8d:db:11:44:55",
+      "building": "SF033",
+      "floor": "3",
+      "location": "Main Entrance",
+      "cisco_ai": "observability_data"
+    }
+  },
+  {
+    "id": "9345128706",
+    "event_id": "9345128706",
+    "event_name": "Spaces Motion Detected",
+    "event_type": "motion_detected",
+    "content": "Motion detected in zone zone_ghj456 at ConferenceRoom-001 on floor 5 in building NY101. Timestamp: 2024-09-09T17:20:00Z. Camera ID: MV72N 0c:8d:db:12:66:77. Additional info: cisco_ai=analytics_data.",
+    "embedding": [],
+    "additional_info": {
+      "zone_id": "zone_ghj456",
+      "timestamp": "2024-09-09T17:20:00Z",
+      "camera_id": "MV72N 0c:8d:db:12:66:77",
+      "building": "NY101",
+      "floor": "5",
+      "location": "ConferenceRoom-001",
+      "cisco_ai": "analytics_data"
+    }
+  },
+  {
+    "id": "1512876043",
+    "event_id": "1512876043",
+    "event_name": "Spaces Suspicious Activity",
+    "event_type": "suspicious_activity",
+    "content": "Suspicious activity detected in zone zone_xyz123 at Back Stairwell on floor 2 in building LA304. Timestamp: 2024-09-09T19:05:12Z. Camera ID: MV12N 0c:8d:db:aa:bb:cc. Additional info: cisco_ai=threat_detection.",
+    "embedding": [],
+    "additional_info": {
+      "zone_id": "zone_xyz123",
+      "timestamp": "2024-09-09T19:05:12Z",
+      "camera_id": "MV12N 0c:8d:db:aa:bb:cc",
+      "building": "LA304",
+      "floor": "2",
+      "location": "Back Stairwell",
+      "cisco_ai": "threat_detection"
+    }
+  },
+  {
+    "id": "4987523115",
+    "event_id": "4987523115",
+    "event_name": "Spaces Boundary Crossing",
+    "event_type": "boundary_crossing",
+    "content": "Boundary crossing detected in zone zone_hij999 at Security Gate on floor 1 in building SF100. Timestamp: 2024-09-10T08:30:10Z. Camera ID: MV22N 0c:8d:db:ff:11:22. Additional info: cisco_ai=observability_data.",
+    "embedding": [],
+    "additional_info": {
+      "zone_id": "zone_hij999",
+      "timestamp": "2024-09-10T08:30:10Z",
+      "camera_id": "MV22N 0c:8d:db:ff:11:22",
+      "building": "SF100",
+      "floor": "1",
+      "location": "Security Gate",
+      "cisco_ai": "observability_data"
+    }
+  },
+  {
+    "id": "3706891254",
+    "event_id": "3706891254",
+    "event_name": "Spaces Motion Detected",
+    "event_type": "motion_detected",
+    "content": "Motion detected in zone zone_uvw777 at Lobby-002 on floor 1 in building NY202. Timestamp: 2024-09-10T09:00:00Z. Camera ID: MV72N 0c:8d:db:00:88:ef. Additional info: cisco_ai=analytics_data.",
+    "embedding": [],
+    "additional_info": {
+      "zone_id": "zone_uvw777",
+      "timestamp": "2024-09-10T09:00:00Z",
+      "camera_id": "MV72N 0c:8d:db:00:88:ef",
+      "building": "NY202",
+      "floor": "1",
+      "location": "Lobby-002",
+      "cisco_ai": "analytics_data"
+    }
+  },
+  {
+    "id": "1087660923",
+    "event_id": "1087660923",
+    "event_name": "Spaces Unauthorized Access",
+    "event_type": "unauthorized_access",
+    "content": "Unauthorized access detected in zone zone_abx001 at RestrictedArea-105 on floor 5 in building LA500. Timestamp: 2024-09-10T10:12:45Z. Camera ID: MV12N 0c:8d:db:44:55:66. Additional info: cisco_ai=security_alert.",
+    "embedding": [],
+    "additional_info": {
+      "zone_id": "zone_abx001",
+      "timestamp": "2024-09-10T10:12:45Z",
+      "camera_id": "MV12N 0c:8d:db:44:55:66",
+      "building": "LA500",
+      "floor": "5",
+      "location": "RestrictedArea-105",
+      "cisco_ai": "security_alert"
+    }
+  },
+  {
+    "id": "3036589174",
+    "event_id": "3036589174",
+    "event_name": "Spaces Boundary Crossing",
+    "event_type": "boundary_crossing",
+    "content": "Boundary crossing detected in zone zone_abx002 at FireExit-020 on floor 2 in building SF200. Timestamp: 2024-09-10T11:23:10Z. Camera ID: MV12N 0c:8d:db:44:55:77. Additional info: cisco_ai=observability_data.",
+    "embedding": [],
+    "additional_info": {
+      "zone_id": "zone_abx002",
+      "timestamp": "2024-09-10T11:23:10Z",
+      "camera_id": "MV12N 0c:8d:db:44:55:77",
+      "building": "SF200",
+      "floor": "2",
+      "location": "FireExit-020",
+      "cisco_ai": "observability_data"
+    }
+  },
+  {
+    "id": "7409816553",
+    "event_id": "7409816553",
+    "event_name": "Spaces Motion Detected",
+    "event_type": "motion_detected",
+    "content": "Motion detected in zone zone_abx003 at Lobby-003 on floor 1 in building NY303. Timestamp: 2024-09-10T12:05:05Z. Camera ID: MV72N 0c:8d:db:44:88:aa. Additional info: cisco_ai=analytics_data.",
+    "embedding": [],
+    "additional_info": {
+      "zone_id": "zone_abx003",
+      "timestamp": "2024-09-10T12:05:05Z",
+      "camera_id": "MV72N 0c:8d:db:44:88:aa",
+      "building": "NY303",
+      "floor": "1",
+      "location": "Lobby-003",
+      "cisco_ai": "analytics_data"
+    }
+  },
+  {
+    "id": "5854907213",
+    "event_id": "5854907213",
+    "event_name": "Spaces Asset Removed",
+    "event_type": "asset_removed",
+    "content": "Asset removed in zone zone_abx004 at Supplies Closet on floor 3 in building SF210. Timestamp: 2024-09-10T13:49:30Z. Camera ID: MV12N 0c:8d:db:99:00:11. Additional info: cisco_ai=inventory_data.",
+    "embedding": [],
+    "additional_info": {
+      "zone_id": "zone_abx004",
+      "timestamp": "2024-09-10T13:49:30Z",
+      "camera_id": "MV12N 0c:8d:db:99:00:11",
+      "building": "SF210",
+      "floor": "3",
+      "location": "Supplies Closet",
+      "cisco_ai": "inventory_data"
+    }
+  },
+  {
+    "id": "2361998057",
+    "event_id": "2361998057",
+    "event_name": "Spaces Suspicious Activity",
+    "event_type": "suspicious_activity",
+    "content": "Suspicious activity detected in zone zone_abx005 at Hallway-125 on floor 6 in building LA600. Timestamp: 2024-09-10T14:16:02Z. Camera ID: MV72N 0c:8d:db:77:66:55. Additional info: cisco_ai=threat_detection.",
+    "embedding": [],
+    "additional_info": {
+      "zone_id": "zone_abx005",
+      "timestamp": "2024-09-10T14:16:02Z",
+      "camera_id": "MV72N 0c:8d:db:77:66:55",
+      "building": "LA600",
+      "floor": "6",
+      "location": "Hallway-125",
+      "cisco_ai": "threat_detection"
+    }
+  },
+  {
+    "id": "7896543812",
+    "event_id": "7896543812",
+    "event_name": "Spaces Boundary Crossing",
+    "event_type": "boundary_crossing",
+    "content": "Boundary crossing detected in zone zone_abx006 at EmergencyExit-003 on floor 2 in building SF222. Timestamp: 2024-09-10T15:40:20Z. Camera ID: MV12N 0c:8d:db:33:44:55. Additional info: cisco_ai=observability_data.",
+    "embedding": [],
+    "additional_info": {
+      "zone_id": "zone_abx006",
+      "timestamp": "2024-09-10T15:40:20Z",
+      "camera_id": "MV12N 0c:8d:db:33:44:55",
+      "building": "SF222",
+      "floor": "2",
+      "location": "EmergencyExit-003",
+      "cisco_ai": "observability_data"
+    }
+  },
+  {
+    "id": "4021065893",
+    "event_id": "4021065893",
+    "event_name": "Spaces Motion Detected",
+    "event_type": "motion_detected",
+    "content": "Motion detected in zone zone_abx007 at BreakRoom-027 on floor 4 in building NY404. Timestamp: 2024-09-10T16:00:15Z. Camera ID: MV22N 0c:8d:db:11:ff:cc. Additional info: cisco_ai=analytics_data.",
+    "embedding": [],
+    "additional_info": {
+      "zone_id": "zone_abx007",
+      "timestamp": "2024-09-10T16:00:15Z",
+      "camera_id": "MV22N 0c:8d:db:11:ff:cc",
+      "building": "NY404",
+      "floor": "4",
+      "location": "BreakRoom-027",
+      "cisco_ai": "analytics_data"
+    }
+  },
+  {
+    "id": "9158063721",
+    "event_id": "9158063721",
+    "event_name": "Spaces Unauthorized Access",
+    "event_type": "unauthorized_access",
+    "content": "Unauthorized access detected in zone zone_abx008 at HighSecurity-410 on floor 7 in building LA700. Timestamp: 2024-09-10T17:25:43Z. Camera ID: MV12N 0c:8d:db:aa:44:77. Additional info: cisco_ai=security_alert.",
+    "embedding": [],
+    "additional_info": {
+      "zone_id": "zone_abx008",
+      "timestamp": "2024-09-10T17:25:43Z",
+      "camera_id": "MV12N 0c:8d:db:aa:44:77",
+      "building": "LA700",
+      "floor": "7",
+      "location": "HighSecurity-410",
+      "cisco_ai": "security_alert"
+    }
+  },
+  {
+    "id": "3128579064",
+    "event_id": "3128579064",
+    "event_name": "Spaces Boundary Crossing",
+    "event_type": "boundary_crossing",
+    "content": "Boundary crossing detected in zone zone_abx009 at Main Entrance on floor 1 in building SF250. Timestamp: 2024-09-11T09:10:40Z. Camera ID: MV12N 0c:8d:db:00:aa:bb. Additional info: cisco_ai=observability_data.",
+    "embedding": [],
+    "additional_info": {
+      "zone_id": "zone_abx009",
+      "timestamp": "2024-09-11T09:10:40Z",
+      "camera_id": "MV12N 0c:8d:db:00:aa:bb",
+      "building": "SF250",
+      "floor": "1",
+      "location": "Main Entrance",
+      "cisco_ai": "observability_data"
+    }
+  },
+  {
+    "id": "1079532846",
+    "event_id": "1079532846",
+    "event_name": "Spaces Motion Detected",
+    "event_type": "motion_detected",
+    "content": "Motion detected in zone zone_abx010 at Reception-001 on floor 2 in building NY505. Timestamp: 2024-09-11T09:55:00Z. Camera ID: MV72N 0c:8d:db:44:55:cc. Additional info: cisco_ai=analytics_data.",
+    "embedding": [],
+    "additional_info": {
+      "zone_id": "zone_abx010",
+      "timestamp": "2024-09-11T09:55:00Z",
+      "camera_id": "MV72N 0c:8d:db:44:55:cc",
+      "building": "NY505",
+      "floor": "2",
+      "location": "Reception-001",
+      "cisco_ai": "analytics_data"
+    }
+  },
+  {
+    "id": "8066952321",
+    "event_id": "8066952321",
+    "event_name": "Spaces Asset Removed",
+    "event_type": "asset_removed",
+    "content": "Asset removed in zone zone_abx011 at EquipmentArea-002 on floor 3 in building SF300. Timestamp: 2024-09-11T10:30:10Z. Camera ID: MV12N 0c:8d:db:00:77:99. Additional info: cisco_ai=inventory_data.",
+    "embedding": [],
+    "additional_info": {
+      "zone_id": "zone_abx011",
+      "timestamp": "2024-09-11T10:30:10Z",
+      "camera_id": "MV12N 0c:8d:db:00:77:99",
+      "building": "SF300",
+      "floor": "3",
+      "location": "EquipmentArea-002",
+      "cisco_ai": "inventory_data"
+    }
+  },
+  {
+    "id": "1110382974",
+    "event_id": "1110382974",
+    "event_name": "Spaces Boundary Crossing",
+    "event_type": "boundary_crossing",
+    "content": "Boundary crossing detected in zone zone_abx012 at RearEntrance-101 on floor 1 in building LA800. Timestamp: 2024-09-11T12:05:00Z. Camera ID: MV22N 0c:8d:db:33:77:88. Additional info: cisco_ai=observability_data.",
+    "embedding": [],
+    "additional_info": {
+      "zone_id": "zone_abx012",
+      "timestamp": "2024-09-11T12:05:00Z",
+      "camera_id": "MV22N 0c:8d:db:33:77:88",
+      "building": "LA800",
+      "floor": "1",
+      "location": "RearEntrance-101",
+      "cisco_ai": "observability_data"
+    }
+  },
+  {
+    "id": "948d0a70-6f39-4642-82e8-e462900804c1",
+    "event_id": "948d0a70-6f39-4642-82e8-e462900804c1",
+    "event_name": "Spaces Boundary Crossing",
+    "event_type": "boundary_crossing",
+    "content": "Boundary crossing detected in zone zone_SFO12-4a at Staircase-002 on floor 4 of building SF012. Recommended actions include reviewing camera footage, analyzing location data, and initiating security alerts if necessary. Additional resources include URLs for Meraki camera footage and Cisco Spaces analytics.",
+    "embedding": [],
+    "additional_info": {
+      "zone_id": "zone_SFO12-4a",
+      "timestamp": "2025-01-23T12:05:00Z",
+      "camera_id": "MV12N 0c:8d:db:00:81:8d7",
+      "building": "SF012",
+      "floor": "4",
+      "location": "Staircase-002",
+      "cisco_ai": "observability_data",
+
+      "recommended_actions": [
+        "Review the camera footage for the last 10 minutes using the provided Meraki Camera URL.",
+        "Use the Cisco Spaces URL to analyze real-time location data and 3D maps to track movement in the building.",
+        "If the boundary crossing is unauthorized, trigger an alert to the security team and initiate lockdown procedures.",
+        "Asset tracking can be used to identify if any assets were moved during the boundary crossing.",
+        "Use the Cisco Spaces API to retrieve historical data for the past 30 days to identify patterns and trends in movement."
+      ],
+      "urls_for_further_action": [
+        "https://ciscoazurestackhci.blob.core.windows.net/meraki/meraki.mp4",
+        "https://ciscoazurestackhci.blob.core.windows.net/spaces/spaces.mp4"
+      ],
+      "extra_notes": [
+        "Cisco Spaces provides real-time location analytics and 3D maps of the building.",
+        "Meraki cameras offer real-time footage of the area.",
+        "Splunk integration collects data from Cisco Spaces and Meraki cameras."
+      ]
+    }
+  }
+]

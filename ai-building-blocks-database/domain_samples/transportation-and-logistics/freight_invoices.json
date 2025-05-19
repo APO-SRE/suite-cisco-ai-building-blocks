@@ -1,0 +1,28 @@
+[
+    {
+      "id": "INV-301",
+      "content": "Invoice #F-2001 for Shipment #S-1001 (electronics). Truck route T1. Freight cost $300.",
+      "metadata": "Client: Frank Huang, due 2025-03-20, partial insurance included"
+    },
+    {
+      "id": "INV-302",
+      "content": "Invoice #F-2002 for Shipment #S-1002 (medical supplies). Van route V2. Freight cost $250.",
+      "metadata": "Client: Gina Rossi, due 2025-03-22, airport handling fee added $50"
+    },
+    {
+      "id": "INV-303",
+      "content": "Invoice #F-2003 for rail container #S-1003. Charge: $1,200 total (2 wagons).",
+      "metadata": "Client: Hiro Tanaka, date: 2025-03-20, discount for bulk"
+    },
+    {
+      "id": "INV-304",
+      "content": "Invoice #F-2004 for overseas import #S-1004. Customs & ocean freight $2,000.",
+      "metadata": "Client: Ivy Kim, payment due: 2025-04-15, includes port fees"
+    },
+    {
+      "id": "INV-305",
+      "content": "Invoice #F-2005 for overnight parcels #S-1005. Air cargo cost $500, daily contract.",
+      "metadata": "Client: Jeff Teeter, billing monthly, next cycle 2025-03-31"
+    }
+  ]
+  

@@ -1,0 +1,29 @@
+[
+    {
+      "id": "GRID-201",
+      "content": "Transmission line T-Line-88 connects Eastside Gas Plant (ENG-33) to Central Load Center. 345 kV rating.",
+      "metadata": "Line length: 120 miles, installed: 2020, next inspection: 2025-10"
+    },
+    {
+      "id": "GRID-202",
+      "content": "Substation Sub-A11 in North District steps down 345 kV to 138 kV. Key node for Riverbank Station RBC-12.",
+      "metadata": "Commission date: 2023-06, capacity: 500 MVA"
+    },
+    {
+      "id": "GRID-203",
+      "content": "Smart meter rollout in West District. 10,000 residential units installed, plan to expand to 5,000 more.",
+      "metadata": "Program: GreenHomes, start date: 2025-02, saves ~8% average consumption"
+    },
+    {
+      "id": "GRID-204",
+      "content": "Wind farm GWF-19 ties into Transmission corridor T-Corridor-7, requiring reactive power compensation.",
+      "metadata": "Voltage regulation device: SVC, next upgrade: 2025-09"
+    },
+    {
+      "id": "GRID-205",
+      "content": "Battery storage pilot at SSF-07 provides frequency regulation to West District. 50 MWh capacity.",
+      "metadata": "Operator: EcoStorage Inc, contract ends 2026-12"
+    }
+  ]
+
+  

@@ -1,0 +1,28 @@
+[
+    {
+      "id": "INC-301",
+      "content": "Phishing emails bypassed filters, 3 user accounts compromised at Frank Huang’s business.",
+      "metadata": "Ref: CL-201, date: 2025-03-25, linked threat intel: TI-101"
+    },
+    {
+      "id": "INC-302",
+      "content": "Ransomware ‘LockBox’ detected on Gina Rossi’s enterprise network, partial encryption of file shares.",
+      "metadata": "Ref: CL-202, date: 2025-04-05, threat intel: TI-102, severity: Critical"
+    },
+    {
+      "id": "INC-303",
+      "content": "SQL injection attempt on Hiro’s e-commerce checkout, blocked by WAF. No data leak.",
+      "metadata": "Ref: CL-203, date: 2025-03-10, threat intel: TI-103, severity: Medium"
+    },
+    {
+      "id": "INC-304",
+      "content": "DDoS attempt on Ivy Kim’s corporate site from NetFlood botnet, service disruption for 1 hour.",
+      "metadata": "Ref: CL-204, date: 2025-04-03, threat intel: TI-104, severity: High"
+    },
+    {
+      "id": "INC-305",
+      "content": "APT infiltration suspected at Jeff Teeter’s agency, zero-day in PDF reader used for pivot.",
+      "metadata": "Ref: CL-205, date: 2025-04-10, threat intel: TI-105, severity: Critical"
+    }
+  ]
+  

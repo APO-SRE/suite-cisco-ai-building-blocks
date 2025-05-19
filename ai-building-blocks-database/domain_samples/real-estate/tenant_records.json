@@ -1,0 +1,28 @@
+[
+    {
+      "id": "TEN-201",
+      "content": "Tenant: Frank Huang, occupying apartment APT-DT-2B1B (PROP-101). Lease start 2025-01-15, 12-month term.",
+      "metadata": "Monthly rent $1,200, deposit $1,200, phone: 555-6712"
+    },
+    {
+      "id": "TEN-202",
+      "content": "Tenant: Gina Rossi, occupying suburban house HSE-SUB-3B2B (PROP-102). Lease start 2025-02-20, 12-month term.",
+      "metadata": "Monthly rent $1,800, deposit $1,800, email: gina.rossi@renter.org"
+    },
+    {
+      "id": "TEN-203",
+      "content": "Tenant: Hiro Tanaka, occupying commercial unit COM-RET-1500 (PROP-103). Business: bakery shop.",
+      "metadata": "Lease start: 2025-03-05, monthly rent $2,200 (negotiated), deposit $2,200"
+    },
+    {
+      "id": "TEN-204",
+      "content": "Tenant: Ivy Kim, renting condo CON-WF-1B1B (PROP-104). 12-month lease, start 2025-01-25.",
+      "metadata": "Monthly rent $1,100, deposit $1,100, phone: 555-8832"
+    },
+    {
+      "id": "TEN-205",
+      "content": "Prospective buyer: Jeff Teeter, interested in LUX-PEN-4B3B (PROP-105). Negotiating sale.",
+      "metadata": "Offer date: 2025-03-20, initial bid $850,000, agent: Emily Stone"
+    }
+  ]
+  

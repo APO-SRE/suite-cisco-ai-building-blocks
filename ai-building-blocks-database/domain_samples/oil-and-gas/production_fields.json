@@ -1,0 +1,28 @@
+[
+    {
+      "id": "FIELD-201",
+      "content": "OffshoreBlue Rig A: floating production unit, 1,200 m water depth, producing ~40k bbl/day.",
+      "metadata": "Ref: EXP-101, contact: frank.huang@offshoreblue.org, commissioned 2025-03-01"
+    },
+    {
+      "id": "FIELD-202",
+      "content": "DesertDrill Site B: onshore pad, 3 gas condensate wells, pipeline tie-in to local processing.",
+      "metadata": "Ref: EXP-102, manager: gina.rossi@desertdrill.com, daily output ~25 MMcf"
+    },
+    {
+      "id": "FIELD-203",
+      "content": "ShalePeak Pad Alpha: multi-stage fracking, 2 wells online, EOR pilot planned.",
+      "metadata": "Ref: EXP-103, shift lead: hiro.tanaka@shalepeak.com, current rate ~15k bbl/day"
+    },
+    {
+      "id": "FIELD-204",
+      "content": "ArcticLight Platform X: ice-class platform, produced test flow ~5k bbl/day, more wells pending.",
+      "metadata": "Ref: EXP-104, site geologist: ivy.kim@arcticlight.com, extreme cold ops"
+    },
+    {
+      "id": "FIELD-205",
+      "content": "FrontierGas Plant #1: sour gas processing, high-sulfur capture, 150 MMcf/day capacity.",
+      "metadata": "Ref: EXP-105, data logs to jeff.teeter@frontiergas.com, expansion possible"
+    }
+  ]
+  

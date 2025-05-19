@@ -1,0 +1,53 @@
+[
+    {
+      "id": "LOC-101",
+      "name": "Downtown Call Center",
+      "address": "100 Telecom Blvd, CityCenter, ST 11111",
+      "relation": [
+        "Support tickets (TIC-501 to TIC-505) initially handled here",
+        "Customers: Frank Huang, Gina Rossi calls logged"
+      ],
+      "metadata": "Open 24/7, main phone support location"
+    },
+    {
+      "id": "LOC-102",
+      "name": "Suburban Data Center",
+      "address": "200 Fiber Rd, SuburbTown, ST 22222",
+      "relation": [
+        "Home fiber lines for PLAN-103, node outages in network_outages.json (OUT-401)",
+        "Hiro Tanaka’s fiber connection"
+      ],
+      "metadata": "Secure facility, restricted access, backup generators"
+    },
+    {
+      "id": "LOC-103",
+      "name": "Mobile Tower Operations",
+      "address": "350 Signal Ln, MetroCity, ST 33333",
+      "relation": [
+        "Maintenance in network_outages.json (OUT-402, OUT-403)",
+        "Affects Basic Mobile, Family, Unlimited data coverage"
+      ],
+      "metadata": "Engineering staff monitors tower upgrades"
+    },
+    {
+      "id": "LOC-104",
+      "name": "Business Broadband Hub",
+      "address": "500 Commerce Dr, BizPark, ST 44444",
+      "relation": [
+        "Plan BIZ-500 (PLAN-104) trunk lines, node congestion issue (OUT-404)",
+        "Ivy Kim’s high-speed connection"
+      ],
+      "metadata": "Enterprise service deployment, advanced troubleshooting center"
+    },
+    {
+      "id": "LOC-105",
+      "name": "Corporate Headquarters",
+      "address": "77 Telecom Way, AdminCity, ST 55555",
+      "relation": [
+        "Service plan design (PLAN-101 to PLAN-105), top-level management",
+        "Invoices & billing system oversight (BILL-301 to BILL-305)"
+      ],
+      "metadata": "Executives, finance, plan approvals, not a customer-facing site"
+    }
+  ]
+  

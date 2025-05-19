@@ -1,0 +1,28 @@
+[
+    {
+      "id": "SUP-201",
+      "content": "BeefFarm Co., supplies grass-fed beef patties for cheeseburgers. Weekly delivery.",
+      "metadata": "Contract start: 2025-01-10, main contact: frank.huang@beeffarm.org"
+    },
+    {
+      "id": "SUP-202",
+      "content": "GreenLeaf Produce, delivers organic lettuce, tomatoes, spinach for wraps & salads.",
+      "metadata": "Contract start: 2025-02-05, phone: 555-8241, territory: local farms"
+    },
+    {
+      "id": "SUP-203",
+      "content": "BrewSupply Inc., provides hop varieties & yeast for craft IPA. Also ships specialty malts.",
+      "metadata": "Start date: 2025-03-01, monthly restock, contact: hiro.tanaka@brewinc.com"
+    },
+    {
+      "id": "SUP-204",
+      "content": "DairyDelight, supplies cheddar cheese and cheesecake base. Bi-weekly shipment.",
+      "metadata": "Partner since 2025-02-15, contact: ivy.kim@dairydel.org"
+    },
+    {
+      "id": "SUP-205",
+      "content": "BakerySupreme, provides graham crusts, pastry items, dessert toppings for cheesecake.",
+      "metadata": "Joined 2025-03-20, phone: 555-6103, custom orders possible"
+    }
+  ]
+  

@@ -1,0 +1,28 @@
+[
+    {
+      "id": "IMP-501",
+      "content": "Spring Food Drive reached 1,200 families, distributed 4,500 lbs of food. Surplus used for future drives.",
+      "metadata": "Ref: CAMP-101, final date: 2025-03-30, success metrics: 1,200 families served"
+    },
+    {
+      "id": "IMP-502",
+      "content": "Scholarship Fund supported 5 new students, 90% retention rate in first year. Additional $5k needed next semester.",
+      "metadata": "Ref: CAMP-102, reporting date: 2025-03-15"
+    },
+    {
+      "id": "IMP-503",
+      "content": "Clean Water Initiative installed 2 new wells in rural area, benefiting 2,000 residents.",
+      "metadata": "Ref: CAMP-103, final date: 2025-03-10, corporate match fully utilized"
+    },
+    {
+      "id": "IMP-504",
+      "content": "Community Health Fair served 300 attendees, performed 250 basic health screenings, referrals given.",
+      "metadata": "Ref: CAMP-104, event date: 2025-04-05"
+    },
+    {
+      "id": "IMP-505",
+      "content": "Winter Coat Drive collected 600 coats, distributed to 4 local shelters. Additional storage needed.",
+      "metadata": "Ref: CAMP-105, final date: 2025-12-01"
+    }
+  ]
+  

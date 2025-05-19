@@ -1,0 +1,53 @@
+[
+    {
+      "id": "LOC-101",
+      "name": "Downtown Youth Center",
+      "address": "100 Hope Ave, CityCenter, ST 11111",
+      "relation": [
+        "Youth Mentorship Program (PROG-101), Frank Huang’s sessions (CASE-201)",
+        "intake_forms.json (INT-301)"
+      ],
+      "metadata": "After-school space for academic tutoring, open 2pm-7pm"
+    },
+    {
+      "id": "LOC-102",
+      "name": "Senior Support Office",
+      "address": "200 Care Rd, GoldenTown, ST 22222",
+      "relation": [
+        "Elderly Assistance Program (PROG-102), staff lead Bob Chen (STAFF-402)",
+        "Client case Hiro Tanaka (CASE-202)"
+      ],
+      "metadata": "Home visit scheduling, volunteer base for errands"
+    },
+    {
+      "id": "LOC-103",
+      "name": "Employment Resource Center",
+      "address": "350 Work Ln, CareerCity, ST 33333",
+      "relation": [
+        "Job Training & Placement (PROG-103), Gina Rossi’s case (CASE-203)",
+        "intake_forms.json (INT-303), outcome_reports.json (OUT-503)"
+      ],
+      "metadata": "Resume workshops, interview practice rooms"
+    },
+    {
+      "id": "LOC-104",
+      "name": "Homeless Outreach Hub",
+      "address": "500 Shelter St, OutreachTown, ST 44444",
+      "relation": [
+        "Homeless Outreach Program (PROG-104), David Parker’s own case (CASE-204)",
+        "Meal distribution, medical check-ups"
+      ],
+      "metadata": "Mobile clinic visits daily, staff desk open 8am-6pm"
+    },
+    {
+      "id": "LOC-105",
+      "name": "Family Counseling Center",
+      "address": "77 Harmony Blvd, FamilyVille, ST 55555",
+      "relation": [
+        "Family Counseling Program (PROG-105), Emily Stone’s sessions (CASE-205)",
+        "Therapist assigned: Alice Brown (STAFF-401), outcome in OUT-505"
+      ],
+      "metadata": "Private counseling rooms, child-friendly environment"
+    }
+  ]
+  

@@ -1,0 +1,28 @@
+[
+    {
+      "id": "COURSE-101",
+      "content": "Math 201: Advanced Calculus. Prerequisite: Math 102. Emphasis on multivariable integrals.",
+      "metadata": "Department: Mathematics, Credits: 4, Next offered: Fall 2025"
+    },
+    {
+      "id": "COURSE-102",
+      "content": "Bio 310: Genetics and Heredity. Lab required. Project on CRISPR gene editing.",
+      "metadata": "Department: Biology, Credits: 3, Lab code: L-Bio310"
+    },
+    {
+      "id": "COURSE-103",
+      "content": "CS 420: Machine Learning Applications. Focuses on neural networks and data pipelines.",
+      "metadata": "Department: Computer Science, Credits: 3, Next offered: Spring 2026"
+    },
+    {
+      "id": "COURSE-104",
+      "content": "Eng 150: British Literature Survey. Covers 18th century to modern era.",
+      "metadata": "Department: English, Credits: 3, Writing assignments required"
+    },
+    {
+      "id": "COURSE-105",
+      "content": "Hist 220: World Civilizations II. Medieval to early industrial periods. Group research project included.",
+      "metadata": "Department: History, Credits: 3, Next offered: Summer 2025"
+    }
+  ]
+  

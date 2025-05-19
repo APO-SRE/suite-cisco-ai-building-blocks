@@ -1,0 +1,28 @@
+[
+    {
+      "id": "MAT-301",
+      "content": "Steel beams (W10x30) in stock: 200 pieces. Reserved for commercial tower project (PH-102).",
+      "metadata": "Supplier: IronMax, reorder level: 50, last restock: 2025-01-15"
+    },
+    {
+      "id": "MAT-302",
+      "content": "Concrete mix Type-III (high early strength), 400 bags. For foundations needing quick set.",
+      "metadata": "Location: Warehouse A, usage example: PH-101 foundation"
+    },
+    {
+      "id": "MAT-303",
+      "content": "Fire-rated drywall sheets, 1,000 units. Used in school renovation (PH-105).",
+      "metadata": "Next reorder date: 2025-04-01, code compliance: BC-202"
+    },
+    {
+      "id": "MAT-304",
+      "content": "PVC plumbing pipes, 2-inch diameter, 500 ft total. For occupant restrooms in new build.",
+      "metadata": "Reserved for PH-104 basement plumbing, brand: PipeFlow"
+    },
+    {
+      "id": "MAT-305",
+      "content": "Rebar #4, 300 rods. Potential usage in piling reinforcement (PH-104) or basement slabs.",
+      "metadata": "Supplier: MetalWorks, next bar bending schedule: 2025-02-20"
+    }
+  ]
+  

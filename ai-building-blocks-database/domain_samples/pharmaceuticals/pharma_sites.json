@@ -1,0 +1,53 @@
+[
+    {
+      "id": "LOC-101",
+      "name": "Plant A",
+      "address": "100 Biotech Way, Springfield, ST 30001",
+      "relation": [
+        "Produced batch #NC-B002 for NeoCure (PB-201)",
+        "Q/A department references stability checks"
+      ],
+      "metadata": "Specializes in sterile injectables, next GMP audit: 2025-04"
+    },
+    {
+      "id": "LOC-102",
+      "name": "R&D Facility (Lab X)",
+      "address": "22 Innovation Drive, Greenfield, ST 30002",
+      "relation": [
+        "Pilot batch #VR-P001 for Viraxin-B (PB-202)",
+        "Formulation test for Analge-Patch (PB-203)"
+      ],
+      "metadata": "Biosafety Level 2 labs, collaboration with academic partners"
+    },
+    {
+      "id": "LOC-103",
+      "name": "Plant B",
+      "address": "350 Pharm Park, Northfield, ST 30003",
+      "relation": [
+        "Scale-up #AMP-G02 for Ampiclox-XYZ (PB-205)",
+        "Submissions referencing ANDA-AMP (RS-304)"
+      ],
+      "metadata": "High-volume tablet & capsule line, advanced packaging"
+    },
+    {
+      "id": "LOC-104",
+      "name": "Central Distribution Hub",
+      "address": "500 Logistics Ln, Fairview, ST 30004",
+      "relation": [
+        "Shipments like DL-401 (NeoCure) or DL-403 (Analge-Patch)",
+        "Requires cold chain for certain biologics"
+      ],
+      "metadata": "Temperature-controlled warehouse, capacity ~50,000 sq ft"
+    },
+    {
+      "id": "LOC-105",
+      "name": "MedTech Solutions HQ",
+      "address": "77 Device Plaza, Riverton, ST 30005",
+      "relation": [
+        "Received device lot #DIA-01 (PB-204) per DL-404",
+        "Joint 510(k) submission (RS-303) for injection-glucose monitor"
+      ],
+      "metadata": "Focus on medical devices, co-development partner"
+    }
+  ]
+  

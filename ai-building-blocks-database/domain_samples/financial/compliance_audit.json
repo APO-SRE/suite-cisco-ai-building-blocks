@@ -1,0 +1,28 @@
+[
+    {
+      "id": "AUD-401",
+      "content": "Anti-money laundering check on wire transfers over $100k in Q4 2024. No suspicious activity flagged.",
+      "metadata": "Relevant to transaction_records.json (TX-301), date: 2025-01-25"
+    },
+    {
+      "id": "AUD-402",
+      "content": "KYC review for new crypto holders in account_investments.json (INV-105). All IDs verified.",
+      "metadata": "Completed: 2025-02-05, no AML triggers"
+    },
+    {
+      "id": "AUD-403",
+      "content": "SEC compliance check: Form ADV updates for investment advisory services. Next filing due 2025-03-31.",
+      "metadata": "Department: Regulatory Affairs, step: gather asset data"
+    },
+    {
+      "id": "AUD-404",
+      "content": "Internal audit on bond trading desk found minor reporting delays. Remedial training scheduled.",
+      "metadata": "Desk code: BTD-22, next check: Q2 2025"
+    },
+    {
+      "id": "AUD-405",
+      "content": "Privacy compliance: ensuring client data encryption at rest. No major infractions found.",
+      "metadata": "IT security logs: 2025-01, recommended 2FA expansions"
+    }
+  ]
+  

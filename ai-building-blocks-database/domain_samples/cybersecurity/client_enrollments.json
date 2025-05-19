@@ -1,0 +1,28 @@
+[
+    {
+      "id": "CL-201",
+      "content": "Client: Frank Huang, small business owner, enrolled in Basic Endpoint Protection & Email Security.",
+      "metadata": "Start date: 2025-03-15, contract 12 months, contact: frank.huang@domain.org"
+    },
+    {
+      "id": "CL-202",
+      "content": "Client: Gina Rossi, mid-size enterprise subscription, includes advanced SIEM & threat intel feeds.",
+      "metadata": "Start date: 2025-02-10, contract 24 months, phone: 555-8241"
+    },
+    {
+      "id": "CL-203",
+      "content": "Client: Hiro Tanaka, e-commerce site coverage, WAF + vulnerability scanning package.",
+      "metadata": "Start date: 2025-03-01, monthly renewal, domain: shop-hiro.com"
+    },
+    {
+      "id": "CL-204",
+      "content": "Client: Ivy Kim, large corporation with full MSSP coverage, includes SOC monitoring & IR retainer.",
+      "metadata": "Contract start: 2025-01-25, 36-month term, contact: ivy.kim@bigcorp.com"
+    },
+    {
+      "id": "CL-205",
+      "content": "Client: Jeff Teeter, government agency contract, specialized zero-trust & APT defense suite.",
+      "metadata": "Start date: 2025-04-01, indefinite renewal, compliance needed: CJIS"
+    }
+  ]
+  

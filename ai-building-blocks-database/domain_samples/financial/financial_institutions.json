@@ -1,0 +1,53 @@
+[
+    {
+      "id": "LOC-001",
+      "name": "Main Headquarters",
+      "address": "100 Capital Way, Finance City, ST 11111",
+      "relation": [
+        "Board and shareholders meeting (CORP-202) location",
+        "Department overseeing corporate_reports.json"
+      ],
+      "metadata": "Executive offices, largest conference hall seats 200"
+    },
+    {
+      "id": "LOC-002",
+      "name": "Downtown Branch",
+      "address": "200 Commerce Blvd, Finance City, ST 11112",
+      "relation": [
+        "Client IDs frequently served: C-2001, C-2002 (account_investments.json)",
+        "Focus on wealth management"
+      ],
+      "metadata": "Branch code: DT-01, staff ~30 employees"
+    },
+    {
+      "id": "LOC-003",
+      "name": "East Region Loan Center",
+      "address": "350 Loan Drive, Eastville, ST 11113",
+      "relation": [
+        "loans_portfolio.json references (LOAN-501, LOAN-502, etc.)",
+        "Serves residential + small business clients"
+      ],
+      "metadata": "Specialty in mortgages, commercial real estate loans"
+    },
+    {
+      "id": "LOC-004",
+      "name": "Compliance & Audit Office",
+      "address": "500 Legal Ln, Finance City, ST 11114",
+      "relation": [
+        "Handles compliance_audit.json (AUD-401 to AUD-405)",
+        "Coordinates with transaction_records.json for AML checks"
+      ],
+      "metadata": "Staff ~20 auditors, ~10 legal counsel"
+    },
+    {
+      "id": "LOC-005",
+      "name": "Investment Advisory Suite",
+      "address": "700 Portfolio Ave, Finance City, ST 11115",
+      "relation": [
+        "Manages account_investments.json (INV-101 to 105)",
+        "Oversees risk profiles, rebalancing schedules"
+      ],
+      "metadata": "Head advisor: Dr. Finnegan, weekly client seminars"
+    }
+  ]
+  

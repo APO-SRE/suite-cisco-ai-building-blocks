@@ -1,0 +1,58 @@
+[
+    {
+      "id": "AIR-001",
+      "airportCode": "SFO",
+      "airportName": "San Francisco Intl",
+      "address": "780 S Airport Blvd, San Francisco, CA 94128",
+      "relation": [
+        "Flight 882 (FL-101) departs daily at 07:00 AM",
+        "Maintenance base for A320 tail #N88201 (MT-501)"
+      ],
+      "metadata": "Gate C14 for Flight 882, frequent weather-related delays"
+    },
+    {
+      "id": "AIR-002",
+      "airportCode": "LAX",
+      "airportName": "Los Angeles Intl",
+      "address": "1 World Way, Los Angeles, CA 90045",
+      "relation": [
+        "Flight 233 (FL-102) 06:30 AM M/W/F",
+        "Maintenance station for 737-900 #N233LAX (MT-502)"
+      ],
+      "metadata": "Crew base for First Officer Delgado (PLT-402), capacity 5 runways"
+    },
+    {
+      "id": "AIR-003",
+      "airportCode": "BOS",
+      "airportName": "Boston Logan Intl",
+      "address": "1 Harborside Dr, Boston, MA 02128",
+      "relation": [
+        "Red-eye flight 920 (FL-103) departs 10:30 PM",
+        "A321neo tail #N920BOS software updates (MT-503)"
+      ],
+      "metadata": "Typical load factor ~78%, strong business demand"
+    },
+    {
+      "id": "AIR-004",
+      "airportCode": "DFW",
+      "airportName": "Dallas/Fort Worth Intl",
+      "address": "2400 Aviation Dr, DFW Airport, TX 75261",
+      "relation": [
+        "Flight 707 (FL-104) to MIA, 09:15 AM daily",
+        "737 MAX 8 tail #N707DFW AD compliance (MT-504)"
+      ],
+      "metadata": "Assigned crew base for First Officer Smith (PLT-404)"
+    },
+    {
+      "id": "AIR-005",
+      "airportCode": "DEN",
+      "airportName": "Denver Intl",
+      "address": "8500 Peña Blvd, Denver, CO 80249",
+      "relation": [
+        "Flight 300 (FL-105) short haul to SFO (2h 20m)",
+        "A319 tail #N300DEN last tire change (MT-505)"
+      ],
+      "metadata": "Gate changes frequent due to weather, hub for domestic connections"
+    }
+  ]
+  

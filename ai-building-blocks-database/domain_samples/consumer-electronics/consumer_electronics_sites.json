@@ -1,0 +1,53 @@
+[
+    {
+      "id": "LOC-101",
+      "name": "Store #1 - City Mall",
+      "address": "100 Main St, MetroCity, ST 11111",
+      "relation": [
+        "Sales_invoices: #CE-1001 (Frank Huang, smartphone), #CE-1005 (Jeff Teeter, console)",
+        "Repairs: RMA-401 battery drain"
+      ],
+      "metadata": "Flagship location, electronics showcase, open 9am-9pm"
+    },
+    {
+      "id": "LOC-102",
+      "name": "Store #2 - Suburb Plaza",
+      "address": "200 Tech Ln, SuburbTown, ST 22222",
+      "relation": [
+        "Sales_invoices: #CE-1002 (Gina Rossi, watch), some promotions in-store",
+        "Repair drop-off: RMA-402 for cracked screen"
+      ],
+      "metadata": "Medium-sized store, limited inventory, open 10am-8pm"
+    },
+    {
+      "id": "LOC-103",
+      "name": "Store #3 - Uptown Mall",
+      "address": "350 Commerce Rd, Uptown, ST 33333",
+      "relation": [
+        "Sales_invoices: #CE-1004 (Ivy Kim, 4K TV), extended warranty desk",
+        "Possible promotional campaigns for TVs (PROMO-503)"
+      ],
+      "metadata": "Busy weekends, home theater demo area"
+    },
+    {
+      "id": "LOC-104",
+      "name": "Online Fulfillment Center",
+      "address": "500 E-Shop Dr, WarehouseCity, ST 44444",
+      "relation": [
+        "Handles shipments for online orders (like Hiro Tanaka’s Earbuds #CE-1003)",
+        "Repair/return logistics for RMA-403 (Earbud replacements)"
+      ],
+      "metadata": "24/7 packing and shipping, high-volume inventory"
+    },
+    {
+      "id": "LOC-105",
+      "name": "Regional Repair Hub",
+      "address": "77 Service Ct, FixTown, ST 55555",
+      "relation": [
+        "All advanced repairs: RMA-404 (TV flicker), RMA-405 (console overheating)",
+        "Stores spare parts for phone batteries, watch screens, etc."
+      ],
+      "metadata": "Technicians specialized in major product lines, open M-F 8am-5pm"
+    }
+  ]
+  

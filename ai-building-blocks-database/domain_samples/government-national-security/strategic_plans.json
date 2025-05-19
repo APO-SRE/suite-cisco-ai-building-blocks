@@ -1,0 +1,27 @@
+[
+  {
+    "id": "SP-501",
+    "content": "Five-year modernization roadmap for border security, focusing on advanced scanners and AI-driven surveillance.",
+    "metadata": "Classification: CONFIDENTIAL, revision date: 2025-01-20, references: LB-204"
+  },
+  {
+    "id": "SP-502",
+    "content": "Cyber defense strategy codenamed 'FirewallNext': aims to unify intelligence on threats like 'RedCipher.'",
+    "metadata": "Classification: SECRET, relevant ops: AG-302, revision: Q2 2025"
+  },
+  {
+    "id": "SP-503",
+    "content": "Maritime security plan for southeast waters. Joint exercises with ally navy, referencing IB-105, AG-303.",
+    "metadata": "Classification: SECRET, code: SeaShieldPlan, target date: 2025-07"
+  },
+  {
+    "id": "SP-504",
+    "content": "Emergency comms network upgrade. Ties into LB-205 (ECPA-20). Project to ensure broadcast continuity in crises.",
+    "metadata": "Classification: CONFIDENTIAL, dept lead: National Comms Bureau"
+  },
+  {
+    "id": "SP-505",
+    "content": "Critical infrastructure resilience initiative. Partnerships with private sector for energy, water, telecom protection.",
+    "metadata": "Classification: SECRET, multi-agency scope, next briefing: 2025-03-05"
+  }
+]

@@ -1,0 +1,28 @@
+[
+    {
+      "id": "PROP-101",
+      "content": "Residential apartment: 2 bed, 1 bath, downtown area. Asking rent $1,200/month.",
+      "metadata": "Listing code: APT-DT-2B1B, posted: 2025-01-05, agent: Alice Brown (AGT-1001)"
+    },
+    {
+      "id": "PROP-102",
+      "content": "Suburban house: 3 bed, 2 bath, large backyard. Asking rent $1,800/month.",
+      "metadata": "Listing code: HSE-SUB-3B2B, posted: 2025-02-10, agent: Bob Chen (AGT-2001)"
+    },
+    {
+      "id": "PROP-103",
+      "content": "Commercial retail unit: 1,500 sqft on main street. Rent negotiable.",
+      "metadata": "Listing code: COM-RET-1500, posted: 2025-03-01, agent: Carol Lim (AGT-3002)"
+    },
+    {
+      "id": "PROP-104",
+      "content": "Condo unit: 1 bed, 1 bath, near waterfront. Monthly HOA fees $250. Rent $1,100.",
+      "metadata": "Listing code: CON-WF-1B1B, posted: 2025-01-20, agent: David Parker (AGT-4001)"
+    },
+    {
+      "id": "PROP-105",
+      "content": "Luxury penthouse: 4 bed, 3 bath, skyline view. Asking sale price: $900,000.",
+      "metadata": "Listing code: LUX-PEN-4B3B, posted: 2025-03-15, agent: Emily Stone (AGT-5001)"
+    }
+  ]
+  

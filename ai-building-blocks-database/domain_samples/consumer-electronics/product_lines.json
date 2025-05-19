@@ -1,0 +1,28 @@
+[
+    {
+      "id": "PROD-101",
+      "content": "Smartphone Model A1: 6.1-inch display, 64GB storage, triple camera. MSRP $499.",
+      "metadata": "Line code: SMART-A1, launched: 2025-01-10, manager: Alice Brown (PD-1001)"
+    },
+    {
+      "id": "PROD-102",
+      "content": "Smartwatch S2: 1.5-inch screen, heart rate sensor, calls/text on wrist. MSRP $199.",
+      "metadata": "Line code: WATCH-S2, launched: 2025-02-01, manager: Bob Chen (PD-2001)"
+    },
+    {
+      "id": "PROD-103",
+      "content": "Wireless Earbuds X: noise cancellation, 24-hour battery with case. MSRP $149.",
+      "metadata": "Line code: EARBUD-X, launched: 2025-03-05, manager: Carol Lim (PD-3002)"
+    },
+    {
+      "id": "PROD-104",
+      "content": "4K Smart TV - 50-inch: streaming apps built-in, HDR support. MSRP $599.",
+      "metadata": "Line code: TV-4K50, launched: 2025-02-15, manager: David Parker (PD-4001)"
+    },
+    {
+      "id": "PROD-105",
+      "content": "Gaming Console G-Pro: 8K upscaling, VR-ready, 1TB SSD. MSRP $499.",
+      "metadata": "Line code: CON-GPRO, launched: 2025-03-20, manager: Emily Stone (PD-5001)"
+    }
+  ]
+  

@@ -1,0 +1,28 @@
+[
+    {
+      "id": "PROP-101",
+      "content": "Lakeview Resort: 200 rooms, spa facility, lakeside view. Popular for weddings.",
+      "metadata": "Location code: LV-RES, region: North District, high-season: June-Aug"
+    },
+    {
+      "id": "PROP-102",
+      "content": "Urban Plaza Hotel: 150 rooms, rooftop bar, business-friendly with conference hall.",
+      "metadata": "Location code: UP-HOT, city center location, frequent corporate bookings"
+    },
+    {
+      "id": "PROP-103",
+      "content": "Beachside Inn: 80 rooms, direct beach access. Summer family packages available.",
+      "metadata": "Location code: BS-INN, region: Coastal, loyalty points booster in August"
+    },
+    {
+      "id": "PROP-104",
+      "content": "Mountain Lodge: 50 cabins, fireplace in each unit, hiking trails nearby.",
+      "metadata": "Location code: MT-LOD, winter special for skiing, closed in off-season April-May"
+    },
+    {
+      "id": "PROP-105",
+      "content": "Airport Express Suites: 90 suites, shuttle service to major airline terminals.",
+      "metadata": "Location code: AE-SUI, business traveler focus, partnership with local airline"
+    }
+  ]
+  

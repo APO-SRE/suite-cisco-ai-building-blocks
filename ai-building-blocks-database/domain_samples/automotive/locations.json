@@ -1,0 +1,83 @@
+[
+    {
+      "id": "LOC-001",
+      "name": "Factory A",
+      "address": "1234 Industrial Way, Riverside, CA 90001",
+      "relation": [
+        "Mentioned in production_line.json (PROD-101) for 2025 SUV line",
+        "Focuses on chassis design improvements"
+      ],
+      "metadata": "Primary output: SUV-25, approximate workforce: 1,200 employees"
+    },
+    {
+      "id": "LOC-002",
+      "name": "Factory B",
+      "address": "5678 Assembly Blvd, Dayton, OH 45404",
+      "relation": [
+        "Referenced in production_line.json (PROD-102) for increased sedan output",
+        "Specializes in hybrid variants (EcoSedan)"
+      ],
+      "metadata": "Daily capacity: 400 vehicles, known for advanced paint shop"
+    },
+    {
+      "id": "LOC-003",
+      "name": "Plant #4",
+      "address": "2500 Auto Drive, Lansing, MI 48917",
+      "relation": [
+        "Production_line.json (PROD-104) uses advanced robotic welding for truck frames",
+        "Recalls_warranties.json (RC-403) indicates towing harness recall affects trucks from this plant"
+      ],
+      "metadata": "Focus on light-duty pickups, staff ~2,000"
+    },
+    {
+      "id": "LOC-004",
+      "name": "Northeast Region Dealership Cluster",
+      "address": "Regional office: 45 Pine Street, Albany, NY 12207",
+      "relation": [
+        "Dealership_feedback.json (DFB-301) cites increased hybrid sedan demand",
+        "Services about 50 dealerships across NY, MA, VT"
+      ],
+      "metadata": "Managed by regional director: Toni Rivera, next dealer summit: 2025-04-20"
+    },
+    {
+      "id": "LOC-005",
+      "name": "Southwest Dealership Hub",
+      "address": "100 Desert Lane, Phoenix, AZ 85001",
+      "relation": [
+        "Dealership_feedback.json (DFB-302) references strong SUV sales, high AWD requests",
+        "Coordinates distribution for AZ, NM, parts of TX"
+      ],
+      "metadata": "Key top-seller: SUV-25-Lux, average monthly sales: 300 units"
+    },
+    {
+      "id": "LOC-006",
+      "name": "Midwest Dealership Group",
+      "address": "101 Prairie Road, Des Moines, IA 50309",
+      "relation": [
+        "Dealership_feedback.json (DFB-305) notes popularity of diesel pickups in rural areas",
+        "Known for cost-sensitive market feedback"
+      ],
+      "metadata": "Oversees ~30 rural dealerships, average monthly truck sales: 200"
+    },
+    {
+      "id": "LOC-007",
+      "name": "West Coast EV Distribution Center",
+      "address": "202 Crossover Ave, San Jose, CA 95112",
+      "relation": [
+        "Dealership_feedback.json (DFB-303) mentions EV Crossover shortages here",
+        "Production_line.json (PROD-103) battery constraints affect shipments"
+      ],
+      "metadata": "Holds inventory for ~120 EV crossovers, typical 3-month waitlist"
+    },
+    {
+      "id": "LOC-008",
+      "name": "Corporate HQ",
+      "address": "999 Innovation Loop, Detroit, MI 48226",
+      "relation": [
+        "Oversees all factory production lines",
+        "Approves major recalls/warranties as in recalls_warranties.json"
+      ],
+      "metadata": "Executive offices, final sign-off on new model announcements"
+    }
+  ]
+  

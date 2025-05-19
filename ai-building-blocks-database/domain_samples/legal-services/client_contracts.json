@@ -1,0 +1,28 @@
+[
+    {
+      "id": "CON-201",
+      "content": "Retainer agreement for Brown (plaintiff in CASE-101). Hourly rate $250, initial deposit $2,000.",
+      "metadata": "Signed date: 2025-01-05, client: Alice Brown, attorney: Bob Chen (ATT-201)"
+    },
+    {
+      "id": "CON-202",
+      "content": "Estate planning contract for Lim family (CASE-102). Flat fee $3,000, partial payment up front.",
+      "metadata": "Signed date: 2025-02-01, attorney: Carol Lim (ATT-302), scope: probate filing"
+    },
+    {
+      "id": "CON-203",
+      "content": "Personal injury representation for Parker (CASE-103). Contingency fee 30%. No upfront cost.",
+      "metadata": "Signed date: 2025-02-10, attorney: David Parker (ATT-401), typical settlement timeframe: 6-12 months"
+    },
+    {
+      "id": "CON-204",
+      "content": "Corporate M&A retainer for Stone & Associates project (CASE-104). Hourly rate $300, retainer $5,000.",
+      "metadata": "Signed date: 2025-02-20, attorney: Emily Stone (ATT-501), includes board meeting representation"
+    },
+    {
+      "id": "CON-205",
+      "content": "Patent litigation retainer for Huang (CASE-105). IP dispute fee schedule: $270/hour. Additional expert fees separate.",
+      "metadata": "Signed date: 2025-03-01, attorney: Frank Huang (ATT-601), deposit $4,000"
+    }
+  ]
+  

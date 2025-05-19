@@ -1,0 +1,53 @@
+[
+    {
+      "id": "LOC-101",
+      "name": "Store #1 - City Center",
+      "address": "100 Main St, Downtown, ST 11111",
+      "relation": [
+        "Houses inventory for FleetStep Shoes (INV-201), some TechTime Smartwatches (INV-204)",
+        "Sales transactions: #S-1001 (Frank Huang), returns_exchanges (RET-501)"
+      ],
+      "metadata": "High foot traffic, open 9am-9pm"
+    },
+    {
+      "id": "LOC-102",
+      "name": "Store #2 - Suburban Plaza",
+      "address": "200 Market Ave, SuburbTown, ST 22222",
+      "relation": [
+        "Inventory: CozyCotton Hoodies (INV-205), some Headphones (INV-203)",
+        "Sales: #S-1004 (Hiro Tanaka), returns #RET-503, #RET-505"
+      ],
+      "metadata": "Family-oriented shopping area, open 10am-8pm"
+    },
+    {
+      "id": "LOC-103",
+      "name": "Store #3 - Uptown Mall",
+      "address": "350 Commerce Rd, Uptown, ST 33333",
+      "relation": [
+        "Carries ZenWear Pants (INV-202), Headphones (INV-203)",
+        "Sales: #S-1002, #S-1005, returns #RET-502"
+      ],
+      "metadata": "High-end mall location, open 10am-9pm"
+    },
+    {
+      "id": "LOC-104",
+      "name": "Central Warehouse",
+      "address": "500 Logistics Ln, WarehouseCity, ST 44444",
+      "relation": [
+        "Stores bulk inventory for all products (INV-201 to INV-205)",
+        "Online orders shipping (SALE-303), reorder triggers"
+      ],
+      "metadata": "24-hour operation, forklift access, manager oversight"
+    },
+    {
+      "id": "LOC-105",
+      "name": "Corporate Headquarters",
+      "address": "77 Retail Dr, AdminTown, ST 55555",
+      "relation": [
+        "Loyalty program management (loyalty_customers.json)",
+        "Product catalog oversight, vendor negotiations"
+      ],
+      "metadata": "Executive offices, marketing & finance departments"
+    }
+  ]
+  

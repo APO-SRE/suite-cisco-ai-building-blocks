@@ -1,0 +1,53 @@
+[
+    {
+      "id": "LOC-101",
+      "name": "Warehouse A",
+      "address": "100 Logistics Ln, CityCenter, ST 11111",
+      "relation": [
+        "Fleet #T1 (FLEET-101) departs 06:00, storing electronics (#S-1001)",
+        "MaintenanceRecords: reference MNT-401 for TRK-001"
+      ],
+      "metadata": "High-bay storage, 24/7 ops, forklift accessible"
+    },
+    {
+      "id": "LOC-102",
+      "name": "Airport Cargo Hub",
+      "address": "200 Terminal Rd, AirportCity, ST 22222",
+      "relation": [
+        "Van route #V2 deliveries (FLEET-102), shipments #S-1002 medical supplies",
+        "warehouse_inventory.json (WH-502) daily stock update"
+      ],
+      "metadata": "Cold storage facilities, TSA-secured area"
+    },
+    {
+      "id": "LOC-103",
+      "name": "RailYard East",
+      "address": "350 Track Ave, RailTown, ST 33333",
+      "relation": [
+        "Rail freight #RF-300 (FLEET-103), furniture container (#S-1003)",
+        "inventory reference: WH-503, next movement 2025-03-20"
+      ],
+      "metadata": "Container stacking area, crane loading system"
+    },
+    {
+      "id": "LOC-104",
+      "name": "Port Terminal",
+      "address": "500 Harbor St, SeaPort, ST 44444",
+      "relation": [
+        "Ship Cargo #SC-22 (FLEET-104), overseas import (#S-1004)",
+        "warehouse_inventory.json (WH-504), Ivy Kim's apparel"
+      ],
+      "metadata": "Customs zone, large crane capacity, open 6am-10pm"
+    },
+    {
+      "id": "LOC-105",
+      "name": "Downtown Distribution Center",
+      "address": "77 Delivery Dr, MetroCity, ST 55555",
+      "relation": [
+        "Air Cargo Flight #AC-115 (FLEET-105), #S-1005 parcels daily at 07:00",
+        "warehouse_inventory.json (WH-505), Jeff Teeter shipments"
+      ],
+      "metadata": "Next-day sorting facility, local courier dispatch"
+    }
+  ]
+  

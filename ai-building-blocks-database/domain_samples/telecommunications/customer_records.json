@@ -1,0 +1,28 @@
+[
+    {
+      "id": "CUST-201",
+      "content": "Customer: Frank Huang, phone: 555-1001, subscribed to Basic Mobile Plan (PLAN-101).",
+      "metadata": "Activation date: 2025-01-10, address: 123 Elm St, last billing cycle: 2025-02-15"
+    },
+    {
+      "id": "CUST-202",
+      "content": "Customer: Gina Rossi, phone: 555-2002, family plan (PLAN-102), 3 lines active.",
+      "metadata": "Activation date: 2025-02-25, address: 456 Oak Ave, next payment due: 2025-03-25"
+    },
+    {
+      "id": "CUST-203",
+      "content": "Customer: Hiro Tanaka, phone: 555-3003, home fiber (PLAN-103) plus basic mobile (PLAN-101).",
+      "metadata": "Activation date: 2025-03-05, address: 789 Pine Rd, combined billing"
+    },
+    {
+      "id": "CUST-204",
+      "content": "Customer: Ivy Kim, phone: 555-4004, business broadband (PLAN-104) for her startup office.",
+      "metadata": "Activation date: 2025-02-15, address: 101 Birch Ct, static IP assigned"
+    },
+    {
+      "id": "CUST-205",
+      "content": "Customer: Jeff Teeter, phone: 555-5005, unlimited mobile data (PLAN-105). High usage alert.",
+      "metadata": "Activation date: 2025-03-20, address: 202 Walnut Dr, international calling add-on"
+    }
+  ]
+  

@@ -1,0 +1,28 @@
+[
+    {
+      "id": "PEST-301",
+      "content": "Cutworm infestation in Field #2. Threshold traps show 5 larvae/trap, immediate organic BT spray advised.",
+      "metadata": "Trap check: 2025-02-02, Control measure: BT-based pesticide"
+    },
+    {
+      "id": "PEST-302",
+      "content": "Aphids on soybeans in Field #4. Introduced ladybugs at 1000/acre. Monitor weekly for population drop.",
+      "metadata": "Release date: 2025-02-10, IPM method: beneficial insects"
+    },
+    {
+      "id": "PEST-303",
+      "content": "Grasshopper sightings near Field #10. Tilling around field edges can disrupt egg-laying sites.",
+      "metadata": "Farm: Hilltop, sightings: moderate, next inspection: 2025-03-01"
+    },
+    {
+      "id": "PEST-304",
+      "content": "Rootworm concerns in continuous corn fields. Rotating to soybeans or alfalfa recommended to break lifecycle.",
+      "metadata": "Fields impacted: #1, #2, Crop rotation needed next season."
+    },
+    {
+      "id": "PEST-305",
+      "content": "Weed pressure high in no-till plots. Mechanical weeding tools suggested for early-season weed control.",
+      "metadata": "Tool: Flex-tine harrow, recommended pass: once at crop emergence."
+    }
+  ]
+  

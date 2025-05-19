@@ -1,0 +1,28 @@
+[
+    {
+      "id": "MT-501",
+      "content": "A320 tail #N88201 underwent C-check in Dec 2024. Next major check due in 18 months. Minor hydraulic issue repaired.",
+      "metadata": "Base: SFO, last engine overhaul: 2023-07-01"
+    },
+    {
+      "id": "MT-502",
+      "content": "737-900 tail #N233LAX has a minor cabin pressurization fix scheduled. Expect 2-day downtime in April.",
+      "metadata": "Maintenance station: LAX, next schedule block: Apr 2-3"
+    },
+    {
+      "id": "MT-503",
+      "content": "A321neo tail #N920BOS requires software update for the flight management system, 4-hour job overnight.",
+      "metadata": "Scheduled at BOS hangar, date: 2025-03-10"
+    },
+    {
+      "id": "MT-504",
+      "content": "737 MAX 8 tail #N707DFW has AD compliance check next month. Winglet inspection needed.",
+      "metadata": "DFW line maintenance, est. 1 day downtime, FAA AD note: 2025-01-30"
+    },
+    {
+      "id": "MT-505",
+      "content": "A319 tail #N300DEN had a tire change recently, no pending issues. Next A-check in 45 days.",
+      "metadata": "DEN ramp, A-check cycle: 650 flight hours"
+    }
+  ]
+  

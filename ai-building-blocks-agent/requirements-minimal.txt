@@ -1,0 +1,12 @@
+dnacentersdk==2.8.14
+fastapi==0.115.9
+meraki==2.0.2
+openai==1.77.0
+pydantic==2.11.4
+python-dotenv==1.1.0
+Requests==2.32.3
+tenacity==9.1.2
+uvicorn==0.34.2
+azure-identity==1.19.0
+azure-core==1.32.0
+chromadb==1.0.8

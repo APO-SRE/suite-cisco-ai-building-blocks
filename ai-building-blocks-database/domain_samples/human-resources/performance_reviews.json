@@ -1,0 +1,28 @@
+[
+    {
+      "id": "PR-301",
+      "content": "Alice Brown (E-1001) review: Exceeds expectations in coding, some backlog in documentation. Overall rating: 4.5/5.",
+      "metadata": "Review period: 2024, manager: Bob Chen, recommended leadership training"
+    },
+    {
+      "id": "PR-302",
+      "content": "Bob Chen (E-2001) review: Strong leadership, successful project deliveries. Overall rating: 4/5.",
+      "metadata": "Review period: 2024, manager: CEO, next step: expand team"
+    },
+    {
+      "id": "PR-303",
+      "content": "Carol Lim (E-1002) review: Good HR process knowledge, may need deeper analytics skills. Rating: 3.5/5.",
+      "metadata": "Review period: 2024, manager: HR Director, training recommended: advanced HR analytics"
+    },
+    {
+      "id": "PR-304",
+      "content": "David Parker (E-4001) review: Strong sales numbers, average client satisfaction feedback. Rating: 3.8/5.",
+      "metadata": "Review period: 2024, manager: Sales Director, potential leadership track"
+    },
+    {
+      "id": "PR-305",
+      "content": "Emily Stone (E-5001) review: Excellent payroll accuracy, recommended to mentor new hires. Rating: 4.2/5.",
+      "metadata": "Review period: 2024, manager: CFO, potential for senior payroll role"
+    }
+  ]
+  

@@ -1,0 +1,53 @@
+[
+    {
+      "id": "SITE-001",
+      "name": "Main Street Residential (PH-101)",
+      "address": "123 Main Street, Brookfield, CA 90002",
+      "relation": [
+        "project_phases.json (PH-101) foundation, framing next week",
+        "crew_scheduling.json (CR-401) assigned"
+      ],
+      "metadata": "Owner: Maple Homes, building type: multi-family complex"
+    },
+    {
+      "id": "SITE-002",
+      "name": "Downtown Commercial Tower (PH-102)",
+      "address": "480 Skyline Ave, Metro City, TX 75201",
+      "relation": [
+        "HighBeam Steel Erectors (SUB-502)",
+        "Requires code compliance: BC-202 for sprinklers"
+      ],
+      "metadata": "14 floors planned, steel skeleton nearly done"
+    },
+    {
+      "id": "SITE-003",
+      "name": "Warehouse Expansion (PH-103)",
+      "address": "77 Logistics Road, Industrial Park, IL 60606",
+      "relation": [
+        "Minor steel delivery delay (PH-103)",
+        "crew_scheduling.json (CR-404) for concrete finishing"
+      ],
+      "metadata": "Estimated completion: Q4 2025, no on-site offices"
+    },
+    {
+      "id": "SITE-004",
+      "name": "Riverfront Condo (PH-104)",
+      "address": "200 Riverside Dr, Riverton, OH 45202",
+      "relation": [
+        "Piling stage done, geotechnical review crew: CR-405",
+        "Subcontractor: RiverEdge Crane (SUB-505)"
+      ],
+      "metadata": "Basement excavation next, watch for high water table"
+    },
+    {
+      "id": "SITE-005",
+      "name": "School Renovation (PH-105)",
+      "address": "350 Elmwood St, Greenfield, NY 12110",
+      "relation": [
+        "Fire safety inspection pending (PH-105)",
+        "Eco-friendly interior contractor: SUB-503"
+      ],
+      "metadata": "District: Greenfield USD, area: ~20,000 sq ft addition"
+    }
+  ]
+  

@@ -1,0 +1,28 @@
+[
+    {
+      "id": "DS-401",
+      "content": "Cell therapy shipments for CAR-T must maintain 2-8°C. Plan to use specialized cryo containers.",
+      "metadata": "Ref: RP-102, partner: OncoCell Inc., pilot distribution to 3 clinics"
+    },
+    {
+      "id": "DS-402",
+      "content": "Spinal scaffolding kits (RP-103) distributed to 2 pilot surgical centers. Keep at room temperature, away from moisture.",
+      "metadata": "Requires specialized sterile packaging, date: 2025-03-05"
+    },
+    {
+      "id": "DS-403",
+      "content": "mRNA vaccine platform samples sent to collaborative research labs overseas. Transport -80°C in dry ice.",
+      "metadata": "Ref: RP-104, AWB code: INT-MRNA-002, date: 2025-03-10"
+    },
+    {
+      "id": "DS-404",
+      "content": "Lactobacillus strain shipments for pilot IBS study. Shipped on ice, must arrive within 48 hours.",
+      "metadata": "Ref: RP-105, coded as MicroGut-ship, date: 2025-02-25"
+    },
+    {
+      "id": "DS-405",
+      "content": "CRISPR therapy samples (RP-101) shared with NIH for extended off-target analysis, sub-zero storage needed.",
+      "metadata": "Shipping date: 2025-03-01, reference code: NIH-GE-shipment"
+    }
+  ]
+  

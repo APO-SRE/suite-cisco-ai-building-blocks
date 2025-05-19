@@ -1,0 +1,28 @@
+[
+    {
+      "id": "PROD-401",
+      "content": "Prepped 200 beef patties, 100 cheese slices for burger station, shift 2025-03-01. QA check pass.",
+      "metadata": "Chef: Alice Brown, uses supplies from SUP-201, date: 2025-03-01"
+    },
+    {
+      "id": "PROD-402",
+      "content": "Brewed 2 new batches of IPA, each 50 gallons. Fermentation start 2025-03-05.",
+      "metadata": "Brew master: Carol Lim, hops from SUP-203, next check 2025-03-10"
+    },
+    {
+      "id": "PROD-403",
+      "content": "Mixed salad ingredients: 150 servings, combining spinach, lettuce, tomatoes, shift 2025-03-08.",
+      "metadata": "Chef: David Parker, produce from SUP-202, used for upcoming orders"
+    },
+    {
+      "id": "PROD-404",
+      "content": "Baked 60 cheesecakes, using DairyDelight base & BakerySupreme crust, shift 2025-03-15.",
+      "metadata": "Pastry chef: Emily Stone, date: 2025-03-15, batch #CC-404"
+    },
+    {
+      "id": "PROD-405",
+      "content": "Vegan Avocado Wrap prep: roasted veggies, made 80 wraps, shift 2025-03-18.",
+      "metadata": "Chef: Bob Chen, fresh produce from SUP-202, avocado supply check"
+    }
+  ]
+  

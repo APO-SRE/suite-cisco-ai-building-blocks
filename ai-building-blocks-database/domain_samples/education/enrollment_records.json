@@ -1,0 +1,28 @@
+[
+    {
+      "id": "ENR-201",
+      "content": "Student S-1001 (Alice Brown) enrolled in Math 201, Bio 310. Full-time status.",
+      "metadata": "Current semester: Spring 2025, advisor: Dr. Tan"
+    },
+    {
+      "id": "ENR-202",
+      "content": "Student S-1002 (Bob Chen) enrolled in CS 420, Eng 150, Hist 220. Part-time status.",
+      "metadata": "Current semester: Spring 2025, scholarship: TechFutures"
+    },
+    {
+      "id": "ENR-203",
+      "content": "Student S-1003 (Cara Davis) auditing Bio 310 lab only, no credit granted.",
+      "metadata": "Audit reason: personal interest, department note: max 1 audit course/sem"
+    },
+    {
+      "id": "ENR-204",
+      "content": "Student S-1004 (Derek Evans) taking Eng 150 and Math 201. On academic probation if GPA < 2.0.",
+      "metadata": "Current semester: Spring 2025, last GPA: 2.1"
+    },
+    {
+      "id": "ENR-205",
+      "content": "Student S-1005 (Eva Flores) is continuing Hist 220 from an incomplete last term.",
+      "metadata": "Special permission for retake, Incomplete code: INC-Hist220"
+    }
+  ]
+  

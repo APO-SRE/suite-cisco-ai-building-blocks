@@ -1,0 +1,28 @@
+[
+    {
+      "id": "SAFE-501",
+      "content": "Temperature log for beef storage: 34°F consistent, daily checks. No issues.",
+      "metadata": "Ref: SUP-201, date range: 2025-03-01 to 2025-03-15, inspector: Frank Huang"
+    },
+    {
+      "id": "SAFE-502",
+      "content": "Salmonella test on produce from GreenLeaf: negative. Next test in 2 weeks.",
+      "metadata": "Ref: SUP-202, date: 2025-03-10, lab: Bob Chen"
+    },
+    {
+      "id": "SAFE-503",
+      "content": "Brew sanitation check: no contamination found, IPA batch #2025-03-05 cleared.",
+      "metadata": "Ref: SUP-203, inspected by Carol Lim, date: 2025-03-06"
+    },
+    {
+      "id": "SAFE-504",
+      "content": "Dairy supply test for potential listeria, all negative. Cheesecake production approved.",
+      "metadata": "Ref: SUP-204, date: 2025-03-14, inspector: David Parker"
+    },
+    {
+      "id": "SAFE-505",
+      "content": "Allergy cross-contact check for nuts in pastry station, none detected. Good to proceed.",
+      "metadata": "Ref: SUP-205, date: 2025-03-20, inspector: Emily Stone"
+    }
+  ]
+  

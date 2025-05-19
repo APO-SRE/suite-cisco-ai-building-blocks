@@ -1,0 +1,53 @@
+[
+    {
+      "id": "LOC-101",
+      "name": "Headquarters - Management Consulting",
+      "address": "100 Strategy Ln, ConsultingCity, ST 11111",
+      "relation": [
+        "SERV-101, CLI-201 (Frank’s SME), tasks TD-301",
+        "Quality guidelines: COMP-501 for deliverables"
+      ],
+      "metadata": "Flagship office, org design sessions, workshop space"
+    },
+    {
+      "id": "LOC-102",
+      "name": "Financial Advisory Office",
+      "address": "200 Finance Rd, MoneyTown, ST 22222",
+      "relation": [
+        "SERV-102, CLI-202 (Gina’s startup), tasks TD-302",
+        "Board guidelines: COMP-502"
+      ],
+      "metadata": "M&A war room, investor pitch rehearsal facility"
+    },
+    {
+      "id": "LOC-103",
+      "name": "HR & Talent Solutions Wing",
+      "address": "350 People Ave, TalentCity, ST 33333",
+      "relation": [
+        "SERV-103, CLI-203 (Hiro’s firm), tasks TD-303",
+        "Ethical recruiting code: COMP-503"
+      ],
+      "metadata": "Interview rooms, candidate pipelines, collaboration with local agencies"
+    },
+    {
+      "id": "LOC-104",
+      "name": "IT & Digital Transformation Lab",
+      "address": "500 Tech Dr, DigitalHub, ST 44444",
+      "relation": [
+        "SERV-104, CLI-204 (Ivy’s enterprise), tasks TD-304",
+        "Security standard: COMP-504"
+      ],
+      "metadata": "Automation & analytics pilot environment, advanced dev/test setups"
+    },
+    {
+      "id": "LOC-105",
+      "name": "Marketing & Brand Studio",
+      "address": "77 Creative Ct, AdTown, ST 55555",
+      "relation": [
+        "SERV-105, CLI-205 (Jeff’s retail chain), tasks TD-305",
+        "Brand ethical guidelines: COMP-505"
+      ],
+      "metadata": "Campaign brainstorming area, brand identity mockups, client pitch space"
+    }
+  ]
+  

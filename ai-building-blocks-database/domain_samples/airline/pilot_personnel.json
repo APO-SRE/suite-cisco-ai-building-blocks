@@ -1,0 +1,58 @@
+[
+    {
+      "id": "PERS-001",
+      "employeeId": "1012",
+      "name": "Captain Reynolds",
+      "address": "12 Seaview Rd, Burlingame, CA 94010",
+      "relation": [
+        "Assigned to Flight 882 (FL-101), A320 qualified (PLT-401)",
+        "Base: SFO (AIR-001)"
+      ],
+      "metadata": "Seniority: 12 years, last simulator check: 2025-01-05"
+    },
+    {
+      "id": "PERS-002",
+      "employeeId": "2321",
+      "name": "First Officer Delgado",
+      "address": "560 Aviation Ln, Los Angeles, CA 90045",
+      "relation": [
+        "Covers 737 flights from LAX (PLT-402)",
+        "Flight 233 (FL-102), maintenance station LAX (AIR-002)"
+      ],
+      "metadata": "Line check: 2024-11-30, next recurrent training: 2025-06-01"
+    },
+    {
+      "id": "PERS-003",
+      "employeeId": "987",
+      "name": "Captain Li",
+      "address": "77 Beacon St, Boston, MA 02129",
+      "relation": [
+        "Flies red-eye (FL-103) from BOS to SEA, A321neo (PLT-403)",
+        "Maintenance at BOS (AIR-003)"
+      ],
+      "metadata": "Prefers overnight trips, seniority: 9 years"
+    },
+    {
+      "id": "PERS-004",
+      "employeeId": "3332",
+      "name": "First Officer Smith",
+      "address": "2500 DFW Dr, Grapevine, TX 76051",
+      "relation": [
+        "Newly qualified on 737 MAX 8 (PLT-404)",
+        "Flight 707 from DFW to MIA (AIR-004)"
+      ],
+      "metadata": "Upgrade date: 2025-02-10, next perf eval: 2025-08-15"
+    },
+    {
+      "id": "PERS-005",
+      "employeeId": "1200",
+      "name": "Captain Hughes",
+      "address": "90 Denver Pkwy, Aurora, CO 80011",
+      "relation": [
+        "Cross-trained on A319, short hauls DEN-SFO (PLT-405)",
+        "Tail #N300DEN maintenance at DEN (AIR-005)"
+      ],
+      "metadata": "Seniority: 14 years, check ride: 2024-12-20"
+    }
+  ]
+  

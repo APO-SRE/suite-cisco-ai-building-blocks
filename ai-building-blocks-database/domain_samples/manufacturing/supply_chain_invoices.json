@@ -1,0 +1,28 @@
+[
+    {
+      "id": "INV-301",
+      "content": "Supplier invoice for plastic pellets used in #MOLD-A1. $4,500 total, net 30 days.",
+      "metadata": "Vendor: PolyResin Corp, date: 2025-01-28, payment due: 2025-02-27"
+    },
+    {
+      "id": "INV-302",
+      "content": "Steel sheets for metal stamping #STMP-B2. $6,000, net 15. Shipment included 5% extra material.",
+      "metadata": "Vendor: SteelMax Inc, date: 2025-01-30, payment due: 2025-02-14"
+    },
+    {
+      "id": "INV-303",
+      "content": "Automotive frame components for #WELD-C3, partial delivery. Invoice $8,200, net 30, partial credit used.",
+      "metadata": "Vendor: AutoParts Intl, date: 2025-02-01, payment status: partially paid"
+    },
+    {
+      "id": "INV-304",
+      "content": "Motor units & wiring harness for final assembly #ASSY-D4. $12,000, net 30, includes shipping fee $200.",
+      "metadata": "Vendor: MotorGen LLC, date: 2025-02-02, due: 2025-03-04"
+    },
+    {
+      "id": "INV-305",
+      "content": "Paint & primer chemicals for #PAINT-E5. $2,500, hazard shipping surcharge $100, net 30.",
+      "metadata": "Vendor: ColorChem Co, date: 2025-02-03, total $2,600 due by 2025-03-05"
+    }
+  ]
+  

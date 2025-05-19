@@ -1,0 +1,28 @@
+[
+    {
+      "id": "MAINT-501",
+      "content": "Injection molding machine #IM-01: quarterly service due 2025-02-10. Clean & lubricate all molds.",
+      "metadata": "Ref: LN-1 equipment, assigned to technician Frank Huang (TECH-6001)"
+    },
+    {
+      "id": "MAINT-502",
+      "content": "Stamping press #ST-02: monthly check for hydraulic leaks. Next check 2025-02-12.",
+      "metadata": "Ref: LN-2 equipment, assigned to technician Gina Rossi (TECH-7002)"
+    },
+    {
+      "id": "MAINT-503",
+      "content": "Welding robot #WR-03: software calibration & arm pivot check. Scheduled 2025-02-15.",
+      "metadata": "Ref: LN-3 equipment, assigned to technician Hiro Tanaka (TECH-8003)"
+    },
+    {
+      "id": "MAINT-504",
+      "content": "Assembly conveyor #AC-04: belt replacement, sensor alignment. Date: 2025-02-18.",
+      "metadata": "Ref: LN-4 equipment, assigned to technician Ivy Kim (TECH-9004)"
+    },
+    {
+      "id": "MAINT-505",
+      "content": "Paint booth ventilation #PB-05: filter change, exhaust fan check. Date: 2025-02-20.",
+      "metadata": "Ref: LN-5 equipment, assigned to technician Jeff Teeter (TECH-10005)"
+    }
+  ]
+  

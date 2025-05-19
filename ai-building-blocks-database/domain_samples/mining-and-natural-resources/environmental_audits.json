@@ -1,0 +1,28 @@
+[
+    {
+      "id": "EA-401",
+      "content": "IronHill EIA: dust suppression plan, water runoff analysis. Minor improvements recommended.",
+      "metadata": "Ref: MP-101, date: 2025-03-10, external auditor: frank.huang@envcorp.org"
+    },
+    {
+      "id": "EA-402",
+      "content": "CopperStream tailings pond inspection: ensure seepage control, liner integrity. No major issues found.",
+      "metadata": "Ref: MP-102, date: 2025-03-15, next inspection in 6 months"
+    },
+    {
+      "id": "EA-403",
+      "content": "CoalGate methane & ventilation compliance check: levels within safe range, must maintain daily logs.",
+      "metadata": "Ref: MP-103, date: 2025-03-25, lead inspector: hiro.tanaka@minesafety.gov"
+    },
+    {
+      "id": "EA-404",
+      "content": "GoldPeak water discharge permit renewal: sampling streams for cyanide traces, results negative so far.",
+      "metadata": "Ref: MP-104, date: 2025-04-01, small drip infiltration observed"
+    },
+    {
+      "id": "EA-405",
+      "content": "RareEarthOne exploration environmental baseline: noise, dust, local flora impact minimal.",
+      "metadata": "Ref: MP-105, date: 2025-04-05, recommended continued monitoring"
+    }
+  ]
+  

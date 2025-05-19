@@ -1,0 +1,28 @@
+[
+    {
+      "id": "IB-101",
+      "content": "Summary: Surveillance indicates potential extremist activity in Sector 4. Intercepted comms mention ‘SkyRidge’ operation.",
+      "metadata": "Classification: SECRET, compiled by Agency X, date: 2025-02-01"
+    },
+    {
+      "id": "IB-102",
+      "content": "Foreign paramilitary training camps likely scaling down. Satellite imagery suggests reduced presence of heavy equipment.",
+      "metadata": "Classification: CONFIDENTIAL, compiled by Defense Intel Branch, date: 2025-01-25"
+    },
+    {
+      "id": "IB-103",
+      "content": "Cyber intrusion attempts from unknown group ‘RedCipher’ spiked last week. Primary targets: finance and defense contractors.",
+      "metadata": "Classification: SECRET, compiled by CyberSec Taskforce, date: 2025-01-30"
+    },
+    {
+      "id": "IB-104",
+      "content": "Intercepted signals indicate smuggling route expansions along northern border. Involves contraband electronics.",
+      "metadata": "Classification: CONFIDENTIAL, region: Northern Customs, date: 2025-02-05"
+    },
+    {
+      "id": "IB-105",
+      "content": "Ally nation cooperation on joint naval exercises next quarter. Potential pivot to maritime security in southeast waters.",
+      "metadata": "Classification: SECRET, compiled by Joint Ops, date: 2025-02-10"
+    }
+  ]
+  

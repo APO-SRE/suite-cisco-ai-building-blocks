@@ -1,0 +1,53 @@
+[
+    {
+      "id": "LOC-001",
+      "name": "Central Distribution Hub",
+      "address": "500 Commerce Blvd, Springfield, IL 62704",
+      "relation": [
+        "Often used for standard shipping (SHIP-502)",
+        "Consolidation point for ORD-1002, ORD-1004"
+      ],
+      "metadata": "Capacity: 50,000 sq ft, main courier: SafeShip"
+    },
+    {
+      "id": "LOC-002",
+      "name": "North Fulfillment Center",
+      "address": "120 Warehouse Lane, Rochester, NY 14604",
+      "relation": [
+        "Holds fitness bands & water bottles (INV-203, potential ORD-1004 usage)",
+        "Standard & Priority shipping from SpeedyCourier"
+      ],
+      "metadata": "Approx. 30 staff, bulk forklift operations"
+    },
+    {
+      "id": "LOC-003",
+      "name": "West Coast Priority Depot",
+      "address": "700 Tech Way, San Jose, CA 95131",
+      "relation": [
+        "Focus on Priority shipping (SHIP-501)",
+        "Handles quick shipments for West region, e.g. ORD-1001, ORD-1005"
+      ],
+      "metadata": "Capacity: 20,000 sq ft, picks & packs high-demand SKUs"
+    },
+    {
+      "id": "LOC-004",
+      "name": "International Shipping Hub",
+      "address": "90 Global Dr, Miami, FL 33122",
+      "relation": [
+        "Used for SHIP-504 (international) or express routes",
+        "Occasional 2-day shipping out of ExpressAir lines"
+      ],
+      "metadata": "Customs desk on-site, handles ~200 int'l parcels/day"
+    },
+    {
+      "id": "LOC-005",
+      "name": "Returns Processing Center",
+      "address": "350 Return Loop, Columbus, OH 43215",
+      "relation": [
+        "Manages RMA per shipping_logistics.json (SHIP-505)",
+        "Review defective items from ORD-1003 or others"
+      ],
+      "metadata": "Staff: 10 QA specialists, 5 advanced testers"
+    }
+  ]
+  

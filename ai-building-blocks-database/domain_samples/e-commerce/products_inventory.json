@@ -1,0 +1,28 @@
+[
+    {
+      "id": "INV-201",
+      "content": "Bluetooth headphones (SKU: BH-001), stock: 250 units, reorder level: 50.",
+      "metadata": "Last restock: 2025-01-10, vendor: SonicLabs"
+    },
+    {
+      "id": "INV-202",
+      "content": "USB-C charger (SKU: UC-050), stock: 100 units, reorder level: 20.",
+      "metadata": "Vendor: ChargeFast, next reorder date: 2025-02-15"
+    },
+    {
+      "id": "INV-203",
+      "content": "Fitness band (SKU: FB-300), stock: 400 units, reorder level: 70. Available in 3 colors.",
+      "metadata": "Vendor: FitCo, promotional discount 5% for bulk"
+    },
+    {
+      "id": "INV-204",
+      "content": "4K Monitor (SKU: MON-4K17), stock: 30 units, reorder level: 10.",
+      "metadata": "Vendor: ViewMax, high return rate if dead pixels found"
+    },
+    {
+      "id": "INV-205",
+      "content": "Gaming mouse (SKU: GM-202), stock: 120 units, reorder level: 25.",
+      "metadata": "Vendor: ClickPro, frequently bundled with mouse pad"
+    }
+  ]
+  

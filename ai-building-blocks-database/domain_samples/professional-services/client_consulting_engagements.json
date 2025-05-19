@@ -1,0 +1,28 @@
+[
+    {
+      "id": "CLI-201",
+      "content": "Frank Huang’s SME: management consulting (SERV-101) to streamline org structure, reduce overhead.",
+      "metadata": "Start date: 2025-03-10, 6-month contract, contact: frank.huang@fhsme.org"
+    },
+    {
+      "id": "CLI-202",
+      "content": "Gina Rossi’s startup: financial advisory (SERV-102) for M&A readiness, capital raising plan.",
+      "metadata": "Start date: 2025-02-15, 3-month scope, project manager: Bob Chen"
+    },
+    {
+      "id": "CLI-203",
+      "content": "Hiro Tanaka’s e-commerce firm: HR solutions (SERV-103), recruitment of key engineering roles.",
+      "metadata": "Start date: 2025-03-01, milestone-based, contact: hiro.tanaka@ecshop.io"
+    },
+    {
+      "id": "CLI-204",
+      "content": "Ivy Kim’s enterprise: IT & digital transformation (SERV-104), process automation & data analytics pilot.",
+      "metadata": "Start date: 2025-03-20, 12-month retainer, daily updates to ivy.kim@techenterprise.com"
+    },
+    {
+      "id": "CLI-205",
+      "content": "Jeff Teeter’s retail chain: marketing & brand advisory (SERV-105), new campaign strategy.",
+      "metadata": "Start date: 2025-04-01, performance-based fee, data volume ~500k customers"
+    }
+  ]
+  

@@ -1,0 +1,92 @@
+[
+  {
+    "appointment_id": "A-2001",
+    "patient_id": "P-1001",
+    "provider_id": "DR-3001",
+    "department": "Cardiology",
+    "scheduled_date_time": "2025-02-05T10:30:00",
+    "reason_for_visit": "Routine Blood Pressure Check",
+    "status": "Confirmed"
+  },
+  {
+    "appointment_id": "A-2002",
+    "patient_id": "P-1002",
+    "provider_id": "DR-3002",
+    "department": "Allergy",
+    "scheduled_date_time": "2025-02-06T09:00:00",
+    "reason_for_visit": "Allergy Testing Consultation",
+    "status": "Pending Confirmation"
+  },
+  {
+    "appointment_id": "A-2003",
+    "patient_id": "P-1001",
+    "provider_id": "DR-3003",
+    "department": "Lab",
+    "scheduled_date_time": "2025-02-05T09:00:00",
+    "reason_for_visit": "Blood Test - Cholesterol Panel",
+    "status": "Confirmed"
+  },
+  {
+    "appointment_id": "A-2004",
+    "patient_id": "P-1003",
+    "provider_id": "DR-3002",
+    "department": "Hematology",
+    "scheduled_date_time": "2025-02-10T11:00:00",
+    "reason_for_visit": "Iron Level Check",
+    "status": "Confirmed"
+  },
+  {
+    "appointment_id": "A-2005",
+    "patient_id": "P-1004",
+    "provider_id": "DR-3003",
+    "department": "Endocrinology",
+    "scheduled_date_time": "2025-03-01T14:00:00",
+    "reason_for_visit": "Diabetes Management Follow-up",
+    "status": "Confirmed"
+  },
+  {
+    "appointment_id": "A-2006",
+    "patient_id": "P-1005",
+    "provider_id": "DR-3003",
+    "department": "Pediatrics",
+    "scheduled_date_time": "2025-02-15T09:30:00",
+    "reason_for_visit": "Routine Checkup",
+    "status": "Pending Confirmation"
+  },
+  {
+    "appointment_id": "A-2007",
+    "patient_id": "P-1006",
+    "provider_id": "DR-3004",
+    "department": "Cardiology",
+    "scheduled_date_time": "2025-02-20T10:00:00",
+    "reason_for_visit": "Cholesterol Follow-up",
+    "status": "Confirmed"
+  },
+  {
+    "appointment_id": "A-2008",
+    "patient_id": "P-1007",
+    "provider_id": "DR-3005",
+    "department": "Pulmonology",
+    "scheduled_date_time": "2025-02-16T08:30:00",
+    "reason_for_visit": "Asthma Control Assessment",
+    "status": "Confirmed"
+  },
+  {
+    "appointment_id": "A-2009",
+    "patient_id": "P-1008",
+    "provider_id": "DR-3004",
+    "department": "Neurology",
+    "scheduled_date_time": "2025-02-19T13:45:00",
+    "reason_for_visit": "Migraine Management",
+    "status": "Pending Confirmation"
+  },
+  {
+    "appointment_id": "A-2010",
+    "patient_id": "P-1003",
+    "provider_id": "DR-3002",
+    "department": "Lab",
+    "scheduled_date_time": "2025-03-03T10:00:00",
+    "reason_for_visit": "Follow-up Blood Work",
+    "status": "Confirmed"
+  }
+]

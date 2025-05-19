@@ -1,0 +1,53 @@
+[
+    {
+      "id": "LOC-101",
+      "name": "IronHill Central Office",
+      "address": "100 Ore Rd, MtIron, ST 11111",
+      "relation": [
+        "Manages MP-101, site = SITE-201, associated haul truck HT-1001",
+        "Environmental audit EA-401 on dust/water"
+      ],
+      "metadata": "HQ for iron operations, daily blasting permits, rail loading"
+    },
+    {
+      "id": "LOC-102",
+      "name": "CopperStream Processing Facility",
+      "address": "200 Cu Lane, ValleyTown, ST 22222",
+      "relation": [
+        "MP-102, site = SITE-202, tailings pond checks EA-402",
+        "Ore shipments: SHIP-502 for copper concentrate"
+      ],
+      "metadata": "SX/EW plant, near open pit, monthly capacity ~8k tons concentrate"
+    },
+    {
+      "id": "LOC-103",
+      "name": "CoalGate Regional Control Center",
+      "address": "350 Coal St, DeepValley, ST 33333",
+      "relation": [
+        "MP-103, site = SITE-203, continuous miner CM-303 maintenance",
+        "Contract: SHIP-503 for local power plant"
+      ],
+      "metadata": "Underground ops monitoring, methane compliance, 2 shifts"
+    },
+    {
+      "id": "LOC-104",
+      "name": "GoldPeak Refinery Office",
+      "address": "500 Gold Rd, NuggetTown, ST 44444",
+      "relation": [
+        "MP-104, site = SITE-204, water discharge EA-404",
+        "Gold doré shipments: SHIP-504"
+      ],
+      "metadata": "Small-scale high-grade gold, specialized refining deals"
+    },
+    {
+      "id": "LOC-105",
+      "name": "RareEarthOne Exploration HQ",
+      "address": "77 Earthway Dr, FutureTech, ST 55555",
+      "relation": [
+        "MP-105, site = SITE-205, drill rig #CD-RE-7 (EQM-305)",
+        "Pilot sample shipping: SHIP-505, environment baseline EA-405"
+      ],
+      "metadata": "Focus on strategic minerals, advanced drilling technologies"
+    }
+  ]
+  

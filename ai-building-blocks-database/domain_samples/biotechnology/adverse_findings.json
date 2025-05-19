@@ -1,0 +1,28 @@
+[
+    {
+      "id": "AF-501",
+      "content": "One test subject in CRISPR therapy (RP-101) displayed mild immune response. Temporary steroid used.",
+      "metadata": "Reported: 2025-02-22, severity: mild, no long-term effect"
+    },
+    {
+      "id": "AF-502",
+      "content": "CAR-T infusion reaction in early trial subject (RP-102). Fever, controlled with supportive meds.",
+      "metadata": "Date: 2025-03-05, site: OncoCell trial center, outcome: stable"
+    },
+    {
+      "id": "AF-503",
+      "content": "Scaffolding polymer in rodent model (RP-103) caused localized inflammation in 2/30 animals. Resolved spontaneously.",
+      "metadata": "Date: 2025-02-15, noted in LE-203 follow-up"
+    },
+    {
+      "id": "AF-504",
+      "content": "mRNA vaccine test revealed injection-site redness in 3 volunteers. Lasted ~48 hours.",
+      "metadata": "Ref: RP-104, date: 2025-02-25, classification: mild"
+    },
+    {
+      "id": "AF-505",
+      "content": "Engineered Lactobacillus (RP-105) caused GI discomfort in 1 participant. Possibly unrelated meal factor.",
+      "metadata": "Date: 2025-03-03, overshadowed by poor diet diary record"
+    }
+  ]
+  

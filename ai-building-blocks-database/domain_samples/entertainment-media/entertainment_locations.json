@@ -1,0 +1,53 @@
+[
+    {
+      "id": "LOC-001",
+      "name": "Metro Arena",
+      "address": "500 Showbiz Blvd, Entertainment City, ST 00001",
+      "relation": [
+        "venue_schedules.json (VEN-201) for July 15 music festival",
+        "Capacity: 20,000 seats, ticket vendor TixMaster"
+      ],
+      "metadata": "Host to large-scale concerts, sports events"
+    },
+    {
+      "id": "LOC-002",
+      "name": "City Amphitheater",
+      "address": "200 Park Lane, Entertainment City, ST 00002",
+      "relation": [
+        "venue_schedules.json (VEN-202) open-air concerts",
+        "Weekly shows from June to August"
+      ],
+      "metadata": "Open lawn seating ~5,000, sponsor: GreenNote"
+    },
+    {
+      "id": "LOC-003",
+      "name": "LaughPoint Club",
+      "address": "77 Comedy Street, Entertainment City, ST 00003",
+      "relation": [
+        "venue_schedules.json (VEN-204) for comedy nights",
+        "talent_roster.json (TAL-405) Dave Bryant"
+      ],
+      "metadata": "Capacity: 300, 2-drink minimum policy"
+    },
+    {
+      "id": "LOC-004",
+      "name": "SilverLine Pictures Studio",
+      "address": "100 Film Way, Studios District, ST 00004",
+      "relation": [
+        "content_productions.json (PROD-103) 'Midnight Cargo' in post-production",
+        "license_rights.json (LIC-503) theatrical distribution in NA"
+      ],
+      "metadata": "Focus on action/thriller productions"
+    },
+    {
+      "id": "LOC-005",
+      "name": "KidsPlus Animation Studio",
+      "address": "350 Cartoon Ave, Animation City, ST 00005",
+      "relation": [
+        "content_productions.json (PROD-104) 'Fuzzy Friends'",
+        "Possible link to DVD rights in license_rights.json (LIC-504)"
+      ],
+      "metadata": "Child-friendly productions, ages 3-7 focus"
+    }
+  ]
+  

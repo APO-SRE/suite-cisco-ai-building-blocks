@@ -1,0 +1,28 @@
+[
+    {
+      "id": "EX-401",
+      "content": "Math 201 midterm on March 10, final on May 5. Both in Room 210, SciBldg.",
+      "metadata": "Proctor: Dr. Tan, 2 hours each exam, cumulative coverage"
+    },
+    {
+      "id": "EX-402",
+      "content": "Bio 310 lab practical on April 2, written final on May 7. Lab in BioLab 3, final in Room 105.",
+      "metadata": "Coordinator: Dr. Lee, special equipment needed: micropipettes"
+    },
+    {
+      "id": "EX-403",
+      "content": "CS 420 project demo due April 15, in-class final May 8. Project includes live AI demonstration.",
+      "metadata": "Instructor: Dr. Jackson, location: Tech Hall Room 202"
+    },
+    {
+      "id": "EX-404",
+      "content": "Eng 150 final essay submission by May 6, no in-person exam. Peer review workshop on April 20.",
+      "metadata": "Instructor: Prof. Williams, submission platform: Turnitin"
+    },
+    {
+      "id": "EX-405",
+      "content": "Hist 220 midterm on March 15, final on May 5. Both in Room 201, Humanities Bldg.",
+      "metadata": "Instructor: Dr. Ramirez, essay-based format"
+    }
+  ]
+  

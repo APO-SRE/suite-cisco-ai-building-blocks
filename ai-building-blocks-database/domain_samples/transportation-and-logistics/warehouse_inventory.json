@@ -1,0 +1,28 @@
+[
+    {
+      "id": "WH-501",
+      "content": "Warehouse A stock: electronics crates (25), medical supplies (10), empty pallets (50).",
+      "metadata": "Updated 2025-03-09, route usage: FLEET-101, capacity 80%"
+    },
+    {
+      "id": "WH-502",
+      "content": "Airport Cargo Hub: storing shipments #S-1002 daily, average 15 medical supply crates. Cold storage available.",
+      "metadata": "Updated 2025-03-12, tie to Van route #V2, coordinator: Bob Chen"
+    },
+    {
+      "id": "WH-503",
+      "content": "RailYard East container yard: furniture crates, building materials. Linked to #S-1003.",
+      "metadata": "Space usage 70%, updated 2025-03-19, next movement 2025-03-20"
+    },
+    {
+      "id": "WH-504",
+      "content": "Port Terminal: overseas inbound apparel (#S-1004), automotive parts, general cargo. Customs zone.",
+      "metadata": "Scheduled arrival: 2025-04-05 for #SC-22, last update 2025-03-25"
+    },
+    {
+      "id": "WH-505",
+      "content": "Downtown Distribution Center: overnight parcels (#S-1005). Usually 100 packages daily, low-temp zone if needed.",
+      "metadata": "Next shipment arrival daily 07:30, tie to Air Cargo #AC-115"
+    }
+  ]
+  

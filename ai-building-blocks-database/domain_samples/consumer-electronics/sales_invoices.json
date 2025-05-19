@@ -1,0 +1,28 @@
+[
+    {
+      "id": "INV-301",
+      "content": "Invoice #CE-1001 for Frank Huang: Smartphone A1, $499 plus tax. Paid by credit card.",
+      "metadata": "Date: 2025-02-01, warranty code: WAR-201, store #1"
+    },
+    {
+      "id": "INV-302",
+      "content": "Invoice #CE-1002 for Gina Rossi: Smartwatch S2 plus extended warranty, total $249.",
+      "metadata": "Date: 2025-03-10, warranty code: WAR-202, store #2"
+    },
+    {
+      "id": "INV-303",
+      "content": "Invoice #CE-1003 for Hiro Tanaka: Wireless Earbuds X, $149, standard warranty.",
+      "metadata": "Date: 2025-03-25, warranty code: WAR-203, online purchase"
+    },
+    {
+      "id": "INV-304",
+      "content": "Invoice #CE-1004 for Ivy Kim: 4K Smart TV, $599 + 3-year plan $100 = $699 total.",
+      "metadata": "Date: 2025-04-01, warranty code: WAR-204, store #3"
+    },
+    {
+      "id": "INV-305",
+      "content": "Invoice #CE-1005 for Jeff Teeter: G-Pro console, $499 + accidental damage coverage $50 = $549.",
+      "metadata": "Date: 2025-04-05, warranty code: WAR-205, store #1"
+    }
+  ]
+  

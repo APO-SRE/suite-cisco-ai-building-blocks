@@ -1,0 +1,28 @@
+[
+    {
+      "id": "MEE-401",
+      "content": "City Council Meeting, agenda: discuss Neighborhood Safety Initiative (INIT-101), budget allocation.",
+      "metadata": "Date: 2025-02-20, location: City Hall, meeting minutes doc #MIN-2025-01"
+    },
+    {
+      "id": "MEE-402",
+      "content": "Council Work Session on Green Energy. Focus on solar incentives, wind feasibility (INIT-102).",
+      "metadata": "Date: 2025-03-10, location: City Hall, public comments included"
+    },
+    {
+      "id": "MEE-403",
+      "content": "Economic Dev. Committee meeting: small business grants, referencing INIT-103. Gina Rossi in attendance.",
+      "metadata": "Date: 2025-03-15, location: County Office, outcome: recommended $50k grant"
+    },
+    {
+      "id": "MEE-404",
+      "content": "Transit Authority board meeting: new bus routes (INIT-104), extended hours pilot review.",
+      "metadata": "Date: 2025-03-25, location: Transit HQ, next follow-up: 2025-04-10"
+    },
+    {
+      "id": "MEE-405",
+      "content": "Health & Human Services hearing: expansion of clinic hours, part of INIT-105 community health outreach.",
+      "metadata": "Date: 2025-04-05, location: HHS Main Bldg, policy proposals introduced"
+    }
+  ]
+  

@@ -1,0 +1,28 @@
+[
+    {
+      "id": "PRM-401",
+      "content": "Discount code 'NEWYEAR2025' gives 10% off any fitness product. Expires Jan 31, 2025.",
+      "metadata": "Referenced in orders.json (ORD-1002), limited to 1 use per customer"
+    },
+    {
+      "id": "PRM-402",
+      "content": "Buy 2 USB-C chargers, get the third at 50% off. Ends Feb 15, 2025.",
+      "metadata": "SKU: UC-050, combo discount triggered in cart"
+    },
+    {
+      "id": "PRM-403",
+      "content": "Bulk order discount: 10% off for 5+ water bottles (SKU: WB-200).",
+      "metadata": "Minimum qty: 5, used in ORD-1004"
+    },
+    {
+      "id": "PRM-404",
+      "content": "Cart-level coupon 'SAVE5' for a $5 discount on orders over $40. Expires Mar 31, 2025.",
+      "metadata": "Used in ORD-1005, one-time usage"
+    },
+    {
+      "id": "PRM-405",
+      "content": "VIP loyalty program: free priority shipping for orders over $50. Activation code required.",
+      "metadata": "Not referenced in current orders, might appear next quarter"
+    }
+  ]
+  

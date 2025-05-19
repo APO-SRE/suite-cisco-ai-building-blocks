@@ -1,0 +1,28 @@
+[
+    {
+      "id": "RC-401",
+      "content": "FalconWing supersonic noise compliance test, FAA hush kit requirement review.",
+      "metadata": "Ref: DES-101, date: 2025-03-15, external auditor: frank.huang@faa.gov"
+    },
+    {
+      "id": "RC-402",
+      "content": "EcoLiner emissions check, hybrid engine certification partial pass, next stage retest needed.",
+      "metadata": "Ref: DES-102, date: 2025-03-20, EASA involvement"
+    },
+    {
+      "id": "RC-403",
+      "content": "VTOLX airworthiness concept approval, tilt-rotor safety standard, urban flight corridor planning.",
+      "metadata": "Ref: DES-103, date: 2025-03-25, city aviation board review"
+    },
+    {
+      "id": "RC-404",
+      "content": "HeavyHaul cargo plane structural compliance, 80-ton design check, fuselage segment tested.",
+      "metadata": "Ref: DES-104, date: 2025-03-30, advanced type certificate pending"
+    },
+    {
+      "id": "RC-405",
+      "content": "StratoScan UAV beyond-line-of-sight permit, solar altitude operation, unpowered glide test plan.",
+      "metadata": "Ref: DES-105, date: 2025-04-05, FAA UAV integration team"
+    }
+  ]
+  

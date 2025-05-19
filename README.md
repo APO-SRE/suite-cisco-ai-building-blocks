@@ -1,0 +1,152 @@
+![Cisco AI Building Blocks Suite](assets/ai_building_blocks_banner.png)
+
+> **DISCLAIMER — USE AT YOUR OWN RISK**  
+> This software is provided **“as is”** without warranty of any kind.  
+> Cisco Systems, Inc. and contributors accept **no liability** for damages arising from its use.  
+> The project is intended *solely for demonstration and development*.  
+> By cloning or running the code you confirm that you have read and accepted these terms.
+
+---
+
+# Cisco AI Building Blocks — *Full Suite*
+
+A modular starter-kit for building **retrieval-augmented Gen-AI** solutions on Cisco platforms.
+
+* **AI-Agent Service** — FastAPI micro-service that merges LLMs, RAG, and live Cisco APIs.  
+* **AI-Database Project** — data-engineering pipeline that chunks, embeds, and indexes your docs/events.
+
+Use them together or independently to prototype chatbots, copilots, and automated IT-ops on Meraki, Catalyst Center, Spaces, Webex, Nexus, and beyond.
+
+---
+
+## 1 · Key Features
+
+| Capability               | Suite-Level Benefit                                                                                           |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------- |
+| **Pluggable stack**      | Swap LLM (Azure OpenAI, Llama 3, local HF) & vector DB (Azure Search, Chroma, Elastic) via `.env`.             |
+| **Layered RAG**          | Separate indexes for FASTAPI (API docs), EVENTS (telemetry), DOMAIN (business data), and AGENTIC (CoT docs).   |
+| **Live function calling**| LLM emits `function_call` JSON → dispatcher hits real Cisco REST APIs → results streamed back to chat.         |
+| **Unified Cisco Service**| One abstraction wraps Meraki, Catalyst, Spaces, Webex (extensible to Nexus, XDR, etc.).                       |
+| **Automated scaffolding**| Script generates SDK client, OpenAPI spec, dispatcher, and service stubs for any new Cisco platform.          |
+| **OpenTelemetry tracing**| End-to-end spans for chunking, embedding, LLM calls, API latency, and more.                                    |
+| **Sample UI**            | Minimal HTML/JS front-end in `static/` for quick manual testing.                                               |
+
+---
+
+## 2 · High-Level Architecture
+
+```mermaid
+flowchart TD
+    %% ── Client ─────────────────────
+    BROWSER["Web UI / CLI / Bot"]
+
+    %% ── Agent Service (runtime) ────
+    subgraph Agent["AI-Agent Service"]
+        CHAT[chat_routes.py]
+        RETRIEVE[Retrievers]
+        LLM[LLM Wrapper]
+        DISPATCH[Function Dispatcher]
+        SERVICE[Unified Cisco Service]
+        VDB[(Vector DBs)]
+
+        BROWSER --> CHAT
+        CHAT -->|LLM request| LLM
+        CHAT -->|may retrieve| RETRIEVE
+        RETRIEVE --> VDB
+        LLM -->|function_call| DISPATCH
+        DISPATCH --> SERVICE
+        SERVICE --> MERAKI[Meraki API]
+        SERVICE --> CATALYST[Catalyst Center API]
+        SERVICE --> SPACES[Spaces API]
+        SERVICE --> WEBEX[Webex API]
+    end
+
+    %% ── Database Project (pipelines) ─
+    subgraph Pipeline["AI-Database Project"]
+        SCRIPTS["process_*.py<br/>(chunk → embed → index)"]
+        SCRIPTS --> VDB
+    end
+
+````
+
+---
+
+## 3 · Repo Layout
+
+```
+suite-cisco-ai-building-blocks/
+├── AI-Building-Blocks-Agent/       # FastAPI runtime micro-service
+│   ├── app/                        # routes, services, SDK clients, retrievers
+│   ├── static/                     # sample chat UI
+│   └── scripts/platform_scaffolder.py
+├── AI-Building-Blocks-Database/    # data-engineering pipeline
+│   ├── scripts/                    # process_docs.py, process_events.py, …
+│   ├── chroma_dbs/                 # local vector storage (git-ignored)
+│   └── domain_samples/             # example JSON
+├── assets/                         # banners & diagrams shared by the suite
+├── example.env                     # master list of 275+ env vars
+└── README.md                       # ← you are here
+```
+
+---
+
+## 4 · Quick Start
+
+```bash
+# 1 Clone the monorepo
+git clone https://github.com/APO-SRE/suite-cisco-ai-building-blocks.git
+cd suite-cisco-ai-building-blocks
+
+# 2 Create your environment
+cp example.env .env           # keep .env out of git!
+# edit keys, backend choices, and ENABLE_* flags
+
+# 3 (Recommended) Build initial vector indexes
+cd AI-Building-Blocks-Database
+python scripts/process_docs.py        # FASTAPI layer
+python scripts/process_events.py      # EVENTS layer
+python scripts/process_domain.py      # DOMAIN layer
+# optional: python scripts/process_agentic.py
+
+# 4 Run the Agent Service
+cd ../AI-Building-Blocks-Agent
+uvicorn app.main:app --reload --log-level debug
+
+# 5 Open http://127.0.0.1:8000/static/ in your browser to chat with the agent
+```
+
+---
+
+## 5 · Environment Blocks Cheat-Sheet
+
+| Prefix        | Layer Purpose                       | Typical Content                          |
+| ------------- | ----------------------------------- | ---------------------------------------- |
+| **FASTAPI\_** | API-docs layer (functions & specs)  | Platform OpenAPI snippets, function defs |
+| **EVENTS\_**  | Telemetry & log layer               | Raw Meraki events, syslogs, etc.         |
+| **DOMAIN\_**  | Business / industry knowledge layer | Manuals, policy docs, customer data      |
+| **AGENTIC\_** | Chain-of-thought & long-form docs   | White-papers, runbooks, knowledge bases  |
+
+Full reference lives in [`example.env`](example.env).
+
+---
+
+## 6 · Extending the Suite
+
+| Goal                     | One-liner How-To                                                                        |
+| ------------------------ | --------------------------------------------------------------------------------------- |
+| **Add a Cisco platform** | `python scripts/platform_scaffolder.py --platform nexus` → tweak generated stubs.       |
+| **New vector store**     | Drop an indexer class into `scripts/indexers/`; set `<LAYER>_VECTOR_BACKEND` in `.env`. |
+| **New LLM backend**      | Implement a `BaseLLM` subclass; set `<LAYER>_LLM_PROVIDER` accordingly.                 |
+| **Performance tuning**   | Tweak `<LAYER>_CHUNK_SIZE`, `<LAYER>_EMBED_BATCH_SIZE`, and OMP/CPU env vars.           |
+
+PRs and issue reports are welcome!
+
+---
+
+## 7 · License
+
+Apache 2.0 • © 2025 Cisco Systems, Inc.
+
+---
+
+*Made with ❤️ by the Cisco AI Building Blocks team — last updated May 2025*

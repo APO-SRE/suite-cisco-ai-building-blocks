@@ -1,0 +1,28 @@
+[
+    {
+      "id": "TIC-501",
+      "content": "Frank Huang reported call quality issues after tower maintenance. Ticket #CQ-102, severity: low.",
+      "metadata": "Opened 2025-03-01, assigned agent: Bob Chen (SUP-2001), closed 2025-03-02"
+    },
+    {
+      "id": "TIC-502",
+      "content": "Gina Rossi asked about partial payment extension for Family Plan. Ticket #BILL-200, severity: medium.",
+      "metadata": "Opened 2025-03-26, assigned agent: Carol Lim (SUP-3002), resolved with new due date"
+    },
+    {
+      "id": "TIC-503",
+      "content": "Hiro Tanaka complaint about fiber outage on 2025-03-18. Requesting credit for downtime.",
+      "metadata": "Ticket #NET-404, severity: medium, opened 2025-03-19, pending manager approval"
+    },
+    {
+      "id": "TIC-504",
+      "content": "Ivy Kim reported slow business broadband speeds. Ticket #BB-301, severity: high.",
+      "metadata": "Opened 2025-03-26, assigned agent: David Parker (SUP-4001), fix in progress"
+    },
+    {
+      "id": "TIC-505",
+      "content": "Jeff Teeter inquired about high data usage charges & overseas call glitch. Ticket #INT-500, severity: medium.",
+      "metadata": "Opened 2025-04-03, assigned agent: Emily Stone (SUP-5001), partial refund considered"
+    }
+  ]
+  

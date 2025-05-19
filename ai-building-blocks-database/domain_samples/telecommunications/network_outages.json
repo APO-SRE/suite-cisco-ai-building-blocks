@@ -1,0 +1,28 @@
+[
+    {
+      "id": "OUT-401",
+      "content": "Fiber outage in downtown area, affecting FIB-300 for approx 50 customers.",
+      "metadata": "Date: 2025-03-18, resolved after 4 hours, impacted Hiro Tanaka (CUST-203)"
+    },
+    {
+      "id": "OUT-402",
+      "content": "Mobile tower maintenance in Ward 2, Basic Mobile users may have call drops, partial 3G fallback.",
+      "metadata": "Date: 2025-02-28, impacted Frank Huang (CUST-201)"
+    },
+    {
+      "id": "OUT-403",
+      "content": "City-wide LTE upgrade. Intermittent data disruptions for Family & Unlimited plans.",
+      "metadata": "Date: 2025-03-10, completion 2025-03-11, Gina Rossi (CUST-202) & Jeff Teeter (CUST-205) impacted"
+    },
+    {
+      "id": "OUT-404",
+      "content": "Business broadband slowdown in SuburbTown, local node congestion, fix in progress.",
+      "metadata": "Date: 2025-03-25, affected Ivy Kim (CUST-204), partial credit considered"
+    },
+    {
+      "id": "OUT-405",
+      "content": "International routing glitch for premium mobile plan calls, short disruption ~2 hours.",
+      "metadata": "Date: 2025-04-02, impacted Jeff Teeter (CUST-205) specifically for overseas calls"
+    }
+  ]
+  

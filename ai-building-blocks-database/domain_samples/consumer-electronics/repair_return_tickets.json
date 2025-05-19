@@ -1,0 +1,28 @@
+[
+    {
+      "id": "RMA-401",
+      "content": "Smartphone A1 returned by Frank Huang, battery draining too fast. Under warranty (#WAR-201).",
+      "metadata": "Ticket #BATT-001, opened 2025-03-20, status: repaired, replaced battery"
+    },
+    {
+      "id": "RMA-402",
+      "content": "Smartwatch S2 repair request by Gina Rossi, cracked screen. Extended 2-year coverage.",
+      "metadata": "Ticket #SCR-202, opened 2025-04-02, status: in progress"
+    },
+    {
+      "id": "RMA-403",
+      "content": "Wireless Earbuds X: left earbud not charging. Hiro Tanaka. Return authorized (#WAR-203).",
+      "metadata": "Ticket #EBX-303, opened 2025-04-05, status: awaiting replacement unit"
+    },
+    {
+      "id": "RMA-404",
+      "content": "4K TV flickering screen reported by Ivy Kim. Possibly PSU issue. Extended 3-year plan (#WAR-204).",
+      "metadata": "Ticket #TVF-404, opened 2025-04-10, status: technician scheduled"
+    },
+    {
+      "id": "RMA-405",
+      "content": "Gaming Console G-Pro overheats, Jeff Teeter, accidental damage coverage (#WAR-205).",
+      "metadata": "Ticket #GPR-505, opened 2025-04-12, status: under diagnostics"
+    }
+  ]
+  

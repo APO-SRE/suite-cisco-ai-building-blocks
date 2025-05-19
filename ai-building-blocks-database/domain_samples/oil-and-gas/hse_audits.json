@@ -1,0 +1,28 @@
+[
+    {
+      "id": "HSE-401",
+      "content": "Offshore safety drill: muster & lifeboat test, BOP emergency scenario, minor improvement needed.",
+      "metadata": "Ref: EXP-101, date: 2025-03-12, external auditor: frank.huang@marinesafety.org"
+    },
+    {
+      "id": "HSE-402",
+      "content": "Desert air quality check: dust control measures, compliance with local emission standards, no issues.",
+      "metadata": "Ref: EXP-102, date: 2025-03-16, next check in 3 months"
+    },
+    {
+      "id": "HSE-403",
+      "content": "ShalePeak wellhead integrity inspection, blowout prevention check, frack water disposal review.",
+      "metadata": "Ref: EXP-103, date: 2025-03-25, lead inspector: hiro.tanaka@environment.gov"
+    },
+    {
+      "id": "HSE-404",
+      "content": "ArcticLight ice management system test, platform escape route check, polar bear interaction policy.",
+      "metadata": "Ref: EXP-104, date: 2025-04-01, severe weather drills needed"
+    },
+    {
+      "id": "HSE-405",
+      "content": "FrontierGas sour gas H2S safety training, specialized PPE usage, sulfur disposal method audit.",
+      "metadata": "Ref: EXP-105, date: 2025-04-05, recommended monthly refresher"
+    }
+  ]
+  

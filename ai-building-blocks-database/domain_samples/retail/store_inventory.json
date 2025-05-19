@@ -1,0 +1,28 @@
+[
+    {
+      "id": "INV-201",
+      "content": "FleetStep Running Shoes (PROD-101) stock: 30 pairs in Store #1, 20 pairs in Store #2.",
+      "metadata": "Warehouse backup: 50 pairs, last updated 2025-03-10"
+    },
+    {
+      "id": "INV-202",
+      "content": "ZenWear Yoga Pants (PROD-102) stock: 40 in Store #1, 25 in Store #3. Various sizes S-XL.",
+      "metadata": "Central warehouse: 60 units, updated 2025-03-08"
+    },
+    {
+      "id": "INV-203",
+      "content": "AudioTop Headphones (PROD-103) stock: 15 in Store #2, 15 in Store #3. Low in Store #1 (5 units).",
+      "metadata": "Reorder triggered if total < 20, updated 2025-03-12"
+    },
+    {
+      "id": "INV-204",
+      "content": "TechTime Smartwatch (PROD-104) stock: 10 each in Store #1, #2, #3. Steady sales.",
+      "metadata": "Warehouse: 30, next reorder review 2025-03-20"
+    },
+    {
+      "id": "INV-205",
+      "content": "CozyCotton Hoodies (PROD-105) stock: 50 in Store #2, 10 in Store #3, none in Store #1.",
+      "metadata": "Warehouse: 40, last updated 2025-03-10, manager note: high demand"
+    }
+  ]
+  

@@ -1,0 +1,28 @@
+[
+    {
+      "id": "PLANT-101",
+      "content": "Riverbank Generating Station provides 300 MW via hydroelectric turbines. Scheduled maintenance in March.",
+      "metadata": "Plant code: RBC-12, capacity: 300 MW, region: North District"
+    },
+    {
+      "id": "PLANT-102",
+      "content": "Sunrise Solar Farm yields 150 MW on peak days. Battery storage pilot ongoing.",
+      "metadata": "Farm code: SSF-07, region: West District, pilot started 2025-01"
+    },
+    {
+      "id": "PLANT-103",
+      "content": "Eastside Natural Gas Plant, 500 MW. High capacity factor, older turbines needing upgrade in 2026.",
+      "metadata": "Plant code: ENG-33, region: East District, last overhaul: 2024-05"
+    },
+    {
+      "id": "PLANT-104",
+      "content": "GreenHill Wind Farm with 120 turbines. Annual output ~400 GWh. Blade inspections scheduled Q2.",
+      "metadata": "Farm code: GWF-19, region: Central District, property lease until 2030"
+    },
+    {
+      "id": "PLANT-105",
+      "content": "Valley Coal Power Station, 250 MW. Gradual decommission planned over 3 years due to emission targets.",
+      "metadata": "Plant code: VCP-55, region: South District, shutdown steps: 2026-2028"
+    }
+  ]
+  

@@ -1,0 +1,28 @@
+[
+    {
+      "id": "PH-101",
+      "content": "Residential complex on Main Street: foundation poured, framing to start next week. Estimated six-month timeline.",
+      "metadata": "Project code: RZ-921, client: Maple Homes, next milestone: framing inspection"
+    },
+    {
+      "id": "PH-102",
+      "content": "Commercial tower in downtown district: steel skeleton nearly complete, next step is installing curtain walls.",
+      "metadata": "Project code: CH-108, developer: Skyline Builders, structural engineer: EngiStruct LLC"
+    },
+    {
+      "id": "PH-103",
+      "content": "Warehouse expansion project: floor slab done, waiting on steel deliveries. Expecting minor delay due to supplier shortage.",
+      "metadata": "Project code: WH-431, typical steel lead time: 3 weeks"
+    },
+    {
+      "id": "PH-104",
+      "content": "Riverfront condo units: piling stage completed, recommended geotechnical review before basement excavation.",
+      "metadata": "Project code: RV-220, geotech firm: SoilCheck Inc."
+    },
+    {
+      "id": "PH-105",
+      "content": "School renovation wing: demolition finished, rough-in for plumbing/electrical started. Fire safety inspection scheduled.",
+      "metadata": "Project code: EDU-77, next inspection: 2025-03-10"
+    }
+  ]
+  

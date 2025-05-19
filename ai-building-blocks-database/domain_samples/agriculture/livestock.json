@@ -1,0 +1,28 @@
+[
+    {
+      "id": "LS-210",
+      "content": "Dairy herd at Barn #2 produces ~28 liters/cow/day. Nutrition plan changed to a high-protein blend to boost butterfat.",
+      "metadata": "Herd size: 60 Holsteins, Feed: ProMilk Elite"
+    },
+    {
+      "id": "LS-211",
+      "content": "Free-range poultry on 2-week rotational grazing. Reduced parasite load and improved egg quality.",
+      "metadata": "Flock ID: PR-55, weekly output: 400 eggs, next rotation: 2025-03-01"
+    },
+    {
+      "id": "LS-212",
+      "content": "Goat herd introduced for brush control in upper pasture. Preliminary results show decreased invasive shrubs.",
+      "metadata": "Herd size: 15 goats, daily movement: 1 acre/day"
+    },
+    {
+      "id": "LS-213",
+      "content": "Cattle vaccination schedule updated. Next booster due for calves in mid-April.",
+      "metadata": "Vaccine type: Bovine respiratory, recommended date: 2025-04-15"
+    },
+    {
+      "id": "LS-214",
+      "content": "Hog feed plan includes a higher corn ratio for finishing hogs. Target weight: 250 lbs before summer.",
+      "metadata": "Hog group: #7, feed ratio: 70% corn, 30% soybean meal"
+    }
+  ]
+  

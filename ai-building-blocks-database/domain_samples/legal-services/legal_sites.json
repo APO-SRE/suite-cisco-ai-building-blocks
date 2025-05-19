@@ -1,0 +1,53 @@
+[
+    {
+      "id": "LOC-101",
+      "name": "Downtown Law Office",
+      "address": "100 Legal Way, CityCenter, ST 11111",
+      "relation": [
+        "Attorneys: Bob Chen (ATT-201), Emily Stone (ATT-501) primarily based here",
+        "Case references: CASE-101, CASE-104"
+      ],
+      "metadata": "Conference rooms for depositions, paralegal pool on site"
+    },
+    {
+      "id": "LOC-102",
+      "name": "Uptown Litigation Branch",
+      "address": "200 Court Ave, MetroTown, ST 22222",
+      "relation": [
+        "Attorneys: Carol Lim (ATT-302), David Parker (ATT-401)",
+        "Case references: CASE-102 (probate), CASE-103 (personal injury)"
+      ],
+      "metadata": "Close to county courthouse, specialized in trial support"
+    },
+    {
+      "id": "LOC-103",
+      "name": "Intellectual Property Division",
+      "address": "350 IP Road, TechPark, ST 33333",
+      "relation": [
+        "Attorney Frank Huang (ATT-601), patent infringement cases",
+        "CASE-105 references, complaint in Federal Court"
+      ],
+      "metadata": "Secured doc repository for patent files, advanced research library"
+    },
+    {
+      "id": "LOC-104",
+      "name": "Corporate Client Center",
+      "address": "500 Business Ln, FinanceDistrict, ST 44444",
+      "relation": [
+        "Handles M&A, large commercial contracts (CASE-104), M&A-2025 docs",
+        "Frequent board meeting hosting"
+      ],
+      "metadata": "High-tech conference rooms, secure data lines"
+    },
+    {
+      "id": "LOC-105",
+      "name": "Records & Archive Warehouse",
+      "address": "77 Storage Dr, SuburbCity, ST 55555",
+      "relation": [
+        "Policy code COMP-404 (data retention for 7 years)",
+        "Stores closed case files beyond digital archives"
+      ],
+      "metadata": "Heavy security, climate-controlled for old records"
+    }
+  ]
+  

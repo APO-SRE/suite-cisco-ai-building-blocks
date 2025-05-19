@@ -1,0 +1,28 @@
+[
+    {
+      "id": "INV-301",
+      "content": "Invoice #R-1001 for Frank Huang, apt rent for Feb 2025. Amount $1,200, due by 2025-02-05.",
+      "metadata": "Ref: TEN-201 (APT-DT-2B1B), partial payment $600 made on 2025-02-01"
+    },
+    {
+      "id": "INV-302",
+      "content": "Invoice #R-1002 for Gina Rossi, house rent for Mar 2025. Amount $1,800, due by 2025-03-05.",
+      "metadata": "Ref: TEN-202 (HSE-SUB-3B2B), last payment on time"
+    },
+    {
+      "id": "INV-303",
+      "content": "Invoice #R-1003 for Hiro Tanaka, commercial unit for Apr 2025. $2,200, net 10 days.",
+      "metadata": "Ref: TEN-203 (COM-RET-1500), includes $200 common area fee"
+    },
+    {
+      "id": "INV-304",
+      "content": "Invoice #R-1004 for Ivy Kim, condo rent for Feb 2025. $1,100, due by 2025-02-05.",
+      "metadata": "Ref: TEN-204 (CON-WF-1B1B), deposit previously paid"
+    },
+    {
+      "id": "INV-305",
+      "content": "Late fee invoice for Frank Huang, $50 penalty for late Feb payment. Issued 2025-02-10.",
+      "metadata": "Ref: TEN-201, added due to partial payment, total now $650 remaining"
+    }
+  ]
+  

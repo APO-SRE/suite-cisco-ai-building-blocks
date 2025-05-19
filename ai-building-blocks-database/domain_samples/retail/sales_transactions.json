@@ -1,0 +1,28 @@
+[
+    {
+      "id": "SALE-301",
+      "content": "Order #S-1001: FleetStep Shoes (PROD-101) x2 pairs, total $150. Store #1 POS sale.",
+      "metadata": "Date: 2025-03-11, loyalty ID: L-5001 (Frank Huang), discount used $0"
+    },
+    {
+      "id": "SALE-302",
+      "content": "Order #S-1002: ZenWear Yoga Pants (PROD-102) x1, AudioTop Headphones (PROD-103) x1. Store #3 purchase.",
+      "metadata": "Date: 2025-03-10, loyalty ID: L-6001 (Gina Rossi), discount $5 from coupon"
+    },
+    {
+      "id": "SALE-303",
+      "content": "Online order: TechTime Smartwatch (PROD-104) x1, shipped from warehouse. $120 + $5 shipping.",
+      "metadata": "Date: 2025-03-09, loyalty ID: none, payment CC"
+    },
+    {
+      "id": "SALE-304",
+      "content": "Unisex Hoodie (PROD-105) x2, Store #2. $120 total, buy1-get-second-10%-off promo.",
+      "metadata": "Date: 2025-03-12, loyalty ID: L-7002 (Hiro Tanaka), discount $6"
+    },
+    {
+      "id": "SALE-305",
+      "content": "Mixed purchase: 1 Hoodie (PROD-105), 1 Yoga Pants (PROD-102). Store #3. Total $110.",
+      "metadata": "Date: 2025-03-13, loyalty ID: L-8003 (Ivy Kim), discount $0, paid cash"
+    }
+  ]
+  

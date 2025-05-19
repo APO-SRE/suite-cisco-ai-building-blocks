@@ -1,0 +1,53 @@
+[
+    {
+      "id": "LOC-101",
+      "name": "Factory A - Injection & Stamping",
+      "address": "100 Industrial Park, MetalTown, ST 11111",
+      "relation": [
+        "Line LN-1 (#MOLD-A1), LN-2 (#STMP-B2), see production_plans.json",
+        "Quality checks (QUAL-201, QUAL-202), maintenance for #IM-01, #ST-02"
+      ],
+      "metadata": "Two major lines for plastic & metal processing, shift-based operations"
+    },
+    {
+      "id": "LOC-102",
+      "name": "Factory B - Welding & Assembly",
+      "address": "200 Fabrication Ln, MachCity, ST 22222",
+      "relation": [
+        "Line LN-3 (#WELD-C3), LN-4 (#ASSY-D4)",
+        "Quality (QUAL-203, QUAL-204), associated inventory in WH-3"
+      ],
+      "metadata": "Includes robotic welding area, final assembly station"
+    },
+    {
+      "id": "LOC-103",
+      "name": "Factory C - Paint Shop",
+      "address": "350 Coating Dr, PaintTown, ST 33333",
+      "relation": [
+        "Line LN-5 (#PAINT-E5), maintenance #PB-05 (MAINT-505)",
+        "Quality checks (QUAL-205) on paint finish"
+      ],
+      "metadata": "Specialized ventilation, hazard shipping in supply invoices"
+    },
+    {
+      "id": "LOC-104",
+      "name": "Warehouse Complex",
+      "address": "400 Storage Ave, SupplyVille, ST 44444",
+      "relation": [
+        "inventory_records.json references (WH-1, WH-2, WH-3, WH-4)",
+        "Supply chain invoices for materials, e.g., INV-301 to INV-305"
+      ],
+      "metadata": "Separate zones for resin, steel, motor parts, paint chemicals"
+    },
+    {
+      "id": "LOC-105",
+      "name": "Maintenance HQ & Spare Parts Depot",
+      "address": "77 Service Rd, TechCity, ST 55555",
+      "relation": [
+        "maintenance_schedules.json references (#IM-01, #ST-02, #WR-03, #AC-04, #PB-05)",
+        "Technicians: Frank Huang, Gina Rossi, Hiro Tanaka, Ivy Kim, Jeff Teeter"
+      ],
+      "metadata": "Central location for specialized technicians, equipment manuals"
+    }
+  ]
+  

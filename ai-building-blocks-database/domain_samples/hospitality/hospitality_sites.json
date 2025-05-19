@@ -1,0 +1,53 @@
+[
+    {
+      "id": "LOC-101",
+      "name": "Lakeview Resort",
+      "address": "1 Lakeside Way, North District, IL 12345",
+      "relation": [
+        "property_listings.json (PROP-101), booking_records.json (BOOK-201)",
+        "housekeeping_schedules.json (HS-301), complaints_feedback.json (CF-501)"
+      ],
+      "metadata": "Known for weddings, spa onsite, high summer season"
+    },
+    {
+      "id": "LOC-102",
+      "name": "Urban Plaza Hotel",
+      "address": "500 City Center Blvd, Downtown, IL 23456",
+      "relation": [
+        "property_listings.json (PROP-102), booking_records.json (BOOK-202)",
+        "complaints_feedback.json (CF-502) about slow Wi-Fi"
+      ],
+      "metadata": "Conference hall seats 200, near corporate offices"
+    },
+    {
+      "id": "LOC-103",
+      "name": "Beachside Inn",
+      "address": "77 Coastal Drive, ShoreTown, IL 34567",
+      "relation": [
+        "property_listings.json (PROP-103), booking_records.json (BOOK-203)",
+        "housekeeping_schedules.json (HS-303), complaints_feedback.json (CF-503)"
+      ],
+      "metadata": "Family suites, direct beach access, summer demand spike"
+    },
+    {
+      "id": "LOC-104",
+      "name": "Mountain Lodge",
+      "address": "200 Peak Ave, Alpine Village, IL 45678",
+      "relation": [
+        "property_listings.json (PROP-104), booking_records.json (BOOK-204)",
+        "housekeeping_schedules.json (HS-304), complaints_feedback.json (CF-504)"
+      ],
+      "metadata": "Ski packages in winter, closed off-season in spring"
+    },
+    {
+      "id": "LOC-105",
+      "name": "Airport Express Suites",
+      "address": "350 Terminal Road, Airport City, IL 56789",
+      "relation": [
+        "property_listings.json (PROP-105), booking_records.json (BOOK-205)",
+        "housekeeping_schedules.json (HS-305), complaints_feedback.json (CF-505)"
+      ],
+      "metadata": "Shuttle to airline terminals, focus on business travelers"
+    }
+  ]
+  

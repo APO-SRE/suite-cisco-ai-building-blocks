@@ -1,0 +1,28 @@
+[
+    {
+      "id": "ADV-501",
+      "content": "Alice Brown (S-1001) advised to take advanced math courses. Considering a minor in Computer Science.",
+      "metadata": "Advisor: Dr. Tan, next advising session: 2025-03-01"
+    },
+    {
+      "id": "ADV-502",
+      "content": "Bob Chen (S-1002) recommended to lighten load next term due to part-time status and scholarship constraints.",
+      "metadata": "Scholarship expires: 2025-12-31, suggests focusing on key courses"
+    },
+    {
+      "id": "ADV-503",
+      "content": "Cara Davis (S-1003) auditing biology lab, exploring possibility of a full enrollment next semester.",
+      "metadata": "Potential major change to Biology, requires dept. approval"
+    },
+    {
+      "id": "ADV-504",
+      "content": "Derek Evans (S-1004) must maintain GPA >= 2.0. Advised tutoring in Math 201 for success.",
+      "metadata": "Probation status could be removed if passing all courses"
+    },
+    {
+      "id": "ADV-505",
+      "content": "Eva Flores (S-1005) continuing Hist 220 incomplete. Must complete final essay by mid-term.",
+      "metadata": "Special arrangement with Dr. Ramirez, next check-in: 2025-02-28"
+    }
+  ]
+  

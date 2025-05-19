@@ -1,0 +1,28 @@
+[
+    {
+      "id": "LP-401",
+      "content": "FrequentGuest basic tier: Earn 1 point per $1 spent. Redeem for room upgrades after 5 stays.",
+      "metadata": "Sign-up code: FG-1X, valid at all properties, excludes taxes/fees"
+    },
+    {
+      "id": "LP-402",
+      "content": "Silver tier: 2 points per $1, priority check-in line, late checkout if available.",
+      "metadata": "Threshold: 10 paid nights in a calendar year, code: FG-2X"
+    },
+    {
+      "id": "LP-403",
+      "content": "Gold tier: 3 points per $1, free breakfast, 1 category room upgrade guaranteed.",
+      "metadata": "Threshold: 20 paid nights/year, code: FG-3X"
+    },
+    {
+      "id": "LP-404",
+      "content": "Platinum tier: 4 points per $1, lounge access where available, suite upgrade subject to availability.",
+      "metadata": "Threshold: 35 nights/year, code: FG-4X, includes phone concierge"
+    },
+    {
+      "id": "LP-405",
+      "content": "Corporate loyalty: shareable points among employees, annual spend must exceed $50k.",
+      "metadata": "Program code: BizCollect, includes meeting room discounts"
+    }
+  ]
+  

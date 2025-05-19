@@ -1,0 +1,28 @@
+[
+    {
+      "id": "VEN-201",
+      "content": "Metro Arena hosting a summer music festival on July 15. Headliners from multiple genres.",
+      "metadata": "Capacity: 20,000 seats, ticket vendor: TixMaster, load-in date: July 13"
+    },
+    {
+      "id": "VEN-202",
+      "content": "City Amphitheater open-air concert series starts June 5. Weekly Friday shows until August.",
+      "metadata": "Seating: 5,000 lawn spots, theme: indie music, sponsor: GreenNote"
+    },
+    {
+      "id": "VEN-203",
+      "content": "Historic Theater downtown hosting classic film screenings every Saturday. 'Oldies Reels' partnership.",
+      "metadata": "Seats: 1,200, potential restoration project in 2026"
+    },
+    {
+      "id": "VEN-204",
+      "content": "Live comedy nights at LaughPoint Club on Thursdays. Local stand-up talents plus occasional headliners.",
+      "metadata": "Seating capacity: 300, 2-drink minimum policy"
+    },
+    {
+      "id": "VEN-205",
+      "content": "Annual arts & media expo at Convention Center. Next event: October 3-5, featuring streaming platform exhibits.",
+      "metadata": "Booths: 150, expected attendees: 10,000, media sponsor: MagazineNow"
+    }
+  ]
+  

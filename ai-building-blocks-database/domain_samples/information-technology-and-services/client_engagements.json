@@ -1,0 +1,28 @@
+[
+    {
+      "id": "CLI-201",
+      "content": "Frank Huang’s startup: subscribed to Managed IT (SERV-101). Basic plan for 15 endpoints, remote help desk.",
+      "metadata": "Start date: 2025-03-10, 12-month contract, contact: frank.huang@sthstartup.org"
+    },
+    {
+      "id": "CLI-202",
+      "content": "Gina Rossi’s mid-size firm: Cloud Migration (SERV-102) from on-prem to AWS. 6-month project.",
+      "metadata": "Start date: 2025-02-15, project manager: Bob Chen, environment: NodeJS microservices"
+    },
+    {
+      "id": "CLI-203",
+      "content": "Hiro Tanaka e-commerce site: DevOps setup (SERV-103), container-based deployment on Azure.",
+      "metadata": "Start date: 2025-03-01, milestone-based, contact: hiro.tanaka@ecshop.com"
+    },
+    {
+      "id": "CLI-204",
+      "content": "Ivy Kim’s enterprise: cybersecurity assessment (SERV-104). Pen test & compliance checks (PCI).",
+      "metadata": "Start date: 2025-03-20, expected completion: 2025-04-10, daily rate"
+    },
+    {
+      "id": "CLI-205",
+      "content": "Jeff Teeter’s analytics pilot: Data Analytics (SERV-105). Building custom dashboards for finance data.",
+      "metadata": "Start date: 2025-04-01, subscription + usage fees, data volume ~1 TB"
+    }
+  ]
+  

@@ -1,0 +1,28 @@
+[
+    {
+      "id": "STAFF-401",
+      "content": "Alice Brown: management consultant, org design, leadership coaching. MBA, 10+ yrs experience.",
+      "metadata": "Leads CLI-201, also part of practice launch for SERV-101, phone: 555-2398"
+    },
+    {
+      "id": "STAFF-402",
+      "content": "Bob Chen: financial advisor, M&A specialist, prior investment banking background, CPA.",
+      "metadata": "Handles CLI-202, started 2025-01-15, phone: 555-8241"
+    },
+    {
+      "id": "STAFF-403",
+      "content": "Carol Lim: HR & talent consultant, recruitment process reengineering, culture transformation.",
+      "metadata": "Assigned to CLI-203, joined 2025-02-10, email: carol.lim@proservices.org"
+    },
+    {
+      "id": "STAFF-404",
+      "content": "David Parker: IT transformation lead, data analytics, process automation, agile frameworks.",
+      "metadata": "Heads CLI-204, ex-tech company CIO, phone: 555-6103"
+    },
+    {
+      "id": "STAFF-405",
+      "content": "Emily Stone: marketing strategist, brand consultant, performance marketing, ROI measurement.",
+      "metadata": "Working on CLI-205, contact: emily.stone@proservices.org, previously at AdCorp"
+    }
+  ]
+  

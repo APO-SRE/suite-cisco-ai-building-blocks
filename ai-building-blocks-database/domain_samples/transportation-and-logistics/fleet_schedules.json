@@ -1,0 +1,28 @@
+[
+    {
+      "id": "FLEET-101",
+      "content": "Truck Route #T1: departing Warehouse A at 06:00, delivering to CityCenter Depot by 10:00, capacity 80% filled.",
+      "metadata": "Driver: Alice Brown (DRV-1001), date: 2025-03-10, vehicle ID: TRK-001"
+    },
+    {
+      "id": "FLEET-102",
+      "content": "Van Route #V2: daily shuttle from SuburbTown to Airport Cargo Hub, leaves 08:00, returns 14:00.",
+      "metadata": "Driver: Bob Chen (DRV-2001), date range: 2025-03-01 to 2025-03-31, vehicle ID: VAN-101"
+    },
+    {
+      "id": "FLEET-103",
+      "content": "Rail Freight #RF-300: container load for cross-state shipping, 20 wagons assigned.",
+      "metadata": "Departure: 2025-03-20, from RailYard East, coordinator: Carol Lim (OPS-3002)"
+    },
+    {
+      "id": "FLEET-104",
+      "content": "Ship Cargo #SC-22: ocean vessel import from overseas, scheduled port arrival 2025-04-05.",
+      "metadata": "Handling agent: David Parker (SEA-4001), capacity: 500 TEU for offload"
+    },
+    {
+      "id": "FLEET-105",
+      "content": "Air Cargo Flight #AC-115: express packages from Airport to Downtown distribution center, daily 07:00.",
+      "metadata": "Coordinator: Emily Stone (AIR-5001), capacity usage: 70%, next scheduling review 2025-03-30"
+    }
+  ]
+  

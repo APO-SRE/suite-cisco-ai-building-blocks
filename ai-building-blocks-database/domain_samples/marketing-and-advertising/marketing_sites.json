@@ -1,0 +1,53 @@
+[
+    {
+      "id": "LOC-101",
+      "name": "Digital Creative Hub",
+      "address": "100 Social Ave, CreatiCity, ST 10001",
+      "relation": [
+        "Manages digital campaigns like CAMP-101, influencer collabs (CAMP-104)",
+        "Designers, copywriters for comedic angles"
+      ],
+      "metadata": "Equipped with video editing suites, social analytics station"
+    },
+    {
+      "id": "LOC-102",
+      "name": "TV Production Studio",
+      "address": "500 Broadcast Ln, MediaTown, ST 20002",
+      "relation": [
+        "Handles TV spots, e.g. Skyline Hotels (CAMP-102)",
+        "Creative assets for commercials (CRT-402), sometimes used for final cuts"
+      ],
+      "metadata": "Green screen stage, post-production editing lab"
+    },
+    {
+      "id": "LOC-103",
+      "name": "Direct Mail & Print Center",
+      "address": "77 Paper Rd, Printville, ST 30003",
+      "relation": [
+        "Email & direct mail (CAMP-103), printing vendor references in ad_spend_invoices.json",
+        "Creative brochures from CRT-403"
+      ],
+      "metadata": "High-volume printers, color matching station"
+    },
+    {
+      "id": "LOC-104",
+      "name": "Outdoor Advertising Depot",
+      "address": "350 Billboard Dr, AdsTown, ST 40004",
+      "relation": [
+        "Billboard & bus wraps (CAMP-105), vendor OutdoorMedia LLC (INV-305)",
+        "Performance measure in MET-505"
+      ],
+      "metadata": "Warehouses large-scale prints, bus wrap prep area"
+    },
+    {
+      "id": "LOC-105",
+      "name": "Headquarters Client Meeting Floor",
+      "address": "1 Ad Agency Blvd, BrandCity, ST 50005",
+      "relation": [
+        "Client briefs (BRF-201 to BRF-205) often signed here",
+        "Invoice management: ad_spend_invoices.json references"
+      ],
+      "metadata": "Executive conference rooms, remote meeting setup"
+    }
+  ]
+  

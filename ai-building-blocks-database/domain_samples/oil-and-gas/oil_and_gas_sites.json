@@ -1,0 +1,53 @@
+[
+    {
+      "id": "LOC-101",
+      "name": "OffshoreBlue Central Platform",
+      "address": "Offshore coordinate block #OB-100, ~1200m water depth",
+      "relation": [
+        "MP-101, field = FIELD-201, rig #DR-OB1 eqm in EQM-301",
+        "HSE muster drill in HSE-401, crude cargo SHIP-501"
+      ],
+      "metadata": "Operates floating production, crew ~150, daily helicopter transfers"
+    },
+    {
+      "id": "LOC-102",
+      "name": "DesertDrill Onshore Base",
+      "address": "100 Desert Rd, DryLand, ST 22222",
+      "relation": [
+        "MP-102, field = FIELD-202, onshore rig #DR-DD2 eqm in EQM-302",
+        "Air quality check HSE-402, condensate batch SHIP-502"
+      ],
+      "metadata": "High-temp conditions, pipeline tie to local petrochem"
+    },
+    {
+      "id": "LOC-103",
+      "name": "ShalePeak Operations Center",
+      "address": "350 Shale Ln, FrackTown, ST 33333",
+      "relation": [
+        "MP-103, field = FIELD-203, fracking pump #FP-SPA1 eqm in EQM-303",
+        "BOP & disposal check HSE-403, pipeline transport SHIP-503"
+      ],
+      "metadata": "Horizontal well pad, multi-stage fracturing, 24/7 ops"
+    },
+    {
+      "id": "LOC-104",
+      "name": "ArcticLight Platform Station",
+      "address": "500 Ice Rd, PolarZone, ST 44444",
+      "relation": [
+        "MP-104, field = FIELD-204, crane #CR-AX eqm in EQM-304",
+        "Ice mgmt HSE-404, partial test load SHIP-504"
+      ],
+      "metadata": "Arctic shelf environment, sub-zero year-round"
+    },
+    {
+      "id": "LOC-105",
+      "name": "FrontierGas Processing Plant",
+      "address": "77 SourGas Dr, Gashub, ST 55555",
+      "relation": [
+        "MP-105, field = FIELD-205, gas unit #GPU-FG1 eqm in EQM-305",
+        "Sour H2S training HSE-405, NGL shipment SHIP-505"
+      ],
+      "metadata": "Handles high-sulfur content, advanced acid gas removal system"
+    }
+  ]
+  

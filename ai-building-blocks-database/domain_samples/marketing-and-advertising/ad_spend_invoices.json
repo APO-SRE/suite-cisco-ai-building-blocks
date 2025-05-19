@@ -1,0 +1,28 @@
+[
+    {
+      "id": "INV-301",
+      "content": "Invoice for social media placements (CAMP-101). $10k to platform fees, net 30.",
+      "metadata": "Vendor: InstaSnap Ads, date: 2025-02-05, partial paid $5k"
+    },
+    {
+      "id": "INV-302",
+      "content": "TV commercial slot fees (CAMP-102). $25k total for national channel prime time, net 60.",
+      "metadata": "Vendor: National Media Co, date: 2025-03-12, due 2025-05-11"
+    },
+    {
+      "id": "INV-303",
+      "content": "Email service & postage for direct mail (CAMP-103). $8k overall, net 30, includes printing cost.",
+      "metadata": "Vendor: MailMaster Inc, date: 2025-01-28, next reminder 2025-02-27"
+    },
+    {
+      "id": "INV-304",
+      "content": "Influencer payment milestone #1 for Parker Sneakers campaign (CAMP-104). $12k, net 15.",
+      "metadata": "Vendor: FitTube Collective, date: 2025-02-20, partial sponsor credit used"
+    },
+    {
+      "id": "INV-305",
+      "content": "Billboard space rental for Stone Electronics (CAMP-105). $20k, net 30, city bus wraps extra $5k.",
+      "metadata": "Vendor: OutdoorMedia LLC, date: 2025-03-02, total $25k due 2025-04-01"
+    }
+  ]
+  

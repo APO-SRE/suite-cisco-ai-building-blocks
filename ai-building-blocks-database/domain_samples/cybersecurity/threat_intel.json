@@ -1,0 +1,28 @@
+[
+    {
+      "id": "TI-101",
+      "content": "Phishing campaign targets corporate email accounts; uses brand spoofing with malicious links.",
+      "metadata": "Threat level: High, first observed: 2025-03-10, analyst: Alice Brown (AN-1001)"
+    },
+    {
+      "id": "TI-102",
+      "content": "Ransomware variant ‘LockBox’ is spreading via compromised RDP credentials. Demands in BTC.",
+      "metadata": "Threat level: Critical, discovered: 2025-02-20, analyst: Bob Chen (AN-2001)"
+    },
+    {
+      "id": "TI-103",
+      "content": "SQL injection attempts on e-commerce sites. Attacker IP range: 203.0.x.x, exploits known vulnerability.",
+      "metadata": "Threat level: Medium, date: 2025-03-05, analyst: Carol Lim (AN-3002)"
+    },
+    {
+      "id": "TI-104",
+      "content": "DDoS botnet observed scanning for open Telnet ports, orchestrated by ‘NetFlood’ group.",
+      "metadata": "Threat level: Medium, date: 2025-04-01, analyst: David Parker (AN-4001)"
+    },
+    {
+      "id": "TI-105",
+      "content": "APT group infiltration technique using zero-day in PDF readers, high-value targeting.",
+      "metadata": "Threat level: Critical, date: 2025-04-05, analyst: Emily Stone (AN-5001)"
+    }
+  ]
+  

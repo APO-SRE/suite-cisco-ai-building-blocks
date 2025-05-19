@@ -1,0 +1,28 @@
+[
+    {
+      "id": "SITE-201",
+      "content": "IronHill Mine #1: open-pit iron ore deposit, southwestern slope. Overburden removed, haul trucks operating.",
+      "metadata": "Ref: MP-101, daily blasting schedule, contact: frank.huang@ironhill.org"
+    },
+    {
+      "id": "SITE-202",
+      "content": "CopperStream Pit A: large-scale open pit, SX/EW facility adjacency, active leach pads.",
+      "metadata": "Ref: MP-102, manager: gina.rossi@copperstrm.com, capacity ~100k tons monthly"
+    },
+    {
+      "id": "SITE-203",
+      "content": "CoalGate Shaft B2: underground operation, ventilation fans, methane sensors. Depth ~300m.",
+      "metadata": "Ref: MP-103, shift lead: hiro.tanaka@coalgate.com, critical safety checks"
+    },
+    {
+      "id": "SITE-204",
+      "content": "GoldPeak Vein Alpha: high-grade zone, narrower stope, trackless mining method proposed.",
+      "metadata": "Ref: MP-104, site geologist: ivy.kim@goldpeak.com, sampling ongoing"
+    },
+    {
+      "id": "SITE-205",
+      "content": "RareEarthOne DrillPad #7: exploration hole to 1,500m depth, specialized core retrieval system.",
+      "metadata": "Ref: MP-105, data logs to jeff.teeter@rareearth.com, next hole planned"
+    }
+  ]
+  

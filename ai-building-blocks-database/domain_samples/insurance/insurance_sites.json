@@ -1,0 +1,53 @@
+[
+    {
+      "id": "LOC-101",
+      "name": "Main HQ",
+      "address": "100 Insurance Way, Capital City, ST 10001",
+      "relation": [
+        "Underwriting department, references underwriting_rules.json (UW-401 to UW-405)",
+        "Policy admin for Bob Chen, Alice Brown, etc."
+      ],
+      "metadata": "Multiple floors, claims center on 2nd floor, main server room here"
+    },
+    {
+      "id": "LOC-102",
+      "name": "Regional Claims Office",
+      "address": "500 Claim Ln, MetroTown, ST 20002",
+      "relation": [
+        "Handles homeowner claims like CLM-201, auto claims CLM-202",
+        "Customer feedback often processed here"
+      ],
+      "metadata": "Adjuster staff ~30, walk-in service for local clients"
+    },
+    {
+      "id": "LOC-103",
+      "name": "Commercial Underwriting Center",
+      "address": "22 Biz Park, CommerceCity, ST 30003",
+      "relation": [
+        "Commercial property underwriting (UW-404), policy CP-DP-250 (POL-104)",
+        "David Parker’s business property claims"
+      ],
+      "metadata": "Special risk assessors for older buildings"
+    },
+    {
+      "id": "LOC-104",
+      "name": "Life & Health Division",
+      "address": "350 Wellness Ave, HealthDistrict, ST 40004",
+      "relation": [
+        "Term life (POL-103), health policy (POL-105) underwriting rules (UW-403, UW-405)",
+        "Claims for life & health (CLM-203, CLM-205)"
+      ],
+      "metadata": "Medical underwriting staff, nurse consultants"
+    },
+    {
+      "id": "LOC-105",
+      "name": "Premium Billing Center",
+      "address": "77 Payment Rd, BillingTown, ST 50005",
+      "relation": [
+        "premium_payments.json references (PREM-301 to PREM-305)",
+        "Monthly, annual invoices processed here"
+      ],
+      "metadata": "Automated payment systems, manages auto-pay setups"
+    }
+  ]
+  

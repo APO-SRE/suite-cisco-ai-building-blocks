@@ -1,0 +1,28 @@
+[
+    {
+      "id": "RET-501",
+      "content": "Return #R-EX1001: FleetStep Shoes (PROD-101), size issue. Store #1. Refund $75 processed.",
+      "metadata": "Date: 2025-03-12, loyalty ID L-5001 (Frank Huang), store credit"
+    },
+    {
+      "id": "RET-502",
+      "content": "Exchange #R-EX1002: Yoga Pants (PROD-102) from M to S size. Store #3. No additional charge.",
+      "metadata": "Date: 2025-03-11, loyalty ID L-6001 (Gina Rossi)"
+    },
+    {
+      "id": "RET-503",
+      "content": "Headphones (PROD-103) returned defective. Full refund $90. Store #2.",
+      "metadata": "Date: 2025-03-10, loyalty ID: none, reason: manufacturing fault"
+    },
+    {
+      "id": "RET-504",
+      "content": "Smartwatch (PROD-104) partial exchange for a different color, same price. Online return.",
+      "metadata": "Date: 2025-03-10, loyalty ID L-7002 (Hiro Tanaka), shipping label used"
+    },
+    {
+      "id": "RET-505",
+      "content": "Hoodie (PROD-105) returned, wrong size. Store #2. Exchanged for correct size, no price difference.",
+      "metadata": "Date: 2025-03-14, loyalty ID L-8003 (Ivy Kim)"
+    }
+  ]
+  

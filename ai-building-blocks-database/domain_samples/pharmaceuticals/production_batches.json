@@ -1,0 +1,28 @@
+[
+    {
+      "id": "PB-201",
+      "content": "Batch #NC-B002 of ‘NeoCure’ (PR-101) for Phase II trial sites. 5,000 vials produced.",
+      "metadata": "Manufactured at Plant A, date: 2025-02-01, QA passed"
+    },
+    {
+      "id": "PB-202",
+      "content": "Pilot batch #VR-P001 of ‘Viraxin-B’ (PR-102). 500 samples for early human dosing.",
+      "metadata": "Produced at R&D Facility, date: 2025-01-20, storage -80°C"
+    },
+    {
+      "id": "PB-203",
+      "content": "Formulation test batch #AP-F1 for ‘Analge-Patch’ (PR-103), small scale run for preclinical toxicity checks.",
+      "metadata": "Produced at Lab X, date: 2025-02-10, limited distribution"
+    },
+    {
+      "id": "PB-204",
+      "content": "Device assembly lot #DIA-01 for injection-glucose monitor system (PR-104). 200 prototypes built.",
+      "metadata": "Collab with MedTech Solutions, date: 2025-02-15, not for commercial sale"
+    },
+    {
+      "id": "PB-205",
+      "content": "Scale-up #AMP-G02 for ‘Ampiclox-XYZ’ (PR-105) with updated excipients. 10,000 capsules.",
+      "metadata": "Plant B, date: 2025-03-01, stability testing in progress"
+    }
+  ]
+  

@@ -1,0 +1,28 @@
+[
+    {
+      "id": "BILL-301",
+      "content": "Residential account R-1002 in West District uses new Time-of-Use tariff. Peak hours cost $0.20/kWh.",
+      "metadata": "Off-peak $0.10/kWh, Smart meter installed: 2025-01"
+    },
+    {
+      "id": "BILL-302",
+      "content": "Commercial account C-2008 in East District has demand charges. Monthly peak demand ~150 kW.",
+      "metadata": "Demand rate: $15/kW, energy rate: $0.12/kWh"
+    },
+    {
+      "id": "BILL-303",
+      "content": "Industrial account I-5001 near Central District. Power factor penalty if <0.95. Observed ~0.92 last month.",
+      "metadata": "PF penalty: 5% surcharge, recommended capacitor bank install"
+    },
+    {
+      "id": "BILL-304",
+      "content": "Rural account RA-101 expanded net metering for small PV rooftop, offset 300 kWh last billing cycle.",
+      "metadata": "Location: North District, net meter program: up to 10 kW"
+    },
+    {
+      "id": "BILL-305",
+      "content": "Low-income assistance program for account R-2020. Bill credit of $30/month applied.",
+      "metadata": "Qualification: Under 200% federal poverty, recertify annually"
+    }
+  ]
+  

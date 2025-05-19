@@ -1,0 +1,28 @@
+[
+    {
+      "id": "MT-401",
+      "content": "Frank Huang reported leaking faucet in apt APT-DT-2B1B. Assigned plumber visit 2025-02-07.",
+      "metadata": "Ref: TEN-201, priority: medium, lead: David Parker (MNT-4001)"
+    },
+    {
+      "id": "MT-402",
+      "content": "Gina Rossi noted HVAC issue in HSE-SUB-3B2B. Technician scheduled 2025-03-10.",
+      "metadata": "Ref: TEN-202, priority: high, lead: Bob Chen (MNT-2001)"
+    },
+    {
+      "id": "MT-403",
+      "content": "Commercial unit COM-RET-1500: back door lock jammed, replaced on 2025-03-20.",
+      "metadata": "Ref: TEN-203, priority: low, lead: Carol Lim (MNT-3002)"
+    },
+    {
+      "id": "MT-404",
+      "content": "Condo CON-WF-1B1B: paint touch-up in hallway. Scheduled 2025-02-15.",
+      "metadata": "Ref: TEN-204, priority: low, lead: Alice Brown (MNT-1001)"
+    },
+    {
+      "id": "MT-405",
+      "content": "Routine elevator check in building with LUX-PEN-4B3B. No occupant yet, but property showing.",
+      "metadata": "Ref: PROP-105, date: 2025-03-25, assigned: Emily Stone (MNT-5001)"
+    }
+  ]
+  

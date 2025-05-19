@@ -1,0 +1,28 @@
+[
+    {
+      "id": "EMP-101",
+      "content": "Alice Brown, Senior Software Engineer, Department: Tech Dev, hired 2018-05-10.",
+      "metadata": "Employee ID: E-1001, manager: Bob Chen (E-2001), location code: HQ-1"
+    },
+    {
+      "id": "EMP-102",
+      "content": "Bob Chen, Director of Engineering, Department: Tech Dev, hired 2015-03-01.",
+      "metadata": "Employee ID: E-2001, manager: CEO, location code: HQ-1"
+    },
+    {
+      "id": "EMP-103",
+      "content": "Carol Lim, HR Generalist, Department: Human Resources, hired 2020-01-15.",
+      "metadata": "Employee ID: E-1002, manager: HR Director (E-3001), location code: HQ-2"
+    },
+    {
+      "id": "EMP-104",
+      "content": "David Parker, Sales Associate, Department: Sales, hired 2019-07-20.",
+      "metadata": "Employee ID: E-4001, manager: Sales Director (E-4000), location code: BR-1"
+    },
+    {
+      "id": "EMP-105",
+      "content": "Emily Stone, Payroll Specialist, Department: Finance, hired 2021-09-05.",
+      "metadata": "Employee ID: E-5001, manager: CFO, location code: HQ-2"
+    }
+  ]
+  

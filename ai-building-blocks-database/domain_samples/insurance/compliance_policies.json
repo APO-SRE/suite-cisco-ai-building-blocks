@@ -1,0 +1,28 @@
+[
+    {
+      "id": "COMP-401",
+      "content": "Client confidentiality: all case documents stored in encrypted servers. No sharing without explicit consent.",
+      "metadata": "Effective date: 2025-01-01, policy code: CONF-01, revised annually"
+    },
+    {
+      "id": "COMP-402",
+      "content": "Conflict of interest checks required for new clients. Full disclosure if any prior representation conflicts.",
+      "metadata": "Policy code: COI-2025, references state bar rule 1.7"
+    },
+    {
+      "id": "COMP-403",
+      "content": "Billing transparency: itemized invoices, no hidden fees. Must provide payment plan options if needed.",
+      "metadata": "Policy code: BILL-CLAR, cross-referenced with retainer templates"
+    },
+    {
+      "id": "COMP-404",
+      "content": "Data retention: keep closed case files for 7 years, then secure shred or archive digitally.",
+      "metadata": "Policy code: RET-7, updated 2025-02, compliance with local bar rules"
+    },
+    {
+      "id": "COMP-405",
+      "content": "Mandatory pro bono hours: each attorney to log 20 hours/year. Exempt for part-time staff.",
+      "metadata": "Policy code: PB-20, verified by HR annually"
+    }
+  ]
+  

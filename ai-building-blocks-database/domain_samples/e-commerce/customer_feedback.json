@@ -1,0 +1,28 @@
+[
+    {
+      "id": "CFB-301",
+      "content": "Customer C-1003: ‘Fast shipping, but packaging was slightly damaged. Items inside still fine.’",
+      "metadata": "Order #12345, rating: 4/5, date: 2025-01-20"
+    },
+    {
+      "id": "CFB-302",
+      "content": "Customer C-1010: ‘Fitness bands arrived as described. Gift wrap was neat. Will buy again.’",
+      "metadata": "Order #12346, rating: 5/5, date: 2025-01-21"
+    },
+    {
+      "id": "CFB-303",
+      "content": "Customer C-1005: ‘Monitor had a price discrepancy, but partial refund was handled quickly. Good service.’",
+      "metadata": "Order #12347, rating: 4.5/5, date: 2025-01-22"
+    },
+    {
+      "id": "CFB-304",
+      "content": "Customer C-1022: ‘Bulk water bottles were perfect for my event, discount helped!’",
+      "metadata": "Order #12348, rating: 5/5, date: 2025-01-25"
+    },
+    {
+      "id": "CFB-305",
+      "content": "Customer C-1012: ‘Gaming mouse & pad are great. Fast priority shipping, no complaints.’",
+      "metadata": "Order #12349, rating: 5/5, date: 2025-01-26"
+    }
+  ]
+  

@@ -1,0 +1,28 @@
+[
+    {
+      "id": "ORD-1001",
+      "content": "Order #12345: 2x Bluetooth headphones, 1x USB-C charger. Payment confirmed via credit card ending in 4321.",
+      "metadata": "Customer ID: C-1003, total: $105.98, shipping method: Priority"
+    },
+    {
+      "id": "ORD-1002",
+      "content": "Order #12346: 3x Fitness bands, gift wrap requested, discount code 'NEWYEAR2025'.",
+      "metadata": "Customer ID: C-1010, total: $89.99, shipping method: Standard"
+    },
+    {
+      "id": "ORD-1003",
+      "content": "Order #12347: 1x 4K Monitor, partial refund applied due to a pricing error.",
+      "metadata": "Customer ID: C-1005, total after refund: $279.99, shipping: 2-Day"
+    },
+    {
+      "id": "ORD-1004",
+      "content": "Order #12348: 5x Reusable water bottles. Bulk order discount applied.",
+      "metadata": "Customer ID: C-1022, total: $45.00, shipping method: Standard"
+    },
+    {
+      "id": "ORD-1005",
+      "content": "Order #12349: 1x Gaming mouse, 1x Mouse pad, cart-level coupon used.",
+      "metadata": "Customer ID: C-1012, total: $49.50, shipping method: Priority"
+    }
+  ]
+  

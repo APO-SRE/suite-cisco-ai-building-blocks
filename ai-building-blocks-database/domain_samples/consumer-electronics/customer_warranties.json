@@ -1,0 +1,28 @@
+[
+    {
+      "id": "WAR-201",
+      "content": "Warranty reg: Frank Huang for Smartphone A1 (PROD-101), 1-year standard coverage.",
+      "metadata": "Purchase date: 2025-02-01, S/N: A1-FFH-001, phone: 555-1001"
+    },
+    {
+      "id": "WAR-202",
+      "content": "Warranty reg: Gina Rossi for Smartwatch S2 (PROD-102), extended 2-year plan.",
+      "metadata": "Purchase date: 2025-03-10, S/N: S2-GR-002, email: gina.rossi@domain.org"
+    },
+    {
+      "id": "WAR-203",
+      "content": "Warranty reg: Hiro Tanaka for Wireless Earbuds X (PROD-103), 1-year standard.",
+      "metadata": "Purchase date: 2025-03-25, S/N: EBX-HT-003, phone: 555-3003"
+    },
+    {
+      "id": "WAR-204",
+      "content": "Warranty reg: Ivy Kim for 50-inch 4K TV (PROD-104), extended 3-year plan.",
+      "metadata": "Purchase date: 2025-04-01, S/N: TV4-IK-004, address: 101 Birch Ct"
+    },
+    {
+      "id": "WAR-205",
+      "content": "Warranty reg: Jeff Teeter for Gaming Console G-Pro (PROD-105), 1-year plus accidental damage.",
+      "metadata": "Purchase date: 2025-04-05, S/N: GPR-JT-005, address: 202 Walnut Dr"
+    }
+  ]
+  

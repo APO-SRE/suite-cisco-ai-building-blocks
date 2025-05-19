@@ -1,0 +1,28 @@
+[
+    {
+      "id": "INVY-401",
+      "content": "Warehouse #1: Plastic resin pellets stock: 500 kg after run #MOLD-A1. Reorder threshold: 300 kg.",
+      "metadata": "Location code: WH-1, last updated: 2025-02-02"
+    },
+    {
+      "id": "INVY-402",
+      "content": "Warehouse #2: Steel sheet stock: 1000 sheets for stamping. Next run #STMP-B2 scheduled soon.",
+      "metadata": "Location code: WH-2, last updated: 2025-02-02"
+    },
+    {
+      "id": "INVY-403",
+      "content": "Assembly parts bin: 200 motor units, 300 wiring harnesses. For run #ASSY-D4.",
+      "metadata": "Location code: WH-3, last updated: 2025-02-03"
+    },
+    {
+      "id": "INVY-404",
+      "content": "Paint booth supplies: 50 gallons paint, 30 gallons primer left. Next reorder likely after #PAINT-E5.",
+      "metadata": "Location code: WH-4, last updated: 2025-02-04"
+    },
+    {
+      "id": "INVY-405",
+      "content": "Robot welding rods: 80 rods left, 1 spool MIG wire. Enough for 2 more runs #WELD-C3.",
+      "metadata": "Location code: WH-3, last updated: 2025-02-05"
+    }
+  ]
+  

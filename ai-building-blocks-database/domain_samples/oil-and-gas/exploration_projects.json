@@ -1,0 +1,28 @@
+[
+    {
+      "id": "EXP-101",
+      "content": "Project OffshoreBlue: deepwater exploration drilling for light crude, 200 km off coast.",
+      "metadata": "Launched: 2025-01-10, project lead: Alice Brown (OIL-1001), budget: $200M"
+    },
+    {
+      "id": "EXP-102",
+      "content": "Project DesertDrill: onshore exploration in arid region, 3 wells spudded, targeting gas condensate.",
+      "metadata": "Started: 2025-02-05, manager: Bob Chen (OIL-2001), expected depth ~3,500 m"
+    },
+    {
+      "id": "EXP-103",
+      "content": "Project ShalePeak: horizontal drilling & fracking, tight oil reservoir, advanced well completion methods.",
+      "metadata": "Initiated: 2025-03-01, lead: Carol Lim (OIL-3002), pilot pad with 4 wells"
+    },
+    {
+      "id": "EXP-104",
+      "content": "Project ArcticLight: Arctic shelf exploration, harsh environment, requires ice-class rig.",
+      "metadata": "Launched: 2025-02-20, project geologist: David Parker (OIL-4001), specialized ice management"
+    },
+    {
+      "id": "EXP-105",
+      "content": "Project FrontierGas: deep sour gas prospect, high H2S content, advanced safety protocols.",
+      "metadata": "Commenced: 2025-03-15, lead: Emily Stone (OIL-5001), expected production: 200 MMcf/day"
+    }
+  ]
+  

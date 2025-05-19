@@ -1,0 +1,53 @@
+[
+    {
+      "id": "LOC-001",
+      "content": "Barn #2 is located on GreenValley Farm, 45 Sunset Road. It houses 60 Holstein dairy cows associated with the feed plan in livestock.json (LS-210).",
+      "metadata": "Coordinates: 40.111N, -88.222W, Farm: GreenValley, Barn capacity: 80 cows"
+    },
+    {
+      "id": "LOC-002",
+      "content": "Field #7 (Sandy soil) is part of GreenValley Farm, 2 miles west of the main farmhouse. Currently set for rye cover crops post-harvest.",
+      "metadata": "Address: 45 Sunset Road, approximate area: 25 acres"
+    },
+    {
+      "id": "LOC-003",
+      "content": "Orchard #5 (apples) is at Brookside West Farm, 77 Applewood Lane, near the river. HoneyCrisp variety with mild hail damage reported in harvest_planning.json (HVP-503).",
+      "metadata": "Coordinates: 39.980N, -88.457W, orchard area: 10 acres"
+    },
+    {
+      "id": "LOC-004",
+      "content": "Free-range poultry Flock ID: PR-55 rotates in the lower pasture behind Barn #2 every 2 weeks for parasite reduction (livestock.json LS-211).",
+      "metadata": "Pasture size: 5 acres, approx. 400 layers, Farm: GreenValley"
+    },
+    {
+      "id": "LOC-005",
+      "content": "Hog group #7 is located in finishing pens adjacent to Barn #1 at BlueCreek Farm, 101 Country Lane. See livestock.json (LS-214) for feed ratio details.",
+      "metadata": "Farm: BlueCreek, finishing pen capacity: 40 hogs, hog group: #7"
+    },
+    {
+      "id": "LOC-006",
+      "content": "Field #2 (mentioned in harvest_planning.json HVP-501) is 30 acres of corn, near MapleFields Farm, 12 Maple Drive. Matures around Sept 12.",
+      "metadata": "GPS: 40.209N, -88.501W, normal yield ~155 bu/acre"
+    },
+    {
+      "id": "LOC-007",
+      "content": "Field #9 is a sunflower plot at Sunrise Acres, 200 Sunrise Road. If dryness persists, harvest might begin 1 week early (HVP-502).",
+      "metadata": "Size: 15 acres, known dryness level: moderate"
+    },
+    {
+      "id": "LOC-008",
+      "content": "Goat herd for brush control (LS-212) is at upper pasture of Hilltop Farm, 99 Ridgecrest Way. They move about 1 acre/day.",
+      "metadata": "Farm: Hilltop, goats: 15, next area rotation: 2025-03-15"
+    },
+    {
+      "id": "LOC-009",
+      "content": "Clay soil near southern riverbend is at BlueCreek Farm boundary, 101 Country Lane. Shared water table with hog finishing pens.",
+      "metadata": "Check soil_management.json (SOIL-103) for drainage suggestions."
+    },
+    {
+      "id": "LOC-010",
+      "content": "Field #10 is part of Sunrise Farm. Alkaline soil pH 7.9, recommended to use sulfur. orchardgrass or clover suggested from crop_rotation.json.",
+      "metadata": "Address: 200 Sunrise Road, block B, last tested: 2024-11-30"
+    }
+  ]
+  

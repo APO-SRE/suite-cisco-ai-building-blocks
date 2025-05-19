@@ -1,0 +1,28 @@
+[
+    {
+      "id": "INT-301",
+      "content": "Frank Huang intake: academic challenges, moderate truancy risk, parent's contact: 555-2398.",
+      "metadata": "Ref: CASE-201, date: 2025-01-20, form completed by Gina Rossi"
+    },
+    {
+      "id": "INT-302",
+      "content": "Hiro Tanaka intake: lives alone, mild mobility issues, family in another state. Prefers morning visits.",
+      "metadata": "Ref: CASE-202, date: 2025-02-10, form completed by Ivy Kim"
+    },
+    {
+      "id": "INT-303",
+      "content": "Gina Rossi intake for job training: last job ended 2025-01, has degree in marketing, open to any role.",
+      "metadata": "Ref: CASE-203, date: 2025-02-05, form completed by Carol Lim"
+    },
+    {
+      "id": "INT-304",
+      "content": "David Parker intake: homeless 2 months, local shelter full, mental health referral pending.",
+      "metadata": "Ref: CASE-204, date: 2025-03-10, form completed by Bob Chen"
+    },
+    {
+      "id": "INT-305",
+      "content": "Emily Stone intake for family counseling: married, 2 kids, seeking better communication strategies.",
+      "metadata": "Ref: CASE-205, date: 2025-04-05, form completed by Alice Brown"
+    }
+  ]
+  
