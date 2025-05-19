@@ -1,0 +1,28 @@
+[
+    {
+      "id": "SERV-101",
+      "content": "Managed IT: 24/7 help desk, endpoint monitoring, patch management for SMB clients.",
+      "metadata": "Launched: 2025-01-10, product owner: Alice Brown (ITPM-1001), monthly subscription model"
+    },
+    {
+      "id": "SERV-102",
+      "content": "Cloud Migration: AWS/Azure planning, data transfer, VM setups, cost optimization.",
+      "metadata": "Launched: 2025-02-05, consultant lead: Bob Chen (ITPM-2001), project-based billing"
+    },
+    {
+      "id": "SERV-103",
+      "content": "DevOps Pipeline Setup: CI/CD design, container orchestration, environment automation.",
+      "metadata": "Launched: 2025-03-01, dev lead: Carol Lim (ITPM-3002), retainer & milestone fees"
+    },
+    {
+      "id": "SERV-104",
+      "content": "Cybersecurity Assessment: vulnerability scanning, pen testing, compliance checks.",
+      "metadata": "Launched: 2025-02-20, security lead: David Parker (ITPM-4001), hourly billing"
+    },
+    {
+      "id": "SERV-105",
+      "content": "Data Analytics & BI: ETL pipelines, dashboard creation, predictive modeling.",
+      "metadata": "Launched: 2025-03-15, analytics lead: Emily Stone (ITPM-5001), license + usage fees"
+    }
+  ]
+  

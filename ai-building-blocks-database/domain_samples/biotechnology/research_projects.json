@@ -1,0 +1,28 @@
+[
+    {
+      "id": "RP-101",
+      "content": "CRISPR gene-editing therapy for hereditary anemia in preclinical stage. Target gene: HBB variant.",
+      "metadata": "Project code: CR-GE, sponsor: GeneTech Labs, next milestone: animal safety data Q3 2025"
+    },
+    {
+      "id": "RP-102",
+      "content": "Cell-based immunotherapy for aggressive lymphoma. CAR-T design with dual antigen targeting.",
+      "metadata": "Project code: LYM-CAR2, collaboration: OncoCell Inc., Phase I enrollment in 2025"
+    },
+    {
+      "id": "RP-103",
+      "content": "Regenerative scaffolding for spinal cord injury. Biomaterial pilot showing improved nerve regrowth in rodents.",
+      "metadata": "Project code: Regen-Spine, sponsor: BioRenew Ltd., next step: IND prep"
+    },
+    {
+      "id": "RP-104",
+      "content": "mRNA vaccine platform adaptions for multiple viral strains. Focus on rapid design within 30 days of new variant detection.",
+      "metadata": "Lab code: mVac-Gen2, potential government contract, mid-2025 trial target"
+    },
+    {
+      "id": "RP-105",
+      "content": "Microbiome engineering for gut disorders. Engineered Lactobacillus strain tested for IBS symptom relief.",
+      "metadata": "Pilot code: MicroGut, sponsor: Digestive Solutions, early volunteer data by Q4 2025"
+    }
+  ]
+  

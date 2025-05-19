@@ -1,0 +1,28 @@
+[
+    {
+      "id": "SALE-501",
+      "content": "House on Maple St, sold for $250,000 to external buyer. Previously listed as HSE-SUB-3B2B in 2024.",
+      "metadata": "Closed date: 2025-01-10, agent: Bob Chen, not current occupant"
+    },
+    {
+      "id": "SALE-502",
+      "content": "Condo #1702, sold for $300,000. Prior occupant moved out. Data from 2024 Q4 listings.",
+      "metadata": "Closed date: 2025-02-01, agent: Carol Lim"
+    },
+    {
+      "id": "SALE-503",
+      "content": "Retail storefront in EastTown, sold for $400,000. New owners renovating.",
+      "metadata": "Closed date: 2025-03-05, agent: David Parker, different from COM-RET-1500"
+    },
+    {
+      "id": "SALE-504",
+      "content": "Luxury penthouse LUX-PEN-4B3B showing in negotiations. Potential sale $850k-$900k range.",
+      "metadata": "Ref: PROP-105, buyer: Jeff Teeter, status: pending"
+    },
+    {
+      "id": "SALE-505",
+      "content": "Vacant lot farmland, sold at auction. Not in current listing files.",
+      "metadata": "Closed date: 2025-02-28, agent: Emily Stone, no occupant records"
+    }
+  ]
+  

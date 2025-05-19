@@ -1,0 +1,28 @@
+[
+    {
+      "id": "MENU-101",
+      "content": "Classic Cheeseburger: 1/4 lb beef patty, cheddar cheese, lettuce, tomato, house sauce. Price $7.99.",
+      "metadata": "Item code: BURG-CLSC, launched: 2025-01-05, chef lead: Alice Brown (CHEF-1001)"
+    },
+    {
+      "id": "MENU-102",
+      "content": "Vegan Avocado Wrap: spinach tortilla, roasted veggies, avocado spread. Price $6.49.",
+      "metadata": "Item code: WRAP-VEG, launched: 2025-02-10, chef lead: Bob Chen (CHEF-2001)"
+    },
+    {
+      "id": "MENU-103",
+      "content": "Craft IPA Beer (16 oz): hoppy, citrus notes, 6.2% ABV. Price $5.00.",
+      "metadata": "Item code: BEER-IPA, introduced: 2025-03-01, brew master: Carol Lim (BREW-3002)"
+    },
+    {
+      "id": "MENU-104",
+      "content": "Organic Green Salad: mixed greens, cucumbers, vinaigrette. Price $4.99.",
+      "metadata": "Item code: SAL-ORG, launched: 2025-02-20, chef lead: David Parker (CHEF-4001)"
+    },
+    {
+      "id": "MENU-105",
+      "content": "Strawberry Cheesecake Slice: creamy dessert, graham crust, fresh strawberries. Price $4.50.",
+      "metadata": "Item code: DESS-SC, added: 2025-03-15, pastry chef: Emily Stone (PAST-5001)"
+    }
+  ]
+  

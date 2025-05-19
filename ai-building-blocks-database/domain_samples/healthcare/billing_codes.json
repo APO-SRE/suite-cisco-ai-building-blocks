@@ -1,0 +1,32 @@
+[
+  {
+    "code": "HC-101",
+    "description": "Initial Consultation - General Practice",
+    "fee": 120.00
+  },
+  {
+    "code": "HC-202",
+    "description": "Blood Test - Full Cholesterol Panel",
+    "fee": 85.00
+  },
+  {
+    "code": "HC-303",
+    "description": "Allergy Skin Test",
+    "fee": 150.00
+  },
+  {
+    "code": "HC-404",
+    "description": "Cardiology Follow-Up Visit",
+    "fee": 200.00
+  },
+  {
+    "code": "HC-505",
+    "description": "Neurology Migraine Assessment",
+    "fee": 180.00
+  },
+  {
+    "code": "HC-606",
+    "description": "Diabetes Management Session",
+    "fee": 160.00
+  }
+]

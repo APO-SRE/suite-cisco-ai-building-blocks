@@ -1,0 +1,28 @@
+[
+    {
+      "id": "BG-301",
+      "content": "Economy tickets allow 1 carry-on (22x14x9 in) plus 1 personal item. Checked bag fees apply for first bag: $30 domestic.",
+      "metadata": "Overweight bag (>50 lbs) fee: $50, oversize fee: $100"
+    },
+    {
+      "id": "BG-302",
+      "content": "Business/First tickets include 2 free checked bags, priority baggage handling. Overweight fees waived up to 70 lbs.",
+      "metadata": "Fee code: BFS-bag2025, included with BFS class"
+    },
+    {
+      "id": "BG-303",
+      "content": "Strollers and car seats can be checked at no additional cost if traveling with an infant.",
+      "metadata": "Policy code: FamilyFly, exceptions apply to double strollers"
+    },
+    {
+      "id": "BG-304",
+      "content": "International flights: 1 free checked bag for economy, 2 for business/first. Additional bags cost $75 each.",
+      "metadata": "Fee subject to route type, e.g., transatlantic or transpacific"
+    },
+    {
+      "id": "BG-305",
+      "content": "Active-duty military personnel may check up to 3 bags free with ID. Oversize/overweight fees waived.",
+      "metadata": "Policy code: Military-2025, must present active ID"
+    }
+  ]
+  

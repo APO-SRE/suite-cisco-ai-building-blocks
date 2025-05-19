@@ -1,0 +1,28 @@
+[
+    {
+      "id": "PROMO-501",
+      "content": "Spring Sale: 10% off all smartphones, free screen protector included. Valid until 2025-03-31.",
+      "metadata": "Applies to PROD-101 only, manager: Alice Brown"
+    },
+    {
+      "id": "PROMO-502",
+      "content": "Wearables Week: $20 off Smartwatch S2. Additional discount if purchased with Earbuds X.",
+      "metadata": "Valid: 2025-03-25 to 2025-04-05, manager: Bob Chen"
+    },
+    {
+      "id": "PROMO-503",
+      "content": "TV Upgrade Event: free HDMI cable + 5% off 4K TVs, stacks with extended warranty discount.",
+      "metadata": "Runs 2025-04-01 to 2025-04-15, manager: David Parker"
+    },
+    {
+      "id": "PROMO-504",
+      "content": "Bundle & Save: buy console G-Pro + Earbuds X, get $30 off total. Online only.",
+      "metadata": "Valid 2025-04-05 to 2025-04-20, manager: Carol Lim"
+    },
+    {
+      "id": "PROMO-505",
+      "content": "Loyalty Program Launch: Extra 1-year warranty extension on any purchase over $300.",
+      "metadata": "Starts 2025-02-20, indefinite duration, manager: Emily Stone"
+    }
+  ]
+  

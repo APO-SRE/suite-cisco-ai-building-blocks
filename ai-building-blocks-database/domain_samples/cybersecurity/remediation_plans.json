@@ -1,0 +1,28 @@
+[
+    {
+      "id": "REM-401",
+      "content": "Reset compromised user passwords, enable MFA for Frank Huang’s employees. Update email filters.",
+      "metadata": "Ref: INC-301, date: 2025-03-26, assigned tech: Bob Chen (TECH-2001)"
+    },
+    {
+      "id": "REM-402",
+      "content": "Isolate infected hosts, restore from backups, apply ‘LockBox’ decryption key if negotiated, Gina Rossi’s network.",
+      "metadata": "Ref: INC-302, date: 2025-04-06, assigned IR lead: Carol Lim (TECH-3002)"
+    },
+    {
+      "id": "REM-403",
+      "content": "Confirm WAF signatures updated, run DB scanning tool. Increase logging for checkout page, Hiro’s site.",
+      "metadata": "Ref: INC-303, date: 2025-03-11, assigned tech: David Parker (TECH-4001)"
+    },
+    {
+      "id": "REM-404",
+      "content": "Deploy anti-DDoS service at perimeter, filter suspicious IPs. Ivy Kim’s corp. implement traffic shaping.",
+      "metadata": "Ref: INC-304, date: 2025-04-04, assigned IR lead: Emily Stone (TECH-5001)"
+    },
+    {
+      "id": "REM-405",
+      "content": "Conduct forensic analysis on zero-day PDF exploit, isolate compromised endpoints, enable advanced EDR. Jeff Teeter’s agency.",
+      "metadata": "Ref: INC-305, date: 2025-04-11, assigned IR lead: Alice Brown (TECH-1001)"
+    }
+  ]
+  

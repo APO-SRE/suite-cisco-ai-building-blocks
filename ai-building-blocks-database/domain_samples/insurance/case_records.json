@@ -1,0 +1,28 @@
+[
+    {
+      "id": "CASE-101",
+      "content": "Brown v. Skyline Corp: Contract dispute over software licensing. Settlement negotiations ongoing.",
+      "metadata": "Case number: CV-12345, assigned attorney: Bob Chen (ATT-201), filed: 2025-01-10"
+    },
+    {
+      "id": "CASE-102",
+      "content": "In re Estate of Lim: Probate matter, distribution of assets among heirs. Initial hearing scheduled.",
+      "metadata": "Case number: PR-67890, assigned attorney: Carol Lim (ATT-302), hearing date: 2025-03-15"
+    },
+    {
+      "id": "CASE-103",
+      "content": "Parker v. Greenfield Travel: Personal injury claim from slip-and-fall in hotel lobby. Pre-litigation phase.",
+      "metadata": "Case number: PI-555, assigned attorney: David Parker (ATT-401), status: demand letter sent"
+    },
+    {
+      "id": "CASE-104",
+      "content": "Stone & Associates: Merger documents for corporate client, drafting acquisition terms. Board approval pending.",
+      "metadata": "Case code: M&A-2025, assigned attorney: Emily Stone (ATT-501), next step: final contract review"
+    },
+    {
+      "id": "CASE-105",
+      "content": "Huang v. Tech Innovations: Patent infringement claim. Seeking injunction, discovery in progress.",
+      "metadata": "Case number: IP-3001, assigned attorney: Frank Huang (ATT-601), initial depositions scheduled"
+    }
+  ]
+  

@@ -1,0 +1,53 @@
+[
+    {
+      "id": "LOC-101",
+      "name": "GeneTech Core Lab",
+      "address": "100 Genome Way, Redwood City, ST 40001",
+      "relation": [
+        "CRISPR therapy preclinical (RP-101), lab_experiments.json (LE-201)",
+        "Pre-IND in regulatory_submissions.json (RS-301)"
+      ],
+      "metadata": "BSL-2 facility for cell line research, next inspection 2025-05"
+    },
+    {
+      "id": "LOC-102",
+      "name": "OncoCell Trial Center",
+      "address": "50 Immuno Dr, Oncology Park, ST 40002",
+      "relation": [
+        "CAR-T program (RP-102), infusion reaction (AF-502)",
+        "Distribution strategy DS-401 for cryo shipments"
+      ],
+      "metadata": "Accredited for early-phase cell therapy, advanced infusion suites"
+    },
+    {
+      "id": "LOC-103",
+      "name": "BioRenew R&D Campus",
+      "address": "220 Regen Blvd, SpineCity, ST 40003",
+      "relation": [
+        "Spinal scaffolding project (RP-103), lab_experiments.json (LE-203)",
+        "Regulatory file RS-303 for breakthrough device"
+      ],
+      "metadata": "Focus on regenerative medicine, pilot surgeries in collab with local hospitals"
+    },
+    {
+      "id": "LOC-104",
+      "name": "mVac Gen2 Facility",
+      "address": "350 VacCore Ln, VaccineTown, ST 40004",
+      "relation": [
+        "mRNA vaccine R&D (RP-104), iteration LE-204",
+        "Fast-track submission (RS-304), distribution DS-403 overseas"
+      ],
+      "metadata": "High biosecurity zone, mRNA production line"
+    },
+    {
+      "id": "LOC-105",
+      "name": "Digestive Solutions Inc.",
+      "address": "77 MicroGut Ave, HealthCity, ST 40005",
+      "relation": [
+        "Engineered Lactobacillus (RP-105), lab_experiments.json (LE-205)",
+        "Exemption request RS-305, distribution DS-404"
+      ],
+      "metadata": "Probiotic specialization, close ties to academic GI labs"
+    }
+  ]
+  

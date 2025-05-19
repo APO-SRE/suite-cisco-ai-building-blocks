@@ -1,0 +1,28 @@
+[
+    {
+      "id": "EQM-301",
+      "content": "Wind tunnel #WT-Falcon: calibration for supersonic airflow, sensors rechecked, replaced strain gauges.",
+      "metadata": "Used by DES-101, last service 2025-03-02, assigned mechanic: Alice Brown"
+    },
+    {
+      "id": "EQM-302",
+      "content": "Hybrid engine test stand #HENG-EL: battery system inspection, cooling loop flush, software update.",
+      "metadata": "For DES-102, last check: 2025-03-12, manager: Bob Chen"
+    },
+    {
+      "id": "EQM-303",
+      "content": "Tilt-rotor rig #TILT-VX: gear lubrication, rotor balance, vertical thrust verification.",
+      "metadata": "Ref: DES-103, date: 2025-03-18, assigned tech: Carol Lim"
+    },
+    {
+      "id": "EQM-304",
+      "content": "HeavyHaul cargo loader #CL-HH1: load sensor calibration, ramp motor fix, hydraulic fluid replaced.",
+      "metadata": "Ref: DES-104, done 2025-03-26, inspector: David Parker"
+    },
+    {
+      "id": "EQM-305",
+      "content": "StratoScan solar array #SOL-SS: panel tilt mechanism test, power bus continuity check.",
+      "metadata": "Ref: DES-105, date: 2025-04-02, assigned lead: Emily Stone"
+    }
+  ]
+  

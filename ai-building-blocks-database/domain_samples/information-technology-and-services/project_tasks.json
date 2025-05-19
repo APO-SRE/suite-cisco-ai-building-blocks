@@ -1,0 +1,28 @@
+[
+    {
+      "id": "PROJ-301",
+      "content": "Managed IT for Frank’s startup: set up RMM tool, patch scheduling, user onboarding.",
+      "metadata": "Ref: CLI-201, assigned engineer: Alice Brown, tasks complete ~75%"
+    },
+    {
+      "id": "PROJ-302",
+      "content": "Cloud Migration for Gina: design AWS architecture, plan data transfer, spin up EC2, configure security.",
+      "metadata": "Ref: CLI-202, lead: Bob Chen, tasks complete ~40%"
+    },
+    {
+      "id": "PROJ-303",
+      "content": "DevOps for Hiro: configure CI/CD (Jenkins), container registry, deploy staging environment on Azure.",
+      "metadata": "Ref: CLI-203, lead: Carol Lim, tasks complete ~60%"
+    },
+    {
+      "id": "PROJ-304",
+      "content": "Pen Testing for Ivy: internal & external scans, test PCI compliance, create final report.",
+      "metadata": "Ref: CLI-204, lead: David Parker, tasks complete ~20%"
+    },
+    {
+      "id": "PROJ-305",
+      "content": "Analytics for Jeff: build ETL pipeline, define BI dashboards for finance KPIs, run predictive model PoC.",
+      "metadata": "Ref: CLI-205, lead: Emily Stone, tasks complete ~10%"
+    }
+  ]
+  

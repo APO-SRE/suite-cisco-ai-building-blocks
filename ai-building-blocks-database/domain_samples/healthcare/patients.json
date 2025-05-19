@@ -1,0 +1,212 @@
+[
+  {
+    "patient_id": "P-1001",
+    "name": "Alice Johnson",
+    "dob": "1978-04-12",
+    "gender": "Female",
+    "phone": "555-2398",
+    "email": "alice.johnson@ficticlinic.org",
+    "primary_physician_id": "DR-3001",
+    "insurance_provider": "GreenCross Health",
+    "insurance_policy_number": "GC-12345-ALJ",
+    "address": {
+      "street": "123 Elm Street",
+      "city": "Springfield",
+      "state": "IL",
+      "zip_code": "62704"
+    },
+    "allergies": [
+      "Penicillin",
+      "Peanuts"
+    ],
+    "active_issues": [
+      {
+        "issue_id": "CND-01",
+        "diagnosis": "Hypertension",
+        "notes": "Under monitoring for the past 2 years",
+        "last_checkup": "2024-11-30"
+      }
+    ]
+  },
+  {
+    "patient_id": "P-1002",
+    "name": "Bob Martinez",
+    "dob": "1990-01-23",
+    "gender": "Male",
+    "phone": "555-8241",
+    "email": "bob.martinez@ficticlinic.org",
+    "primary_physician_id": "DR-3002",
+    "insurance_provider": "HealthPlus",
+    "insurance_policy_number": "HP-45678-BMZ",
+    "address": {
+      "street": "456 Oak Avenue",
+      "city": "Greenfield",
+      "state": "IL",
+      "zip_code": "62901"
+    },
+    "allergies": [],
+    "active_issues": [
+      {
+        "issue_id": "CND-02",
+        "diagnosis": "Seasonal Allergies",
+        "notes": "Uses over-the-counter antihistamines",
+        "last_checkup": "2024-10-15"
+      }
+    ]
+  },
+  {
+    "patient_id": "P-1003",
+    "name": "Carol Lim",
+    "dob": "1985-09-10",
+    "gender": "Female",
+    "phone": "555-3322",
+    "email": "carol.lim@ficticlinic.org",
+    "primary_physician_id": "DR-3002",
+    "insurance_provider": "GreenCross Health",
+    "insurance_policy_number": "GC-87453-CLM",
+    "address": {
+      "street": "789 Pine Road",
+      "city": "Riverton",
+      "state": "IL",
+      "zip_code": "62401"
+    },
+    "allergies": [
+      "Shellfish"
+    ],
+    "active_issues": [
+      {
+        "issue_id": "CND-03",
+        "diagnosis": "Anemia",
+        "notes": "Iron supplements prescribed, follow-up in 6 months",
+        "last_checkup": "2024-09-12"
+      }
+    ]
+  },
+  {
+    "patient_id": "P-1004",
+    "name": "David Parker",
+    "dob": "1975-11-02",
+    "gender": "Male",
+    "phone": "555-9174",
+    "email": "david.parker@ficticlinic.org",
+    "primary_physician_id": "DR-3003",
+    "insurance_provider": "HealthDirect",
+    "insurance_policy_number": "HD-33012-DPK",
+    "address": {
+      "street": "101 Maple Drive",
+      "city": "Northfield",
+      "state": "IL",
+      "zip_code": "62548"
+    },
+    "allergies": [
+      "Ibuprofen"
+    ],
+    "active_issues": [
+      {
+        "issue_id": "CND-04",
+        "diagnosis": "Type 2 Diabetes",
+        "notes": "On metformin, recommended dietary changes",
+        "last_checkup": "2024-12-01"
+      }
+    ]
+  },
+  {
+    "patient_id": "P-1005",
+    "name": "Emily Stone",
+    "dob": "2002-07-15",
+    "gender": "Female",
+    "phone": "555-6103",
+    "email": "emily.stone@ficticlinic.org",
+    "primary_physician_id": "DR-3003",
+    "insurance_provider": "GreenCross Health",
+    "insurance_policy_number": "GC-78451-EST",
+    "address": {
+      "street": "22 Birch Court",
+      "city": "Lakeville",
+      "state": "IL",
+      "zip_code": "62056"
+    },
+    "allergies": [],
+    "active_issues": []
+  },
+  {
+    "patient_id": "P-1006",
+    "name": "Frank Huang",
+    "dob": "1968-12-29",
+    "gender": "Male",
+    "phone": "555-5582",
+    "email": "frank.huang@ficticlinic.org",
+    "primary_physician_id": "DR-3004",
+    "insurance_provider": "MediCrest",
+    "insurance_policy_number": "MC-11223-FHG",
+    "address": {
+      "street": "7 Willow Lane",
+      "city": "Brookfield",
+      "state": "IL",
+      "zip_code": "62890"
+    },
+    "allergies": [
+      "Latex"
+    ],
+    "active_issues": [
+      {
+        "issue_id": "CND-05",
+        "diagnosis": "Hyperlipidemia",
+        "notes": "Cholesterol-lowering medication prescribed",
+        "last_checkup": "2024-11-11"
+      }
+    ]
+  },
+  {
+    "patient_id": "P-1007",
+    "name": "Gina Rossi",
+    "dob": "1982-03-11",
+    "gender": "Female",
+    "phone": "555-8832",
+    "email": "gina.rossi@ficticlinic.org",
+    "primary_physician_id": "DR-3005",
+    "insurance_provider": "HealthPlus",
+    "insurance_policy_number": "HP-99112-GRS",
+    "address": {
+      "street": "55 Cedar Boulevard",
+      "city": "Fairview",
+      "state": "IL",
+      "zip_code": "62345"
+    },
+    "allergies": [],
+    "active_issues": [
+      {
+        "issue_id": "CND-06",
+        "diagnosis": "Asthma",
+        "notes": "Using inhaler daily, triggers include pollen",
+        "last_checkup": "2024-10-10"
+      }
+    ]
+  },
+  {
+    "patient_id": "P-1008",
+    "name": "Hiro Tanaka",
+    "dob": "1995-05-24",
+    "gender": "Male",
+    "phone": "555-6712",
+    "email": "hiro.tanaka@ficticlinic.org",
+    "primary_physician_id": "DR-3004",
+    "insurance_provider": "HealthDirect",
+    "insurance_policy_number": "HD-77777-HTK",
+    "address": {
+      "street": "92 Aspen Way",
+      "city": "Clearview",
+      "state": "IL",
+      "zip_code": "62078"
+    },
+    "allergies": [],
+    "active_issues": [
+      {
+        "issue_id": "CND-07",
+        "diagnosis": "Migraines",
+        "notes": "Prescription for triptans; recommended lifestyle adjustments",
+        "last_checkup": "2024-09-30"
+      }
+    ]
+  }
+]

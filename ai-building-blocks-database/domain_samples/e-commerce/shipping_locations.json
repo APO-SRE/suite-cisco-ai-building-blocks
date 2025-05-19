@@ -1,0 +1,28 @@
+[
+    {
+      "id": "SHIP-501",
+      "content": "Priority shipping typically 2-3 days, uses SpeedyCourier. Tracking updates emailed nightly.",
+      "metadata": "Extra cost: $9.99 if under $50, free for VIP"
+    },
+    {
+      "id": "SHIP-502",
+      "content": "Standard shipping ~5-7 days, often consolidated at the central distribution hub before final delivery.",
+      "metadata": "Carrier: SafeShip, cost: $4.99 if under $40"
+    },
+    {
+      "id": "SHIP-503",
+      "content": "2-Day shipping uses ExpressAir. Sunday deliveries not guaranteed except in major metros.",
+      "metadata": "Cost: $14.99, available for orders of any size"
+    },
+    {
+      "id": "SHIP-504",
+      "content": "International shipping requires customs forms. Delivery times vary 7-14 days. Additional taxes possible.",
+      "metadata": "Carriers: WorldFreight or GlobalPost, cost depends on zone"
+    },
+    {
+      "id": "SHIP-505",
+      "content": "Returns label can be auto-generated if RMA is approved. Return shipping deducted from refund unless product is defective.",
+      "metadata": "14-day return window, contact support@ecorp.com for RMA"
+    }
+  ]
+  

@@ -1,0 +1,53 @@
+[
+    {
+      "id": "LOC-101",
+      "building": "Science Building",
+      "address": "100 Science Ave, University Town, ST 12345",
+      "relation": [
+        "Room 210 used for Math 201 exams (EX-401)",
+        "Bio 310 labs in BioLab 3 next door"
+      ],
+      "metadata": "Houses Math, Bio departments, multiple labs"
+    },
+    {
+      "id": "LOC-102",
+      "building": "Tech Hall",
+      "address": "200 Innovation Road, University Town, ST 12345",
+      "relation": [
+        "CS 420 final in Room 202 (EX-403)",
+        "Possible expansion for AI Lab next year"
+      ],
+      "metadata": "Computer Science hub, advanced computing lab"
+    },
+    {
+      "id": "LOC-103",
+      "building": "Humanities Building",
+      "address": "300 Culture Lane, University Town, ST 12345",
+      "relation": [
+        "Eng 150 might hold peer review workshop",
+        "Hist 220 midterm/final in Room 201 (EX-405)"
+      ],
+      "metadata": "Focus on language, literature, social studies"
+    },
+    {
+      "id": "LOC-104",
+      "building": "Library Complex",
+      "address": "400 Research Blvd, University Town, ST 12345",
+      "relation": [
+        "Study rooms for group projects (COULD tie to Hist 220 or Eng 150)",
+        "No direct reference in these JSON files"
+      ],
+      "metadata": "Open 24/7 during finals, capacity: 250 seats"
+    },
+    {
+      "id": "LOC-105",
+      "building": "Administration Hall",
+      "address": "500 University Dr, University Town, ST 12345",
+      "relation": [
+        "Advisor offices for Dr. Tan (FAC-301) and Dr. Jackson (FAC-304)",
+        "Student advising scheduling in student_advising.json"
+      ],
+      "metadata": "Central admin, bursar, admissions, advising"
+    }
+  ]
+  

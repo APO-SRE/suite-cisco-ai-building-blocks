@@ -1,0 +1,28 @@
+[
+    {
+      "id": "QUAL-201",
+      "content": "Injection molding run #MOLD-A1 tested for dimensional accuracy. 2% defect rate—within tolerance.",
+      "metadata": "Ref: PROD-101, inspector: Frank Huang (QC-6001), date: 2025-02-02"
+    },
+    {
+      "id": "QUAL-202",
+      "content": "Metal stamping #STMP-B2: hardness test on sample brackets. 1 bracket out of spec, recheck recommended.",
+      "metadata": "Ref: PROD-102, inspector: Gina Rossi (QC-7002), date: 2025-02-02"
+    },
+    {
+      "id": "QUAL-203",
+      "content": "Robotic welding #WELD-C3: spot weld strength test. All passed. 0% defect found.",
+      "metadata": "Ref: PROD-103, inspector: Hiro Tanaka (QC-8003), date: 2025-02-03"
+    },
+    {
+      "id": "QUAL-204",
+      "content": "Final assembly #ASSY-D4: functional check on random sample. 5 out of 400 had minor alignment issues.",
+      "metadata": "Ref: PROD-104, date: 2025-02-04, inspector: Ivy Kim (QC-9004)"
+    },
+    {
+      "id": "QUAL-205",
+      "content": "Paint finish check #PAINT-E5: color uniformity, dryness test. 3 pieces found with drip marks.",
+      "metadata": "Ref: PROD-105, inspector: Jeff Teeter (QC-10005), date: 2025-02-05"
+    }
+  ]
+  

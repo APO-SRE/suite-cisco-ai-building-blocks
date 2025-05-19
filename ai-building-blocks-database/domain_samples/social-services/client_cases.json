@@ -1,0 +1,28 @@
+[
+    {
+      "id": "CASE-201",
+      "content": "Client: Frank Huang, age 16, enrolled in Youth Mentorship Program (PROG-101). Referred by local school counselor.",
+      "metadata": "Case opened: 2025-01-20, assigned social worker: Gina Rossi (SW-7002), objectives: academic improvement"
+    },
+    {
+      "id": "CASE-202",
+      "content": "Client: Hiro Tanaka, age 78, part of Elderly Assistance (PROG-102). Needs medication scheduling assistance.",
+      "metadata": "Case opened: 2025-02-10, assigned social worker: Ivy Kim (SW-8003), home visits weekly"
+    },
+    {
+      "id": "CASE-203",
+      "content": "Client: Gina Rossi, age 29, seeking job training (PROG-103). Recently unemployed due to layoffs.",
+      "metadata": "Case opened: 2025-02-05, assigned counselor: Carol Lim (COORD-3002), goal: secure new employment"
+    },
+    {
+      "id": "CASE-204",
+      "content": "Client: David Parker, age 45, homeless outreach participant (PROG-104). Presenting mental health concerns.",
+      "metadata": "Case opened: 2025-03-10, assigned outreach worker: Bob Chen (COORD-2001), immediate need: shelter referral"
+    },
+    {
+      "id": "CASE-205",
+      "content": "Client: Emily Stone, age 34, seeking family counseling (PROG-105). Relationship issues at home.",
+      "metadata": "Case opened: 2025-04-05, assigned therapist: Alice Brown (COORD-1001), session start date: 2025-04-10"
+    }
+  ]
+  

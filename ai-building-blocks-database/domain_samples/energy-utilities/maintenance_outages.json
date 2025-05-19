@@ -1,0 +1,28 @@
+[
+    {
+      "id": "OUT-401",
+      "content": "Riverbank Station RBC-12 offline Mar 2-5 for turbine inspection. Expect 3% supply reduction.",
+      "metadata": "Announcement date: 2025-02-10, region: North District"
+    },
+    {
+      "id": "OUT-402",
+      "content": "Wind farm GWF-19 partial shutdown for blade checks on 20 turbines. Forecasted output drop 25%.",
+      "metadata": "Maintenance window: Q2 2025, exact dates TBA"
+    },
+    {
+      "id": "OUT-403",
+      "content": "Scheduled line outage on T-Line-88 for re-conductoring. 2-day interruption, re-route power through alt lines.",
+      "metadata": "Dates: Apr 10-11, 2025, affects East to Central power flow"
+    },
+    {
+      "id": "OUT-404",
+      "content": "West District substation Sub-A11 maintenance. Early morning downtime to minimize impact.",
+      "metadata": "Time: 12 AM - 4 AM, date: 2025-03-15"
+    },
+    {
+      "id": "OUT-405",
+      "content": "Coal station VCP-55 shutting down 1 unit for emissions retrofit. 2-month partial capacity.",
+      "metadata": "Unit #2 offline: May-Jun 2025, region: South District"
+    }
+  ]
+  

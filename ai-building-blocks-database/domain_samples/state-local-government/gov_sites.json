@@ -1,0 +1,53 @@
+[
+    {
+      "id": "LOC-101",
+      "name": "City Hall",
+      "address": "100 Government Plaza, CapitolCity, ST 11111",
+      "relation": [
+        "Council meetings (MEE-401, MEE-402), official announcements for initiatives (INIT-101, INIT-102)",
+        "Public record repository, clerk’s office for building permits"
+      ],
+      "metadata": "Administrative HQ, open 8am-5pm weekdays"
+    },
+    {
+      "id": "LOC-102",
+      "name": "County Office - Economic Development",
+      "address": "200 Biz Rd, CommerceTown, ST 22222",
+      "relation": [
+        "Meetings on small business grants (MEE-403), initiative INIT-103",
+        "Gina Rossi’s involvement (RES-202) in job creation"
+      ],
+      "metadata": "Focus on business licensing, startup incentives"
+    },
+    {
+      "id": "LOC-103",
+      "name": "Transit Authority HQ",
+      "address": "350 Mobility Ln, MetroCity, ST 33333",
+      "relation": [
+        "Council meeting MEE-404 about bus expansions (INIT-104)",
+        "Permits or vendor licenses for public transit (PL-304)"
+      ],
+      "metadata": "Transport planning, route scheduling, open public forum monthly"
+    },
+    {
+      "id": "LOC-104",
+      "name": "Health & Human Services Building",
+      "address": "500 Care Ave, HealthTown, ST 44444",
+      "relation": [
+        "Community health outreach (INIT-105), clinic expansions (PROJ-505)",
+        "Council hearing MEE-405"
+      ],
+      "metadata": "Service programs for low-income residents, mental health support"
+    },
+    {
+      "id": "LOC-105",
+      "name": "City Warehouse & Maintenance Yard",
+      "address": "77 Infrastructure Dr, WorksCity, ST 55555",
+      "relation": [
+        "Public projects equipment storage (PROJ-501 to PROJ-504)",
+        "Road or building materials for city improvements"
+      ],
+      "metadata": "Managed by Public Works Dept, restricted access"
+    }
+  ]
+  

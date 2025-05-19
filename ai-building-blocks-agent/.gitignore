@@ -1,0 +1,62 @@
+# ------------------
+# Python bytecode
+# ------------------
+*.py[cod]
+__pycache__/
+*.pyo
+*.pyd
+*.pydl
+
+# ------------------
+# Virtual Environments
+# ------------------
+venv/
+ciscoagentenv/
+.venv/
+env/
+myenv312/
+
+# ------------------
+# Distribution / Packaging
+# ------------------
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# ------------------
+# Logs
+# ------------------
+*.log
+
+# ------------------
+# Unit test / coverage reports
+# ------------------
+.coverage
+.coverage.*
+.cache/
+nosetests.xml
+coverage.xml
+pytest_cache/
+htmlcov/
+teeter_tools
+# ------------------
+# Environments
+# ------------------
+*.env
+.venv
+# But explicitly DO NOT ignore '.env.sample'
+!.env.sample
+# ------------------
+# OS / Editor / IDE files
+# ------------------
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.swn
+*~
+.vscode/
+.idea/
+# databases
+chroma_dbs/

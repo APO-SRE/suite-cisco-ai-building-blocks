@@ -1,0 +1,28 @@
+[
+    {
+      "id": "SERV-101",
+      "content": "Management Consulting: organizational assessments, strategic roadmaps, leadership workshops.",
+      "metadata": "Launched: 2025-01-10, practice lead: Alice Brown (PS-1001), hourly or retainer billing"
+    },
+    {
+      "id": "SERV-102",
+      "content": "Financial Advisory: budgeting, risk management, M&A due diligence, compliance guidance.",
+      "metadata": "Rolled out: 2025-02-05, senior advisor: Bob Chen (PS-2001), project-based fees"
+    },
+    {
+      "id": "SERV-103",
+      "content": "HR & Talent Solutions: recruitment strategy, performance frameworks, org design.",
+      "metadata": "Debuted: 2025-03-01, consultant lead: Carol Lim (PS-3002), monthly subscription or milestone"
+    },
+    {
+      "id": "SERV-104",
+      "content": "IT & Digital Transformation: system modernization, process automation, data analytics.",
+      "metadata": "Launched: 2025-02-20, digital lead: David Parker (PS-4001), retainer + deliverables"
+    },
+    {
+      "id": "SERV-105",
+      "content": "Marketing & Brand Advisory: market research, brand positioning, campaign strategy.",
+      "metadata": "Started: 2025-03-15, marketing lead: Emily Stone (PS-5001), performance-based fees"
+    }
+  ]
+  

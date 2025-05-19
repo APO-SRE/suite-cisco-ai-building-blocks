@@ -1,0 +1,51 @@
+[
+    {
+        "id": "spaces_chunk_1",
+        "platform": "spaces",
+        "doc_type": "domain_summary",
+        "content": "Cisco Spaces (formerly Cisco DNA Spaces) is a cloud-based platform focused on turning Wi-Fi infrastructure into a real-time sensor of people, things, and environmental conditions in physical spaces. It enables occupancy tracking, location analytics, and environmental monitoring, providing insights such as heat maps, foot traffic, and air quality metrics. By integrating with Cisco wireless access points (including Catalyst and Meraki APs), Spaces helps organizations optimize their workspaces, improve user experiences, and make data-driven decisions."
+    },
+    {
+        "id": "spaces_chunk_2",
+        "platform": "spaces",
+        "doc_type": "domain_summary",
+        "content": "Spaces offers REST and Firehose APIs to query and receive events about clients’ locations, historical data, and notifications. It supports real-time occupancy and utilization data, as well as deeper analytics for room bookings, sensor monitoring, and third-party integrations. Overall, Cisco Spaces empowers businesses with rich location-based intelligence and environmental metrics for planning, design, and ongoing operations."
+    },
+    {
+        "id": "catalyst_chunk_1",
+        "platform": "catalyst",
+        "doc_type": "domain_summary",
+        "content": "Cisco Catalyst Center (DNA Center) is a network management system that centralizes automation, monitoring, and analytics for Cisco Catalyst devices, including switches, wireless controllers, and APs. It leverages AI to predict network issues, automate routine tasks, and implement zero-trust security across wired and wireless networks. By simplifying operations, Catalyst Center can improve user experiences (e.g., better Wi-Fi coverage) and accelerate troubleshooting."
+    },
+    {
+        "id": "catalyst_chunk_2",
+        "platform": "catalyst",
+        "doc_type": "domain_summary",
+        "content": "Catalyst Center provides comprehensive REST APIs grouped as intent APIs, integration APIs, and event/notification services. These APIs enable network automation (like device onboarding or configuration changes) and deeper integrations with third-party systems via SDKs (Python, Ansible, etc.). By unifying both automation and analytics, Catalyst Center helps organizations maintain a secure, sustainable, and highly efficient network."
+    },
+    {
+        "id": "webex_chunk_1",
+        "platform": "webex",
+        "doc_type": "domain_summary",
+        "content": "Cisco Webex Control Hub is a web-based portal for administering and managing Webex services (Meetings, Messaging, Calling, Devices, Hybrid Services). It offers analytics and reporting tools—such as usage trends, quality metrics, and adoption statistics—along with security and compliance configurations. Administrators can provision new users, manage devices, and monitor overall service health from a single-pane-of-glass interface."
+    },
+    {
+        "id": "webex_chunk_2",
+        "platform": "webex",
+        "doc_type": "domain_summary",
+        "content": "While detailed REST API references for Control Hub vary by product (e.g., Webex Meetings, Webex Devices), it typically provides APIs to manage users, configure services, retrieve diagnostics, and automate tasks like user provisioning or meeting reporting. Webex Control Hub’s analytics dashboards support real-time visualizations (line/bar charts, pie charts) and CSV/PDF exports for deeper offline analysis."
+    },
+    {
+        "id": "meraki_chunk_1",
+        "platform": "meraki",
+        "doc_type": "domain_summary",
+        "content": "Cisco Meraki is a cloud-managed IT platform offering a centralized, browser-based dashboard to manage networking devices (security appliances, wireless APs, switches, cameras, etc.). Designed for simplicity and scalability, Meraki helps administrators configure devices, monitor network health, and automate tasks from anywhere. Its approach reduces on-premises hardware requirements and simplifies multi-site management."
+    },
+    {
+        "id": "meraki_chunk_2",
+        "platform": "meraki",
+        "doc_type": "domain_summary",
+        "content": "Meraki’s REST API gives programmatic access to device configuration, status monitoring, and analytics data (e.g., traffic stats, client usage). It enables automation of routine changes, integration with third-party tools, and real-time visibility of network performance. Through 'cloud monitoring for Catalyst,' Meraki can even manage Catalyst devices under the same interface, bridging both traditional and cloud-native infrastructures."
+    }
+]
+ 

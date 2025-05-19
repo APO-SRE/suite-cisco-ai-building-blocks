@@ -1,0 +1,28 @@
+[
+    {
+      "id": "STAFF-401",
+      "content": "Alice Brown: Senior IT Engineer, specialized in RMM tools, Windows patching, user support.",
+      "metadata": "Holds MSCE, joined 2024-09-01, lead on CLI-201 project."
+    },
+    {
+      "id": "STAFF-402",
+      "content": "Bob Chen: Cloud Architect, AWS/Azure certifications, handles big migrations, dev lead for CLI-202.",
+      "metadata": "Hired 2025-01-15, prior experience at CloudCorp, phone: 555-8241"
+    },
+    {
+      "id": "STAFF-403",
+      "content": "Carol Lim: DevOps Specialist, Docker/Kubernetes, CI/CD pipeline guru, assigned to CLI-203.",
+      "metadata": "Started 2025-02-10, GCP Certified, email: carol.lim@itservices.org"
+    },
+    {
+      "id": "STAFF-404",
+      "content": "David Parker: Security Consultant, pen tester, handles compliance audits, leads CLI-204.",
+      "metadata": "Joined 2024-11-20, OSCP & CISSP, phone: 555-6103"
+    },
+    {
+      "id": "STAFF-405",
+      "content": "Emily Stone: Data Scientist, analytics & BI solutions, working on CLI-205 pilot.",
+      "metadata": "Came aboard 2025-03-01, has big data background, email: emily.stone@itservices.org"
+    }
+  ]
+  

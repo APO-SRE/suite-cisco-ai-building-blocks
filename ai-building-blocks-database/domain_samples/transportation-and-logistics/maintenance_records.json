@@ -1,0 +1,28 @@
+[
+    {
+      "id": "MNT-401",
+      "content": "Truck TRK-001 routine service: oil change, brake inspection. Completed 2025-03-05.",
+      "metadata": "Ref: FLEET-101 route usage, next check in 5,000 miles, mechanic: Bob Chen"
+    },
+    {
+      "id": "MNT-402",
+      "content": "Van VAN-101 tire replacement, scheduled 2025-03-15. High mileage usage daily SuburbTown-Airport route.",
+      "metadata": "Ref: FLEET-102, priority: medium, assigned tech: Carol Lim"
+    },
+    {
+      "id": "MNT-403",
+      "content": "Locomotive inspection for rail #RF-300. Safety checks on couplers, brakes, wheels.",
+      "metadata": "Scheduled 2025-03-19, coordinator: David Parker, needed before departure"
+    },
+    {
+      "id": "MNT-404",
+      "content": "Cargo vessel #SC-22 pre-arrival inspection. Fuel, engine logs, navigation systems check.",
+      "metadata": "Ref: FLEET-104, done at prior port, date: 2025-03-29, agent: Emily Stone"
+    },
+    {
+      "id": "MNT-405",
+      "content": "Airplane used for AC-115 flight: routine check of cargo hold, seat belt reconfiguration for packages.",
+      "metadata": "Ref: FLEET-105, next check 2025-04-01, technician: Frank Huang"
+    }
+  ]
+  

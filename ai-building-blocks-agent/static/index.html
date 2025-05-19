@@ -1,0 +1,197 @@
+
+<!--
+################################################################################
+## ai-building-blocks-agent/static/index.html
+## Copyright (c) 2025 Cisco Systems
+## Licensed under the Apache License, Version 2.0  (see LICENSE)
+################################################################################
+DISCLAIMER: USE AT YOUR OWN RISK – see repository README for details.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cisco AI Building Blocks AI Agent</title>
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#f6f6f6;color:#333}
+    header{display:flex;align-items:center;padding:10px 20px;background:#005073;color:#fff}
+    header img{height:40px;margin-right:15px}
+    header h1{font-size:1.5rem;margin:0}
+    .container{width:90%;margin:40px auto;background:#fff;border-radius:8px;box-shadow:0 0 10px rgba(0,0,0,.1)}
+    #messages{padding:20px;height:65vh;overflow-y:auto;line-height:1.4;border-bottom:1px solid #ccc}
+    #messages div{margin-bottom:10px}
+    #messages .user{color:#007DAA;font-weight:bold}
+    #messages .assistant{color:#333}
+    .assistant-label{font-weight:bold;color:#007DAA;margin-bottom:5px}
+    table{width:100%;border-collapse:collapse}
+    th,td{border:1px solid #ccc;padding:8px;text-align:left}
+    th{background:#005073!important;color:#fff!important}
+    .collapsible{background:#f9f9f9;color:#333;cursor:pointer;padding:10px;border:1px solid #ccc;text-align:left;font-size:16px;margin-bottom:5px}
+    .collapsible.active{background:#e9e9e9}
+    .content{display:none;background:#f1f1f1;border:1px solid #ccc;margin-bottom:10px;padding:0 15px}
+    #input-area{display:flex;padding:10px 20px;align-items:center;gap:10px;background:#f1f1f1}
+    #user-input{flex:1;padding:8px;font-size:1rem}
+    button{background:#005073;color:#fff;border:none;padding:8px 16px;font-size:1rem;border-radius:4px;cursor:pointer}
+    button:hover{background:#007DAA}
+    pre{white-space:pre-wrap;margin:10px 0;padding:10px;background:#f6f6f6;border:1px solid #ccc}
+  </style>
+</head>
+<body>
+<header>
+  <img src="/assets/Cisco_Logo_White.png" alt="Cisco Logo" />
+  <h1>Cisco AI Building Blocks AI Agent<h1>
+</header>
+
+<div class="container">
+  <div id="messages"></div>
+  <div id="input-area">
+    <input type="text" id="user-input" placeholder="Type a message..." autocomplete="off" />
+    <button id="send-btn">Send</button>
+    <button id="clear-btn">🧹</button>
+    <button id="toggle-btn">Toggle View</button>
+    <button id="download-btn">Download JSON</button>
+  </div>
+</div>
+
+<script>
+/* ---------- DOM refs --------------------------------------------------- */
+const messagesDiv = document.getElementById('messages');
+const userInput    = document.getElementById('user-input');
+const sendBtn      = document.getElementById('send-btn');
+const clearBtn     = document.getElementById('clear-btn');
+const toggleBtn    = document.getElementById('toggle-btn');
+const downloadBtn  = document.getElementById('download-btn');
+
+/* ---------- Helpers ---------------------------------------------------- */
+const API_ROOT = window.location.pathname.replace(/\/$/, ''); // "" or "/some/prefix"
+
+function removeTripleBackticks(str){return String(str).replaceAll("```","");}
+
+/** Convert raw text|json|markdown to nice HTML (collapsibles, tables, etc.). */
+function parseResponseToHtml(responseText){
+  responseText = removeTripleBackticks(responseText);
+  const trimmed = String(responseText).trim();
+
+  /* A. Raw HTML – show as-is */
+  if(trimmed.startsWith("<") || /<(strong|p|h[1-6]|table|div|ul|li)\b/i.test(trimmed)){
+    return trimmed;
+  }
+
+  /* B. JSON (object or array) */
+  if(/^[\[{]/.test(trimmed)){
+    try{
+      const json = JSON.parse(trimmed);
+      return Array.isArray(json) ? createHtmlTable(json) : createCollapsibleHtml(json);
+    }catch{ /* fallthrough */ }
+  }
+
+  /* C. Markdown lite */
+  if(trimmed.includes("**") || trimmed.includes("- ")){ return formatMarkdownAsHtml(trimmed); }
+
+  /* D. Plain text fallback */
+  return `<p>${trimmed}</p>`;
+}
+
+function createCollapsibleHtml(obj, lvl=0){
+  let html="";
+  for(const [k,v] of Object.entries(obj)){
+    if(typeof v==="object" && v!==null){
+      html += `<button class="collapsible">${'&nbsp;'.repeat(lvl*2)}${k}</button>`;
+      html += `<div class="content">${createCollapsibleHtml(v, lvl+1)}</div>`;
+    }else{
+      html += `<p>${'&nbsp;'.repeat(lvl*2)}<strong>${k}:</strong> ${v}</p>`;
+    }
+  }
+  return html;
+}
+
+function createHtmlTable(arr){
+  if(!Array.isArray(arr)||!arr.length){return "<p>No data.</p>";}
+  const heads = Object.keys(arr[0]);
+  let h=`<table><thead><tr>${heads.map(h=>`<th>${h}</th>`).join("")}</tr></thead><tbody>`;
+  arr.forEach(r=>{
+    h+="<tr>"+heads.map(c=>`<td>${r[c]??""}</td>`).join("")+"</tr>";
+  });
+  return h+"</tbody></table>";
+}
+
+function formatMarkdownAsHtml(md){
+  return md.split("\n").map(line=>{
+    if(line.startsWith("**"))          return `<p><strong>${line.replace(/\*\*/g,"")}</strong></p>`;
+    else if(line.startsWith("-"))      return `<li>${line.slice(1).trim()}</li>`;
+    else                               return `<p>${line}</p>`;
+  }).join("");
+}
+
+/* ---------- Chat logic -------------------------------------------------- */
+let isHtmlView = true;
+const chatHistory = [];
+
+async function sendMessage(){
+  const query = userInput.value.trim();
+  if(!query) return;
+
+  /* user bubble */
+  messagesDiv.insertAdjacentHTML("beforeend", `<div class="user">User: ${query}</div>`);
+  userInput.value = "";
+
+  try{
+    const res = await fetch(`${API_ROOT}/chat`, {
+      method:"POST",
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({message:query})
+    });
+    const data  = await res.json();
+
+    const label = data.label ?? "Assistant";
+    const html  = parseResponseToHtml(data.response ?? "No response.");
+    const json  = JSON.stringify(data,null,2);
+    chatHistory.push({html,json});
+
+    const msgHtml = `<div class="assistant">
+                       <div class="assistant-label">${label}:</div>
+                       ${isHtmlView ? html : `<pre>${json}</pre>`}
+                     </div>`;
+    messagesDiv.insertAdjacentHTML("beforeend", msgHtml);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  }catch(err){ console.error("Fetch error:", err); }
+}
+
+/* ---------- UI bindings ------------------------------------------------- */
+sendBtn  .addEventListener("click", sendMessage);
+userInput.addEventListener("keypress", e=>{if(e.key==="Enter") sendMessage();});
+
+clearBtn .addEventListener("click", ()=>{
+  messagesDiv.innerHTML=""; userInput.value=""; chatHistory.length=0;
+});
+
+toggleBtn.addEventListener("click",()=>{
+  isHtmlView = !isHtmlView;
+  document.querySelectorAll('.assistant').forEach((div,i)=>{
+    const c = chatHistory[i];
+    if(!c) return;
+    div.innerHTML = isHtmlView
+      ? `<div class="assistant-label">${JSON.parse(c.json).label ?? "Assistant"}:</div>${c.html}`
+      : `<pre>${c.json}</pre>`;
+  });
+});
+
+downloadBtn.addEventListener("click",()=>{
+  const blob = new Blob([chatHistory.map(c=>c.json).join("\n")],{type:"application/json"});
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement("a");
+  a.href=url; a.download="chat_history.json"; a.click(); URL.revokeObjectURL(url);
+});
+
+/* ---------- collapsible handler ---------------------------------------- */
+document.addEventListener("click",e=>{
+  if(e.target.classList.contains("collapsible")){
+    e.target.classList.toggle("active");
+    const c=e.target.nextElementSibling;
+    if(c){c.style.display = c.style.display==="block"?"none":"block";}
+  }
+});
+</script>
+</body>
+</html>

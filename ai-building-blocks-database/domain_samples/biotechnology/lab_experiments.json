@@ -1,0 +1,28 @@
+[
+    {
+      "id": "LE-201",
+      "content": "CRISPR off-target analysis in human cell lines. 5% unintended edits found, refining guide RNA.",
+      "metadata": "Ref: RP-101, Lab: GeneTech Core, date: 2025-01-15"
+    },
+    {
+      "id": "LE-202",
+      "content": "CAR-T expansions tested in bioreactor. Observed high viability (~90%) in day 14 cultures.",
+      "metadata": "Ref: RP-102, sponsor: OncoCell Inc., date: 2025-02-05"
+    },
+    {
+      "id": "LE-203",
+      "content": "Spinal scaffolding polymer tested in rat model. 30% faster nerve bridging vs. control.",
+      "metadata": "Ref: RP-103, date: 2025-01-30, experiment code: SCF-30"
+    },
+    {
+      "id": "LE-204",
+      "content": "mRNA design iteration #3 for cross-strain coverage. Neutralization assays in progress.",
+      "metadata": "Ref: RP-104, date: 2025-02-10, lab code: mRNA-V3"
+    },
+    {
+      "id": "LE-205",
+      "content": "Engineered Lactobacillus pilot: IBS murine model. Reduced inflammation markers by 25%.",
+      "metadata": "Ref: RP-105, date: 2025-02-20, test group size: 40 mice"
+    }
+  ]
+  

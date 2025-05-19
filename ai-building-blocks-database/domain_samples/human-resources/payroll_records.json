@@ -1,0 +1,28 @@
+[
+    {
+      "id": "PAY-201",
+      "content": "Employee E-1001 (Alice Brown): base salary $90,000, bonus potential 10%. Last raise 2024-07.",
+      "metadata": "Department: Tech Dev, next review cycle: 2025-07"
+    },
+    {
+      "id": "PAY-202",
+      "content": "Employee E-2001 (Bob Chen): base salary $150,000, stock options included. Last raise 2023-12.",
+      "metadata": "Department: Tech Dev, next review cycle: 2025-01"
+    },
+    {
+      "id": "PAY-203",
+      "content": "Employee E-1002 (Carol Lim): base salary $65,000, no commission. Last raise 2024-10.",
+      "metadata": "Department: HR, next review cycle: 2025-10"
+    },
+    {
+      "id": "PAY-204",
+      "content": "Employee E-4001 (David Parker): base salary $50,000 plus 5% sales commission. Last commission payout 2024-12.",
+      "metadata": "Department: Sales, next commission cycle: monthly"
+    },
+    {
+      "id": "PAY-205",
+      "content": "Employee E-5001 (Emily Stone): base salary $58,000, annual bonus 5%. Last raise 2024-05.",
+      "metadata": "Department: Finance, next review cycle: 2025-05"
+    }
+  ]
+  

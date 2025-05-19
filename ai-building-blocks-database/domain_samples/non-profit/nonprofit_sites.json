@@ -1,0 +1,53 @@
+[
+    {
+      "id": "LOC-101",
+      "name": "Main Admin Office",
+      "address": "100 Charity Ln, GivingTown, ST 11111",
+      "relation": [
+        "Coordinator offices for campaigns (CAMP-101 to CAMP-105)",
+        "Donor record keeping, billing, financial management"
+      ],
+      "metadata": "Boardroom for monthly strategy, staff size ~20"
+    },
+    {
+      "id": "LOC-102",
+      "name": "Community Center #1",
+      "address": "500 Unity Ave, HelpingCity, ST 22222",
+      "relation": [
+        "Volunteer activities e.g. VOL-401 (Spring Food Drive packing), VOL-404 (Health Fair setup)",
+        "Some distribution of food or coats"
+      ],
+      "metadata": "Large multipurpose hall, temporary storage for donations"
+    },
+    {
+      "id": "LOC-103",
+      "name": "Warehouse #1",
+      "address": "77 Storage Dr, SupplyTown, ST 30003",
+      "relation": [
+        "Inventory for coats (CAMP-105), in-kind donations",
+        "Project funding references for distribution (FUND-305)"
+      ],
+      "metadata": "Donation sorting facility, climate-controlled"
+    },
+    {
+      "id": "LOC-104",
+      "name": "Remote Water Project Site",
+      "address": "Rural District 45, FieldCoordinates, ST 40004",
+      "relation": [
+        "Clean Water Initiative field trip (VOL-403)",
+        "Donor corporate pledge references (DON-203)"
+      ],
+      "metadata": "Well drilling location, high-need community"
+    },
+    {
+      "id": "LOC-105",
+      "name": "Event Hall - Health & Scholarship Programs",
+      "address": "350 Outreach St, EducationPark, ST 50005",
+      "relation": [
+        "Community Health Fair (CAMP-104), scholarship ceremony location for (CAMP-102)",
+        "Project funding logs for medical supplies, scholarship disbursements"
+      ],
+      "metadata": "Lecture hall, breakout rooms for volunteer events"
+    }
+  ]
+  

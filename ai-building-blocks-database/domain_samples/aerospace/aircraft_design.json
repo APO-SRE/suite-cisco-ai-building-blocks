@@ -1,0 +1,28 @@
+[
+    {
+      "id": "DES-101",
+      "content": "Project FalconWing: next-gen supersonic jet prototype, composite fuselage, advanced airflow design.",
+      "metadata": "Launched: 2025-01-10, design lead: Alice Brown (AERO-1001), budget: $500M"
+    },
+    {
+      "id": "DES-102",
+      "content": "Project EcoLiner: ultra-fuel-efficient airliner, new winglet concept, hybrid electric propulsion test.",
+      "metadata": "Started: 2025-02-05, manager: Bob Chen (AERO-2001), aim: 20% fuel savings"
+    },
+    {
+      "id": "DES-103",
+      "content": "Project VTOLX: vertical takeoff passenger craft, tilt-rotor mechanism, urban air mobility focus.",
+      "metadata": "Initiated: 2025-03-01, lead: Carol Lim (AERO-3002), capacity: 5 passengers"
+    },
+    {
+      "id": "DES-104",
+      "content": "Project HeavyHaul: large cargo plane with forward-loading nose, increased payload capacity.",
+      "metadata": "Launched: 2025-02-20, chief engineer: David Parker (AERO-4001), target 80-ton load"
+    },
+    {
+      "id": "DES-105",
+      "content": "Project StratoScan: high-altitude reconnaissance UAV, solar panels for extended endurance.",
+      "metadata": "Commenced: 2025-03-15, lead: Emily Stone (AERO-5001), flight ceiling ~70k ft"
+    }
+  ]
+  

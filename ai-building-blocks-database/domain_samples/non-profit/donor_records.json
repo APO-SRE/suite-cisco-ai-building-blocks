@@ -1,0 +1,27 @@
+[
+  {
+    "id": "DON-201",
+    "content": "Donor: Frank Huang, donated $500 to Spring Food Drive (CAMP-101). Preferred anonymity.",
+    "metadata": "Transaction date: 2025-03-05, receipt #R-1001, email opt-out"
+  },
+  {
+    "id": "DON-202",
+    "content": "Donor: Gina Rossi, monthly contributor to Scholarship Fund (CAMP-102). $50 recurring.",
+    "metadata": "Started 2025-02-20, next charge 2025-03-20, receipt #R-1002"
+  },
+  {
+    "id": "DON-203",
+    "content": "Corporate Donor: Tanaka Tech pledged $10,000 to Clean Water Initiative (CAMP-103).",
+    "metadata": "Pledge date: 2025-01-15, partial matched funds, contact: Hiro Tanaka"
+  },
+  {
+    "id": "DON-204",
+    "content": "Donor: Ivy Kim, gave $200 at Community Health Fair (CAMP-104). Also volunteered.",
+    "metadata": "Donation date: 2025-04-05, receipt #R-1003"
+  },
+  {
+    "id": "DON-205",
+    "content": "Donor: Jeff Teeter, donated 20 coats + $100 to Winter Coat Drive (CAMP-105).",
+    "metadata": "Date: 2025-11-10, in-kind donation recorded, receipt #R-1004"
+  }
+]

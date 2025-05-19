@@ -1,0 +1,28 @@
+[
+    {
+      "id": "SHIP-201",
+      "content": "Shipment #S-1001: 50 boxes of electronics from TechCorp, traveling via Truck Route #T1 (FLEET-101).",
+      "metadata": "Pickup date: 2025-03-10, delivery ETA: same day 10:00, client contact: Frank Huang"
+    },
+    {
+      "id": "SHIP-202",
+      "content": "Shipment #S-1002: medical supplies from MediSupply, loaded onto Van Route #V2 (FLEET-102) for airport cargo.",
+      "metadata": "Pickup date: 2025-03-12, airport forwarding to next leg, client contact: Gina Rossi"
+    },
+    {
+      "id": "SHIP-203",
+      "content": "Shipment #S-1003: container of furniture for cross-state rail freight (FLEET-103).",
+      "metadata": "Scheduled: 2025-03-20, 2 wagons allocated, client: Hiro Tanaka"
+    },
+    {
+      "id": "SHIP-204",
+      "content": "Shipment #S-1004: overseas import of apparel on Ship Cargo #SC-22 (FLEET-104).",
+      "metadata": "Arrival port date: 2025-04-05, client: Ivy Kim, import docs #DOC-4004"
+    },
+    {
+      "id": "SHIP-205",
+      "content": "Shipment #S-1005: overnight parcels for local distribution on Air Cargo Flight #AC-115 (FLEET-105).",
+      "metadata": "Daily 07:00 run, client: Jeff Teeter, typical volume: 100 small packages"
+    }
+  ]
+  

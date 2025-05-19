@@ -1,0 +1,28 @@
+[
+    {
+      "id": "BOOK-201",
+      "content": "Reservation #R1001 at Lakeview Resort (PROP-101) for 3 nights, wedding party block of 10 rooms.",
+      "metadata": "Check-in: 2025-06-10, checkout: 2025-06-13, lead guest: Alice Brown"
+    },
+    {
+      "id": "BOOK-202",
+      "content": "Reservation #R1002 at Urban Plaza Hotel (PROP-102) for 2 nights, corporate account, conference hall booked.",
+      "metadata": "Check-in: 2025-03-05, checkout: 2025-03-07, lead guest: Bob Chen"
+    },
+    {
+      "id": "BOOK-203",
+      "content": "Reservation #R1003 at Beachside Inn (PROP-103) for 5 nights, family suite plus kids meal plan.",
+      "metadata": "Check-in: 2025-08-01, checkout: 2025-08-06, lead guest: Carol Lim"
+    },
+    {
+      "id": "BOOK-204",
+      "content": "Reservation #R1004 at Mountain Lodge (PROP-104) cabin for 7 nights, winter ski package.",
+      "metadata": "Check-in: 2025-01-15, checkout: 2025-01-22, lead guest: David Parker"
+    },
+    {
+      "id": "BOOK-205",
+      "content": "Reservation #R1005 at Airport Express Suites (PROP-105), long-stay 10 nights, business traveler deal.",
+      "metadata": "Check-in: 2025-02-10, checkout: 2025-02-20, lead guest: Emily Stone"
+    }
+  ]
+  

@@ -1,0 +1,28 @@
+[
+    {
+      "id": "MNT-501",
+      "content": "SUV line test vehicles require oil changes every 7,500 miles. AWD coupling fluid check at 15,000 miles.",
+      "metadata": "Maintenance code: SUV-25, recommended schedule: 2x/year"
+    },
+    {
+      "id": "MNT-502",
+      "content": "EcoSedan hybrid battery check at 20,000 miles or every 2 years. Inverter coolant flush at 40,000.",
+      "metadata": "Maintenance ID: ECO-2Y, battery brand: Voltix"
+    },
+    {
+      "id": "MNT-503",
+      "content": "EV Crossover recommended software updates at each service interval (approx every 10k miles). Tire rotation is crucial due to heavier front load.",
+      "metadata": "Service code: EVC-333, OTA updates possible"
+    },
+    {
+      "id": "MNT-504",
+      "content": "Light-duty pickup recommended diesel filter change at 10,000 miles. Gas version: 7,500 miles oil change interval.",
+      "metadata": "Trim: Work, schedule code: PKUP-2025"
+    },
+    {
+      "id": "MNT-505",
+      "content": "Hydrogen concept sedan requires specialized hydrogen system check. Currently done only at pilot service centers.",
+      "metadata": "Prototype: FCSED-Alpha, limited service points: 3 in US"
+    }
+  ]
+  

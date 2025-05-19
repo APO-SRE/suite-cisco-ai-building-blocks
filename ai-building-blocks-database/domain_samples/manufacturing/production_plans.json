@@ -1,0 +1,28 @@
+[
+    {
+      "id": "PROD-101",
+      "content": "Run #MOLD-A1: Injection molding of plastic casings. Target output: 5,000 units. Shift: 06:00-14:00.",
+      "metadata": "Line code: LN-1, date: 2025-02-01, shift supervisor: Alice Brown (SUP-1001)"
+    },
+    {
+      "id": "PROD-102",
+      "content": "Run #STMP-B2: Metal stamping of brackets. Target output: 3,000 pieces. Shift: 14:00-22:00.",
+      "metadata": "Line code: LN-2, date: 2025-02-01, shift supervisor: Bob Chen (SUP-2001)"
+    },
+    {
+      "id": "PROD-103",
+      "content": "Run #WELD-C3: Robotic welding for automotive frames. Target output: 600 frames. Overnight shift.",
+      "metadata": "Line code: LN-3, date: 2025-02-02, shift supervisor: Carol Lim (SUP-3002)"
+    },
+    {
+      "id": "PROD-104",
+      "content": "Run #ASSY-D4: Final assembly of household appliances. Daily capacity: 400 units.",
+      "metadata": "Line code: LN-4, date: 2025-02-03, shift supervisor: David Parker (SUP-4001)"
+    },
+    {
+      "id": "PROD-105",
+      "content": "Run #PAINT-E5: Spray painting for small metal parts. Target output: 2,000 pieces. Safety gear required.",
+      "metadata": "Line code: LN-5, date: 2025-02-04, shift supervisor: Emily Stone (SUP-5001)"
+    }
+  ]
+  
