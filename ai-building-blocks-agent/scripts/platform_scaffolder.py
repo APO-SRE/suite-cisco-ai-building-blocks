@@ -1,23 +1,35 @@
 #!/usr/bin/env python3
 """
 Unified Platform Scaffolder – phase-1
-See README for full description.
+AUTO-GENERATES:
+
+* app/llm/function_definitions/<platform>.json
+* app/llm/openapi_specs/full_<platform>.json
+* app/llm/platform_clients/<platform>_client.py
+* app/llm/function_dispatcher/<platform>_dispatcher.py
+* app/llm/unified_service/<platform>_service.py
 """
 from __future__ import annotations
 
-import argparse, json, logging, re, textwrap
+import argparse
+import json
+import logging
+import re
+import textwrap
 from pathlib import Path
+from typing import Dict, List
+
 from dotenv import load_dotenv
 
 # ───────── helpers ─────────────────────────────────────────────────────
-from scripts.utils.openapi_loader import load_spec
-from scripts.utils.sdk_loader     import load_client
-from scripts.utils.dietify        import dietify_schema
+from .utils.openapi_loader import load_spec          # type: ignore
+from .utils.sdk_loader import load_client            # type: ignore
+from .utils.dietify import dietify_schema            # type: ignore
 
 # ───────── constants ───────────────────────────────────────────────────
 load_dotenv()
 
-ROOT    = Path(__file__).resolve().parents[1]          # repo root
+ROOT = Path(__file__).resolve().parents[1]           # repo root
 LLM_DIR = ROOT / "app" / "llm"
 
 OUT_DIRS = {
@@ -35,20 +47,21 @@ logging.basicConfig(level=logging.INFO, format="%(levelname)s | %(message)s")
 log = logging.getLogger("scaffolder")
 
 # ╭─────────────────────────────────────────────────────────────────────╮
-# │ 1 ─ ensure every output folder is a package                         │
+# │ 1 ─ package initialisation helpers                                 │
 # ╰─────────────────────────────────────────────────────────────────────╯
-DISPATCHER_INIT = OUT_DIRS["disp"]   / "__init__.py"
-FUNCS_INIT      = OUT_DIRS["diet"]   / "__init__.py"
+DISPATCHER_INIT = OUT_DIRS["disp"] / "__init__.py"
+FUNCS_INIT = OUT_DIRS["diet"] / "__init__.py"
 
 # 1-a  dispatcher registry (smart Meraki fallback)
 if not DISPATCHER_INIT.exists():
-    DISPATCHER_INIT.write_text(textwrap.dedent("""
+    DISPATCHER_INIT.write_text(textwrap.dedent("""\
         \"\"\"
         Decorator-based dispatcher registry **plus** smart Meraki fallback.
         AUTO-GENERATED – DO NOT EDIT MANUALLY.
         \"\"\"
         from __future__ import annotations
-        import importlib, os
+        import importlib
+        import os
         from pathlib import Path
         from typing import Any, Callable, Dict
         from meraki import DashboardAPI
@@ -61,14 +74,14 @@ if not DISPATCHER_INIT.exists():
                 return fn
             return _decorator
 
-        # ── auto-import sub-dispatchers so their @register executes
+        # auto-import sub-dispatchers so their @register executes
         _pkg_path = Path(__file__).parent
         for _p in _pkg_path.glob('*_dispatcher.py'):
             if _p.name != '__init__.py':
                 importlib.import_module(f'{__name__}.{_p.stem}')
 
-        # ── Meraki SDK fallback
-        def _call_meraki(fname: str, kwargs: Dict[str, Any]) -> Any:
+        # Meraki SDK fallback
+        def _call_meraki(fname: str, kwargs: Dict[str, Any]):
             api_key = os.getenv('MERAKI_DASHBOARD_API_KEY')
             if not api_key:
                 raise ValueError('Meraki dispatch failed: missing MERAKI_DASHBOARD_API_KEY')
@@ -89,23 +102,23 @@ if not DISPATCHER_INIT.exists():
 
             raise AttributeError(f'No Meraki SDK method {fname!r} found')
 
-        def dispatch_function_call(name: str, arguments: Dict[str, Any]) -> Any:
+        def dispatch_function_call(name: str, arguments: Dict[str, Any]):
             if name in _registry:
                 return _registry[name](**arguments)
             return _call_meraki(name, arguments)
 
         __all__ = ['dispatch_function_call', 'register']
-    """).lstrip(), encoding="utf-8")
+    """), encoding="utf-8")
     log.info("✓ %s", DISPATCHER_INIT.relative_to(ROOT))
 
 # 1-b  function-definitions loader
 if not FUNCS_INIT.exists():
-    FUNCS_INIT.write_text(textwrap.dedent(f"""
+    FUNCS_INIT.write_text(textwrap.dedent(f"""\
         # Auto-generated – DO NOT EDIT
         # {FUNCS_INIT.relative_to(ROOT)}
         \"\"\"
         Loads every *.json in this folder into FUNCTION_DEFINITIONS
-            {{ '<platform>': [{{…}}, …], … }}
+            {{ '<platform>': [{{…}}, … ] , … }}
         \"\"\"
         from __future__ import annotations
         import json
@@ -122,10 +135,10 @@ if not FUNCS_INIT.exists():
                 print(f'[function_definitions] ⚠️  skipped {{_fp.name}}: {{exc}}')
 
         __all__ = ['FUNCTION_DEFINITIONS']
-    """).lstrip(), encoding="utf-8")
+    """), encoding="utf-8")
     log.info("✓ %s", FUNCS_INIT.relative_to(ROOT))
 
-# 1-c  plain “empty” __init__.py for every other folder
+# 1-c  empty __init__.py for every other folder
 for folder in OUT_DIRS.values():
     init_py = folder / "__init__.py"
     if not init_py.exists():
@@ -136,16 +149,32 @@ for folder in OUT_DIRS.values():
         log.info("✓ %s", init_py.relative_to(ROOT))
 
 # ╭─────────────────────────────────────────────────────────────────────╮
-# │ 2 ─ helpers                                                        │
+# │ 2 ─ utility functions                                              │
 # ╰─────────────────────────────────────────────────────────────────────╯
 def _write_json(p: Path, obj, *, pretty: bool = False):
     p.write_text(
-        json.dumps(obj,
-                   indent=2 if pretty else None,
-                   separators=(",", ":")),
+        json.dumps(obj, indent=2 if pretty else None, separators=(",", ":")),
         encoding="utf-8",
     )
     log.info("✓ %s", p.relative_to(ROOT))
+
+_identifier_rx = re.compile(r"[^0-9A-Za-z_]")
+def _py_identifier(raw: str, seen: Dict[str, int]) -> str:
+    """
+    Convert *raw* into a valid Python identifier and guarantee uniqueness
+    within a dispatcher file using the *seen* registry.
+    """
+    ident = _identifier_rx.sub("_", raw)
+    if ident[0].isdigit():
+        ident = f"op_{ident}"
+    # prevent collisions if two different raw names normalise identically
+    if ident in seen:
+        seen[ident] += 1
+        ident = f"{ident}_{seen[ident]}"
+    else:
+        seen[ident] = 0
+    return ident
+
 
 # ── helpers ────────────────────────────────────────────────────────────────
 def _emit_client_stub(platform: str, sdk_module: str) -> None:
@@ -231,25 +260,33 @@ def _emit_unified_service(platform: str):
     fp.write_text(f"# {fp.relative_to(ROOT)}\n\n{code}", encoding="utf-8")
     log.info("✓ %s", fp.relative_to(ROOT))
 
+
+ 
+
 # ╭─────────────────────────────────────────────────────────────────────╮
 # │ 3 ─ per-platform scaffolding                                       │
 # ╰─────────────────────────────────────────────────────────────────────╯
-def scaffold_one(platform: str,
-                 sdk_module: str,
-                 spec_path : Path,
-                 include_http: set[str] | None,
-                 name_re    : re.Pattern | None) -> None:
+def scaffold_one(
+    platform: str,
+    sdk_module: str,
+    spec_path: Path,
+    include_http: set[str] | None,
+    name_re: re.Pattern | None,
+) -> None:
 
     full_spec = load_spec(spec_path)
 
-    _write_json(OUT_DIRS["full"] / f"{platform}.json",      full_spec, pretty=True)
+    _write_json(OUT_DIRS["full"] / f"{platform}.json", full_spec, pretty=True)
     _write_json(OUT_DIRS["full"] / f"full_{platform}.json", full_spec, pretty=True)
 
-    diet_fns: list[dict] = []
+    diet_fns: List[dict] = []
+    safe_name_seen: Dict[str, int] = {}
+
     for path, path_item in full_spec.get("paths", {}).items():
         for verb, op in path_item.items():
             if include_http and verb.upper() not in include_http:
                 continue
+
             op_id = op.get("operationId") or f"{verb}_{path}"
             if name_re and not name_re.search(op_id):
                 continue
@@ -275,18 +312,20 @@ def scaffold_one(platform: str,
     _emit_unified_service(platform)
 
     disp_fp = OUT_DIRS["disp"] / f"{platform}_dispatcher.py"
-    lines = [
+    lines: List[str] = [
         f"# {disp_fp.relative_to(ROOT)}",
         "from app.llm.function_dispatcher import register",
         f"from app.llm.platform_clients.{platform}_client import {platform.capitalize()}Client",
         "",
     ]
     for fn in diet_fns:
+        safe_name = _py_identifier(fn["name"], safe_name_seen)
         lines.append(
             f"@register('{fn['name']}')\n"
-            f"def {fn['name']}(**kwargs):\n"
-            f"    return {platform.capitalize()}Client().{fn['name']}(**kwargs)\n"
+            f"def {safe_name}(**kwargs):\n"
+            f"    return {platform.capitalize()}Client().{safe_name}(**kwargs)\n"
         )
+
     disp_fp.write_text("\n".join(lines), encoding="utf-8")
     log.info("✓ %s", disp_fp.relative_to(ROOT))
 
@@ -311,20 +350,27 @@ def main():
         raise SystemExit("--all cannot be used with other flags")
 
     if args.all:
-        platforms = [p.stem.replace("full_", "")
-                     for p in OUT_DIRS["full"].glob("full_*.json")]
+        platforms = [
+            p.stem.replace("full_", "") for p in OUT_DIRS["full"].glob("full_*.json")
+        ]
     else:
         if not (args.platform and args.sdk_module and args.openapi_spec):
             raise SystemExit("Need --platform, --sdk-module, and --openapi-spec")
         platforms = [args.platform]
 
-    include_http = ({m.upper() for m in args.include_http_methods.split(",")}
-                    if args.include_http_methods else None)
+    include_http = (
+        {m.upper() for m in args.include_http_methods.split(",")}
+        if args.include_http_methods
+        else None
+    )
     name_re = re.compile(args.name_pattern) if args.name_pattern else None
 
     for plat in platforms:
-        spec = Path(args.openapi_spec) if args.openapi_spec else \
-               OUT_DIRS["full"] / f"{plat}.json"
+        spec = (
+            Path(args.openapi_spec)
+            if args.openapi_spec
+            else OUT_DIRS["full"] / f"{plat}.json"
+        )
         log.info("⏳ Scaffolding %s …", plat)
         scaffold_one(plat, args.sdk_module, spec, include_http, name_re)
 
