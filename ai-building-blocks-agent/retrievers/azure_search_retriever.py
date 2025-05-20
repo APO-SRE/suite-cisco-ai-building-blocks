@@ -161,13 +161,32 @@ class AzureSearchRetriever:
         return self._query(self.domain_index, payload)
 
     def retrieve_platform_summaries(self, query: str) -> List[Dict]:
+        """
+        Search the *function-definitions* index.  Behaviour can be tuned with
+        two env-vars:
+
+        • FASTAPI_AZURE_PLATFORM_SEMCONF   » name of the semantic-config
+          (set it **empty** to disable semantic ranking).
+        • FASTAPI_AZURE_PLATFORM_SELECT    » comma-sep list of fields to return
+          (must exist in the index doc-schema).
+        """
         if not self.platform_summaries_index:
             return []
+
+        semconf = cfg(
+            "AZURE_PLATFORM_SEMCONF",
+            layer=self.layer,
+            default="platform-summaries-semantic-config",
+        )
+        select = cfg(
+            "AZURE_PLATFORM_SELECT",
+            layer=self.layer,
+            default="platform,name,content",     # no doc_type by default
+        )
+
         vec = self._embed(query)
-        payload = {
+        payload: Dict = {
             "search": query,
-            "queryType": "semantic",
-            "semanticConfiguration": "platform-summaries-semantic-config",
             "top": self.top_k,
             "vectorQueries": [
                 {
@@ -177,9 +196,20 @@ class AzureSearchRetriever:
                     "k": self.top_k,
                 }
             ],
-            "select": "platform,doc_type,content",
+            "select": select,
         }
+        if semconf:
+            payload.update(
+                {
+                    "queryType": "semantic",
+                    "semanticConfiguration": semconf,
+                }
+            )
+
         return self._query(self.platform_summaries_index, payload)
+
+
+ 
 
     def retrieve_api_docs(self, query: str, platforms: Optional[List[str]] = None) -> List[Dict]:
         if not self.api_docs_index:
@@ -226,3 +256,38 @@ class AzureSearchRetriever:
         if event_type:
             payload["filter"] = f"event_type eq '{event_type}'"
         return self._query(self.events_index, payload)
+
+ 
+    # ------------------------------------------------------------------ #
+    # Generic vector query – API-compatible with ChromaRetriever
+    # ------------------------------------------------------------------ #
+    def query(
+        self,
+        text: str,
+        *,
+        k: int = 128,
+        filter: Optional[dict] = None,
+    ) -> List[Dict]:
+        """
+        Wrapper used by dynamic.build_functions_for_llm().
+        Just redirect to the trusted retrieve_platform_summaries().
+        """
+        # honour the simple platform filter, if present
+        if filter and "platform" in filter:
+            clause = filter["platform"]
+            if isinstance(clause, dict) and "$in" in clause:
+                platforms = clause["$in"]
+                if platforms and self.platform_summaries_index:
+                    # form Azure $filter clause
+                    self._extra_filter = " or ".join(
+                        [f"platform eq '{p}'" for p in platforms]
+                    )
+        else:
+            self._extra_filter = None
+
+        # call the original method (it already embeds + does semantic search)
+        hits = self.retrieve_platform_summaries(text)
+
+        # keep only top-k (retrieve_platform_summaries already uses self.top_k,
+        # but dynamic.py may pass k < self.top_k)
+        return hits[:k]

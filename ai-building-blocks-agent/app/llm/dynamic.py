@@ -150,8 +150,9 @@ def build_functions_for_llm(
     query: str,
     enabled: list[str],
     *,
-    token_budget: int = 16_384,  # 4 × the previous room
-    k: int = 50,                 # 🔥 lowered from 300 → 50
+    token_budget: int = int(os.getenv("FASTAPI_FUNCTION_TOKEN_BUDGET", 16_384)),
+    k: int = int(os.getenv("FASTAPI_FUNCTION_TOP_K", 50)),
+ 
 ) -> List[dict]:
     """
     Return a list of diet-function JSON objects that the LLM will receive.
