@@ -1,0 +1,16 @@
+# ───────────────────────────────
+# Shared utilities and helpers
+# ───────────────────────────────
+annotated-types                # used by pydantic / validators
+attrs
+click
+humanfriendly
+packaging>=24.0
+python-dotenv                  # load_dotenv() in many scripts
+PyYAML
+requests                       # low-level HTTP calls across the repo
+setuptools>=79.0.
+tenacity                       # retry wrappers
+tqdm                            # progress bars in scripts
+typing-extensions
+typing-inspection
