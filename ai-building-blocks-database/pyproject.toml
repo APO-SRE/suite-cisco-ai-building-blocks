@@ -1,29 +1,13 @@
-[tool.poetry]
-name = "cisco-data-bridge"
-version = "0.1.0"
-description = "Cisco data bridge project"
-authors = ["Jeff Teeter"]
-package-mode = false
-
-[tool.poetry.dependencies]
-python = "^3.9"
-fastapi = ">=0.100"
-uvicorn = {extras = ["standard"], version = "0.22.0"}
-requests = ">=2.31.0"
-#requests = "2.32.0"  # Ensures compatibility
-openai = "0.27.0"
-azure-search-documents = "11.6.0b9"
-azure-identity = ">=1.16.1"
-python-dotenv = "1.0.0"
-pydantic = "2.7.4"
-dnacentersdk = "2.8.3"
-meraki = "*"
-tenacity = "8.5.0"
-chromadb = "0.6.3"
-elasticsearch = "8.8.0"
-nltk = "3.9"
-langchain = "0.3.0"
+# ~/suite-cisco-ai-building-blocks/ai-building-blocks-database/pyproject.toml
+[project]
+name            = "db_scripts"
+version         = "0.0.0"
+requires-python = ">=3.8"
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+# ← THIS is the bit that exposes scripts/  as  db_scripts.*
+[tool.setuptools.package-dir]
+db_scripts = "scripts"

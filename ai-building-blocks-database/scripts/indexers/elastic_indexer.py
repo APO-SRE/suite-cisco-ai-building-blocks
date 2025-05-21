@@ -25,7 +25,7 @@ By using this code, you agree that you have read, understood, and accept these t
 import os, json
 from elasticsearch import Elasticsearch
 from .base_indexer import BaseIndexer
-
+from ..utils.embedding import embed_text
 class ElasticIndexer(BaseIndexer):
     def __init__(self, index_name: str):
         super().__init__(index_name)
