@@ -93,7 +93,7 @@ if not DISPATCHER_INIT.exists():
 
             dash = DashboardAPI(api_key=api_key,
                                 suppress_logging=True,
-                                print_console=False)
+                                print_console=True)
 
             if hasattr(dash, fname):
                 return getattr(dash, fname)(**kwargs)

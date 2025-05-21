@@ -11,7 +11,8 @@ class MerakiClient:
         if not api_key:
             raise ValueError('Missing CISCO_MERAKI_API_KEY environment variable')
         kwargs['api_key'] = api_key
-        
+        kwargs.setdefault("suppress_logging", True)   # turn off SDK log file
+        kwargs.setdefault("print_console", True)    
         self._sdk = _sdk.DashboardAPI(**kwargs)
 
     def __getattr__(self, item):
