@@ -28,8 +28,6 @@ By using this code, you agree that you have read, understood, and accept these t
 Dynamic helper that chooses the correct vector-search retriever and
 builds the diet-function list the LLM receives.
 
-Unlike the previous revision, this version:
-
 * Never raises AttributeError if a given retriever class name is missing.
 * Supports Chroma, Azure Cognitive Search and Elastic back-ends out-of-the-box.
 * Falls back to the first “SomethingRetriever” class it can find, so adding new
@@ -39,7 +37,6 @@ ENV VARS
 --------
 FASTAPI_VECTOR_BACKEND          chroma | azure | elastic   (default: chroma)
 FASTAPI_CHROMA_COLLECTION_PLATFORM  override Chroma collection name
-CHROMA_DB_ROOT                  root dir for Chroma DBs   (default: ../…/chroma_dbs)
 """
 import importlib
 import inspect
@@ -111,15 +108,18 @@ else:  # Azure / Elastic (both accept layer kwarg)
 # ─────────────────────────────────────────────────────────────────────────────
 # 3.  Full-schema KV (lazy build + cache)
 # ─────────────────────────────────────────────────────────────────────────────
-DB_ROOT   = Path(
-    os.getenv("CHROMA_DB_ROOT",
-              "../ai-building-blocks-database/chroma_dbs")
-).resolve()
-CACHE_DIR = DB_ROOT / "fastapi"
-CACHE_DIR.mkdir(parents=True, exist_ok=True)
-CACHE_FILE = CACHE_DIR / "full_schemas.json"
 
-SPEC_DIR = Path(__file__).resolve().parent / "openapi_specs"
+DYNAMIC_CACHE_ROOT = Path(
+    os.getenv(
+        "PLATFORM_DYNAMIC_CACHE_PATH",
+        # Default: <repo-root>/ai-building-blocks-agent/app/platform_dynamic_cache
+        (Path(__file__).resolve().parent.parent / "platform_dynamic_cache").as_posix(),
+    )
+).resolve()
+DYNAMIC_CACHE_ROOT.mkdir(parents=True, exist_ok=True)
+
+CACHE_FILE = DYNAMIC_CACHE_ROOT / "full_schemas.json"
+SPEC_DIR   = Path(__file__).resolve().parent / "openapi_specs"
 
 
 def _build_full_kv() -> Dict[str, Any]:
