@@ -178,23 +178,27 @@ class ChromaIndexer(BaseIndexer):
 # ═══════════════════════════════════════════════════════════════════════════
 class PlatformFunctionIndexer(ChromaIndexer):
     """
-    Indexes diet-schema platform functions into Chroma with explicit embeddings.
+    Diet-function indexer for Chroma that now prints incremental progress
+    identical to AzureIndexer.
     """
 
     def index_functions(
         self,
         platform: str,
         diet_list: List[Dict[str, Any]],
-        full_spec: Dict[str, Any],   # kept for parity
+        full_spec: Dict[str, Any],   # kept for parity / future use
     ) -> None:
+        # 1 ▸ make sure collection exists / recreate logic already handled
         self.create_index()
 
         total = len(diet_list)
         print(
-            f"[{platform}] embedding {total} functions with {CPU_WORKERS} thread(s)…",
+            f"[{platform}] embedding {total} functions with "
+            f"{CPU_WORKERS} thread(s)…",
             flush=True,
         )
 
+        # ---------- worker used by the thread-pool ----------
         def _prep(fn: dict):
             key  = _safe_id(f"{platform}-{fn['name']}")
             vec  = fn.get("embedding") or embed_text(fn["name"])[0]
@@ -202,31 +206,34 @@ class PlatformFunctionIndexer(ChromaIndexer):
             return key, json.dumps(fn), meta, vec
 
         ids, docs, metas, vecs = [], [], [], []
-        from concurrent.futures import as_completed
+
+        # use as_completed so we can count finished jobs
+        from concurrent.futures import ThreadPoolExecutor, as_completed
 
         with ThreadPoolExecutor(max_workers=CPU_WORKERS) as pool:
-                futures = [pool.submit(_prep, f) for f in diet_list]
-                for i, fut in enumerate(as_completed(futures), start=1):
-                    key, doc, meta, vec = fut.result()
-                    ids.append(key)
-                    docs.append(doc)
-                    metas.append(meta)
-                    vecs.append(vec)
+            futures = [pool.submit(_prep, fn) for fn in diet_list]
 
-                    if i % 100 == 0 or i == total:
-                        print(f"   • processed {i}/{total}", flush=True)
+            for i, fut in enumerate(as_completed(futures), start=1):
+                key, doc, meta, vec = fut.result()
+                ids.append(key)
+                docs.append(doc)
+                metas.append(meta)
+                vecs.append(vec)
 
-            # ── bulk upsert ────────────────────────────────────────────────
+                if i % 100 == 0 or i == total:          # Azure-style ticks
+                    print(f"   • processed {i}/{total}", flush=True)
+
+        # ---------- bulk upsert ----------
         print(f"[ChromaIndexer] Upserting {len(ids)} docs into '{self.collection_name}'")
         self.collection.upsert(
-                ids=ids,
-                documents=docs,
-                metadatas=metas,
-                embeddings=vecs,
-            )
+            ids=ids,
+            documents=docs,
+            metadatas=metas,
+            embeddings=vecs,
+        )
         print(
-                f"[ChromaIndexer]  ✓ finished — {len(ids)} vectors written "
-                f"with {CPU_WORKERS} worker(s)",
-                flush=True,
-            )
+            f"[ChromaIndexer]  ✓ finished — {len(ids)} vectors written "
+            f"with {CPU_WORKERS} worker(s)",
+            flush=True,
+        )
         
