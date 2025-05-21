@@ -10,26 +10,31 @@ AUTO-GENERATES:
 * app/llm/unified_service/<platform>_service.py
 """
 from __future__ import annotations
+import sys
+from pathlib import Path
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 
 import argparse
 import json
 import logging
 import re
 import textwrap
-from pathlib import Path
 from typing import Dict, List
 
 from dotenv import load_dotenv
 
 # ───────── helpers ─────────────────────────────────────────────────────
-from .utils.openapi_loader import load_spec          # type: ignore
-from .utils.sdk_loader import load_client            # type: ignore
-from .utils.dietify import dietify_schema            # type: ignore
+from scripts.utils.openapi_loader import load_spec
+from scripts.utils.sdk_loader      import load_client
+from scripts.utils.dietify         import dietify_schema
 
 # ───────── constants ───────────────────────────────────────────────────
 load_dotenv()
 
-ROOT = Path(__file__).resolve().parents[1]           # repo root
+ROOT = REPO_ROOT
 LLM_DIR = ROOT / "app" / "llm"
 
 OUT_DIRS = {
@@ -297,12 +302,19 @@ def scaffold_one(
                 "parameters": {"type": "object", "properties": {}, "required": []},
             }
             for p in op.get("parameters", []):
-                schema["parameters"]["properties"][p["name"]] = {
+                # skip any unresolved $ref or otherwise anonymous parameter
+                if "name" not in p:
+                    log.warning("Skipping parameter without name: %r", p)
+                    continue
+
+                name = p["name"]
+                schema["parameters"]["properties"][name] = {
                     "type": p.get("schema", {}).get("type", "string"),
                     "description": p.get("description", ""),
                 }
                 if p.get("required"):
-                    schema["parameters"]["required"].append(p["name"])
+                    schema["parameters"]["required"].append(name)
+
 
             diet_fns.append(dietify_schema(schema))
 
