@@ -21,10 +21,11 @@ import os
 import openai
 from typing import List, Union
 from sentence_transformers import SentenceTransformer
-
+from threading import Lock
 _hf_models = {}  # Cache loaded SentenceTransformer models
+_hf_lock = Lock()  
 
-def embed_text(text: Union[str, List[str]], layer: str) -> List[List[float]]:
+def embed_text(text: Union[str, List[str]], layer: str = "FASTAPI") -> List[List[float]]:
     """
     Generate embedding vectors for given text(s), based on environment variables
     indicating whether the layer uses Azure or Hugging Face embeddings, etc.
@@ -62,7 +63,7 @@ def _embed_azure(texts: List[str], layer: str) -> List[List[float]]:
     """
     Use Azure OpenAI to embed a list of texts. The code reads environment
     variables like <LAYER>_AZURE_OPENAI_ENDPOINT, <LAYER>_AZURE_OPENAI_KEY,
-    <LAYER>_AZURE_OPENAI_EMBEDDING_DEPLOYMENT, etc.
+    <LAYER>_AZURE_EMBEDDING_DEPLOYMENT, etc.
     """
     # 1) Compose env var names
     layer_key = layer.upper()
@@ -87,26 +88,31 @@ def _embed_azure(texts: List[str], layer: str) -> List[List[float]]:
     vectors = [item["embedding"] for item in resp["data"]]
     return vectors
 
-def _embed_huggingface(texts: List[str], layer: str) -> List[List[float]]:
+def _embed_huggingface(texts: list[str], layer: str) -> list[list[float]]:
     """
-    Use a local or HF-hosted SentenceTransformer model for embeddings.
-    E.g. read <LAYER>_HUGGINGFACE_MODEL from env.
+    Embeds *texts* with a local / HF SentenceTransformer model.
+    Model name comes from  <LAYER>_HUGGINGFACE_MODEL  (env).
+    The model is loaded exactly **once** per process, guarded by a lock so
+    multi-threaded pipelines don’t race when instantiating it.
     """
-    layer_key = layer.upper()
+    layer_key  = layer.upper()
     model_name = os.getenv(f"{layer_key}_HUGGINGFACE_MODEL", "").strip()
     if not model_name:
-        raise ValueError(f"[embedding.py] No Hugging Face model name set for layer '{layer}'. "
-                         f"Expected env var {layer_key}_HUGGINGFACE_MODEL.")
+        raise ValueError(
+            f"[embedding.py] No Hugging Face model specified for layer '{layer}'. "
+            f"Set {layer_key}_HUGGINGFACE_MODEL in your env."
+        )
 
-    # Check cache
-    global _hf_models
-    if model_name not in _hf_models:
-        print(f"[embedding.py] Loading HF model '{model_name}' for layer '{layer}'...")
-        _hf_models[model_name] = SentenceTransformer(model_name)
+    # ── lazy-load the model, but only one thread does the heavy work ─────────
+    with _hf_lock:
+        if model_name not in _hf_models:
+            print(f"[embedding.py] Loading HF model '{model_name}' for layer '{layer}'…")
+            from sentence_transformers import SentenceTransformer
+            _hf_models[model_name] = SentenceTransformer(model_name, device="cpu")
 
-    hf_model = _hf_models[model_name]
-    emb_array = hf_model.encode(texts, convert_to_numpy=True)
-    # Convert to python list
-    vectors = [v.tolist() for v in emb_array]
-    return vectors
+    model = _hf_models[model_name]
+
+    # encode() is internally parallelised by SentenceTransformers/torch
+    ndarray = model.encode(texts, convert_to_numpy=True)
+    return [vec.tolist() for vec in ndarray]
 

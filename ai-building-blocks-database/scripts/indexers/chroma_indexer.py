@@ -24,89 +24,147 @@ environments. You are solely responsible for any modifications or adaptations ma
 
 By using this code, you agree that you have read, understood, and accept these terms.
 """
+
+import base64
 import json
 import os
+import re
+import shutil
+import uuid
 from pathlib import Path
-from typing import List, Dict, Any
+from threading import Lock
+from typing import Any, Dict, List
 
 import chromadb
 from chromadb import PersistentClient                      # type: ignore
 from chromadb.config import Settings                       # type: ignore
+from concurrent.futures import ThreadPoolExecutor
 
+from ..utils.embedding import embed_text
 from .base_indexer import BaseIndexer
 
+# ───────────────────────────── runtime tuning ──────────────────────────────
+CPU_WORKERS  = int(os.getenv("FASTAPI_CHROMA_NUM_CPUS", "4") or 4)
+DEFAULT_BATCH = int(os.getenv("FASTAPI_CHROMA_BATCH", "500") or 500)
 
+print(
+    f"[ChromaIndexer]  ⚙  embedding threads = {CPU_WORKERS}  |  "
+    f"default batch size (upsert) = {DEFAULT_BATCH}",
+    flush=True,
+)
+
+# ───────────────────────────── helpers ─────────────────────────────────────
+
+SAFE_ID_CHARS = re.compile(r"[^A-Za-z0-9_\-=]")
+
+def _safe_id(text: str) -> str:
+    cleaned = SAFE_ID_CHARS.sub("_", text)
+    return cleaned if len(cleaned) <= 500 else base64.urlsafe_b64encode(text.encode()).decode()[:500]
+
+
+# ───────────────────────────── once-per-process guard ──────────────────────
+_handled: set[str] = set()
+_lock = Lock()            # serialises the decision phase
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+#  BASE CHROMA INDEXER  (mirrors Azure recreation logic)
+# ═══════════════════════════════════════════════════════════════════════════
 class ChromaIndexer(BaseIndexer):
+    """
+    Persistent Chroma collection with single-prompt recreate behaviour.
+    """
+
+    # ────────────────────────────────────────────────────────────────
+    #  constructor  – decide recreate / append exactly once
+    # ────────────────────────────────────────────────────────────────
     def __init__(self, index_name: str, layer_name: str = "") -> None:
         super().__init__(index_name)
 
-        self.layer_key = layer_name.upper().strip() if layer_name else ""
+        self.collection_name = index_name
+        self.layer_key       = layer_name.upper().strip() if layer_name else ""
 
-        # ── 1. Resolve *base* path from the env
-        base_path = os.getenv(f"{self.layer_key}_CHROMA_DB_PATH",
-                              "./chroma_db")
+        base_path = os.getenv(f"{self.layer_key}_CHROMA_DB_PATH", "./chroma_dbs")
+        self.db_dir = Path(base_path).expanduser().resolve() / self.collection_name
 
-        # ── 2. Append the collection name ⇒ <base>/<collection>/
-        db_dir = Path(base_path).expanduser().resolve() / self.index_name
-        db_dir.mkdir(parents=True, exist_ok=True)
+        recreate_env = os.getenv(f"{self.layer_key}_CHROMA_RECREATE_INDEX", "").strip().lower()
 
-        print(f"[ChromaIndexer] DB directory → {db_dir}")
+        # ── decision happens only once per process per collection ──────────
+        with _lock:
+            if self.collection_name not in _handled:
+                exists = self.db_dir.is_dir() and any(self.db_dir.iterdir())
 
-        # ── 3. Create / reuse the local Chroma client
+                # ① choose behaviour
+                if exists:
+                    if recreate_env == "true":
+                        choice = "r"
+                        print(f"[ChromaIndexer] {self.collection_name}: env forces **recreate**")
+                    elif recreate_env == "false":
+                        choice = "a"
+                        print(f"[ChromaIndexer] {self.collection_name}: env forces append")
+                    else:
+                        ans = input(
+                            f"Collection '{self.collection_name}' exists. "
+                            "(R)ecreate or (A)ppend? [R/a]: "
+                        ).strip().lower()
+                        choice = "r" if ans.startswith("r") else "a"
+                else:
+                    choice = "a"     # nothing to recreate on first run
+
+                # ② carry out choice
+                if choice == "r" and self.db_dir.exists():
+                    print(f"[ChromaIndexer] Deleting {self.db_dir} …")
+                    shutil.rmtree(self.db_dir, ignore_errors=True)
+
+                self.db_dir.mkdir(parents=True, exist_ok=True)
+                _handled.add(self.collection_name)   # remember
+
+        print(f"[ChromaIndexer] DB directory → {self.db_dir}")
+
+        # ── open (or create) the collection ───────────────────────────────
         self.client: PersistentClient = chromadb.PersistentClient(
-            path=str(db_dir),
+            path=str(self.db_dir),
             settings=Settings(anonymized_telemetry=False),
         )
-        self.collection = None
-
-    # --------------------------------------------------------------------- #
-    # Index management helpers
-    # --------------------------------------------------------------------- #
-    def create_index(self) -> None:
-        if self.collection is None:
-            print(f"[ChromaIndexer] create_index('{self.index_name}')")
-            self.collection = self.client.get_or_create_collection(
-                self.index_name
-            )
-            print(f"[ChromaIndexer] Collection ready – "
-                  f"{self.collection.count()} vectors")
-
-    # --------------------------------------------------------------------- #
-    # Public API
-    # --------------------------------------------------------------------- #
+        self.collection = self.client.get_or_create_collection(self.collection_name)
+        print(f"[ChromaIndexer] Collection ready – {self.collection.count()} vectors")
+        
+    def create_index(self) -> None:          # ← add this method
+        """
+        Compatibility shim — the collection is fully initialised in __init__,
+        so this is just a harmless no-op for callers that still invoke it.
+        """
+        pass
+    # ────────────────────────────────────────────────────────────────
+    #  generic bulk-index helper
+    # ────────────────────────────────────────────────────────────────
     def index_documents(self, docs: List[Dict[str, Any]]) -> None:
-        if not self.collection:
-            self.create_index()
+        if not docs:
+            return
 
         ids, contents, embeddings, metadatas = [], [], [], []
+        for d in docs:
+            ids.append(d.get("id") or str(uuid.uuid4()))
+            contents.append(d.get("content", ""))
+            embeddings.append(d.get("embedding"))
+            metadatas.append({k: v for k, v in d.items() if k not in {"id", "content", "embedding"}})
 
-        for doc in docs:
-            doc_id = doc.get("id")
-            if not doc_id:
-                raise ValueError("Each doc must have an 'id' field")
-
-            ids.append(doc_id)
-            contents.append(doc.get("content", ""))
-            embeddings.append(doc.get("embedding"))
-            metadatas.append(
-                {k: v for k, v in doc.items() if k not in {"content",
-                                                           "embedding"}}
-            )
-
-        # omit “embeddings” if all are None – lets Chroma embed later
-        kwargs: Dict[str, Any] = dict(
-            ids=ids, documents=contents, metadatas=metadatas,
-        )
+        payload: Dict[str, Any] = dict(ids=ids, documents=contents, metadatas=metadatas)
         if any(e is not None for e in embeddings):
-            kwargs["embeddings"] = embeddings
+            payload["embeddings"] = embeddings
 
-        self.collection.add(**kwargs)
+        self.collection.add(**payload)
         print(f"[ChromaIndexer] Inserted {len(docs)} documents")
 
-    # Small helper used by PlatformFunctionIndexer
-    def add(self, *, documents: List[str], ids: List[str],
-            metadatas: List[dict] | None = None,
-            embeddings: List[List[float]] | None = None) -> None:
+    # thin helper
+    def add(
+        self,
+        *,
+        documents: List[str],
+        ids: List[str],
+        metadatas: List[dict] | None = None,
+        embeddings: List[List[float]] | None = None,
+    ) -> None:
         self.collection.upsert(
             ids=ids,
             documents=documents,
@@ -115,20 +173,53 @@ class ChromaIndexer(BaseIndexer):
         )
 
 
+# ═══════════════════════════════════════════════════════════════════════════
+#  PLATFORM-SPECIFIC FUNCTION INDEXER
+# ═══════════════════════════════════════════════════════════════════════════
 class PlatformFunctionIndexer(ChromaIndexer):
     """
-    Specialised for diet-function JSON blobs.
+    Indexes diet-schema platform functions into Chroma with explicit embeddings.
     """
-    def index_functions(self, platform: str,
-                        diet_list: List[Dict[str, Any]],
-                        full_spec: Dict[str, Any]) -> None:
-        if self.collection is None:
-            self.create_index()
 
-        self.collection.upsert(
-            ids=[f"{platform}:{fn['name']}" for fn in diet_list],
-            documents=[json.dumps(fn) for fn in diet_list],
-            metadatas=[{"platform": platform, "name": fn["name"]}
-                       for fn in diet_list],
+    def index_functions(
+        self,
+        platform: str,
+        diet_list: List[Dict[str, Any]],
+        full_spec: Dict[str, Any],   # kept for parity
+    ) -> None:
+        self.create_index()
+
+        total = len(diet_list)
+        print(
+            f"[{platform}] embedding {total} functions with {CPU_WORKERS} thread(s)…",
+            flush=True,
         )
+
+        def _prep(fn: dict):
+            key  = _safe_id(f"{platform}-{fn['name']}")
+            vec  = fn.get("embedding") or embed_text(fn["name"])[0]
+            meta = {"platform": platform, "name": fn["name"]}
+            return key, json.dumps(fn), meta, vec
+
+        ids, docs, metas, vecs = [], [], [], []
+        with ThreadPoolExecutor(max_workers=CPU_WORKERS) as pool:
+            for key, doc, meta, vec in pool.map(_prep, diet_list):
+                ids.append(key)
+                docs.append(doc)
+                metas.append(meta)
+                vecs.append(vec)
+
+        print(f"[ChromaIndexer] Upserting {len(ids)} docs into '{self.collection_name}'")
+        self.collection.upsert(
+            ids=ids,
+            documents=docs,
+            metadatas=metas,
+            embeddings=vecs,
+        )
+        print(
+            f"[ChromaIndexer] ✓ finished — {len(ids)} vectors written "
+            f"with {CPU_WORKERS} worker(s)",
+            flush=True,
+        )
+
 
