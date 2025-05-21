@@ -31,8 +31,6 @@ Utility to wipe and recreate all auto-generated LLM folders
 Launch it from anywhere; it always operates on the folders inside the
 ai-building-blocks-agent repo and prints what it deleted / rebuilt.
 """
-from __future__ import annotations
-
 from pathlib import Path
 import shutil
 import sys

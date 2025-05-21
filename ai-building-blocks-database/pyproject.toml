@@ -1,13 +1,22 @@
-# ~/suite-cisco-ai-building-blocks/ai-building-blocks-database/pyproject.toml
-[project]
-name            = "db_scripts"
-version         = "0.0.0"
-requires-python = ">=3.8"
-
 [build-system]
-requires = ["setuptools>=65.0", "wheel"]
+requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
-# ← THIS is the bit that exposes scripts/  as  db_scripts.*
-[tool.setuptools.package-dir]
-db_scripts = "scripts"
+[project]
+name = "ai-building-blocks-agent"
+version = "0.1.0"
+description = "Cisco AI Building Blocks Agent"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "rich>=14.0.0",
+  "colorama",
+]
+
+[project.scripts]
+create-platform = "tools.create_platform:main"
+create-index     = "tools.create_index:main"
+
+[tool.setuptools.packages.find]
+where   = ["."]
+include = ["tools*"]
