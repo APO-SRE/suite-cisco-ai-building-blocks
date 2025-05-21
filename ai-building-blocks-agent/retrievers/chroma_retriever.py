@@ -16,8 +16,7 @@ Very thin wrapper around a *single* Chroma collection.
 • retrieve_api_docs(text, pls) – same, but filtered by platform meta
 • FunctionRetriever            – exposes .query exactly as dynamic.py expects
 """
-#!/usr/bin/env python3
-
+ 
 import os
 import logging
 from pathlib import Path
@@ -25,48 +24,121 @@ from typing import Sequence, List, Dict, Any
 
 import chromadb
 from chromadb.config import Settings
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+from retrievers import default_pool_size          # ← safe (defined early)
 
 log = logging.getLogger(__name__)
 
+
 class ChromaRetriever:
-    def __init__(self, *, layer: str = "FASTAPI", collection_name: str | None = None) -> None:
-        layer_uc = layer.upper()
-        base_path = os.getenv(f"{layer_uc}_CHROMA_DB_PATH", "./chroma_dbs/fastapi")
-        coll_name = collection_name or os.getenv(f"{layer_uc}_CHROMA_COLLECTION_PLATFORM", "platform-summaries-index")
+    # ────────────────────────────────────────────────────────────────────
+    # construction
+    # ────────────────────────────────────────────────────────────────────
+    def __init__(
+        self,
+        *,
+        layer: str = "FASTAPI",
+        collection_name: str | None = None,
+    ) -> None:
+        self.layer = layer.upper()
+        base_path  = os.getenv(f"{self.layer}_CHROMA_DB_PATH", "./chroma_dbs/fastapi")
+        coll_name  = (
+            collection_name
+            or os.getenv(f"{self.layer}_CHROMA_COLLECTION_PLATFORM", "platform-summaries-index")
+        )
 
         self.path = Path(base_path).expanduser().resolve() / coll_name
         if not self.path.exists():
-            raise FileNotFoundError(f"Chroma collection directory '{self.path}' not found.")
+            raise FileNotFoundError(
+                f"Chroma collection directory '{self.path}' not found."
+            )
 
-        client = chromadb.PersistentClient(path=str(self.path), settings=Settings(anonymized_telemetry=False))
+        client = chromadb.PersistentClient(
+            path=str(self.path),
+            settings=Settings(anonymized_telemetry=False),
+        )
         self.col = client.get_or_create_collection(coll_name)
 
-    def query(self, text: str, *, k: int = 5, filter: Dict[str, Any] | None = None) -> List[dict]:
-        where_clause = filter if filter else None
+        # ── concurrency knobs ─────────────────────────────────────────
+        self.pool_size = default_pool_size(self.layer, "chroma", fallback=4)
+        print(
+            f"[{self.layer}/ChromaRetriever]  ⚙  workers = {self.pool_size}",
+            flush=True,
+        )
+
+    # ────────────────────────────────────────────────────────────────────
+    # core query helpers
+    # ────────────────────────────────────────────────────────────────────
+    def _query_one(
+        self,
+        text: str,
+        *,
+        k: int,
+        where_clause: Dict[str, Any] | None,
+    ) -> List[dict]:
         res = self.col.query(
             query_texts=[text],
             n_results=k,
             include=["documents", "distances", "metadatas"],
             where=where_clause,
         )
-        docs = res.get("documents", [[]])[0]
+        docs  = res.get("documents", [[]])[0]
         metas = res.get("metadatas", [[]])[0]
         dists = (res.get("distances") or [[None]])[0]
 
-        out = []
-        for doc, meta, dist in zip(docs, metas, dists):
-            item = {"content": doc, **(meta or {}), "distance": dist}
-            out.append(item)
-        return out
+        return [
+            {"content": doc, **(meta or {}), "distance": dist}
+            for doc, meta, dist in zip(docs, metas, dists)
+        ]
 
+    # public – single text ------------------------------------------------
+    def query(
+        self,
+        text: str,
+        *,
+        k: int = 5,
+        filter: Dict[str, Any] | None = None,
+    ) -> List[dict]:
+        return self._query_one(text, k=k, where_clause=filter)
+
+    # public – many texts (parallel) -------------------------------------
+    def query_many(
+        self,
+        texts: Sequence[str],
+        *,
+        k: int = 5,
+        filter: Dict[str, Any] | None = None,
+    ) -> List[List[dict]]:
+        if not texts:
+            return []
+
+        with ThreadPoolExecutor(max_workers=self.pool_size) as pool:
+            futs = {
+                pool.submit(self._query_one, t, k=k, where_clause=filter): idx
+                for idx, t in enumerate(texts)
+            }
+            results: List[List[dict]] = [None] * len(texts)  # type: ignore
+            for fut in as_completed(futs):
+                results[futs[fut]] = fut.result()
+        return results
+
+    # convenience aliases -------------------------------------------------
     def retrieve_domain_info(self, text: str) -> List[dict]:
         return self.query(text, k=5)
 
-    def retrieve_api_docs(self, text: str, platforms: Sequence[str]) -> List[dict]:
+    def retrieve_api_docs(
+        self,
+        text: str,
+        platforms: Sequence[str],
+    ) -> List[dict]:
         if not platforms:
             return []
         return self.query(text, k=8, filter={"platform": {"$in": list(platforms)}})
 
+
+# ------------------------------------------------------------------------------
+# adapter that dynamic.py expects ----------------------------------------------
 class FunctionRetriever:
     def __init__(self, collection_name: str) -> None:
         self._inner = ChromaRetriever(collection_name=collection_name)
