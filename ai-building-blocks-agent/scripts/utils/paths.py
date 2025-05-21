@@ -1,17 +1,74 @@
-# file: ai-building-blocks-agent/scripts/utils/paths.py
 #!/usr/bin/env python3
+from __future__ import annotations
+################################################################################
+## AI-Building-Blocks-Agent/scripts/utils/paths.py
+## Copyright (c) 2025 Jeff Teeter
+## Cisco Systems, Inc.
+## Licensed under the Apache License, Version 2.0 (see LICENSE)
+## Distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND.
+################################################################################
+"""
+Path-handling helpers shared across layers.
+
+* ``ensure_abs_env(var, default_rel)``  
+  Makes sure *var* exists and is an **absolute** path, resolving any relative
+  value against the repo root (parent of ``ai-building-blocks-agent``).
+
+* ``get_chroma_root(layer_env: str, default_rel: str = "chroma_dbs")``  
+  Returns the absolute path for *this layer’s* Chroma collections, based solely
+  on the per-layer env-var (no more legacy ``CHROMA_DB_ROOT``).
+
+* ``get_dynamic_cache_dir()``  
+  Ensures and returns the directory pointed to by
+  ``PLATFORM_DYNAMIC_CACHE_PATH`` (or its default).
+"""
+
 from pathlib import Path
 import os
+from typing import Final
 
-def get_chroma_root() -> Path:
-    """
-    Resolve the folder that stores *this layer’s* Chroma collections.
-    1) Prefer CHROMA_DB_ROOT if set (for cross-layer sharing).
-    2) Fall back to FASTAPI_CHROMA_DB_PATH (legacy var you already have).
-    """
-    root = os.getenv("CHROMA_DB_ROOT")
-    if root:
-        return Path(root).expanduser().resolve()
+# ────────────────────────────────────────────────────────────────────────────
+REPO_ROOT: Final[Path] = Path(__file__).resolve().parents[2]  # ../../
 
-    layer_path = os.getenv("FASTAPI_CHROMA_DB_PATH", "./chroma_dbs/fastapi")
-    return Path(layer_path).expanduser().resolve()
+# ╔═════════════════════════════════════════════════════════════════════════╗
+# 1.  Generic helper
+# ╚═════════════════════════════════════════════════════════════════════════╝
+def ensure_abs_env(var: str, default_rel: str) -> Path:
+    raw = os.getenv(var, default_rel)
+    p   = Path(raw).expanduser()
+    if not p.is_absolute():
+        p = (REPO_ROOT / p).resolve()
+    os.environ[var] = str(p)
+    return p
+
+# ╔═════════════════════════════════════════════════════════════════════════╗
+# 2.  Chroma collections (per layer)
+# ╚═════════════════════════════════════════════════════════════════════════╝
+def get_chroma_root(layer_env: str, default_rel: str = "chroma_dbs") -> Path:
+    """
+    Resolve the folder that stores *layer-specific* Chroma collections.
+
+    Parameters
+    ----------
+    layer_env:
+        The env-var name, e.g. ``FASTAPI_CHROMA_DB_PATH``.
+    default_rel:
+        Fallback relative path (resolved under the repo root).
+
+    Returns
+    -------
+    pathlib.Path
+        Absolute path to the collection directory.
+    """
+    return ensure_abs_env(layer_env, default_rel)
+
+# ╔═════════════════════════════════════════════════════════════════════════╗
+# 3.  Platform-function dynamic cache
+# ╚═════════════════════════════════════════════════════════════════════════╝
+def get_dynamic_cache_dir() -> Path:
+    cache = ensure_abs_env(
+        "PLATFORM_DYNAMIC_CACHE_PATH",
+        "ai-building-blocks-agent/app/platform_dynamic_cache",
+    )
+    Path(cache).mkdir(parents=True, exist_ok=True)
+    return Path(cache)
