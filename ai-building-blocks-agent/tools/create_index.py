@@ -9,121 +9,122 @@ from __future__ import annotations
 ################################################################################
 
 """
-╭────────────────────── Platform Indexer (wizard) ───────────────────────╮
-│ Helps you run `scripts/index_functions.py` without remembering flags.  │
-│                                                                       │
-│  • Pick ONE platform               ── or ──   Index **ALL** platforms │
-│  • Handles PYTHONPATH for you so it works from any directory           │
-│  • Shows the exact command before running (⇧-C to copy if you like)    │
-╰────────────────────────────────────────────────────────────────────────╯
+╔════════════════════════ Platform Indexer Wizard ═════════════════════════════════╗
+║ A polished step-by-step CLI to run the index_functions script without the flags. ║
+║ Hover over links or type '?' at prompts for examples.                            ║
+║                                                                                  ║
+║ FEATURES                                                                          ║
+║   • Select a single platform or index ALL platforms                                ║
+║   • Automatically configures PYTHONPATH                                             ║
+║   • Shows the exact command in a copyable block                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════╝
 """
 
-# ── stdlib ────────────────────────────────────────────────────────────────
 import argparse
 import os
 import shlex
 import subprocess
 import sys
 from pathlib import Path
-from typing import List, Tuple
-# ── colour (optional) ─────────────────────────────────────────────────────
-try:
-    from colorama import Fore, Style, init as _cinit
+from typing import List, Optional, Tuple
 
-    _cinit()
-    BOLD = Style.BRIGHT
-    CYAN = Fore.CYAN + Style.BRIGHT
-    GREEN = Fore.GREEN + Style.BRIGHT
-    YELLOW = Fore.YELLOW
-    RED = Fore.RED + Style.BRIGHT
-    RESET = Style.RESET_ALL
-except ImportError:
-    BOLD = CYAN = GREEN = YELLOW = RED = RESET = ""
+from rich.console import Console
+from rich.panel import Panel
+from rich.prompt import Prompt
+from rich.table import Table
+from rich.markdown import Markdown
+from rich import box
+from rich.traceback import install
 
+install()
+console = Console()
 
-# ───────────────────────────── repo paths ─────────────────────────────────
-AGENT_ROOT = Path(__file__).resolve().parents[1]          # …/ai-building-blocks-agent
-LLM_DEF_DIR = AGENT_ROOT / "app" / "llm" / "function_definitions"
+# Paths and patterns
+AGENT_ROOT = Path(__file__).resolve().parents[1]
 INDEXER_SCRIPT = AGENT_ROOT / "scripts" / "index_functions.py"
+LLM_DEF_DIR = AGENT_ROOT / "app" / "llm" / "function_definitions"
 
-if str(AGENT_ROOT) not in sys.path:                       # for internal imports
-    sys.path.insert(0, str(AGENT_ROOT))
+# Helpers
 
-
-# ───────────────────────────── helpers ────────────────────────────────────
-def _clear() -> None:
+def clear_screen() -> None:
     if sys.stdout.isatty():
         os.system("cls" if os.name == "nt" else "clear")
 
 
-def _ask(prompt: str, default: str | None = None) -> str:
-    suffix = f" {YELLOW}[{default}]{RESET}" if default else ""
-    while True:
-        val = input(f"{BOLD}?{RESET} {prompt}{suffix}: ").strip()
-        if val:
-            return val
-        if default is not None:
-            return default
-        print(f"{RED}Please enter a value.{RESET}")
-
-
-def _list_platforms() -> List[Tuple[int, str]]:
-    plats = sorted(p.stem for p in LLM_DEF_DIR.glob("*.json"))
+def list_platforms() -> List[Tuple[int, str]]:
+    plats = sorted(fp.stem for fp in LLM_DEF_DIR.glob("*.json"))
     if not plats:
-        return []
-    print(f"\n{CYAN}Available platforms (diet JSONs found):{RESET}")
-    for idx, name in enumerate(plats, 1):
-        print(f"  {idx:>2}. {name}")
-    print("  0. All platforms\n")
+        console.print("[red]No platform JSON files found.[/red]")
+        sys.exit(1)
+    table = Table(box=box.SIMPLE_HEAVY)
+    table.add_column("#", style="bold cyan")
+    table.add_column("Platform")
+    for i, name in enumerate(plats, 1):
+        table.add_row(str(i), name)
+    table.add_row("0", "All platforms")
+    console.print(Panel(table, title="Step 1/3: Select Platform", border_style="cyan"))
     return list(enumerate(plats, 1))
 
 
-def _build_cmd(platform: str | None) -> List[str]:
-    if platform:
+def ask_choice(prompt: str, default: Optional[str] = None) -> str:
+    resp = Prompt.ask(f"[cyan]?[/cyan] [bold]{prompt}[/bold]", default=default)
+    return resp.strip()
+
+
+def build_command(platform: Optional[str]) -> List[str]:
+    if platform and platform.lower() != "all":
         return [sys.executable, str(INDEXER_SCRIPT), "--platform", platform]
     return [sys.executable, str(INDEXER_SCRIPT), "--all"]
 
+# Main
 
-# ───────────────────────────── wizard ─────────────────────────────────────
 def main() -> None:
-    _clear()
-    print(f"{GREEN}🛠  Platform Indexer (wizard){RESET}\n")
+    clear_screen()
+    console.print(Panel.fit("🛠 Welcome to the Platform Indexer Wizard", style="green"))
 
-    # --- list *.json files -------------------------------------------------
-    listing = _list_platforms()
-    if not listing:
-        print(f"{RED}No diet JSON files found in {LLM_DEF_DIR}{RESET}")
-        sys.exit(1)
-
-    choice = _ask("Choose by number, or 0 for ALL", "0")
-    platform = None
-    if choice != "0":
+    # Step 1: choose platform
+    listing = list_platforms()
+    choice = ask_choice("Enter number (0 for All)", "0")
+    platform: Optional[str]
+    if choice == "0":
+        platform = None
+    else:
         try:
             idx = int(choice)
             platform = next(name for n, name in listing if n == idx)
-        except (ValueError, StopIteration):
-            print(f"{RED}Invalid selection.{RESET}")
+        except Exception:
+            console.print("[red]Invalid selection. Exiting.[/red]")
             sys.exit(1)
+    console.print(f":white_check_mark: Selected [bold]{platform or 'All'}[/bold]\n")
 
-    # --- build command -----------------------------------------------------
-    cmd_parts = _build_cmd(platform)
+    # Step 2: preview command
+    cmd_parts = build_command(platform)
     cmd_str = " ".join(shlex.quote(p) for p in cmd_parts)
+    console.print(
+    Panel(
+        Markdown(
+            f"**Command to run**\n```bash\n{cmd_str}\n```"
+        ),
+        border_style="cyan",
+        title="Step 2/3: Preview Command"
+    )
+)
 
-    print(f"\n{CYAN}Command to run{RESET}\n  {cmd_str}\n")
-    if _ask("Proceed? (Y/n)", "Y").lower().startswith("n"):
-        print("Aborted.")
+    # Step 3: confirmation
+    proceed = ask_choice("Proceed with indexing? (Y/n)", "Y")
+    if proceed.lower().startswith("n"):
+        console.print("[yellow]Aborted by user.[/yellow]")
         return
 
-    # --- ensure repo on PYTHONPATH for child process -----------------------
+    # Execute
+    console.print(Panel.fit("🚀 Running indexer...", style="cyan"))
     env = os.environ.copy()
-    env["PYTHONPATH"] = f"{AGENT_ROOT}:{env.get('PYTHONPATH', '')}"
-
+    env["PYTHONPATH"] = f"{AGENT_ROOT}:{env.get('PYTHONPATH','')}"
     subprocess.run(cmd_parts, check=True, env=env)
-    print(f"\n{GREEN}✅  Indexing complete.{RESET}")
-
+    console.print(Panel.fit(":white_check_mark: Indexing complete!", style="green"))
 
 if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
-        print(f"\n{RED}Aborted by user.{RESET}")
+        console.print("\n[red]Interrupted by user.[/red]")

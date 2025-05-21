@@ -2,7 +2,7 @@
 # app/llm/function_definitions/__init__.py
 """
 Loads every *.json in this folder into FUNCTION_DEFINITIONS
-    { '<platform>': [{…}, …], … }
+    { '<platform>': [{…}, … ] , … }
 """
 from __future__ import annotations
 import json
