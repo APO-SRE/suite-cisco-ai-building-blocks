@@ -128,7 +128,7 @@ class ChromaIndexer(BaseIndexer):
         )
         self.collection = self.client.get_or_create_collection(self.collection_name)
         print(f"[ChromaIndexer] Collection ready – {self.collection.count()} vectors")
-        
+
     def create_index(self) -> None:          # ← add this method
         """
         Compatibility shim — the collection is fully initialised in __init__,
@@ -202,24 +202,31 @@ class PlatformFunctionIndexer(ChromaIndexer):
             return key, json.dumps(fn), meta, vec
 
         ids, docs, metas, vecs = [], [], [], []
-        with ThreadPoolExecutor(max_workers=CPU_WORKERS) as pool:
-            for key, doc, meta, vec in pool.map(_prep, diet_list):
-                ids.append(key)
-                docs.append(doc)
-                metas.append(meta)
-                vecs.append(vec)
+        from concurrent.futures import as_completed
 
+        with ThreadPoolExecutor(max_workers=CPU_WORKERS) as pool:
+                futures = [pool.submit(_prep, f) for f in diet_list]
+                for i, fut in enumerate(as_completed(futures), start=1):
+                    key, doc, meta, vec = fut.result()
+                    ids.append(key)
+                    docs.append(doc)
+                    metas.append(meta)
+                    vecs.append(vec)
+
+                    if i % 100 == 0 or i == total:
+                        print(f"   • processed {i}/{total}", flush=True)
+
+            # ── bulk upsert ────────────────────────────────────────────────
         print(f"[ChromaIndexer] Upserting {len(ids)} docs into '{self.collection_name}'")
         self.collection.upsert(
-            ids=ids,
-            documents=docs,
-            metadatas=metas,
-            embeddings=vecs,
-        )
+                ids=ids,
+                documents=docs,
+                metadatas=metas,
+                embeddings=vecs,
+            )
         print(
-            f"[ChromaIndexer] ✓ finished — {len(ids)} vectors written "
-            f"with {CPU_WORKERS} worker(s)",
-            flush=True,
-        )
-
-
+                f"[ChromaIndexer]  ✓ finished — {len(ids)} vectors written "
+                f"with {CPU_WORKERS} worker(s)",
+                flush=True,
+            )
+        
