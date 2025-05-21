@@ -61,6 +61,18 @@ def _safe_id(text: str) -> str:
     cleaned = SAFE_ID_CHARS.sub("_", text)
     return cleaned if len(cleaned) <= 500 else base64.urlsafe_b64encode(text.encode()).decode()[:500]
 
+def dedupe_ids(ids: list[str]) -> list[str]:
+    """Append a counter to any duplicate IDs to make them unique."""
+    seen: dict[str, int] = {}
+    out: list[str] = []
+    for _id in ids:
+        if _id not in seen:
+            seen[_id] = 0
+            out.append(_id)
+        else:
+            seen[_id] += 1
+            out.append(f"{_id}_{seen[_id]}")   # e.g. foo, foo_1, foo_2
+    return out
 
 # ───────────────────────────── once-per-process guard ──────────────────────
 _handled: set[str] = set()
@@ -225,12 +237,13 @@ class PlatformFunctionIndexer(ChromaIndexer):
 
         # ---------- bulk upsert ----------
         print(f"[ChromaIndexer] Upserting {len(ids)} docs into '{self.collection_name}'")
+        ids = dedupe_ids(ids)          # ← NEW
         self.collection.upsert(
             ids=ids,
             documents=docs,
             metadatas=metas,
             embeddings=vecs,
-        )
+)
         print(
             f"[ChromaIndexer]  ✓ finished — {len(ids)} vectors written "
             f"with {CPU_WORKERS} worker(s)",
