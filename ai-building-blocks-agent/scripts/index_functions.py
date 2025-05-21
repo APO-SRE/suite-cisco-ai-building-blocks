@@ -88,6 +88,7 @@ def index_one(platform: str) -> None:
                                "platform-summaries-index")
 
     indexer = Indexer(index_name=index_name, layer_name="FASTAPI")
+    print(f"→ indexing {platform} …", flush=True)
     indexer.index_functions(platform, diet_fns, full_spec)
     print(f"✓ {platform}: {len(diet_fns)} functions indexed via {BACKEND}")
 

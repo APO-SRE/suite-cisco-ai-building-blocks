@@ -23,7 +23,7 @@ Environment variables (layer-aware – replace <LAYER> with FASTAPI / DOMAIN / �
     # Embedding creds (Azure OpenAI)
     <LAYER>_AZURE_OPENAI_ENDPOINT
     <LAYER>_AZURE_OPENAI_KEY
-    <LAYER>_AZURE_EMBEDDING_DEPLOYMENT
+    <LAYER>_AZURE_OPENAI_EMBEDDING_DEPLOYMENT
 """
 
 import logging
@@ -79,7 +79,7 @@ class AzureSearchRetriever:
         # ------------------------------------------------------------------ #
         self.openai_endpoint = cfg("AZURE_OPENAI_ENDPOINT", layer=self.layer)
         self.openai_key = cfg("AZURE_OPENAI_KEY", layer=self.layer)
-        self.embedding_deployment = cfg("AZURE_EMBEDDING_DEPLOYMENT", layer=self.layer)
+        self.embedding_deployment = cfg("AZURE_OPENAI_EMBEDDING_DEPLOYMENT", layer=self.layer)
         self.openai_api_version = cfg(
             "AZURE_OPENAI_API_VERSION", layer=self.layer, default="2023-05-15"
         )
@@ -87,7 +87,7 @@ class AzureSearchRetriever:
         if not all((self.openai_endpoint, self.openai_key, self.embedding_deployment)):
             raise RuntimeError(
                 f"[{self.layer}] Missing Azure OpenAI embedding creds – "
-                "AZURE_OPENAI_ENDPOINT / AZURE_OPENAI_KEY / AZURE_EMBEDDING_DEPLOYMENT"
+                "AZURE_OPENAI_ENDPOINT / AZURE_OPENAI_KEY / AZURE_OPENAI_EMBEDDING_DEPLOYMENT"
             )
 
         # Misc
@@ -104,6 +104,11 @@ class AzureSearchRetriever:
     # Internal helpers
     # ------------------------------------------------------------------ #
     def _embed(self, text: str) -> List[float]:
+        body = {
+            "input": text,                 # single string is fine
+            "encoding_format": "float",    # <-- THE important line
+            # "dimensions": 1536           # only if you want to shorten vectors
+    }
         url = (
             f"{self.openai_endpoint}/openai/deployments/"
             f"{self.embedding_deployment}/embeddings"
@@ -112,9 +117,11 @@ class AzureSearchRetriever:
         resp = requests.post(
             url,
             headers={"api-key": self.openai_key, "Content-Type": "application/json"},
-            json={"input": [text]},
+            json=body,
             timeout=30,
         )
+        if resp.status_code >= 400:
+            print("Azure returned:", resp.text)   
         resp.raise_for_status()
         return resp.json()["data"][0]["embedding"]
 
