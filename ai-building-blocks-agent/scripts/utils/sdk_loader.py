@@ -17,6 +17,7 @@ Matching rules — in order of preference — are:
 1.  Class name ends with **DashboardAPI**        (e.g. ``DashboardAPI``)
 2.  Class name ends with **Client**              (e.g. ``MerakiClient``)
 3.  Class name ends with **API**                 (e.g. ``DNACenterAPI``)
+4.  Class name ends with **Session**             (e.g. ``ManagerSession``)
 
 The comparison is case-insensitive.  The first match encountered is returned.
 """
@@ -58,7 +59,7 @@ def load_client(module_name: str) -> Type[Any]:
             continue
 
         lower_name = attr.lower()
-        if lower_name.endswith("dashboardapi") or lower_name.endswith("client") or lower_name.endswith("api"):
+        if lower_name.endswith("dashboardapi") or lower_name.endswith("client") or lower_name.endswith("api") or lower_name.endswith("session"):
             return obj
 
     raise RuntimeError(f"No SDK client found in {module_name!r}")
