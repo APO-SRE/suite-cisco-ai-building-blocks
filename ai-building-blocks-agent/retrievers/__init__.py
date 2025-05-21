@@ -24,12 +24,51 @@ environments. You are solely responsible for any modifications or adaptations ma
 By using this code, you agree that you have read, understood, and accept these terms.
 """
 
-from .azure_search_retriever import AzureSearchRetriever
-from .chroma_retriever import ChromaRetriever
-from .elastic_retriever import ElasticRetriever
-from .null_retriever import NullRetriever
+from app.config import cfg
+
+
+# ════════════════════════════════════════════════════════════════════════
+# 1️⃣  Helper that every retriever can safely import
+# ════════════════════════════════════════════════════════════════════════
+def default_pool_size(layer: str, backend: str, *, fallback: int = 4) -> int:
+    """
+    Resolution order (highest-to-lowest):
+
+        <LAYER>_<BACKEND>_RETRIEVER_WORKERS
+        <LAYER>_RETRIEVER_WORKERS
+        RETRIEVER_WORKERS
+        fallback (default 4)
+    """
+    layer_uc   = layer.upper()
+    backend_uc = backend.upper()
+
+    # first: layer+backend specific
+    val = cfg(f"{backend_uc}_RETRIEVER_WORKERS", layer=layer_uc, cast=int, default=None)
+    if val is not None:
+        return val
+
+    # second: layer-wide
+    val = cfg("RETRIEVER_WORKERS", layer=layer_uc, cast=int, default=None)
+    if val is not None:
+        return val
+
+    # third: global
+    val = cfg("RETRIEVER_WORKERS", cast=int, default=fallback)
+    return val
+
+
+# ════════════════════════════════════════════════════════════════════════
+# 2️⃣  Now import the retriever implementations
+#     (they are free to `from retrievers import default_pool_size`)
+# ════════════════════════════════════════════════════════════════════════
+from .azure_search_retriever import AzureSearchRetriever   # noqa: E402
+from .chroma_retriever       import ChromaRetriever        # noqa: E402
+from .elastic_retriever      import ElasticRetriever       # noqa: E402
+from .null_retriever         import NullRetriever          # noqa: E402
+
 
 __all__ = [
+    "default_pool_size",
     "AzureSearchRetriever",
     "ChromaRetriever",
     "ElasticRetriever",

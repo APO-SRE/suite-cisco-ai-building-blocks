@@ -33,7 +33,8 @@ from typing import Dict, List, Optional
 import requests
 
 from app.config import cfg
-
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from retrievers import default_pool_size 
 _logger = logging.getLogger(__name__)
 
 
@@ -99,6 +100,13 @@ class AzureSearchRetriever:
             if top_k is not None
             else cfg("AZURE_TOP_K", layer=self.layer, cast=int, default=5)
         )
+        # ────────────── concurrent-embed pool size ────────────────
+        self.pool_size = default_pool_size(self.layer, "azure", fallback=4)
+        # One informative line at construction time
+        print(
+            f"[{self.layer}/AzureRetriever]  ⚙  embed-workers = {self.pool_size}",
+            flush=True,
+        )
 
     # ------------------------------------------------------------------ #
     # Internal helpers
@@ -144,6 +152,17 @@ class AzureSearchRetriever:
             if exc.response is not None:
                 _logger.error("Response text: %s", exc.response.text)
             return []
+        
+    def _embed_many(self, queries: list[str]) -> list[list[float]]:
+        """
+        Parallel embeds with `self.pool_size` workers.
+        """
+        with ThreadPoolExecutor(max_workers=self.pool_size) as pool:
+            futs = {pool.submit(self._embed, q): i for i, q in enumerate(queries)}
+            vecs = [None] * len(queries)                         # pre-allocate
+            for fut in as_completed(futs):
+                vecs[futs[fut]] = fut.result()
+        return vecs
 
     # ------------------------------------------------------------------ #
     # Public retrieval methods
