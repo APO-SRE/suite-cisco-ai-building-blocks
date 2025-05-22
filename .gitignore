@@ -69,7 +69,13 @@ chroma_dbs/
 # --------------------------------------------------------------------------------
 # MISCELLANEOUS
 # --------------------------------------------------------------------------------
-teeter_tools
+ 
 
 # But explicitly DO NOT ignore '.env.sample'
 !.env.sample
+
+# ignore all generated SDK packages
+/ai-building-blocks-database/output_sdk/
+
+# ignore any ai-building-blocks-*.json files
+/ai-building-blocks-database/ai-building-blocks-*.json

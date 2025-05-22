@@ -16,3 +16,4 @@ dependencies = [
 [project.scripts]
 create-platform = "tools.create_platform:main"
 create-index = "tools.create_index:main"
+create-sdk      = "tools.create_sdk:main"
