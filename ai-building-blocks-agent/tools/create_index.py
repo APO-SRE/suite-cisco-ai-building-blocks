@@ -61,8 +61,7 @@ def list_platforms() -> List[Tuple[int, str]]:
     table.add_column("Platform")
     for i, name in enumerate(plats, 1):
         table.add_row(str(i), name)
-    table.add_row("0", "All platforms")
-    console.print(Panel(table, title="Step 1/3: Select Platform", border_style="cyan"))
+    console.print(Panel(table, title="Step 1/3: Select Platform (or type 'all')", border_style="cyan"))
     return list(enumerate(plats, 1))
 
 
@@ -72,7 +71,7 @@ def ask_choice(prompt: str, default: Optional[str] = None) -> str:
 
 
 def build_command(platform: Optional[str]) -> List[str]:
-    if platform and platform.lower() != "all":
+    if platform:
         return [sys.executable, str(INDEXER_SCRIPT), "--platform", platform]
     return [sys.executable, str(INDEXER_SCRIPT), "--all"]
 
@@ -84,9 +83,8 @@ def main() -> None:
 
     # Step 1: choose platform
     listing = list_platforms()
-    choice = ask_choice("Enter number (0 for All)", "0")
-    platform: Optional[str]
-    if choice == "0":
+    choice = ask_choice("Enter number or 'all' to index all", "all")
+    if choice.lower() == "all":
         platform = None
     else:
         try:
@@ -101,14 +99,12 @@ def main() -> None:
     cmd_parts = build_command(platform)
     cmd_str = " ".join(shlex.quote(p) for p in cmd_parts)
     console.print(
-    Panel(
-        Markdown(
-            f"**Command to run**\n```bash\n{cmd_str}\n```"
-        ),
-        border_style="cyan",
-        title="Step 2/3: Preview Command"
+        Panel(
+            Markdown(f"**Command to run**\n```bash\n{cmd_str}\n```"),
+            border_style="cyan",
+            title="Step 2/3: Preview Command"
+        )
     )
-)
 
     # Step 3: confirmation
     proceed = ask_choice("Proceed with indexing? (Y/n)", "Y")

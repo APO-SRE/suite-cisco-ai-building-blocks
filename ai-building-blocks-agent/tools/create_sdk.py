@@ -18,6 +18,7 @@ from __future__ import annotations
 ║   • For each spec, optionally rename the SDK folder (defaults to stem)    ║
 ║   • Shows the exact openapi-python-client commands in a copyable block    ║
 ║   • At the end, lists the contents of the output_sdk directory           ║
+║   • Updates app/llm/sdk_list.json with any new SDK names                 ║
 ╚═══════════════════════════════════════════════════════════════════════════╝
 """
 
@@ -25,6 +26,7 @@ import os
 import sys
 import shlex
 import subprocess
+import json
 from pathlib import Path
 from typing import List, Dict
 
@@ -45,6 +47,7 @@ AGENT_ROOT = Path(__file__).resolve().parents[1]
 DB_ROOT = AGENT_ROOT.parent / "ai-building-blocks-database"
 SOURCE_DIR = DB_ROOT / "source_open_api"
 OUTPUT_BASE_DIR = DB_ROOT / "output_sdk"
+SDK_LIST_FILE = AGENT_ROOT / "app" / "llm" / "sdk_list.json"
 
 
 def clear_screen() -> None:
@@ -162,6 +165,23 @@ def main() -> None:
             branch.add(child.name)
     console.print(tree)
 
+    # Update sdk_list.json with new SDK names
+    try:
+        existing = json.loads(SDK_LIST_FILE.read_text(encoding="utf-8"))
+    except Exception:
+        existing = []
+    added: List[str] = []
+    for sdk_name in mapping.values():
+        if sdk_name not in existing:
+            existing.append(sdk_name)
+            added.append(sdk_name)
+    if added:
+        try:
+            SDK_LIST_FILE.parent.mkdir(parents=True, exist_ok=True)
+            SDK_LIST_FILE.write_text(json.dumps(existing, indent=2), encoding="utf-8")
+            console.print(f"[green]Added to SDK list: {', '.join(added)}[/green]")
+        except Exception as e:
+            console.print(f"[red]Failed to update SDK list: {e}[/red]")
 
 if __name__ == "__main__":
     try:
