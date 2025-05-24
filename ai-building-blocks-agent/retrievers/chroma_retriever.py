@@ -144,14 +144,7 @@ class ChromaRetriever:
     def retrieve_domain_info(self, text: str) -> List[dict]:
         return self.query(text, k=5)
 
-    def retrieve_api_docs(
-        self,
-        text: str,
-        platforms: Sequence[str],
-    ) -> List[dict]:
-        if not platforms:
-            return []
-        return self.query(text, k=8, filter={"platform": {"$in": list(platforms)}})
+
 
 
 # ------------------------------------------------------------------------------

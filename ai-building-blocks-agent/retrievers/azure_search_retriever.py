@@ -237,29 +237,6 @@ class AzureSearchRetriever:
 
  
 
-    def retrieve_api_docs(self, query: str, platforms: Optional[List[str]] = None) -> List[Dict]:
-        if not self.api_docs_index:
-            return []
-        vec = self._embed(query)
-        payload = {
-            "search": query,
-            "queryType": "semantic",
-            "semanticConfiguration": "api-docs-semantic-config",
-            "top": self.top_k,
-            "vectorQueries": [
-                {
-                    "kind": "vector",
-                    "fields": self.vector_field,
-                    "vector": vec,
-                    "k": self.top_k,
-                }
-            ],
-            "select": "title,content,platform,doc_type",
-        }
-        if platforms:
-            payload["filter"] = " or ".join([f"platform eq '{p}'" for p in platforms])
-        return self._query(self.api_docs_index, payload)
-
     def retrieve_event_info(self, query: str, event_type: Optional[str] = None) -> List[Dict]:
         if not self.events_index:
             return []

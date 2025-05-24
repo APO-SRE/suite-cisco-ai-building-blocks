@@ -34,12 +34,14 @@ browser → /chat (FastAPI) ─▶ build_functions_for_llm
                                ─▶ LLM #2
 browser ←──────────────────────────────────────────────
 
-
+ 
+This module defines both the interactive chat endpoint and the Webex webhook
+handler, unified behind the same core logic. Unchanged: your index.html-based
+chat interface.
 """
 
 import json, logging, os, time, re, requests
 from contextlib import contextmanager
-from pathlib import Path
 from typing import Any, Dict, List, Sequence
 
 from dotenv import load_dotenv
@@ -58,7 +60,6 @@ from app.llm.dynamic import build_functions_for_llm
 from app.llm.function_dispatcher import dispatch_function_call
 from app.llm.prompt_templates import (
     BASE_SYSTEM_PROMPT_DOCS_ONLY,
-    BASE_SYSTEM_PROMPT_GENERAL,
     BASE_SYSTEM_PROMPT_EVENT,
     BASE_SYSTEM_PROMPT_LOB as BASE_SYSTEM_PROMPT_DOMAIN,
     USER_PROMPT_TEMPLATE,
@@ -66,7 +67,7 @@ from app.llm.prompt_templates import (
 )
 from retrievers.chroma_retriever import FunctionRetriever
 from app.routers._domain_keywords import DOMAIN_KEYWORDS_MAP
-from app.main import request_latency  # prometheus histogram (already exists)
+from app.main import request_latency  # prometheus histogram
 
 # ──────────────────────────────── env / logging / tracing
 load_dotenv()
@@ -91,67 +92,90 @@ def timer(label: str):
     if TIMING:
         log.debug("timing", phase=label, sec=round(time.perf_counter() - t0, 3))
 
-# ──────────────────────────────── Pydantic request model
+# ──────────────────────────────── Pydantic models
 class ChatRequest(BaseModel):
     message: str
     domain_index: str | None = None
 
-# ──────────────────────────────── global singletons
+# ──────────────────────────────── globals
 func_retriever = FunctionRetriever(collection_name="function-definitions-index")
-platforms = enabled_platforms()  # e.g. ["meraki", "catalyst"]
+platforms = enabled_platforms()
 router = APIRouter(tags=["chat"])
 
 # ──────────────────────────────── Webex webhook endpoint
 @router.post("/webex/webhook")
 async def webex_webhook(req: Request):
     """
-    1) Parse the incoming Webex payload
-    2) Forward `data.text` to your LLM
-    3) Post the LLM answer back into the same Webex room
+    1) Extract message ID and room ID
+    2) Fetch full message text
+    3) Ignore messages sent by this bot (loop-prevention)
+    4) Delegate into `chat_endpoint` for retrieval + function dispatch
+    5) Post the result back to Webex
     """
     payload = await req.json()
     log.info("[WEBEX] Received payload", payload=payload)
 
-    # 1️⃣ Validate & extract
+    # 1️⃣ Extract IDs
     try:
-        user_query = payload["data"]["text"]
+        message_id = payload["data"]["id"]
         room_id    = payload["data"]["roomId"]
     except KeyError:
-        raise HTTPException(status_code=400, detail="Invalid Webex payload")
+        raise HTTPException(400, "Invalid Webex payload")
 
-    # 2️⃣ Run through your existing LLM client
-    from app.llm.llm_factory import get_llm
-    llm_client = get_llm("FASTAPI")
-    llm_resp   = await llm_client.chat([{"role": "user", "content": user_query}])
-
-    # Normalize to string
-    if isinstance(llm_resp, dict):
-        answer = llm_resp.get("content", "")
-    else:
-        answer = llm_resp
-
-    # 3️⃣ Post response back to Webex
+    # 2️⃣ Fetch message text
     webex_token = os.getenv("WEBEX_BOT_TOKEN")
     if not webex_token:
-        log.error("Missing WEBEX_BOT_TOKEN in environment")
-        raise HTTPException(status_code=500, detail="Server misconfiguration")
+        raise HTTPException(500, "Missing WEBEX_BOT_TOKEN")
 
-    headers = {
-        "Authorization": f"Bearer {webex_token}",
-        "Content-Type":  "application/json"
-    }
-    resp = requests.post(
+    msg_resp = requests.get(
+        f"https://webexapis.com/v1/messages/{message_id}",
+        headers={"Authorization": f"Bearer {webex_token}"}
+    )
+    if msg_resp.status_code != 200:
+        raise HTTPException(400, f"Failed to fetch message: {msg_resp.status_code}")
+
+    msg_json    = msg_resp.json()
+    user_query  = msg_json.get("text", "").strip()
+    sender_email = msg_json.get("personEmail", "").lower()
+
+    # 3️⃣ Loop-prevention: fetch actual bot email (override any bad ENV)
+    me_resp = requests.get(
+        "https://webexapis.com/v1/people/me",
+        headers={"Authorization": f"Bearer {webex_token}"}
+    )
+    if me_resp.status_code == 200:
+        me_json   = me_resp.json()
+        bot_email = me_json.get("emails", [""])[0].lower()
+    else:
+        bot_email = os.getenv("WEBEX_BOT_EMAIL", "").lower()
+
+    if sender_email == bot_email:
+        log.info("Ignored self-triggered message from bot")
+        return JSONResponse({"status": "ignored"})
+
+    # 4️⃣ Delegate: reuse main chat flow (retrieval + functions)
+    chat_req = ChatRequest(message=user_query)
+    result   = await chat_endpoint(chat_req, req)
+    answer   = result.get("response", "")
+
+    # 5️⃣ Post reply to Webex
+    post_resp = requests.post(
         "https://webexapis.com/v1/messages",
-        headers=headers,
+        headers={
+            "Authorization": f"Bearer {webex_token}",
+            "Content-Type":  "application/json"
+        },
         json={"roomId": room_id, "markdown": answer}
     )
     try:
-        resp.raise_for_status()
-    except Exception as e:
-        log.error("Webex API error", status=resp.status_code, text=resp.text)
-        raise HTTPException(status_code=502, detail="Failed to deliver message to Webex")
+        post_resp.raise_for_status()
+    except Exception:
+        log.error("Webex API error", status=post_resp.status_code, text=post_resp.text)
+        raise HTTPException(502, "Failed to deliver message to Webex")
 
     return JSONResponse({"status": "sent"})
+
+ 
 
 # ──────────────────────────────── message‑assembly helpers
 
@@ -160,7 +184,7 @@ def _assemble_docs_messages(user_input:str, docs:Sequence[Dict[str,Any]], *, gen
         docs_str = "\n\n".join(d.get("content", "") for d in docs)
         sys_prompt = f"{BASE_SYSTEM_PROMPT_DOCS_ONLY}\n\nDocuments:\n{docs_str}"
     else:
-        sys_prompt = BASE_SYSTEM_PROMPT_GENERAL if general else BASE_SYSTEM_PROMPT_DOCS_ONLY
+        sys_prompt = BASE_SYSTEM_PROMPT_DOCS_ONLY
     user_prompt = USER_PROMPT_TEMPLATE.format(user_query=user_input)
     return [
         {"role": "system", "content": sys_prompt},
@@ -208,8 +232,8 @@ async def chat_endpoint(req: ChatRequest, request: Request):
 
             llm: LLMClientBase = get_llm()
             functions: list[dict] = []
-            messages: list[dict] = [  # baseline system+user msgs
-                {"role": "system", "content": BASE_SYSTEM_PROMPT_GENERAL},
+            messages: list[dict] = [
+                {"role": "system", "content": BASE_SYSTEM_PROMPT_DOCS_ONLY},
                 {"role": "user", "content": USER_PROMPT_TEMPLATE.format(user_query=prompt)},
             ]
 
@@ -241,11 +265,7 @@ async def chat_endpoint(req: ChatRequest, request: Request):
                 else:  # general
                     docs        = retriever.retrieve_domain_info(prompt)
                     rspan.set_attribute("type", "general")
-                    use_general = not cfg("AZURE_SEARCH_ENABLE_IN_DOMAIN", cast=bool, default=True)
-                    if use_general and hasattr(retriever, "retrieve_api_docs"):
-                        plts = [d.get("platform", "") for d in docs]
-                        docs = retriever.retrieve_api_docs(prompt, plts)
-                    messages = _assemble_docs_messages(prompt, docs, general=use_general)
+                    use_general = False
 
             span.set_attribute("docs", len(docs))
 
