@@ -37,7 +37,7 @@ browser ←───────────────────────
 
 """
 
-import json, logging, os, time, re
+import json, logging, os, time, re, requests
 from contextlib import contextmanager
 from pathlib import Path
 from typing import Any, Dict, List, Sequence
@@ -100,6 +100,58 @@ class ChatRequest(BaseModel):
 func_retriever = FunctionRetriever(collection_name="function-definitions-index")
 platforms = enabled_platforms()  # e.g. ["meraki", "catalyst"]
 router = APIRouter(tags=["chat"])
+
+# ──────────────────────────────── Webex webhook endpoint
+@router.post("/webex/webhook")
+async def webex_webhook(req: Request):
+    """
+    1) Parse the incoming Webex payload
+    2) Forward `data.text` to your LLM
+    3) Post the LLM answer back into the same Webex room
+    """
+    payload = await req.json()
+    log.info("[WEBEX] Received payload", payload=payload)
+
+    # 1️⃣ Validate & extract
+    try:
+        user_query = payload["data"]["text"]
+        room_id    = payload["data"]["roomId"]
+    except KeyError:
+        raise HTTPException(status_code=400, detail="Invalid Webex payload")
+
+    # 2️⃣ Run through your existing LLM client
+    from app.llm.llm_factory import get_llm
+    llm_client = get_llm("FASTAPI")
+    llm_resp   = await llm_client.chat([{"role": "user", "content": user_query}])
+
+    # Normalize to string
+    if isinstance(llm_resp, dict):
+        answer = llm_resp.get("content", "")
+    else:
+        answer = llm_resp
+
+    # 3️⃣ Post response back to Webex
+    webex_token = os.getenv("WEBEX_BOT_TOKEN")
+    if not webex_token:
+        log.error("Missing WEBEX_BOT_TOKEN in environment")
+        raise HTTPException(status_code=500, detail="Server misconfiguration")
+
+    headers = {
+        "Authorization": f"Bearer {webex_token}",
+        "Content-Type":  "application/json"
+    }
+    resp = requests.post(
+        "https://webexapis.com/v1/messages",
+        headers=headers,
+        json={"roomId": room_id, "markdown": answer}
+    )
+    try:
+        resp.raise_for_status()
+    except Exception as e:
+        log.error("Webex API error", status=resp.status_code, text=resp.text)
+        raise HTTPException(status_code=502, detail="Failed to deliver message to Webex")
+
+    return JSONResponse({"status": "sent"})
 
 # ──────────────────────────────── message‑assembly helpers
 
