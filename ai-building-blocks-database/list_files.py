@@ -26,7 +26,7 @@ def build_manifest(root: Path):
             "static":                 ["*.html"],
             "tools":                  ["*.py"],
         }
-        outname = f"ai-building-agent-{today}.json"
+        outname = f"ai-building-blocks-agent-{today}.json"
 
     elif proj == "ai-building-blocks-database":
         config = {
