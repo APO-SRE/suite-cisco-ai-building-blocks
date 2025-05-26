@@ -1,0 +1,38 @@
+# tempo.yaml
+target: all
+multitenancy_enabled: false
+auth_enabled: false
+
+server:
+  http_listen_port: 4318
+  grpc_listen_port: 4317
+
+distributor:
+  receivers:
+    otlp:
+      protocols:
+        http:
+          endpoint: 0.0.0.0:4319
+        grpc:
+          endpoint: 0.0.0.0:4320
+
+metrics_generator:
+  ring:
+    kvstore:
+      store: memberlist
+  processor:
+    service_graphs: {}
+    span_metrics: {}
+  storage:
+    path: /var/tempo/metrics-generator/wal
+
+storage:
+  trace:
+    backend: local
+    local:
+      path: /var/tempo/traces
+
+overrides:
+  defaults:
+    metrics_generator:
+      processors: [service-graphs, span-metrics]
