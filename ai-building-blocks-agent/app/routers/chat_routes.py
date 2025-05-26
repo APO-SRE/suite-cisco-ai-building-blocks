@@ -24,7 +24,6 @@ environments. You are solely responsible for any modifications or adaptations ma
 
 By using this code, you agree that you have read, understood, and accept these terms.
 """
-
 import json
 import logging
 import os
@@ -36,7 +35,7 @@ from typing import Any, Dict, List, Sequence
 
 from dotenv import load_dotenv
 from fastapi import APIRouter, HTTPException, Request
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, Response
 from opentelemetry import trace
 from opentelemetry.trace import Tracer
 import structlog
@@ -123,7 +122,6 @@ def _assemble_domain_messages(user_input: str, docs: Sequence[Dict[str, Any]]) -
         {"role": "user",   "content": user_prompt},
     ]
 
-
 # ──────────────────────────────── Pydantic models
 class ChatRequest(BaseModel):
     message: str
@@ -137,24 +135,15 @@ router = APIRouter(tags=["chat"])
 # ──────────────────────────────── Webex webhook endpoint
 @router.post("/webex/webhook")
 async def webex_webhook(req: Request):
-    """
-    1) Extract message ID and room ID
-    2) Fetch full message text
-    3) Ignore messages sent by this bot (loop-prevention)
-    4) Delegate into `handle_chat` for retrieval + function dispatch
-    5) Post the result back to Webex
-    """
     payload = await req.json()
     log.info("[WEBEX] Received payload", payload=payload)
 
-    # 1️⃣ Extract IDs
     try:
         message_id = payload["data"]["id"]
         room_id    = payload["data"]["roomId"]
     except KeyError:
         raise HTTPException(400, "Invalid Webex payload")
 
-    # 2️⃣ Fetch message text
     webex_token = os.getenv("WEBEX_BOT_TOKEN")
     if not webex_token:
         raise HTTPException(500, "Missing WEBEX_BOT_TOKEN")
@@ -170,7 +159,6 @@ async def webex_webhook(req: Request):
     user_query   = msg_json.get("text", "").strip()
     sender_email = msg_json.get("personEmail", "").lower()
 
-    # 3️⃣ Loop-prevention: fetch actual bot email
     me_resp = requests.get(
         "https://webexapis.com/v1/people/me",
         headers={"Authorization": f"Bearer {webex_token}"}
@@ -182,23 +170,20 @@ async def webex_webhook(req: Request):
 
     if sender_email == bot_email:
         log.info("Ignored self-triggered message from bot")
-        return JSONResponse({"status": "ignored"})
+        return Response(status_code=204)      # no body, no Content-Length mismatch
+        #return JSONResponse(status_code=204, content=None)
 
-    # 4️⃣ Delegate under a single span
     chat_req = ChatRequest(message=user_query)
     with tracer.start_as_current_span("chat-workflow"):
         result = await handle_chat(chat_req, req)
 
-    answer = result.get("response", "")
-
-    # 5️⃣ Post reply to Webex
     post_resp = requests.post(
         "https://webexapis.com/v1/messages",
         headers={
             "Authorization": f"Bearer {webex_token}",
             "Content-Type":  "application/json"
         },
-        json={"roomId": room_id, "markdown": answer}
+        json={"roomId": room_id, "markdown": result.get("response", "")}
     )
     try:
         post_resp.raise_for_status()
@@ -210,58 +195,68 @@ async def webex_webhook(req: Request):
 
 # ──────────────────────────────── Shared business logic
 async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
-    """
-    Core retrieval → dispatch → LLM workflow, collapsed under one span.
-    Returns a dict with at least 'response' for the caller to consume.
-    """
     prompt = req.message
     llm: LLMClientBase = get_llm()
-    functions: List[dict] = []
-    messages: List[dict] = [
-        {"role": "system", "content": BASE_SYSTEM_PROMPT_DOCS_ONLY},
-        {"role": "user",   "content": USER_PROMPT_TEMPLATE.format(user_query=prompt)},
-    ]
 
-    # ── 1️⃣ Retrieve docs or domain/event data
-    if hasattr(request.app.state, "retriever"):
-        retriever = request.app.state.retriever
-    else:
-        from retrievers.null_retriever import NullRetriever
-        retriever = NullRetriever()
+    # 1️⃣ Retrieve docs or domain/event data
+    with tracer.start_as_current_span("retriever") as rspan:
+        if hasattr(request.app.state, "retriever"):
+            retriever = request.app.state.retriever
+        else:
+            from retrievers.null_retriever import NullRetriever
+            retriever = NullRetriever()
 
-    lower      = prompt.lower()
-    is_event   = "event" in lower
-    domain_idx = (req.domain_index or getattr(retriever, "domain_index", "")).lower()
-    is_domain  = domain_idx in DOMAIN_KEYWORDS_MAP and any(
-        kw in lower for kw in DOMAIN_KEYWORDS_MAP[domain_idx]
-    )
+        lower      = prompt.lower()
+        is_event   = "event" in lower
+        domain_idx = (req.domain_index or getattr(retriever, "domain_index", "")).lower()
+        is_domain  = domain_idx in DOMAIN_KEYWORDS_MAP and any(
+            kw in lower for kw in DOMAIN_KEYWORDS_MAP[domain_idx]
+        )
 
-    if is_event and hasattr(retriever, "retrieve_event_info"):
-        docs     = retriever.retrieve_event_info(prompt)
-        messages = _assemble_event_messages(prompt, docs)
-    elif is_domain and hasattr(retriever, "retrieve_domain_info"):
-        docs     = retriever.retrieve_domain_info(prompt)
-        messages = _assemble_domain_messages(prompt, docs)
-    else:
-        docs = retriever.retrieve_domain_info(prompt)
+        if is_event and hasattr(retriever, "retrieve_event_info"):
+            docs     = retriever.retrieve_event_info(prompt)
+            messages = _assemble_event_messages(prompt, docs)
+            rspan.set_attribute("type", "event")
 
-    # ── 2️⃣ Build candidate functions
-    if VECTOR_BACKEND == "chroma":
-        raw_hits = func_retriever.query(prompt, k=500, filter={"platform": {"$in": platforms}})
-        hits     = sorted(raw_hits, key=lambda x: x.get("distance", 1.0))[:128]
-        for h in hits:
-            try:
-                schema = json.loads(h["content"])
-                for ps in schema.get("parameters", {}).get("properties", {}).values():
-                    if ps.get("type") == "array" and "items" not in ps:
-                        ps["items"] = {"type": "string"}
-                functions.append(schema)
-            except Exception as exc:
-                log.warning("bad_schema", name=h.get("name"), err=str(exc))
-    else:
-        functions = build_functions_for_llm(prompt, platforms)
-    # ── 3️⃣ First LLM call ────────────────────────────
-    with tracer.start_as_current_span("llm#1") as span:
+        elif is_domain and hasattr(retriever, "retrieve_domain_info"):
+            docs     = retriever.retrieve_domain_info(prompt)
+            messages = _assemble_domain_messages(prompt, docs)
+            rspan.set_attribute("type", "domain")
+
+        else:
+            docs = retriever.retrieve_domain_info(prompt)
+            messages = [
+                {"role": "system", "content": BASE_SYSTEM_PROMPT_DOCS_ONLY},
+                {"role": "user",   "content": USER_PROMPT_TEMPLATE.format(user_query=prompt)},
+            ]
+            rspan.set_attribute("type", "general")
+
+        rspan.set_attribute("docs", len(docs))
+
+    # 2️⃣ Build candidate functions
+    with tracer.start_as_current_span("build.functions") as bfspan:
+        functions: List[dict] = []
+        if VECTOR_BACKEND == "chroma":
+            raw_hits = func_retriever.query(
+                prompt, k=500, filter={"platform": {"$in": platforms}}
+            )
+            hits = sorted(raw_hits, key=lambda x: x.get("distance", 1.0))[:128]
+            for h in hits:
+                try:
+                    schema = json.loads(h["content"])
+                    for ps in schema.get("parameters", {}).get("properties", {}).values():
+                        if ps.get("type") == "array" and "items" not in ps:
+                            ps["items"] = {"type": "string"}
+                    functions.append(schema)
+                except Exception as exc:
+                    log.warning("bad_schema", name=h.get("name"), err=str(exc))
+        else:
+            functions = build_functions_for_llm(prompt, platforms)
+
+        bfspan.set_attribute("candidate.functions", len(functions))
+
+    # 3️⃣ First LLM call
+    with tracer.start_as_current_span("llm#1") as l1span:
         try:
             if functions:
                 messages[0]["content"] = FUNCTIONS_LLM_PROMPT
@@ -271,7 +266,6 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
             else:
                 llm_resp = await llm.chat(messages)
 
-            # normalize to dict
             if isinstance(llm_resp, str):
                 llm_resp = {"content": llm_resp}
 
@@ -279,10 +273,7 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
             log.exception("llm_error", exc=str(exc))
             raise HTTPException(status_code=500, detail=f"LLM backend failure: {exc}")
 
-        # extract function_call if provided
         fc = llm_resp.get("function_call") or {}
-
-        # recover if model put the JSON in .content
         if not fc and isinstance(llm_resp.get("content"), str):
             try:
                 candidate = json.loads(llm_resp["content"])
@@ -292,55 +283,64 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
             except Exception:
                 pass
 
-        # record how many choices were returned
-        span.set_attribute("llm.choices", len(llm_resp.get("choices", [])))
+        l1span.set_attribute("llm.choices", len(llm_resp.get("choices", [])))
 
-
-    # ── 4️⃣ If no function_call → return text
+    # 4️⃣ If no function_call → return text
     if not fc:
         return {"role": "assistant", "label": "Cisco AI", "response": llm_resp.get("content", "I don't know.")}
 
+    # normalize function name + args
     fname = fc["name"].removeprefix("functions.")
     fargs = fc.get("arguments", {})
     if isinstance(fargs, str):
         fargs = json.loads(fargs)
 
-    # ── 5️⃣ dispatch + SDK
-    try:
-        result = dispatch_function_call(fname, fargs)
-    except Exception as exc:
-        msg = str(exc)
-        if "Meraki API services are available" in msg:
-            user_msg = (
-                "It looks like your Meraki organization does not have valid licenses "
-                "to use the Meraki API. Please check your license status or contact Meraki support."
-            )
-        else:
-            user_msg = f"Sorry, I couldn't complete '{fname}': {msg}"
-        return {"role": "assistant", "label": "Cisco AI", "response": user_msg}
+    # 5️⃣ dispatch + SDK
+    with tracer.start_as_current_span(f"dispatch.{fname}") as dspan:
+        try:
+            result = dispatch_function_call(fname, fargs)
+        except Exception as exc:
+            log.exception("dispatcher_error", name=fname, err=str(exc))
+            msg = str(exc)
+            if "Meraki API services are available" in msg:
+                user_msg = (
+                    "It looks like your Meraki organization does not have valid licenses "
+                    "to use the Meraki API. Please check your license status or contact Meraki support."
+                )
+            else:
+                user_msg = f"Sorry, I couldn't complete '{fname}': {msg}"
+            return {"role": "assistant", "label": "Cisco AI", "response": user_msg}
 
-    # ── 6️⃣ Second LLM call to turn JSON → NL answer
-    if isinstance(fc.get("arguments"), dict):
-        fc["arguments"] = json.dumps(fc["arguments"])
-    follow_up = [
-        *messages,
-        {"role": "assistant", "content": None, "function_call": fc},
-        {"role": "function",  "name": fname, "content": json.dumps(result)},
-    ]
-    follow_up[0]["content"] = (
-        "You are a helpful Cisco AI assistant. "
-        "Use the data returned by the function to answer the user's question "
-        "in plain language. Do **NOT** output JSON."
-    )
-    final = await llm.chat(follow_up)
+        dspan.set_attribute("function.name", fname)
+        dspan.set_attribute("result.size", len(str(result)))
+
+    # 6️⃣ Second LLM call to turn JSON → NL answer
+    with tracer.start_as_current_span("llm#2") as l2span:
+        if isinstance(fc.get("arguments"), dict):
+            fc["arguments"] = json.dumps(fc["arguments"])
+
+        follow_up = [
+            *messages,
+            {"role": "assistant", "content": None, "function_call": fc},
+            {"role": "function",  "name": fname, "content": json.dumps(result)},
+        ]
+        follow_up[0]["content"] = (
+            "You are a helpful Cisco AI assistant. "
+            "Use the data returned by the function to answer the user's question "
+            "in plain language. Do **NOT** output JSON."
+        )
+        final = await llm.chat(follow_up)
+
     if isinstance(final, str):
         final = {"content": final}
+    l2span.set_attribute("llm.final_length", len(final.get("content", "")))
 
     return {
         "role": "assistant",
         "label": "Cisco AI",
         "response": final.get("content") or json.dumps(result, indent=2),
     }
+
 # ──────────────────────────────── HTTP‐only wrapper
 @router.post("")
 @router.post("/", include_in_schema=False)

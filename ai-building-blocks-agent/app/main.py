@@ -33,12 +33,14 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from prometheus_client import Histogram, generate_latest
 from opentelemetry import trace
-from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
+#from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.resources import Resource
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 from app.config import cfg
-
+from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
+from opentelemetry.instrumentation.requests import RequestsInstrumentor
+from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
 # -------- structured logging ---------
 structlog.configure(
     wrapper_class=structlog.make_filtering_bound_logger(logging.INFO),
@@ -93,21 +95,30 @@ def metrics() -> Response:
     return Response(generate_latest(), media_type="text/plain")
 
 # ---------- OpenTelemetry ------------
-if os.getenv("OTEL_EXPORTER_OTLP_ENDPOINT", "http://localhost:4317"):
-    tp = TracerProvider(resource=Resource.create({"service.name": "ai-agent"}))
-    tp.add_span_processor(
-        BatchSpanProcessor(OTLPSpanExporter())
-    )
-    trace.set_tracer_provider(tp)
+ 
 
-tracer = trace.get_tracer(__name__)
+OTLP_ENDPOINT = os.getenv("OTEL_EXPORTER_OTLP_ENDPOINT", "http://localhost:4319/v1/traces")
+SERVICE_NAME   = os.getenv("OTEL_SERVICE_NAME", "ai-building-blocks-agent")
 
-# FastAPI / requests auto-instrument
-from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
-from opentelemetry.instrumentation.requests import RequestsInstrumentor
-# later, right after `app = FastAPI()`:
-FastAPIInstrumentor().instrument_app(app)
-RequestsInstrumentor().instrument()
+resource = Resource(attributes={"service.name": SERVICE_NAME})
+tracer_provider = TracerProvider(resource=resource)
+
+otlp_exporter = OTLPSpanExporter(endpoint=OTLP_ENDPOINT)
+span_processor = BatchSpanProcessor(otlp_exporter)
+tracer_provider.add_span_processor(span_processor)
+
+trace.set_tracer_provider(tracer_provider)
+
+# Explicitly instrument FastAPI with correct span kind and attributes
+FastAPIInstrumentor.instrument_app(
+    app,
+    tracer_provider=tracer_provider,
+    server_request_hook=lambda span, scope: span.set_attribute("span.kind", "server")
+)
+
+RequestsInstrumentor().instrument(tracer_provider=tracer_provider)
+
+
 # ───────────────────────────────────────────────────────────────────────
 
 
