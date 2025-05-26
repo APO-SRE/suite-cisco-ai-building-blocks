@@ -79,3 +79,7 @@ chroma_dbs/
 
 # ignore any ai-building-blocks-*.json files
 /ai-building-blocks-database/ai-building-blocks-*.json
+
+# ignore local monitoring temp files
+tempo.yaml
+prometheus.yml
