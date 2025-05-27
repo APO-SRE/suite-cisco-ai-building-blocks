@@ -14,12 +14,13 @@ from __future__ import annotations
 ║ Hover over links or type '?' at prompts for examples.                     ║
 ║                                                                           ║
 ║ FEATURES                                                                  ║
-║   • Select a single spec or generate for ALL specs                        ║
-║   • For each spec, optionally rename the SDK folder (defaults to stem)    ║
-║   • Shows the exact openapi-python-client commands in a copyable block    ║
-║   • At the end, lists the contents of the output_sdk directory            ║
-║   • Updates app/llm/sdk_map.json with any new SDK names                  ║
-║   • Displays import snippet for each newly generated SDK                 ║
+║   • Select a single spec                                                 ║
+║   • Option to exit without generating                                     ║
+║   • Rename the SDK folder (defaults to spec stem)                         ║
+║   • Shows the openapi-python-client command in a copyable block           ║
+║   • Lists existing SDKs at startup                                        ║
+║   • Updates app/llm/sdk_map.json with any new SDKs                        ║
+║   • Displays install instruction and import snippet                       ║
 ╚═══════════════════════════════════════════════════════════════════════════╝
 """
 
@@ -35,25 +36,31 @@ from rich.console import Console
 from rich.panel import Panel
 from rich.prompt import Prompt
 from rich.table import Table
-from rich.markdown import Markdown
 from rich.tree import Tree
+from rich.markdown import Markdown
 from rich import box
 from rich.traceback import install
 
 install()
 console = Console()
 
-# Locate dirs
-AGENT_ROOT = Path(__file__).resolve().parents[1]
-DB_ROOT = AGENT_ROOT.parent / "ai-building-blocks-database"
-SOURCE_DIR = DB_ROOT / "source_open_api"
+# Locate paths
+AGENT_ROOT      = Path(__file__).resolve().parents[1]
+DB_ROOT         = AGENT_ROOT.parent / "ai-building-blocks-database"
+SOURCE_DIR      = DB_ROOT / "source_open_api"
 OUTPUT_BASE_DIR = DB_ROOT / "output_sdk"
-SDK_MAP_FILE = AGENT_ROOT / "app" / "llm" / "sdk_map.json"
+SDK_MAP_FILE    = AGENT_ROOT / "app" / "llm" / "sdk_map.json"
 
 
 def clear_screen() -> None:
     if sys.stdout.isatty():
         os.system("cls" if os.name == "nt" else "clear")
+
+
+def list_existing_sdks() -> List[str]:
+    if not OUTPUT_BASE_DIR.exists():
+        return []
+    return sorted(p.name for p in OUTPUT_BASE_DIR.iterdir() if p.is_dir())
 
 
 def list_specs() -> List[Path]:
@@ -64,14 +71,6 @@ def list_specs() -> List[Path]:
     if not specs:
         console.print(f"[red]No OpenAPI files found in {SOURCE_DIR}[/red]")
         sys.exit(1)
-
-    table = Table(box=box.SIMPLE_HEAVY)
-    table.add_column("#", style="bold cyan")
-    table.add_column("Spec file")
-    for i, p in enumerate(specs, 1):
-        table.add_row(str(i), p.name)
-    table.add_row("0", "All specs")
-    console.print(Panel(table, title="Step 1/4: Select OpenAPI Spec", border_style="cyan"))
     return specs
 
 
@@ -79,83 +78,77 @@ def ask_choice(prompt: str, default: str) -> str:
     return Prompt.ask(f"[cyan]?[/cyan] [bold]{prompt}[/bold]", default=default).strip()
 
 
-def build_commands(mapping: Dict[Path, str]) -> List[List[str]]:
-    cmds: List[List[str]] = []
-    for spec, sdk_name in mapping.items():
-        dest = OUTPUT_BASE_DIR / sdk_name
-        dest.mkdir(parents=True, exist_ok=True)
-        cmd = [
-            "openapi-python-client", "generate",
-            "--path", str(SOURCE_DIR / spec.name),
-            "--output-path", str(dest),
-            "--meta", "poetry",
-            "--overwrite",
-        ]
-        cmds.append(cmd)
-    return cmds
+def build_command(spec: Path, sdk_name: str) -> List[str]:
+    dest = OUTPUT_BASE_DIR / sdk_name
+    dest.mkdir(parents=True, exist_ok=True)
+    return [
+        "openapi-python-client", "generate",
+        "--path", str(spec),
+        "--output-path", str(dest),
+        "--meta", "poetry",
+        "--overwrite",
+    ]
 
 
 def main() -> None:
     clear_screen()
     console.print(Panel.fit("🚀 OpenAPI SDK Generation Wizard", style="green"))
 
-    # Step 1: choose spec(s)
+    # -- show existing SDKs
+    existing = list_existing_sdks()
+    console.print(Panel(
+        ", ".join(existing) if existing else "(none)",
+        title="Existing SDKs in output_sdk/",
+        border_style="magenta"
+    ))
+
+    # -- step 1: pick spec or exit
     specs = list_specs()
-    choice = ask_choice(f"Enter number [0-{len(specs)}]", "0")
-    if choice == "0":
-        selected = specs
-        label = "All specs"
-    else:
-        try:
-            idx = int(choice)
-            selected = [specs[idx - 1]]
-            label = specs[idx - 1].name
-        except Exception:
-            console.print("[red]Invalid selection. Exiting.[/red]")
-            sys.exit(1)
-    console.print(f":white_check_mark: Selected [bold]{label}[/bold]\n")
+    table = Table(box=box.SIMPLE_HEAVY)
+    table.add_column("#", style="bold cyan")
+    table.add_column("Spec file")
+    for i, p in enumerate(specs, 1):
+        table.add_row(str(i), p.name)
+    exit_idx = len(specs) + 1
+    table.add_row(str(exit_idx), "Exit")
+    console.print(Panel(table, title="Step 1/4: Select OpenAPI Spec", border_style="cyan"))
 
-    # Step 2: optionally rename each SDK folder
-    mapping: Dict[Path, str] = {}
-    console.print(Panel.fit("🔧 Step 2/4: Name Your SDK Folders", border_style="cyan"))
-    for spec in selected:
-        default_name = spec.stem
-        sdk_name = ask_choice(f"SDK folder name for '{spec.name}'", default_name)
-        mapping[spec] = sdk_name
-    console.print(":white_check_mark: Names set\n")
+    choice = ask_choice(f"Enter number [1-{exit_idx}]", "")
+    if choice.isdigit() and int(choice) == exit_idx:
+        console.print("[green]Exiting…[/green]")
+        sys.exit(0)
+    if not (choice.isdigit() and 1 <= (idx := int(choice)) <= len(specs)):
+        console.print("[red]Invalid selection. Exiting.[/red]")
+        sys.exit(1)
+    spec = specs[idx - 1]
+    console.print(f":white_check_mark: Selected [bold]{spec.name}[/bold]\n")
 
-    # Step 3: preview commands
-    cmds = build_commands(mapping)
-    md_blocks = "\n".join(
-        "```bash\n" + " ".join(shlex.quote(p) for p in cmd) + "\n```"
-        for cmd in cmds
-    )
-    console.print(
-        Panel(
-            Markdown(f"**Commands to run**\n{md_blocks}"),
-            title="Step 3/4: Preview Commands",
-            border_style="cyan",
-        )
-    )
+    # -- step 2: choose folder name
+    console.print(Panel.fit("🔧 Step 2/4: Name Your SDK Folder", border_style="cyan"))
+    default_name = spec.stem
+    sdk_name = ask_choice(f"SDK folder name for '{spec.name}'", default_name)
+    console.print(":white_check_mark: Name set\n")
 
-    proceed = ask_choice("Proceed with SDK generation? (Y/n)", "Y")
-    if proceed.lower().startswith("n"):
+    # -- step 3: preview
+    cmd = build_command(spec, sdk_name)
+    console.print(Panel(
+        Markdown(f"**Command to run**\n```bash {' '.join(shlex.quote(p) for p in cmd)} ```"),
+        title="Step 3/4: Preview Command",
+        border_style="cyan"
+    ))
+    if ask_choice("Proceed with SDK generation? (Y/n)", "Y").lower().startswith("n"):
         console.print("[yellow]Aborted by user.[/yellow]")
         return
 
-    # Step 4: execute
-    console.print(Panel.fit("🛠 Generating SDK(s)...", style="cyan"))
-    for cmd in cmds:
-        console.print(f"> [bold]{' '.join(shlex.quote(p) for p in cmd)}[/bold]")
-        result = subprocess.run(cmd)
-        if result.returncode != 0:
-            console.print(f"[red]Failed for {cmd[-2]}[/red]")
-        else:
-            console.print(f"[green]Success for {cmd[-2]}[/green]")
+    # -- step 4: run
+    console.print(Panel.fit("🛠 Generating SDK…", style="cyan"))
+    result = subprocess.run(cmd)
+    if result.returncode != 0:
+        console.print(f"[red]Generation failed for {spec.name}[/red]")
+        sys.exit(1)
+    console.print(f"[green]Success for {spec.name} → {sdk_name}[/green]\n")
 
-    console.print(Panel.fit(":white_check_mark: Generation complete!", style="green"))
-
-    # Final: list contents of output_sdk
+    # -- show tree
     console.print(Panel.fit("📂 Contents of output_sdk/", style="cyan"))
     tree = Tree(f"[bold]{OUTPUT_BASE_DIR.name}[/bold]")
     for sdk_dir in sorted(OUTPUT_BASE_DIR.iterdir()):
@@ -166,27 +159,32 @@ def main() -> None:
             branch.add(child.name)
     console.print(tree)
 
-    # Update sdk_map.json with new SDK names and show import snippet
+    # -- detect actual package directory for import and mapping
+    pkg_dir = next(
+        (d.name for d in (OUTPUT_BASE_DIR / sdk_name).iterdir()
+         if d.is_dir() and (d / "__init__.py").exists()),
+        sdk_name
+    )
+
+    # -- update sdk_map.json
     try:
         sdk_map: Dict[str, str] = json.loads(SDK_MAP_FILE.read_text(encoding="utf-8"))
     except Exception:
         sdk_map = {}
-    added: List[str] = []
-    for sdk_name in mapping.values():
-        if sdk_name not in sdk_map:
-            sdk_map[sdk_name] = sdk_name
-            added.append(sdk_name)
-    if added:
-        try:
-            SDK_MAP_FILE.parent.mkdir(parents=True, exist_ok=True)
-            SDK_MAP_FILE.write_text(json.dumps(sdk_map, indent=2), encoding="utf-8")
-            console.print(f"[green]Added to SDK map: {', '.join(added)}[/green]")
-            # Show import snippet
-            console.print(Panel.fit("👉 Usage in your Python code:", style="cyan"))
-            for name in added:
-                console.print(Markdown(f"```python import {name}```"))
-        except Exception as e:
-            console.print(f"[red]Failed to update SDK map: {e}[/red]")
+    if sdk_name not in sdk_map:
+        sdk_map[sdk_name] = pkg_dir
+        SDK_MAP_FILE.parent.mkdir(parents=True, exist_ok=True)
+        SDK_MAP_FILE.write_text(json.dumps(sdk_map, indent=2), encoding="utf-8")
+        console.print(f"[green]Added to SDK map: {sdk_name} → {pkg_dir}[/green]")
+
+    # -- show install instructions
+    console.print(Panel.fit("📦 Install into your environment:", style="cyan"))
+    abs_dest = (OUTPUT_BASE_DIR / sdk_name).resolve()
+    console.print(Markdown(f"```bash pip install -e {abs_dest} ```"))
+
+    # -- usage snippet
+    console.print(Panel.fit("👉 Usage in your Python code:", style="cyan"))
+    console.print(Markdown(f"```python import {pkg_dir} ```"))
 
 if __name__ == "__main__":
     try:

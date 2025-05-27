@@ -16,6 +16,7 @@ from __future__ import annotations
 ║ OPTIONS                                                                        ║
 ║   • All   → delete all platform artifacts.                                     ║
 ║   • One   → remove a single platform's artifacts.                              ║
+║   • Exit  → quit without making changes.                                       ║
 ╚═══════════════════════════════════════════════════════════════════════════════╝
 """
 
@@ -60,13 +61,14 @@ def get_platforms() -> list[str]:
 
 
 def display_platforms(platforms: list[str]) -> None:
-    """Show numbered list of platforms and an All option."""
+    """Show numbered list of platforms plus All and Exit options."""
     table = Table(box=box.SIMPLE)
     table.add_column("#", style="bold cyan", no_wrap=True)
     table.add_column("Platform")
     for idx, name in enumerate(platforms, start=1):
         table.add_row(str(idx), name)
     table.add_row(str(len(platforms) + 1), "All")
+    table.add_row(str(len(platforms) + 2), "Exit")
     console.print(Panel(table, title="Select Platform to Reset", border_style="green"))
 
 
@@ -86,12 +88,17 @@ def main() -> None:
         return
 
     display_platforms(platforms)
-    choice = Prompt.ask(f"Enter choice [1-{len(platforms)+1}]")
+    choice = Prompt.ask(f"Enter choice [1-{len(platforms)+2}]")
     try:
         sel = int(choice)
     except ValueError:
         console.print(f"[red]Invalid selection: {choice}[/red]")
         sys.exit(1)
+
+    # Exit option
+    if sel == len(platforms) + 2:
+        console.print("[cyan]Exiting without changes.[/cyan]")
+        sys.exit(0)
 
     # Option: All platforms
     if sel == len(platforms) + 1:
@@ -147,6 +154,7 @@ def main() -> None:
 
     console.print(f"[red]Selection out of range: {sel}[/red]")
     sys.exit(1)
+
 
 if __name__ == "__main__":
     try:
