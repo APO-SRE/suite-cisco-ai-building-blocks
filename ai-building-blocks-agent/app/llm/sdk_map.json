@@ -1,0 +1,5 @@
+{
+  "catalyst": "dnacentersdk.session",
+  "meraki": "meraki",
+   "sdwan": "catalystwan"
+}

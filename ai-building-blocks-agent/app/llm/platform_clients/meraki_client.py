@@ -1,3 +1,5 @@
+# app/llm/platform_clients/meraki_client.py
+# Auto-generated – DO NOT EDIT
 import meraki as _sdk
 import os
 
@@ -8,18 +10,8 @@ class MerakiClient:
         api_key = os.getenv('CISCO_MERAKI_API_KEY')
         if not api_key:
             raise ValueError('Missing CISCO_MERAKI_API_KEY environment variable')
-        # always use the right key
         kwargs['api_key'] = api_key
-
-        # ─── Disable the SDK’s file & console logging ───────────────────────────
-        # no meraki_api_log_*.log files
-        kwargs.setdefault('output_log', False)
-        # no console spamming
-        kwargs.setdefault('print_console', False)
-        # completely mute any SDK logger handlers
-        kwargs.setdefault('suppress_logging', True)
-        # ────────────────────────────────────────────────────────────────────────
-
+        
         self._sdk = _sdk.DashboardAPI(**kwargs)
 
     def __getattr__(self, item):

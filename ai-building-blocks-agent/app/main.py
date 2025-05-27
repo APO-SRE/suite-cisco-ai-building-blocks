@@ -23,6 +23,8 @@ environments. You are solely responsible for any modifications or adaptations ma
 
 By using this code, you agree that you have read, understood, and accept these terms.
 """
+from dotenv import load_dotenv
+load_dotenv()
 import logging, structlog, os
 from pathlib import Path
 from typing import Annotated, Any
@@ -97,7 +99,7 @@ def metrics() -> Response:
 # ---------- OpenTelemetry ------------
  
 
-OTLP_ENDPOINT = os.getenv("OTEL_EXPORTER_OTLP_ENDPOINT", "http://localhost:4319/v1/traces")
+OTLP_ENDPOINT = os.getenv("OTEL_EXPORTER_OTLP_ENDPOINT", "http://localhost:4319")
 SERVICE_NAME   = os.getenv("OTEL_SERVICE_NAME", "ai-building-blocks-agent")
 
 resource = Resource(attributes={"service.name": SERVICE_NAME})
