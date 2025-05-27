@@ -204,7 +204,7 @@ class AzureIndexer(BaseIndexer):
                 ),
                 SearchableField(
                     name="platform", type=SearchFieldDataType.String,
-                    filterable=True, searchable=True
+                    filterable=True, searchable=True, facetable=True
                 ),
                 SearchableField(
                     name="name", type=SearchFieldDataType.String,

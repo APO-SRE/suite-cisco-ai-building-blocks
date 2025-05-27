@@ -1,0 +1,36 @@
+server:
+  # main HTTP (query, metrics) and gRPC ports
+  http_listen_port: 4318
+  grpc_listen_port: 4317
+
+  log_level: debug
+  log_format: logfmt
+
+  # force‐log *every* HTTP request on the query/metrics server
+  http_server_settings:
+    log_requests: true
+
+distributor:
+  receivers:
+    otlp:
+      protocols:
+        http:
+          endpoint: 0.0.0.0:4319
+          # force‐log *every* OTLP-HTTP span post
+          http_server_settings:
+            log_requests: true
+        grpc:
+          endpoint: 0.0.0.0:4320
+
+ingester:
+  lifecycler:
+    ring:
+      kvstore:
+        store: memberlist
+      replication_factor: 1
+
+storage:
+  trace:
+    backend: local
+    local:
+      path: /var/tempo/traces
