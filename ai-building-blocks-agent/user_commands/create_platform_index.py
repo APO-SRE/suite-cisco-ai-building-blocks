@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-#################################################################################################
+################################################################################
 ## suite-cisco-ai-building-blocks/ai-building-blocks-agent/user_commands/create_platform_index.py
 ## Copyright (c) 2025 Jeff Teeter
 ## Cisco Systems, Inc.
 ## Licensed under the Apache License, Version 2.0 (see LICENSE)
 ## Distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND.
-#################################################################################################
+################################################################################
 
 """
 ╔════════════════════════ Platform Indexer Wizard ═════════════════════════════════╗
@@ -32,7 +32,6 @@ import json
 from pathlib import Path
 from typing import List, Optional
 
-from requests.exceptions import HTTPError
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -98,7 +97,6 @@ def azure_list_platforms() -> List[str]:
     if not idx or not endpoint or not key:
         return []
 
-    # Use unquoted index name in path and correct facet syntax
     url = f"{endpoint}/indexes/{idx}/docs/search?api-version={api_ver}"
     payload = {
         "search": "*",
@@ -116,11 +114,8 @@ def azure_list_platforms() -> List[str]:
         resp.raise_for_status()
         facets = resp.json().get("@search.facets", {}).get("platform", [])
         return sorted(f["value"] for f in facets if f.get("value"))
-    except HTTPError as e:
-        console.print(f"[yellow]Warning: could not fetch Azure platforms (HTTP {e.response.status_code}): {e.response.text}[/yellow]")
-        return []
-    except Exception as e:
-        console.print(f"[yellow]Warning: could not fetch Azure platforms: {e}[/yellow]")
+    except Exception:
+        # silently ignore any errors fetching Azure platforms
         return []
 
 
@@ -155,12 +150,11 @@ def main() -> None:
             col = os.getenv("FASTAPI_ELASTIC_PLATFORM_INDEX", "")
             if col:
                 collections.append(col)
-                # TODO: implement elastic_list_platforms(...) similar to azure
-                indexed = []
+                indexed = []  # no elastic support yet
 
         coll_txt = ", ".join(collections) if collections else "(none)"
         idx_txt = ", ".join(indexed) if indexed else "(none)"
-        style = "bright_cyan" if is_active else "magenta"
+        style = "yellow" if is_active else "magenta"
         console.print(
             Panel(
                 f"[magenta]{coll_txt}[/magenta]\n\n[yellow]Platforms indexed:[/yellow] {idx_txt}",

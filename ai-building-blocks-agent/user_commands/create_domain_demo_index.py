@@ -7,8 +7,6 @@ from __future__ import annotations
 ## Licensed under the Apache License, Version 2.0 (see LICENSE)
 ## Distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND.
 #####################################################################################################
-#!/usr/bin/env python3
-
 
 """
 ╔═════════════════════════ Domain Demo Indexer Wizard ═════════════════════════╗
@@ -71,7 +69,13 @@ def main() -> None:
         table.add_row(str(idx), name)
     console.print(Panel(table, title="Select Demo Domain to Index", border_style="cyan"))
 
-    choice = Prompt.ask(f"Enter number [1-{len(domains)}]")
+    # prompt with exit option
+    prompt_str = f"Enter number [1-{len(domains)}] or 'exit' to quit"
+    choice = Prompt.ask(prompt_str).strip()
+    if choice.lower() == 'exit':
+        console.print("[cyan]Exiting without indexing.[/cyan]")
+        sys.exit(0)
+
     try:
         idx = int(choice)
         folder = domains[idx - 1]

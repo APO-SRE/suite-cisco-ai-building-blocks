@@ -1,5 +1,6 @@
 {
   "catalyst": "dnacentersdk.session",
   "meraki": "meraki",
-   "sdwan": "catalystwan"
+  "sdwan": "catalystwan",
+  "hyperfabric": "cisco_nexus_hyperfabric_rest_api_client"
 }
