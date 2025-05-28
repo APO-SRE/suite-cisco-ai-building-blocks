@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 ################################################################################
-## ai-building-blocks-agent/retrievers/null_retriever.py
+## src/app/retrievers/null_retriever.py
 ## Copyright (c) 2025 Jeff Teeter
 ## Cisco Systems, Inc.
 ## Licensed under the Apache License, Version 2.0 (see LICENSE)

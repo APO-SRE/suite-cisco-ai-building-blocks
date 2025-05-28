@@ -40,7 +40,7 @@ AGENT_ROOT = Path(__file__).resolve().parents[1]
 if str(AGENT_ROOT) not in sys.path:
     sys.path.insert(0, str(AGENT_ROOT))
 
-from retrievers.azure_search_retriever import AzureSearchRetriever
+from app.retrievers.azure_search_retriever import AzureSearchRetriever
 
 from rich.console import Console
 from rich.panel import Panel

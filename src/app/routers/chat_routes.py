@@ -53,7 +53,7 @@ from app.llm.prompt_templates import (
     USER_PROMPT_TEMPLATE,
     FUNCTIONS_LLM_PROMPT,
 )
-from retrievers.chroma_retriever import FunctionRetriever
+from app.retrievers.chroma_retriever import FunctionRetriever
 from app.routers._domain_keywords import DOMAIN_KEYWORDS_MAP
 from app.main import request_latency  # prometheus histogram
 
@@ -218,7 +218,7 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
         if hasattr(request.app.state, "retriever"):
             retriever = request.app.state.retriever
         else:
-            from retrievers.null_retriever import NullRetriever
+            from app.retrievers.null_retriever import NullRetriever
             retriever = NullRetriever()
 
         lower      = prompt.lower()
