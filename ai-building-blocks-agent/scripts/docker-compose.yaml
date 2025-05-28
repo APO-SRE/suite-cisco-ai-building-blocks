@@ -3,7 +3,7 @@ services:
     build: .
     container_name: fastapi-app
     ports:
-      - "8000:8000"
+      - "8001:8000"
     environment:
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://tempo:4318
       - OTEL_SERVICE_NAME=fastapi-app
