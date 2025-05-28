@@ -23,33 +23,31 @@ import json
 from pathlib import Path
 
 
-def main() -> None:
-    # --- locate all the relevant directories --------------------------------
-    script_dir      = Path(__file__).resolve().parent
-    db_root         = script_dir.parent                          # .../ai-building-blocks-database
-    source_dir      = db_root / "source_open_api"
-    output_base_dir = db_root / "output_sdk"
+PROJECT_ROOT     = Path(__file__).resolve().parents[2]
+SOURCE_DIR       = PROJECT_ROOT / "src" / "db_scripts" / "source_open_api"
+OUTPUT_BASE_DIR  = PROJECT_ROOT / "src" / "db_scripts" / "output_sdk"
+SDK_MAP_FILE     = PROJECT_ROOT / "src" / "app" / "llm" / "sdk_map.json"
 
-    # the agent’s sdk_map.json lives alongside user_commands in the ai-building-blocks-agent tree
-    agent_root      = db_root.parent / "ai-building-blocks-agent"
-    sdk_map_file    = agent_root / "app" / "llm" / "sdk_map.json"
+def main() -> None:
+   # ensure our output dir exists
+    OUTPUT_BASE_DIR.mkdir(parents=True, exist_ok=True)
 
     # ensure our output dir exists
-    output_base_dir.mkdir(parents=True, exist_ok=True)
+    OUTPUT_BASE_DIR.mkdir(parents=True, exist_ok=True)
 
     # load or initialize SDK map
-    if sdk_map_file.exists():
-        sdk_map = json.loads(sdk_map_file.read_text(encoding="utf-8"))
+    if SDK_MAP_FILE.exists():
+        sdk_map = json.loads(SDK_MAP_FILE.read_text(encoding="utf-8"))
     else:
         sdk_map = {}
 
     # --- gather all OpenAPI files -------------------------------------------
     openapi_files = sorted(
-        p for p in source_dir.iterdir()
+        p for p in SOURCE_DIR.iterdir()
         if p.is_file() and p.suffix.lower() in {".json", ".yaml", ".yml"}
     )
     if not openapi_files:
-        print(f"No OpenAPI files found in {source_dir}", file=sys.stderr)
+        print(f"No OpenAPI files found in {SOURCE_DIR}", file=sys.stderr)
         sys.exit(1)
 
     # --- user picks one or all -----------------------------------------------
@@ -78,7 +76,7 @@ def main() -> None:
         user_input   = input(f"Enter SDK folder name [{default_name}]: ").strip()
         sdk_name     = user_input or default_name
 
-        dest_dir = output_base_dir / sdk_name
+        dest_dir = OUTPUT_BASE_DIR / sdk_name
         dest_dir.mkdir(parents=True, exist_ok=True)
 
         print(f"\n🔧 Generating SDK for '{spec.name}' → '{dest_dir}'")
@@ -110,14 +108,14 @@ def main() -> None:
 
     # --- persist any changes to sdk_map.json --------------------------------
     if added_mappings:
-        sdk_map_file.parent.mkdir(parents=True, exist_ok=True)
-        sdk_map_file.write_text(json.dumps(sdk_map, indent=2), encoding="utf-8")
+        SDK_MAP_FILE.parent.mkdir(parents=True, exist_ok=True)
+        SDK_MAP_FILE.write_text(json.dumps(sdk_map, indent=2), encoding="utf-8")
         print("\n🗺️  Updated SDK map with:")
         for mapping in added_mappings:
             print(f"  {mapping}")
 
     print("\nAll done. Your SDKs live under:")
-    print(f"  {output_base_dir}")
+    print(f"  {OUTPUT_BASE_DIR}")
 
 
 if __name__ == "__main__":

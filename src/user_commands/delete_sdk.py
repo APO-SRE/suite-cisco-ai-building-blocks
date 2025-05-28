@@ -39,10 +39,10 @@ install()
 console = Console()
 
 # Paths
-AGENT_ROOT      = Path(__file__).resolve().parents[1]
-DB_ROOT         = AGENT_ROOT.parent / "ai-building-blocks-database"
-OUTPUT_BASE_DIR = DB_ROOT / "output_sdk"
-SDK_MAP_FILE    = AGENT_ROOT / "app" / "llm" / "sdk_map.json"
+PROJECT_ROOT     = Path(__file__).resolve().parents[2]
+SOURCE_DIR       = PROJECT_ROOT / "src" / "db_scripts" / "source_open_api"
+OUTPUT_BASE_DIR  = PROJECT_ROOT / "src" / "db_scripts" / "output_sdk"
+SDK_MAP_FILE     = PROJECT_ROOT / "src" / "app" / "llm" / "sdk_map.json"
 
 
 def clear_screen() -> None:

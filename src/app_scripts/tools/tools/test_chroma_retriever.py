@@ -47,7 +47,7 @@ if str(REPO_ROOT) not in sys.path:
 from scripts.utils.paths import ensure_abs_env
 ensure_abs_env("FASTAPI_CHROMA_DB_PATH", "chroma_dbs/fastapi")
 
-from retrievers.chroma_retriever import FunctionRetriever
+from app.retrievers.chroma_retriever import FunctionRetriever
 
 
 def print_results(results: list[dict]) -> None:

@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 from __future__ import annotations
 ################################################################################
-# ai-building-blocks-agent/retrievers/azure_search_retriever.py
+# src/app/retrievers/azure_search_retriever.py
 # Copyright (c) 2025 Jeff Teeter, Ph.D. – Cisco Systems, Inc.
 # Apache-2.0  (see LICENSE) – Provided “AS IS”, no warranties.
 ################################################################################

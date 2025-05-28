@@ -55,13 +55,13 @@ log = structlog.get_logger("ai-agent")
 
 # ── Optional retrievers import ─────────────────────────────────
 try:
-    from retrievers.chroma_retriever import ChromaRetriever
+    from app.retrievers.chroma_retriever import ChromaRetriever
 except ImportError as exc:
     ChromaRetriever = None
     logging.warning("Chroma retriever unavailable – %s", exc)
 
 try:
-    from retrievers.azure_search_retriever import AzureSearchRetriever
+    from app.retrievers.azure_search_retriever import AzureSearchRetriever
 except ImportError as exc:
     AzureSearchRetriever = None
     logging.warning("Azure Search retriever unavailable – %s", exc)
@@ -142,7 +142,7 @@ async def _startup() -> None:
 
     if not cfg("VECTOR_ENABLED", layer=layer, cast=bool, default=True):
         logger.warning("%s: VECTOR layer disabled – using NullRetriever.", layer)
-        from retrievers.null_retriever import NullRetriever
+        from app.retrievers.null_retriever import NullRetriever
         app.state.retriever = NullRetriever()
         return
 
