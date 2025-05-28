@@ -60,6 +60,8 @@ Thumbs.db
 .idea/
 .vscode/
 *.code-workspace
+# ignore our one-off manifest fetch script
+fetch_manifests.py
 
 # --------------------------------------------------------------------------------
 # DATABASES
