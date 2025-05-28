@@ -15,7 +15,7 @@ dependencies = [
 
 [project.scripts]
 create-platform                = "user_commands.create_platform:main"
-create-platform-index          = "user_commands.create_index:main"
+create-platform-index          = "user_commands.create_platform_index:main"
 create-sdk                     = "user_commands.create_sdk:main"
 reset-platform                 = "user_commands.reset_platform:main"
 create-domain-demo-index       = "user_commands.create_domain_demo_index:main"
