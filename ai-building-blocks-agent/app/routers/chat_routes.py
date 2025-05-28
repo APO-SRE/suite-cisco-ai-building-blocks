@@ -123,7 +123,6 @@ def _assemble_domain_messages(user_input: str, docs: Sequence[Dict[str, Any]]) -
         {"role": "user",   "content": user_prompt},
     ]
 
-
 # ──────────────────────────────── Pydantic models
 class ChatRequest(BaseModel):
     message: str
@@ -134,19 +133,27 @@ func_retriever = FunctionRetriever(collection_name="function-definitions-index")
 platforms = enabled_platforms()
 router = APIRouter(tags=["chat"])
 
-
 # ──────────────────────────────── Webex webhook endpoint
 @router.post("/webex/webhook")
 async def webex_webhook(req: Request):
+    """
+    1) Extract message ID and room ID
+    2) Fetch full message text
+    3) Ignore messages sent by this bot (loop-prevention)
+    4) Delegate into `handle_chat` for retrieval + function dispatch
+    5) Post the result back to Webex
+    """
     payload = await req.json()
     log.info("[WEBEX] Received payload", payload=payload)
 
+    #1️⃣ Extract IDs
     try:
         message_id = payload["data"]["id"]
         room_id    = payload["data"]["roomId"]
     except KeyError:
         raise HTTPException(400, "Invalid Webex payload")
 
+    # 2️⃣ Fetch message text
     webex_token = os.getenv("WEBEX_BOT_TOKEN")
     if not webex_token:
         raise HTTPException(500, "Missing WEBEX_BOT_TOKEN")
@@ -162,6 +169,7 @@ async def webex_webhook(req: Request):
     user_query   = msg_json.get("text", "").strip()
     sender_email = msg_json.get("personEmail", "").lower()
 
+    # 3️⃣ Loop-prevention: fetch actual bot email
     me_resp = requests.get(
         "https://webexapis.com/v1/people/me",
         headers={"Authorization": f"Bearer {webex_token}"}
@@ -173,20 +181,23 @@ async def webex_webhook(req: Request):
 
     if sender_email == bot_email:
         log.info("Ignored self-triggered message from bot")
-        return Response(status_code=204)      # no body, no Content-Length mismatch
-        #return JSONResponse(status_code=204, content=None)
+        return JSONResponse({"status": "ignored"})
 
+    # 4️⃣ Delegate under a single span
     chat_req = ChatRequest(message=user_query)
     with tracer.start_as_current_span("chat-workflow"):
         result = await handle_chat(chat_req, req)
 
+    answer = result.get("response", "")
+
+    # 5️⃣ Post reply to Webex
     post_resp = requests.post(
         "https://webexapis.com/v1/messages",
         headers={
             "Authorization": f"Bearer {webex_token}",
             "Content-Type":  "application/json"
         },
-        json={"roomId": room_id, "markdown": result.get("response", "")}
+        json={"roomId": room_id, "markdown": answer}
     )
     try:
         post_resp.raise_for_status()
@@ -202,7 +213,7 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
     messages: list[dict] = []
     llm: LLMClientBase = get_llm()
 
-     # 1️⃣ Retrieve docs or domain/event data
+    # 1️⃣ Retrieve docs or domain/event data
     with tracer.start_as_current_span("retriever") as rspan:
         if hasattr(request.app.state, "retriever"):
             retriever = request.app.state.retriever
@@ -241,53 +252,28 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
     with tracer.start_as_current_span("build.functions") as bfspan:
         functions: List[dict] = []
         if VECTOR_BACKEND == "chroma":
-            raw_hits = func_retriever.query(
-                prompt, k=500, filter={"platform": {"$in": platforms}}
-            )
-            hits = sorted(raw_hits, key=lambda x: x.get("distance", 1.0))[:128]
+            raw_hits = func_retriever.query(prompt, k=500, filter={"platform": {"$in": platforms}})
+            hits     = sorted(raw_hits, key=lambda x: x.get("distance", 1.0))[:128]
             for h in hits:
                 try:
                     schema = json.loads(h["content"])
-                    # ─── Sanitize the function name ──────────────────────
-
-                    if "name" in schema:
-                        clean_name = re.sub(r"[^A-Za-z0-9_.\\-]", "_", schema["name"])
-                        # now allow multi‐character names
-                        if not re.fullmatch(r"[A-Za-z0-9_.\\-]+", clean_name):
-                            continue
-                        schema["name"] = clean_name
-
-                    # ─── Sanitize parameter keys ───────────────────────
-                    props = schema.get("parameters", {}).get("properties", {})
-                    clean_props = {}
-                    for key, val in props.items():
-                        clean_key = re.sub(r"[^A-Za-z0-9_.\\-]", "_", key)
-                        if re.fullmatch(r"[A-Za-z0-9_.\-]", clean_key):
-                            clean_props[clean_key] = val
-                    if "parameters" in schema:
-                        schema["parameters"]["properties"] = clean_props
-                    # ─── Ensure array types have items ────────────────
+                    # ─── ensure array parameters have an 'items' definition ────────────────
+                    for prop in schema.get("parameters", {}).get("properties", {}).values():
+                        if prop.get("type") == "array" and "items" not in prop:
+                            prop["items"] = {"type": "string"}
+                    # ─── (leave the rest of your sanitize code here as before) ─────────────
+                    functions.append(schema)
+                    '''
+                    schema = json.loads(h["content"])
                     for ps in schema.get("parameters", {}).get("properties", {}).values():
                         if ps.get("type") == "array" and "items" not in ps:
                             ps["items"] = {"type": "string"}
-                    functions.append(schema)
+                    functions.append(schema) '''
                 except Exception as exc:
                     log.warning("bad_schema", name=h.get("name"), err=str(exc))
         else:
-            # If using build_functions_for_llm, sanitize those too:
-            raw = build_functions_for_llm(prompt, platforms)
-            functions = []
-            for schema in raw:
-                if "name" in schema:
-                    cn = re.sub(r"[^A-Za-z0-9_.\-]", "_", schema["name"])
-                    if not re.fullmatch(r"[A-Za-z0-9_.\-]", cn):
-                        continue
-                    schema["name"] = cn
-                functions.append(schema)
-
-        bfspan.set_attribute("candidate.functions", len(functions))
-
-
+            functions = build_functions_for_llm(prompt, platforms)
+      
 
     # 3️⃣ First LLM call
     with tracer.start_as_current_span("llm#1") as l1span:
