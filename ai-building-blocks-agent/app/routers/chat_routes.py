@@ -94,6 +94,7 @@ def _assemble_docs_messages(user_input: str, docs: Sequence[Dict[str, Any]], *, 
         {"role": "user",   "content": user_prompt},
     ]
 
+
 def _assemble_event_messages(user_input: str, docs: Sequence[Dict[str, Any]]) -> List[Dict[str, str]]:
     chunks: list[str] = []
     for d in docs:
@@ -122,6 +123,7 @@ def _assemble_domain_messages(user_input: str, docs: Sequence[Dict[str, Any]]) -
         {"role": "user",   "content": user_prompt},
     ]
 
+
 # ──────────────────────────────── Pydantic models
 class ChatRequest(BaseModel):
     message: str
@@ -131,6 +133,7 @@ class ChatRequest(BaseModel):
 func_retriever = FunctionRetriever(collection_name="function-definitions-index")
 platforms = enabled_platforms()
 router = APIRouter(tags=["chat"])
+
 
 # ──────────────────────────────── Webex webhook endpoint
 @router.post("/webex/webhook")
@@ -196,9 +199,10 @@ async def webex_webhook(req: Request):
 # ──────────────────────────────── Shared business logic
 async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
     prompt = req.message
+    messages: list[dict] = []
     llm: LLMClientBase = get_llm()
 
-    # 1️⃣ Retrieve docs or domain/event data
+     # 1️⃣ Retrieve docs or domain/event data
     with tracer.start_as_current_span("retriever") as rspan:
         if hasattr(request.app.state, "retriever"):
             retriever = request.app.state.retriever
@@ -244,6 +248,25 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
             for h in hits:
                 try:
                     schema = json.loads(h["content"])
+                    # ─── Sanitize the function name ──────────────────────
+
+                    if "name" in schema:
+                        clean_name = re.sub(r"[^A-Za-z0-9_.\\-]", "_", schema["name"])
+                        # now allow multi‐character names
+                        if not re.fullmatch(r"[A-Za-z0-9_.\\-]+", clean_name):
+                            continue
+                        schema["name"] = clean_name
+
+                    # ─── Sanitize parameter keys ───────────────────────
+                    props = schema.get("parameters", {}).get("properties", {})
+                    clean_props = {}
+                    for key, val in props.items():
+                        clean_key = re.sub(r"[^A-Za-z0-9_.\\-]", "_", key)
+                        if re.fullmatch(r"[A-Za-z0-9_.\-]", clean_key):
+                            clean_props[clean_key] = val
+                    if "parameters" in schema:
+                        schema["parameters"]["properties"] = clean_props
+                    # ─── Ensure array types have items ────────────────
                     for ps in schema.get("parameters", {}).get("properties", {}).values():
                         if ps.get("type") == "array" and "items" not in ps:
                             ps["items"] = {"type": "string"}
@@ -251,9 +274,20 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
                 except Exception as exc:
                     log.warning("bad_schema", name=h.get("name"), err=str(exc))
         else:
-            functions = build_functions_for_llm(prompt, platforms)
+            # If using build_functions_for_llm, sanitize those too:
+            raw = build_functions_for_llm(prompt, platforms)
+            functions = []
+            for schema in raw:
+                if "name" in schema:
+                    cn = re.sub(r"[^A-Za-z0-9_.\-]", "_", schema["name"])
+                    if not re.fullmatch(r"[A-Za-z0-9_.\-]", cn):
+                        continue
+                    schema["name"] = cn
+                functions.append(schema)
 
         bfspan.set_attribute("candidate.functions", len(functions))
+
+
 
     # 3️⃣ First LLM call
     with tracer.start_as_current_span("llm#1") as l1span:

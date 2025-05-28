@@ -23,9 +23,13 @@ environments. You are solely responsible for any modifications or adaptations ma
 
 By using this code, you agree that you have read, understood, and accept these terms.
 """
+
 from dotenv import load_dotenv
 load_dotenv()
-import logging, structlog, os
+
+import logging
+import structlog
+import os
 from pathlib import Path
 from typing import Annotated, Any
 
@@ -33,30 +37,23 @@ from fastapi import Depends, FastAPI, HTTPException, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
-from prometheus_client import Histogram, generate_latest
-from opentelemetry import trace
-#from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
-from opentelemetry.sdk.trace import TracerProvider
-from opentelemetry.sdk.resources import Resource
-from opentelemetry.sdk.trace.export import BatchSpanProcessor
+
+from prometheus_client import Histogram
+
 from app.config import cfg
-from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
-from opentelemetry.instrumentation.requests import RequestsInstrumentor
-from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
-# -------- structured logging ---------
+from app.telemetry import init_telemetry  # <— our helper
+
+# ── structured logging ─────────────────────────────────────────
 structlog.configure(
     wrapper_class=structlog.make_filtering_bound_logger(logging.INFO),
     processors=[
         structlog.processors.TimeStamper(fmt="iso"),
-        structlog.processors.JSONRenderer()
+        structlog.processors.JSONRenderer(),
     ],
 )
 log = structlog.get_logger("ai-agent")
 
-
-
-
-# Optional retrievers (import-guarded so the app can start without them)
+# ── Optional retrievers import ─────────────────────────────────
 try:
     from retrievers.chroma_retriever import ChromaRetriever
 except ImportError as exc:
@@ -69,64 +66,26 @@ except ImportError as exc:
     AzureSearchRetriever = None
     logging.warning("Azure Search retriever unavailable – %s", exc)
 
-# ─────────────────────────────────────────────────────────────────────────────
-# Logging setup
-# ─────────────────────────────────────────────────────────────────────────────
+# ── Logging setup ───────────────────────────────────────────────
 logger = logging.getLogger("ai_agent")
 logging.basicConfig(
     level=os.getenv("LOG_LEVEL", "INFO"),
     format="%(levelname)s: %(message)s",
 )
 
-# ─────────────────────────────────────────────────────────────────────────────
-# FastAPI app + Prometheus metric
-# ─────────────────────────────────────────────────────────────────────────────
+# ── FastAPI app instantiation ──────────────────────────────────
 app = FastAPI(title="AI Building Blocks Agent", version="0.3.0-dev")
 
-# Global histogram – used by chat route to record end-to-end latency
+# ── Initialize telemetry: tracing + metrics ───────────────────
+init_telemetry(app)
+
+# ── Custom histogram: /chat latency ───────────────────────────
 request_latency = Histogram(
     "chat_latency_ms",
     "End-to-end latency of /chat route in milliseconds",
 )
 
-@app.get("/metrics")
-def metrics() -> Response:
-    """
-    Prometheus scrape endpoint
-    """
-    return Response(generate_latest(), media_type="text/plain")
-
-# ---------- OpenTelemetry ------------
- 
-
-OTLP_ENDPOINT = os.getenv("OTEL_EXPORTER_OTLP_ENDPOINT", "http://localhost:4319")
-SERVICE_NAME   = os.getenv("OTEL_SERVICE_NAME", "ai-building-blocks-agent")
-
-resource = Resource(attributes={"service.name": SERVICE_NAME})
-tracer_provider = TracerProvider(resource=resource)
-
-otlp_exporter = OTLPSpanExporter(endpoint=OTLP_ENDPOINT)
-span_processor = BatchSpanProcessor(otlp_exporter)
-tracer_provider.add_span_processor(span_processor)
-
-trace.set_tracer_provider(tracer_provider)
-
-# Explicitly instrument FastAPI with correct span kind and attributes
-FastAPIInstrumentor.instrument_app(
-    app,
-    tracer_provider=tracer_provider,
-    server_request_hook=lambda span, scope: span.set_attribute("span.kind", "server")
-)
-
-RequestsInstrumentor().instrument(tracer_provider=tracer_provider)
-
-
-# ───────────────────────────────────────────────────────────────────────
-
-
-# ─────────────────────────────────────────────────────────────────────────────
-# Static & assets
-# ─────────────────────────────────────────────────────────────────────────────
+# ── Static & assets ────────────────────────────────────────────
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 STATIC_DIR   = PROJECT_ROOT / "static"
 ASSETS_DIR   = PROJECT_ROOT / "app" / "assets"
@@ -147,9 +106,7 @@ async def root() -> HTMLResponse:
         )
     return HTMLResponse(index_path.read_text(encoding="utf-8"), status_code=200)
 
-# ─────────────────────────────────────────────────────────────────────────────
-# CORS
-# ─────────────────────────────────────────────────────────────────────────────
+# ── CORS ───────────────────────────────────────────────────────
 origins = cfg("CORS_ORIGINS", cast=str, default="*") or "*"
 app.add_middleware(
     CORSMiddleware,
@@ -159,9 +116,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ─────────────────────────────────────────────────────────────────────────────
-# Startup: choose vector retriever
-# ─────────────────────────────────────────────────────────────────────────────
+# ── Startup: choose vector retriever ───────────────────────────
 @app.on_event("startup")
 async def _startup() -> None:
     layer    = cfg("ACTIVE_LAYER", default="FASTAPI").upper()
@@ -177,26 +132,21 @@ async def _startup() -> None:
         if ChromaRetriever is None:
             raise RuntimeError("chromadb not installed but VECTOR_BACKEND='chroma'.")
         app.state.retriever = ChromaRetriever(layer=layer)
-
     elif backend in {"azure", "azure_search", "azsearch"}:
         if AzureSearchRetriever is None:
             raise RuntimeError("Azure Search retriever dependencies missing.")
         app.state.retriever = AzureSearchRetriever(layer=layer)
-
     else:
         logger.warning("Unknown VECTOR_BACKEND '%s' – retriever disabled.", backend)
         app.state.retriever = None
 
-    # Honour <LAYER>_VECTOR_ENABLED
     if not cfg("VECTOR_ENABLED", layer=layer, cast=bool, default=True):
         logger.warning("%s: VECTOR layer disabled – using NullRetriever.", layer)
         from retrievers.null_retriever import NullRetriever
         app.state.retriever = NullRetriever()
         return
 
-# ─────────────────────────────────────────────────────────────────────────────
-# Dependency injection helper
-# ─────────────────────────────────────────────────────────────────────────────
+# ── Dependency injection helper ───────────────────────────────
 def get_retriever(request: Request):
     r = getattr(request.app.state, "retriever", None)
     if r is None:
@@ -205,9 +155,7 @@ def get_retriever(request: Request):
 
 RetrieverDep = Annotated[Any, Depends(get_retriever)]
 
-# ─────────────────────────────────────────────────────────────────────────────
-# Sample utility endpoints
-# ─────────────────────────────────────────────────────────────────────────────
+# ── Sample utility endpoints ─────────────────────────────────
 @app.get("/search")
 async def search_endpoint(q: str, retriever: RetrieverDep):
     if hasattr(retriever, "query"):
@@ -218,17 +166,17 @@ async def search_endpoint(q: str, retriever: RetrieverDep):
 async def health():
     return {"status": "ok", "layer": cfg("ACTIVE_LAYER", default="FASTAPI")}
 
-# ─────────────────────────────────────────────────────────────────────────────
-# Routers
-# ─────────────────────────────────────────────────────────────────────────────
+# ── Routers ───────────────────────────────────────────────────
 try:
     from app.routers import chat_routes          # noqa: WPS433
     app.include_router(chat_routes.router, prefix="/chat")
 except ImportError as exc:
     logger.warning("chat_routes not present – skipping (%s).", exc)
+
 try:
     from app.routers.meraki_routes import router as meraki_router
-    app.include_router(meraki_router)    # no prefix, since your paths start with /meraki
+    app.include_router(meraki_router)  
     logger.info("Mounted Meraki routes")
 except ImportError as exc:
     logger.warning("meraki_routes not present – skipping (%s)", exc)
+
