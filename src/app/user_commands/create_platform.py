@@ -58,7 +58,7 @@ AGENT_ROOT = Path(__file__).resolve().parents[1]
 # Ensure our agent root is on PYTHONPATH for sdk_loader
 if str(AGENT_ROOT) not in sys.path:
     sys.path.insert(0, str(AGENT_ROOT))
-SPEC_DIR = AGENT_ROOT.parent / "ai-building-blocks-database" / "source_open_api"
+SPEC_DIR = PROJECT_ROOT      / "src"                           / "source_open_api"
 
 # Internal loader
 from scripts.utils.sdk_loader import load_client
