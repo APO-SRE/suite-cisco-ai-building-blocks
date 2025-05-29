@@ -19,8 +19,8 @@ from __future__ import annotations
 import os
 import sys
 import subprocess
-from pathlib import Path
 
+from pathlib import Path
 from rich.console import Console
 from rich.panel import Panel
 from rich.table import Table
@@ -29,19 +29,18 @@ from rich import box
 from rich.traceback import install
 from rich.markdown import Markdown
 from rich.table import Table as GridTable
+from .create_platform_index import list_definitions, azure_list_platforms
 
 install()
 console = Console()
 
 # Paths and imports
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
 AGENT_ROOT = Path(__file__).resolve().parents[1]
 UCMD_DIR   = AGENT_ROOT / "user_commands"
-SDK_DIR    = AGENT_ROOT.parent / "ai-building-blocks-database" / "output_sdk"
-# import platform/index helpers
-sys.path.insert(0, str(UCMD_DIR))
-import create_platform_index as cpi
-list_definitions = cpi.list_definitions
-azure_list_platforms = cpi.azure_list_platforms
+SDK_DIR   = PROJECT_ROOT / "src" / "db_scripts" / "output_sdk"
+
+ 
 
 # Available commands
 COMMANDS: list[dict[str, str]] = [
