@@ -322,7 +322,7 @@ The overarching goal of this repository is to provide a **modular AI-building-bl
 
 * **Automate**: Incorporate these scripts into a CI/CD process or cron job to re-index data when files change.
 * **Validate**: Confirm data in your chosen vector backend (e.g., Azure Search Explorer, local Chroma folder, or Elasticsearch `_cat/indices`).
-* **Integrate**: Combine with the [Cisco AI Building Blocks Agent](https://github.com/APO-SRE/ai-building-blocks-agent) for question-answering or domain-specific retrieval-augmented generation (RAG).
+* **Integrate**: Combine with the [Cisco AI Building Blocks Agent](https://github.com/APO-SRE/suite-cisco-ai-building-blocks) for question-answering or domain-specific retrieval-augmented generation (RAG).
 
 ---
 

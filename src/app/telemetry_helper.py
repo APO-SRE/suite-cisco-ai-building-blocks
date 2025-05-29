@@ -31,7 +31,7 @@ def init_telemetry_helper(app):
     """
     Initialize tracing and metrics. Honor OTEL_TRACES_EXPORTER=none to disable tracing exports.
     """
-    service_name = os.getenv("OTEL_SERVICE_NAME", "ai-building-blocks-agent")
+    service_name = os.getenv("OTEL_SERVICE_NAME", "ai-building-blocks")
     resource = Resource.create({"service.name": service_name})
 
     # Determine if tracing exports should be disabled via environment

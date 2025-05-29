@@ -54,7 +54,7 @@ from scripts.utils.paths import ensure_abs_env   # new helper
 # ══════════════════════════════════════════════════════════════════════════
 load_dotenv()
 
-REPO_ROOT: Path = Path(__file__).resolve().parents[1]            # ai-building-blocks-agent/
+REPO_ROOT: Path = Path(__file__).resolve().parents[1]            # suite-cisco-ai-building-blocks/
 LLM_DIR     = REPO_ROOT / "app" / "llm"
 DIET_DIR    = LLM_DIR / "function_definitions"
 FULL_DIR    = LLM_DIR / "openapi_specs"
