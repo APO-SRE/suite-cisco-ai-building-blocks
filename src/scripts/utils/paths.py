@@ -68,7 +68,7 @@ def get_chroma_root(layer_env: str, default_rel: str = "chroma_dbs") -> Path:
 def get_dynamic_cache_dir() -> Path:
     cache = ensure_abs_env(
         "PLATFORM_DYNAMIC_CACHE_PATH",
-        "ai-building-blocks-agent/app/platform_dynamic_cache",
+        "app/llm/platform_dynamic_cache",
     )
     Path(cache).mkdir(parents=True, exist_ok=True)
     return Path(cache)
