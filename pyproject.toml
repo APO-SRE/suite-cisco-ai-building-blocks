@@ -16,20 +16,38 @@ dependencies = [
 ]
 
 [project.scripts]
-create-platform                = "user_commands.create_platform:main"
-create-platform-index          = "user_commands.create_platform_index:main"
-create-sdk                     = "user_commands.create_sdk:main"
-reset-platform                 = "user_commands.reset_platform:main"
-create-domain-demo-index       = "user_commands.create_domain_demo_index:main"
-generate-openapi-sdks          = "user_commands.generate_openapi_sdks:main"
-menu                           = "user_commands.command_menu:main"
-delete-sdk                     = "user_commands.delete_sdk:main"
-delete-platform                = "user_commands.reset_platform:main"
+# Agent CLI commands (moved under app.user_commands)
+create-platform                = "app.user_commands.create_platform:main"
+create-platform-index          = "app.user_commands.create_platform_index:main"
+create-sdk                     = "app.user_commands.create_sdk:main"
+reset-platform                 = "app.user_commands.reset_platform:main"
+create-domain-demo-index       = "app.user_commands.create_domain_demo_index:main"
+generate-openapi-sdks          = "app.user_commands.generate_openapi_sdks:main"
+menu                           = "app.user_commands.command_menu:main"
+delete-sdk                     = "app.user_commands.delete_sdk:main"
+delete-platform                = "app.user_commands.reset_platform:main"
+
+# Runtime server
 serve-app                      = "app.main:main"
+
+# DB-side pipeline commands
 create-index                   = "db_scripts.create_index:main"
 create-platform-db             = "db_scripts.create_platform:main"
 generate-openapi-sdks-db       = "db_scripts.generate_openapi_sdks:main"
 
+
 [tool.setuptools.packages.find]
-where   = ["src"]
-include = ["db_scripts*", "user_commands*", "app*", "app_scripts*"]
+where    = ["src"]
+include  = [
+    "app",
+    "app.*",
+    "db_scripts",
+    "db_scripts.*",
+]
+exclude  = [
+    "scripts",
+    "scripts.*",
+    "tools",
+    "tools.*",
+    "*.egg-info",
+]

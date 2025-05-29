@@ -53,3 +53,4 @@ chroma_dbs/
 # ─── Build metadata & caches ───────────────────────────────────────────────
 *.egg-info/
 __pycache__/
+list_files.py
