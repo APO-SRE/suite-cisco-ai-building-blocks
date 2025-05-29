@@ -39,7 +39,7 @@ import sys
 from pathlib import Path
 
 # ── ensure repo root is importable ─────────────────────────────────────────
-REPO_ROOT = Path(__file__).resolve().parents[1]          # …/ai-building-blocks-agent
+REPO_ROOT = Path(__file__).resolve().parents[1]          # …/suite-cisco-ai-building-blocks
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 

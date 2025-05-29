@@ -11,8 +11,8 @@ patterns=(
   "output_sdk"
   "user_commands\."
   "platform_dynamic_cache"
-  "src/scripts/"
-  "src/app_scripts/"
+
+
 )
 
 echo "🔍 Scanning for old paths and imports…"
@@ -20,6 +20,10 @@ for pat in "${patterns[@]}"; do
   echo
   echo "─── Pattern: ${pat} ─────────────────────────────────"
   grep -RInE \
+    --exclude=check-old-paths.sh \
+    --exclude=tests/test_imports.py
+    --exclude-dir=src \
+    --exclude-dir=.git \
     --exclude-dir=.git \
     --exclude-dir=venv \
     --exclude-dir=env \

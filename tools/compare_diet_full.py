@@ -31,7 +31,7 @@ Run it when you want to inspect which diet-function records are stored for a
 particular pattern (e.g. any function whose name starts with “getOrganization”).
 It connects to the collection defined by FASTAPI_CHROMA_DB_PATH /
 FASTAPI_CHROMA_COLLECTION_PLATFORM, filters the documents, and dumps the hits
-as JSONL right next to this script in ai-building-blocks-agent/tools/.
+as JSONL right next to this script in suite-cisco-ai-building-blocks/tools/.
 """
 import os
 import json

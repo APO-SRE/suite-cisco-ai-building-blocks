@@ -36,7 +36,7 @@ CLI flags
 
 Example usage
 -------------
-# (run these from ai-building-blocks-agent/tools)
+# (run these from suite-cisco-ai-building-blocks/tools)
 
 # 1. Default: find any function whose name starts with “getOrganization”
 python3 list_chroma_collections.py --pattern getOrganization
@@ -60,7 +60,7 @@ import sys
 from pathlib import Path
 
 # ── repo-root on sys.path so imports work from any cwd ────────────────────
-REPO_ROOT = Path(__file__).resolve().parents[1]          # …/ai-building-blocks-agent
+REPO_ROOT = Path(__file__).resolve().parents[1]          # …/suite-cisco-ai-building-blocks
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
