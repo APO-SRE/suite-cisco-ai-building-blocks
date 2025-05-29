@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 #####################################################################################################
-## suite-cisco-ai-building-blocks/ai-building-blocks-agent/user_commands/create_domain_demo_index.py
+## suite-cisco-ai-building-blocks/src/app/user_commands/create_domain_demo_index.py
 ## Copyright (c) 2025 Jeff Teeter, Ph.D.
 ## Cisco Systems, Inc.
 ## Licensed under the Apache License, Version 2.0 (see LICENSE)
@@ -48,7 +48,7 @@ def main() -> None:
     # discover paths
     AGENT_ROOT = Path(__file__).resolve().parents[1]
     REPO_ROOT = AGENT_ROOT.parent
-    DB_DIR = REPO_ROOT / "ai-building-blocks-database"
+    DB_DIR = PROJECT_ROOT / "src" / "db_scripts"
     SAMPLES_DIR = DB_DIR / "domain_samples"
 
     # verify samples directory

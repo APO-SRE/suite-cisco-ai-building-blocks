@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 ################################################################################
-## suite-cisco-ai-building-blocks/ai-building-blocks-agent/user_commands/create_platform_index.py
+## suite-cisco-ai-building-blocks/src/app/user_commands/create_platform_index.py
 ## Copyright (c) 2025 Jeff Teeter
 ## Cisco Systems, Inc.
 ## Licensed under the Apache License, Version 2.0 (see LICENSE)
