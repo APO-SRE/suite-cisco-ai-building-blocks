@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 ################################################################################
-## ai-building-blocks-agent/app/main.py
+## suite-cisco-ai-building-blocks/src/app/main.py
 ## Copyright (c) 2025 Jeff Teeter
 ## Cisco Systems, Inc.
 ## Licensed under the Apache License, Version 2.0 (see LICENSE)

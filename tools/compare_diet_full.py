@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 ###########################################################################################
-## suite-cisco-ai-building-blocks/ai-building-blocks-agent/tools/compare_diet_full.py
+## suite-cisco-ai-building-blocks/tools/compare_diet_full.py
 ## Copyright (c) 2025 Jeff Teeter, Ph.D.
 ## Cisco Systems, Inc.
 ## Licensed under the Apache License, Version 2.0 (see LICENSE)

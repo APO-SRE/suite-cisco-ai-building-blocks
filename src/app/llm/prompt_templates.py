@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 ################################################################################
-## ai-building-blocks-agent/app/llm/prompt_templates.py
+## suite-cisco-ai-building-blocks/src/app/llm/prompt_templates.py
 ## Copyright (c) 2025 Jeff Teeter, Ph.D.
 ## Cisco Systems, Inc.
 ## Licensed under the Apache License, Version 2.0 (see LICENSE)

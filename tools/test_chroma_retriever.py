@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 ###########################################################################################
-## suite-cisco-ai-building-blocks/ai-building-blocks-agent/tools/test_chroma_retriever.py
+## suite-cisco-ai-building-blocks/tools/test_chroma_retriever.py
 ## Copyright (c) 2025 Jeff Teeter, Ph.D.
 ## Cisco Systems, Inc.
 ## Licensed under the Apache License, Version 2.0 (see LICENSE)

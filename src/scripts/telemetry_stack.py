@@ -14,7 +14,7 @@ os.environ.setdefault("OTEL_METRICS_EXPORTER",       "none")
 os.environ.setdefault("OTEL_EXPORTER_OTLP_ENDPOINT", "http://localhost:4319")
 os.environ.setdefault("OTEL_EXPORTER_OTLP_PROTOCOL", "http/protobuf")
 os.environ.setdefault("OTEL_EXPORTER_OTLP_INSECURE", "true")
-os.environ.setdefault("OTEL_SERVICE_NAME",           "ai-building-blocks-agent")
+os.environ.setdefault("OTEL_SERVICE_NAME",           "suite-cisco-ai-building-blocks")
 
 # ── 1a) Prep host storage dirs ─────────────────────────────
 for sub in ("traces", "metrics-generator/traces", "metrics-generator/wal"):

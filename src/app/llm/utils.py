@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# ./ai-building-blocks-agent/app/llm/utils.py
+# ./suite-cisco-ai-building-blocks/src/app/llm/utils.py
 from __future__ import annotations
 import os
 

@@ -1,7 +1,7 @@
 
 #!/usr/bin/env python3
 ################################################################################
-## ai-building-blocks-database/scripts/process_domain.py
+## suite-cisco-ai-building-blocks/src/db_scripts/process_domain.py
 ## Copyright (c) 2025 Jeff Teeter
 ## Cisco Systems, Inc.
 ## Licensed under the Apache License, Version 2.0 (see LICENSE)
