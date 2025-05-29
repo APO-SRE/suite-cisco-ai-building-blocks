@@ -1,4 +1,4 @@
-#suite-cisco-ai-building-blocks/ai-building-blocks-agent/scripts/observability_setup.py
+#suite-cisco-ai-building-blocks/src/app/scripts/observability_setup.py
 import os, subprocess
 
 # 1. Define the content for Dockerfile (FastAPI app image)

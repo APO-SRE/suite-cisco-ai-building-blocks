@@ -112,7 +112,7 @@ else:  # Azure / Elastic (both accept layer kwarg)
 DYNAMIC_CACHE_ROOT = Path(
     os.getenv(
         "PLATFORM_DYNAMIC_CACHE_PATH",
-        # Default: <repo-root>/ai-building-blocks-agent/app/platform_dynamic_cache
+        # Default: <repo-root>/src/app/llm/platform_dynamic_cache
         (Path(__file__).resolve().parent        / "platform_dynamic_cache").as_posix(),
 
     )
