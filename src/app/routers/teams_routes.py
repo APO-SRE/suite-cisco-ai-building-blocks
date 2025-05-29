@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 ################################################################################
-## ai-building-blocks-agent/app/routers/teams_routes.py
+## suite-cisco-ai-building-blocks/src/app/routers/teams_routes.py
 ## Microsoft Teams integration – Activity-based webhook handler for Bot Framework
 ## Copyright (c) 2025 Jeff Teeter
 ## Cisco Systems, Inc.

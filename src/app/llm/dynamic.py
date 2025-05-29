@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 ################################################################################
-## ai-building-blocks-agent/app/llm/dynamic.py
+## suite-cisco-ai-building-blocks/src/app/llm/dynamic.py
 ## Copyright (c) 2025 Jeff Teeter, Ph.D.
 ## Cisco Systems, Inc.
 ## Licensed under the Apache License, Version 2.0 (see LICENSE)

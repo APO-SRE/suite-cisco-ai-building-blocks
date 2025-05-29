@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 ################################################################################
-## ai-building-blocks-agent/app/routers/chat_routes.py
+## suite-cisco-ai-building-blocks/src/app/routers/chat_routes.py
 ## Unified – with full Structured-Logging + OpenTelemetry tracing
 ## Copyright (c) 2025 Jeff Teeter, Ph.D.
 ## Cisco Systems, Inc.

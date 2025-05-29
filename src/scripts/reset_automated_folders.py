@@ -17,7 +17,7 @@ This script can either:
 2. Remove all artifacts for a single platform across those same folders.
 
 Launch it from anywhere; it always operates on the folders inside the
-ai-building-blocks-agent repo and prints what it deleted / rebuilt.
+suite-cisco-ai-building-blocks repo and prints what it deleted / rebuilt.
 """
 
 import sys
@@ -26,7 +26,7 @@ import shutil
 from pathlib import Path
 
 # ── repo root discovery so script works from any cwd ──────────────────────
-REPO_ROOT = Path(__file__).resolve().parents[1]         # …/ai-building-blocks-agent
+REPO_ROOT = Path(__file__).resolve().parents[1]         # …/suite-cisco-ai-building-blocks
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 

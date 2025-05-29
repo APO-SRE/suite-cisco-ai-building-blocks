@@ -12,7 +12,7 @@ Path-handling helpers shared across layers.
 
 * ``ensure_abs_env(var, default_rel)``  
   Makes sure *var* exists and is an **absolute** path, resolving any relative
-  value against the repo root (parent of ``ai-building-blocks-agent``).
+  value against the repo root (parent of ``suite-cisco-ai-building-blocks``).
 
 * ``get_chroma_root(layer_env: str, default_rel: str = "chroma_dbs")``  
   Returns the absolute path for *this layer’s* Chroma collections, based solely
