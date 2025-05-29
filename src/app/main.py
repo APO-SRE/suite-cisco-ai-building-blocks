@@ -41,7 +41,7 @@ from fastapi.staticfiles import StaticFiles
 from prometheus_client import Histogram
 
 from app.config import cfg
-from app.telemetry import init_telemetry  # <— our helper
+from app.telemetry_helper import init_telemetry_helper  # <— our helper
 
 # ── structured logging ─────────────────────────────────────────
 structlog.configure(
@@ -77,7 +77,7 @@ logging.basicConfig(
 app = FastAPI(title="AI Building Blocks Agent", version="0.3.0-dev")
 
 # ── Initialize telemetry: tracing + metrics ───────────────────
-init_telemetry(app)
+init_telemetry_helper(app)
 
 # ── Custom histogram: /chat latency ───────────────────────────
 request_latency = Histogram(
