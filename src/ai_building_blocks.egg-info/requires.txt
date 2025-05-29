@@ -1,4 +1,0 @@
-sqlalchemy>=1.4
-psycopg2-binary
-rich>=14.0.0
-colorama
