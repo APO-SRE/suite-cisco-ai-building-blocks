@@ -25,7 +25,7 @@ By using this code, you agree that you have read, understood, and accept these t
 """
 import os
 from fastapi import APIRouter, FastAPI # type: ignore
-# from cisco_integrations.unified_service import CiscoUnifiedService
+from app.llm.unified_service.catalyst_service import CatalystServiceClient
 
 router = APIRouter()
 
@@ -37,18 +37,13 @@ CATALYST_VERSION = os.getenv("CISCO_CATALYST_VERSION", "2.3.7.6")
 
 @router.get("/devices")
 async def get_catalyst_devices():
-    """
-    GET /catalyst/devices
-
-    Returns a list of all devices managed by the Catalyst Center (DNA Center).
-    """
-    service = CiscoUnifiedService(
+    svc = CatalystServiceClient(
         catalyst_username=CATALYST_USERNAME,
         catalyst_password=CATALYST_PASSWORD,
         catalyst_url=CATALYST_URL,
         catalyst_version=CATALYST_VERSION
     )
-    data = service.get_all_catalyst_devices()
+    data = svc.get_all_catalyst_devices()
     return data
 
 @router.get("/devices/{device_id}")
@@ -58,7 +53,7 @@ async def get_catalyst_device_by_id(device_id: str):
 
     Returns details for a single device, by device_id in Catalyst Center (DNA Center).
     """
-    service = CiscoUnifiedService(
+    svc = CatalystServiceClient(
         catalyst_username=CATALYST_USERNAME,
         catalyst_password=CATALYST_PASSWORD,
         catalyst_url=CATALYST_URL,

@@ -87,11 +87,11 @@ request_latency = Histogram(
 
 # ── Static & assets ────────────────────────────────────────────
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-STATIC_DIR   = PROJECT_ROOT / "static"
+STATIC_DIR = Path(__file__).resolve().parent / "static"
 ASSETS_DIR   = PROJECT_ROOT / "app" / "assets"
 
 app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
-app.mount("/assets", StaticFiles(directory=ASSETS_DIR), name="assets")
+
 
 @app.get("/", tags=["meta"], response_class=HTMLResponse)
 async def root() -> HTMLResponse:

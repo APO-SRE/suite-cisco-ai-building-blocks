@@ -46,7 +46,11 @@ def main() -> None:
     console.print(Panel.fit("🛠 Welcome to the Domain Demo Indexer Wizard", style="green"))
 
     # discover paths
+    REPO_ROOT     = Path(__file__).resolve().parents[3]       # …/suite-cisco-ai-building-blocks/
+    SRC_ROOT      = REPO_ROOT / "src"                         # …/suite-cisco-ai-building-blocks/src
+    AGENT_ROOT    = SRC_ROOT  / "app"                         # …/src/app
     AGENT_ROOT = Path(__file__).resolve().parents[1]
+    PROJECT_ROOT = Path(__file__).resolve().parents[3]
     REPO_ROOT = AGENT_ROOT.parent
     DB_DIR = PROJECT_ROOT / "src" / "db_scripts"
     SAMPLES_DIR = DB_DIR / "domain_samples"

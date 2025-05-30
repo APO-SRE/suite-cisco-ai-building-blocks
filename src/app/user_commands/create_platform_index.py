@@ -31,17 +31,6 @@ import subprocess
 import json
 from pathlib import Path
 from typing import List, Optional
-
-from dotenv import load_dotenv
-load_dotenv()
-
-# allow importing local retriever
-AGENT_ROOT = Path(__file__).resolve().parents[1]
-if str(AGENT_ROOT) not in sys.path:
-    sys.path.insert(0, str(AGENT_ROOT))
-
-from app.retrievers.azure_search_retriever import AzureSearchRetriever
-
 from rich.console import Console
 from rich.panel import Panel
 from rich.prompt import Prompt
@@ -49,14 +38,35 @@ from rich.table import Table
 from rich.markdown import Markdown
 from rich import box
 from rich.traceback import install
+from app.retrievers.azure_search_retriever import AzureSearchRetriever
+from dotenv import load_dotenv
+load_dotenv()
+
+# ── directory layout fixup ─────────────────────────────────────────────────────
+# repo root  = two levels up from src/app/user_commands
+REPO_ROOT     = Path(__file__).resolve().parents[3]       # …/suite-cisco-ai-building-blocks/
+SRC_ROOT      = REPO_ROOT / "src"                         # …/suite-cisco-ai-building-blocks/src
+AGENT_ROOT    = SRC_ROOT  / "app"                         # …/src/app
+
+# where our generated function definitions live
+LLM_DEF_DIR   = AGENT_ROOT / "llm" / "function_definitions"
+# sdk_map.json for mapping platform→module
+SDK_MAP_FILE  = AGENT_ROOT / "llm" / "sdk_map.json"
+# the real indexer entrypoint
+INDEXER_SCRIPT = SRC_ROOT / "scripts" / "index_functions.py"
+# make sure we can import our retriever
+if str(AGENT_ROOT) not in sys.path:
+    sys.path.insert(0, str(AGENT_ROOT))
+
+
+
+
 
 install()
 console = Console()
+ 
 
-# Paths for indexing script and function definitions
-INDEXER_SCRIPT = AGENT_ROOT / "scripts" / "index_functions.py"
-LLM_DEF_DIR = AGENT_ROOT / "app" / "llm" / "function_definitions"
-SDK_MAP_FILE = AGENT_ROOT / "app" / "llm" / "sdk_map.json"
+ 
 
 # Load sdk_map if available
 try:

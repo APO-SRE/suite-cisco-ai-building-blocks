@@ -34,7 +34,7 @@ import requests
 
 from app.config import cfg
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from retrievers import default_pool_size 
+from . import default_pool_size
 _logger = logging.getLogger(__name__)
 
 

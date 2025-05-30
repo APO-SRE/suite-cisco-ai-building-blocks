@@ -55,16 +55,17 @@ console = Console()
 
 # Paths
 AGENT_ROOT = Path(__file__).resolve().parents[1]
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
 # Ensure our agent root is on PYTHONPATH for sdk_loader
 if str(AGENT_ROOT) not in sys.path:
     sys.path.insert(0, str(AGENT_ROOT))
-SPEC_DIR = PROJECT_ROOT      / "src"                           / "source_open_api"
+SPEC_DIR = PROJECT_ROOT / "src" / "source_open_api"                
 
 # Internal loader
-from scripts.utils.sdk_loader import load_client
+from app.utils.sdk_loader      import load_client
 
 # SDK map for platform → sdk_module
-SDK_MAP_FILE = AGENT_ROOT / "app" / "llm" / "sdk_map.json"
+SDK_MAP_FILE = AGENT_ROOT / "llm" / "sdk_map.json"
 try:
     sdk_map: Dict[str, str] = json.loads(SDK_MAP_FILE.read_text(encoding="utf-8"))
 except Exception:
@@ -269,14 +270,18 @@ def main() -> None:
         console.print(Panel.fit("Workflow diagram available at:", border_style="cyan"))
         console.print(f"[cyan]file://{DIAGRAM_PATH}[/cyan]")
 
-    # Build and execute scaffolder command
+ 
+ 
+    # Build and execute scaffolder command (now under top‑level src/scripts)
+    scaffolder_path = PROJECT_ROOT / "src" / "scripts" / "platform_scaffolder.py"
     cmd = [
         sys.executable,
-        str(AGENT_ROOT / "scripts" / "platform_scaffolder.py"),
+        str(scaffolder_path),
         "--platform", platform,
         "--sdk-module", sdk_module,
         "--openapi-spec", spec_file,
     ]
+ 
     if cleaned:
         cmd += ["--include-http-methods", ''.join(cleaned)]
     if name_re:

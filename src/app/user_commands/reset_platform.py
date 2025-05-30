@@ -52,7 +52,7 @@ from scripts.reset_automated_folders import FOLDERS_TO_RESET, reset_folders
 
 def get_platforms() -> list[str]:
     """Scan platform_clients folder for available platforms."""
-    clients_dir = AGENT_ROOT / "app" / "llm" / "platform_clients"
+    clients_dir = AGENT_ROOT / "llm" / "platform_clients"
     return sorted(
         fp.stem[:-len("_client")]
         for fp in clients_dir.glob("*_client.py")

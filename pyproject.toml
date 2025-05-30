@@ -43,10 +43,11 @@ include  = [
     "app.*",
     "db_scripts",
     "db_scripts.*",
-]
-exclude  = [
     "scripts",
     "scripts.*",
+]
+exclude  = [
+
     "tools",
     "tools.*",
     "*.egg-info",
