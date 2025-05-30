@@ -375,12 +375,14 @@ def show_status() -> None:
 
 #-------------------------------------------------------------------------------
 
-
 def main() -> None:
-    show_status()
-
     exit_idx = len(COMMANDS) + 1
+
     while True:
+        # 1) Clear + show full status each time
+        show_status()
+
+        # 2) Build & show the menu
         menu = Table(box=box.SIMPLE)
         menu.add_column("#", style="bold cyan", no_wrap=True)
         menu.add_column("Function")
@@ -390,33 +392,44 @@ def main() -> None:
         menu.add_row(str(exit_idx), "Exit", "Quit the wizard")
         console.print(Panel(menu, title="Select or Inspect Command", border_style="cyan"))
 
+        # 3) Prompt for choice
         choice = Prompt.ask("Enter number or 'i<n>' for info").strip()
+
+        # 4) Info view
         if choice.lower().startswith("i"):
             num = choice[1:]
-            if num.isdigit() and 1 <= (i:=int(num)) <= len(COMMANDS):
-                console.print(Panel(Markdown(COMMANDS[i-1]["long"]),
-                                    title=f"Info: {COMMANDS[i-1]['function']}",
-                                    border_style="magenta"))
+            if num.isdigit() and 1 <= (i := int(num)) <= len(COMMANDS):
+                console.print(
+                    Panel(
+                        Markdown(COMMANDS[i-1]["long"]),
+                        title=f"Info: {COMMANDS[i-1]['function']}",
+                        border_style="magenta",
+                    )
+                )
                 Prompt.ask("Press Enter to return")
-                show_status()
-                continue
-        elif choice.isdigit() and int(choice)==exit_idx:
+            continue  # loop back, will re-print status + menu
+
+        # 5) Exit
+        if choice.isdigit() and int(choice) == exit_idx:
             console.print("[green]Goodbye![/green]")
             sys.exit(0)
-        elif choice.isdigit() and 1 <= (sel:=int(choice)) <= len(COMMANDS):
+
+        # 6) Run a command
+        if choice.isdigit() and 1 <= (sel := int(choice)) <= len(COMMANDS):
             script = UCMD_DIR / COMMANDS[sel-1]["script"]
             clear_screen()
             console.print(f"🚀 Running {COMMANDS[sel-1]['function']}…")
             subprocess.run([sys.executable, str(script)], check=True, cwd=str(AGENT_ROOT))
             console.print(":white_check_mark: Done!")
-            action = Prompt.ask("What now? [b]m[/b]enu/[b]e[/b]xit", choices=["m","e"], default="m")
-            if action=="e":
-                console.print("[green]Goodbye![/green]"); sys.exit(0)
-            show_status()
-            continue
+            action = Prompt.ask("What now? [b]m[/b]enu/[b]e[/b]xit", choices=["m", "e"], default="m")
+            if action == "e":
+                console.print("[green]Goodbye![/green]")
+                sys.exit(0)
+            # on "m" we simply continue, which will re-print status + menu
 
-if __name__=="__main__":
+if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
-        print(); sys.exit(1)
+        print()
+        sys.exit(1)
