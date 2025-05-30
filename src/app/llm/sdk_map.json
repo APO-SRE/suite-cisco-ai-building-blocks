@@ -2,6 +2,5 @@
   "catalyst": "dnacentersdk.session",
   "meraki": "meraki",
   "sdwan": "catalystwan",
-  "hyperfabric": "cisco_nexus_hyperfabric_rest_api_client",
-  "cisco-spaces-location-cloud-api-swagger-2.0.0": "cisco_spaces_location_cloud_api_client"
+  "hyperfabric": "cisco_nexus_hyperfabric_rest_api_client"
 }

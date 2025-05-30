@@ -58,11 +58,12 @@ import os
 import re
 import sys
 from pathlib import Path
+from app.utils.paths import ensure_abs_env, REPO_ROOT
 
-# ── repo-root on sys.path so imports work from any cwd ────────────────────
-REPO_ROOT = Path(__file__).resolve().parents[1]          # …/suite-cisco-ai-building-blocks
-if str(REPO_ROOT) not in sys.path:
-    sys.path.insert(0, str(REPO_ROOT))
+# ── ensure our src/app package is importable ───────────────────────────────
+AGENT_ROOT = ensure_abs_env("AGENT_ROOT", "src/app")
+if str(AGENT_ROOT) not in sys.path:
+    sys.path.insert(0, str(AGENT_ROOT))
 
 # ── third-party ───────────────────────────────────────────────────────────
 from dotenv import load_dotenv
@@ -70,7 +71,7 @@ import chromadb
 from chromadb.config import Settings
 
 # ── internal helper to canonicalise paths ────────────────────────────────
-from scripts.utils.paths import ensure_abs_env
+from app.utils.paths import ensure_abs_env, REPO_ROOT
 
 # ╔══════════════════════════════════════════════════════════════════════╗
 # 1.  Parse CLI flags
@@ -89,7 +90,7 @@ args = ap.parse_args()
 # ╔══════════════════════════════════════════════════════════════════════╗
 # 2.  Resolve env-vars + open Chroma collection
 # ╚══════════════════════════════════════════════════════════════════════╝
-load_dotenv(REPO_ROOT.parent / ".env")
+load_dotenv(REPO_ROOT / ".env")
 
 DB_ROOT = ensure_abs_env("FASTAPI_CHROMA_DB_PATH", "chroma_dbs/fastapi")
 COL_NAME = os.getenv("FASTAPI_CHROMA_COLLECTION_PLATFORM",

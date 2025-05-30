@@ -39,34 +39,41 @@ from rich.markdown import Markdown
 from rich import box
 from rich.traceback import install
 from app.retrievers.azure_search_retriever import AzureSearchRetriever
+from app.utils.paths import ensure_abs_env, REPO_ROOT as UTIL_REPO_ROOT
 from dotenv import load_dotenv
 load_dotenv()
 
 # ── directory layout fixup ─────────────────────────────────────────────────────
-# repo root  = two levels up from src/app/user_commands
-REPO_ROOT     = Path(__file__).resolve().parents[3]       # …/suite-cisco-ai-building-blocks/
-SRC_ROOT      = REPO_ROOT / "src"                         # …/suite-cisco-ai-building-blocks/src
-AGENT_ROOT    = SRC_ROOT  / "app"                         # …/src/app
+# UTIL_REPO_ROOT is the true repo root (suite-cisco-ai-building-blocks)
+REPO_ROOT   = UTIL_REPO_ROOT
+# allow overriding via SRC_ROOT env (default “src” under repo)
+SRC_ROOT    = ensure_abs_env("SRC_ROOT", "src")
+# allow overriding via AGENT_ROOT env (default “src/app” under repo)
+AGENT_ROOT  = ensure_abs_env("AGENT_ROOT", "src/app")
 
-# where our generated function definitions live
-LLM_DEF_DIR   = AGENT_ROOT / "llm" / "function_definitions"
+LLM_DEF_DIR    = ensure_abs_env(
+    "PLATFORM_LLM_DEF_DIR",
+    "src/app/llm/function_definitions"
+)
 # sdk_map.json for mapping platform→module
-SDK_MAP_FILE  = AGENT_ROOT / "llm" / "sdk_map.json"
+SDK_MAP_FILE   = ensure_abs_env(
+    "SDK_MAP_PATH",
+    "src/app/llm/sdk_map.json"
+)
 # the real indexer entrypoint
-INDEXER_SCRIPT = SRC_ROOT / "scripts" / "index_functions.py"
+INDEXER_SCRIPT = ensure_abs_env(
+    "INDEXER_PATH",
+    "src/scripts/index_functions.py"
+)
+
 # make sure we can import our retriever
 if str(AGENT_ROOT) not in sys.path:
     sys.path.insert(0, str(AGENT_ROOT))
 
 
-
-
-
 install()
 console = Console()
- 
 
- 
 
 # Load sdk_map if available
 try:

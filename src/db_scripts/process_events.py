@@ -32,6 +32,8 @@ from dotenv import load_dotenv
 from pathlib import Path
 from app.utils.chunking        import chunk_file
 import app.utils.pipeline_utils as pipeline_utils
+from app.utils.paths           import ensure_abs_env, REPO_ROOT as UTIL_REPO_ROOT
+
 
 # 1) Load .env & configure logging
 load_dotenv()
@@ -45,6 +47,9 @@ LAYER = "EVENTS"
 backend  = os.getenv(f"{LAYER}_VECTOR_BACKEND",    "azure").lower()
 provider = os.getenv(f"{LAYER}_EMBEDDING_PROVIDER", "azure").lower()
 logger.info(f"Layer={LAYER}, VECTOR_BACKEND={backend}, EMBEDDING_PROVIDER={provider}")
+# (optional) dynamic LLM & diet directories (override via .env)
+LLM_DIR  = ensure_abs_env("LLM_DIR",  "src/app/llm")
+DIET_DIR = ensure_abs_env("DIET_DIR", "src/app/llm/function_definitions")
 
 # 4) Decide concurrency prefix (for OMP_NUM_THREADS, etc.)
 _prefix_map = {"azure": "AZURE", "chroma": "CHROMA", "elastic": "ELASTIC"}
@@ -80,9 +85,10 @@ if backend == "azure":
     AzureIndexer(idx, layer_name=LAYER).create_index(recreate=None)
     os.environ[f"{LAYER}_AZURE_INDEX"] = idx
 
-# 9) Load & chunk your events JSON
-HERE = Path(__file__).resolve().parent
-events_path = HERE / "events" / "sample_events.json"
+# 9) Load & chunk your events JSON from a dynamic folder
+# Default is `src/db_scripts/events` under repo root
+EVENTS_DIR  = ensure_abs_env("EVENTS_SAMPLES_DIR", "src/db_scripts/events")
+events_path = EVENTS_DIR / "sample_events.json"
 if not os.path.exists(events_path):
     logger.warning(f"Missing {events_path}, nothing to do.")
     exit(0)

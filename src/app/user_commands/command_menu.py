@@ -10,10 +10,10 @@ from __future__ import annotations
 
 """
 ╔═════════════════════════ Command Launcher Wizard ═════════════════════════╗
-║ A CLI tool to run common AI agent utilities with a polished UX.         ║
-║ Press [cyan]i<n>[/cyan] (e.g. i2) to learn more about command <n>.      ║
-║ Enter the number to execute, or use the exit option to quit.            ║
-╚════════════════════════════════════════════════════════════════════════════╝
+║ A CLI tool to run common AI agent utilities with a polished UX.           ║
+║ Press [cyan]i<n>[/cyan] (e.g. i2) to learn more about command <n>.        ║
+║ Enter the number to execute, or use the exit option to quit.              ║
+╚═══════════════════════════════════════════════════════════════════════════╝
 """
 
 import os
@@ -138,13 +138,11 @@ def list_definitions() -> list[str]:
         return []
     # each JSON file name (minus “.json”) is a platform short-name
     return sorted(p.stem for p in defs_dir.glob("*.json") if p.is_file())
-# —————————————————————————————
 
-# main
-
-def main() -> None:
+# ── helper to render header + status ───────────────────────────────────────
+def show_status() -> None:
     clear_screen()
-    console.print(Panel.fit("🛠 Command Launcher Wizard", style="green"))
+    show_status()
 
     # --- STATUS SECTION ---
     pls  = list_definitions()
@@ -281,6 +279,16 @@ def main() -> None:
 
     console.print(Panel(grid, title="[bold yellow]Status[/bold yellow]", border_style="blue"))
 
+
+
+# —————————————————————————————
+
+# main
+
+def main() -> None:
+
+
+
     # menu loop...
     exit_idx = len(COMMANDS) + 1
     while True:
@@ -322,7 +330,7 @@ def main() -> None:
             subprocess.run([sys.executable, str(script_path)], check=True, cwd=str(AGENT_ROOT))
             console.print(Panel.fit(":white_check_mark: Done!", style="green"))
 
-            # --- NEW: Ask whether to go back to menu or exit ---
+            # --- Ask whether to go back to menu or exit ---
             action = Prompt.ask(
                 "\nWhat now? [b]m[/b]enu/[b]e[/b]xit",
                 choices=["m", "e"],
@@ -331,7 +339,9 @@ def main() -> None:
             if action == "e":
                 console.print("\n[green]Goodbye![/green]")
                 sys.exit(0)
-            clear_screen()
+
+            # back to menu: re-show header + status
+            show_status()
             continue
 
 if __name__ == "__main__":
