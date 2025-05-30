@@ -9,46 +9,49 @@ description = "Cisco AI Building Blocks (DB + Agent combined)"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "sqlalchemy>=1.4",
-    "psycopg2-binary",
-    "rich>=14.0.0",
-    "colorama",
+  "sqlalchemy>=1.4",
+  "psycopg2-binary",
+  "rich>=14.0.0",
+  "colorama",
 ]
 
 [project.scripts]
-# Agent CLI commands (moved under app.user_commands)
+# — Agent CLI commands (under app/user_commands)
 create-platform                = "app.user_commands.create_platform:main"
-create-platform-index          = "app.user_commands.create_platform_index:main"
-create-sdk                     = "app.user_commands.create_sdk:main"
 reset-platform                 = "app.user_commands.reset_platform:main"
-create-domain-demo-index       = "app.user_commands.create_domain_demo_index:main"
-generate-openapi-sdks          = "app.user_commands.generate_openapi_sdks:main"
-menu                           = "app.user_commands.command_menu:main"
+create-sdk                     = "app.user_commands.create_sdk:main"
 delete-sdk                     = "app.user_commands.delete_sdk:main"
-delete-platform                = "app.user_commands.reset_platform:main"
+create-platform-index          = "app.user_commands.create_platform_index:main"
+create-domain-demo-index       = "app.user_commands.create_domain_demo_index:main"
+create-events-index            = "app.user_commands.create_events_index:main"
+create-platform-route          = "app.user_commands.create_platform_route:main"
+delete-platform-routes         = "app.user_commands.delete_platform_routes:main"
+convert-swagger                = "app.user_commands.convert_swagger2_to_openapi3:main"
+menu                           = "app.user_commands.command_menu:main"
 
-# Runtime server
+# — Runtime server
 serve-app                      = "app.main:main"
 
-# DB-side pipeline commands
+# — Support scripts (not part of agent UI)
+generate-openapi-sdks          = "scripts.generate_openapi_sdks:main"
+
+# — DB-side pipeline commands
 create-index                   = "db_scripts.create_index:main"
 create-platform-db             = "db_scripts.create_platform:main"
 generate-openapi-sdks-db       = "db_scripts.generate_openapi_sdks:main"
 
-
 [tool.setuptools.packages.find]
-where    = ["src"]
-include  = [
-    "app",
-    "app.*",
-    "db_scripts",
-    "db_scripts.*",
-    "scripts",
-    "scripts.*",
+where   = ["src"]
+include = [
+  "app",
+  "app.*",
+  "db_scripts",
+  "db_scripts.*",
+  "scripts",
+  "scripts.*",
 ]
-exclude  = [
-
-    "tools",
-    "tools.*",
-    "*.egg-info",
+exclude = [
+  "tools",
+  "tools.*",
+  "*.egg-info",
 ]

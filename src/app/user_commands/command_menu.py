@@ -107,6 +107,30 @@ COMMANDS: list[dict[str, str]] = [
             "and indexes it into your vector store for domain-level demos."
         ),
     },
+        {
+        "script":   "create_events_index.py",
+        "function": "Create Events Index",
+        "short":    "Index an events JSON sample",
+        "long": (
+            "`create_events_index.py` lists available event JSON files in "
+            "`src/db_scripts/events`, sets `EVENTS_SAMPLES_DIR`, and invokes "
+            "`db_scripts.process_events` to embed and index them."
+        ),
+    },
+    {
+        "script":   "create_platform_route.py",
+        "function": "Create Platform Route",
+        "short":    "Add new FastAPI platform routes",
+        "long":     "`create_platform_route.py` walks you through creating and registering new platform routes in `app/routers`.",
+    },
+        {
+        "script":   "delete_platform_routes.py",
+        "function": "Delete Platform Routes",
+        "short":    "Remove FastAPI routes for a platform",
+        "long": (
+            "`delete_platform_routes.py` lists all route files under `src/app/routers/` and lets you remove the ones you choose."
+        ),
+    },
     {
         "script":   "convert_swagger2_to_openapi3.py",
         "function": "Convert Swagger v2",
