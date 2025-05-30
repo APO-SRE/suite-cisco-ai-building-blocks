@@ -37,14 +37,15 @@ import argparse
 import os
 import sys
 from pathlib import Path
+from app.utils.paths import ensure_abs_env, REPO_ROOT
 
-# ── ensure repo root is importable ─────────────────────────────────────────
-REPO_ROOT = Path(__file__).resolve().parents[1]          # …/suite-cisco-ai-building-blocks
-if str(REPO_ROOT) not in sys.path:
-    sys.path.insert(0, str(REPO_ROOT))
+# ── ensure our src/ folder is on sys.path ─────────────────────────────────
+# resolve src directory relative to repo root (override via SRC_ROOT in .env)
+SRC_ROOT = ensure_abs_env("SRC_ROOT", "src")
+if str(SRC_ROOT) not in sys.path:
+    sys.path.insert(0, str(SRC_ROOT))
 
 # ── canonicalise Chroma DB path (relative → absolute) ─────────────────────
-from scripts.utils.paths import ensure_abs_env
 ensure_abs_env("FASTAPI_CHROMA_DB_PATH", "chroma_dbs/fastapi")
 
 from app.retrievers.chroma_retriever import FunctionRetriever

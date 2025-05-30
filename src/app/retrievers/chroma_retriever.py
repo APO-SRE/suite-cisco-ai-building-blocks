@@ -37,8 +37,8 @@ Very thin wrapper around a *single* Chroma collection.
 import os
 import logging
 from pathlib import Path
+from app.utils.paths import ensure_abs_env
 from typing import Sequence, List, Dict, Any
-
 import chromadb
 from chromadb.config import Settings
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -59,13 +59,18 @@ class ChromaRetriever:
         collection_name: str | None = None,
     ) -> None:
         self.layer = layer.upper()
-        base_path  = os.getenv(f"{self.layer}_CHROMA_DB_PATH", "./chroma_dbs/fastapi")
+        # dynamically resolve the Chroma DB root directory via ENV or default
+        base_dir   = ensure_abs_env(
+            f"{self.layer}_CHROMA_DB_PATH",
+            "chroma_dbs/fastapi"
+        )
         coll_name  = (
             collection_name
             or os.getenv(f"{self.layer}_CHROMA_COLLECTION_PLATFORM", "platform-summaries-index")
         )
-
-        self.path = Path(base_path).expanduser().resolve() / coll_name
+        
+        # assemble and normalize the collection path
+        self.path = (base_dir / coll_name).resolve()
         if not self.path.exists():
             raise FileNotFoundError(
                 f"Chroma collection directory '{self.path}' not found."

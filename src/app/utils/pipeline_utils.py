@@ -33,7 +33,13 @@ from typing import List, Union
 import json
 from azure.core.credentials import AzureKeyCredential
 from azure.search.documents import SearchClient
+from app.utils.paths import ensure_abs_env, REPO_ROOT as UTIL_REPO_ROOT
 load_dotenv()
+
+# ── dynamic LLM paths (override via .env) ─────────────────────────────────
+# UTIL_REPO_ROOT points at suite-cisco-ai-building-blocks/
+LLM_DIR  = ensure_abs_env("LLM_DIR", "src/app/llm")
+DIET_DIR = ensure_abs_env("DIET_DIR", "src/app/llm/function_definitions")
 
 ################################################################################
 # Embedding providers (Azure-OpenAI, OpenAI, HuggingFace, Cohere)
@@ -174,9 +180,14 @@ class ChromaVectorIndexer(VectorIndexerBase):
         self.collection_name = collection_name
         self.layer_prefix    = layer_prefix
 
-        base_db_path    = os.getenv(f"{layer_prefix}_CHROMA_DB_PATH", "./chroma_db")
-        recreate_env    = os.getenv(f"{layer_prefix}_CHROMA_RECREATE_INDEX", "").strip().lower()
-        self.db_path    = os.path.join(base_db_path, collection_name)
+        # Resolve the Chroma DB root via ENV (or default under repo-root/chroma_dbs/<layer>)
+        base_dir = ensure_abs_env(
+            f"{layer_prefix}_CHROMA_DB_PATH",
+            f"chroma_dbs/{layer_prefix.lower()}"
+        )
+        recreate_env = os.getenv(f"{layer_prefix}_CHROMA_RECREATE_INDEX", "").strip().lower()
+        # Final path is <base_dir>/<collection_name>
+        self.db_path = (base_dir / collection_name).resolve()
 
         print(f"[ChromaVectorIndexer] collection='{collection_name}', db_path='{self.db_path}'")
 
@@ -195,10 +206,16 @@ class ChromaVectorIndexer(VectorIndexerBase):
             print(f"[ChromaVectorIndexer] No existing data. Creating {self.db_path}…")
             os.makedirs(self.db_path, exist_ok=True)
 
-        self.client     = chromadb.PersistentClient(
-            path=self.db_path,
-            settings=Settings(allow_reset=True, anonymized_telemetry=False)
+
+        self.client = chromadb.PersistentClient(
+        # convert Path → str so Settings.persist_directory stays a str
+        path=str(self.db_path),
+        settings=Settings(
+            anonymized_telemetry=False,
+            allow_reset=True
         )
+    )
+
         self.collection = self.client.get_or_create_collection(collection_name)
         print(f"[ChromaVectorIndexer] Ready for docs in collection '{collection_name}'")
 

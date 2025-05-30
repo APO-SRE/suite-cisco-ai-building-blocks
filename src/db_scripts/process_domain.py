@@ -34,6 +34,7 @@ from pathlib import Path
 from app.utils.chunking        import chunk_file
 import app.utils.pipeline_utils as pipeline_utils
 from typing import Any
+from app.utils.paths           import ensure_abs_env, REPO_ROOT as UTIL_REPO_ROOT
 
 # 1) Load .env & configure logging
 load_dotenv()
@@ -100,19 +101,23 @@ def deterministic_id(*parts: Any, algo: str = "sha1") -> str:
 ################################################################################
 # 8) Gather domain data from domain_samples/<optional sub-folder> or all files
 ################################################################################
-# locate our domain_samples folder next to this script
-HERE = Path(__file__).resolve().parent
-base_samples_dir = HERE / "domain_samples"
+# dynamically locate the domain_samples dir (override via .env)
+#
+# UTIL_REPO_ROOT points at suite-cisco-ai-building-blocks/
+BASE_SAMPLES_DIR = ensure_abs_env(
+    "DOMAIN_SAMPLES_DIR",
+    "src/db_scripts/domain_samples"
+)
 
 # allow an optional sub-folder name via env var
 folder_name = os.getenv("DOMAIN_SAMPLES_INDEX_FOLDER_NAME", "").strip()
 if folder_name:
-    domain_samples_dir = base_samples_dir / folder_name
+    domain_samples_dir = BASE_SAMPLES_DIR / folder_name
 else:
     logger.warning(
         "No DOMAIN_SAMPLES_INDEX_FOLDER_NAME specified; indexing everything under 'domain_samples'"
     )
-    domain_samples_dir = base_samples_dir
+    domain_samples_dir = BASE_SAMPLES_DIR
 
 # validate directory
 if not domain_samples_dir.exists():

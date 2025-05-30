@@ -54,10 +54,22 @@ from app.utils.paths          import ensure_abs_env
 # ══════════════════════════════════════════════════════════════════════════
 load_dotenv()
 
-REPO_ROOT: Path = Path(__file__).resolve().parents[1]            # suite-cisco-ai-building-blocks/
-LLM_DIR     = REPO_ROOT / "app" / "llm"
-DIET_DIR    = LLM_DIR / "function_definitions"
-FULL_DIR    = LLM_DIR / "openapi_specs"
+# ── dynamic repo & module paths ────────────────────────────────────────
+from app.utils.paths import ensure_abs_env, REPO_ROOT as UTIL_REPO_ROOT
+
+# true repo root (suite-cisco-ai-building-blocks)
+REPO_ROOT = UTIL_REPO_ROOT
+
+# LLM folder (override with LLM_DIR in .env if needed)
+LLM_DIR  = ensure_abs_env("LLM_DIR", "src/app/llm")
+
+# diet schemas folder (override via DIET_DIR)
+DIET_DIR = ensure_abs_env("DIET_DIR", "src/app/llm/function_definitions")
+
+# full OpenAPI specs folder (override via FULL_DIR)
+FULL_DIR = ensure_abs_env("FULL_DIR", "src/app/llm/openapi_specs")
+
+ 
 
 BACKEND     = os.getenv("FASTAPI_VECTOR_BACKEND", "chroma").lower()
 
@@ -65,6 +77,7 @@ BACKEND     = os.getenv("FASTAPI_VECTOR_BACKEND", "chroma").lower()
 if BACKEND == "chroma":
     # layer-scoped DB path (repo-relative default)
     ensure_abs_env("FASTAPI_CHROMA_DB_PATH", "chroma_dbs/fastapi")
+    
 
 # ══════════════════════════════════════════════════════════════════════════
 # 1.  Import the correct indexer implementation
