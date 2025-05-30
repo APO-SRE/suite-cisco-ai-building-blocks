@@ -19,6 +19,8 @@ from __future__ import annotations
 import os
 import sys
 import subprocess
+import chromadb
+from chromadb.config import Settings
 
 from pathlib import Path
 from rich.console import Console
@@ -128,28 +130,71 @@ def clear_screen() -> None:
     if sys.stdout.isatty():
         os.system("cls" if os.name == "nt" else "clear")
 
+
+def chroma_list_platforms() -> str:
+    # 1) read the DB root & collection name
+    db_root   = os.getenv("FASTAPI_CHROMA_DB_PATH", "chroma_dbs/fastapi")
+    coll_name = os.getenv(
+        "FASTAPI_CHROMA_COLLECTION_PLATFORM",
+        "function-definitions-index"
+    )
+
+    # 2) point the client at the DB root, not the collection folder
+    client = chromadb.PersistentClient(
+        path=db_root,
+        settings=Settings(anonymized_telemetry=False),
+    )
+    col = client.get_or_create_collection(coll_name)
+
+    # 3) pull all platform values
+    metas = col.get(include=["metadatas"])["metadatas"]
+    platforms = sorted({m.get("platform") for m in metas if m.get("platform")})
+
+    return ", ".join(platforms) if platforms else "(none)"
+
+ 
+
 def list_definitions() -> list[str]:
     defs_dir = AGENT_ROOT / "llm" / "function_definitions"
     if not defs_dir.exists():
          return []
     return sorted(p.stem for p in defs_dir.glob("*.json") if p.is_file())
  
-    if not defs_dir.exists():
-        return []
-    # each JSON file name (minus “.json”) is a platform short-name
-    return sorted(p.stem for p in defs_dir.glob("*.json") if p.is_file())
+ 
 
 # ── helper to render header + status ───────────────────────────────────────
 def show_status() -> None:
     clear_screen()
-    show_status()
+    console.print(Panel.fit("🛠 Cisco AI Building Blocks Menu", style="green"))
+  
+    chroma_plats = chroma_list_platforms()
+    c_coll = os.getenv("FASTAPI_CHROMA_COLLECTION_PLATFORM", "<none>")
+    c_db   = os.getenv("FASTAPI_CHROMA_DB_PATH",            "<none>") 
+    c_coll = os.getenv("FASTAPI_CHROMA_COLLECTION_PLATFORM", "<none>")
+    c_db   = os.getenv("FASTAPI_CHROMA_DB_PATH",            "<none>")
 
-    # --- STATUS SECTION ---
+    a_idx      = os.getenv("FASTAPI_AZURE_PLATFORM_INDEX",       "<none>")
+    a_endpoint = os.getenv("FASTAPI_AZURE_ENDPOINT",             "<none>")
+ 
+    e_idx  = os.getenv("FASTAPI_ELASTIC_PLATFORM_INDEX", "<none>")
+    e_host = os.getenv("FASTAPI_ELASTIC_HOST",           "<none>")
+
     pls  = list_definitions()
     sdks = list_existing_sdks()
     vec  = os.getenv("FASTAPI_VECTOR_BACKEND", "<none>")
     embed = os.getenv("FASTAPI_EMBEDDING_PROVIDER", "<none>")
     llm   = os.getenv("FASTAPI_LLM_PROVIDER", "<none>")
+
+
+    scaffolded     = list_definitions()       # → ["catalyst","meraki",…]
+    indexed_chroma = chroma_list_platforms()  # → "catalyst, meraki"
+    indexed_azure  = azure_list_platforms()   # → ["meraki",…]
+
+
+
+
+
+
 
     # Concurrency settings
     azure_omp     = os.getenv("FASTAPI_AZURE_OMP_NUM_THREADS", "<none>")
@@ -213,12 +258,30 @@ def show_status() -> None:
     grid.add_column(ratio=1)
     grid.add_column(ratio=1)
 
-    # General
+
+
+
+
+    # Row 1: scaffolded vs indexed vs vector backend
     grid.add_row(
-        f"[yellow]Existing Platforms[/yellow]:\n{', '.join(pls) or '(none)'}",
-        f"[yellow]Created SDKs[/yellow]:\n{', '.join(sdks) or '(none)'}",
-        f"[yellow]Active Vector Backend[/yellow]: [white]{vec}[/white]\n[yellow]Active Embedding Provider[/yellow]: [white]{embed}[/white]\n[yellow]Active LLM[/yellow]: [white]{llm}[/white]"
+        f"[yellow]Scaffolded[/yellow]:\n{', '.join(scaffolded) or '(none)'}",
+        f"[yellow]Chroma Indexed[/yellow]:\n{indexed_chroma}",
+        f"[yellow]Active Vector Backend[/yellow]:\n[white]{vec}[/white]"
     )
+
+    # Row 2: SDKs vs Azure indexed vs embedding provider
+    grid.add_row(
+        f"[yellow]Created SDKs[/yellow]:\n{', '.join(sdks) or '(none)'}",
+        f"[yellow]Azure Indexed[/yellow]:\n{', '.join(indexed_azure) or '(none)'}",
+        f"[yellow]Active Embedding Provider[/yellow]:\n[white]{embed}[/white]"
+    )
+
+    # Row 3: leave first two cols blank, show LLM provider in col 3
+    grid.add_row(
+        "", "",
+        f"[yellow]Active LLM Provider[/yellow]:\n[white]{llm}[/white]"
+    )
+
 
     # blank line
     grid.add_row("", "", "")
@@ -234,6 +297,7 @@ def show_status() -> None:
         # Chroma details
         f"[bright_blue]Index[/bright_blue]: [white]{c_coll}[/white]\n"
         f"[bright_blue]Platforms[/bright_blue]: [white]{', '.join(pls) or '(none)'}[/white]\n"
+        f"[bright_blue]DB Path[/bright_blue]: {c_db}\n"
         f"[bright_blue]Concurrency[/bright_blue]: [white]OMP={chroma_omp}, MKL={chroma_mkl}, CPUs={chroma_cpus}, Workers={chroma_workers}[/white]\n"
         f"[bright_blue]Embed Batch Size[/bright_blue]: [white]{c_e_batch}[/white]\n"
         f"[bright_blue]Chunk Size[/bright_blue]: [white]{c_chunk}[/white]\n"
@@ -248,6 +312,7 @@ def show_status() -> None:
         # Azure details
         f"[bright_blue]Index[/bright_blue]: [white]{a_idx}[/white]\n"
         f"[bright_blue]Platforms[/bright_blue]: [white]{', '.join(a_pls) or '(none)'}[/white]\n"
+        f"[bright_blue]Endpoint[/bright_blue]: {a_endpoint}\n"
         f"[bright_blue]Concurrency[/bright_blue]: [white]OMP={azure_omp}, MKL={azure_mkl}, CPUs={azure_cpus}, Workers={azure_workers}[/white]\n"
         f"[bright_blue]Embed Batch Size[/bright_blue]: [white]{a_e_batch}[/white]\n"
         f"[bright_blue]Chunk Size[/bright_blue]: [white]{a_chunk}[/white]\n"
@@ -275,79 +340,52 @@ def show_status() -> None:
         f"[bright_blue]Port[/bright_blue]: [white]{e_port}[/white]"
     )
 
-
-
     console.print(Panel(grid, title="[bold yellow]Status[/bold yellow]", border_style="blue"))
 
+#-------------------------------------------------------------------------------
 
-
-# —————————————————————————————
-
-# main
 
 def main() -> None:
+    show_status()
 
-
-
-    # menu loop...
     exit_idx = len(COMMANDS) + 1
     while True:
-        table = Table(box=box.SIMPLE)
-        table.add_column("#", style="bold cyan", no_wrap=True)
-        table.add_column("Function")
-        table.add_column("Description")
+        menu = Table(box=box.SIMPLE)
+        menu.add_column("#", style="bold cyan", no_wrap=True)
+        menu.add_column("Function")
+        menu.add_column("Description")
         for idx, cmd in enumerate(COMMANDS, start=1):
-            table.add_row(str(idx), cmd["function"], cmd["short"] )
-        table.add_row(str(exit_idx), "Exit", "Quit the wizard")
-        console.print(Panel(table, title="Select or Inspect Command", border_style="cyan"))
+            menu.add_row(str(idx), cmd["function"], cmd["short"])
+        menu.add_row(str(exit_idx), "Exit", "Quit the wizard")
+        console.print(Panel(menu, title="Select or Inspect Command", border_style="cyan"))
 
-        choice = Prompt.ask("Enter number to run, or 'i<n>' for info (e.g. i2)")
-        choice = choice.strip()
-
+        choice = Prompt.ask("Enter number or 'i<n>' for info").strip()
         if choice.lower().startswith("i"):
             num = choice[1:]
-            if num.isdigit() and 1 <= (i := int(num)) <= len(COMMANDS):
-                detail = COMMANDS[i-1]["long"]
-                console.print(Panel(Markdown(detail), title=f"Info: {COMMANDS[i-1]['function']}", border_style="magenta"))
+            if num.isdigit() and 1 <= (i:=int(num)) <= len(COMMANDS):
+                console.print(Panel(Markdown(COMMANDS[i-1]["long"]),
+                                    title=f"Info: {COMMANDS[i-1]['function']}",
+                                    border_style="magenta"))
                 Prompt.ask("Press Enter to return")
-                clear_screen()
+                show_status()
                 continue
-            console.print(f"[red]Invalid info request: {choice}[/red]")
-            continue
-
-        if choice.isdigit() and int(choice) == exit_idx:
+        elif choice.isdigit() and int(choice)==exit_idx:
             console.print("[green]Goodbye![/green]")
             sys.exit(0)
-
-        if choice.isdigit() and 1 <= (sel := int(choice)) <= len(COMMANDS):
-            script_name = COMMANDS[sel-1]["script"]
-            script_path = UCMD_DIR / script_name
-            if not script_path.exists():
-                console.print(f"[red]Script not found: {script_path}[/red]")
-                sys.exit(1)
+        elif choice.isdigit() and 1 <= (sel:=int(choice)) <= len(COMMANDS):
+            script = UCMD_DIR / COMMANDS[sel-1]["script"]
             clear_screen()
-            console.print(Panel.fit(f"🚀 Running {COMMANDS[sel-1]['function']}...", style="cyan"))
-            subprocess.run([sys.executable, str(script_path)], check=True, cwd=str(AGENT_ROOT))
-            console.print(Panel.fit(":white_check_mark: Done!", style="green"))
-
-            # --- Ask whether to go back to menu or exit ---
-            action = Prompt.ask(
-                "\nWhat now? [b]m[/b]enu/[b]e[/b]xit",
-                choices=["m", "e"],
-                default="m"
-            )
-            if action == "e":
-                console.print("\n[green]Goodbye![/green]")
-                sys.exit(0)
-
-            # back to menu: re-show header + status
+            console.print(f"🚀 Running {COMMANDS[sel-1]['function']}…")
+            subprocess.run([sys.executable, str(script)], check=True, cwd=str(AGENT_ROOT))
+            console.print(":white_check_mark: Done!")
+            action = Prompt.ask("What now? [b]m[/b]enu/[b]e[/b]xit", choices=["m","e"], default="m")
+            if action=="e":
+                console.print("[green]Goodbye![/green]"); sys.exit(0)
             show_status()
             continue
 
-if __name__ == "__main__":
+if __name__=="__main__":
     try:
         main()
     except KeyboardInterrupt:
-        print()
-        sys.exit(1)
-
+        print(); sys.exit(1)
