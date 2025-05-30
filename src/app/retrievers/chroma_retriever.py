@@ -43,7 +43,7 @@ import chromadb
 from chromadb.config import Settings
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-from retrievers import default_pool_size          # ← safe (defined early)
+from . import default_pool_size
 
 log = logging.getLogger(__name__)
 

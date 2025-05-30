@@ -39,11 +39,11 @@ install()
 console = Console()
 
 # Paths
-PROJECT_ROOT     = Path(__file__).resolve().parents[2]
+PROJECT_ROOT     = Path(__file__).resolve().parents[3]
 SOURCE_DIR       = PROJECT_ROOT / "src" / "source_open_api"
 OUTPUT_BASE_DIR  = PROJECT_ROOT / "src" / "db_scripts" / "output_sdk"
 SDK_MAP_FILE     = PROJECT_ROOT / "src" / "app" / "llm" / "sdk_map.json"
-
+ 
 
 def clear_screen() -> None:
     if sys.stdout.isatty():

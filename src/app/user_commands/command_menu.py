@@ -29,28 +29,95 @@ from rich import box
 from rich.traceback import install
 from rich.markdown import Markdown
 from rich.table import Table as GridTable
-from .create_platform_index import list_definitions, azure_list_platforms
+from .create_platform_index import azure_list_platforms
+
+
+
 
 install()
 console = Console()
 
 # Paths and imports
-PROJECT_ROOT = Path(__file__).resolve().parents[3]
 AGENT_ROOT = Path(__file__).resolve().parents[1]
+# CLI entry scripts live under src/app/user_commands
 UCMD_DIR   = AGENT_ROOT / "user_commands"
-SDK_DIR   = PROJECT_ROOT / "src" / "db_scripts" / "output_sdk"
+# SRC_ROOT = <repo>/src
+SRC_ROOT   = AGENT_ROOT.parent
+# point SDK_DIR at <repo>/src/db_scripts/output_sdk
+SDK_DIR    = SRC_ROOT / "db_scripts" / "output_sdk"
+ 
 
  
 
 # Available commands
 COMMANDS: list[dict[str, str]] = [
-    {"script": "create_platform.py",       "function": "Create Platform",       "short": "Scaffold a new platform",      "long": "..."},
-    {"script": "reset_platform.py",        "function": "Reset Platform",        "short": "Reset platform artifacts",    "long": "..."},
-    {"script": "create_sdk.py",            "function": "Create SDK",            "short": "Generate an OpenAPI-based SDK", "long": "... (Only needed if you’re not using a vendor-provided SDK.)"},
-    {"script": "delete_sdk.py",            "function": "Delete SDK",            "short": "Remove a generated SDK",       "long": "..."},
-    {"script": "create_platform_index.py", "function": "Create Platform Index", "short": "Index platform functions",   "long": "..."},
-    {"script": "create_domain_demo_index.py","function": "Create Domain Demo Index","short": "Index a demo domain sample","long": "..."},
+    {
+        "script":   "create_platform.py",
+        "function": "Create Platform",
+        "short":    "Scaffold a new platform",
+        "long": (
+            "`create_platform.py` guides you through naming a platform, selecting its SDK module and OpenAPI spec, "
+            "configuring HTTP methods and operation-ID filters, then generates all LLM artifacts: function definitions, "
+            "full OpenAPI specs, client stubs, dispatchers, and unified service."
+        ),
+    },
+    {
+        "script":   "reset_platform.py",
+        "function": "Reset Platform",
+        "short":    "Reset platform artifacts",
+        "long": (
+            "`reset_platform.py` deletes or cleans all auto-generated LLM folders for a chosen platform—function definitions, "
+            "OpenAPI specs, client code, dispatchers, and services—with an optional dry-run mode to preview."
+        ),
+    },
+    {
+        "script":   "create_sdk.py",
+        "function": "Create SDK",
+        "short":    "Generate an OpenAPI-based SDK",
+        "long": (
+            "`create_sdk.py` prompts for an OpenAPI spec and folder name, runs `openapi-python-client` to build a Python SDK package, "
+            "and updates `sdk_map.json` so you can import it in your code."
+        ),
+    },
+    {
+        "script":   "delete_sdk.py",
+        "function": "Delete SDK",
+        "short":    "Remove a generated SDK",
+        "long": (
+            "`delete_sdk.py` removes a specified SDK folder from `db_scripts/output_sdk/` and cleans up its entry in `sdk_map.json`."
+        ),
+    },
+    {
+        "script":   "create_platform_index.py",
+        "function": "Create Platform Index",
+        "short":    "Index platform functions",
+        "long": (
+            "`create_platform_index.py` lets you choose a platform’s function definitions and then embeds and indexes them "
+            "into your active vector store (Chroma, Azure Search, or Elasticsearch) for retrieval."
+        ),
+    },
+    {
+        "script":   "create_domain_demo_index.py",
+        "function": "Create Domain Demo Index",
+        "short":    "Index a demo domain sample",
+        "long": (
+            "`create_domain_demo_index.py` lists the available `domain_samples`, processes the chosen sample (chunking, embedding), "
+            "and indexes it into your vector store for domain-level demos."
+        ),
+    },
+    {
+        "script":   "convert_swagger2_to_openapi3.py",
+        "function": "Convert Swagger v2",
+        "short":    "Convert Swagger 2.0 spec → OpenAPI 3",
+        "long": (
+            "`convert_swagger2_to_openapi3.py` scans `db_scripts/source_swagger-2` for Swagger v2 files, "
+            "lets you pick one, and invokes `swagger2openapi` to emit a valid OpenAPI 3 file into `src/source_open_api/`."
+        ),
+    },
 ]
+
+
+
 
 # helpers
 
@@ -60,6 +127,18 @@ def list_existing_sdks() -> list[str]:
 def clear_screen() -> None:
     if sys.stdout.isatty():
         os.system("cls" if os.name == "nt" else "clear")
+
+def list_definitions() -> list[str]:
+    defs_dir = AGENT_ROOT / "llm" / "function_definitions"
+    if not defs_dir.exists():
+         return []
+    return sorted(p.stem for p in defs_dir.glob("*.json") if p.is_file())
+ 
+    if not defs_dir.exists():
+        return []
+    # each JSON file name (minus “.json”) is a platform short-name
+    return sorted(p.stem for p in defs_dir.glob("*.json") if p.is_file())
+# —————————————————————————————
 
 # main
 
@@ -119,6 +198,7 @@ def main() -> None:
     a_vec_cols= os.getenv("FASTAPI_AZURE_VECTOR_COLUMNS", "<none>")
     a_dim     = os.getenv("FASTAPI_AZURE_DIM", "<none>")
     a_pls     = azure_list_platforms()
+   
 
     # Elastic config
     e_e_batch = os.getenv("FASTAPI_ELASTIC_EMBED_BATCH_SIZE", "<none>")
@@ -241,9 +321,18 @@ def main() -> None:
             console.print(Panel.fit(f"🚀 Running {COMMANDS[sel-1]['function']}...", style="cyan"))
             subprocess.run([sys.executable, str(script_path)], check=True, cwd=str(AGENT_ROOT))
             console.print(Panel.fit(":white_check_mark: Done!", style="green"))
-            return
 
-        console.print(f"[red]Invalid selection: {choice}[/red]")
+            # --- NEW: Ask whether to go back to menu or exit ---
+            action = Prompt.ask(
+                "\nWhat now? [b]m[/b]enu/[b]e[/b]xit",
+                choices=["m", "e"],
+                default="m"
+            )
+            if action == "e":
+                console.print("\n[green]Goodbye![/green]")
+                sys.exit(0)
+            clear_screen()
+            continue
 
 if __name__ == "__main__":
     try:

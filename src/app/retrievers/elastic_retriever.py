@@ -28,6 +28,7 @@ import os
 from typing import List
 from elasticsearch import Elasticsearch
 #from app.llm.llm_factory import AzureOpenAIClient
+from . import default_pool_size
 
 class ElasticRetriever:
     """

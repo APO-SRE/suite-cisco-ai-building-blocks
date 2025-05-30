@@ -27,9 +27,9 @@ from typing import Dict, List
 from dotenv import load_dotenv
 
 # ───────── helpers ─────────────────────────────────────────────────────
-from scripts.utils.openapi_loader import load_spec
-from scripts.utils.sdk_loader      import load_client
-from scripts.utils.dietify         import dietify_schema
+from app.utils.openapi_loader import load_spec
+from app.utils.sdk_loader     import load_client
+from app.utils.dietify        import dietify_schema
 
 # ───────── constants ───────────────────────────────────────────────────
 load_dotenv()

@@ -47,7 +47,7 @@ from types import ModuleType
 # ── third-party ───────────────────────────────────────────────────────────
 from dotenv import load_dotenv
 # ── internal ──────────────────────────────────────────────────────────────
-from scripts.utils.paths import ensure_abs_env   # new helper
+from app.utils.paths          import ensure_abs_env
 
 # ══════════════════════════════════════════════════════════════════════════
 # 0.  Environment & basic paths
