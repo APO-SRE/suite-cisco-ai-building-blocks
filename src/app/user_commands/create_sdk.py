@@ -123,10 +123,15 @@ def main() -> None:
     spec = specs[idx - 1]
     console.print(f":white_check_mark: Selected [bold]{spec.name}[/bold]\n")
 
-    # -- step 2: choose folder name
+ 
+    # -- step 2: choose folder name (no default)
     console.print(Panel.fit("🔧 Step 2/4: Name Your SDK Folder", border_style="cyan"))
-    default_name = spec.stem
-    sdk_name = ask_choice(f"SDK folder name for '{spec.name}'", default_name)
+    sdk_name = Prompt.ask(
+        "[cyan]?[/cyan] [bold]Enter a short SDK folder name[/bold]"
+    ).strip()
+    if not sdk_name:
+        console.print("[red]You must enter a non-empty SDK name. Exiting.[/red]")
+        sys.exit(1)
     console.print(":white_check_mark: Name set\n")
 
     # -- step 3: preview

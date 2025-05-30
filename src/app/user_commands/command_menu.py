@@ -139,14 +139,21 @@ def chroma_list_platforms() -> str:
         "function-definitions-index"
     )
 
-    # 2) point the client at the DB root, not the collection folder
+    # 2) build the full path to the *collection* directory
+    coll_dir = Path(db_root) / coll_name
+
+    # debug: make sure this exists
+    if not coll_dir.exists():
+        print(f"[warning] Chroma collection dir not found: {coll_dir}")
+
+    # 3) point the client at the collection directory
     client = chromadb.PersistentClient(
-        path=db_root,
+        path=str(coll_dir),
         settings=Settings(anonymized_telemetry=False),
     )
     col = client.get_or_create_collection(coll_name)
 
-    # 3) pull all platform values
+    # 4) pull all platform values
     metas = col.get(include=["metadatas"])["metadatas"]
     platforms = sorted({m.get("platform") for m in metas if m.get("platform")})
 
