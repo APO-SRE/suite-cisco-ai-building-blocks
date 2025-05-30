@@ -24,14 +24,16 @@ environments. You are solely responsible for any modifications or adaptations ma
 By using this code, you agree that you have read, understood, and accept these terms.
 """
 import os
+import sys
 import glob
 import json
 import hashlib
 import logging
 from dotenv import load_dotenv
-
-from scripts.utils.chunking import chunk_file
-from scripts.utils import pipeline_utils
+from pathlib import Path
+from app.utils.chunking        import chunk_file
+import app.utils.pipeline_utils as pipeline_utils
+from typing import Any
 
 # 1) Load .env & configure logging
 load_dotenv()
@@ -74,40 +76,55 @@ logger.info(f"Using backend='{backend}' for domain data indexing…")
 
 # 7) If using Azure, ensure index is created
 if backend == "azure":
-    from scripts.indexers.azure_indexer import AzureIndexer
+    from db_scripts.indexers.azure_indexer import AzureIndexer
     idx_name = os.getenv(f"{LAYER}_AZURE_INDEX", f"{LAYER.lower()}-index")
     logger.info(f"Ensuring Azure Search index '{idx_name}'…")
     AzureIndexer(idx_name, layer_name=LAYER).create_index(recreate=None)
     os.environ[f"{LAYER}_AZURE_INDEX"] = idx_name
 
-def deterministic_id(*parts: str, algo: str = "sha1") -> str:
+def deterministic_id(*parts: Any, algo: str = "sha1") -> str:
     """
     Build a repeatable ID from any number of text fragments.
 
     Example
     -------
-    deterministic_id("domain", "/path/file.json", "42", "3")  ->
+    deterministic_id("domain", Path("/path/file.json"), 42, 3) ->
         '6a4e8f85d0c3715f824d4e0c890d503f1ca89e23'
     """
-    joined = "§".join(parts)          # unlikely to appear in file names
-    h      = hashlib.new(algo)
-    h.update(joined.encode())
+    # convert every part to string before joining
+    joined = "§".join(str(p) for p in parts)          
+    h = hashlib.new(algo)
+    h.update(joined.encode("utf-8"))
     return h.hexdigest()
 
 ################################################################################
-# 8) Gather domain data from domain_samples/<folder_name>/...
+# 8) Gather domain data from domain_samples/<optional sub-folder> or all files
 ################################################################################
+# locate our domain_samples folder next to this script
+HERE = Path(__file__).resolve().parent
+base_samples_dir = HERE / "domain_samples"
 
-folder_name = os.getenv("DOMAIN_SAMPLES_INDEX_FOLDER_NAME", "")  # e.g. "airline"
-if not folder_name:
-    logger.warning("No DOMAIN_SAMPLES_INDEX_FOLDER_NAME specified in .env; defaulting to 'domain_samples'")
-domain_samples_dir = os.path.join("domain_samples", folder_name)  
-# e.g. domain_samples/airline
+# allow an optional sub-folder name via env var
+folder_name = os.getenv("DOMAIN_SAMPLES_INDEX_FOLDER_NAME", "").strip()
+if folder_name:
+    domain_samples_dir = base_samples_dir / folder_name
+else:
+    logger.warning(
+        "No DOMAIN_SAMPLES_INDEX_FOLDER_NAME specified; indexing everything under 'domain_samples'"
+    )
+    domain_samples_dir = base_samples_dir
 
-json_files = glob.glob(os.path.join(domain_samples_dir, "*.json"))
+# validate directory
+if not domain_samples_dir.exists():
+    logger.error(f"Domain samples directory not found: {domain_samples_dir}")
+    sys.exit(1)
+
+# gather all .json files
+json_files = list(domain_samples_dir.glob("*.json"))
 if not json_files:
     logger.warning(f"No .json files found in '{domain_samples_dir}'. Nothing to index.")
-    exit(0)
+    sys.exit(0)
+
 
 all_chunks = []
 CHUNK_SIZE    = int(os.getenv(f"{LAYER}_{prefix_key}_CHUNK_SIZE",    "2000"))

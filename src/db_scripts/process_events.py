@@ -29,9 +29,9 @@ import json
 import uuid
 import logging
 from dotenv import load_dotenv
-
-from scripts.utils.chunking import chunk_file
-from scripts.utils import pipeline_utils
+from pathlib import Path
+from app.utils.chunking        import chunk_file
+import app.utils.pipeline_utils as pipeline_utils
 
 # 1) Load .env & configure logging
 load_dotenv()
@@ -73,7 +73,7 @@ logger.info(f"Using backend={backend!r} for indexing…")
 # 8) For Azure backend, explicitly ensure the Azure Search index exists
 #    (Chroma & Elastic get created/prompted automatically inside pipeline_utils.)
 if backend == "azure":
-    from scripts.indexers.azure_indexer import AzureIndexer
+    from db_scripts.indexers.azure_indexer import AzureIndexer
     idx = os.getenv(f"{LAYER}_AZURE_INDEX", f"{LAYER.lower()}-index")
     logger.info(f"Ensuring Azure Search index '{idx}'…")
 
@@ -81,7 +81,8 @@ if backend == "azure":
     os.environ[f"{LAYER}_AZURE_INDEX"] = idx
 
 # 9) Load & chunk your events JSON
-events_path = "events/sample_events.json"
+HERE = Path(__file__).resolve().parent
+events_path = HERE / "events" / "sample_events.json"
 if not os.path.exists(events_path):
     logger.warning(f"Missing {events_path}, nothing to do.")
     exit(0)
