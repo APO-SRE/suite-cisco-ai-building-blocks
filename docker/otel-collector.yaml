@@ -1,0 +1,37 @@
+# docker/otel-collector.yaml  ← replace the whole file
+receivers:
+  otlp:
+    protocols:
+      http:
+      grpc:
+
+processors:
+  transform/rename:
+    error_mode: ignore
+    trace_statements:
+      - context: span
+        statements:
+          # put spans into their own pseudo-services
+          - set(resource.attributes["service.name"], "chat-workflow")  where name == "chat-workflow"
+          - set(resource.attributes["service.name"], "retriever")      where name == "retriever"
+          - set(resource.attributes["service.name"], "build-functions") where name == "build.functions"
+          - set(resource.attributes["service.name"], "llm")            where IsMatch(name, "llm#.*")
+
+  attributes/inject-peer:
+    actions:
+      - action: insert
+        key: peer.service
+        from_attribute: service.name
+
+exporters:
+  otlphttp/tempo:                # ← note the *http* variant
+    endpoint: http://tempo:4318
+    tls:
+      insecure: true
+
+service:
+  pipelines:
+    traces:
+      receivers:  [otlp]
+      processors: [transform/rename, attributes/inject-peer]
+      exporters:  [otlphttp/tempo]

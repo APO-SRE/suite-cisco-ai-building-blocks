@@ -1,0 +1,28 @@
+[
+    {
+      "id": "LOY-401",
+      "content": "Customer: Frank Huang, loyalty ID L-5001, Tier: Silver. Points balance: 120.",
+      "metadata": "Joined 2025-01-15, email: frank.huang@domain.org, store preference: #1"
+    },
+    {
+      "id": "LOY-402",
+      "content": "Customer: Gina Rossi, loyalty ID L-6001, Tier: Gold. Points balance: 300.",
+      "metadata": "Joined 2024-12-01, phone: 555-8241, store preference: #3"
+    },
+    {
+      "id": "LOY-403",
+      "content": "Customer: Hiro Tanaka, loyalty ID L-7002, Tier: Silver. Points balance: 90.",
+      "metadata": "Joined 2025-02-10, email: hiro.t@domain.org, store preference: #2"
+    },
+    {
+      "id": "LOY-404",
+      "content": "Customer: Ivy Kim, loyalty ID L-8003, Tier: Bronze. Points balance: 45.",
+      "metadata": "Joined 2025-03-01, phone: 555-6103"
+    },
+    {
+      "id": "LOY-405",
+      "content": "Customer: Jeff Teeter, loyalty ID L-9004, Tier: Platinum. Points balance: 800.",
+      "metadata": "Joined 2023-11-20, email: jeff.teeter@domain.org, store preference: none"
+    }
+  ]
+  

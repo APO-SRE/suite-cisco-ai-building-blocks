@@ -1,0 +1,28 @@
+[
+    {
+      "id": "PROG-101",
+      "content": "Youth Mentorship Program: weekly sessions for ages 13-18, focusing on academic support and life skills.",
+      "metadata": "Program code: YMP-13to18, start date: 2025-01-10, coordinator: Alice Brown (COORD-1001)"
+    },
+    {
+      "id": "PROG-102",
+      "content": "Elderly Assistance Program: home visit support, medication reminders, light housekeeping help.",
+      "metadata": "Program code: EAP-Senior, start date: 2025-02-01, coordinator: Bob Chen (COORD-2001)"
+    },
+    {
+      "id": "PROG-103",
+      "content": "Job Training & Placement: workshops on resume writing, interview prep, local job listings.",
+      "metadata": "Program code: JTP-2025, start date: 2025-01-15, coordinator: Carol Lim (COORD-3002)"
+    },
+    {
+      "id": "PROG-104",
+      "content": "Homeless Outreach: daily meal distribution, shelter referrals, basic medical check-ups.",
+      "metadata": "Program code: HO-Resources, start date: 2025-03-05, coordinator: David Parker (COORD-4001)"
+    },
+    {
+      "id": "PROG-105",
+      "content": "Family Counseling: group sessions focusing on communication and conflict resolution.",
+      "metadata": "Program code: FC-Fam, start date: 2025-04-01, coordinator: Emily Stone (COORD-5001)"
+    }
+  ]
+  

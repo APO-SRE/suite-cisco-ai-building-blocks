@@ -1,0 +1,32 @@
+[
+  {
+    "policy_id": "POL-100",
+    "title": "Scheduling & Cancellations",
+    "effective_date": "2025-01-01",
+    "document_text": "All patient appointments must be confirmed at least 48 hours in advance. Cancellation fees may apply if canceled within 24 hours. Same-day appointments require provider approval."
+  },
+  {
+    "policy_id": "POL-101",
+    "title": "Patient Data Privacy",
+    "effective_date": "2024-12-15",
+    "document_text": "Patient data must be stored in encrypted databases with access restricted to authorized staff. Unauthorized access is subject to disciplinary action and potential legal ramifications."
+  },
+  {
+    "policy_id": "POL-102",
+    "title": "Follow-up & Referrals",
+    "effective_date": "2025-01-15",
+    "document_text": "Providers should schedule follow-up appointments within two weeks of any significant diagnosis or medication change. Referrals must be documented in the EHR system and communicated to patients within three business days."
+  },
+  {
+    "policy_id": "POL-103",
+    "title": "Telehealth Consultations",
+    "effective_date": "2025-01-20",
+    "document_text": "Telehealth visits are permitted for non-emergency follow-ups and medication reviews. Providers must use the approved video-conferencing platform. Co-pays may apply based on insurance coverage."
+  },
+  {
+    "policy_id": "POL-104",
+    "title": "Infection Control",
+    "effective_date": "2024-11-01",
+    "document_text": "All clinical staff must follow hand-washing protocols and utilize PPE (Personal Protective Equipment) as appropriate. Isolation procedures must be observed for contagious illnesses."
+  }
+]

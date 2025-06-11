@@ -1,0 +1,28 @@
+[
+    {
+      "id": "PL-301",
+      "content": "Building Permit #BP-1001 for Frank Huang: minor home renovation. Approved 2025-02-15.",
+      "metadata": "Ref: RES-201, address: 123 Maple St, inspector: Bob Chen"
+    },
+    {
+      "id": "PL-302",
+      "content": "Business License #BL-202 for Gina Rossi: retail clothing store. Issued 2025-03-05.",
+      "metadata": "Ref: RES-202, store location: 456 Oak Ave, renewal due 2026-03-05"
+    },
+    {
+      "id": "PL-303",
+      "content": "Solar Installation Permit #BP-1102 for Hiro Tanaka, under Green Energy initiative.",
+      "metadata": "Ref: RES-203, date: 2025-03-25, department: Environment & Energy"
+    },
+    {
+      "id": "PL-304",
+      "content": "Public Transit Vendor License #PT-501 for Ivy Kim: kiosk at main bus station. Valid 1 year.",
+      "metadata": "Ref: RES-204, issued 2025-02-10, coordinator: David Parker"
+    },
+    {
+      "id": "PL-305",
+      "content": "Commercial Building Permit #BP-1200 for Jeff Teeter’s engineering firm expansion. Approved 2025-04-02.",
+      "metadata": "Ref: RES-205, address: 202 Walnut Dr, inspector: Carol Lim"
+    }
+  ]
+  

@@ -1,0 +1,28 @@
+[
+    {
+      "id": "CAMP-101",
+      "content": "Digital Ads for Acme Anvils: 4-week social media push, focusing on comedic brand awareness.",
+      "metadata": "Campaign code: DIG-ACME, start date: 2025-02-01, manager: Alice Brown (MGR-1001)"
+    },
+    {
+      "id": "CAMP-102",
+      "content": "TV Spot for Skyline Hotels: 30-second commercial highlighting summer promos. Runs on national channels.",
+      "metadata": "Campaign code: TV-SKY, start date: 2025-03-10, manager: Bob Chen (MGR-2001)"
+    },
+    {
+      "id": "CAMP-103",
+      "content": "Email & Direct Mail for Greenfield Travel Agency’s spring deals. Segment: families, retirees.",
+      "metadata": "Campaign code: EDM-GFT, start date: 2025-01-25, manager: Carol Lim (MGR-3002)"
+    },
+    {
+      "id": "CAMP-104",
+      "content": "Influencer Collab for Parker Sneakers. 2-month partnership with top fitness YouTubers.",
+      "metadata": "Campaign code: INFL-PARK, start date: 2025-02-15, manager: David Parker (MGR-4001)"
+    },
+    {
+      "id": "CAMP-105",
+      "content": "Billboard & Transit Ads for Stone Electronics. City bus wraps + highway billboards, 6 weeks.",
+      "metadata": "Campaign code: OUT-STONE, start date: 2025-03-01, manager: Emily Stone (MGR-5001)"
+    }
+  ]
+  

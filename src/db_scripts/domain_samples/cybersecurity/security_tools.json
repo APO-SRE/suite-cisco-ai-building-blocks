@@ -1,0 +1,28 @@
+[
+    {
+      "id": "SEC-501",
+      "content": "Email Security Gateway: advanced spam filter, URL rewriting, known malicious domain blocklist.",
+      "metadata": "Deployed for CL-201 (Frank Huang). Helps address TI-101 phishing."
+    },
+    {
+      "id": "SEC-502",
+      "content": "Next-Gen Firewall with IDS/IPS module, integrated threat intel. Installed for CL-202 (Gina Rossi).",
+      "metadata": "Active scanning for ransomware signatures from TI-102."
+    },
+    {
+      "id": "SEC-503",
+      "content": "WAF (Web Application Firewall) for e-commerce. Blocks SQL injection, implements custom rules.",
+      "metadata": "Hiro Tanaka’s site used for CL-203, referencing TI-103 injection attempts."
+    },
+    {
+      "id": "SEC-504",
+      "content": "DDoS Mitigation Appliance: anomaly detection, scrubbing center integration. Deployed for Ivy Kim (CL-204).",
+      "metadata": "Protects from NetFlood botnet (TI-104)."
+    },
+    {
+      "id": "SEC-505",
+      "content": "EDR (Endpoint Detection & Response) agent with zero-day exploit detection. Critical for Jeff Teeter’s agency.",
+      "metadata": "Config aims to handle TI-105 APT infiltration paths."
+    }
+  ]
+  

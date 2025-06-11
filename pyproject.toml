@@ -1,0 +1,74 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ai-building-blocks"
+version = "0.2.1"
+description = "Cisco AI Building Blocks (DB + Agent combined)"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "sqlalchemy>=1.4",
+    "psycopg2-binary",
+    "rich>=14.0.0",
+    "colorama",
+]
+
+[project.scripts]
+# Agent CLI commands (located under src/app/user_commands)
+start-platform-agent        = "app.user_commands.start_platform_agent:main"
+stop-platform-agent         = "app.user_commands.stop_platform_agent:main"
+create-platform             = "app.user_commands.create_platform:main"
+reset-platform              = "app.user_commands.reset_platform:main"
+create-sdk                  = "app.user_commands.create_sdk:main"
+delete-sdk                  = "app.user_commands.delete_sdk:main"
+create-platform-index       = "app.user_commands.create_platform_index:main"
+create-domain-demo-index    = "app.user_commands.create_domain_demo_index:main"
+create-events-index         = "app.user_commands.create_events_index:main"
+create-platform-route       = "app.user_commands.create_platform_route:main"
+delete-platform-routes      = "app.user_commands.delete_platform_routes:main"
+
+
+
+
+
+
+update-platform-registry    = "app.user_commands.update_platform_registry:main"
+sync-registry-with-scaffold = "app.user_commands.sync_registry_with_scaffold:main"
+convert-swagger             = "app.user_commands.convert_swagger2_to_openapi3:main"
+manage-env                  = "app.user_commands.manage_.env:main"
+menu                        = "app.user_commands.command_menu:main"
+cisco                       = "app.user_commands.command_menu:main"
+
+# Runtime server
+serve-app                   = "app.main:main"
+
+# Support scripts (not part of agent UI)
+generate-openapi-sdks       = "scripts.generate_openapi_sdks:main"
+
+# DB-side pipeline commands
+create-index                = "db_scripts.create_index:main"
+create-platform-db          = "db_scripts.create_platform:main"
+generate-openapi-sdks-db    = "db_scripts.generate_openapi_sdks:main"
+
+# Telemetry stack commands
+start-telemetry-stack       = "app.user_commands.start_telemetry_stack:main"
+stop-telemetry-stack        = "app.user_commands.stop_telemetry_stack:main"
+status-application          = "app.user_commands.status_application:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = [
+    "app",
+    "app.*",
+    "db_scripts",
+    "db_scripts.*",
+    "scripts",
+    "scripts.*",
+]
+exclude = [
+    "tools",
+    "tools.*",
+    "*.egg-info",
+]

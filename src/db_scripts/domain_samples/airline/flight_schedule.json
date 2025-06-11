@@ -1,0 +1,28 @@
+[
+    {
+      "id": "FL-101",
+      "content": "Flight 882 from SFO to JFK departs 07:00 AM daily, 85% average booking. Potential seasonal shift in summer.",
+      "metadata": "Aircraft: A320, Est. flight time: 5.5 hours, Gate: C14"
+    },
+    {
+      "id": "FL-102",
+      "content": "Flight 233 from LAX to ORD departs 06:30 AM M/W/F, occasionally re-routed if weather delays in Denver.",
+      "metadata": "Aircraft: 737-900, capacity: 180 seats, next schedule review: Jun 2025"
+    },
+    {
+      "id": "FL-103",
+      "content": "Red-eye flight 920 from BOS to SEA, departs 10:30 PM. Low cargo volume but consistent business traveler demand.",
+      "metadata": "Aircraft: A321neo, typical load factor: 78%"
+    },
+    {
+      "id": "FL-104",
+      "content": "Flight 707 from DFW to MIA operates at 09:15 AM. Seasonal demand spikes in winter for beach destinations.",
+      "metadata": "Aircraft: 737 MAX 8, assigned crew base: DFW, daily flight"
+    },
+    {
+      "id": "FL-105",
+      "content": "Flight 300 from DEN to SFO is a short haul (approx 2h 20m). Often used by frequent flyers connecting to Asia routes.",
+      "metadata": "Aircraft: A319, gate changes common due to Denver weather"
+    }
+  ]
+  

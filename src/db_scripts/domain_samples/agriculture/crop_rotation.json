@@ -1,0 +1,28 @@
+[
+    {
+      "id": "ROT-001",
+      "content": "Three-year rotation plan: Year 1 Corn, Year 2 Soybeans, Year 3 Winter Wheat, repeating to reduce rootworm pressure.",
+      "metadata": "Rotation ID: CR3-2025, Fields #1-5, Pre-plant herbicide recommended."
+    },
+    {
+      "id": "ROT-002",
+      "content": "Alfalfa in Year 4 helps fix nitrogen. Stands recommended for two seasons before returning to corn.",
+      "metadata": "Alfalfa break: Fields #6-7, Start: 2025, Duration: 2 years"
+    },
+    {
+      "id": "ROT-003",
+      "content": "Adding orchardgrass or clover in between cereal crops can improve soil tilth and reduce weeds.",
+      "metadata": "Experiment code: ORCH-CLV, suggested fields: #2, #9"
+    },
+    {
+      "id": "ROT-004",
+      "content": "Sugar beet rotation helps break up compaction layers, but requires careful fertilizer management.",
+      "metadata": "Farm: MeadowWest, Fertilizer: High potash recommended"
+    },
+    {
+      "id": "ROT-005",
+      "content": "Using radish cover crops after wheat harvest helps scavenge leftover nitrogen and alleviate minor compaction.",
+      "metadata": "Recommended planting time: early fall, termination: pre-spring"
+    }
+  ]
+  

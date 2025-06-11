@@ -1,0 +1,28 @@
+[
+    {
+      "id": "RES-201",
+      "content": "Resident: Frank Huang, address: 123 Maple St, age 39, occupation: teacher. Voter registered.",
+      "metadata": "Ward: 2, last contact: 2025-02-10, councilDistrict: 'Northside'"
+    },
+    {
+      "id": "RES-202",
+      "content": "Resident: Gina Rossi, address: 456 Oak Ave, age 27, occupation: small business owner.",
+      "metadata": "Ward: 5, last contact: 2025-03-15, license: local retail store"
+    },
+    {
+      "id": "RES-203",
+      "content": "Resident: Hiro Tanaka, address: 789 Pine Rd, age 72, retired engineer, seeking property tax relief.",
+      "metadata": "Ward: 2, contact date: 2025-03-20, noted interest in solar program"
+    },
+    {
+      "id": "RES-204",
+      "content": "Resident: Ivy Kim, address: 101 Birch Ct, age 45, occupation: nurse. Public transportation user.",
+      "metadata": "Ward: 3, last contact: 2025-01-30, feedback on bus routes"
+    },
+    {
+      "id": "RES-205",
+      "content": "Resident: Jeff Teeter, address: 202 Walnut Dr, age 50, owns local engineering firm.",
+      "metadata": "Ward: 1, meeting date: 2025-04-01, discussing business expansion"
+    }
+  ]
+  

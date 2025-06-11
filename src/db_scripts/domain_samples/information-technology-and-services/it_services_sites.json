@@ -1,0 +1,53 @@
+[
+    {
+      "id": "LOC-101",
+      "name": "Managed IT NOC Center",
+      "address": "100 Infra Rd, TechCity, ST 11111",
+      "relation": [
+        "Oversees RMM & help desk for SERV-101 clients (e.g., FrankH CLI-201)",
+        "Monitors patch schedules in project_tasks.json (PROJ-301)"
+      ],
+      "metadata": "24/7 operation, staff rotating shifts, advanced RMM tool"
+    },
+    {
+      "id": "LOC-102",
+      "name": "Cloud Migration Hub",
+      "address": "200 Cloud Way, SysTown, ST 22222",
+      "relation": [
+        "Supports AWS/Azure setups for SERV-102, Gina Rossi’s project (CLI-202)",
+        "Compliance check references AUD-502 (PCI scoping)"
+      ],
+      "metadata": "Cloud architecture designs, secure DevOps pipeline integration"
+    },
+    {
+      "id": "LOC-103",
+      "name": "DevOps Lab",
+      "address": "350 Container Ln, DevCity, ST 33333",
+      "relation": [
+        "DevOps pipeline experiments (SERV-103), Hiro’s e-commerce tasks (PROJ-303)",
+        "Azure baseline reviews in compliance_audits.json (AUD-503)"
+      ],
+      "metadata": "Container registry, CI/CD frameworks, test environment"
+    },
+    {
+      "id": "LOC-104",
+      "name": "Security Testing Center",
+      "address": "500 Secure Ave, SafeTown, ST 44444",
+      "relation": [
+        "Pen testing & vulnerability scanning for SERV-104, Ivy Kim’s compliance (CLI-204)",
+        "High-severity injection findings (AUD-504)"
+      ],
+      "metadata": "Isolation labs for infiltration testing, daily scanning sessions"
+    },
+    {
+      "id": "LOC-105",
+      "name": "Analytics & BI Studio",
+      "address": "77 Data Dr, InsightCity, ST 55555",
+      "relation": [
+        "SERV-105 data analytics for Jeff’s pilot (CLI-205), ETL pipeline tasks in PROJ-305",
+        "Governance policy checks (AUD-505)"
+      ],
+      "metadata": "Big data cluster, specialized analytics staff on-site"
+    }
+  ]
+  

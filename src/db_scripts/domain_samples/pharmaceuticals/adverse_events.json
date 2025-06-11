@@ -1,0 +1,28 @@
+[
+    {
+      "id": "AE-501",
+      "content": "Two patients in ‘NeoCure’ trial (PB-201) reported mild nausea, resolved spontaneously. No dose change.",
+      "metadata": "Site: Hospital A, date: 2025-02-20, severity: mild"
+    },
+    {
+      "id": "AE-502",
+      "content": "Single severe rash case from ‘Analge-Patch’ test batch (PB-203). Possibly related to adhesive. Patch removed.",
+      "metadata": "Occurrence date: 2025-02-22, reported to safety board"
+    },
+    {
+      "id": "AE-503",
+      "content": "One instance of injection device malfunction (DIA-01) with sensor error. No harm to volunteer.",
+      "metadata": "Date: 2025-02-28, event code: M-Err, follow-up needed"
+    },
+    {
+      "id": "AE-504",
+      "content": "During ‘Viraxin-B’ pilot usage, minor headache reported. Investigators uncertain if drug-related.",
+      "metadata": "Date: 2025-02-18, site: R&D affiliate Europe, mild"
+    },
+    {
+      "id": "AE-505",
+      "content": "No adverse events yet reported for ‘Ampiclox-XYZ’ scale-up. Ongoing vigilance for GI upset.",
+      "metadata": "Current observation: 14 days post-dose, next check: 2025-03-15"
+    }
+  ]
+  

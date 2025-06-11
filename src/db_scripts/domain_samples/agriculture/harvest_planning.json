@@ -1,0 +1,28 @@
+[
+    {
+      "id": "HVP-501",
+      "content": "Field #2 corn matures ~September 12, yield estimate ~155 bu/acre. Moisture check set for late August.",
+      "metadata": "Harvest window: Sep 10-20, Farm: MapleFields"
+    },
+    {
+      "id": "HVP-502",
+      "content": "Field #9 sunflowers performing above average. If dryness persists, harvest may begin 1 week early.",
+      "metadata": "Plot ID: SF-9, potential early date: late August 2025"
+    },
+    {
+      "id": "HVP-503",
+      "content": "Orchard #5 apples show good fruit set, but slight hail damage. Harvest likely mid-September.",
+      "metadata": "Variety: HoneyCrisp, estimated yield: 200 bushels/acre"
+    },
+    {
+      "id": "HVP-504",
+      "content": "Sweet potatoes in Field #11 nearing maturity. Warmer weather advanced the schedule by ~10 days.",
+      "metadata": "Farm: Sunrise Acres, projected harvest: mid-October"
+    },
+    {
+      "id": "HVP-505",
+      "content": "Winter barley in Field #15 has moderate stand density. Might delay harvest 1 week if rainfall continues.",
+      "metadata": "Farm: Brookside West, estimated yield: 90 bu/acre"
+    }
+  ]
+  

@@ -1,0 +1,53 @@
+[
+    {
+      "id": "LOC-101",
+      "name": "North America BattleQuest Server",
+      "address": "Server cluster: NA-BQ-01",
+      "relation": [
+        "FrankH’s wizard char (PLAYER-201), wizard spells rebalanced in PATCH-401",
+        "Tournament event EV-501 referencing co-op dungeon race"
+      ],
+      "metadata": "Peak hours: 7pm-11pm EST, capacity ~10k concurrent"
+    },
+    {
+      "id": "LOC-102",
+      "name": "EU SkyRacer Arena",
+      "address": "Server cluster: EU-SR-Alpha",
+      "relation": [
+        "GinaR top 50, SkyRacer Championship EV-502",
+        "Patch update 2.1 (PATCH-402) deployed"
+      ],
+      "metadata": "Hosted in Frankfurt, real-time leaderboard resets monthly"
+    },
+    {
+      "id": "LOC-103",
+      "name": "Asia CyberStrike WarZone",
+      "address": "Server cluster: AS-CS-WZ1",
+      "relation": [
+        "HiroT’s clan AlphaStrike, clan wars in EV-503",
+        "Patch 3.0 (PATCH-403) includes hacking mini-game"
+      ],
+      "metadata": "Large clan war brackets weekly, advanced netcode"
+    },
+    {
+      "id": "LOC-104",
+      "name": "CityCraft Creative Hub",
+      "address": "Server cluster: Global-CC-Hub",
+      "relation": [
+        "IvyK’s building projects, Patch 2.2 (PATCH-404)",
+        "Scheduled build-off event EV-504"
+      ],
+      "metadata": "Supports thousands of user mods, server-based backups"
+    },
+    {
+      "id": "LOC-105",
+      "name": "E-Sports Stage for Tactics",
+      "address": "LAN event location: EuroCon Arena, London",
+      "relation": [
+        "Tactical Legends 2v2 Tourney EV-505, possible JeffT participation",
+        "Dev lead Emily Stone (DEV-5001) cameo"
+      ],
+      "metadata": "Seats ~2k audience, broadcast streaming setup"
+    }
+  ]
+  

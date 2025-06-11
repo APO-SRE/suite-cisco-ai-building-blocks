@@ -1,0 +1,63 @@
+[
+    {
+      "id": "DOC-101",
+      "provider_id": "DR-3001",
+      "name": "Dr. Amelia Grant",
+      "specialty": "Cardiology",
+      "address": "Suite 200, 10 Heartview Blvd, Springfield, IL 62704",
+      "relation": [
+        "Primary physician for patient P-1001 (patients.json)",
+        "Note_id: N-5001 (provider_id=DR-3001), N-5002"
+      ],
+      "metadata": "Fellowship in interventional cardiology, next recertification: 2025-12"
+    },
+    {
+      "id": "DOC-102",
+      "provider_id": "DR-3002",
+      "name": "Dr. Brian Sanders",
+      "specialty": "Allergy & Immunology",
+      "address": "3rd Floor, 220 Oak Ave, Greenfield, IL 62901",
+      "relation": [
+        "Primary physician for P-1002, P-1003 (patients.json)",
+        "Notes: N-5003, N-5004, N-5010 mention DR-3002"
+      ],
+      "metadata": "Board certified, focuses on seasonal allergies & immunotherapy"
+    },
+    {
+      "id": "DOC-103",
+      "provider_id": "DR-3003",
+      "name": "Dr. Cynthia Morris",
+      "specialty": "Endocrinology",
+      "address": "Suite A, 15 Maple Drive, Northfield, IL 62548",
+      "relation": [
+        "Primary physician for P-1004, P-1005 (patients.json)",
+        "In notes: N-5002, N-5005, N-5006 mention DR-3003"
+      ],
+      "metadata": "Special interest in diabetes management, multi-year experience with pediatric patients"
+    },
+    {
+      "id": "DOC-104",
+      "provider_id": "DR-3004",
+      "name": "Dr. Derek Wu",
+      "specialty": "Internal Medicine",
+      "address": "Tower C, 125 Willow Ln, Brookfield, IL 62890",
+      "relation": [
+        "Primary physician for P-1006, P-1008 (patients.json)",
+        "Notes: N-5007, N-5009 mention DR-3004"
+      ],
+      "metadata": "Focus on hyperlipidemia & migraine treatments, last CME course: 2025-01"
+    },
+    {
+      "id": "DOC-105",
+      "provider_id": "DR-3005",
+      "name": "Dr. Emma Rossi",
+      "specialty": "Pulmonology",
+      "address": "101 Cedar Blvd, Fairview, IL 62345",
+      "relation": [
+        "Primary physician for P-1007 (patients.json)",
+        "Note_id: N-5008 references DR-3005"
+      ],
+      "metadata": "Asthma, COPD management, published research on pollen-triggered respiratory issues"
+    }
+  ]
+  

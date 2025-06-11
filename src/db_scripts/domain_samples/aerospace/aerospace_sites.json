@@ -1,0 +1,53 @@
+[
+    {
+      "id": "LOC-101",
+      "name": "Supersonic Development Hangar",
+      "address": "100 Mach Ln, AeroCity, ST 11111",
+      "relation": [
+        "DES-101 (FalconWing), wind tunnel eqm #WT-Falcon (EQM-301)",
+        "Flight test FL-201, noise compliance RC-401"
+      ],
+      "metadata": "Specialized supersonic instrumentation, large runway adjacency"
+    },
+    {
+      "id": "LOC-102",
+      "name": "Eco-Lab Facility",
+      "address": "200 Hybrid Rd, GreenTown, ST 22222",
+      "relation": [
+        "DES-102 (EcoLiner), engine stand #HENG-EL (EQM-302)",
+        "Flight test FL-202, partial pass in RC-402"
+      ],
+      "metadata": "Focus on eco-friendly propulsion, wind tunnel extension next year"
+    },
+    {
+      "id": "LOC-103",
+      "name": "VTOLX Urban Test Range",
+      "address": "350 CityFlight Dr, MetroArea, ST 33333",
+      "relation": [
+        "DES-103 (VTOLX), tilt-rotor rig #TILT-VX (EQM-303)",
+        "FL-203 tilt test, city corridor compliance RC-403"
+      ],
+      "metadata": "Simulated urban environment, noise & corridor constraints"
+    },
+    {
+      "id": "LOC-104",
+      "name": "HeavyHaul Assembly & Test",
+      "address": "500 Cargo Ln, PayloadTown, ST 44444",
+      "relation": [
+        "DES-104, cargo loader #CL-HH1 (EQM-304)",
+        "FL-204 stress test, structural compliance RC-404"
+      ],
+      "metadata": "Large-scale hangar, overhead crane for wing/fuselage join"
+    },
+    {
+      "id": "LOC-105",
+      "name": "StratoScan High-Altitude Range",
+      "address": "77 UAV Heights, StratoCity, ST 55555",
+      "relation": [
+        "DES-105, solar array #SOL-SS (EQM-305)",
+        "FL-205 loiter test, UAV permit RC-405"
+      ],
+      "metadata": "Extended restricted airspace, near desert terrain for max altitude climbs"
+    }
+  ]
+  

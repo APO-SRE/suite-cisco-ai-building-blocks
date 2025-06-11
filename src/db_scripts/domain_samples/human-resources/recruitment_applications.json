@@ -1,0 +1,28 @@
+[
+    {
+      "id": "RA-501",
+      "content": "Applicant: Frank Huang, position: Junior Developer, referral by E-1001 (Alice Brown).",
+      "metadata": "Resume received: 2025-01-30, status: interview scheduled 2025-02-05"
+    },
+    {
+      "id": "RA-502",
+      "content": "Applicant: Gina Rossi, position: Sales Intern, no prior experience but strong communication.",
+      "metadata": "Resume date: 2025-02-10, status: phone screen complete, next step: in-person"
+    },
+    {
+      "id": "RA-503",
+      "content": "Applicant: Hiro Tanaka, position: HR Assistant, recommended by E-1002 (Carol Lim).",
+      "metadata": "Resume date: 2025-03-01, status: pending manager review"
+    },
+    {
+      "id": "RA-504",
+      "content": "Applicant: Ivy Kim, position: Finance Analyst, advanced Excel & budgeting skills.",
+      "metadata": "Resume date: 2025-03-15, status: CFO interview next week"
+    },
+    {
+      "id": "RA-505",
+      "content": "Applicant: Jeff Teeter, position: Senior Product Manager, experience in agile development.",
+      "metadata": "Resume date: 2025-03-20, status: references check"
+    }
+  ]
+  

@@ -1,0 +1,28 @@
+[
+    {
+      "id": "SHIP-501",
+      "content": "Iron ore contract: 20k tons monthly, buyer SteelCorp, price $70/ton. Transport by rail.",
+      "metadata": "From MP-101, date: 2025-03-20, contact: frank.huang@steelcorp.com"
+    },
+    {
+      "id": "SHIP-502",
+      "content": "Copper concentrate sale: 2,000 tons, smelter partner, 28% Cu grade. Price variable LME-based.",
+      "metadata": "From MP-102, shipped 2025-03-25, final invoice pending"
+    },
+    {
+      "id": "SHIP-503",
+      "content": "Coal Gate supply to local power plant: 50k tons contract, monthly deliveries, $35/ton.",
+      "metadata": "From MP-103, started 2025-04-01, client: gina.rossi@powergen.com"
+    },
+    {
+      "id": "SHIP-504",
+      "content": "Gold doré bars: 200 oz shipment to refinery, assay required for final settlement.",
+      "metadata": "From MP-104, dispatch 2025-04-05, insured transport, manager: ivy.kim@goldpeak.com"
+    },
+    {
+      "id": "SHIP-505",
+      "content": "Rare earth sample batch: 100 kg for pilot processing lab, cross-border shipping form needed.",
+      "metadata": "From MP-105, date: 2025-04-10, courier: jeff.teeter@logistics.co"
+    }
+  ]
+  

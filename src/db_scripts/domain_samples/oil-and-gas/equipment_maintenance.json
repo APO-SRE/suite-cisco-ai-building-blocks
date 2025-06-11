@@ -1,0 +1,28 @@
+[
+    {
+      "id": "EQM-301",
+      "content": "Offshore drilling rig #DR-OB1: top drive system overhaul, marine riser inspection, BOP test.",
+      "metadata": "Related field: FIELD-201, last service 2025-03-10, assigned mechanic: Alice Brown"
+    },
+    {
+      "id": "EQM-302",
+      "content": "Onshore rig #DR-DD2: desert environment filters changed, rotating control device check.",
+      "metadata": "FIELD-202, last check: 2025-03-15, manager: Bob Chen"
+    },
+    {
+      "id": "EQM-303",
+      "content": "Fracking pump #FP-SPA1: replaced high-pressure hoses, fluid ends, tested 15k psi rating.",
+      "metadata": "FIELD-203, date: 2025-03-20, assigned tech: Carol Lim"
+    },
+    {
+      "id": "EQM-304",
+      "content": "Arctic platform crane #CR-AX: lubrication re-done, cold weather steel check, valid for -40°C.",
+      "metadata": "FIELD-204, done 2025-03-28, inspector: David Parker"
+    },
+    {
+      "id": "EQM-305",
+      "content": "Gas processing unit #GPU-FG1: sour gas sweetening system calibration, amine solution replaced.",
+      "metadata": "FIELD-205, date: 2025-04-01, assigned lead: Emily Stone"
+    }
+  ]
+  

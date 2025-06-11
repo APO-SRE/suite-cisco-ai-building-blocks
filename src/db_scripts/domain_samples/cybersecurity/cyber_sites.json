@@ -1,0 +1,53 @@
+[
+    {
+      "id": "LOC-101",
+      "name": "Main SOC (Security Operations Center)",
+      "address": "100 Cyber Ln, SecCity, ST 11111",
+      "relation": [
+        "Threat Intel analysis team (TI-101 to TI-105)",
+        "Incident triage for CL-201 to CL-205"
+      ],
+      "metadata": "24/7 monitoring, houses IR lead offices, Tier-3 analysts"
+    },
+    {
+      "id": "LOC-102",
+      "name": "Client Data Center - Gina Rossi",
+      "address": "200 Enterprise Rd, BizTown, ST 22222",
+      "relation": [
+        "Ransomware event (INC-302), Next-Gen Firewall (SEC-502) installed",
+        "Remediation plan REM-402"
+      ],
+      "metadata": "Mid-size enterprise environment, advanced SIEM logs"
+    },
+    {
+      "id": "LOC-103",
+      "name": "E-Commerce Host - Hiro Tanaka",
+      "address": "350 Web St, CommerceCity, ST 33333",
+      "relation": [
+        "INC-303 (SQL injection), WAF (SEC-503) deployed",
+        "Remediation plan REM-403"
+      ],
+      "metadata": "Shared hosting environment, developer access only"
+    },
+    {
+      "id": "LOC-104",
+      "name": "Corporate HQ - Ivy Kim",
+      "address": "500 Tech Ave, BigCorp, ST 44444",
+      "relation": [
+        "DDoS NetFlood attack (INC-304), DDoS Mitigation (SEC-504)",
+        "Remediation plan REM-404"
+      ],
+      "metadata": "High-level corp office, requires MSSP coverage"
+    },
+    {
+      "id": "LOC-105",
+      "name": "Gov Agency Site - Jeff Teeter",
+      "address": "77 Secure Blvd, AgencyTown, ST 55555",
+      "relation": [
+        "APT infiltration (INC-305), EDR agent (SEC-505)",
+        "Remediation plan REM-405"
+      ],
+      "metadata": "Strict compliance (CJIS), specialized zero-trust configuration"
+    }
+  ]
+  

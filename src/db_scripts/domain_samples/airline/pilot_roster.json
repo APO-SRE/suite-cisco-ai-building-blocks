@@ -1,0 +1,28 @@
+[
+    {
+      "id": "PLT-401",
+      "content": "Captain Reynolds (Employee #1012) assigned to Flight 882 (SFO-JFK) for next quarter. Airbus A320 qualified.",
+      "metadata": "Seniority: 12 years, last simulator check: 2025-01-05"
+    },
+    {
+      "id": "PLT-402",
+      "content": "First Officer Delgado (Employee #2321) assigned to 737 fleet out of LAX base. Typically covers Flight 233 (LAX-ORD).",
+      "metadata": "Line check: 2024-11-30, next recurrent training: 2025-06-01"
+    },
+    {
+      "id": "PLT-403",
+      "content": "Captain Li (Employee #987) handles red-eye flights from BOS to SEA. A321neo rated.",
+      "metadata": "Prefers overnight trips, seniority: 9 years"
+    },
+    {
+      "id": "PLT-404",
+      "content": "First Officer Smith (Employee #3332) newly qualified on 737 MAX 8. Will rotate on DFW-MIA route Flight 707.",
+      "metadata": "Upgrade date: 2025-02-10, next performance eval: 2025-08-15"
+    },
+    {
+      "id": "PLT-405",
+      "content": "Captain Hughes (Employee #1200) cross-trained on A319. Often assigned to short hauls DEN-SFO (Flight 300).",
+      "metadata": "Seniority: 14 years, check ride date: 2024-12-20"
+    }
+  ]
+  

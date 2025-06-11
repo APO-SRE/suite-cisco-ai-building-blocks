@@ -1,0 +1,28 @@
+[
+    {
+      "id": "COMP-501",
+      "content": "ISO 9001-based quality guidelines for consulting deliverables, peer review processes.",
+      "metadata": "Applied to all major projects, last update 2025-03-10, external auditor: frank.huang@quality.org"
+    },
+    {
+      "id": "COMP-502",
+      "content": "Financial advisory compliance with local CFO board guidelines, fiduciary duty, confidentiality.",
+      "metadata": "Ref: SERV-102, date: 2025-03-15, next review in 6 months"
+    },
+    {
+      "id": "COMP-503",
+      "content": "HR consultancy code of ethics, fair recruiting standards, data privacy for candidate info.",
+      "metadata": "Ref: SERV-103, date: 2025-03-25, overseen by carol.lim@proservices.org"
+    },
+    {
+      "id": "COMP-504",
+      "content": "IT transformation security standard: data handling best practices, client IP protection, NDAs.",
+      "metadata": "Ref: SERV-104, date: 2025-04-01, required for automation & analytics tools"
+    },
+    {
+      "id": "COMP-505",
+      "content": "Marketing/brand ethical guidelines: no false claims, disclaimers for ROI estimates, brand usage rules.",
+      "metadata": "Ref: SERV-105, date: 2025-04-05, compliance lead: emily.stone@proservices.org"
+    }
+  ]
+  

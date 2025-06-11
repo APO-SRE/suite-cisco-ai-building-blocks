@@ -1,0 +1,28 @@
+[
+    {
+      "id": "FUND-301",
+      "content": "Food purchases and distribution cost for Spring Food Drive. Spent $3,000 on bulk goods.",
+      "metadata": "Ref: CAMP-101, date: 2025-03-15, vendor: FoodBulk Inc"
+    },
+    {
+      "id": "FUND-302",
+      "content": "Scholarship payout to 5 students from Drive funds. Each $2,000, total $10,000 allocated.",
+      "metadata": "Ref: CAMP-102, date: 2025-03-01, authorized by Bob Chen"
+    },
+    {
+      "id": "FUND-303",
+      "content": "Clean Water Initiative expenses: drilling equipment rental $8,000, filters $2,500.",
+      "metadata": "Ref: CAMP-103, date: 2025-02-20, partial corporate match applied"
+    },
+    {
+      "id": "FUND-304",
+      "content": "Medical supplies for Community Health Fair. $6,000 spent on test kits, gloves, sanitation.",
+      "metadata": "Ref: CAMP-104, date: 2025-04-10, check #CH-210"
+    },
+    {
+      "id": "FUND-305",
+      "content": "Logistics for Winter Coat Drive: truck rental $1,000, storage $500, distribution volunteer lunches $200.",
+      "metadata": "Ref: CAMP-105, date: 2025-11-20, coordinator: Emily Stone"
+    }
+  ]
+  

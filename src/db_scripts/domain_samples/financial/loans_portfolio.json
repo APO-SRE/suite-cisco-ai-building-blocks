@@ -1,0 +1,28 @@
+[
+    {
+      "id": "LOAN-501",
+      "content": "Mortgage #M-1002 for client C-2010, 30-year fixed at 3.8%. Current balance: $200k.",
+      "metadata": "Property: 123 Maple St, LTV: 80%, next payment due: 2025-02-28"
+    },
+    {
+      "id": "LOAN-502",
+      "content": "Small business loan #SBL-2001, principal $50k. Interest-only for first 6 months.",
+      "metadata": "Client ID: C-2020, rate: 5.5%, funded date: 2025-01-05"
+    },
+    {
+      "id": "LOAN-503",
+      "content": "Auto loan #A-3004 for client C-2003. Balance $15k, 4-year term, 4.2% APR.",
+      "metadata": "Vehicle: 2024 Sedan, next payment: 2025-03-10"
+    },
+    {
+      "id": "LOAN-504",
+      "content": "Home equity line #HE-120 with limit $75k. Variable rate, 4.7% currently.",
+      "metadata": "Client ID: C-2007, draws total: $25k, next rate review: 2025-05"
+    },
+    {
+      "id": "LOAN-505",
+      "content": "Commercial real estate loan #CRE-510, principal $500k. Balloon payment in 5 years.",
+      "metadata": "Client ID: C-2011, rate: 6%, property appraised at $650k"
+    }
+  ]
+  

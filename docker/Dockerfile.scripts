@@ -1,0 +1,10 @@
+#docker/Dockerfile.scripts
+FROM python:3.11-slim
+WORKDIR /app
+# Install FastAPI app dependencies (including opentelemetry and prometheus)
+RUN pip install fastapi uvicorn[standard] prometheus-fastapi-instrumentator prometheus-client \
+    opentelemetry-sdk opentelemetry-exporter-otlp-proto-http \
+    opentelemetry-instrumentation-fastapi
+COPY . .
+ENV OTEL_EXPORTER_OTLP_ENDPOINT=${OTEL_EXPORTER_OTLP_ENDPOINT:-http://tempo:4318}
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

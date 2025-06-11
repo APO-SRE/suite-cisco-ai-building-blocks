@@ -1,0 +1,28 @@
+[
+    {
+      "id": "SHIP-501",
+      "content": "OffshoreBlue crude cargo: 100k bbl loaded onto tanker, shipped to refinery at $65/bbl.",
+      "metadata": "From EXP-101, date: 2025-03-20, contact: frank.huang@tradeoil.com"
+    },
+    {
+      "id": "SHIP-502",
+      "content": "DesertDrill condensate batch: 20k bbl to local petrochem facility, price pegged to Brent.",
+      "metadata": "From EXP-102, shipped 2025-03-25, final invoice pending"
+    },
+    {
+      "id": "SHIP-503",
+      "content": "ShalePeak light oil pipeline transport: 15k bbl/day rate, aggregator terminal handles sale.",
+      "metadata": "From EXP-103, started 2025-04-01, client: gina.rossi@oiltrading.com"
+    },
+    {
+      "id": "SHIP-504",
+      "content": "ArcticLight partial test load: 5k bbl shipped by ice-class tanker, pilot contract.",
+      "metadata": "From EXP-104, date: 2025-04-05, insurance coverage high"
+    },
+    {
+      "id": "SHIP-505",
+      "content": "FrontierGas NGL (natural gas liquids) shipment: ~1,000 bbl eqv, specialized rail cars, sour content.",
+      "metadata": "From EXP-105, date: 2025-04-10, address: jeff.teeter@logistics.co"
+    }
+  ]
+  

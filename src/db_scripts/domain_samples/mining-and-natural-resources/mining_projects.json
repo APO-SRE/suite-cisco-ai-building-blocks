@@ -1,0 +1,28 @@
+[
+    {
+      "id": "MP-101",
+      "content": "Project IronHill: iron ore excavation in mountainous region, target annual yield 500k tons.",
+      "metadata": "Launched: 2025-01-10, project lead: Alice Brown (MINE-1001), budget: $30M"
+    },
+    {
+      "id": "MP-102",
+      "content": "Project CopperStream: open-pit copper mine with planned leaching & solvent extraction processes.",
+      "metadata": "Started: 2025-02-05, manager: Bob Chen (MINE-2001), estimated yield: 200k tons/year"
+    },
+    {
+      "id": "MP-103",
+      "content": "Project CoalGate: underground coal mining with conveyor infrastructure, careful methane monitoring.",
+      "metadata": "Initiated: 2025-03-01, lead: Carol Lim (MINE-3002), capacity: 1M tons/year"
+    },
+    {
+      "id": "MP-104",
+      "content": "Project GoldPeak: small-scale gold extraction, high-grade vein system, extensive drilling needed.",
+      "metadata": "Launched: 2025-02-20, project geologist: David Parker (MINE-4001), targeted production: 2k oz/year"
+    },
+    {
+      "id": "MP-105",
+      "content": "Project RareEarthOne: exploration for rare earth elements, deep boreholes and pilot processing.",
+      "metadata": "Commenced: 2025-03-15, lead: Emily Stone (MINE-5001), strategic priority for green tech supply"
+    }
+  ]
+  

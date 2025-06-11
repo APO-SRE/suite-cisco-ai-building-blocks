@@ -1,0 +1,28 @@
+[
+    {
+      "id": "STAFF-401",
+      "content": "Alice Brown, Program Coordinator for Youth Mentorship (PROG-101) & Family Counseling (PROG-105).",
+      "metadata": "Title: Senior Counselor, start date: 2023-01-10, phone: 555-2398"
+    },
+    {
+      "id": "STAFF-402",
+      "content": "Bob Chen, Elderly Assistance Coordinator (PROG-102), also assigned as outreach worker on some HO cases.",
+      "metadata": "Title: Program Manager, start date: 2022-06-05, email: bob.chen@social.org"
+    },
+    {
+      "id": "STAFF-403",
+      "content": "Carol Lim, Job Training Program lead (PROG-103), background in career counseling.",
+      "metadata": "Title: Career Specialist, start date: 2024-11-20, phone: 555-5582"
+    },
+    {
+      "id": "STAFF-404",
+      "content": "David Parker, Homeless Outreach coordinator (PROG-104), organizes daily meal distribution.",
+      "metadata": "Title: Outreach Supervisor, start date: 2025-02-15, phone: 555-6103"
+    },
+    {
+      "id": "STAFF-405",
+      "content": "Emily Stone, Family Counseling coordinator (PROG-105), licensed therapist.",
+      "metadata": "Title: LCSW, start date: 2024-03-10, phone: 555-8241"
+    }
+  ]
+  

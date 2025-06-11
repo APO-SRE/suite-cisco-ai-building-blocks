@@ -1,0 +1,28 @@
+[
+    {
+      "id": "PROJ-501",
+      "content": "Park Renovation in Ward 2: new playground equipment, walking trail, funded by city bond.",
+      "metadata": "Start date: 2025-02-01, contractor: GreenWorks LLC, timeline: 3 months"
+    },
+    {
+      "id": "PROJ-502",
+      "content": "Road Widening on Oak Ave: to improve traffic flow near Gina Rossi’s store. Estimated cost $2M.",
+      "metadata": "Start date: 2025-03-10, dept: Public Works, expected completion: 2025-09"
+    },
+    {
+      "id": "PROJ-503",
+      "content": "Solar Farm on outskirts for city power supply, synergy with INIT-102. Capacity: 5 MW.",
+      "metadata": "Kickoff: 2025-04-01, partial state funding, environment impact review done"
+    },
+    {
+      "id": "PROJ-504",
+      "content": "Bus Terminal Upgrade at main station: better waiting areas, digital signage, link to INIT-104.",
+      "metadata": "Start date: 2025-05-01, contractor: BuildNow Inc, budget: $1.2M"
+    },
+    {
+      "id": "PROJ-505",
+      "content": "Community Health Clinic expansion in Ward 3: more exam rooms, mental health suite, INIT-105 tie.",
+      "metadata": "Start date: 2025-06-01, dept: Health & Human Services, approx 6 months"
+    }
+  ]
+  

@@ -1,0 +1,28 @@
+[
+    {
+      "id": "EQM-301",
+      "content": "Haul Truck #HT-1001: engine overhaul scheduled, IronHill usage, capacity 240 ton load.",
+      "metadata": "Related site: SITE-201, last service 2025-03-01, assigned mechanic: Alice Brown"
+    },
+    {
+      "id": "EQM-302",
+      "content": "Excavator #EX-202: hydraulic cylinder replacements, used in CopperStream Pit. Next PM in 500 hours.",
+      "metadata": "SITE-202, last check: 2025-03-05, manager: Bob Chen"
+    },
+    {
+      "id": "EQM-303",
+      "content": "Continuous Miner #CM-303: CoalGate underground, sensor calibration, cutter head refurbishment.",
+      "metadata": "SITE-203, date: 2025-03-20, assigned tech: Carol Lim"
+    },
+    {
+      "id": "EQM-304",
+      "content": "Drill Rig #DR-Alpha: gold exploration, rotational bit wear replaced, lubricants topped.",
+      "metadata": "SITE-204, done 2025-03-28, inspector: David Parker"
+    },
+    {
+      "id": "EQM-305",
+      "content": "Core Drilling Rig #CD-RE-7: rare earth exploration, replaced coring bits, structural check.",
+      "metadata": "SITE-205, date: 2025-04-01, assigned lead: Emily Stone"
+    }
+  ]
+  

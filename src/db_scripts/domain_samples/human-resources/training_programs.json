@@ -1,0 +1,28 @@
+[
+    {
+      "id": "TR-401",
+      "content": "Leadership Essentials: Focused on new managers, conflict resolution, communication skills.",
+      "metadata": "Scheduled: 2025-03-10, recommended for E-1001, E-303"
+    },
+    {
+      "id": "TR-402",
+      "content": "Advanced HR Analytics: Teaches data-driven hiring, turnover forecasting, diversity metrics.",
+      "metadata": "Date: 2025-06-05, recommended for E-1002, session code: HRA-Advanced"
+    },
+    {
+      "id": "TR-403",
+      "content": "Sales Mastery 2.0: Upselling, cross-selling techniques, advanced CRM usage.",
+      "metadata": "Date: 2025-02-15, recommended for E-4001, session code: SM-2.0"
+    },
+    {
+      "id": "TR-404",
+      "content": "Technical Deep Dive: Modern coding practices, code review processes, version control mastery.",
+      "metadata": "Date: 2025-04-20, recommended for E-1001, E-2001, session code: TDD-2025"
+    },
+    {
+      "id": "TR-405",
+      "content": "Finance & Payroll Compliance: Updates on tax regulations, auditing protocols.",
+      "metadata": "Date: 2025-05-10, recommended for E-5001, session code: FIN-Comp"
+    }
+  ]
+  

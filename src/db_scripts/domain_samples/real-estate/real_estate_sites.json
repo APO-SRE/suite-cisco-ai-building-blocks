@@ -1,0 +1,53 @@
+[
+    {
+      "id": "LOC-101",
+      "name": "Downtown Agency Office",
+      "address": "100 Realty Blvd, CityCenter, ST 11111",
+      "relation": [
+        "Agents: Alice Brown (AGT-1001), David Parker (AGT-4001)",
+        "property_listings.json references (APT-DT-2B1B, CON-WF-1B1B)"
+      ],
+      "metadata": "Main tenant management desk, rent invoicing done here"
+    },
+    {
+      "id": "LOC-102",
+      "name": "Suburban Branch Office",
+      "address": "200 Suburbia Ln, GreenFields, ST 22222",
+      "relation": [
+        "Bob Chen (AGT-2001) manages HSE-SUB-3B2B",
+        "Maintenance scheduling for suburban houses"
+      ],
+      "metadata": "Focus on single-family homes, has meeting rooms for tenants"
+    },
+    {
+      "id": "LOC-103",
+      "name": "Commercial Leasing Office",
+      "address": "350 Biz Park, CommerceCity, ST 33333",
+      "relation": [
+        "Carol Lim (AGT-3002) handles commercial listings like COM-RET-1500",
+        "rental_invoices.json referencing business tenants"
+      ],
+      "metadata": "Conference room for business lease signings, handle lock repair vendors"
+    },
+    {
+      "id": "LOC-104",
+      "name": "Waterfront Condo Office",
+      "address": "500 Coastal Dr, ShoreTown, ST 44444",
+      "relation": [
+        "Condo management for CON-WF-1B1B (PROP-104), monthly HOA tracking",
+        "Maintenance scheduling (MT-404), painting or hallway issues"
+      ],
+      "metadata": "HOA staff onsite, building security office"
+    },
+    {
+      "id": "LOC-105",
+      "name": "Luxury Sales Lounge",
+      "address": "77 Skyline Ave, HighRiseCity, ST 55555",
+      "relation": [
+        "Handles LUX-PEN-4B3B showings (PROP-105)",
+        "property_sales.json (SALE-504) negotiation with buyer"
+      ],
+      "metadata": "Upscale lounge for high-end clients, private elevator access"
+    }
+  ]
+  

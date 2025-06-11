@@ -1,0 +1,28 @@
+[
+    {
+      "id": "DFB-301",
+      "content": "Dealers in the Northeast region report increased demand for hybrid sedans, limited interest in diesel trucks.",
+      "metadata": "Region: NE, survey date: 2025-01-20"
+    },
+    {
+      "id": "DFB-302",
+      "content": "Southwest dealers note strong SUV sales. Request more AWD variants for mountainous areas.",
+      "metadata": "Region: SW, top-seller: SUV-25-Lux"
+    },
+    {
+      "id": "DFB-303",
+      "content": "Dealership complaint: shortage of EV Crossovers. Waitlist extends to 3 months.",
+      "metadata": "Region: West, waitlist count: 120+"
+    },
+    {
+      "id": "DFB-304",
+      "content": "Consumers want improved infotainment in the EcoSedan. Suggest adding larger touchscreen.",
+      "metadata": "Survey group: 50 drivers, top complaint: 7-inch screen too small"
+    },
+    {
+      "id": "DFB-305",
+      "content": "Pickups remain popular among rural dealers. Diesel option sees moderate interest, but cost concerns.",
+      "metadata": "Region: Midwest, price sensitivity: high"
+    }
+  ]
+  

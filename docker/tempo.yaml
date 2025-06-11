@@ -1,0 +1,72 @@
+############################################################
+# tempo.yaml  –  Tempo 2.7.1  (single-binary)
+############################################################
+
+server:
+  http_listen_port: 3200          # Tempo API / Grafana datasource
+
+############################################################
+# Trace ingest
+############################################################
+distributor:
+  receivers:
+    otlp:
+      protocols:
+        http:
+          endpoint: 0.0.0.0:4318   # OTLP/HTTP
+        grpc:
+          endpoint: 0.0.0.0:4317   # OTLP/gRPC (optional)
+
+############################################################
+# Compaction / retention
+############################################################
+compactor:
+  compaction:
+    block_retention: 48h
+
+############################################################
+# Metrics-generator
+############################################################
+metrics_generator:
+  registry:
+    external_labels:
+      source: tempo
+      cluster: local-dev
+
+  # WAL **and** remote-write live together here
+  storage:
+    path: /var/tempo/generator/wal
+    remote_write:
+      - url: http://prometheus:9090/api/v1/write
+        send_exemplars: true
+
+  # Generator still needs a ring, but *no* replication_factor
+  ring:
+    kvstore:
+      store: memberlist
+
+  # Used by your “local-blocks” processor
+  traces_storage:
+    path: /var/tempo/generator/traces
+
+############################################################
+# Trace storage (ingester)
+############################################################
+storage:
+  trace:
+    backend: local
+    wal:
+      path: /var/tempo/wal
+    local:
+      path: /var/tempo/blocks
+
+############################################################
+# Enable processors (service-graph, span-metrics, local-blocks)
+############################################################
+overrides:
+  defaults:
+    metrics_generator:
+      processors:
+        - service-graphs
+        - span-metrics
+        - local-blocks

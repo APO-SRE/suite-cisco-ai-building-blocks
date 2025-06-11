@@ -1,0 +1,28 @@
+[
+    {
+      "id": "TX-301",
+      "content": "Wire transfer of $250,000 from C-2001 to external brokerage. Settled on 2025-01-20.",
+      "metadata": "Fee: $45, reference: INV-101"
+    },
+    {
+      "id": "TX-302",
+      "content": "ACH deposit $5,000 monthly to retirement account #A5004 from C-2005’s payroll.",
+      "metadata": "Auto-schedule: 15th each month, started: 2024-01"
+    },
+    {
+      "id": "TX-303",
+      "content": "Outgoing check of $2,000 for quarterly bond interest distribution to C-2002.",
+      "metadata": "Date: 2025-02-10, link: INV-102"
+    },
+    {
+      "id": "TX-304",
+      "content": "Crypto purchase transaction: $1,500 BTC in account #A5005. Executed at $30,000/BTC rate.",
+      "metadata": "Date: 2025-01-29, partial fill order, fee: 0.5%"
+    },
+    {
+      "id": "TX-305",
+      "content": "Dividend payout $500 credited to joint account #A5003 from healthcare ETF holdings.",
+      "metadata": "Date: 2025-02-02, periodic distribution"
+    }
+  ]
+  
