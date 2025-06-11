@@ -1,0 +1,28 @@
+[
+    {
+      "id": "CF-501",
+      "content": "Guest complaint: loud music from next-room party at Lakeview Resort. Partial refund offered.",
+      "metadata": "Booking reference: R1001, date: 2025-06-11, resolved"
+    },
+    {
+      "id": "CF-502",
+      "content": "Corporate group complained about slow Wi-Fi in conference hall at Urban Plaza. Tech reset done.",
+      "metadata": "Ref: booking_records.json (BOOK-202), date: 2025-03-06, partial apology credit"
+    },
+    {
+      "id": "CF-503",
+      "content": "Beachside Inn family found housekeeping missed kids’ bedding change. Resolved next day.",
+      "metadata": "Ref: BOOK-203, date: 2025-08-03, staff training issue"
+    },
+    {
+      "id": "CF-504",
+      "content": "Mountain Lodge cabin had fireplace smoke smell. Maintenance rechecked flue, offered free s’mores kit.",
+      "metadata": "Ref: BOOK-204, date: 2025-01-16, guest content afterward improved"
+    },
+    {
+      "id": "CF-505",
+      "content": "Airport Express Suites business traveler complained about shuttle delay. Driver stuck in traffic.",
+      "metadata": "Ref: BOOK-205, date: 2025-02-11, provided taxi voucher"
+    }
+  ]
+  

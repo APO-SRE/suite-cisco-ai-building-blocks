@@ -1,0 +1,51 @@
+[
+    {
+      "id": "LOC-001",
+      "name": "Riverbank Generating Station (RBC-12)",
+      "address": "200 River Lane, North District, ST 11111",
+      "relation": [
+        "Referenced in power_plants.json (PLANT-101)",
+        "Scheduled offline (OUT-401), possible hydro expansion (REN-503)"
+      ],
+      "metadata": "Hydroelectric facility, capacity 300 MW"
+    },
+    {
+      "id": "LOC-002",
+      "name": "Sunrise Solar Farm (SSF-07)",
+      "address": "500 Desert Road, West District, ST 22222",
+      "relation": [
+        "In power_plants.json (PLANT-102), battery pilot in grid_infrastructure.json (GRID-205)"
+      ],
+      "metadata": "Peak 150 MW, ongoing pilot storage contract"
+    },
+    {
+      "id": "LOC-003",
+      "name": "Eastside Natural Gas Plant (ENG-33)",
+      "address": "100 East Ave, East District, ST 33333",
+      "relation": [
+        "power_plants.json (PLANT-103), capacity 500 MW",
+        "line T-Line-88 in GRID-201 references East-Central connection"
+      ],
+      "metadata": "Older turbines, upgrade due in 2026"
+    },
+    {
+      "id": "LOC-004",
+      "name": "GreenHill Wind Farm (GWF-19)",
+      "address": "600 Plainfield Rd, Central District, ST 44444",
+      "relation": [
+        "power_plants.json (PLANT-104), partial shutdown (OUT-402)",
+        "Additional battery (REN-504) synergy with GRID-205"
+      ],
+      "metadata": "120 turbines, ~400 GWh/year"
+    },
+    {
+      "id": "LOC-005",
+      "name": "Valley Coal Station (VCP-55)",
+      "address": "999 Coal Loop, South District, ST 55555",
+      "relation": [
+        "In power_plants.json (PLANT-105), partial shutdown for emissions retrofit (OUT-405)"
+      ],
+      "metadata": "250 MW, decommission over next 3 years"
+    }
+  ]
+  

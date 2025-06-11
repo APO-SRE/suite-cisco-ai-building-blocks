@@ -1,0 +1,53 @@
+[
+    {
+      "id": "LOC-101",
+      "name": "Capitol Complex",
+      "address": "100 Gov Plaza, Capitol District, ST 00001",
+      "relation": [
+        "security_events.json (SE-401) bomb threat on 2025-02-12",
+        "legislation_bills.json references for session hearings"
+      ],
+      "metadata": "Home of legislature, specialized security systems"
+    },
+    {
+      "id": "LOC-102",
+      "name": "Northern Customs Checkpoint (Sector 4)",
+      "address": "Border Route 66, North District, ST 00002",
+      "relation": [
+        "agency_operations.json (AG-301) 'Watchtower' region",
+        "intelligence_briefs.json (IB-101, IB-104) extremist & smuggling leads"
+      ],
+      "metadata": "Advanced scanning installed 2024-12, staff ~50 officers"
+    },
+    {
+      "id": "LOC-103",
+      "name": "Defense Data Center",
+      "address": "200 Secure Lane, Defense Hub, ST 00003",
+      "relation": [
+        "security_events.json (SE-402) 'RedCipher' cyber attack",
+        "agency_operations.json (AG-302) CyberSec Taskforce HQ"
+      ],
+      "metadata": "TOP SECRET clearance area, ~200 IT staff"
+    },
+    {
+      "id": "LOC-104",
+      "name": "Sector 2 Border Post",
+      "address": "Crossing Hwy 18, East District, ST 00004",
+      "relation": [
+        "security_events.json (SE-403) armed standoff retreat",
+        "Possible reference in strategic_plans.json (SP-501) for modernization"
+      ],
+      "metadata": "Focus on passport control, contraband checks"
+    },
+    {
+      "id": "LOC-105",
+      "name": "Naval Command Base - Southeast Waters",
+      "address": "Marine Pier 7, Coastal Region, ST 00005",
+      "relation": [
+        "intelligence_briefs.json (IB-105) ally nation joint exercise",
+        "agency_operations.json (AG-303) maritime 'SeaShield'"
+      ],
+      "metadata": "Launch point for naval exercises, staff ~1500"
+    }
+  ]
+  

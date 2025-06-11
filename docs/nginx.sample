@@ -1,0 +1,122 @@
+cat /etc/nginx/sites-available/chroma 
+# -----------------------------------------------------------------------------  
+# Redirect ALL HTTP traffic to HTTPS for all four domains  
+# -----------------------------------------------------------------------------
+server {
+    listen 80;
+    server_name chroma.ciscohci-azure.com grafana.ciscohci-azure.com prometheus.ciscohci-azure.com tempo.ciscohci-azure.com;
+    return 301 https://$host$request_uri;
+}
+
+# -----------------------------------------------------------------------------  
+# FastAPI (chroma.ciscohci-azure.com)  
+# -----------------------------------------------------------------------------
+server {
+    listen 443 ssl http2;
+    server_name chroma.ciscohci-azure.com;
+
+    ssl_certificate     /etc/letsencrypt/live/chroma.ciscohci-azure.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/chroma.ciscohci-azure.com/privkey.pem;
+    ssl_protocols       TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers off;
+
+    location = /chat/webex/webhook {
+        proxy_pass         http://localhost:8000/chat/webex/webhook;
+        proxy_http_version 1.1;
+        proxy_set_header   Host              $host;
+        proxy_set_header   X-Real-IP         $remote_addr;
+        proxy_set_header   X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_set_header   X-Forwarded-Proto $scheme;
+    }
+
+    location / {
+        proxy_pass         http://localhost:8000;
+        proxy_http_version 1.1;
+        proxy_set_header   Upgrade           $http_upgrade;
+        proxy_set_header   Connection        keep-alive;
+        proxy_set_header   Host              $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+# -----------------------------------------------------------------------------  
+# Grafana (grafana.ciscohci-azure.com)  
+# -----------------------------------------------------------------------------
+server {
+    listen 443 ssl http2;
+    server_name grafana.ciscohci-azure.com;
+
+    ssl_certificate     /etc/letsencrypt/live/grafana.ciscohci-azure.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/grafana.ciscohci-azure.com/privkey.pem;
+    ssl_protocols       TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers off;
+
+    location / {
+        proxy_pass         http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header   Upgrade           $http_upgrade;
+        proxy_set_header   Connection        keep-alive;
+        proxy_set_header   Host              $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+# -----------------------------------------------------------------------------  
+# Prometheus (prometheus.ciscohci-azure.com)  
+# -----------------------------------------------------------------------------
+server {
+    listen 443 ssl http2;
+    server_name prometheus.ciscohci-azure.com;
+
+    ssl_certificate     /etc/letsencrypt/live/prometheus.ciscohci-azure.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/prometheus.ciscohci-azure.com/privkey.pem;
+    ssl_protocols       TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers off;
+
+    location / {
+        proxy_pass         http://localhost:9090;
+        proxy_http_version 1.1;
+        proxy_set_header   Upgrade           $http_upgrade;
+        proxy_set_header   Connection        keep-alive;
+        proxy_set_header   Host              $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+# -----------------------------------------------------------------------------  
+# Tempo HTTP Query API & metrics (tempo.ciscohci-azure.com)  
+# -----------------------------------------------------------------------------
+server {
+    listen 443 ssl http2;
+    server_name tempo.ciscohci-azure.com;
+
+    ssl_certificate     /etc/letsencrypt/live/tempo.ciscohci-azure.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/tempo.ciscohci-azure.com/privkey.pem;
+    ssl_protocols       TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers off;
+
+    # Redirect bare "/" to /metrics so you never hit a dead‐end.
+    location = / {
+        return 301 /metrics;
+    }
+
+    # Pull metrics for Prometheus
+    location /metrics {
+        proxy_pass         http://localhost:3200/metrics;
+        proxy_http_version 1.1;
+        proxy_set_header   Host              $host;
+        proxy_set_header   X-Real-IP         $remote_addr;
+        proxy_set_header   X-Forwarded-Proto $scheme;
+        proxy_read_timeout 120s;
+    }
+
+    # All of Tempo's HTTP Query API under /api/
+    location ^~ /api/ {
+        proxy_pass         http://localhost:3200/api/;
+        proxy_http_version 1.1;
+        proxy_set_header   Host              $host;
+        proxy_set_header   X-Real-IP         $remote_addr;
+        proxy_set_header   X-Forwarded-Proto $scheme;
+        proxy_read_timeout 120s;
+    }
+}

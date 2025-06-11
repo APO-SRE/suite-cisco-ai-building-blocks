@@ -1,0 +1,28 @@
+[
+    {
+      "id": "RC-401",
+      "content": "Recall #RC-2025-01: certain 2024 SUV frames may have weld defects. Free frame inspection and reinforcement offered.",
+      "metadata": "Applies to VIN range: ABC1000-ABC1999, production date: May-Jun 2024"
+    },
+    {
+      "id": "RC-402",
+      "content": "Extended warranty on EV battery packs for 8 years/100,000 miles. Covers manufacturing defects only.",
+      "metadata": "Model: EV Crossover, code: EVC-333, contact for claims: EVWarranty@autoco.com"
+    },
+    {
+      "id": "RC-403",
+      "content": "Towing package wiring harness may overheat on certain trucks. Service campaign includes free replacement harness.",
+      "metadata": "Campaign code: TOW-2025, truck line: Plant #4"
+    },
+    {
+      "id": "RC-404",
+      "content": "Hybrid brake booster recall: potential vacuum leak under extreme cold. Affects EcoSedan built before Jan 2025.",
+      "metadata": "Recall code: HYB-BR-01, fix requires dealer reprogram + part swap"
+    },
+    {
+      "id": "RC-405",
+      "content": "Diesel model extended warranty on emissions components up to 5 years/60,000 miles. Certain states only.",
+      "metadata": "Applies to Work-truck trim, states: CA, NY, MA, WA"
+    }
+  ]
+  

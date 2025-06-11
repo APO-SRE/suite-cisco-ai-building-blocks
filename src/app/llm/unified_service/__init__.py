@@ -1,0 +1,34 @@
+# Auto-generated – DO NOT EDIT
+# This file was rebuilt by platform_scaffolder.py
+
+_SERVICE_REGISTRY: dict[str, type] = {}
+
+try:
+    from .catalyst_service import CatalystServiceClient
+    _SERVICE_REGISTRY['catalyst'] = CatalystServiceClient
+except ImportError:
+    CatalystServiceClient = None
+
+try:
+    from .meraki_service import MerakiServiceClient
+    _SERVICE_REGISTRY['meraki'] = MerakiServiceClient
+except ImportError:
+    MerakiServiceClient = None
+
+class UnifiedService:
+    """Return the correct ServiceClient for a given platform"""
+
+    def __new__(cls, platform: str, *args, **kwargs):
+        try:
+            impl = _SERVICE_REGISTRY[platform.lower()]
+        except KeyError as exc:
+            valid = ', '.join(_SERVICE_REGISTRY.keys())
+            raise ValueError(
+                f"Unsupported platform '{platform}'. Valid options: {valid}"
+            ) from exc
+        return impl(*args, **kwargs)
+
+__all__ = ['UnifiedService',
+    'CatalystServiceClient',
+    'MerakiServiceClient',
+]

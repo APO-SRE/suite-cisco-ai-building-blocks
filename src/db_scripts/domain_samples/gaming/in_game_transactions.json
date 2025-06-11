@@ -1,0 +1,28 @@
+[
+    {
+      "id": "TX-301",
+      "content": "FrankH purchased ‘Wizard Robes’ cosmetic in BattleQuest, cost 500 tokens (~$5).",
+      "metadata": "Date: 2025-03-10, game: GAME-101, payment method: store credit"
+    },
+    {
+      "id": "TX-302",
+      "content": "GinaR bought SkyRacer ‘Ace Pilot Pack’ with premium jets, $9.99. Also gained 1,000 VIP points.",
+      "metadata": "Date: 2025-03-15, game: GAME-102, phone purchase"
+    },
+    {
+      "id": "TX-303",
+      "content": "HiroT spent $14.99 on CyberStrike ‘Clan War Boost’, extra XP & resources for clan battles.",
+      "metadata": "Date: 2025-03-25, game: GAME-103, clan funds used"
+    },
+    {
+      "id": "TX-304",
+      "content": "IvyK purchased CityCraft ‘Creative Pack’ mod expansions for $4.99, custom textures included.",
+      "metadata": "Date: 2025-03-28, game: GAME-104, pay method: PayPal"
+    },
+    {
+      "id": "TX-305",
+      "content": "JeffT got Legendary Skin Bundle in CyberStrike for $19.99. Rare seasonal items.",
+      "metadata": "Date: 2025-04-01, game: GAME-103, discount code applied"
+    }
+  ]
+  

@@ -1,0 +1,28 @@
+[
+    {
+      "id": "ORDER-301",
+      "content": "Invoice #FB-1001: 20 Classic Cheeseburgers, 15 Organic Green Salads, placed by local office catering.",
+      "metadata": "Date: 2025-03-05, total $199, contact: Frank Huang"
+    },
+    {
+      "id": "ORDER-302",
+      "content": "Invoice #FB-1002: 10 Vegan Wraps, 5 cheesecakes for a staff lunch. Price $110.",
+      "metadata": "Date: 2025-03-10, partial deposit paid, client: Gina Rossi"
+    },
+    {
+      "id": "ORDER-303",
+      "content": "Invoice #FB-1003: 2 kegs of Craft IPA (16gal each), for a weekend event. $240 total.",
+      "metadata": "Date: 2025-03-20, brew master consult, client: Hiro Tanaka"
+    },
+    {
+      "id": "ORDER-304",
+      "content": "Invoice #FB-1004: 50 Organic Green Salads for a health expo. $4.99 each, $249.50 total.",
+      "metadata": "Date: 2025-03-22, contact: Ivy Kim, scheduled delivery next morning"
+    },
+    {
+      "id": "ORDER-305",
+      "content": "Invoice #FB-1005: 30 cheesecakes for corporate dessert trays, $4.50 each, $135 total.",
+      "metadata": "Date: 2025-03-25, contact: Jeff Teeter, special packaging requested"
+    }
+  ]
+  

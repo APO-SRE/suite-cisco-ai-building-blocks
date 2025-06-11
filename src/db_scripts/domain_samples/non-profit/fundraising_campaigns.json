@@ -1,0 +1,28 @@
+[
+    {
+      "id": "CAMP-101",
+      "content": "Spring Food Drive for local communities. Goal: $20,000 donations plus 1,000 canned goods.",
+      "metadata": "Campaign code: FDR-Spring, start date: 2025-03-01, coordinator: Alice Brown (COORD-1001)"
+    },
+    {
+      "id": "CAMP-102",
+      "content": "Scholarship Fund Drive: raising funds for underprivileged students. Target: $50,000.",
+      "metadata": "Campaign code: SCH-Drive, start date: 2025-02-15, coordinator: Bob Chen (COORD-2001)"
+    },
+    {
+      "id": "CAMP-103",
+      "content": "Clean Water Initiative in rural areas. Corporate matching offered up to $30,000.",
+      "metadata": "Campaign code: CWI-2025, start date: 2025-01-10, coordinator: Carol Lim (COORD-3002)"
+    },
+    {
+      "id": "CAMP-104",
+      "content": "Community Health Fair: free screenings. Donation goal: $10,000 for medical supplies.",
+      "metadata": "Campaign code: CHF-Local, event date: 2025-04-05, coordinator: David Parker (COORD-4001)"
+    },
+    {
+      "id": "CAMP-105",
+      "content": "Winter Coat Drive for homeless shelters. Aim: 500 coats + $5,000 for distribution costs.",
+      "metadata": "Campaign code: WCD-Winter, start date: 2025-11-01, coordinator: Emily Stone (COORD-5001)"
+    }
+  ]
+  

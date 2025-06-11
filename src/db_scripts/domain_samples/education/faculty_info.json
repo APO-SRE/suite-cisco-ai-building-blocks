@@ -1,0 +1,28 @@
+[
+    {
+      "id": "FAC-301",
+      "content": "Dr. Tan (Faculty ID: F-100) teaches Math 201. Office hours Tue/Thu 2-4 PM.",
+      "metadata": "PhD in Mathematics, specialization: Differential Geometry, department: Math"
+    },
+    {
+      "id": "FAC-302",
+      "content": "Dr. Lee (Faculty ID: F-101) teaches Bio 310. Oversees CRISPR lab projects. Office hours Wed 3-5 PM.",
+      "metadata": "PhD in Molecular Biology, department: Biology"
+    },
+    {
+      "id": "FAC-303",
+      "content": "Prof. Williams (Faculty ID: F-102) lectures on British Literature (Eng 150). Known for interactive seminar style.",
+      "metadata": "MA in English Literature, department: English"
+    },
+    {
+      "id": "FAC-304",
+      "content": "Dr. Jackson (Faculty ID: F-103) leads CS 420. Research in AI and machine learning systems.",
+      "metadata": "PhD in Computer Science, department: CS"
+    },
+    {
+      "id": "FAC-305",
+      "content": "Dr. Ramirez (Faculty ID: F-104) hosts Hist 220. Focus on early modern Europe. Office hours Tue/Thu 1-3 PM.",
+      "metadata": "PhD in History, department: History"
+    }
+  ]
+  

@@ -1,0 +1,28 @@
+[
+    {
+      "id": "BILL-301",
+      "content": "Invoice #INV-1001 for Brown v. Skyline (CASE-101). 10 billable hours @ $250/hr. Total $2,500.",
+      "metadata": "Due date: 2025-02-15, partial paid $1,000 on 2025-02-05"
+    },
+    {
+      "id": "BILL-302",
+      "content": "Invoice #INV-1002 for Estate of Lim (CASE-102). Flat fee portion $1,500 of $3,000 total. Payment plan set.",
+      "metadata": "Issued: 2025-02-10, next installment: 2025-03-10"
+    },
+    {
+      "id": "BILL-303",
+      "content": "Contingency-based (CASE-103). No invoice yet, 30% of final settlement if awarded.",
+      "metadata": "No monthly billing, milestone at settlement or judgment."
+    },
+    {
+      "id": "BILL-304",
+      "content": "Invoice #INV-1003 for M&A project (CASE-104). 12 hours @ $300/hr = $3,600. Additional research fee $500.",
+      "metadata": "Total $4,100, due: 2025-03-01, partial retainer used"
+    },
+    {
+      "id": "BILL-305",
+      "content": "Invoice #INV-1004 for patent infringement (CASE-105). 8 billable hours @ $270/hr = $2,160, plus $300 filing fees.",
+      "metadata": "Total $2,460, retainer covers first $2,000, remainder $460 due"
+    }
+  ]
+  

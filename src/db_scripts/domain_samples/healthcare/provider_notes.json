@@ -1,0 +1,72 @@
+[
+  {
+    "note_id": "N-5001",
+    "date_time": "2025-01-20T14:15:00",
+    "provider_id": "DR-3001",
+    "patient_id": "P-1001",
+    "note_text": "Patient reported mild dizziness, recommended checking blood pressure regularly. Discussed potential medication adjustments."
+  },
+  {
+    "note_id": "N-5002",
+    "date_time": "2025-01-20T15:40:00",
+    "provider_id": "DR-3003",
+    "patient_id": "P-1001",
+    "note_text": "Lab test scheduled for 02/05 at 9 AM. Patient advised to fast for 12 hours prior."
+  },
+  {
+    "note_id": "N-5003",
+    "date_time": "2025-01-21T11:00:00",
+    "provider_id": "DR-3002",
+    "patient_id": "P-1002",
+    "note_text": "Seasonal allergy symptoms are moderate. Considering referral to ENT if symptoms worsen."
+  },
+  {
+    "note_id": "N-5004",
+    "date_time": "2025-01-25T09:20:00",
+    "provider_id": "DR-3002",
+    "patient_id": "P-1003",
+    "note_text": "Patient's iron levels still borderline low, recommended continuing supplements."
+  },
+  {
+    "note_id": "N-5005",
+    "date_time": "2025-01-30T08:45:00",
+    "provider_id": "DR-3003",
+    "patient_id": "P-1004",
+    "note_text": "Diabetes management: A1C results improved slightly, but patient should monitor sugar intake."
+  },
+  {
+    "note_id": "N-5006",
+    "date_time": "2025-02-01T10:15:00",
+    "provider_id": "DR-3003",
+    "patient_id": "P-1005",
+    "note_text": "Routine pediatric checkup recommended. No specific concerns noted at this time."
+  },
+  {
+    "note_id": "N-5007",
+    "date_time": "2025-02-02T14:00:00",
+    "provider_id": "DR-3004",
+    "patient_id": "P-1006",
+    "note_text": "Patient's cholesterol levels remain high, reinforcing dietary changes and medication adherence."
+  },
+  {
+    "note_id": "N-5008",
+    "date_time": "2025-02-03T09:30:00",
+    "provider_id": "DR-3005",
+    "patient_id": "P-1007",
+    "note_text": "Asthma is controlled, but patient experiences shortness of breath during high pollen count. Possibly adjust inhaler dosage."
+  },
+  {
+    "note_id": "N-5009",
+    "date_time": "2025-02-03T15:10:00",
+    "provider_id": "DR-3004",
+    "patient_id": "P-1008",
+    "note_text": "Migraines increasing in frequency. Recommended an MRI if no improvement after next medication trial."
+  },
+  {
+    "note_id": "N-5010",
+    "date_time": "2025-02-05T11:45:00",
+    "provider_id": "DR-3002",
+    "patient_id": "P-1003",
+    "note_text": "Follow-up blood tests scheduled for 03/03 at 10 AM. Will compare new results with baseline."
+  }
+]

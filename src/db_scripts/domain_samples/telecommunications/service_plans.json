@@ -1,0 +1,28 @@
+[
+    {
+      "id": "PLAN-101",
+      "content": "Basic Mobile Plan: 2GB data, unlimited calls & texts, $25/month.",
+      "metadata": "Plan code: MOB-BASIC, posted: 2025-01-05, manager: Alice Brown (SP-1001)"
+    },
+    {
+      "id": "PLAN-102",
+      "content": "Family Mobile Plan: 10GB shared data, unlimited calls & texts for up to 4 lines, $60/month.",
+      "metadata": "Plan code: MOB-FAM, posted: 2025-02-10, manager: Bob Chen (SP-2001)"
+    },
+    {
+      "id": "PLAN-103",
+      "content": "Home Fiber Internet: 300Mbps download, 100Mbps upload, $50/month.",
+      "metadata": "Plan code: FIB-300, posted: 2025-03-01, manager: Carol Lim (SP-3002)"
+    },
+    {
+      "id": "PLAN-104",
+      "content": "Business Broadband: 500Mbps symmetrical, static IP, $100/month, priority support.",
+      "metadata": "Plan code: BIZ-500, posted: 2025-02-20, manager: David Parker (SP-4001)"
+    },
+    {
+      "id": "PLAN-105",
+      "content": "Unlimited Mobile Data: no cap on data usage, includes 5G access, $80/month.",
+      "metadata": "Plan code: MOB-UNL, posted: 2025-03-15, manager: Emily Stone (SP-5001)"
+    }
+  ]
+  

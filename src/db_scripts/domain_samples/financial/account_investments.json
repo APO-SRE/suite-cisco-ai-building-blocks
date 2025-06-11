@@ -1,0 +1,28 @@
+[
+    {
+      "id": "INV-101",
+      "content": "Account #A5001 (Wealth Management): Portfolio includes tech equities (60%), municipal bonds (40%).",
+      "metadata": "Client ID: C-2001, risk profile: moderate, last rebalance: 2025-01-15"
+    },
+    {
+      "id": "INV-102",
+      "content": "Account #A5002: High-yield corporate bonds (70%), international stocks (30%). Yield ~5%.",
+      "metadata": "Client ID: C-2002, recommended hold for 2 years, next review: 2025-06"
+    },
+    {
+      "id": "INV-103",
+      "content": "Joint account #A5003 invests in healthcare ETFs, 50% small-cap growth stocks.",
+      "metadata": "Client ID: C-2003 & C-2004, set up: 2024-09, rebal freq: quarterly"
+    },
+    {
+      "id": "INV-104",
+      "content": "Retirement account #A5004 focusing on index funds (S&P 500, total bond market).",
+      "metadata": "Client ID: C-2005, age: 58, conservative tilt, next distribution: 2025-08"
+    },
+    {
+      "id": "INV-105",
+      "content": "Account #A5005: Crypto holdings (BTC, ETH) ~15%, rest in stable dividend stocks.",
+      "metadata": "Client ID: C-2006, high volatility tolerance, advisor note: watch crypto regulation"
+    }
+  ]
+  

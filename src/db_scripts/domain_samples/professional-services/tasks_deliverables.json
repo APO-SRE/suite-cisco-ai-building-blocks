@@ -1,0 +1,28 @@
+[
+    {
+      "id": "TD-301",
+      "content": "Frank’s SME: conduct org assessment, interview dept heads, produce recommendations report.",
+      "metadata": "Ref: CLI-201, assigned consultant: Alice Brown, progress ~70%"
+    },
+    {
+      "id": "TD-302",
+      "content": "Gina’s startup finances: analyze statements, build valuation model, prep investor deck.",
+      "metadata": "Ref: CLI-202, lead: Bob Chen, tasks complete ~50%"
+    },
+    {
+      "id": "TD-303",
+      "content": "Hiro’s HR solutions: define job profiles, performance metrics, set up ATS (app tracking system).",
+      "metadata": "Ref: CLI-203, lead: Carol Lim, tasks complete ~40%"
+    },
+    {
+      "id": "TD-304",
+      "content": "Ivy’s IT transformation: map legacy processes, plan automation, pilot data analytics tool.",
+      "metadata": "Ref: CLI-204, lead: David Parker, tasks complete ~20%"
+    },
+    {
+      "id": "TD-305",
+      "content": "Jeff’s marketing strategy: brand positioning workshop, design campaign timeline, measure KPIs.",
+      "metadata": "Ref: CLI-205, lead: Emily Stone, tasks complete ~10%"
+    }
+  ]
+  

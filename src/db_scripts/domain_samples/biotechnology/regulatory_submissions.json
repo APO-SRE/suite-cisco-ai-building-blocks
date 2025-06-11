@@ -1,0 +1,28 @@
+[
+    {
+      "id": "RS-301",
+      "content": "Pre-IND request for CRISPR therapy (RP-101). FDA requires additional off-target data from LE-201.",
+      "metadata": "Submitted: 2025-02-25, status: pending meeting scheduling"
+    },
+    {
+      "id": "RS-302",
+      "content": "Orphan Drug designation request for CAR-T lymphoma program (RP-102). Potential expedite if granted.",
+      "metadata": "Filed: 2025-02-10, classification: confidential"
+    },
+    {
+      "id": "RS-303",
+      "content": "Breakthrough device application for spinal scaffolding (RP-103). Data from rodent model included (LE-203).",
+      "metadata": "Submission date: 2025-03-01, review timeline ~60 days"
+    },
+    {
+      "id": "RS-304",
+      "content": "Fast-track vaccine pathway petition for mRNA platform (RP-104). Early immunogenicity data attached.",
+      "metadata": "Filed: 2025-02-20, synergy with public health interest"
+    },
+    {
+      "id": "RS-305",
+      "content": "Investigational probiotic exemption request for Microbiome project (RP-105). IRB oversight needed.",
+      "metadata": "Date: 2025-02-28, requires updated toxicity profile"
+    }
+  ]
+  

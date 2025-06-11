@@ -1,0 +1,28 @@
+[
+    {
+      "id": "AUD-501",
+      "content": "ISO 27001 readiness check, covered managed IT processes, device security. No major findings.",
+      "metadata": "Related to CLI-201, date: 2025-03-15, auditor: external partner"
+    },
+    {
+      "id": "AUD-502",
+      "content": "PCI-DSS scoping for e-commerce migration. Found moderate gap in network segmentation.",
+      "metadata": "Ref: CLI-202, date: 2025-03-25, next check in 2 weeks"
+    },
+    {
+      "id": "AUD-503",
+      "content": "Azure security baseline review for DevOps container deployment. Minor improvements recommended.",
+      "metadata": "Ref: CLI-203, date: 2025-03-30, assigned to Carol Lim"
+    },
+    {
+      "id": "AUD-504",
+      "content": "PCI compliance pen test results for Ivy’s enterprise: injection vulnerabilities found, patch needed.",
+      "metadata": "Ref: CLI-204, date: 2025-04-05, severity: high"
+    },
+    {
+      "id": "AUD-505",
+      "content": "Data governance policy check for Jeff’s finance dashboards. Ensuring PII encryption & retention.",
+      "metadata": "Ref: CLI-205, date: 2025-04-10, next review 2025-05-01"
+    }
+  ]
+  

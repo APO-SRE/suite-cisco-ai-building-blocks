@@ -1,0 +1,53 @@
+[
+    {
+      "id": "LOC-101",
+      "name": "Downtown Restaurant",
+      "address": "100 Culinary Rd, FlavorCity, ST 11111",
+      "relation": [
+        "Menu items served (MENU-101 to MENU-105)",
+        "Some large catering orders (#FB-1001, #FB-1005)"
+      ],
+      "metadata": "Flagship diner, open 7am-10pm"
+    },
+    {
+      "id": "LOC-102",
+      "name": "Central Kitchen",
+      "address": "200 Prep Ave, ChefTown, ST 22222",
+      "relation": [
+        "Production records: #PROD-401 (beef patties), #PROD-404 (cheesecakes)",
+        "Food safety checks: #SAFE-501, #SAFE-504"
+      ],
+      "metadata": "Main prep facility, USDA-inspected"
+    },
+    {
+      "id": "LOC-103",
+      "name": "Brew House",
+      "address": "350 Hops Ln, BrewCity, ST 33333",
+      "relation": [
+        "IPA production (#PROD-402), supply from BrewSupply Inc (SUP-203)",
+        "Food safety brew checks: #SAFE-503"
+      ],
+      "metadata": "Specialty craft brewing, scheduled tours available"
+    },
+    {
+      "id": "LOC-104",
+      "name": "GreenLeaf Farms Distribution",
+      "address": "500 Fresh Rd, GardenTown, ST 44444",
+      "relation": [
+        "Supplier #SUP-202 for produce, monthly salmonella tests (#SAFE-502)",
+        "Used by avocado wraps (MENU-102), salads (MENU-104)"
+      ],
+      "metadata": "Organic produce aggregator, trucks delivering daily"
+    },
+    {
+      "id": "LOC-105",
+      "name": "Dessert Bakery Center",
+      "address": "77 Sweet Ct, PastryVille, ST 55555",
+      "relation": [
+        "Supplies cheesecake crust (SUP-205), production record #PROD-404",
+        "Allergy cross-contact check (#SAFE-505)"
+      ],
+      "metadata": "Combines dairy & pastry ingredients for final desserts"
+    }
+  ]
+  

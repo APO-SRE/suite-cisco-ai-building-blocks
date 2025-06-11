@@ -1,0 +1,53 @@
+[
+    {
+      "id": "HOS-001",
+      "name": "Springfield General Hospital",
+      "address": "400 Elm St, Springfield, IL 62704",
+      "relation": [
+        "Near Dr. Amelia Grant's office (DOC-101)",
+        "Policy references: scheduling & cancellations (POL-100)"
+      ],
+      "metadata": "24/7 ER, cardiology wing specialized in hypertension & heart disease"
+    },
+    {
+      "id": "HOS-002",
+      "name": "Greenfield Allergy & Asthma Center",
+      "address": "220 Oak Avenue, Greenfield, IL 62901",
+      "relation": [
+        "Location of Dr. Brian Sanders (DOC-102)",
+        "Patients with seasonal allergies like P-1002"
+      ],
+      "metadata": "Focus: immunotherapy, skin test labs, adheres to telehealth policy (POL-103)"
+    },
+    {
+      "id": "HOS-003",
+      "name": "Riverton Medical Pavilion",
+      "address": "789 Pine Road, Riverton, IL 62401",
+      "relation": [
+        "Closest major facility for P-1003 (Carol Lim) check-ups",
+        "Lab visits for anemia monitoring"
+      ],
+      "metadata": "Includes extended hours lab for blood tests, references billing code HC-202 for Cholesterol Panel"
+    },
+    {
+      "id": "HOS-004",
+      "name": "Lakeville Children's Health",
+      "address": "22 Birch Court, Lakeville, IL 62056",
+      "relation": [
+        "Potential pediatric checkups for P-1005 (Emily Stone)",
+        "Follows Infection Control policy (POL-104)"
+      ],
+      "metadata": "Pediatrics specialized, recommended telehealth for mild cases per POL-103"
+    },
+    {
+      "id": "HOS-005",
+      "name": "Brookfield Diagnostic Center",
+      "address": "7 Willow Lane, Brookfield, IL 62890",
+      "relation": [
+        "Primary imaging location for Dr. Derek Wu (DOC-104)",
+        "Migraine MRI recommended for P-1008 (N-5009 note)"
+      ],
+      "metadata": "Equipped for advanced imaging, references billing code HC-505 for neurology migraine assessments"
+    }
+  ]
+  

@@ -1,0 +1,53 @@
+[
+    {
+      "id": "LOC-101",
+      "name": "Headquarters Building 1",
+      "address": "100 Innovation Ave, Metropolis, ST 10001",
+      "relation": [
+        "Employees with location code HQ-1 (e.g., E-1001 Alice Brown, E-2001 Bob Chen)",
+        "Finance, Tech Dev departments main offices"
+      ],
+      "metadata": "Primary corporate site, multiple floors, cafeteria onsite"
+    },
+    {
+      "id": "LOC-102",
+      "name": "Headquarters Building 2",
+      "address": "200 Growth Blvd, Metropolis, ST 10002",
+      "relation": [
+        "Employees with location code HQ-2 (e.g., E-1002 Carol Lim, E-5001 Emily Stone)",
+        "HR, partial Finance offices"
+      ],
+      "metadata": "Annex building, shared conference rooms"
+    },
+    {
+      "id": "LOC-103",
+      "name": "Branch Office 1",
+      "address": "77 Sales Way, Commerce City, ST 20001",
+      "relation": [
+        "Employees with location code BR-1 (e.g., E-4001 David Parker)",
+        "Sales department satellite location"
+      ],
+      "metadata": "Regional sales office, open concept workspace"
+    },
+    {
+      "id": "LOC-104",
+      "name": "Training Center",
+      "address": "350 Learning Ln, Education Park, ST 30001",
+      "relation": [
+        "training_programs.json references (TR-401, TR-402, etc.)",
+        "Potential for onsite lodging for out-of-town employees"
+      ],
+      "metadata": "Equipped with classrooms, projectors, break rooms"
+    },
+    {
+      "id": "LOC-105",
+      "name": "Recruitment Hub",
+      "address": "15 Career Rd, HR District, ST 40001",
+      "relation": [
+        "recruitment_applications.json references (RA-501 to RA-505)",
+        "HR recruiters & interview rooms"
+      ],
+      "metadata": "Specialized interview pods, scheduling software on site"
+    }
+  ]
+  

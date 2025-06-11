@@ -1,0 +1,28 @@
+[
+    {
+      "id": "SE-401",
+      "content": "Bomb threat at Capitol Complex averted by quick response. Suspect in custody, minimal disruption.",
+      "metadata": "Date: 2025-02-12, classification: SECRET, region: Capitol District"
+    },
+    {
+      "id": "SE-402",
+      "content": "Cyber attack on Defense Data Center thwarted. 'RedCipher' group suspected. No data breach confirmed.",
+      "metadata": "Date: 2025-01-29, classification: TOP SECRET, triggered code: CyberAlert-12"
+    },
+    {
+      "id": "SE-403",
+      "content": "Border standoff in Sector 2. Unidentified armed individuals retreated after drone surveillance deploy.",
+      "metadata": "Date: 2025-02-03, classification: SECRET, no casualties"
+    },
+    {
+      "id": "SE-404",
+      "content": "Fugitive apprehended near nuclear research facility. High-level clearance area secured within 30 minutes.",
+      "metadata": "Date: 2025-02-10, classification: SECRET, code: OpShield"
+    },
+    {
+      "id": "SE-405",
+      "content": "Suspicious drone incursion over coastal military base. Intercepted by navy patrol. Drone recovered intact.",
+      "metadata": "Date: 2025-02-15, classification: CONFIDENTIAL, origin unknown"
+    }
+  ]
+  

@@ -1,0 +1,63 @@
+# ─── Python bytecode ──────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ─── Distribution / packaging ─────────────────────────────────────────────────
+*.egg-info/
+dist/
+build/
+*.egg
+
+# ─── Virtual Environments ─────────────────────────────────────────────────────
+.env/
+.venv/
+env/
+ENV/
+venv/
+
+# ─── Editor / OS files ────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# ─── Logs, caches, reports ────────────────────────────────────────────────────
+*.log
+.coverage
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+.cache/
+__pycache__/
+# ─── ignore generated snapshots ─── ──────────────────────────────
+all_files-*.txt
+
+# ─── Local config / secrets ───────────────────────────────────────────────────
+*.env
+# keep example.env in source; only ignore real “.env”
+
+# ─── Your generated listings ──────────────────────────────────────────────────
+ai-building-agent-*.txt
+ai-building-blocks-database-*.txt
+
+# ─── Egg-info in src/ ────────────────────────────────────────────────────────
+src/*.egg-info/
+
+# ─── Chroma DB folder ─────────────────────────────────────────────────────────
+chroma_dbs/
+
+# ─── Miscellaneous ────────────────────────────────────────────────────────────
+*.sqlite3
+
+# ─── Build metadata & caches ───────────────────────────────────────────────
+*.egg-info/
+__pycache__/
+list_files.py
+docker/list-docker-directory.py
+all_docker_files-*.json
+list-docker-directory.py
+all_files-*.json
+src/db_scripts/nltk_data/

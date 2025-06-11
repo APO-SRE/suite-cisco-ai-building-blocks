@@ -1,0 +1,28 @@
+[
+    {
+      "id": "SPEC-201",
+      "content": "2025 SUV model: 2.0L turbo engine, 8-speed automatic, optional AWD. Estimated 30 MPG highway.",
+      "metadata": "Trim: Base/Plus/Lux, advanced driver assist standard in Lux trim"
+    },
+    {
+      "id": "SPEC-202",
+      "content": "EcoSedan: 1.5L hybrid variant yields 45 MPG combined. Lithium-ion battery in rear trunk area.",
+      "metadata": "Trims: Eco, Premium Eco, battery brand: Voltix"
+    },
+    {
+      "id": "SPEC-203",
+      "content": "EV Crossover: 300-mile range, dual-motor AWD, fast-charging in 45 minutes to 80%.",
+      "metadata": "Battery capacity: 75 kWh, future over-the-air updates planned"
+    },
+    {
+      "id": "SPEC-204",
+      "content": "Light-duty pickup truck: 3.0L diesel option or 2.5L gas turbo. Towing capacity up to 7,000 lbs.",
+      "metadata": "Trim: Work, Sport, towing package standard on Sport"
+    },
+    {
+      "id": "SPEC-205",
+      "content": "Hydrogen concept sedan: Fuel-cell rated for 350 miles, refill time ~5 minutes, zero tailpipe emissions.",
+      "metadata": "Prototype only, model code: FCSED-Alpha"
+    }
+  ]
+  

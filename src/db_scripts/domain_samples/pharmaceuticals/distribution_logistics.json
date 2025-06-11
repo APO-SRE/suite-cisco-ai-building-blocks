@@ -1,0 +1,28 @@
+[
+    {
+      "id": "DL-401",
+      "content": "Bulk shipment of ‘NeoCure’ trial batch (PB-201) to 10 US hospital sites. Temp controlled at 2-8°C.",
+      "metadata": "Shipped via MedFreight, date: 2025-02-10, tracking code: MF-88021"
+    },
+    {
+      "id": "DL-402",
+      "content": "‘Viraxin-B’ pilot batch (PB-202) dispatched to R&D affiliate in Europe for early-phase testing.",
+      "metadata": "International shipping, -80°C dry ice, AWB #AEU-30392"
+    },
+    {
+      "id": "DL-403",
+      "content": "Small scale distribution of ‘Analge-Patch’ samples (PB-203) to specialized pain clinics for feedback.",
+      "metadata": "Requires sign-off from principal investigators, date: 2025-02-18"
+    },
+    {
+      "id": "DL-404",
+      "content": "Device lot #DIA-01 (PB-204) prototypes sent to MedTech Solutions HQ for advanced testing. Secure courier used.",
+      "metadata": "Shipped: 2025-02-25, tracking code: SC-DIA-100"
+    },
+    {
+      "id": "DL-405",
+      "content": "Ampiclox-XYZ scale-up batch (PB-205) delivered to stability labs in 2 phases, requires ambient storage.",
+      "metadata": "Dispatch date: 2025-03-05, reference code: STAB-AMP-G02"
+    }
+  ]
+  

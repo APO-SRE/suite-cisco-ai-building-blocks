@@ -1,0 +1,28 @@
+[
+    {
+      "id": "PROD-101",
+      "content": "Factory A is producing the 2025 SUV model line. Goal is 500 units/week. Chassis design updated for better fuel efficiency.",
+      "metadata": "Line code: SUV-25, next capacity review: 2025-03-01"
+    },
+    {
+      "id": "PROD-102",
+      "content": "Factory B ramped up sedan production by 15%. Focus on hybrid variants to meet emission targets.",
+      "metadata": "Model: EcoSedan, ramp date: 2025-04-15"
+    },
+    {
+      "id": "PROD-103",
+      "content": "Battery supply constraints delayed the EV crossover line. New cells expected in mid-June.",
+      "metadata": "Line code: EVC-333, shift hours extended to maintain schedule"
+    },
+    {
+      "id": "PROD-104",
+      "content": "Truck line at Plant #4 advanced automation. Robotic welding improved frame integrity by 10%.",
+      "metadata": "Welding station: RW-88, daily output: 200 frames"
+    },
+    {
+      "id": "PROD-105",
+      "content": "Experimental hydrogen powertrain assembly tested in pilot program. Low-volume run planned.",
+      "metadata": "Pilot ID: HYDRO-P1, possible release: Q4 2026"
+    }
+  ]
+  

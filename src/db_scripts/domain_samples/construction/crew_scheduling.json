@@ -1,0 +1,28 @@
+[
+    {
+      "id": "CR-401",
+      "content": "Crew A assigned to foundation and framing tasks for PH-101. 8 carpenters, 2 foremen.",
+      "metadata": "Shift: 7 AM - 3 PM, lead: Foreman Russo"
+    },
+    {
+      "id": "CR-402",
+      "content": "Steel erection crew (10 specialists) working on PH-102 commercial tower. 2 crane operators, 8 ironworkers.",
+      "metadata": "Shift: 6 AM - 4 PM, supervisor: Foreman Delgado"
+    },
+    {
+      "id": "CR-403",
+      "content": "Electrical and plumbing team (5 journeymen) assigned to PH-105 school wing. Coordinating with local inspector next week.",
+      "metadata": "Shift: 8 AM - 4 PM, lead: Master Electrician Liu"
+    },
+    {
+      "id": "CR-404",
+      "content": "Concrete finishing crew for warehouse expansion (PH-103). 6 laborers, 1 finishing expert, 1 forklift operator.",
+      "metadata": "Shift: 7 AM - 5 PM, lead: Foreman Glass"
+    },
+    {
+      "id": "CR-405",
+      "content": "Geotechnical review crew for riverfront condo (PH-104). 3 soil engineers, 2 drilling technicians, 1 field geologist.",
+      "metadata": "Date range: Feb 20 - Feb 28, lead: Engr. Hawkins"
+    }
+  ]
+  

@@ -1,0 +1,28 @@
+[
+    {
+      "id": "PATCH-401",
+      "content": "BattleQuest Patch 1.2: rebalanced wizard spells, knight HP buff, new rogue stealth ability. Bug fixes.",
+      "metadata": "Release date: 2025-03-10, references user feedback from FrankH"
+    },
+    {
+      "id": "PATCH-402",
+      "content": "SkyRacer Update 2.1: improved flight physics, added planes, leaderboard reset. Tweaked matchmaking.",
+      "metadata": "Release date: 2025-03-20, dev notes from Bob Chen"
+    },
+    {
+      "id": "PATCH-403",
+      "content": "CyberStrike v3.0: clan war system overhaul, new hacking mini-game, major bug fixes, new skins.",
+      "metadata": "Release date: 2025-03-25, references clan feedback from HiroT"
+    },
+    {
+      "id": "PATCH-404",
+      "content": "CityCraft v2.2: terrain generation improvements, add ‘Creative Pack’ mod hooks, performance optimizations.",
+      "metadata": "Release date: 2025-03-28, direct request from IvyK’s building suggestions"
+    },
+    {
+      "id": "PATCH-405",
+      "content": "Tactical Legends 1.1: hero balancing, 2v2 queue fixes, expansions teased for next season.",
+      "metadata": "Release date: 2025-04-05, input from GinaR’s tournament data"
+    }
+  ]
+  

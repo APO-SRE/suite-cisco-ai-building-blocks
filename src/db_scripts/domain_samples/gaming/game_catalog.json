@@ -1,0 +1,28 @@
+[
+    {
+      "id": "GAME-101",
+      "content": "BattleQuest: a fantasy RPG with co-op dungeons, level cap 60, featuring wizard, knight, rogue classes.",
+      "metadata": "Released: 2025-01-10, dev lead: Alice Brown (DEV-1001), base price: $39.99"
+    },
+    {
+      "id": "GAME-102",
+      "content": "SkyRacer: arcade flight sim, multiplayer dogfights, jets & prop planes. Seasonal leaderboard resets.",
+      "metadata": "Released: 2025-02-05, dev lead: Bob Chen (DEV-2001), base price: $29.99"
+    },
+    {
+      "id": "GAME-103",
+      "content": "CyberStrike: futuristic FPS with hacking mini-games, clan-based territory wars, microtransactions for skins.",
+      "metadata": "Released: 2025-03-01, dev lead: Carol Lim (DEV-3002), base price: $49.99"
+    },
+    {
+      "id": "GAME-104",
+      "content": "CityCraft: sandbox building game, advanced terrain, resource management, mod support.",
+      "metadata": "Released: 2025-02-20, dev lead: David Parker (DEV-4001), base price: $19.99"
+    },
+    {
+      "id": "GAME-105",
+      "content": "Tactical Legends: turn-based strategy with hero units, 2v2 or solo ranked ladder, expansions planned.",
+      "metadata": "Released: 2025-03-15, dev lead: Emily Stone (DEV-5001), base price: $34.99"
+    }
+  ]
+  

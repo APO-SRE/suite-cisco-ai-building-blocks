@@ -1,0 +1,28 @@
+[
+    {
+      "id": "SAT-501",
+      "content": "Low-Earth orbit launch #LEO-A1: small weather satellite, rideshare on FalconWing rocket prototype.",
+      "metadata": "Scheduled: 2025-03-22, contact: frank.huang@spaceorg.co"
+    },
+    {
+      "id": "SAT-502",
+      "content": "Geo-stationary launch #GEO-Comm: communications satellite, 5-ton payload, new heavy-lift rocket.",
+      "metadata": "Date: 2025-03-28, operator: gina.rossi@aero.co, final fueling check"
+    },
+    {
+      "id": "SAT-503",
+      "content": "Sun-synchronous orbit #SSO-Agri: imaging satellite for crop monitoring, triple solar panel array.",
+      "metadata": "Launched: 2025-04-02, mission control: hiro.tanaka@aero.co, next telemetry checkpoint in 12h"
+    },
+    {
+      "id": "SAT-504",
+      "content": "Lunar test orbiter #Lunar-X: investigating resources on near side, advanced propulsion test.",
+      "metadata": "Launch date: 2025-04-10, integrated with new upper stage, manager: ivy.kim@aero.co"
+    },
+    {
+      "id": "SAT-505",
+      "content": "Mars Relay #MR-Path: relay satellite for future rovers, solar electric propulsion, 2-year cruise.",
+      "metadata": "Planned: 2025-05-01, contact: jeff.teeter@aero.co, final design checks"
+    }
+  ]
+  

@@ -1,0 +1,69 @@
+{
+  "meraki": {
+    "openapi_name": "meraki-dashboard-openapi-3.0.1",
+    "sdk_module": "meraki",
+    "created_by_us": false,
+    "installed": true,
+    "route": true
+  },
+  "catalyst": {
+    "openapi_name": "cisco_catalyst_sd_wan_manager_api_2_0_0",
+    "sdk_module": "dnacentersdk",
+    "created_by_us": false,
+    "installed": true,
+    "route": true
+  },
+  "intersight": {
+    "openapi_name": "intersight-openapi-v3-1.0.11-20250410042505149",
+    "sdk_module": "intersight",
+    "created_by_us": false,
+    "installed": false,
+    "route": true
+  },
+  "nexus_dashboard": {
+    "openapi_name": "nexus-dashboard-321",
+    "created_by_us": false,
+    "installed": false,
+    "sdk_module": "",
+    "route": false
+  },
+  "secure_access": {
+    "openapi_name": "cisco_secure_access_token_authorization_api_2_0_0",
+    "created_by_us": false,
+    "installed": false,
+    "sdk_module": "",
+    "route": false
+  },
+  "umbrella": {
+    "openapi_name": "cisco_umbrella_token_authorization_api_2_0_0",
+    "created_by_us": false,
+    "installed": false,
+    "sdk_module": "",
+    "route": false
+  },
+  "cloudlock": {
+    "openapi_name": "cisco_cloudlock_api_1_0_0",
+    "created_by_us": false,
+    "installed": false,
+    "sdk_module": "",
+    "route": false
+  },
+  "sdwan_mngr": {
+    "openapi_name": "cisco_catalyst_sd_wan_manager_api_2_0_0",
+    "sdk_module": "catalystwan.session",
+    "created_by_us": false,
+    "installed": false,
+    "route": false
+  },
+  "ai_defense": {
+    "openapi_name": "ai_defense_ap_is_1_0_0_2025_02_28",
+    "installed": false,
+    "route": true
+  },
+  "nexus_hyperfabric": {
+    "openapi_name": "cisco_nexus_hyperfabric_rest_api_1_0_6_rev_2025_03_11_13103",
+    "sdk_module": "",
+    "created_by_us": false,
+    "installed": false
+  }
+}
