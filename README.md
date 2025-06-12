@@ -144,18 +144,26 @@ A built-in **Platform Registry** tracks and manages platform integrations and AI
 
 ## ⚙ Environment Variable Overview
 
-The `.env` file configures platform access, feature toggles, and backend providers. You can:
+The `.env` file configures platform access, feature toggles, and backend providers.
 
-* Use the [interactive .env editor](https://code.visualstudio.com/docs/editor/userdefinedsnippets#_env) in some IDEs
-* Review full variable descriptions here:
-  👉 [`docs/example_environment_variables_guide.MD`](docs/example_environment_variables_guide.MD)
+To edit interactively, launch the CLI and choose the environment manager:
 
-| Prefix     | Layer / Context                        | Example Content                           |
-| ---------- | -------------------------------------- | ----------------------------------------- |
-| `FASTAPI_` | API schema / OpenAPI ingestion         | JSON definitions, titles, parameter names |
-| `EVENTS_`  | Log/event enrichment                   | Syslogs, SNMP, streaming events           |
-| `DOMAIN_`  | Structured business data               | KBs, support docs, industry templates     |
-| `AGENTIC_` | Detailed multi-step logic / CoT assets | Whitepapers, agent instructions, runbooks |
+bash
+Copy
+Edit
+# From project root
+menu
+# Then select option #19 – Manage .env files
+You can also edit .env manually or review full variable documentation here:
+👉 docs/example_environment_variables_guide.MD
+
+Prefix	Layer / Context	Example Content
+FASTAPI_	API schema / OpenAPI ingestion	JSON definitions, titles, parameter names
+EVENTS_	Log/event enrichment	Syslogs, SNMP, streaming events
+DOMAIN_	Structured business data	KBs, support docs, industry templates
+AGENTIC_	Detailed multi-step logic / CoT assets	Whitepapers, agent instructions, runbooks
+
+
 
 ---
 
