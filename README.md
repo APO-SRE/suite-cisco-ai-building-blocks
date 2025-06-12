@@ -75,7 +75,7 @@ suite-cisco-ai-building-blocks/
 ├── README.md                       # ← this file
 ├── Makefile
 ├── assets/                         # banners & diagrams
-├── example.env                     # base environment config
+├── env.example                     # base environment config
 ├── chroma_dbs/                     # local vector DB content (ignored)
 ├── src/
 │   ├── app/                        # FastAPI AI Agent
@@ -104,7 +104,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 
 # 3. Configure your environment
-cp example.env .env
+cp env.example .env
 # Then edit .env to configure platforms, credentials, backends, etc.
 
 # 4. Install required modules
