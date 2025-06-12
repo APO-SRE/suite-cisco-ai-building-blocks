@@ -1,3 +1,4 @@
+ 
 
 ---
 
@@ -146,24 +147,23 @@ A built-in **Platform Registry** tracks and manages platform integrations and AI
 
 The `.env` file configures platform access, feature toggles, and backend providers.
 
-To edit interactively, launch the CLI and choose the environment manager:
+To **edit interactively**, use the CLI and choose option **#19 – Manage .env files**:
 
-bash
-Copy
-Edit
+```bash
 # From project root
 menu
-# Then select option #19 – Manage .env files
-You can also edit .env manually or review full variable documentation here:
-👉 docs/example_environment_variables_guide.MD
+# Then select: 19 – Manage .env files
+```
 
-Prefix	Layer / Context	Example Content
-FASTAPI_	API schema / OpenAPI ingestion	JSON definitions, titles, parameter names
-EVENTS_	Log/event enrichment	Syslogs, SNMP, streaming events
-DOMAIN_	Structured business data	KBs, support docs, industry templates
-AGENTIC_	Detailed multi-step logic / CoT assets	Whitepapers, agent instructions, runbooks
+You can also manually edit `.env` or refer to the detailed guide:
+👉 [`docs/example_environment_variables_guide.MD`](docs/example_environment_variables_guide.MD)
 
-
+| Prefix     | Layer / Context                        | Example Content                           |
+| ---------- | -------------------------------------- | ----------------------------------------- |
+| `FASTAPI_` | API schema / OpenAPI ingestion         | JSON definitions, titles, parameter names |
+| `EVENTS_`  | Log/event enrichment                   | Syslogs, SNMP, streaming events           |
+| `DOMAIN_`  | Structured business data               | KBs, support docs, industry templates     |
+| `AGENTIC_` | Detailed multi-step logic / CoT assets | Whitepapers, agent instructions, runbooks |
 
 ---
 
@@ -171,7 +171,7 @@ AGENTIC_	Detailed multi-step logic / CoT assets	Whitepapers, agent instructions,
 
 * ✅ [Getting Started Guide](docs/getting_started.md)
 * ✅ [Environment Variables Reference](docs/example_environment_variables_guide.MD)
-* 🛠️  Optional: [NGINX Sample Config](docs/nginx.sample) (for container/Gateway setups)
+* 🛠️  Optional: [NGINX Sample Config](docs/nginx.sample)
 
 ---
 
@@ -184,4 +184,7 @@ AGENTIC_	Detailed multi-step logic / CoT assets	Whitepapers, agent instructions,
 
 *Made with ❤️ by the Cisco Platform AI Project Team*
 *Last updated: **June 2025***
+
+---
+
  
