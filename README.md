@@ -1,36 +1,39 @@
+
+---
+
 # Cisco Platform AI Project
 
 > **DISCLAIMER — USE AT YOUR OWN RISK**
-> This software is provided **“as is”** without warranty of any kind.
+> This software is provided **“as is”**, without warranty of any kind.
 > Cisco Systems, Inc. and contributors accept **no liability** for damages arising from its use.
-> Intended *solely for demonstration and development*.
+> Intended **solely for demonstration and development**.
 > By cloning or running the code, you confirm acceptance of these terms.
 
 ---
 
-## Project Overview
+## 🚀 Project Overview
 
-The Cisco Platform AI Project provides a modular toolkit for building sophisticated **retrieval-augmented Gen-AI** solutions that integrate seamlessly with Cisco platforms such as Meraki, Catalyst Center, Webex, Nexus, Spaces, and more.
+The **Cisco Platform AI Project** provides a modular framework for building intelligent, retrieval-augmented Gen-AI solutions tailored to Cisco platforms—such as **Meraki**, **Catalyst Center**, **Webex**, **Nexus**, and **Spaces**.
 
-This project enables rapid prototyping of intelligent chatbots, copilots, and automated IT operations leveraging live Cisco APIs, powerful LLMs, and flexible data pipelines.
-
----
-
-## Key Features
-
-| Capability                | Benefit                                                                                                   |
-| ------------------------- | --------------------------------------------------------------------------------------------------------- |
-| **Pluggable Stack**       | Swap out LLMs (Azure OpenAI, Llama 3, local Hugging Face) and vector DBs (Azure Search, Chroma, Elastic). |
-| **Layered RAG**           | Dedicated indexes for API docs, telemetry, business data, and detailed CoT documentation.                 |
-| **Live Function Calling** | Execute real Cisco API calls dynamically through JSON-emitted LLM responses.                              |
-| **Unified Cisco Service** | Single abstraction layer integrates Meraki, Catalyst Center, Webex, and more platforms.                   |
-| **Automated Scaffolding** | Automatically generate SDK clients, OpenAPI specs, dispatchers, and API stubs.                            |
-| **OpenTelemetry Tracing** | Comprehensive visibility into chunking, embedding, LLM calls, API latencies, etc.                         |
-| **Sample UI**             | Simple HTML/JS front-end included for immediate testing.                                                  |
+It supports rapid prototyping for AI-driven chatbots, copilots, and IT automation pipelines by leveraging live Cisco APIs, configurable LLMs, and powerful vector-based retrieval systems.
 
 ---
 
-## Architecture
+## 🔑 Key Features
+
+| Capability                | Benefit                                                                                            |
+| ------------------------- | -------------------------------------------------------------------------------------------------- |
+| **Pluggable Stack**       | Swap LLMs (Azure OpenAI, Llama 3, Hugging Face) and vector DBs (Azure AI Search, Chroma, Elastic). |
+| **Layered RAG**           | Isolate indexes per use case: API docs, events, business logic, and detailed CoT documentation.    |
+| **Live Function Calling** | Dynamically execute real Cisco API calls from LLM-emitted JSON responses.                          |
+| **Unified Cisco Service** | Meraki, Catalyst, Webex, and others unified into one extensible abstraction layer.                 |
+| **Automated Scaffolding** | Autogenerate OpenAPI specs, platform SDKs, dispatchers, and service stubs.                         |
+| **OpenTelemetry Tracing** | Gain visibility into all stages of processing: chunking, embeddings, LLM latency, API execution.   |
+| **Sample UI**             | Web-based HTML/JS frontend included for immediate demo access.                                     |
+
+---
+
+## 🧠 Architecture Overview
 
 ```mermaid
 flowchart TD
@@ -63,95 +66,114 @@ flowchart TD
 
 ---
 
-## Repository Structure
+## 📁 Repository Structure
 
 ```
 suite-cisco-ai-building-blocks/
 ├── LICENSE
-├── README.md                       # ← you are here
+├── README.md                       # ← this file
 ├── Makefile
-├── assets/                         # shared banners & diagrams
-├── example.env                     # environment variable template
-├── chroma_dbs/                     # local vector DB storage (ignored by git)
+├── assets/                         # banners & diagrams
+├── example.env                     # base environment config
+├── chroma_dbs/                     # local vector DB content (ignored)
 ├── src/
-│   ├── app/                        # AI Agent service
-│   │   ├── routers/                # API routes
-│   │   └── user_commands/          # CLI wizards
-│   ├── db_scripts/                 # data processing scripts
-│   └── source_open_api/            # OpenAPI specifications
+│   ├── app/                        # FastAPI AI Agent
+│   │   ├── routers/                # HTTP routes
+│   │   └── user_commands/          # CLI interaction
+│   ├── db_scripts/                 # indexing + processing logic
+│   └── source_open_api/            # OpenAPI input specs
 ├── docs/
-│   └── GettingStarted.md           # detailed getting started guide
-└── pyproject.toml                  # entry-points configuration
+│   ├── getting_started.md          # ✅ New: step-by-step setup
+│   ├── example_environment_variables_guide.MD  # ✅ New: .env breakdown
+│   └── nginx.sample                # optional NGINX config
+└── pyproject.toml                  # CLI entry points and setup
 ```
 
 ---
 
-## Quick Start
+## ⚡ Quick Start
 
 ```bash
 # 1. Clone the repository
 git clone https://github.com/APO-SRE/suite-cisco-ai-building-blocks.git
 cd suite-cisco-ai-building-blocks
 
-# 2. Setup Python virtual environment
+# 2. Create and activate a Python virtual environment
 python3 -m venv .venv
 source .venv/bin/activate
 
 # 3. Configure your environment
 cp example.env .env
-# edit your .env to set credentials, vector backends, LLM providers, etc.
+# Then edit .env to configure platforms, credentials, backends, etc.
 
-# 4. Install dependencies
+# 4. Install required modules
 pip install -r requirements.txt
 pip install -e .
 
-# 5. Build initial vector indexes
+# 5. Index data (optional but recommended)
 create-domain-demo-index
 create-events-index
 create-platform-index
 
-# 6. Run AI Agent service
+# 6. Start the AI Agent (FastAPI server)
 uvicorn app.main:app --reload
 
-# 7. Open the browser UI
+# 7. Open browser UI
 http://127.0.0.1:8000/static/
 ```
 
 ---
 
-## CLI Commands
+## 🧪 CLI Commands
 
-After installation, these CLI tools will be available:
+After installation, these commands are available:
 
-* `menu`: Launch the interactive CLI menu to manage platforms and tasks.
-* `create-sdk`: Generate a Python SDK from an OpenAPI specification if not already available.
-* `create-platform`: Scaffold a new Cisco platform integration (requires an existing SDK and OpenAPI spec).
-* `create-platform-routes`: Configure AI agent routes for the new Cisco platform.
-* `create-platform-index`: Index the Cisco platform's API functions for retrieval-augmented generation.
-* `create-domain-demo-index`: Generate demo domain-specific indexes quickly.
-* `create-events-index`: Index sample telemetry/events data for enrichment purposes.
+| Command                    | Description                                                          |
+| -------------------------- | -------------------------------------------------------------------- |
+| `menu`                     | Launch interactive CLI menu                                          |
+| `create-sdk`               | Generate a Python SDK from OpenAPI spec (required for new platforms) |
+| `create-platform`          | Scaffold a new Cisco platform integration                            |
+| `create-platform-routes`   | Add routes for that platform to the FastAPI layer                    |
+| `create-platform-index`    | Index the platform’s API functions                                   |
+| `create-domain-demo-index` | Build indexes from sample structured data (demo-ready)               |
+| `create-events-index`      | Enrich LLM retrieval with telemetry and events                       |
 
-The project also includes a platform registry to manage and track integrations and configurations for the AI agent.
-
----
-
-## Environment Variable Cheat Sheet
-
-| Prefix     | Purpose                                 | Typical Content                    |
-| ---------- | --------------------------------------- | ---------------------------------- |
-| `FASTAPI_` | API docs and function definitions layer | OpenAPI snippets, JSON schemas     |
-| `EVENTS_`  | Telemetry and events data layer         | Events logs, syslogs               |
-| `DOMAIN_`  | Business and industry knowledge layer   | Manuals, policy documents          |
-| `AGENTIC_` | Detailed documentation and CoT          | Whitepapers, runbooks, KB articles |
-
-See `example.env` for full details.
+A built-in **Platform Registry** tracks and manages platform integrations and AI configurations.
 
 ---
 
-## License
+## ⚙ Environment Variable Overview
 
-Apache 2.0 • © 2025 Cisco Systems, Inc.
+The `.env` file configures platform access, feature toggles, and backend providers. You can:
+
+* Use the [interactive .env editor](https://code.visualstudio.com/docs/editor/userdefinedsnippets#_env) in some IDEs
+* Review full variable descriptions here:
+  👉 [`docs/example_environment_variables_guide.MD`](docs/example_environment_variables_guide.MD)
+
+| Prefix     | Layer / Context                        | Example Content                           |
+| ---------- | -------------------------------------- | ----------------------------------------- |
+| `FASTAPI_` | API schema / OpenAPI ingestion         | JSON definitions, titles, parameter names |
+| `EVENTS_`  | Log/event enrichment                   | Syslogs, SNMP, streaming events           |
+| `DOMAIN_`  | Structured business data               | KBs, support docs, industry templates     |
+| `AGENTIC_` | Detailed multi-step logic / CoT assets | Whitepapers, agent instructions, runbooks |
 
 ---
 
-*Made with ❤️ by the Cisco Platform AI Project team — last updated June 2025*
+## 📚 Documentation
+
+* ✅ [Getting Started Guide](docs/getting_started.md)
+* ✅ [Environment Variables Reference](docs/example_environment_variables_guide.MD)
+* 🛠️  Optional: [NGINX Sample Config](docs/nginx.sample) (for container/Gateway setups)
+
+---
+
+## 📜 License
+
+**Apache License 2.0**
+© 2025 Cisco Systems, Inc. — All rights reserved
+
+---
+
+*Made with ❤️ by the Cisco Platform AI Project Team*
+*Last updated: **June 2025***
+ 
