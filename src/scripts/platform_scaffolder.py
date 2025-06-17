@@ -32,7 +32,6 @@ AUTO-GENERATES:
 * app/llm/function_dispatcher/<platform>_dispatcher.py
 * app/llm/unified_service/<platform>_service.py
 """
-from __future__ import annotations
 import sys
 from pathlib import Path
 

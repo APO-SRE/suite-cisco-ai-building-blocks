@@ -15,6 +15,12 @@ try:
 except ImportError:
     MerakiServiceClient = None
 
+try:
+    from .sdwan_mngr_service import Sdwan_mngrServiceClient
+    _SERVICE_REGISTRY['sdwan_mngr'] = Sdwan_mngrServiceClient
+except ImportError:
+    Sdwan_mngrServiceClient = None
+
 class UnifiedService:
     """Return the correct ServiceClient for a given platform"""
 
@@ -31,4 +37,5 @@ class UnifiedService:
 __all__ = ['UnifiedService',
     'CatalystServiceClient',
     'MerakiServiceClient',
+    'Sdwan_mngrServiceClient',
 ]
