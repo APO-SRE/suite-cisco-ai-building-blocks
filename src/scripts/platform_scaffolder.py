@@ -45,7 +45,7 @@ import logging
 import re
 import textwrap
 from typing import Dict, List
-
+import keyword
 from dotenv import load_dotenv
 
 # ───────── helpers ─────────────────────────────────────────────────────
@@ -449,27 +449,36 @@ def scaffold_one(
         required = sorted(fn["parameters"]["required"])
         optional = sorted(set(props) - set(required))
 
+        # sanitize OpenAPI param names → valid Python identifiers
+        def sanitize(param: str) -> str:
+            ident = _identifier_rx.sub("_", param)
+            if keyword.iskeyword(ident):       # ✅ Prevent Python syntax errors
+                ident += "_arg"
+            return ident
+
+        sanitized = {p: sanitize(p) for p in props}
+
         # build typed signature parts
         sig_parts = [
-            f"{p}: {type_mapping.get(props[p]['type'], 'Any')}"
+            f"{sanitized[p]}: {type_mapping.get(props[p]['type'], 'Any')}"
             for p in required
         ]
         if optional:
             sig_parts.append("**kwargs")
-        signature = ", ".join(sig_parts) or ""
 
-        # build call-through args
-        call_parts = [f"{p}={p}" for p in required]
+        # build call-through args using original OpenAPI keys but sanitized values
+        call_parts = [f"'{p}': {sanitized[p]}" for p in required]
+
         if optional:
             call_parts.append("**kwargs")
-        call_args = ", ".join(call_parts) or ""
 
         lines.extend([
             f"@register('{fn['name']}')",
-            f"def {safe_name}({signature}):",
-            f"    return {platform.capitalize()}Client().{safe_name}({call_args})",
+            f"def {safe_name}({', '.join(sig_parts)}):",
+            f"    return {platform.capitalize()}Client().{safe_name}(**{{{', '.join(call_parts)}}})",
             ""
         ])
+
 
     # finally, write the dispatcher file
     disp_fp.write_text("\n".join(lines), encoding="utf-8")
