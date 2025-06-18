@@ -117,7 +117,21 @@ To integrate Cisco platforms:
 
 ---
 
-## 9. Testing the AI Agent
+## 9. Build Platform SDKs and Indexes
+
+Before generating platform code, install the external `openapi-python-client` tool:
+
+```bash
+pip install openapi-python-client
+```
+
+1. **Generate the SDK** – run `create_sdk.py` and select an OpenAPI spec. The wizard outputs the SDK under `src/db_scripts/output_sdk` and updates `src/app/llm/platform_registry.json` with the detected `sdk_module` name. Inspect this file afterwards to verify the package you will import.
+2. **Scaffold the platform** – execute `create_platform.py` to generate service stubs, clients, and dispatchers for the platform listed in the registry.
+3. **Index platform functions** – use `create_platform_index.py` to embed the new platform's functions into your vector store for retrieval.
+
+---
+
+## 10. Testing the AI Agent
 
 Verify basic functionality:
 
@@ -126,13 +140,13 @@ Verify basic functionality:
 
 ---
 
-## 10. Troubleshooting
+## 11. Troubleshooting
 
 Check the logs in your terminal for any errors or issues related to environment variables or integrations.
 
 ---
 
-## 11. Additional Resources
+## 12. Additional Resources
 
 * [Azure OpenAI Docs](https://learn.microsoft.com/azure/cognitive-services/openai/)
 * [Cisco DevNet Sandbox](https://developer.cisco.com/site/sandbox/)
