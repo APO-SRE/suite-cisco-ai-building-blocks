@@ -26,7 +26,8 @@ import sys
 import shlex
 import subprocess
 import json
-
+import re
+import tomllib
 import shutil
 from pathlib import Path
 from typing import List, Dict, Optional
@@ -235,8 +236,10 @@ def main() -> None:
     console.print(tree)
 
 
+
     # Determine package directory name via pyproject.toml
     pkg_dir = parse_package_dir(OUTPUT_BASE_DIR / sdk_name, sdk_name)
+
 
 
  
