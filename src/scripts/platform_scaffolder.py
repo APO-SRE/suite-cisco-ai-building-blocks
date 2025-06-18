@@ -33,6 +33,7 @@ AUTO-GENERATES:
 * app/llm/unified_service/<platform>_service.py
 """
 import sys
+import os
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -74,6 +75,22 @@ logging.basicConfig(level=logging.INFO, format="%(levelname)s | %(message)s")
 log = logging.getLogger("scaffolder")
 # ── never drop these tags, even if “too big” ─────────────────────────────────
 ALWAYS_KEEP_TAGS = {"devices", "inventory"}
+
+# Cache invalidation helper ----------------------------------------------
+DEFAULT_DYNAMIC_CACHE = LLM_DIR / "platform_dynamic_cache"
+
+def _drop_dynamic_cache() -> None:
+    """Delete full_schemas.json so dynamic.py rebuilds it."""
+    cache_root = Path(
+        os.getenv("PLATFORM_DYNAMIC_CACHE_PATH", DEFAULT_DYNAMIC_CACHE.as_posix())
+    ).resolve()
+    cache_file = cache_root / "full_schemas.json"
+    if cache_file.exists():
+        try:
+            cache_file.unlink()
+            log.info("🗑  dropped %s", cache_file.relative_to(ROOT))
+        except Exception as exc:  # pragma: no cover - best effort cleanup
+            log.warning("could not drop cache %s: %s", cache_file, exc)
 
  
 
@@ -595,6 +612,7 @@ def main():
         scaffold_one(plat, args.sdk_module, spec, include_http, name_re)
 
     log.info("✅ DONE – all artefacts generated")
+    _drop_dynamic_cache()
 
 if __name__ == "__main__":
     main()
