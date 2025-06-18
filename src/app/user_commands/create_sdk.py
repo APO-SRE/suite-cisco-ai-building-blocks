@@ -103,13 +103,21 @@ def parse_package_dir(dest_dir: Path, fallback: str) -> str:
     if pyproject.exists():
         try:
             data = tomllib.loads(pyproject.read_text(encoding="utf-8"))
-            name = data.get("project", {}).get("name") or \
-                   data.get("tool", {}).get("poetry", {}).get("name")
-            if name:
+            poetry = data.get("tool", {}).get("poetry", {})
+            packages = poetry.get("packages")
+            if isinstance(packages, list) and packages:
+                inc = packages[0].get("include") if isinstance(packages[0], dict) else None
+                if inc:
+                    return inc.replace("-", "_")
+            name = poetry.get("name") or data.get("project", {}).get("name")
+            if isinstance(name, str):
                 return name.replace("-", "_")
         except Exception:
             pass
-    return fallback
+    for p in dest_dir.iterdir():
+        if p.is_dir() and (p / "__init__.py").exists():
+            return p.name.replace("-", "_")
+    return fallback.replace("-", "_")
 
 
 def load_registry() -> Dict[str, Dict[str, str]]:
@@ -130,31 +138,6 @@ def registry_short_name_for_spec(spec: Path, registry: Dict[str, Dict[str, str]]
         if stem == str(entry.get("openapi_name", "")).lower():
             return short_name
     return None
-
-
-def extract_package_name(dest: Path) -> str:
-    """Return the package name from pyproject.toml or best-effort fallback."""
-    pyproject = dest / "pyproject.toml"
-    if pyproject.exists():
-        try:
-            data = tomllib.loads(pyproject.read_text(encoding="utf-8"))
-            if "tool" in data and "poetry" in data["tool"]:
-                poetry = data["tool"]["poetry"]
-                packages = poetry.get("packages")
-                if isinstance(packages, list) and packages:
-                    inc = packages[0].get("include") if isinstance(packages[0], dict) else None
-                    if inc:
-                        return inc
-                if isinstance(poetry.get("name"), str):
-                    return poetry["name"]
-            if "project" in data and isinstance(data["project"].get("name"), str):
-                return data["project"]["name"]
-        except Exception:
-            pass
-    for p in dest.iterdir():
-        if p.is_dir() and (p / "__init__.py").exists():
-            return p.name
-    return dest.name
 
 # ────────────────────────────────────────────────────────────────────────────────
 # Main CLI
