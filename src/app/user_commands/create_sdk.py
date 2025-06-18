@@ -26,6 +26,7 @@ import sys
 import shlex
 import subprocess
 import json
+import shutil
 from pathlib import Path
 from typing import List, Dict, Optional
 
@@ -111,6 +112,12 @@ def registry_short_name_for_spec(spec: Path, registry: Dict[str, Dict[str, str]]
 # ────────────────────────────────────────────────────────────────────────────────
 
 def main() -> None:
+    if shutil.which("openapi-python-client") is None:
+        console.print(
+            "[red]`openapi-python-client` is not installed. "
+            "Install it with `pip install openapi-python-client` and try again.[/red]"
+        )
+        sys.exit(1)
     clear_screen()
     console.print(Panel.fit("🚀 OpenAPI SDK Generation Wizard", style="green"))
 
