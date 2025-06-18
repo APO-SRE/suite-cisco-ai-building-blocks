@@ -27,6 +27,7 @@ import json
 import shutil
 from pathlib import Path
 from typing import List
+import tomllib
 
 from rich.console import Console
 from rich.panel import Panel
@@ -69,6 +70,20 @@ def ask(prompt: str, default: str = "") -> str:
 ask_choice = ask
 
 
+def parse_package_dir(dest_dir: Path, fallback: str) -> str:
+    pyproject = dest_dir / "pyproject.toml"
+    if pyproject.exists():
+        try:
+            data = tomllib.loads(pyproject.read_text(encoding="utf-8"))
+            name = data.get("project", {}).get("name") or \
+                   data.get("tool", {}).get("poetry", {}).get("name")
+            if name:
+                return name.replace("-", "_")
+        except Exception:
+            pass
+    return fallback
+
+
 def main() -> None:
     clear_screen()
     console.print(Panel.fit("🗑️ OpenAPI SDK Deletion Wizard", style="green"))
@@ -103,16 +118,9 @@ def main() -> None:
         console.print("[yellow]Aborted.[/yellow]")
         return
 
-    # Step 2: Determine the actual module directory name inside the SDK folder
+    # Step 2: Determine the actual module directory name via pyproject.toml
     sdk_path = OUTPUT_BASE_DIR / sdk_name
-    pkg_dir = next(
-        (
-            d.name
-            for d in sdk_path.iterdir()
-            if d.is_dir() and (d / "__init__.py").exists()
-        ),
-        sdk_name,
-    )
+    pkg_dir = parse_package_dir(sdk_path, sdk_name)
     dist_name = pkg_dir.replace("_", "-")
 
     # Step 3: Delete the SDK directory
