@@ -15,7 +15,7 @@ from __future__ import annotations
 ║   • Select a spec                                                         ║
 ║   • Suggest folder name from platform_registry.json                       ║
 ║   • Generate the SDK with poetry meta                                     ║
-║   • Auto‑populate *sdk_package* in platform_registry.json                 ║
+║   • Auto‑populate *sdk_module* in platform_registry.json                  ║
 ║     (but **does NOT touch the `installed` flag**)                         ║
 ║   • Show pip‑install instructions & import snippet                        ║
 ╚═══════════════════════════════════════════════════════════════════════════╝
@@ -26,6 +26,8 @@ import sys
 import shlex
 import subprocess
 import json
+import re
+import tomllib
 from pathlib import Path
 from typing import List, Dict, Optional
 
@@ -75,7 +77,13 @@ def ask_choice(prompt: str, default: str) -> str:
     return Prompt.ask(f"[cyan]?[/cyan] [bold]{prompt}[/bold]", default=default).strip()
 
 
-def build_command(spec: Path, sdk_name: str) -> List[str]:
+def sanitize_sdk_name(name: str) -> str:
+    sanitized = re.sub(r"[^0-9a-zA-Z_]+", "_", name).lower()
+    sanitized = re.sub(r"_+", "_", sanitized).strip("_")
+    return sanitized or "sdk"
+
+
+def build_command(spec: Path, sdk_name: str, package_name: str) -> List[str]:
     dest = OUTPUT_BASE_DIR / sdk_name
     dest.mkdir(parents=True, exist_ok=True)
     return [
@@ -84,6 +92,7 @@ def build_command(spec: Path, sdk_name: str) -> List[str]:
         "--output-path", str(dest),
         "--meta", "poetry",
         "--overwrite",
+        "--package-name", package_name,
     ]
 
 
@@ -105,6 +114,31 @@ def registry_short_name_for_spec(spec: Path, registry: Dict[str, Dict[str, str]]
         if stem == str(entry.get("openapi_name", "")).lower():
             return short_name
     return None
+
+
+def extract_package_name(dest: Path) -> str:
+    """Return the package name from pyproject.toml or best-effort fallback."""
+    pyproject = dest / "pyproject.toml"
+    if pyproject.exists():
+        try:
+            data = tomllib.loads(pyproject.read_text(encoding="utf-8"))
+            if "tool" in data and "poetry" in data["tool"]:
+                poetry = data["tool"]["poetry"]
+                packages = poetry.get("packages")
+                if isinstance(packages, list) and packages:
+                    inc = packages[0].get("include") if isinstance(packages[0], dict) else None
+                    if inc:
+                        return inc
+                if isinstance(poetry.get("name"), str):
+                    return poetry["name"]
+            if "project" in data and isinstance(data["project"].get("name"), str):
+                return data["project"]["name"]
+        except Exception:
+            pass
+    for p in dest.iterdir():
+        if p.is_dir() and (p / "__init__.py").exists():
+            return p.name
+    return dest.name
 
 # ────────────────────────────────────────────────────────────────────────────────
 # Main CLI
@@ -153,10 +187,11 @@ def main() -> None:
     if not sdk_name:
         console.print("[red]You must enter a non-empty SDK name. Exiting.[/red]")
         sys.exit(1)
+    package_name = sanitize_sdk_name(sdk_name)
     console.print(":white_check_mark: Name set\n")
 
     # Step 3 – preview command
-    cmd = build_command(spec, sdk_name)
+    cmd = build_command(spec, sdk_name, package_name)
     console.print(Panel(Markdown(f"**Command to run**\n```bash {' '.join(shlex.quote(p) for p in cmd)} ```"), title="Step 3/4: Preview Command", border_style="cyan"))
     if ask_choice("Proceed with SDK generation? (Y/n)", "Y").lower().startswith("n"):
         console.print("[yellow]Aborted by user.[/yellow]")
@@ -179,7 +214,7 @@ def main() -> None:
     console.print(tree)
 
     # Detect real python module directory inside the SDK folder
-    pkg_dir = next((p.name for p in (OUTPUT_BASE_DIR / sdk_name).iterdir() if p.is_dir() and (p / "__init__.py").exists()), sdk_name)
+    pkg_dir = extract_package_name(OUTPUT_BASE_DIR / sdk_name)
 
  
     # ---------------------------------------------------------------------
