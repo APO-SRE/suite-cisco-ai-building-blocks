@@ -30,6 +30,7 @@ import re
 import tomllib
 from pathlib import Path
 from typing import List, Dict, Optional
+import tomllib
 
 from rich.console import Console
 from rich.panel import Panel
@@ -94,6 +95,20 @@ def build_command(spec: Path, sdk_name: str, package_name: str) -> List[str]:
         "--overwrite",
         "--package-name", package_name,
     ]
+
+
+def parse_package_dir(dest_dir: Path, fallback: str) -> str:
+    pyproject = dest_dir / "pyproject.toml"
+    if pyproject.exists():
+        try:
+            data = tomllib.loads(pyproject.read_text(encoding="utf-8"))
+            name = data.get("project", {}).get("name") or \
+                   data.get("tool", {}).get("poetry", {}).get("name")
+            if name:
+                return name.replace("-", "_")
+        except Exception:
+            pass
+    return fallback
 
 
 def load_registry() -> Dict[str, Dict[str, str]]:
@@ -213,8 +228,10 @@ def main() -> None:
                 br.add(child.name)
     console.print(tree)
 
-    # Detect real python module directory inside the SDK folder
-    pkg_dir = extract_package_name(OUTPUT_BASE_DIR / sdk_name)
+
+    # Determine package directory name via pyproject.toml
+    pkg_dir = parse_package_dir(OUTPUT_BASE_DIR / sdk_name, sdk_name)
+
 
  
     # ---------------------------------------------------------------------
