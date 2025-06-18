@@ -468,7 +468,7 @@ def show_status() -> None:
     grid.add_row(
         # Chroma details
         f"[bright_blue]Index[/bright_blue]: [white]{c_coll}[/white]\n"
-        f"[bright_blue]Platforms[/bright_blue]: [white]{', '.join(pls) or '(none)'}[/white]\n"
+        f"[bright_blue]Platforms[/bright_blue]: [white]{indexed_chroma or '(none)'}[/white]\n"
         #f"[bright_blue]DB Path[/bright_blue]: {c_db}\n"
         f"[bright_blue]Concurrency[/bright_blue]: [white]OMP={chroma_omp}, MKL={chroma_mkl}, CPUs={chroma_cpus}, Workers={chroma_workers}[/white]\n"
         f"[bright_blue]Embed Batch Size[/bright_blue]: [white]{c_e_batch}[/white]\n"

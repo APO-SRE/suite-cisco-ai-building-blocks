@@ -31,7 +31,7 @@ import logging
 import structlog
 import os
 from pathlib import Path
-from typing import Annotated, Any
+from typing import Annotated, Any, Tuple
 
 from fastapi import Depends, FastAPI, HTTPException, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
@@ -89,7 +89,7 @@ request_latency = Histogram(
 log = logging.getLogger("uvicorn.error")
 registry = load_registry()
 
-def check_credentials(short: str) -> (bool, str):
+def check_credentials(short: str) -> Tuple[bool, str]:
     """
     Return (True, "") if all needed env vars for `short` are non-empty;
     otherwise return (False, reason).
