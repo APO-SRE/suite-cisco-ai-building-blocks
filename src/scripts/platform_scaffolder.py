@@ -203,12 +203,13 @@ def _py_identifier(raw: str, seen: Dict[str, int]) -> str:
 def _emit_client_stub(platform: str, sdk_module: str) -> None:
     """
     Write app/llm/platform_clients/<platform>_client.py
-    – searches both root *and* first-level sub-clients for attributes.
+    – Meraki gets auto‑org‑ID injection, others keep the simple wrapper.
     """
-    sdk_cls = load_client(sdk_module)                # e.g. meraki.DashboardAPI
+    sdk_cls = load_client(sdk_module)
 
-    # ── Meraki-specific env guard
-    extra_imports, extra_init = [], []
+    extra_imports, extra_init, extra_methods = [], [], []
+
+    # ── Meraki‑specific additions ─────────────────────────────────────
     if platform.lower() == "meraki":
         extra_imports.append("import os")
         extra_init.extend([
@@ -219,9 +220,65 @@ def _emit_client_stub(platform: str, sdk_module: str) -> None:
             "",
         ])
 
+        # Build the extra Meraki‑specific methods
+        meraki_methods = textwrap.dedent("""\
+            def _inject_org_id(self, func_name: str, kwargs: dict) -> dict:
+                \"\"\"If the method looks org‑scoped and organisation ID is missing, inject it.\"\"\"
+                org_keys = {'organizationId', 'organization_id'}
+                if 'organization' in func_name.lower() and not any(k in kwargs for k in org_keys):
+                    org_id = os.getenv('MERAKI_ORG_ID')
+                    if org_id:
+                        kwargs['organizationId'] = org_id
+                return kwargs
+
+            def __getattr__(self, item):
+                def _wrapper(*args, **kwargs):
+                    kwargs = self._inject_org_id(item, kwargs)
+
+                    # ① direct attribute
+                    if hasattr(self._sdk, item):
+                        return getattr(self._sdk, item)(*args, **kwargs)
+
+                    # ② sub‑clients
+                    for name in dir(self._sdk):
+                        if name.startswith('_'):
+                            continue
+                        sub = getattr(self._sdk, name)
+                        if hasattr(sub, item):
+                            return getattr(sub, item)(*args, **kwargs)
+
+                    raise AttributeError(f"{self.__class__.__name__} has no attribute {item!r}")
+                return _wrapper
+        """).splitlines()
+
+        # indent every line so the methods live *inside* the class
+        extra_methods.extend(
+            [("    " + line) if line else "" for line in meraki_methods])
+
+ 
+    # ── default __getattr__ for *all* other platforms ────────────────
+    default_getattr = textwrap.dedent("""\
+        def __getattr__(self, item):
+            if hasattr(self._sdk, item):
+                return getattr(self._sdk, item)
+
+            for name in dir(self._sdk):
+                if name.startswith('_'):
+                    continue
+                sub = getattr(self._sdk, name)
+                if hasattr(sub, item):
+                    return getattr(sub, item)
+
+            raise AttributeError(f"{self.__class__.__name__} has no attribute {item!r}")
+    """).splitlines()
+
+    if platform.lower() != "meraki":
+        extra_methods.extend(['    ' + line if line else '' for line in default_getattr])
+
+     # ── assemble file ───────────────────────────────────────────────
     lines: list[str] = [
         f"# {(OUT_DIRS['client'] / f'{platform}_client.py').relative_to(ROOT)}",
-        "# Auto-generated – DO NOT EDIT",
+        "# Auto‑generated – DO NOT EDIT",
         f"import {sdk_module} as _sdk",
         *extra_imports,
         "",
@@ -231,28 +288,16 @@ def _emit_client_stub(platform: str, sdk_module: str) -> None:
         "    def __init__(self, **kwargs):",
         *[f"        {l}" for l in extra_init],
         f"        self._sdk = _sdk.{sdk_cls.__name__}(**kwargs)",
-
         "",
-        "    def __getattr__(self, item):",
-        "        # ① direct attribute on DashboardAPI",
-        "        if hasattr(self._sdk, item):",
-        "            return getattr(self._sdk, item)",
-        "",
-        "        # ② first-level sub-clients (organizations, networks, …)",
-        "        for name in dir(self._sdk):",
-        "            if name.startswith('_'):",
-        "                continue",
-        "            sub = getattr(self._sdk, name)",
-        "            if hasattr(sub, item):",
-        "                return getattr(sub, item)",
-        "",
-        "        raise AttributeError(f\"{self.__class__.__name__} has no attribute {item!r}\")",
+        *extra_methods,
         "",
     ]
+    # --- write the client file --------------------------------------
+    fp = OUT_DIRS["client"] / f"{platform}_client.py"
+    fp.write_text("\n".join(lines), encoding="utf-8")
+    log.info("✓ %s", fp.relative_to(ROOT))
 
-    fp = OUT_DIRS['client'] / f'{platform}_client.py'
-    fp.write_text('\n'.join(lines), encoding='utf-8')
-    log.info('✓ %s', fp.relative_to(ROOT))
+
 
 
 def _regenerate_unified_service_init():
