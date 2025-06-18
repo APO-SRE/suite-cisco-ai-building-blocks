@@ -21,6 +21,22 @@ import subprocess
 import sys
 import json
 from pathlib import Path
+import tomllib
+
+
+def parse_package_dir(dest_dir: Path, fallback: str) -> str:
+    """Return Python package name from pyproject.toml if possible."""
+    pyproject = dest_dir / "pyproject.toml"
+    if pyproject.exists():
+        try:
+            data = tomllib.loads(pyproject.read_text(encoding="utf-8"))
+            name = data.get("project", {}).get("name") or \
+                   data.get("tool", {}).get("poetry", {}).get("name")
+            if name:
+                return name.replace("-", "_")
+        except Exception:
+            pass
+    return fallback
 
 
 PROJECT_ROOT     = Path(__file__).resolve().parents[2]
@@ -93,12 +109,8 @@ def main() -> None:
             print(f"❌ Failed for {spec.name}; see details above.", file=sys.stderr)
             continue
 
-        # detect actual Python package directory inside the generated SDK
-        pkg_dir = next(
-            (d.name for d in dest_dir.iterdir()
-             if d.is_dir() and (d / "__init__.py").exists()),
-            sdk_name
-        )
+        # determine python package directory via pyproject.toml
+        pkg_dir = parse_package_dir(dest_dir, sdk_name)
         print(f"✅ Successfully generated SDK at: {dest_dir} (package '{pkg_dir}')")
 
         # update sdk_map.json if new
