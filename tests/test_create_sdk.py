@@ -72,7 +72,8 @@ def temp_output_dir(tmp_path, monkeypatch, create_sdk_module):
 def test_build_command_creates_directory(temp_output_dir, tmp_path, create_sdk_module):
     spec = tmp_path / "spec.yaml"
     spec.write_text("openapi: 3.0")
-    cmd = create_sdk_module.build_command(spec, "mysdk")
+    pkg_name = create_sdk_module.sanitize_sdk_name("mysdk")
+    cmd = create_sdk_module.build_command(spec, "mysdk", pkg_name)
     assert temp_output_dir.joinpath("mysdk").exists()
     assert cmd == [
         "openapi-python-client", "generate",
@@ -80,6 +81,7 @@ def test_build_command_creates_directory(temp_output_dir, tmp_path, create_sdk_m
         "--output-path", str(temp_output_dir / "mysdk"),
         "--meta", "poetry",
         "--overwrite",
+        "--package-name", pkg_name,
     ]
 
 
