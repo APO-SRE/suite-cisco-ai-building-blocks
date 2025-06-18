@@ -50,7 +50,6 @@ console = Console()
 PROJECT_ROOT           = Path(__file__).resolve().parents[3]  # repo root
 SOURCE_DIR             = PROJECT_ROOT / "src" / "source_open_api"           # specs folder
 OUTPUT_BASE_DIR        = PROJECT_ROOT / "src" / "db_scripts" / "output_sdk" # generated SDKs
-SDK_MAP_FILE           = PROJECT_ROOT / "src" / "app" / "llm" / "sdk_map.json"
 PLATFORM_REGISTRY_FILE = PROJECT_ROOT / "src" / "app" / "llm" / "platform_registry.json"
 
 # ────────────────────────────────────────────────────────────────────────────────
