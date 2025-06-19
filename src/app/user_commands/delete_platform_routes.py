@@ -44,20 +44,15 @@ def list_route_files() -> list[Path]:
     )
 
 def remove_import_from_init(module_name: str) -> None:
-    """
-    Remove any import lines in __init__.py that refer to the given module_name.
-    e.g., if module_name="catalyst_routes", drop lines importing catalyst_routes.
-    """
+    """Remove import and __all__ lines for *module_name* in routers/__init__.py."""
     if not INIT_FILE.exists():
         return
 
     lines = INIT_FILE.read_text(encoding="utf-8").splitlines()
-    filtered = []
-    for l in lines:
-        # Drop any line that mentions this module
-        if module_name in l:
-            continue
-        filtered.append(l)
+    var_name = module_name.replace("_routes", "_router")
+    filtered = [
+        l for l in lines if module_name not in l and var_name not in l
+    ]
     INIT_FILE.write_text("\n".join(filtered) + "\n", encoding="utf-8")
 
 def clear_route_flag(short_name: str) -> None:

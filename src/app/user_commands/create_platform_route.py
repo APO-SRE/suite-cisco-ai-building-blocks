@@ -168,23 +168,23 @@ def main() -> None:
     safe_import = (
         f"try:\n"
         f"    from .{platform}_routes import router as {platform}_router\n"
+        f"    __all__.append(\"{platform}_routes\")\n"
         f"except ImportError:\n"
-        f"    pass\n"
+        f"    {platform}_router = None\n"
     )
 
     if not init_py.exists():
-        init_py.write_text(safe_import, encoding="utf-8")
+        init_py.write_text("__all__: list[str] = []\n" + safe_import, encoding="utf-8")
     else:
-        lines = init_py.read_text(encoding="utf-8").splitlines(keepends=True)
-        # If an import block for this platform is already present, skip
+        text = init_py.read_text(encoding="utf-8")
+        if "__all__" not in text:
+            text = "__all__: list[str] = []\n" + text
         marker = f"from .{platform}_routes import router as {platform}_router"
-        if not any(marker in ln for ln in lines):
-            # Append our try/except block at the end
-            if lines:
-                if not lines[-1].endswith("\n"):
-                    lines[-1] += "\n"
-            lines.append(safe_import)
-            init_py.write_text("".join(lines), encoding="utf-8")
+        if marker not in text and f"__all__.append(\"{platform}_routes\")" not in text:
+            if not text.endswith("\n"):
+                text += "\n"
+            text += safe_import
+        init_py.write_text(text, encoding="utf-8")
     console.print(f"[green]Updated {init_py}[/green]")
  
     console.print(Panel.fit(":white_check_mark: Done!", style="green"))
