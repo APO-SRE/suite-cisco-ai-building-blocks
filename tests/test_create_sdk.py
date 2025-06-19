@@ -3,6 +3,9 @@ import types
 import sys
 from pathlib import Path
 
+# Ensure tests can import the source packages when run directly
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+
 import pytest
 
 
@@ -10,8 +13,14 @@ def import_create_sdk(monkeypatch):
     try:
         from app.user_commands import create_sdk
         return create_sdk
-    except Exception as e:
-        if isinstance(e, ModuleNotFoundError) and e.name.startswith('rich'):
+    except ModuleNotFoundError as e:
+        if e.name == 'yaml':
+            yaml_mod = types.ModuleType("yaml")
+            yaml_mod.safe_load = lambda *a, **kw: {}
+            yaml_mod.safe_dump = lambda *a, **kw: ""
+            sys.modules['yaml'] = yaml_mod
+            return import_create_sdk(monkeypatch)
+        if e.name.startswith('rich'):
             rich = types.ModuleType("rich")
             console = types.ModuleType("rich.console")
             console.Console = object
@@ -51,10 +60,8 @@ def import_create_sdk(monkeypatch):
                 'rich.box': rich.box,
             }
             sys.modules.update(modules)
-            from app.user_commands import create_sdk
-            return create_sdk
-        else:
-            raise
+            return import_create_sdk(monkeypatch)
+        raise
 
 
 @pytest.fixture
