@@ -45,27 +45,32 @@ class MerakiClient:
                     return getattr(sub, candidate)
     
         # ---- pattern ③  ----------------------------------------------------
-        # e.g. "fabricsGetAllFabrics" → tag="fabrics" func="get_all_fabrics"
-        if "_" in snake:
-            tag, func = snake.split("_", 1)
-            api_mod_path = f"{_SDK_PKG}.api.{tag}"
+        # e.g. 'fabrics_get_all_fabrics'
+        if '_' in snake:
+            tag, func_tail = snake.split('_', 1)          # tag = 'fabrics'
+            api_mod_path = f'{_SDK_PKG}.api.{tag}'        # …api.fabrics
             try:
                 api_mod = importlib.import_module(api_mod_path)
             except ImportError:
                 pass
             else:
-                # First try lazy export in api.<tag> ( __init__.py re‑exports )
-                if hasattr(api_mod, func):
-                    func_mod = getattr(api_mod, func)
+                # 3‑a: function re‑exported by api.<tag>.__init__.py
+                if hasattr(api_mod, func_tail):
+                    func_mod = getattr(api_mod, func_tail)
                 else:
-                    # Fallback: direct sub‑module import
+                    # 3‑b: full snake‑name module (fabrics_get_all_fabrics)
+                    full_mod_path = f'{api_mod_path}.{snake}'
                     try:
-                        func_mod = importlib.import_module(f"{api_mod_path}.{func}")
+                        func_mod = importlib.import_module(full_mod_path)
                     except ImportError:
-                        func_mod = None
-                if func_mod is not None and hasattr(func_mod, "sync"):
-                    # Bind the generated client automatically
+                        # 3‑c: legacy name without tag (get_all_fabrics)
+                        try:
+                            func_mod = importlib.import_module(f'{api_mod_path}.{func_tail}')
+                        except ImportError:
+                            func_mod = None
+                if func_mod is not None and hasattr(func_mod, 'sync'):
                     return partial(func_mod.sync, client=self._sdk)
+    
     
         raise AttributeError(f"{self.__class__.__name__} has no attribute '{name}'")
     
