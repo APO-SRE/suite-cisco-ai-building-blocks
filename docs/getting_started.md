@@ -116,6 +116,17 @@ To integrate Cisco platforms:
 * SD-WAN
 * Intersight
 
+### Enabling a New Cisco Platform
+
+1. **Upload the OpenAPI file** – copy the JSON or YAML spec to `src/source_open_api/`.
+2. **Install the SDK** – if a Python SDK exists, install it in your environment.
+3. **Update the registry** – edit `src/app/llm/platform_registry.json` with the platform's short name, associated `openapi_name`, and `sdk_module` (if any).
+4. **Create a SDK if none exists** – run `create-sdk` to generate one; this automatically installs it and updates the registry.
+5. **Create the platform** – run `create-platform` to scaffold clients, services, and dispatchers.
+6. **Add the platform route** – run `create-platform-route` to expose FastAPI endpoints.
+7. *(Optional)* Run `create-platform-index` to embed the platform's functions for retrieval.
+8. Start chatting through [index.html](http://127.0.0.1:8000/static) or via Webex if configured.
+
 ---
 
 ## 9. Build Platform SDKs and Indexes
