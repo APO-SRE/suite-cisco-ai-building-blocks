@@ -30,11 +30,6 @@ try:
 except ImportError:
     chat_router = None
 try:
-    from .chat_routes import router as chat_router
-    __all__.append("chat_routes")
-except ImportError:
-    chat_router = None
-try:
     from .meraki_routes import router as meraki_router
     __all__.append("meraki_routes")
 except ImportError:
@@ -66,5 +61,6 @@ except ImportError:
     sdwan_mngr_router = None
 try:
     from .nexus_hyperfabric_routes import router as nexus_hyperfabric_router
+    __all__.append("nexus_hyperfabric_routes")
 except ImportError:
-    pass
+    nexus_hyperfabric_router = None
