@@ -72,11 +72,26 @@ python -m db_scripts.process_events  # For enriching events and injecting back i
 After installation, these CLI tools are available:
 
 * `menu`: Interactive CLI menu
-* `create-platform`: Scaffold new Cisco platform integration
-* `create-sdk`: Generate Python SDK from OpenAPI spec
-* `create-platform-index`: Index platform API functions
+* `start-cisco-platform-ai`: Run FastAPI (hot-reload)
+* `stop-cisco-platform-ai`: Terminate FastAPI server
+* `start-telemetry-stack`: Bring up Tempo/Prometheus/Grafana via Docker Compose
+* `stop-telemetry-stack`: Tear down Tempo/Prometheus/Grafana via Docker Compose
+* `status-application`: Show FastAPI & telemetry stack status
+* `create-platform`: Scaffold a new platform
+* `reset-platform`: Delete platform artifacts
+* `create-sdk`: Generate an OpenAPI-based SDK
+* `delete-sdk`: Remove a generated SDK
+* `create-platform-index`: Index platform functions
 * `create-domain-demo-index`: Create demo domain-specific indexes
 * `create-events-index`: Index sample telemetry/events data
+* `create-platform-route`: Add new FastAPI platform routes
+* `delete-platform-routes`: Remove FastAPI routes for a platform
+* `list-platform-registry`: Show Platform Registry
+* `update-platform-registry`: Add / edit platform entries
+* `sync-registry-with-scaffold`: Reconcile registry with files
+* `convert-swagger`: Convert Swagger v2 spec → OpenAPI 3
+* `manage-env`: Edit environment variables
+* `cisco`: Cisco API Docs
 
 Run the interactive menu with:
 
@@ -97,10 +112,17 @@ To integrate Cisco platforms:
 
 * Catalyst Center
 * Meraki
-* Webex
-* Nexus Dashboard
 * SD-WAN
 * Intersight
+* Nexus Dashboard
+* Nexus Hyperfabric
+* AI Defense
+* Cloud Control Firewall Manager
+* Cloudlock
+* Secure Access
+* Umbrella
+* Webex
+* Spaces location
 
 ### Enabling a New Cisco Platform
 
