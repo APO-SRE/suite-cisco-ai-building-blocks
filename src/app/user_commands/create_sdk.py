@@ -29,6 +29,7 @@ import json
 import re
 import tomllib
 import shutil
+import yaml
 from pathlib import Path
 from typing import List, Dict, Optional
 
@@ -86,13 +87,26 @@ def sanitize_sdk_name(name: str) -> str:
 def build_command(spec: Path, sdk_name: str, package_name: str) -> List[str]:
     dest = OUTPUT_BASE_DIR / sdk_name
     dest.mkdir(parents=True, exist_ok=True)
+
+    cfg_path = dest / ".openapi-config.yml"
+    cfg_data = {
+        "project_name_override": package_name,
+        "package_name_override": package_name,
+    }
+    cfg_path.write_text(yaml.safe_dump(cfg_data), encoding="utf-8")
+
     return [
-        "openapi-python-client", "generate",
-        "--path", str(spec),
-        "--output-path", str(dest),
-        "--meta", "poetry",
+        "openapi-python-client",
+        "generate",
+        "--path",
+        str(spec),
+        "--output-path",
+        str(dest),
+        "--meta",
+        "poetry",
         "--overwrite",
-        "--package-name", package_name,
+        "--config",
+        str(cfg_path),
     ]
 
 
