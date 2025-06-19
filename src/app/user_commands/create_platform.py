@@ -189,12 +189,14 @@ def registry_set(
     sdk_pkg: str,
     openapi_stem: str,
     *,
-    created_by_us: bool = False,
+    created_by_us: bool | None = None,
     installed: bool = False,
 ) -> None:
     # Preserve any existing "route" flag; default to False if not present
     old_entry = registry.get(short, {})
     route_flag = old_entry.get("route", False)
+    if created_by_us is None:
+        created_by_us = old_entry.get("created_by_us", False)
 
     registry[short] = {
         "openapi_name":  openapi_stem,
@@ -475,7 +477,7 @@ def main() -> None:
         sdk_pkg        = sdk_module,
         openapi_stem   = Path(spec_file).stem,
         installed      = final_installed_flag,
-        created_by_us  = False,
+        created_by_us  = None,
     )
 
     # ── Ensure .env has the toggle & credential placeholders ───────────────────
