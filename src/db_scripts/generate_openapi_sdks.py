@@ -20,6 +20,7 @@ with the actual package directory names.
 import subprocess
 import sys
 import json
+import re
 from pathlib import Path
 import tomllib
 
@@ -37,6 +38,31 @@ def parse_package_dir(dest_dir: Path, fallback: str) -> str:
         except Exception:
             pass
     return fallback
+
+
+def _sanitize_version(version: str) -> str:
+    """Return a PEP 440 compliant version string."""
+    match = re.match(r"(?P<base>[0-9]+(?:\.[0-9]+)*)-Rev\.(?P<year>\d{4})-(?P<month>\d{2})-(?P<day>\d{2})\.(?P<build>\d+)", version)
+    if match:
+        base = match.group("base")
+        return f"{base}.post{match.group('year')}.{match.group('month')}.{match.group('day')}.{match.group('build')}"
+    return re.sub(r"[^0-9A-Za-z.]+", ".", version)
+
+
+def sanitize_pyproject_version(pyproject: Path) -> None:
+    """Update pyproject.toml with sanitized version if needed."""
+    if not pyproject.exists():
+        return
+    data = tomllib.loads(pyproject.read_text(encoding="utf-8"))
+    poetry_table = data.get("tool", {}).get("poetry")
+    if not poetry_table or "version" not in poetry_table:
+        return
+    original = poetry_table["version"]
+    sanitized = _sanitize_version(original)
+    if sanitized != original:
+        text = pyproject.read_text(encoding="utf-8")
+        text = text.replace(f"version = \"{original}\"", f"version = \"{sanitized}\"")
+        pyproject.write_text(text, encoding="utf-8")
 
 
 PROJECT_ROOT     = Path(__file__).resolve().parents[2]
@@ -108,6 +134,9 @@ def main() -> None:
         if result.returncode != 0:
             print(f"❌ Failed for {spec.name}; see details above.", file=sys.stderr)
             continue
+
+        # sanitize generated pyproject.toml version
+        sanitize_pyproject_version(dest_dir / "pyproject.toml")
 
         # determine python package directory via pyproject.toml
         pkg_dir = parse_package_dir(dest_dir, sdk_name)
