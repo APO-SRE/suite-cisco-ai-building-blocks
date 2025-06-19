@@ -13,11 +13,10 @@ from __future__ import annotations
 ║ A polished CLI to remove generated SDKs from output_sdk.                     ║
 ║                                                                              ║
 ║ FEATURES                                                                     ║
-║   • List existing SDKs                                                      ║
-║   • Select one to delete                                                    ║
-║   • Confirm and remove SDK directory and update sdk_map.json                 ║
+║   • List existing SDKs                                                       ║
+║   • Select one to delete                                                     ║
 ║   • Also remove any matching 'sdk_module' entry from platform_registry.json  ║
-║   • Exit option                                                             ║
+║   • Exit option                                                              ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
 """
 
@@ -46,7 +45,6 @@ console = Console()
 PROJECT_ROOT        = Path(__file__).resolve().parents[3]
 SOURCE_DIR          = PROJECT_ROOT / "src" / "source_open_api"
 OUTPUT_BASE_DIR     = PROJECT_ROOT / "src" / "db_scripts" / "output_sdk"
-SDK_MAP_FILE        = PROJECT_ROOT / "src" / "app" / "llm" / "sdk_map.json"
 PLATFORM_REGISTRY   = PROJECT_ROOT / "src" / "app" / "llm" / "platform_registry.json"
 
 
@@ -131,18 +129,9 @@ def main() -> None:
         console.print(f"[red]Failed to remove '{sdk_path}': {e}[/red]")
         sys.exit(1)
 
-    # Step 4: Update sdk_map.json (remove this SDK if present)
-    try:
-        if SDK_MAP_FILE.exists():
-            sdk_map = json.loads(SDK_MAP_FILE.read_text(encoding="utf-8"))
-            if sdk_name in sdk_map:
-                sdk_map.pop(sdk_name)
-                SDK_MAP_FILE.write_text(json.dumps(sdk_map, indent=2), encoding="utf-8")
-                console.print(f"[green]Removed '{sdk_name}' from sdk_map.json[/green]")
-    except Exception as e:
-        console.print(f"[yellow]Warning: could not update sdk_map.json: {e}[/yellow]")
 
-    # Step 5: Update platform_registry.json (remove any matching "sdk_module" and its "created_by_us" flag)
+
+    # Step 4: Update platform_registry.json (remove any matching "sdk_module" and its "created_by_us" flag)
     try:
         if PLATFORM_REGISTRY.exists():
             registry_data = json.loads(PLATFORM_REGISTRY.read_text(encoding="utf-8"))
@@ -164,7 +153,7 @@ def main() -> None:
         console.print(f"[yellow]Warning: could not update platform_registry.json: {e}[/yellow]")
 
 
-    # Step 6: Remind user to uninstall from their environment
+    # Step 5: Remind user to uninstall from their environment
     console.print(Panel.fit("📦 To fully remove from your Python environment, run:", style="cyan"))
     console.print(Markdown(f"```bash\npip uninstall -y {dist_name}\n```"))
 
