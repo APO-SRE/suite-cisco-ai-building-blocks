@@ -1,9 +1,9 @@
 # Auto-generated – DO NOT EDIT
-# app/llm/function_definitions/__init__.py
-""" 
+# {FUNCS_INIT.relative_to(ROOT)}
+"""
 Loads every *.json in this folder into FUNCTION_DEFINITIONS
     { '<platform>': [{…}, … ] , … }
-""" 
+"""
 from __future__ import annotations
 import json
 from pathlib import Path

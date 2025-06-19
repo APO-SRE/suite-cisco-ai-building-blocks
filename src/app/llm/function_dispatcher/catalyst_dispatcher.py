@@ -87,7 +87,7 @@ def getInterfaceByID(id: str):
 def getAnycastGateways(**kwargs):
     return CatalystClient().getAnycastGateways(**{**kwargs})
 
-@register('getApplicationSet/s')
+@register('getApplicationSet_s')
 def getApplicationSet_s(attributes: str, limit: float, offset: float, **kwargs):
     return CatalystClient().getApplicationSet_s(**{'attributes': attributes, 'limit': limit, 'offset': offset, **kwargs})
 
@@ -103,9 +103,9 @@ def getFabricSiteCount():
 def retrievesAllTheValidationSets(**kwargs):
     return CatalystClient().retrievesAllTheValidationSets(**{**kwargs})
 
-@register('retrievesTheListOfSitesThatTheGivenNetworkProfileForSitesIsAssignedTo')
-def retrievesTheListOfSitesThatTheGivenNetworkProfileForSitesIsAssignedTo(profileId: str, **kwargs):
-    return CatalystClient().retrievesTheListOfSitesThatTheGivenNetworkProfileForSitesIsAssignedTo(**{'profileId': profileId, **kwargs})
+@register('retrievesTheListOfSitesThatTheGivenNetworkProfileForSitesIsAssig')
+def retrievesTheListOfSitesThatTheGivenNetworkProfileForSitesIsAssig(profileId: str, **kwargs):
+    return CatalystClient().retrievesTheListOfSitesThatTheGivenNetworkProfileForSitesIsAssig(**{'profileId': profileId, **kwargs})
 
 @register('getFabricDevicesLayer2HandoffsCount')
 def getFabricDevicesLayer2HandoffsCount(fabricId: str, **kwargs):
@@ -319,7 +319,7 @@ def getTagMemberCount(id: str, memberType: str, **kwargs):
 def retrievesConfigurationDetailsOfTheExternalIPAMServer_():
     return CatalystClient().retrievesConfigurationDetailsOfTheExternalIPAMServer_(**{})
 
-@register('getViewDetailsForAGivenViewGroup&View')
+@register('getViewDetailsForAGivenViewGroup_View')
 def getViewDetailsForAGivenViewGroup_View(viewGroupId: str, viewId: str):
     return CatalystClient().getViewDetailsForAGivenViewGroup_View(**{'viewGroupId': viewGroupId, 'viewId': viewId})
 
@@ -503,7 +503,7 @@ def getInterfaceDetailsByDeviceIdAndInterfaceName(deviceId: str, name: str):
 def getAllGlobalCredentialsV2():
     return CatalystClient().getAllGlobalCredentialsV2(**{})
 
-@register('getAccessPoint(s)FactoryResetStatus')
+@register('getAccessPoint_s_FactoryResetStatus')
 def getAccessPoint_s_FactoryResetStatus(taskId: str):
     return CatalystClient().getAccessPoint_s_FactoryResetStatus(**{'taskId': taskId})
 
@@ -571,9 +571,9 @@ def getOverallClientHealth(**kwargs):
 def getLinecardDetails(deviceUuid: str):
     return CatalystClient().getLinecardDetails(**{'deviceUuid': deviceUuid})
 
-@register('getsTheTotalNetworkDeviceInterfaceCountsInTheSpecifiedTimeRange.WhenThereIsNoStartAndEndTimeSpecifiedReturnsTheLatestInterfacesTotalCount.')
-def getsTheTotalNetworkDeviceInterfaceCountsInTheSpecifiedTimeRange_WhenThereIsNoStartAndEndTimeSpecifiedReturnsTheLatestInterfacesTotalCount_(**kwargs):
-    return CatalystClient().getsTheTotalNetworkDeviceInterfaceCountsInTheSpecifiedTimeRange_WhenThereIsNoStartAndEndTimeSpecifiedReturnsTheLatestInterfacesTotalCount_(**{**kwargs})
+@register('getsTheTotalNetworkDeviceInterfaceCountsInTheSpecifiedTimeRange.')
+def getsTheTotalNetworkDeviceInterfaceCountsInTheSpecifiedTimeRange_(**kwargs):
+    return CatalystClient().getsTheTotalNetworkDeviceInterfaceCountsInTheSpecifiedTimeRange_(**{**kwargs})
 
 @register('getWirelessProfilesCount')
 def getWirelessProfilesCount():
@@ -611,9 +611,9 @@ def deviceLicenseSummary(limit: float, order: str, page_number: float, **kwargs)
 def complianceDetailsOfDevice(deviceUuid: str, **kwargs):
     return CatalystClient().complianceDetailsOfDevice(**{'deviceUuid': deviceUuid, **kwargs})
 
-@register('retrievesTheCountOfSitesThatTheGivenNetworkProfileForSitesIsAssignedTo')
-def retrievesTheCountOfSitesThatTheGivenNetworkProfileForSitesIsAssignedTo(profileId: str):
-    return CatalystClient().retrievesTheCountOfSitesThatTheGivenNetworkProfileForSitesIsAssignedTo(**{'profileId': profileId})
+@register('retrievesTheCountOfSitesThatTheGivenNetworkProfileForSitesIsAssi')
+def retrievesTheCountOfSitesThatTheGivenNetworkProfileForSitesIsAssi(profileId: str):
+    return CatalystClient().retrievesTheCountOfSitesThatTheGivenNetworkProfileForSitesIsAssi(**{'profileId': profileId})
 
 @register('getProvisionedDevices')
 def getProvisionedDevices(**kwargs):
@@ -627,7 +627,7 @@ def retrievesAllPreviousPathtracesSummary(**kwargs):
 def inventoryInsightDeviceLinkMismatchAPI(category: str, siteId: str, **kwargs):
     return CatalystClient().inventoryInsightDeviceLinkMismatchAPI(**{'category': category, 'siteId': siteId, **kwargs})
 
-@register('getTheDeviceDataForTheGivenDeviceId(Uuid)')
+@register('getTheDeviceDataForTheGivenDeviceId_Uuid_')
 def getTheDeviceDataForTheGivenDeviceId_Uuid_(id: str, **kwargs):
     return CatalystClient().getTheDeviceDataForTheGivenDeviceId_Uuid_(**{'id': id, **kwargs})
 
@@ -671,7 +671,7 @@ def getSyslogEventSubscriptions(**kwargs):
 def getVLANDetails():
     return CatalystClient().getVLANDetails(**{})
 
-@register('getAllMobilityGroups	')
+@register('getAllMobilityGroups_')
 def getAllMobilityGroups_(**kwargs):
     return CatalystClient().getAllMobilityGroups_(**{**kwargs})
 
@@ -687,7 +687,7 @@ def systemHealthAPI(**kwargs):
 def lANAutomationStatusById(id: str):
     return CatalystClient().lANAutomationStatusById(**{'id': id})
 
-@register('getApplication/s')
+@register('getApplication_s')
 def getApplication_s(attributes: str, limit: float, offset: float, **kwargs):
     return CatalystClient().getApplication_s(**{'attributes': attributes, 'limit': limit, 'offset': offset, **kwargs})
 
@@ -779,9 +779,9 @@ def getWirelessProfiles(**kwargs):
 def getConfigTaskDetails(parentTaskId: str):
     return CatalystClient().getConfigTaskDetails(**{'parentTaskId': parentTaskId})
 
-@register('retrieveTheCountOfNetworkDevicesThatAreAssociatedWithAtLeastOneTag.')
-def retrieveTheCountOfNetworkDevicesThatAreAssociatedWithAtLeastOneTag_():
-    return CatalystClient().retrieveTheCountOfNetworkDevicesThatAreAssociatedWithAtLeastOneTag_(**{})
+@register('retrieveTheCountOfNetworkDevicesThatAreAssociatedWithAtLeastOneT')
+def retrieveTheCountOfNetworkDevicesThatAreAssociatedWithAtLeastOneT():
+    return CatalystClient().retrieveTheCountOfNetworkDevicesThatAreAssociatedWithAtLeastOneT(**{})
 
 @register('getMulticastVirtualNetworkCount')
 def getMulticastVirtualNetworkCount(**kwargs):
@@ -915,7 +915,7 @@ def deviceCountDetails(**kwargs):
 def getAllExecutionDetailsForAGivenReport(reportId: str):
     return CatalystClient().getAllExecutionDetailsForAGivenReport(**{'reportId': reportId})
 
-@register('getRest/WebhookEventSubscriptions')
+@register('getRest_WebhookEventSubscriptions')
 def getRest_WebhookEventSubscriptions(**kwargs):
     return CatalystClient().getRest_WebhookEventSubscriptions(**{**kwargs})
 
@@ -947,7 +947,7 @@ def retrieveDNSSettingsForASite(id: str, **kwargs):
 def getHealthScoreDefinitionForTheGivenId_(id: str, **kwargs):
     return CatalystClient().getHealthScoreDefinitionForTheGivenId_(**{'id': id, **kwargs})
 
-@register('getProject(s)Details')
+@register('getProject_s_Details')
 def getProject_s_Details(**kwargs):
     return CatalystClient().getProject_s_Details(**{**kwargs})
 
@@ -1055,7 +1055,7 @@ def retrievesTheListOfNetworkProfilesThatTheGivenSiteHasBeenAssigned(siteId: str
 def getDiscoveryJobsByIP(ipAddress: str, **kwargs):
     return CatalystClient().getDiscoveryJobsByIP(**{'ipAddress': ipAddress, **kwargs})
 
-@register('getTemplate(s)Details')
+@register('getTemplate_s_Details')
 def getTemplate_s_Details(**kwargs):
     return CatalystClient().getTemplate_s_Details(**{**kwargs})
 
@@ -1103,9 +1103,9 @@ def returnReplacementDevicesCount(**kwargs):
 def getPlannedAccessPointsForBuilding(buildingId: str, **kwargs):
     return CatalystClient().getPlannedAccessPointsForBuilding(**{'buildingId': buildingId, **kwargs})
 
-@register('getTheCountOfSystemDefinedIssueDefinitionsBasedOnProvidedFilters.')
-def getTheCountOfSystemDefinedIssueDefinitionsBasedOnProvidedFilters_(**kwargs):
-    return CatalystClient().getTheCountOfSystemDefinedIssueDefinitionsBasedOnProvidedFilters_(**{**kwargs})
+@register('getTheCountOfSystemDefinedIssueDefinitionsBasedOnProvidedFilters')
+def getTheCountOfSystemDefinedIssueDefinitionsBasedOnProvidedFilters(**kwargs):
+    return CatalystClient().getTheCountOfSystemDefinedIssueDefinitionsBasedOnProvidedFilters(**{**kwargs})
 
 @register('countOfNetworkProductNames')
 def countOfNetworkProductNames(**kwargs):
@@ -1247,9 +1247,9 @@ def getInterfaceById(id: str):
 def deviceLicenseDetails(device_uuid: str):
     return CatalystClient().deviceLicenseDetails(**{'device_uuid': device_uuid})
 
-@register('getTheInterfaceDataForTheGivenInterfaceId(instanceUuid)AlongWithTheStatisticsData')
-def getTheInterfaceDataForTheGivenInterfaceId_instanceUuid_AlongWithTheStatisticsData(id: str, **kwargs):
-    return CatalystClient().getTheInterfaceDataForTheGivenInterfaceId_instanceUuid_AlongWithTheStatisticsData(**{'id': id, **kwargs})
+@register('getTheInterfaceDataForTheGivenInterfaceId_instanceUuid_AlongWith')
+def getTheInterfaceDataForTheGivenInterfaceId_instanceUuid_AlongWith(id: str, **kwargs):
+    return CatalystClient().getTheInterfaceDataForTheGivenInterfaceId_instanceUuid_AlongWith(**{'id': id, **kwargs})
 
 @register('getInterfaceInfoById')
 def getInterfaceInfoById(deviceId: str):
@@ -1311,9 +1311,9 @@ def getInterfaceByIP(ipAddress: str):
 def retrieveApplicableAdd_onImagesForTheGivenSoftwareImage(id: str):
     return CatalystClient().retrieveApplicableAdd_onImagesForTheGivenSoftwareImage(**{'id': id})
 
-@register('retrievesTheListOfClients,WhileAlsoOfferingBasicFilteringAndSortingCapabilities.')
-def retrievesTheListOfClients_WhileAlsoOfferingBasicFilteringAndSortingCapabilities_(**kwargs):
-    return CatalystClient().retrievesTheListOfClients_WhileAlsoOfferingBasicFilteringAndSortingCapabilities_(**{**kwargs})
+@register('retrievesTheListOfClients_WhileAlsoOfferingBasicFilteringAndSort')
+def retrievesTheListOfClients_WhileAlsoOfferingBasicFilteringAndSort(**kwargs):
+    return CatalystClient().retrievesTheListOfClients_WhileAlsoOfferingBasicFilteringAndSort(**{**kwargs})
 
 @register('getEoXSummary')
 def getEoXSummary():
@@ -1419,7 +1419,7 @@ def getModules(deviceId: str, **kwargs):
 def retrievesTheCountOfAssignedNetworkDeviceProducts(imageId: str, **kwargs):
     return CatalystClient().retrievesTheCountOfAssignedNetworkDeviceProducts(**{'imageId': imageId, **kwargs})
 
-@register('getRest/WebhookSubscriptionDetails')
+@register('getRest_WebhookSubscriptionDetails')
 def getRest_WebhookSubscriptionDetails(**kwargs):
     return CatalystClient().getRest_WebhookSubscriptionDetails(**{**kwargs})
 
@@ -1431,9 +1431,9 @@ def getDeviceHistory(serialNumber: str, **kwargs):
 def getApplicationPolicyQueuingProfileCount():
     return CatalystClient().getApplicationPolicyQueuingProfileCount(**{})
 
-@register('getsTheTotalNetworkDeviceCountsBasedOnTheProvidedQueryParameters.')
-def getsTheTotalNetworkDeviceCountsBasedOnTheProvidedQueryParameters_(**kwargs):
-    return CatalystClient().getsTheTotalNetworkDeviceCountsBasedOnTheProvidedQueryParameters_(**{**kwargs})
+@register('getsTheTotalNetworkDeviceCountsBasedOnTheProvidedQueryParameters')
+def getsTheTotalNetworkDeviceCountsBasedOnTheProvidedQueryParameters(**kwargs):
+    return CatalystClient().getsTheTotalNetworkDeviceCountsBasedOnTheProvidedQueryParameters(**{**kwargs})
 
 @register('getTaskTree')
 def getTaskTree(taskId: str):

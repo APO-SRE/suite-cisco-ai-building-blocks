@@ -13,7 +13,7 @@
   },
   "termsOfService": "https://www.cisco.com/c/dam/en_us/about/doing_business/legal/Cisco_General_Terms.pdf",
   "title": "Cisco Nexus Hyperfabric REST API",
-  "version": "1.0.6.post2025.03.11.13103"
+  "version": "1.0.6-Rev.2025-03-11.13103"
  },
  "paths": {
   "/bearerTokens": {

@@ -1,7 +1,7 @@
-""" 
+"""
 Decorator-based dispatcher registry **plus** smart Meraki fallback.
 AUTO-GENERATED – DO NOT EDIT MANUALLY.
-""" 
+"""
 from __future__ import annotations
 import importlib
 import os
@@ -27,7 +27,7 @@ for _p in _pkg_path.glob('*_dispatcher.py'):
 def _call_meraki(fname: str, kwargs: Dict[str, Any]):
     api_key = os.getenv('CISCO_MERAKI_API_KEY')
     if not api_key:
-        raise ValueError('Meraki dispatch failed: missing MERAKI_DASHBOARD_API_KEY')
+        raise ValueError('Meraki dispatch failed: missing CISCO_MERAKI_API_KEY')
 
     dash = DashboardAPI(api_key=api_key,
                         suppress_logging=True,
