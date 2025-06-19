@@ -63,25 +63,11 @@ You can optionally build initial vector indexes:
 
 ```bash
 python -m db_scripts.process_domain  # For API docs
-python -m db_scripts.process_events  # For telemetry
+python -m db_scripts.process_events  # For enriching events and injecting back into vector database
 ```
 
 ---
-
-## 6. Launch the AI Agent Service
-
-Navigate to the agent service directory and launch the service:
-
-```bash
-cd src/app
-uvicorn main:app --reload --log-level debug
-```
-
-Your AI Agent will be running at [http://127.0.0.1:8000](http://127.0.0.1:8000).
-
----
-
-## 7. Interactive CLI
+## 6. Interactive CLI
 
 After installation, these CLI tools are available:
 
@@ -124,26 +110,13 @@ To integrate Cisco platforms:
 4. **Create a SDK if none exists** – run `create-sdk` to generate one; this automatically installs it and updates the registry.
 5. **Create the platform** – run `create-platform` to scaffold clients, services, and dispatchers.
 6. **Add the platform route** – run `create-platform-route` to expose FastAPI endpoints.
-7. *(Optional)* Run `create-platform-index` to embed the platform's functions for retrieval.
+7. **Create-platform-index** - run 'create-platform-index' to embed the platform's functions for retrieval.
 8. Start chatting through [index.html](http://127.0.0.1:8000/static) or via Webex if configured.
 
+ 
 ---
 
-## 9. Build Platform SDKs and Indexes
-
-Before generating platform code, install the external `openapi-python-client` tool:
-
-```bash
-pip install openapi-python-client
-```
-
-1. **Generate the SDK** – run `create_sdk.py` and select an OpenAPI spec. The wizard outputs the SDK under `src/db_scripts/output_sdk` and updates `src/app/llm/platform_registry.json` with the detected `sdk_module` name. Inspect this file afterwards to verify the package you will import.
-2. **Scaffold the platform** – execute `create_platform.py` to generate service stubs, clients, and dispatchers for the platform listed in the registry.
-3. **Index platform functions** – use `create_platform_index.py` to embed the new platform's functions into your vector store for retrieval.
-
----
-
-## 10. Testing the AI Agent
+## 8. Testing the AI Agent
 
 Verify basic functionality:
 
@@ -152,13 +125,13 @@ Verify basic functionality:
 
 ---
 
-## 11. Troubleshooting
+## 9. Troubleshooting
 
 Check the logs in your terminal for any errors or issues related to environment variables or integrations.
 
 ---
 
-## 12. Additional Resources
+## 10. Additional Resources
 
 * [Azure OpenAI Docs](https://learn.microsoft.com/azure/cognitive-services/openai/)
 * [Cisco DevNet Sandbox](https://developer.cisco.com/site/sandbox/)
