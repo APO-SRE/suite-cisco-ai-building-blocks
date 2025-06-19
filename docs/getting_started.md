@@ -29,10 +29,11 @@ cd suite-cisco-ai-building-blocks
 
 ## 3. Set Up Environment Variables
 
-Copy and edit the example environment file:
+Copy and edit the environment sample file:
 
 ```bash
-cp example.env .env
+# Copy the sample and edit `.env` for your setup
+cp env.sample .env
 # Edit .env to configure VECTOR_BACKEND, FEATURE flags, credentials, etc.
 ```
 
