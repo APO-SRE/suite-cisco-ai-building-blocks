@@ -113,10 +113,16 @@ def main() -> None:
     console.print(Panel(tbl, title="Step 1/3 – Select Platform", border_style="cyan"))
 
     choice = Prompt.ask(f"Enter number [1-{exit_idx}]", default=str(exit_idx)).strip()
-    if not choice.isdigit() or int(choice) == exit_idx:
+    if not choice.isdigit():
         console.print("[yellow]Aborted.[/yellow]")
         sys.exit(0)
     idx = int(choice)
+    if idx == exit_idx:
+        console.print("[yellow]Aborted.[/yellow]")
+        sys.exit(0)
+    if not (1 <= idx <= len(platforms)):
+        console.print("[red]Invalid selection.[/red]")
+        sys.exit(1)
     platform = platforms[idx - 1]
     console.print(f":white_check_mark: Selected [bold]{platform}[/bold]\n")
 
@@ -174,7 +180,9 @@ def main() -> None:
         marker = f"from .{platform}_routes import router as {platform}_router"
         if not any(marker in ln for ln in lines):
             # Append our try/except block at the end
-            lines.append("\n" if not lines[-1].endswith("\n") else "")
+            if lines:
+                if not lines[-1].endswith("\n"):
+                    lines[-1] += "\n"
             lines.append(safe_import)
             init_py.write_text("".join(lines), encoding="utf-8")
     console.print(f"[green]Updated {init_py}[/green]")
