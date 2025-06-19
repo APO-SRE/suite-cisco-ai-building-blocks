@@ -289,7 +289,21 @@ def _emit_client_stub(platform: str, sdk_module: str) -> None:
             raise AttributeError(f"{self.__class__.__name__} has no attribute {item!r}")
     """).splitlines()
 
-    if platform.lower() != "meraki":
+    if platform.lower() == "meraki":
+        pass
+    elif platform.lower() == "nexus_hyperfabric":
+        extra_imports.append("import os")
+        extra_init.extend([
+            "base_url = os.getenv('NEXUS_HYPERFABRIC_BASE_URL')",
+            "token = os.getenv('NEXUS_HYPERFABRIC_BEARER_TOKEN')",
+            "if not base_url or not token:",
+            "    raise ValueError('Missing NEXUS_HYPERFABRIC_BASE_URL or NEXUS_HYPERFABRIC_BEARER_TOKEN')",
+            "kwargs.setdefault('base_url', base_url)",
+            "kwargs.setdefault('token', token)",
+            "",
+        ])
+        extra_methods.extend(['    ' + line if line else '' for line in default_getattr])
+    else:
         extra_methods.extend(['    ' + line if line else '' for line in default_getattr])
 
      # ── assemble file ───────────────────────────────────────────────
