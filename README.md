@@ -116,11 +116,15 @@ create-domain-demo-index
 create-events-index
 create-platform-index
 
-# 6. Start the AI Agent (FastAPI server)
-uvicorn app.main:app --reload
+# 6. Launch the interactive menu and enable telemetry
+menu
+# Then select option **3 – Start Telemetry Stack** to bring up Grafana, Tempo, and Prometheus.
+# Next choose option **1 – Start Cisco Platform AI**. When prompted,
+# answer `y` to **Enable OpenTelemetry export? (y/n)**.
 
 # 7. Open browser UI
 http://127.0.0.1:8000/static/
+# When finished, use menu option **4 – Stop Telemetry Stack** to tear it down.
 ```
 
 ---
