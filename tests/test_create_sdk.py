@@ -74,14 +74,22 @@ def test_build_command_creates_directory(temp_output_dir, tmp_path, create_sdk_m
     spec.write_text("openapi: 3.0")
     pkg_name = create_sdk_module.sanitize_sdk_name("mysdk")
     cmd = create_sdk_module.build_command(spec, "mysdk", pkg_name)
-    assert temp_output_dir.joinpath("mysdk").exists()
+    dest = temp_output_dir / "mysdk"
+    cfg = dest / ".openapi-config.yml"
+    assert dest.exists()
+    assert cfg.exists()
     assert cmd == [
-        "openapi-python-client", "generate",
-        "--path", str(spec),
-        "--output-path", str(temp_output_dir / "mysdk"),
-        "--meta", "poetry",
+        "openapi-python-client",
+        "generate",
+        "--path",
+        str(spec),
+        "--output-path",
+        str(dest),
+        "--meta",
+        "poetry",
         "--overwrite",
-        "--package-name", pkg_name,
+        "--config",
+        str(cfg),
     ]
 
 
