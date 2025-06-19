@@ -4,7 +4,7 @@
 from app.llm.platform_clients.catalyst_client import CatalystClient
 
 class CatalystServiceClient:
-    """Generic call-through service used by FastAPI.""" 
+    """Generic call-through service used by FastAPI."""
 
     def __init__(self, **sdk_kwargs):
         self.client = CatalystClient(**sdk_kwargs)

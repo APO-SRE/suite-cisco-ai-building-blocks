@@ -8,49 +8,62 @@ from __future__ import annotations
 ## Distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND.
 ##############################################################################################
 
-"""
-DISCLAIMER: USE AT YOUR OWN RISK
+""" DISCLAIMER: USE AT YOUR OWN RISK
 
 This script lists OpenAPI v3 schema files in the source directory and invokes
 openapi-python-client to generate Python SDK packages into the output directory.
-After each successful generation it will also update the agent’s sdk_map.json
-with the actual package directory names.
+After each successful generation it will also update the platform_registry.json
+with the sdk_module and mark the SDK as created_by_us.
 """
 
 import subprocess
 import sys
 import json
 import re
+import shutil
 from pathlib import Path
 import tomllib
 
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+SOURCE_DIR = PROJECT_ROOT / "src" / "source_open_api"
+OUTPUT_BASE_DIR = PROJECT_ROOT / "src" / "db_scripts" / "output_sdk"
+PLATFORM_REGISTRY_FILE = PROJECT_ROOT / "src" / "app" / "llm" / "platform_registry.json"
+
+def load_registry() -> dict:
+    if PLATFORM_REGISTRY_FILE.exists():
+        try:
+            return json.loads(PLATFORM_REGISTRY_FILE.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            print(f"Warning: failed to parse {PLATFORM_REGISTRY_FILE}, starting fresh", file=sys.stderr)
+    return {}
+
+def save_registry(registry: dict) -> None:
+    PLATFORM_REGISTRY_FILE.parent.mkdir(parents=True, exist_ok=True)
+    PLATFORM_REGISTRY_FILE.write_text(json.dumps(registry, indent=2), encoding="utf-8")
 
 def parse_package_dir(dest_dir: Path, fallback: str) -> str:
-    """Return Python package name from pyproject.toml if possible."""
     pyproject = dest_dir / "pyproject.toml"
     if pyproject.exists():
         try:
             data = tomllib.loads(pyproject.read_text(encoding="utf-8"))
-            name = data.get("project", {}).get("name") or \
-                   data.get("tool", {}).get("poetry", {}).get("name")
+            name = data.get("project", {}).get("name") or data.get("tool", {}).get("poetry", {}).get("name")
             if name:
                 return name.replace("-", "_")
         except Exception:
             pass
     return fallback
 
-
 def _sanitize_version(version: str) -> str:
-    """Return a PEP 440 compliant version string."""
-    match = re.match(r"(?P<base>[0-9]+(?:\.[0-9]+)*)-Rev\.(?P<year>\d{4})-(?P<month>\d{2})-(?P<day>\d{2})\.(?P<build>\d+)", version)
+    match = re.match(
+        r"(?P<base>[0-9]+(?:\.[0-9]+)*)-Rev\.(?P<year>\d{4})-(?P<month>\d{2})-(?P<day>\d{2})\.(?P<build>\d+)",
+        version
+    )
     if match:
         base = match.group("base")
         return f"{base}.post{match.group('year')}.{match.group('month')}.{match.group('day')}.{match.group('build')}"
     return re.sub(r"[^0-9A-Za-z.]+", ".", version)
 
-
 def sanitize_pyproject_version(pyproject: Path) -> None:
-    """Update pyproject.toml with sanitized version if needed."""
     if not pyproject.exists():
         return
     data = tomllib.loads(pyproject.read_text(encoding="utf-8"))
@@ -61,29 +74,15 @@ def sanitize_pyproject_version(pyproject: Path) -> None:
     sanitized = _sanitize_version(original)
     if sanitized != original:
         text = pyproject.read_text(encoding="utf-8")
-        text = text.replace(f"version = \"{original}\"", f"version = \"{sanitized}\"")
+        text = text.replace(f'version = "{original}"', f'version = "{sanitized}"')
         pyproject.write_text(text, encoding="utf-8")
 
-
-PROJECT_ROOT     = Path(__file__).resolve().parents[2]
-SOURCE_DIR       = PROJECT_ROOT / "src" / "source_open_api"
-OUTPUT_BASE_DIR  = PROJECT_ROOT / "src" / "db_scripts" / "output_sdk"
-SDK_MAP_FILE     = PROJECT_ROOT / "src" / "app" / "llm" / "sdk_map.json"
-
 def main() -> None:
-   # ensure our output dir exists
+    # Ensure output directory exists
     OUTPUT_BASE_DIR.mkdir(parents=True, exist_ok=True)
+    registry = load_registry()
 
-    # ensure our output dir exists
-    OUTPUT_BASE_DIR.mkdir(parents=True, exist_ok=True)
-
-    # load or initialize SDK map
-    if SDK_MAP_FILE.exists():
-        sdk_map = json.loads(SDK_MAP_FILE.read_text(encoding="utf-8"))
-    else:
-        sdk_map = {}
-
-    # --- gather all OpenAPI files -------------------------------------------
+    # Gather OpenAPI files
     openapi_files = sorted(
         p for p in SOURCE_DIR.iterdir()
         if p.is_file() and p.suffix.lower() in {".json", ".yaml", ".yml"}
@@ -92,7 +91,7 @@ def main() -> None:
         print(f"No OpenAPI files found in {SOURCE_DIR}", file=sys.stderr)
         sys.exit(1)
 
-    # --- user picks one or all -----------------------------------------------
+    # User selection
     print("Available OpenAPI schema files:")
     for idx, path in enumerate(openapi_files, start=1):
         print(f"  {idx}. {path.name}")
@@ -111,53 +110,67 @@ def main() -> None:
             print("Invalid selection.", file=sys.stderr)
             sys.exit(1)
 
-    # --- generate and map each one ------------------------------------------
-    added_mappings: list[str] = []
+    updated_entries: list[str] = []
     for spec in selected:
-        default_name = spec.stem
-        user_input   = input(f"Enter SDK folder name [{default_name}]: ").strip()
-        sdk_name     = user_input or default_name
+        # Suggest short name if present in registry
+        default_short = next((k for k, v in registry.items() if v.get("openapi_name") == spec.stem), None)
+        default_name = default_short or spec.stem
+        user_input = input(f"Enter SDK folder name [{default_name}]: ").strip()
+        sdk_name = user_input or default_name
 
         dest_dir = OUTPUT_BASE_DIR / sdk_name
         dest_dir.mkdir(parents=True, exist_ok=True)
 
+        # Generate SDK
         print(f"\n🔧 Generating SDK for '{spec.name}' → '{dest_dir}'")
         cmd = [
-            "openapi-python-client",
-            "generate",
+            "openapi-python-client", "generate",
             "--path", str(spec),
             "--output-path", str(dest_dir),
-            "--meta", "poetry",
-            "--overwrite"
+            "--meta", "poetry", "--overwrite"
         ]
         result = subprocess.run(cmd)
         if result.returncode != 0:
             print(f"❌ Failed for {spec.name}; see details above.", file=sys.stderr)
             continue
 
-        # sanitize generated pyproject.toml version
+        # Sanitize version and detect package
         sanitize_pyproject_version(dest_dir / "pyproject.toml")
-
-        # determine python package directory via pyproject.toml
         pkg_dir = parse_package_dir(dest_dir, sdk_name)
         print(f"✅ Successfully generated SDK at: {dest_dir} (package '{pkg_dir}')")
 
-        # update sdk_map.json if new
-        if sdk_name not in sdk_map or sdk_map[sdk_name] != pkg_dir:
-            sdk_map[sdk_name] = pkg_dir
-            added_mappings.append(f"{sdk_name} → {pkg_dir}")
+        # Ensure api/ package
+        api_dir = dest_dir / pkg_dir / "api"
+        if not api_dir.exists():
+            alt_tags = dest_dir / pkg_dir / "apis" / "tags"
+            if alt_tags.exists():
+                print("⚠️  consolidating 'apis/tags' into 'api/'")
+                api_dir.mkdir(parents=True, exist_ok=True)
+                for f in alt_tags.glob("*.py"):
+                    shutil.copy(f, api_dir / f.name)
+                (api_dir / "__init__.py").write_text("# auto-generated\n", encoding="utf-8")
+            else:
+                print(f"❌ Missing api/ in SDK '{pkg_dir}'", file=sys.stderr)
+                continue
+        if not list(api_dir.glob("*.py")):
+            print(f"❌ '{pkg_dir}.api' is empty", file=sys.stderr)
+            continue
 
-    # --- persist any changes to sdk_map.json --------------------------------
-    if added_mappings:
-        SDK_MAP_FILE.parent.mkdir(parents=True, exist_ok=True)
-        SDK_MAP_FILE.write_text(json.dumps(sdk_map, indent=2), encoding="utf-8")
-        print("\n🗺️  Updated SDK map with:")
-        for mapping in added_mappings:
-            print(f"  {mapping}")
+        # Update registry entry
+        entry = registry.setdefault(sdk_name, {})
+        entry["openapi_name"] = spec.stem
+        entry["sdk_module"] = pkg_dir
+        entry["created_by_us"] = True
+        updated_entries.append(f"{sdk_name} → {pkg_dir}")
 
-    print("\nAll done. Your SDKs live under:")
-    print(f"  {OUTPUT_BASE_DIR}")
+    # Persist registry changes
+    if updated_entries:
+        save_registry(registry)
+        print("\n🌐 Updated platform_registry.json with:")
+        for m in updated_entries:
+            print(f"  {m}")
 
+    print(f"\nAll done. Your SDKs live under: {OUTPUT_BASE_DIR}")
 
 if __name__ == "__main__":
     main()

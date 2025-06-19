@@ -4,7 +4,7 @@
 from app.llm.platform_clients.meraki_client import MerakiClient
 
 class MerakiServiceClient:
-    """Generic call-through service used by FastAPI.""" 
+    """Generic call-through service used by FastAPI."""
 
     def __init__(self, **sdk_kwargs):
         self.client = MerakiClient(**sdk_kwargs)

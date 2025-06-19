@@ -19,9 +19,9 @@ def getAdministeredLicensingSubscriptionEntitlements(**kwargs):
 def getAdministeredLicensingSubscriptionSubscriptions(**kwargs):
     return MerakiClient().getAdministeredLicensingSubscriptionSubscriptions(**{**kwargs})
 
-@register('getAdministeredLicensingSubscriptionSubscriptionsComplianceStatuses')
-def getAdministeredLicensingSubscriptionSubscriptionsComplianceStatuses(organizationIds: list, **kwargs):
-    return MerakiClient().getAdministeredLicensingSubscriptionSubscriptionsComplianceStatuses(**{'organizationIds': organizationIds, **kwargs})
+@register('getAdministeredLicensingSubscriptionSubscriptionsComplianceStatu')
+def getAdministeredLicensingSubscriptionSubscriptionsComplianceStatu(organizationIds: list, **kwargs):
+    return MerakiClient().getAdministeredLicensingSubscriptionSubscriptionsComplianceStatu(**{'organizationIds': organizationIds, **kwargs})
 
 @register('getDevice')
 def getDevice(serial: str):
@@ -1275,13 +1275,13 @@ def getOrganizationCellularGatewayEsimsServiceProviders(organizationId: str):
 def getOrganizationCellularGatewayEsimsServiceProvidersAccounts(organizationId: str, **kwargs):
     return MerakiClient().getOrganizationCellularGatewayEsimsServiceProvidersAccounts(**{'organizationId': organizationId, **kwargs})
 
-@register('getOrganizationCellularGatewayEsimsServiceProvidersAccountsCommunicationPlans')
-def getOrganizationCellularGatewayEsimsServiceProvidersAccountsCommunicationPlans(accountIds: list, organizationId: str):
-    return MerakiClient().getOrganizationCellularGatewayEsimsServiceProvidersAccountsCommunicationPlans(**{'accountIds': accountIds, 'organizationId': organizationId})
+@register('getOrganizationCellularGatewayEsimsServiceProvidersAccountsCommu')
+def getOrganizationCellularGatewayEsimsServiceProvidersAccountsCommu(accountIds: list, organizationId: str):
+    return MerakiClient().getOrganizationCellularGatewayEsimsServiceProvidersAccountsCommu(**{'accountIds': accountIds, 'organizationId': organizationId})
 
-@register('getOrganizationCellularGatewayEsimsServiceProvidersAccountsRatePlans')
-def getOrganizationCellularGatewayEsimsServiceProvidersAccountsRatePlans(accountIds: list, organizationId: str):
-    return MerakiClient().getOrganizationCellularGatewayEsimsServiceProvidersAccountsRatePlans(**{'accountIds': accountIds, 'organizationId': organizationId})
+@register('getOrganizationCellularGatewayEsimsServiceProvidersAccountsRateP')
+def getOrganizationCellularGatewayEsimsServiceProvidersAccountsRateP(accountIds: list, organizationId: str):
+    return MerakiClient().getOrganizationCellularGatewayEsimsServiceProvidersAccountsRateP(**{'accountIds': accountIds, 'organizationId': organizationId})
 
 @register('getOrganizationCellularGatewayUplinkStatuses')
 def getOrganizationCellularGatewayUplinkStatuses(organizationId: str, **kwargs):
@@ -1631,13 +1631,13 @@ def getOrganizationWirelessDevicesChannelUtilizationByDevice(organizationId: str
 def getOrganizationWirelessDevicesChannelUtilizationByNetwork(organizationId: str, **kwargs):
     return MerakiClient().getOrganizationWirelessDevicesChannelUtilizationByNetwork(**{'organizationId': organizationId, **kwargs})
 
-@register('getOrganizationWirelessDevicesChannelUtilizationHistoryByDeviceByInterval')
-def getOrganizationWirelessDevicesChannelUtilizationHistoryByDeviceByInterval(organizationId: str, **kwargs):
-    return MerakiClient().getOrganizationWirelessDevicesChannelUtilizationHistoryByDeviceByInterval(**{'organizationId': organizationId, **kwargs})
+@register('getOrganizationWirelessDevicesChannelUtilizationHistoryByDeviceB')
+def getOrganizationWirelessDevicesChannelUtilizationHistoryByDeviceB(organizationId: str, **kwargs):
+    return MerakiClient().getOrganizationWirelessDevicesChannelUtilizationHistoryByDeviceB(**{'organizationId': organizationId, **kwargs})
 
-@register('getOrganizationWirelessDevicesChannelUtilizationHistoryByNetworkByInterval')
-def getOrganizationWirelessDevicesChannelUtilizationHistoryByNetworkByInterval(organizationId: str, **kwargs):
-    return MerakiClient().getOrganizationWirelessDevicesChannelUtilizationHistoryByNetworkByInterval(**{'organizationId': organizationId, **kwargs})
+@register('getOrganizationWirelessDevicesChannelUtilizationHistoryByNetwork')
+def getOrganizationWirelessDevicesChannelUtilizationHistoryByNetwork(organizationId: str, **kwargs):
+    return MerakiClient().getOrganizationWirelessDevicesChannelUtilizationHistoryByNetwork(**{'organizationId': organizationId, **kwargs})
 
 @register('getOrganizationWirelessDevicesEthernetStatuses')
 def getOrganizationWirelessDevicesEthernetStatuses(organizationId: str, **kwargs):
@@ -1671,9 +1671,9 @@ def getOrganizationWirelessSsidsStatusesByDevice(organizationId: str, **kwargs):
 def getOrganizationWirelessControllerAvailabilitiesChangeHistory(organizationId: str, **kwargs):
     return MerakiClient().getOrganizationWirelessControllerAvailabilitiesChangeHistory(**{'organizationId': organizationId, **kwargs})
 
-@register('getOrganizationWirelessControllerClientsOverviewHistoryByDeviceByInterval')
-def getOrganizationWirelessControllerClientsOverviewHistoryByDeviceByInterval(organizationId: str, **kwargs):
-    return MerakiClient().getOrganizationWirelessControllerClientsOverviewHistoryByDeviceByInterval(**{'organizationId': organizationId, **kwargs})
+@register('getOrganizationWirelessControllerClientsOverviewHistoryByDeviceB')
+def getOrganizationWirelessControllerClientsOverviewHistoryByDeviceB(organizationId: str, **kwargs):
+    return MerakiClient().getOrganizationWirelessControllerClientsOverviewHistoryByDeviceB(**{'organizationId': organizationId, **kwargs})
 
 @register('getOrganizationWirelessControllerConnections')
 def getOrganizationWirelessControllerConnections(organizationId: str, **kwargs):
@@ -1683,45 +1683,45 @@ def getOrganizationWirelessControllerConnections(organizationId: str, **kwargs):
 def getOrganizationWirelessControllerDevicesInterfacesL2ByDevice(organizationId: str, **kwargs):
     return MerakiClient().getOrganizationWirelessControllerDevicesInterfacesL2ByDevice(**{'organizationId': organizationId, **kwargs})
 
-@register('getOrganizationWirelessControllerDevicesInterfacesL2StatusesChangeHistoryByDevice')
-def getOrganizationWirelessControllerDevicesInterfacesL2StatusesChangeHistoryByDevice(organizationId: str, **kwargs):
-    return MerakiClient().getOrganizationWirelessControllerDevicesInterfacesL2StatusesChangeHistoryByDevice(**{'organizationId': organizationId, **kwargs})
+@register('getOrganizationWirelessControllerDevicesInterfacesL2StatusesChan')
+def getOrganizationWirelessControllerDevicesInterfacesL2StatusesChan(organizationId: str, **kwargs):
+    return MerakiClient().getOrganizationWirelessControllerDevicesInterfacesL2StatusesChan(**{'organizationId': organizationId, **kwargs})
 
-@register('getOrganizationWirelessControllerDevicesInterfacesL2UsageHistoryByInterval')
-def getOrganizationWirelessControllerDevicesInterfacesL2UsageHistoryByInterval(organizationId: str, **kwargs):
-    return MerakiClient().getOrganizationWirelessControllerDevicesInterfacesL2UsageHistoryByInterval(**{'organizationId': organizationId, **kwargs})
+@register('getOrganizationWirelessControllerDevicesInterfacesL2UsageHistory')
+def getOrganizationWirelessControllerDevicesInterfacesL2UsageHistory(organizationId: str, **kwargs):
+    return MerakiClient().getOrganizationWirelessControllerDevicesInterfacesL2UsageHistory(**{'organizationId': organizationId, **kwargs})
 
 @register('getOrganizationWirelessControllerDevicesInterfacesL3ByDevice')
 def getOrganizationWirelessControllerDevicesInterfacesL3ByDevice(organizationId: str, **kwargs):
     return MerakiClient().getOrganizationWirelessControllerDevicesInterfacesL3ByDevice(**{'organizationId': organizationId, **kwargs})
 
-@register('getOrganizationWirelessControllerDevicesInterfacesL3StatusesChangeHistoryByDevice')
-def getOrganizationWirelessControllerDevicesInterfacesL3StatusesChangeHistoryByDevice(organizationId: str, **kwargs):
-    return MerakiClient().getOrganizationWirelessControllerDevicesInterfacesL3StatusesChangeHistoryByDevice(**{'organizationId': organizationId, **kwargs})
+@register('getOrganizationWirelessControllerDevicesInterfacesL3StatusesChan')
+def getOrganizationWirelessControllerDevicesInterfacesL3StatusesChan(organizationId: str, **kwargs):
+    return MerakiClient().getOrganizationWirelessControllerDevicesInterfacesL3StatusesChan(**{'organizationId': organizationId, **kwargs})
 
-@register('getOrganizationWirelessControllerDevicesInterfacesL3UsageHistoryByInterval')
-def getOrganizationWirelessControllerDevicesInterfacesL3UsageHistoryByInterval(organizationId: str, **kwargs):
-    return MerakiClient().getOrganizationWirelessControllerDevicesInterfacesL3UsageHistoryByInterval(**{'organizationId': organizationId, **kwargs})
+@register('getOrganizationWirelessControllerDevicesInterfacesL3UsageHistory')
+def getOrganizationWirelessControllerDevicesInterfacesL3UsageHistory(organizationId: str, **kwargs):
+    return MerakiClient().getOrganizationWirelessControllerDevicesInterfacesL3UsageHistory(**{'organizationId': organizationId, **kwargs})
 
-@register('getOrganizationWirelessControllerDevicesInterfacesPacketsOverviewByDevice')
-def getOrganizationWirelessControllerDevicesInterfacesPacketsOverviewByDevice(organizationId: str, **kwargs):
-    return MerakiClient().getOrganizationWirelessControllerDevicesInterfacesPacketsOverviewByDevice(**{'organizationId': organizationId, **kwargs})
+@register('getOrganizationWirelessControllerDevicesInterfacesPacketsOvervie')
+def getOrganizationWirelessControllerDevicesInterfacesPacketsOvervie(organizationId: str, **kwargs):
+    return MerakiClient().getOrganizationWirelessControllerDevicesInterfacesPacketsOvervie(**{'organizationId': organizationId, **kwargs})
 
-@register('getOrganizationWirelessControllerDevicesInterfacesUsageHistoryByInterval')
-def getOrganizationWirelessControllerDevicesInterfacesUsageHistoryByInterval(organizationId: str, **kwargs):
-    return MerakiClient().getOrganizationWirelessControllerDevicesInterfacesUsageHistoryByInterval(**{'organizationId': organizationId, **kwargs})
+@register('getOrganizationWirelessControllerDevicesInterfacesUsageHistoryBy')
+def getOrganizationWirelessControllerDevicesInterfacesUsageHistoryBy(organizationId: str, **kwargs):
+    return MerakiClient().getOrganizationWirelessControllerDevicesInterfacesUsageHistoryBy(**{'organizationId': organizationId, **kwargs})
 
-@register('getOrganizationWirelessControllerDevicesRedundancyFailoverHistory')
-def getOrganizationWirelessControllerDevicesRedundancyFailoverHistory(organizationId: str, **kwargs):
-    return MerakiClient().getOrganizationWirelessControllerDevicesRedundancyFailoverHistory(**{'organizationId': organizationId, **kwargs})
+@register('getOrganizationWirelessControllerDevicesRedundancyFailoverHistor')
+def getOrganizationWirelessControllerDevicesRedundancyFailoverHistor(organizationId: str, **kwargs):
+    return MerakiClient().getOrganizationWirelessControllerDevicesRedundancyFailoverHistor(**{'organizationId': organizationId, **kwargs})
 
 @register('getOrganizationWirelessControllerDevicesRedundancyStatuses')
 def getOrganizationWirelessControllerDevicesRedundancyStatuses(organizationId: str, **kwargs):
     return MerakiClient().getOrganizationWirelessControllerDevicesRedundancyStatuses(**{'organizationId': organizationId, **kwargs})
 
-@register('getOrganizationWirelessControllerDevicesSystemUtilizationHistoryByInterval')
-def getOrganizationWirelessControllerDevicesSystemUtilizationHistoryByInterval(organizationId: str, **kwargs):
-    return MerakiClient().getOrganizationWirelessControllerDevicesSystemUtilizationHistoryByInterval(**{'organizationId': organizationId, **kwargs})
+@register('getOrganizationWirelessControllerDevicesSystemUtilizationHistory')
+def getOrganizationWirelessControllerDevicesSystemUtilizationHistory(organizationId: str, **kwargs):
+    return MerakiClient().getOrganizationWirelessControllerDevicesSystemUtilizationHistory(**{'organizationId': organizationId, **kwargs})
 
 @register('getOrganizationWirelessControllerOverviewByDevice')
 def getOrganizationWirelessControllerOverviewByDevice(organizationId: str, **kwargs):
