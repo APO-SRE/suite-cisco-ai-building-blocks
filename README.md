@@ -145,6 +145,17 @@ After installation, these commands are available:
 
 A built-in **Platform Registry** tracks and manages platform integrations and AI configurations.
 
+### Adding a New Cisco Platform
+
+1. **Add the OpenAPI spec** – copy the JSON or YAML file to `src/source_open_api/`.
+2. **Install the SDK** – if an official Python SDK exists, install it with `pip install <package>`.
+3. **Update the registry** – edit `src/app/llm/platform_registry.json` with the platform's short name, `openapi_name`, and optional `sdk_module`.
+4. **Generate a SDK if missing** – run `create-sdk` to build and install one automatically, which also updates the registry.
+5. **Scaffold the platform** – run `create-platform` to create service stubs and dispatchers.
+6. **Create the route** – run `create-platform-route` to add a FastAPI router and enable routing for the platform.
+7. *(Optional)* Run `create-platform-index` to embed the platform's API functions for retrieval.
+8. Start the agent and open `http://127.0.0.1:8000/static` (or Webex if configured) to begin chatting.
+
 ---
 
 ## ⚙ Environment Variable Overview
