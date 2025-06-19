@@ -1,6 +1,6 @@
 # app/llm/platform_clients/nexus_hyperfabric_client.py
 # Auto‑generated – DO NOT EDIT
-import cisco_nexus_hyperfabric_rest_api_client as _sdk
+import nexus_hyperfabric as _sdk
 
 class Nexus_hyperfabricClient:
     """Thin wrapper around `AuthenticatedClient` with fuzzy attribute lookup."""

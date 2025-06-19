@@ -25,7 +25,7 @@ for _p in _pkg_path.glob('*_dispatcher.py'):
 
 # Meraki SDK fallback
 def _call_meraki(fname: str, kwargs: Dict[str, Any]):
-    api_key = os.getenv('MERAKI_DASHBOARD_API_KEY')
+    api_key = os.getenv('CISCO_MERAKI_API_KEY')
     if not api_key:
         raise ValueError('Meraki dispatch failed: missing MERAKI_DASHBOARD_API_KEY')
 
