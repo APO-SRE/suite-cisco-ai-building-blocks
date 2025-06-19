@@ -107,7 +107,7 @@ source .venv/bin/activate
 cp env.example .env
 # Then edit .env to configure platforms, credentials, backends, etc.
 
-# 4. Install required modules
+# 4. Install required modules (includes FastAPI and Uvicorn)
 pip install -r requirements.txt
 pip install -e .
 
