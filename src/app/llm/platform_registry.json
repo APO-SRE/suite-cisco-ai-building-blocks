@@ -7,7 +7,7 @@
     "route": true
   },
   "catalyst": {
-    "openapi_name": "cisco_catalyst_sd_wan_manager_api_2_0_0",
+    "openapi_name": "cisco-catalyst-center-intent-api-openai-3.0.1",
     "sdk_module": "dnacentersdk",
     "created_by_us": false,
     "installed": true,
@@ -52,7 +52,7 @@
     "openapi_name": "cisco_catalyst_sd_wan_manager_api_2_0_0",
     "sdk_module": "catalystwan.session",
     "created_by_us": false,
-    "installed": true,
+    "installed": false,
     "route": false
   },
   "ai_defense": {
@@ -62,9 +62,9 @@
   },
   "nexus_hyperfabric": {
     "openapi_name": "cisco_nexus_hyperfabric_rest_api_1_0_6_rev_2025_03_11_13103",
-    "sdk_module": "cisco_nexus_hyperfabric_rest_api_client",
-    "created_by_us": false,
+    "sdk_module": "nexus_hyperfabric",
+    "created_by_us": true,
     "installed": true,
-    "route": false
+    "route": true
   }
 }

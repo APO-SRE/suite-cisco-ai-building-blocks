@@ -107,8 +107,7 @@ def check_credentials(short: str) -> Tuple[bool, str]:
     elif short == "nexus_dashboard":
         needed = ["NEXUS_DASHBOARD_API_KEY", "NEXUS_DASHBOARD_BASE_URL"]
     elif short == "nexus_hyperfabric":
-        needed = ["NEXUS_HYPERFABRIC_API_KEY",
-                  "NEXUS_HYPERFABRIC_API_SECRET",
+        needed = ["NEXUS_HYPERFABRIC_BEARER_TOKEN",
                   "NEXUS_HYPERFABRIC_BASE_URL"]
     elif short == "sdwan_mngr":
         needed = ["CISCO_SD_WAN_USERNAME",

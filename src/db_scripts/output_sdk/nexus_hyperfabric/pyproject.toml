@@ -1,18 +1,18 @@
 [tool.poetry]
-name = "cisco-nexus-hyperfabric-rest-api-client"
+name = "nexus_hyperfabric"
 version = "1.0.6-Rev.2025-03-11.13103"
 description = "A client library for accessing Cisco Nexus Hyperfabric REST API"
 authors = []
 readme = "README.md"
 packages = [
-    {include = "cisco_nexus_hyperfabric_rest_api_client"},
+    {include = "nexus_hyperfabric"},
 ]
-include = ["CHANGELOG.md", "cisco_nexus_hyperfabric_rest_api_client/py.typed"]
+include = ["CHANGELOG.md", "nexus_hyperfabric/py.typed"]
 
 
 [tool.poetry.dependencies]
 python = "^3.9"
-httpx = ">=0.20.0,<0.29.0"
+httpx = ">=0.23.0,<0.29.0"
 attrs = ">=22.2.0"
 python-dateutil = "^2.8.0"
 

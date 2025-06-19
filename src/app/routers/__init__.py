@@ -64,3 +64,7 @@ try:
     __all__.append("sdwan_mngr_routes")
 except ImportError:
     sdwan_mngr_router = None
+try:
+    from .nexus_hyperfabric_routes import router as nexus_hyperfabric_router
+except ImportError:
+    pass

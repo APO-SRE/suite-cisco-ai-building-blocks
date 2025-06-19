@@ -21,12 +21,6 @@ try:
 except ImportError:
     Nexus_hyperfabricServiceClient = None
 
-try:
-    from .sdwan_mngr_service import Sdwan_mngrServiceClient
-    _SERVICE_REGISTRY['sdwan_mngr'] = Sdwan_mngrServiceClient
-except ImportError:
-    Sdwan_mngrServiceClient = None
-
 class UnifiedService:
     """Return the correct ServiceClient for a given platform"""
 
@@ -44,5 +38,4 @@ __all__ = ['UnifiedService',
     'CatalystServiceClient',
     'MerakiServiceClient',
     'Nexus_hyperfabricServiceClient',
-    'Sdwan_mngrServiceClient',
 ]
