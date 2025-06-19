@@ -32,7 +32,7 @@
 
 ## 1. Global block
 
-| Variable                      | Purpose                                        | Default in `example.env`                  |
+| Variable                      | Purpose                                        | Default in `env.sample`                  |
 | ----------------------------- | ---------------------------------------------- | ----------------------------------------- |
 | `DEBUG_MODE`                  | Verbose logging toggle                         | `false`                                   |
 | `ENABLE_*`                    | One flag per Cisco SaaS (Meraki, Spaces, etc.) | all **false** except `ENABLE_MERAKI=true` |
@@ -160,8 +160,8 @@ No extra env-vars needed.
 ### Quick start
 
 ```bash
-cp example.env .env
-# fill in your Azure + Cisco keys
+# Copy the sample and edit `.env` with your Azure and Cisco keys
+cp env.sample .env
 
 # build indexes
 python -m scripts.process_docs      # FASTAPI layer

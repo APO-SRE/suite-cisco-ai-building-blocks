@@ -37,7 +37,7 @@ all_files-*.txt
 
 # ─── Local config / secrets ───────────────────────────────────────────────────
 *.env
-# keep example.env in source; only ignore real “.env”
+# keep env.sample in source; only ignore real “.env”
 
 # ─── Your generated listings ──────────────────────────────────────────────────
 ai-building-agent-*.txt
