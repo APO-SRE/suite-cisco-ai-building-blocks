@@ -207,6 +207,20 @@ async def webex_webhook(req: Request):
 
     return JSONResponse({"status": "sent"})
 
+# ---------------------------------------------------------------------------
+# Utility – convert SDK objects (attrs classes) into plain JSON‑serialisable
+# structures before we pass them to json.dumps().
+# ---------------------------------------------------------------------------
+def to_serialisable(obj):
+    if hasattr(obj, "to_dict"):            # openapi‑python‑client models
+        return obj.to_dict()
+    if isinstance(obj, (list, tuple, set)):
+        return [to_serialisable(x) for x in obj]
+    if isinstance(obj, dict):
+        return {k: to_serialisable(v) for k, v in obj.items()}
+    return obj                             # primitives stay unchanged
+
+
 # ──────────────────────────────── Shared business logic
 async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
     prompt = req.message
@@ -342,7 +356,11 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
         follow_up = [
             *messages,
             {"role": "assistant", "content": None, "function_call": fc},
-            {"role": "function",  "name": fname, "content": json.dumps(result)},
+            {
+                "role": "function",
+                "name": fname,
+                "content": json.dumps(to_serialisable(result)),
+            },
         ]
         follow_up[0]["content"] = (
             "You are a helpful Cisco AI assistant. "
@@ -358,8 +376,11 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
     return {
         "role": "assistant",
         "label": "Cisco AI",
-        "response": final.get("content") or json.dumps(result, indent=2),
-    }
+        "response": final.get("content")
+            or json.dumps(to_serialisable(result), indent=2),
+     }
+
+
 
 # ──────────────────────────────── HTTP‐only wrapper
 @router.post("")
