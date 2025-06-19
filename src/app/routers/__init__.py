@@ -5,62 +5,50 @@ from __future__ import annotations
 ## Copyright (c) 2025 Jeff Teeter, Ph.D.
 ## Cisco Systems, Inc.
 ## Licensed under the Apache License, Version 2.0 (see LICENSE)
-## Distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND.
 ################################################################################
-
 """
-DISCLAIMER: USE AT YOUR OWN RISK
+Dynamic, fault‑tolerant loader for every `*_routes.py` file in this package.
 
-This file is now guarded so that missing route files won’t break import.
+* Each file must expose a FastAPI `router` object.
+* A successful import is re‑exported as   `<platform>_router`
+  (e.g. `catalyst_router`, `meraki_router`, …).
+* If the import fails (or the file is missing), we still create the
+  attribute and set it to ``None`` so that `app.routers.<alias>` is always
+  defined, avoiding ``AttributeError`` elsewhere in the codebase.
 """
+from pathlib import Path
+import importlib
+import pkgutil
+import sys
+from types import ModuleType
+from typing import Any, List
 
-# 1) Initialize __all__ so that we can append to it safely:
-__all__: list[str] = []
+__all__: List[str] = []                       # will be populated at runtime
+_pkg = sys.modules[__name__]                  # shortcut to the current module
 
-# 2) Wrap each “from .<short>_routes import router as <short>_router” in try/except:
-try:
-    from .catalyst_routes import router as catalyst_router
-    __all__.append("catalyst_routes")
-except ImportError:
-    catalyst_router = None
 
-try:
-    from .chat_routes import router as chat_router
-    __all__.append("chat_routes")
-except ImportError:
-    chat_router = None
-try:
-    from .meraki_routes import router as meraki_router
-    __all__.append("meraki_routes")
-except ImportError:
-    meraki_router = None
+def _safe_load(module_name: str) -> None:
+    """
+    Import `<module_name>`, expose its `router` as `<platform>_router`,
+    and update ``__all__``; on *any* exception create a stub alias instead.
+    """
+    short = module_name.rsplit("_routes", 1)[0]
+    alias = f"{short}_router"
 
-try:
-    from .webex_routes import router as webex_router
-    __all__.append("webex_routes")
-except ImportError:
-    webex_router = None
+    try:
+        mod: ModuleType = importlib.import_module(f"{__name__}.{module_name}")
+        router = getattr(mod, "router")       # AttributeError ➜ except
+        setattr(_pkg, alias, router)
+        __all__.append(alias)
+    except Exception:                         # noqa: BLE001 (intentional blanket)
+        # Always expose the alias, even if None, to keep IDEs & imports happy
+        setattr(_pkg, alias, None)
 
-# …repeat the same pattern for any other routers you might have…
-try:
-    from .ai_defense_routes import router as ai_defense_router
-    __all__.append("ai_defense_routes")
-except ImportError:
-    ai_defense_router = None
 
-try:
-    from .intersight_routes import router as intersight_router
-    __all__.append("intersight_routes")
-except ImportError:
-    intersight_router = None
+# ── Discover & import every *_routes.py next to this file ──────────────────
+for info in pkgutil.iter_modules([Path(__file__).parent]):
+    if info.name.endswith("_routes"):         # filter only route modules
+        _safe_load(info.name)
 
-try:
-    from .sdwan_mngr_routes import router as sdwan_mngr_router
-    __all__.append("sdwan_mngr_routes")
-except ImportError:
-    sdwan_mngr_router = None
-try:
-    from .nexus_hyperfabric_routes import router as nexus_hyperfabric_router
-    __all__.append("nexus_hyperfabric_routes")
-except ImportError:
-    nexus_hyperfabric_router = None
+del importlib, pkgutil, sys, Path, ModuleType, Any, List, _safe_load, _pkg
+################################################################################

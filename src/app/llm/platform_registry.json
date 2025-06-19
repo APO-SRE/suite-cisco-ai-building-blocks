@@ -4,21 +4,21 @@
     "sdk_module": "meraki",
     "created_by_us": false,
     "installed": true,
-    "route": true
+    "route": false
   },
   "catalyst": {
     "openapi_name": "cisco-catalyst-center-intent-api-openai-3.0.1",
     "sdk_module": "dnacentersdk",
     "created_by_us": false,
     "installed": true,
-    "route": true
+    "route": false
   },
   "intersight": {
     "openapi_name": "intersight-openapi-v3-1.0.11-20250410042505149",
     "sdk_module": "intersight",
     "created_by_us": false,
     "installed": false,
-    "route": true
+    "route": false
   },
   "nexus_dashboard": {
     "openapi_name": "nexus-dashboard-321",
@@ -58,13 +58,13 @@
   "ai_defense": {
     "openapi_name": "ai_defense_ap_is_1_0_0_2025_02_28",
     "installed": false,
-    "route": true
+    "route": false
   },
   "nexus_hyperfabric": {
     "openapi_name": "cisco_nexus_hyperfabric_rest_api_1_0_6_rev_2025_03_11_13103",
-    "sdk_module": "nexus_hyperfabric",
-    "created_by_us": true,
     "installed": true,
-    "route": true
+    "route": false,
+    "sdk_module": "nexus_hyperfabric",
+    "created_by_us": true
   }
 }

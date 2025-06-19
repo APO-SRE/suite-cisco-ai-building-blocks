@@ -6,190 +6,132 @@ from __future__ import annotations
 ## Cisco Systems, Inc.
 ## Licensed under the Apache License, Version 2.0 (see LICENSE)
 ################################################################################
+"""
+Interactive wizard that
 
+1. lets the user pick a scaffolded platform JSON definition,
+2. chooses the URL prefix,
+3. writes `<platform>_routes.py`,
+4. flips `"route": true` in ``platform_registry.json``.
+
+**No change to   routers/__init__.py   is necessary any more** because that file
+is now self‑discovering.  We therefore removed the brittle append logic.
 """
-╔═══════════════════════ Create Platform Route Wizard ═══════════════════════╗
-║ 1. Select a scaffolded platform                                            ║
-║ 2. Define a URL prefix (defaults to /<platform>)                           ║
-║ 3. Preview & confirm                                                        ║
-║ 4. Generate <platform>_routes.py, update routers/__init__.py,              ║
-║    and set `route = true` in platform_registry.json                        ║
-╚════════════════════════════════════════════════════════════════════════════╝
-"""
+import json
 import os
 import sys
-import json
 from pathlib import Path
 
+from rich import box
 from rich.console import Console
 from rich.panel import Panel
-from rich.table import Table
 from rich.prompt import Prompt
-from rich import box
+from rich.table import Table
 from rich.traceback import install
 
 install()
 console = Console()
 
-# ── paths -------------------------------------------------------------------
-# This script lives in: repo/src/app/user_commands/create_platform_route.py
-# We need to locate the registry at repo/src/app/llm/platform_registry.json
-
-REPO_ROOT      = Path(__file__).resolve().parents[3]      # …/suite-cisco-ai-building-blocks
+# ──────────────────────────────────────────────────────────────────────────────
+REPO_ROOT      = Path(__file__).resolve().parents[3]
 LLM_DIR        = REPO_ROOT / "src" / "app" / "llm"
 DEF_DIR        = LLM_DIR / "function_definitions"
 ROUTER_DIR     = REPO_ROOT / "src" / "app" / "routers"
 REGISTRY_PATH  = LLM_DIR / "platform_registry.json"
+# ──────────────────────────────────────────────────────────────────────────────
 
-# ── registry flag helper ----------------------------------------------------
-def set_route_flag(short_name: str, present: bool) -> None:
-    """
-    Directly load the JSON at REGISTRY_PATH, set 'route' to <present> for <short_name>,
-    then save. If the key is missing, create a stub entry so we don't lose data.
-    """
-    if not REGISTRY_PATH.exists():
-        # If the file doesn't exist, start with an empty dict
-        registry: dict = {}
-    else:
+
+def _set_route_flag(short: str, present: bool) -> None:
+    """Toggle ``"route": <bool>`` for *short* in the registry."""
+    registry: dict[str, dict] = {}
+    if REGISTRY_PATH.exists():
         try:
-            registry = json.loads(REGISTRY_PATH.read_text(encoding="utf-8"))
+            registry = json.loads(REGISTRY_PATH.read_text("utf-8"))
         except json.JSONDecodeError:
-            console.print(f"[red]Error:[/red] Failed to parse {REGISTRY_PATH}.")
+            console.print(f"[red]✖ {REGISTRY_PATH} is not valid JSON.[/red]")
             sys.exit(1)
 
-    # If the platform key doesn't exist, create a minimal stub
-    if short_name not in registry:
-        registry[short_name] = {
-            "openapi_name": "",
-            "sdk_module": "",
-            "created_by_us": False,
-            "installed": False,
-            # We will add "route" below
-        }
+    registry.setdefault(short, {
+        "openapi_name": "",
+        "sdk_module": "",
+        "created_by_us": False,
+        "installed": False,
+    })["route"] = present
 
-    # Set the route flag
-    registry[short_name]["route"] = present
-
-    # Write back to disk
-    REGISTRY_PATH.parent.mkdir(parents=True, exist_ok=True)
-    REGISTRY_PATH.write_text(json.dumps(registry, indent=2), encoding="utf-8")
-
-    console.print(f"[grey]→ Wrote 'route': {present} for '{short_name}' into {REGISTRY_PATH}[/grey]")
+    REGISTRY_PATH.write_text(json.dumps(registry, indent=2), "utf-8")
+    console.print(f"[grey]→ registry updated ({'enabled' if present else 'disabled'})[/grey]")
 
 
-# ── util --------------------------------------------------------------------
-def clear_screen() -> None:
+def _clear_screen() -> None:
     if sys.stdout.isatty():
         os.system("cls" if os.name == "nt" else "clear")
 
-def list_definitions() -> list[str]:
-    """
-    Return a sorted list of all <platform>.json files under app/llm/function_definitions.
-    Each name is the platform short name (i.e., filename without .json).
-    """
-    if not DEF_DIR.exists():
-        return []
-    return sorted(fp.stem for fp in DEF_DIR.glob("*.json"))
+
+def _platforms() -> list[str]:
+    return sorted(p.stem for p in DEF_DIR.glob("*.json")) if DEF_DIR.exists() else []
 
 
-# ── main --------------------------------------------------------------------
-def main() -> None:
-    clear_screen()
-    console.print(Panel.fit("🚀 Create Platform Route Wizard", style="green"))
+# ──────────────────────────────────────────────────────────────────────────────
+def main() -> None:  # noqa: C901 (CLI = long is okay)
+    _clear_screen()
+    console.print(Panel.fit("🚀  Create Platform Route Wizard", style="green"))
 
-    # 1) pick platform -------------------------------------------------------
-    platforms = list_definitions()
+    # 1) Select platform ------------------------------------------------------
+    platforms = _platforms()
     if not platforms:
-        console.print("[red]No scaffolded platforms found.[/red]")
-        sys.exit(1)
+        console.print("[yellow]No scaffolded platforms found.[/yellow]")
+        sys.exit(0)
 
     tbl = Table(box=box.SIMPLE_HEAVY)
-    tbl.add_column("#", style="bold cyan")
+    tbl.add_column("#", style="bold cyan", no_wrap=True)
     tbl.add_column("Platform")
     for i, name in enumerate(platforms, 1):
         tbl.add_row(str(i), name)
-    exit_idx = len(platforms) + 1
-    tbl.add_row(str(exit_idx), "Exit")
-    console.print(Panel(tbl, title="Step 1/3 – Select Platform", border_style="cyan"))
+    tbl.add_row(str(len(platforms) + 1), "Exit")
+    console.print(Panel(tbl, title="Step 1/3 – Pick platform", border_style="cyan"))
 
-    choice = Prompt.ask(f"Enter number [1-{exit_idx}]", default=str(exit_idx)).strip()
-    if not choice.isdigit():
-        console.print("[yellow]Aborted.[/yellow]")
+    c = Prompt.ask("Choice", default=str(len(platforms) + 1)).strip()
+    if not c.isdigit() or int(c) == len(platforms) + 1:
+        console.print("[green]Aborted.[/green]")
         sys.exit(0)
-    idx = int(choice)
-    if idx == exit_idx:
-        console.print("[yellow]Aborted.[/yellow]")
-        sys.exit(0)
-    if not (1 <= idx <= len(platforms)):
-        console.print("[red]Invalid selection.[/red]")
-        sys.exit(1)
-    platform = platforms[idx - 1]
-    console.print(f":white_check_mark: Selected [bold]{platform}[/bold]\n")
 
-    # 2) URL prefix ----------------------------------------------------------
-    console.print(Panel.fit("🔧 Step 2/3 – Define URL Prefix", border_style="cyan"))
-    default_prefix = f"/{platform}"
-    prefix = Prompt.ask("Route URL prefix", default=default_prefix).strip()
-    console.print(f":white_check_mark: Prefix set to [bold]{prefix}[/bold]\n")
+    platform = platforms[int(c) - 1]
+    console.print(f":white_check_mark:  [bold]{platform}[/bold] selected\n")
 
-    # 3) preview & confirm ---------------------------------------------------
+    # 2) URL prefix -----------------------------------------------------------
+    console.print(Panel.fit("🔧  Step 2/3 – URL prefix", border_style="cyan"))
+    prefix = Prompt.ask("Prefix", default=f"/{platform}").rstrip("/")
+    console.print(f":white_check_mark:  Will mount at [bold]{prefix}/…[/bold]\n")
+
+    # 3) Preview --------------------------------------------------------------
     filename = f"{platform}_routes.py"
     target   = ROUTER_DIR / filename
-    stub = (
-        "from fastapi import APIRouter\n"
-        "from app.llm.unified_service import UnifiedService\n\n"
-        f'router = APIRouter(prefix="{prefix}", tags=["{platform}"])\n\n'
-        "@router.get(\"/\")\n"
-        f"async def get_{platform}_info():\n"
-        f"    return UnifiedService.{platform}_info()\n"
-    )
-    console.print(
-        Panel(
-            f"Will create:\n[white]{target}[/white]\n\nStub:\n{stub}",
-            title="Step 3/3 – Preview",
-            border_style="cyan",
-        )
-    )
-    if Prompt.ask("Proceed? (Y/n)", default="Y").lower().startswith("n"):
-        console.print("[yellow]Aborted.[/yellow]")
+    stub = f"""\"\"\"Auto‑generated FastAPI router for *{platform}* (edit me!).\"\"\"
+from fastapi import APIRouter
+from app.llm.unified_service import UnifiedService
+
+router = APIRouter(prefix="{prefix}", tags=["{platform}"])
+
+@router.get("/")
+async def {platform}_info():
+    \"\"\"Return basic information about the platform.\"\"\"
+    return UnifiedService.{platform}_info()
+"""
+    console.print(Panel(stub, title="Step 3/3 – Stub preview", border_style="cyan"))
+    if not Prompt.ask("Create file?", choices=["y", "n"], default="y").startswith("y"):
+        console.print("[green]Aborted.[/green]")
         sys.exit(0)
 
-    # 4) generate route file ------------------------------------------------
+    # Write file & update registry -------------------------------------------
     ROUTER_DIR.mkdir(parents=True, exist_ok=True)
-    target.write_text(stub, encoding="utf-8")
-    console.print(f"[green]Created {target}[/green]")
+    target.write_text(stub, "utf-8")
+    console.print(f"[green]✔ Created {target.relative_to(REPO_ROOT)}[/green]")
 
-    # 5) toggle registry flag ------------------------------------------------
-    set_route_flag(platform, True)
+    _set_route_flag(platform, True)
+    console.print(Panel.fit(":white_check_mark:  Done!", style="green"))
 
 
-    # 6) update routers/__init__.py (wrap import in try/except) -------------
-    init_py = ROUTER_DIR / "__init__.py"
-    safe_import = (
-        f"try:\n"
-        f"    from .{platform}_routes import router as {platform}_router\n"
-        f"    __all__.append(\"{platform}_routes\")\n"
-        f"except ImportError:\n"
-        f"    {platform}_router = None\n"
-    )
-
-    if not init_py.exists():
-        init_py.write_text("__all__: list[str] = []\n" + safe_import, encoding="utf-8")
-    else:
-        text = init_py.read_text(encoding="utf-8")
-        if "__all__" not in text:
-            text = "__all__: list[str] = []\n" + text
-        marker = f"from .{platform}_routes import router as {platform}_router"
-        if marker not in text and f"__all__.append(\"{platform}_routes\")" not in text:
-            if not text.endswith("\n"):
-                text += "\n"
-            text += safe_import
-        init_py.write_text(text, encoding="utf-8")
-    console.print(f"[green]Updated {init_py}[/green]")
- 
-    console.print(Panel.fit(":white_check_mark: Done!", style="green"))
-
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     try:
         main()
     except KeyboardInterrupt:
