@@ -131,6 +131,10 @@ Return **only** a JSON object on a single line, with this shape:
 Important rules:
 • Do NOT wrap the JSON in markdown fences.
 • Do NOT add any extra keys or text.
+• If the chosen function has a required parameter called **body**, put the
+  request payload INSIDE that key, e.g. `"arguments": {"body": { ... }}`.
+• Example: to add a fabric named “demo”, output
+  {"name":"fabricsAddFabrics","arguments":{"body":{"fabrics":[{"name":"demo"}]}}}
 • If no function is relevant, respond with ordinary text instead.
 """
 

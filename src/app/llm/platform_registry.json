@@ -3,14 +3,14 @@
     "openapi_name": "meraki-dashboard-openapi-3.0.1",
     "sdk_module": "meraki",
     "created_by_us": false,
-    "installed": true,
+    "installed": false,
     "route": true
   },
   "catalyst": {
     "openapi_name": "cisco-catalyst-center-intent-api-openai-3.0.1",
     "sdk_module": "dnacentersdk",
     "created_by_us": false,
-    "installed": true,
+    "installed": false,
     "route": true
   },
   "intersight": {

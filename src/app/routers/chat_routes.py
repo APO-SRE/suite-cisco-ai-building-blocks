@@ -25,6 +25,7 @@ environments. You are solely responsible for any modifications or adaptations ma
 By using this code, you agree that you have read, understood, and accept these terms.
 """
 import json
+import inspect 
 import logging
 import os
 import re
@@ -328,6 +329,38 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
     fargs = fc.get("arguments", {})
     if isinstance(fargs, str):
         fargs = json.loads(fargs)
+    fname = fc["name"].removeprefix("functions.")
+    fargs = fc.get("arguments", {})
+    if isinstance(fargs, str):
+        fargs = json.loads(fargs)
+
+    # ------------------------------------------------------------------
+    # PATCH: if the target function expects a 'body' argument but the
+    #        LLM omitted it, wrap all non‑path/query fields into 'body'.
+    # ------------------------------------------------------------------
+    try:
+        from app.llm.function_dispatcher import _registry as _FUNC_REG
+        target_fn = _FUNC_REG.get(fname)
+    except Exception:
+        target_fn = None
+
+    if target_fn:
+        sig = inspect.signature(target_fn)
+        if "body" in sig.parameters and "body" not in fargs:
+            other_params = {
+                p for p in sig.parameters
+                if p not in {"body", "kwargs", "self"}
+            }
+            body_payload = {k: v for k, v in fargs.items() if k not in other_params}
+            for k in body_payload:           # strip wrapped keys
+                fargs.pop(k, None)
+            if body_payload:                 # only inject if something to wrap
+                fargs["body"] = body_payload
+                log.debug(
+                    "🩹 auto‑wrapped args into 'body' for %s → keys=%s",
+                    fname, list(body_payload)
+                )
+
 
     # 5️⃣ dispatch + SDK
     with tracer.start_as_current_span(f"dispatch.{fname}") as dspan:
