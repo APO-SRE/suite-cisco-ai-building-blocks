@@ -4,245 +4,794 @@ from app.llm.function_dispatcher import register
 from app.llm.platform_clients.nexus_hyperfabric_client import Nexus_hyperfabricClient
 
 @register('authGetBearerTokens')
-def authGetBearerTokens(**kwargs):
-    return Nexus_hyperfabricClient().authGetBearerTokens(**{**kwargs})
+def authGetBearerTokens(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().authGetBearerTokens(body=body, **kwargs)
 
 @register('authCreateBearerTokens')
-def authCreateBearerTokens():
-    return Nexus_hyperfabricClient().authCreateBearerTokens(**{})
+def authCreateBearerTokens(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().authCreateBearerTokens(body=body, **kwargs)
 
 @register('authDeleteBearerToken')
-def authDeleteBearerToken(tokenId: str):
-    return Nexus_hyperfabricClient().authDeleteBearerToken(**{'tokenId': tokenId})
+def authDeleteBearerToken(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().authDeleteBearerToken(body=body, **kwargs)
 
 @register('authGetBearerToken')
-def authGetBearerToken(tokenId: str, **kwargs):
-    return Nexus_hyperfabricClient().authGetBearerToken(**{'tokenId': tokenId, **kwargs})
+def authGetBearerToken(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().authGetBearerToken(body=body, **kwargs)
 
 @register('devicesGetDevices')
-def devicesGetDevices():
-    return Nexus_hyperfabricClient().devicesGetDevices(**{})
+def devicesGetDevices(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().devicesGetDevices(body=body, **kwargs)
 
 @register('fabricsGetAllFabrics')
-def fabricsGetAllFabrics(**kwargs):
-    return Nexus_hyperfabricClient().fabricsGetAllFabrics(**{**kwargs})
+def fabricsGetAllFabrics(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().fabricsGetAllFabrics(body=body, **kwargs)
 
 @register('fabricsAddFabrics')
-def fabricsAddFabrics():
-    return Nexus_hyperfabricClient().fabricsAddFabrics(**{})
+def fabricsAddFabrics(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().fabricsAddFabrics(body=body, **kwargs)
 
 @register('fabricsDeleteFabric')
-def fabricsDeleteFabric(fabricId: str):
-    return Nexus_hyperfabricClient().fabricsDeleteFabric(**{'fabricId': fabricId})
+def fabricsDeleteFabric(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().fabricsDeleteFabric(body=body, **kwargs)
 
 @register('fabricsGetFabric')
-def fabricsGetFabric(fabricId: str, **kwargs):
-    return Nexus_hyperfabricClient().fabricsGetFabric(**{'fabricId': fabricId, **kwargs})
+def fabricsGetFabric(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().fabricsGetFabric(body=body, **kwargs)
 
 @register('fabricsUpdateFabric')
-def fabricsUpdateFabric(fabricId: str):
-    return Nexus_hyperfabricClient().fabricsUpdateFabric(**{'fabricId': fabricId})
+def fabricsUpdateFabric(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().fabricsUpdateFabric(body=body, **kwargs)
 
 @register('fabricsGetFabricCandidates')
-def fabricsGetFabricCandidates(fabricId: str, **kwargs):
-    return Nexus_hyperfabricClient().fabricsGetFabricCandidates(**{'fabricId': fabricId, **kwargs})
+def fabricsGetFabricCandidates(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().fabricsGetFabricCandidates(body=body, **kwargs)
 
 @register('fabricsRevertFabricCandidate')
-def fabricsRevertFabricCandidate(fabricId: str, name: str):
-    return Nexus_hyperfabricClient().fabricsRevertFabricCandidate(**{'fabricId': fabricId, 'name': name})
+def fabricsRevertFabricCandidate(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().fabricsRevertFabricCandidate(body=body, **kwargs)
 
 @register('fabricsGetFabricCandidate')
-def fabricsGetFabricCandidate(fabricId: str, name: str, **kwargs):
-    return Nexus_hyperfabricClient().fabricsGetFabricCandidate(**{'fabricId': fabricId, 'name': name, **kwargs})
+def fabricsGetFabricCandidate(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().fabricsGetFabricCandidate(body=body, **kwargs)
 
 @register('fabricsCommitFabricCandidate')
-def fabricsCommitFabricCandidate(fabricId: str, name: str):
-    return Nexus_hyperfabricClient().fabricsCommitFabricCandidate(**{'fabricId': fabricId, 'name': name})
+def fabricsCommitFabricCandidate(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().fabricsCommitFabricCandidate(body=body, **kwargs)
 
 @register('fabricsReviewFabricCandidate')
-def fabricsReviewFabricCandidate(fabricId: str, name: str):
-    return Nexus_hyperfabricClient().fabricsReviewFabricCandidate(**{'fabricId': fabricId, 'name': name})
+def fabricsReviewFabricCandidate(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().fabricsReviewFabricCandidate(body=body, **kwargs)
 
 @register('fabricsDeleteFabricConnections')
-def fabricsDeleteFabricConnections(fabricId: str):
-    return Nexus_hyperfabricClient().fabricsDeleteFabricConnections(**{'fabricId': fabricId})
+def fabricsDeleteFabricConnections(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().fabricsDeleteFabricConnections(body=body, **kwargs)
 
 @register('fabricsGetFabricConnections')
-def fabricsGetFabricConnections(fabricId: str, **kwargs):
-    return Nexus_hyperfabricClient().fabricsGetFabricConnections(**{'fabricId': fabricId, **kwargs})
+def fabricsGetFabricConnections(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().fabricsGetFabricConnections(body=body, **kwargs)
 
 @register('fabricsAddFabricConnections')
-def fabricsAddFabricConnections(fabricId: str):
-    return Nexus_hyperfabricClient().fabricsAddFabricConnections(**{'fabricId': fabricId})
+def fabricsAddFabricConnections(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().fabricsAddFabricConnections(body=body, **kwargs)
 
 @register('fabricsSetFabricConnections')
-def fabricsSetFabricConnections(fabricId: str):
-    return Nexus_hyperfabricClient().fabricsSetFabricConnections(**{'fabricId': fabricId})
+def fabricsSetFabricConnections(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().fabricsSetFabricConnections(body=body, **kwargs)
 
 @register('fabricsDeleteFabricConnection')
-def fabricsDeleteFabricConnection(connectionId: str, fabricId: str):
-    return Nexus_hyperfabricClient().fabricsDeleteFabricConnection(**{'connectionId': connectionId, 'fabricId': fabricId})
+def fabricsDeleteFabricConnection(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().fabricsDeleteFabricConnection(body=body, **kwargs)
 
 @register('fabricsGetFabricConnection')
-def fabricsGetFabricConnection(connectionId: str, fabricId: str, **kwargs):
-    return Nexus_hyperfabricClient().fabricsGetFabricConnection(**{'connectionId': connectionId, 'fabricId': fabricId, **kwargs})
+def fabricsGetFabricConnection(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().fabricsGetFabricConnection(body=body, **kwargs)
 
 @register('nodesGetFabricNodes')
-def nodesGetFabricNodes(fabricId: str, **kwargs):
-    return Nexus_hyperfabricClient().nodesGetFabricNodes(**{'fabricId': fabricId, **kwargs})
+def nodesGetFabricNodes(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().nodesGetFabricNodes(body=body, **kwargs)
 
 @register('nodesAddFabricNodes')
-def nodesAddFabricNodes(fabricId: str):
-    return Nexus_hyperfabricClient().nodesAddFabricNodes(**{'fabricId': fabricId})
+def nodesAddFabricNodes(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().nodesAddFabricNodes(body=body, **kwargs)
 
 @register('nodesDeleteFabricNode')
-def nodesDeleteFabricNode(fabricId: str, nodeId: str):
-    return Nexus_hyperfabricClient().nodesDeleteFabricNode(**{'fabricId': fabricId, 'nodeId': nodeId})
+def nodesDeleteFabricNode(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().nodesDeleteFabricNode(body=body, **kwargs)
 
 @register('nodesGetNamedFabricNode')
-def nodesGetNamedFabricNode(fabricId: str, nodeId: str, **kwargs):
-    return Nexus_hyperfabricClient().nodesGetNamedFabricNode(**{'fabricId': fabricId, 'nodeId': nodeId, **kwargs})
+def nodesGetNamedFabricNode(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().nodesGetNamedFabricNode(body=body, **kwargs)
 
 @register('nodesUpdateFabricNode')
-def nodesUpdateFabricNode(fabricId: str, nodeId: str):
-    return Nexus_hyperfabricClient().nodesUpdateFabricNode(**{'fabricId': fabricId, 'nodeId': nodeId})
+def nodesUpdateFabricNode(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().nodesUpdateFabricNode(body=body, **kwargs)
 
 @register('devicesUnbindDevice')
-def devicesUnbindDevice(fabricId: str, nodeId: str):
-    return Nexus_hyperfabricClient().devicesUnbindDevice(**{'fabricId': fabricId, 'nodeId': nodeId})
+def devicesUnbindDevice(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().devicesUnbindDevice(body=body, **kwargs)
 
 @register('devicesBindDevice')
-def devicesBindDevice(deviceId: str, fabricId: str, nodeId: str):
-    return Nexus_hyperfabricClient().devicesBindDevice(**{'deviceId': deviceId, 'fabricId': fabricId, 'nodeId': nodeId})
+def devicesBindDevice(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().devicesBindDevice(body=body, **kwargs)
 
 @register('nodesGetManagementPorts')
-def nodesGetManagementPorts(fabricId: str, nodeId: str, **kwargs):
-    return Nexus_hyperfabricClient().nodesGetManagementPorts(**{'fabricId': fabricId, 'nodeId': nodeId, **kwargs})
+def nodesGetManagementPorts(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().nodesGetManagementPorts(body=body, **kwargs)
 
 @register('nodesAddManagementPorts')
-def nodesAddManagementPorts(fabricId: str, nodeId: str):
-    return Nexus_hyperfabricClient().nodesAddManagementPorts(**{'fabricId': fabricId, 'nodeId': nodeId})
+def nodesAddManagementPorts(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().nodesAddManagementPorts(body=body, **kwargs)
 
 @register('nodesGetManagementPort')
-def nodesGetManagementPort(fabricId: str, id: str, nodeId: str, **kwargs):
-    return Nexus_hyperfabricClient().nodesGetManagementPort(**{'fabricId': fabricId, 'id': id, 'nodeId': nodeId, **kwargs})
+def nodesGetManagementPort(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().nodesGetManagementPort(body=body, **kwargs)
 
 @register('nodesUpdateManagementPort')
-def nodesUpdateManagementPort(fabricId: str, id: str, nodeId: str):
-    return Nexus_hyperfabricClient().nodesUpdateManagementPort(**{'fabricId': fabricId, 'id': id, 'nodeId': nodeId})
+def nodesUpdateManagementPort(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().nodesUpdateManagementPort(body=body, **kwargs)
 
 @register('nodesGetPorts')
-def nodesGetPorts(fabricId: str, nodeId: str, **kwargs):
-    return Nexus_hyperfabricClient().nodesGetPorts(**{'fabricId': fabricId, 'nodeId': nodeId, **kwargs})
+def nodesGetPorts(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().nodesGetPorts(body=body, **kwargs)
 
 @register('nodesSetPorts')
-def nodesSetPorts(fabricId: str, nodeId: str):
-    return Nexus_hyperfabricClient().nodesSetPorts(**{'fabricId': fabricId, 'nodeId': nodeId})
+def nodesSetPorts(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().nodesSetPorts(body=body, **kwargs)
 
 @register('nodesResetPort')
-def nodesResetPort(fabricId: str, nodeId: str, portId: str):
-    return Nexus_hyperfabricClient().nodesResetPort(**{'fabricId': fabricId, 'nodeId': nodeId, 'portId': portId})
+def nodesResetPort(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().nodesResetPort(body=body, **kwargs)
 
 @register('nodesGetPort')
-def nodesGetPort(fabricId: str, nodeId: str, portId: str, **kwargs):
-    return Nexus_hyperfabricClient().nodesGetPort(**{'fabricId': fabricId, 'nodeId': nodeId, 'portId': portId, **kwargs})
+def nodesGetPort(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().nodesGetPort(body=body, **kwargs)
 
 @register('nodesUpdatePort')
-def nodesUpdatePort(fabricId: str, nodeId: str, portId: str):
-    return Nexus_hyperfabricClient().nodesUpdatePort(**{'fabricId': fabricId, 'nodeId': nodeId, 'portId': portId})
+def nodesUpdatePort(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().nodesUpdatePort(body=body, **kwargs)
 
 @register('vnisGetFabricVnis')
-def vnisGetFabricVnis(fabricId: str, **kwargs):
-    return Nexus_hyperfabricClient().vnisGetFabricVnis(**{'fabricId': fabricId, **kwargs})
+def vnisGetFabricVnis(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().vnisGetFabricVnis(body=body, **kwargs)
 
 @register('vnisAddFabricVnis')
-def vnisAddFabricVnis(fabricId: str):
-    return Nexus_hyperfabricClient().vnisAddFabricVnis(**{'fabricId': fabricId})
+def vnisAddFabricVnis(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().vnisAddFabricVnis(body=body, **kwargs)
 
 @register('vnisDeleteFabricVni')
-def vnisDeleteFabricVni(fabricId: str, vniId: str):
-    return Nexus_hyperfabricClient().vnisDeleteFabricVni(**{'fabricId': fabricId, 'vniId': vniId})
+def vnisDeleteFabricVni(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().vnisDeleteFabricVni(body=body, **kwargs)
 
 @register('vnisGetFabricVni')
-def vnisGetFabricVni(fabricId: str, vniId: str, **kwargs):
-    return Nexus_hyperfabricClient().vnisGetFabricVni(**{'fabricId': fabricId, 'vniId': vniId, **kwargs})
+def vnisGetFabricVni(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().vnisGetFabricVni(body=body, **kwargs)
 
 @register('vnisUpdateFabricVni')
-def vnisUpdateFabricVni(fabricId: str, vniId: str):
-    return Nexus_hyperfabricClient().vnisUpdateFabricVni(**{'fabricId': fabricId, 'vniId': vniId})
+def vnisUpdateFabricVni(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().vnisUpdateFabricVni(body=body, **kwargs)
 
 @register('vnisGetFabricVniMembers')
-def vnisGetFabricVniMembers(fabricId: str, vniId: str, **kwargs):
-    return Nexus_hyperfabricClient().vnisGetFabricVniMembers(**{'fabricId': fabricId, 'vniId': vniId, **kwargs})
+def vnisGetFabricVniMembers(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().vnisGetFabricVniMembers(body=body, **kwargs)
 
 @register('vnisAddFabricVniMembers')
-def vnisAddFabricVniMembers(fabricId: str, vniId: str):
-    return Nexus_hyperfabricClient().vnisAddFabricVniMembers(**{'fabricId': fabricId, 'vniId': vniId})
+def vnisAddFabricVniMembers(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().vnisAddFabricVniMembers(body=body, **kwargs)
 
 @register('vnisDeleteFabricVniMember')
-def vnisDeleteFabricVniMember(fabricId: str, memberId: str, vniId: str):
-    return Nexus_hyperfabricClient().vnisDeleteFabricVniMember(**{'fabricId': fabricId, 'memberId': memberId, 'vniId': vniId})
+def vnisDeleteFabricVniMember(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().vnisDeleteFabricVniMember(body=body, **kwargs)
 
 @register('vnisGetFabricVniMember')
-def vnisGetFabricVniMember(fabricId: str, memberId: str, vniId: str, **kwargs):
-    return Nexus_hyperfabricClient().vnisGetFabricVniMember(**{'fabricId': fabricId, 'memberId': memberId, 'vniId': vniId, **kwargs})
+def vnisGetFabricVniMember(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().vnisGetFabricVniMember(body=body, **kwargs)
 
 @register('vrfsGetFabricVrfs')
-def vrfsGetFabricVrfs(fabricId: str, **kwargs):
-    return Nexus_hyperfabricClient().vrfsGetFabricVrfs(**{'fabricId': fabricId, **kwargs})
+def vrfsGetFabricVrfs(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().vrfsGetFabricVrfs(body=body, **kwargs)
 
 @register('vrfsAddFabricVrfs')
-def vrfsAddFabricVrfs(fabricId: str):
-    return Nexus_hyperfabricClient().vrfsAddFabricVrfs(**{'fabricId': fabricId})
+def vrfsAddFabricVrfs(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().vrfsAddFabricVrfs(body=body, **kwargs)
 
 @register('vrfsDeleteFabricVrf')
-def vrfsDeleteFabricVrf(fabricId: str, vrfId: str):
-    return Nexus_hyperfabricClient().vrfsDeleteFabricVrf(**{'fabricId': fabricId, 'vrfId': vrfId})
+def vrfsDeleteFabricVrf(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().vrfsDeleteFabricVrf(body=body, **kwargs)
 
 @register('vrfsGetFabricVrf')
-def vrfsGetFabricVrf(fabricId: str, vrfId: str, **kwargs):
-    return Nexus_hyperfabricClient().vrfsGetFabricVrf(**{'fabricId': fabricId, 'vrfId': vrfId, **kwargs})
+def vrfsGetFabricVrf(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().vrfsGetFabricVrf(body=body, **kwargs)
 
 @register('vrfsUpdateFabricVrf')
-def vrfsUpdateFabricVrf(fabricId: str, vrfId: str):
-    return Nexus_hyperfabricClient().vrfsUpdateFabricVrf(**{'fabricId': fabricId, 'vrfId': vrfId})
+def vrfsUpdateFabricVrf(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().vrfsUpdateFabricVrf(body=body, **kwargs)
 
 @register('vrfsGetFabricStaticRoutes')
-def vrfsGetFabricStaticRoutes(fabricId: str, vrfId: str, **kwargs):
-    return Nexus_hyperfabricClient().vrfsGetFabricStaticRoutes(**{'fabricId': fabricId, 'vrfId': vrfId, **kwargs})
+def vrfsGetFabricStaticRoutes(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().vrfsGetFabricStaticRoutes(body=body, **kwargs)
 
 @register('vrfsAddFabricStaticRoutes')
-def vrfsAddFabricStaticRoutes(fabricId: str, vrfId: str):
-    return Nexus_hyperfabricClient().vrfsAddFabricStaticRoutes(**{'fabricId': fabricId, 'vrfId': vrfId})
+def vrfsAddFabricStaticRoutes(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().vrfsAddFabricStaticRoutes(body=body, **kwargs)
 
 @register('vrfsDeleteFabricStaticRoute')
-def vrfsDeleteFabricStaticRoute(fabricId: str, routeId: str, vrfId: str):
-    return Nexus_hyperfabricClient().vrfsDeleteFabricStaticRoute(**{'fabricId': fabricId, 'routeId': routeId, 'vrfId': vrfId})
+def vrfsDeleteFabricStaticRoute(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().vrfsDeleteFabricStaticRoute(body=body, **kwargs)
 
 @register('vrfsGetFabricStaticRoute')
-def vrfsGetFabricStaticRoute(fabricId: str, routeId: str, vrfId: str, **kwargs):
-    return Nexus_hyperfabricClient().vrfsGetFabricStaticRoute(**{'fabricId': fabricId, 'routeId': routeId, 'vrfId': vrfId, **kwargs})
+def vrfsGetFabricStaticRoute(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().vrfsGetFabricStaticRoute(body=body, **kwargs)
 
 @register('vrfsUpdateFabricStaticRoute')
-def vrfsUpdateFabricStaticRoute(fabricId: str, routeId: str, vrfId: str):
-    return Nexus_hyperfabricClient().vrfsUpdateFabricStaticRoute(**{'fabricId': fabricId, 'routeId': routeId, 'vrfId': vrfId})
+def vrfsUpdateFabricStaticRoute(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().vrfsUpdateFabricStaticRoute(body=body, **kwargs)
 
 @register('authGetUsers')
-def authGetUsers(**kwargs):
-    return Nexus_hyperfabricClient().authGetUsers(**{**kwargs})
+def authGetUsers(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().authGetUsers(body=body, **kwargs)
 
 @register('authSetUsers')
-def authSetUsers():
-    return Nexus_hyperfabricClient().authSetUsers(**{})
+def authSetUsers(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().authSetUsers(body=body, **kwargs)
 
 @register('authDeleteUser')
-def authDeleteUser(userId: str):
-    return Nexus_hyperfabricClient().authDeleteUser(**{'userId': userId})
+def authDeleteUser(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().authDeleteUser(body=body, **kwargs)
 
 @register('authGetUser')
-def authGetUser(userId: str, **kwargs):
-    return Nexus_hyperfabricClient().authGetUser(**{'userId': userId, **kwargs})
+def authGetUser(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().authGetUser(body=body, **kwargs)
 
 @register('authUpdateUser')
-def authUpdateUser(userId: str):
-    return Nexus_hyperfabricClient().authUpdateUser(**{'userId': userId})
+def authUpdateUser(body: dict | None = None, **kwargs):
+    """Auto‑generated wrapper.
+
+    If `body` is omitted we wrap all remaining keyword arguments
+    into it so the underlying SDK still receives the required
+    payload.
+    """
+    if body is None:
+        body = kwargs
+        kwargs = {}
+    return Nexus_hyperfabricClient().authUpdateUser(body=body, **kwargs)

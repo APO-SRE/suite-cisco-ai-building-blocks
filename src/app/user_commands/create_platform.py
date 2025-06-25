@@ -421,9 +421,21 @@ def main() -> None:
 
     # Step 3/4 — Configure HTTP verbs
     console.print(Panel.fit("Step 3/4: Configure HTTP verbs", style="cyan"))
-    verbs   = ask("HTTP verbs (comma-separated, blank=ALL)", "GET").upper()
-    cleaned = [v.strip() for v in verbs.split(",") if v.strip() in VALID_VERBS]
-    console.print(f":white_check_mark: Verbs = [bold]{', '.join(cleaned) or 'ALL'}[/bold]\n")
+
+    verbs_menu = ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS", "ALL"]
+    console.print(f"[grey]Available verbs: {', '.join(verbs_menu)}[/grey]")
+
+    raw = ask("HTTP verbs (comma-separated, 'ALL'=every verb)", "GET").upper()
+    chosen = [v.strip() for v in raw.split(",") if v.strip()]
+
+    if not chosen or "ALL" in chosen:
+        cleaned = sorted(VALID_VERBS)                # every verb
+    else:
+        cleaned = [v for v in chosen if v in VALID_VERBS]
+
+    console.print(f":white_check_mark: Verbs = [bold]{', '.join(cleaned)}[/bold]\n")
+
+
 
     # Step 4/4 — Regex filter for operationIds
     console.print(Panel.fit("Step 4/4: Regex filter for operationIds", style="cyan"))
@@ -435,7 +447,7 @@ def main() -> None:
         ("Platform",    platform),
         ("SDK module",  sdk_module),
         ("Spec file",   Path(spec_file).name),
-        ("HTTP verbs",  ', '.join(cleaned) or "ALL"),
+        ("HTTP verbs",  "ALL" if set(cleaned) == VALID_VERBS else ', '.join(cleaned)),
         ("Name regex",  name_re or "None"),
     ])
 
@@ -451,8 +463,10 @@ def main() -> None:
         "--sdk-module",    sdk_module,
         "--openapi-spec",  spec_file,
     ]
-    if cleaned:
-        cmd += ["--include-http-methods", ''.join(cleaned)]
+    verbs_arg = ",".join(cleaned)
+    if set(cleaned) != VALID_VERBS:                  # only restrict if not ALL
+        cmd += ["--include-http-methods", verbs_arg]
+ 
     if name_re:
         cmd += ["--name-pattern", name_re]
 

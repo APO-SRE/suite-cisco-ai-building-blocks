@@ -4,18 +4,6 @@
 _SERVICE_REGISTRY: dict[str, type] = {}
 
 try:
-    from .catalyst_service import CatalystServiceClient
-    _SERVICE_REGISTRY['catalyst'] = CatalystServiceClient
-except ImportError:
-    CatalystServiceClient = None
-
-try:
-    from .meraki_service import MerakiServiceClient
-    _SERVICE_REGISTRY['meraki'] = MerakiServiceClient
-except ImportError:
-    MerakiServiceClient = None
-
-try:
     from .nexus_hyperfabric_service import Nexus_hyperfabricServiceClient
     _SERVICE_REGISTRY['nexus_hyperfabric'] = Nexus_hyperfabricServiceClient
 except ImportError:
@@ -35,7 +23,5 @@ class UnifiedService:
         return impl(*args, **kwargs)
 
 __all__ = ['UnifiedService',
-    'CatalystServiceClient',
-    'MerakiServiceClient',
     'Nexus_hyperfabricServiceClient',
 ]
