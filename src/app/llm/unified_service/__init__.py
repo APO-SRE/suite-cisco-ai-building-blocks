@@ -4,10 +4,10 @@
 _SERVICE_REGISTRY: dict[str, type] = {}
 
 try:
-    from .nexus_hyperfabric_service import Nexus_hyperfabricServiceClient
-    _SERVICE_REGISTRY['nexus_hyperfabric'] = Nexus_hyperfabricServiceClient
+    from .intersight_service import IntersightServiceClient
+    _SERVICE_REGISTRY['intersight'] = IntersightServiceClient
 except ImportError:
-    Nexus_hyperfabricServiceClient = None
+    IntersightServiceClient = None
 
 class UnifiedService:
     """Return the correct ServiceClient for a given platform"""
@@ -23,5 +23,5 @@ class UnifiedService:
         return impl(*args, **kwargs)
 
 __all__ = ['UnifiedService',
-    'Nexus_hyperfabricServiceClient',
+    'IntersightServiceClient',
 ]

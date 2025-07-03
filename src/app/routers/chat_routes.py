@@ -42,6 +42,10 @@ from opentelemetry.trace import Tracer
 import structlog
 from pydantic import BaseModel
 
+from datetime import datetime, date, time
+from enum import Enum
+from decimal import Decimal
+
 from app.config import cfg
 from app.llm.llm_factory import get_llm, LLMClientBase
 from app.llm.utils import enabled_platforms
@@ -213,14 +217,27 @@ async def webex_webhook(req: Request):
 # structures before we pass them to json.dumps().
 # ---------------------------------------------------------------------------
 def to_serialisable(obj):
-    if hasattr(obj, "to_dict"):            # openapi‑python‑client models
-        return obj.to_dict()
+    # 1️⃣ primitives that JSON can’t handle natively
+    if isinstance(obj, (datetime, date, time)):
+        return obj.isoformat()
+    if isinstance(obj, Enum):
+        return obj.value
+    if isinstance(obj, Decimal):
+        return float(obj)
+
+    # 2️⃣ openapi‑python‑client / pydantic models
+    if hasattr(obj, "to_dict"):
+        return to_serialisable(obj.to_dict())   # recurse after model→dict
+
+    # 3️⃣ containers
     if isinstance(obj, (list, tuple, set)):
         return [to_serialisable(x) for x in obj]
     if isinstance(obj, dict):
         return {k: to_serialisable(v) for k, v in obj.items()}
-    return obj                             # primitives stay unchanged
 
+    # 4️⃣ everything else is assumed JSON‑ready (str, int, bool, None…)
+    return obj
+ 
 
 # ──────────────────────────────── Shared business logic
 async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
