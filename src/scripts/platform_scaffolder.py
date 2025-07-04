@@ -87,7 +87,33 @@ def _drop_dynamic_cache() -> None:
             log.warning("could not drop cache %s: %s", cache_file, exc)
 
  
-
+def _emit_org_injection(platform: str, non_body_keys: list[str]) -> list[str]:
+    """Return the right org-ID injection block for the given platform."""
+    lines: list[str] = []
+    if platform.lower() == "intersight":
+        lines.extend([
+            "    # ── auto‑inject INTERSIGHT_ORGANIZATION_MOID ────────────────",
+            "    org_moid = os.getenv('INTERSIGHT_ORGANIZATION_MOID')",
+            "    if org_moid:",
+            f"        if 'organization_moid' in {non_body_keys} and 'organization_moid' not in final_kwargs:",
+            "            final_kwargs['organization_moid'] = org_moid",
+            f"        for filt in ('filter', '$filter'):",
+            f"            if filt in {non_body_keys} and filt not in final_kwargs:",
+            "                final_kwargs[filt] = f\"Organization.Moid eq '{org_moid}'\"",
+            "",
+        ])
+    if platform.lower() == "meraki":
+        lines.extend([
+            "    # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────",
+            "    org_env = os.getenv('MERAKI_ORG_ID')",
+            "    if org_env:",
+            f"        for cand in ('organization_id', 'organizationId', 'org_id'):",
+            f"            if cand in {non_body_keys} and cand not in final_kwargs:",
+            "                final_kwargs[cand] = org_env",
+            "                break",
+            "",
+        ])
+    return lines
 
 # ╭─────────────────────────────────────────────────────────────────────╮
 # │ 1 ─ package initialisation helpers                                 │
@@ -206,6 +232,8 @@ def _py_identifier(raw: str, seen: Dict[str, int]) -> str:
 
 
 # ── helpers ────────────────────────────────────────────────────────────────
+ 
+
 
 def _emit_client_stub(platform: str, sdk_module: str) -> None:
     """
@@ -565,7 +593,9 @@ def scaffold_one(
             if not op_id:                                     # empty after clean‑up
                 op_id = f"op_{verb}"
             op_id = op_id[:MAX_NAME_LEN]                      # 1‑64 chars total
-
+            if platform.lower() == "intersight" and op_id.lower().startswith("getview"):
+                skipped_ops.append({"op": op_id, "reason": "view endpoint"})
+                continue
 
 
 
@@ -717,16 +747,17 @@ def scaffold_one(
     _emit_unified_service(platform)
     _regenerate_unified_service_init()
 
+
     disp_fp = OUT_DIRS["disp"] / f"{platform}_dispatcher.py"
     lines = [
         f"# {disp_fp.relative_to(ROOT)}",
-        "from typing import Any",                     # <— for fallback
+        "import os",
+        "from typing import Any",
         "from app.llm.function_dispatcher import register",
         f"from app.llm.platform_clients.{platform}_client import {platform.capitalize()}Client",
         "",
     ]
 
-    # map OpenAPI types → Python annotation
     type_mapping: Dict[str, str] = {
         "string":  "str",
         "integer": "int",
@@ -735,71 +766,83 @@ def scaffold_one(
         "array":   "list",
         "object":  "dict",
     }
-
     for fn in diet_fns:
         safe_name = _py_identifier(fn["name"], safe_name_seen)
         props     = fn["parameters"]["properties"]
-        required  = sorted(fn["parameters"]["required"])
-        optional  = sorted(set(props) - set(required))
+        required  = set(fn["parameters"].get("required", []))
 
-        props     = fn["parameters"]["properties"]
-        required  = sorted(fn["parameters"]["required"])
+        # build signature
+        def py_name(p):
+            ident = _identifier_rx.sub("_", p)
+            return ident + "_arg" if keyword.iskeyword(ident) else ident
 
-        # ensure each required key is present in props
-        # dietify_schema sometimes drops "body" or other complex objects.
-        # Inject a default so lookups never raise KeyError.
-        for missing in (set(required) - set(props)):
-            props[missing] = {"type": "object"}
+        required_params = [p for p in props if p in required]
+        optional_params = [p for p in props if p not in required]
+        sig_parts = []
+        for pname in required_params:
+            meta = props[pname]
+            sig_parts.append(f"{py_name(pname)}: {type_mapping.get(meta.get('type'), 'Any')}")
+        for pname in optional_params:
+            meta = props[pname]
+            sig_parts.append(f"{py_name(pname)}: {type_mapping.get(meta.get('type'), 'Any')} = None")
+        signature = ", ".join(sig_parts)
 
-        optional  = sorted(set(props) - set(required))
-
-        def sanitize(param: str) -> str:
-            ident = _identifier_rx.sub("_", param)
-            if keyword.iskeyword(ident):
-                ident += "_arg"
-            return ident
-
-        sanitized = {p: sanitize(p) for p in props}
-
-        sig_parts  = [f"{sanitized[p]}: {type_mapping.get(props[p]['type'],'Any')}" for p in required]
-        if optional:
-            sig_parts.append("**kwargs")
- 
-        call_parts = [f"'{p}': {sanitized[p]}" for p in required]
-        if optional:
-            call_parts.append("**kwargs")
-        
-
-        #
+        # dispatcher body
+        non_body = {p: py_name(p) for p in props if p != "body"}
         lines.extend([
             f"@register('{fn['name']}')",
-            f"def {safe_name}(body: dict | None = None, **kwargs):",
-            '    """Auto‑generated wrapper.',
-            '',
-            '    If `body` is omitted we wrap all remaining keyword arguments',
-            '    into it so the underlying SDK still receives the required',
-            '    payload.',
-            '    """',
-            "    if body is None:",
-            "        body = kwargs",
-            "        kwargs = {}",
-            f"    return {platform.capitalize()}Client().{safe_name}(body=body, **kwargs)",
+            f"def {safe_name}({signature}):",
+            '    """Auto‑generated wrapper (org‑ID injection included)."""',
+            "    locals_ = locals()",
+            "    body_payload = locals_.pop('body', None) if 'body' in locals_ else None",
+            "    final_kwargs = {",
+            "        orig: locals_[san]",
+            "        for orig, san in " + repr(non_body) + ".items()",
+            "        if locals_[san] is not None",
+            "    }",
             "",
         ])
-            
- 
-        
 
-        # ─────────────── NEW: also register aliases for the same callable ────────────────
+        # insert injection
+        non_body_keys = list(non_body.keys())
+        lines.extend(_emit_org_injection(platform, non_body_keys))
+
+        # finish with target call
+        lines.extend([
+            f"    target = {platform.capitalize()}Client().__getattr__('{safe_name}')",
+            "    if body_payload is not None:",
+            "        return target(body=body_payload, **final_kwargs)",
+            "    return target(**final_kwargs)",
+            "",
+        ])
+
+
+
+
+
+
+        # 3. add aliases for easier LLM use (e.g. "get_device" → "device_get") ----
+        # ── 3‑a. generic “drop‑tag / singular” aliases ───────────────────────
         if '_' in fn['name']:
             tag, rest = fn['name'].split('_', 1)
             for alias in {rest, rest.rstrip('s')}:
                 if alias and alias != fn['name']:
                     lines.extend([
-                        f"# alias → easier for LLM",
+                        "# alias → easier for LLM",
                         f"register('{alias}')(globals()['{safe_name}'])",
                         ""
                     ])
+
+        # ── 3‑b. hand‑crafted aliases for server inventory -------------------
+        # maps get_compute_physical_summary_list → get_server_list / servers …
+        if fn['name'] == 'get_compute_physical_summary_list':
+            for alias in {'get_server_list', 'server_list', 'servers'}:
+                lines.extend([
+                    f"register('{alias}')(globals()['{safe_name}'])",
+                    ""
+                ])
+
+
  
 
 
