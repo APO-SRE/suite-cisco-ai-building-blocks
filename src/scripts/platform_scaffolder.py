@@ -86,7 +86,14 @@ def _drop_dynamic_cache() -> None:
         except Exception as exc:
             log.warning("could not drop cache %s: %s", cache_file, exc)
 
- 
+#################################################################################################################
+#################################################################################################################
+#  IMPORTANT !!!!
+#  This is where you add new injections for different platforms. 
+#  Usually required parameters that are used in numerous functions.
+# This way the end user isnt required to enter them manually. 
+# ── INJECTIONS START HERE ──────────────────────────────────────────────────────────────────────────────────
+#
 def _emit_org_injection(platform: str, non_body_keys: list[str]) -> list[str]:
     """Return the right org-ID injection block for the given platform."""
     lines: list[str] = []
@@ -114,6 +121,11 @@ def _emit_org_injection(platform: str, non_body_keys: list[str]) -> list[str]:
             "",
         ])
     return lines
+
+# ── INJECTIONS END HERE ──────────────────────────────────────────────────────────────────────────────────
+###############################################################################################################
+
+
 
 # ╭─────────────────────────────────────────────────────────────────────╮
 # │ 1 ─ package initialisation helpers                                 │
@@ -819,10 +831,19 @@ def scaffold_one(
 
 
 
-
-
-        # 3. add aliases for easier LLM use (e.g. "get_device" → "device_get") ----
-        # ── 3‑a. generic “drop‑tag / singular” aliases ───────────────────────
+        
+        ########################################################################################################
+        ########################################################################################################
+        #  IMPORTANT !!!!
+        # 3. Add Alias's in this section to help the LLM understand the function better.
+        # ######################################################################################################
+        # ── ALIASES START HERE ────────────────────────────────────────────────────────────────────────────────
+        #
+        #
+        # 3.a - generic “drop‑tag / singular” aliases ──────────────────────────────────────────────────────
+        #     This is a generic alias creation that strips the platform tag or makes it singular.
+        #     Automatically create aliases by stripping the platform tag or making it singular. 
+        #     For instanceadd aliases for easier LLM use (e.g. "get_device" → "device_get", OR devcie) 
         if '_' in fn['name']:
             tag, rest = fn['name'].split('_', 1)
             for alias in {rest, rest.rstrip('s')}:
@@ -833,7 +854,7 @@ def scaffold_one(
                         ""
                     ])
 
-        # ── 3‑b. hand‑crafted aliases for server inventory -------------------
+        # 3‑b. hand‑crafted aliases for server inventory (INTERSIGHT)──────────────────────────────────────────
         # maps get_compute_physical_summary_list → get_server_list / servers …
         if fn['name'] == 'get_compute_physical_summary_list':
             for alias in {'get_server_list', 'server_list', 'servers'}:
@@ -842,7 +863,8 @@ def scaffold_one(
                     ""
                 ])
 
-
+        # ── ALISES END HERE ────────────────────────────────────────────────────────────────────────────────
+        #####################################################################################################
  
 
 
