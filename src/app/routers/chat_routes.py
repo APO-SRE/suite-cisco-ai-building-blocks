@@ -61,9 +61,11 @@ from app.llm.prompt_templates import (
 from app.retrievers.chroma_retriever import FunctionRetriever
 from app.routers._domain_keywords import DOMAIN_KEYWORDS_MAP
 from app.main import request_latency  # prometheus histogram
-
+from app.user_commands.update_platform_registry import load_registry
 # ──────────────────────────────── env / logging / tracing
 load_dotenv()
+registry = load_registry()
+
 structlog.configure(
     wrapper_class=structlog.make_filtering_bound_logger(logging.INFO),
     processors=[
@@ -98,6 +100,11 @@ def _assemble_docs_messages(user_input: str, docs: Sequence[Dict[str, Any]], *, 
         {"role": "system", "content": sys_prompt},
         {"role": "user",   "content": user_prompt},
     ]
+
+# Turn this off to disable keyword-based platform narrowing
+PLATFORM_HINT_FILTER = os.getenv("ENABLE_PLATFORM_HINT_FILTER", "true").lower() == "true"
+
+
 
 
 def _assemble_event_messages(user_input: str, docs: Sequence[Dict[str, Any]]) -> List[Dict[str, str]]:
@@ -135,7 +142,8 @@ class ChatRequest(BaseModel):
 
 # ──────────────────────────────── globals
 func_retriever = FunctionRetriever(collection_name="function-definitions-index")
-platforms = enabled_platforms()
+# disabled so can do platform filtering in the retriever
+#platforms = enabled_platforms() 
 router = APIRouter(tags=["chat"])
 
 # ──────────────────────────────── Webex webhook endpoint
@@ -254,6 +262,20 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
             retriever = NullRetriever()
 
         lower      = prompt.lower()
+        # ── DETECT EXPLICIT PLATFORM NAME IN PROMPT ────────────────────────────────────
+        if PLATFORM_HINT_FILTER:
+            hinted = [
+                p for p, meta in registry.items()
+                if p in lower and meta.get("installed", False)
+            ]
+            if hinted:
+                # narrow to only the platforms explicitly named
+                platforms = hinted
+            else:
+                # fall back to whatever’s enabled in .env
+                platforms = enabled_platforms()
+        else:
+            platforms = enabled_platforms()
         is_event   = "event" in lower
         domain_idx = (req.domain_index or getattr(retriever, "domain_index", "")).lower()
         is_domain  = domain_idx in DOMAIN_KEYWORDS_MAP and any(
@@ -284,7 +306,12 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
     with tracer.start_as_current_span("build.functions") as bfspan:
         functions: List[dict] = []
         if VECTOR_BACKEND == "chroma":
-            raw_hits = func_retriever.query(prompt, k=500, filter={"platform": {"$in": platforms}})
+            raw_hits = func_retriever.query(
+                prompt,
+                k=500,
+                filter={"platform": {"$in": platforms}}
+    )
+
             hits     = sorted(raw_hits, key=lambda x: x.get("distance", 1.0))[:128]
             for h in hits:
                 try:
@@ -305,6 +332,7 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
                     log.warning("bad_schema", name=h.get("name"), err=str(exc))
         else:
             functions = build_functions_for_llm(prompt, platforms)
+  
       
 
     # 3️⃣ First LLM call
