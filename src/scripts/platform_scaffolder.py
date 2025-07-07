@@ -106,19 +106,26 @@ PLATFORM_OVERRIDES = {
 # dispatcher. By listing them here, we can ensure they are marked as optional
 # for the LLM, allowing the injection logic to work seamlessly.
 # ── INJECTED PARAMETERS START HERE ──────────────────────────────────────────────────────────────────────────────────
-INJECTED_PARAMETERS = {
+INJECTION_CONFIG = {
     "meraki": {
-        "organization_id",
-        "organizationId",
-        "org_id"
+        "env_var": "MERAKI_ORG_ID",
+        "params": {
+            # Parameter Name -> Value to Inject
+            "organizationId": "{value}",
+            "organization_id": "{value}",
+            "org_id": "{value}",
+        }
     },
     "intersight": {
-        "organization_moid",
-        "filter",
-        "$filter"
+        "env_var": "INTERSIGHT_ORGANIZATION_MOID",
+        "params": {
+            "organization_moid": "{value}",
+            "$filter": "Organization.Moid eq '{value}'",
+            "filter": "Organization.Moid eq '{value}'",
+        }
     },
-    # Add other platforms and their injected parameters here in the future
 }
+
 # ── INJECTED PARAMETERS STOP HERE ──────────────────────────────────────────────────────────────────────────────────
 
 
@@ -138,46 +145,48 @@ def _drop_dynamic_cache() -> None:
         except Exception as exc:
             log.warning("could not drop cache %s: %s", cache_file, exc)
 
-#################################################################################################################
-#################################################################################################################
-#  IMPORTANT !!!!
-#  This is where you add new injections for different platforms. 
-#  Usually required parameters that are used in numerous functions.
-# This way the end user isnt required to enter them manually. 
-# ── INJECTIONS START HERE ──────────────────────────────────────────────────────────────────────────────────
-#
+
+
 def _emit_org_injection(platform: str, non_body_keys: list[str]) -> list[str]:
-    """Return the right org-ID injection block for the given platform."""
+    """
+    Generates the dispatcher code for parameter injection based on the
+    central INJECTION_CONFIG dictionary.
+    """
     lines: list[str] = []
-    if platform.lower() == "intersight":
+    config = INJECTION_CONFIG.get(platform.lower())
+    
+    if not config:
+        return lines
+
+    env_var = config["env_var"]
+    params_to_inject = config["params"]
+
+    lines.append(f"    # ── auto-inject {env_var} ─────────────────")
+    lines.append(f"    env_val = os.getenv('{env_var}')")
+    lines.append("    if env_val:")
+    
+    for param_name, value_template in params_to_inject.items():
+        # Build a string for the *generated* code. The generated code will use
+        # a variable named 'env_val'. Replace the placeholder '{value}' with
+        # the literal text '{env_val}' to construct the correct f-string.
+        final_template = value_template.replace('{value}', '{env_val}')
+        
+        # --- THE FIX IS HERE ---
+        # Use triple quotes to create the f-string. This prevents syntax errors
+        # if the template itself contains single or double quotes.
+        formatted_value = f"f'''{final_template}'''"
+
         lines.extend([
-            "    # ── auto‑inject INTERSIGHT_ORGANIZATION_MOID ────────────────",
-            "    org_moid = os.getenv('INTERSIGHT_ORGANIZATION_MOID')",
-            "    if org_moid:",
-            f"        if 'organization_moid' in {non_body_keys} and 'organization_moid' not in final_kwargs:",
-            "            final_kwargs['organization_moid'] = org_moid",
-            f"        for filt in ('filter', '$filter'):",
-            f"            if filt in {non_body_keys} and filt not in final_kwargs:",
-            "                final_kwargs[filt] = f\"Organization.Moid eq '{org_moid}'\"",
-            "",
+            f"        if '{param_name}' in {non_body_keys} and '{param_name}' not in final_kwargs:",
+            f"            final_kwargs['{param_name}'] = {formatted_value}",
         ])
-    if platform.lower() == "meraki":
-        lines.extend([
-            "    # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────",
-            "    org_env = os.getenv('MERAKI_ORG_ID')",
-            "    if org_env:",
-            f"        for cand in ('organization_id', 'organizationId', 'org_id'):",
-            f"            if cand in {non_body_keys} and cand not in final_kwargs:",
-            "                final_kwargs[cand] = org_env",
-            "                break",
-            "",
-        ])
+    lines.append("")
     return lines
 
-# ── INJECTIONS END HERE ──────────────────────────────────────────────────────────────────────────────────
-###############################################################################################################
+ 
 
-
+ 
+ 
 
 # ╭─────────────────────────────────────────────────────────────────────╮
 # │ 1 ─ package initialisation helpers                                 │
@@ -788,18 +797,13 @@ def scaffold_one(
                 },
             }
  
-
-
-            # Get the set of injected parameters for the current platform.
-            injected_keys = INJECTED_PARAMETERS.get(platform.lower(), set())
+            # Get the set of injected parameter names for the current platform.
+            injected_keys = INJECTION_CONFIG.get(platform.lower(), {}).get("params", {}).keys()
 
             if injected_keys:
                 required_params = schema['parameters'].get('required', [])
-                
-                # Create a new list of required params, excluding any that will be injected.
                 new_required = [p for p in required_params if p not in injected_keys]
                 
-                # If we removed any parameters, update the schema and log it.
                 if len(new_required) < len(required_params):
                     removed_keys = set(required_params) - set(new_required)
                     log.info(f"✓ Making injected keys optional for '{op_id}': {', '.join(removed_keys)}")
