@@ -225,7 +225,11 @@ async def webex_webhook(req: Request):
 # structures before we pass them to json.dumps().
 # ---------------------------------------------------------------------------
 def to_serialisable(obj):
-    # 1️⃣ primitives that JSON can’t handle natively
+    # ➡ 1) short-circuit None → JSON null
+    if obj is None:
+        return None
+    
+    # ➡ 2) primitives that JSON can’t handle natively
     if isinstance(obj, (datetime, date, time)):
         return obj.isoformat()
     if isinstance(obj, Enum):
@@ -233,17 +237,22 @@ def to_serialisable(obj):
     if isinstance(obj, Decimal):
         return float(obj)
 
-    # 2️⃣ openapi‑python‑client / pydantic models
-    if hasattr(obj, "to_dict"):
-        return to_serialisable(obj.to_dict())   # recurse after model→dict
+    # ➡ 3) openapi-python-client / pydantic models: only if .to_dict() exists and is callable
+    to_dict = getattr(obj, "to_dict", None)
+    if callable(to_dict):
+        try:
+            return to_serialisable(to_dict())
+        except Exception:
+            # if something goes wrong inside to_dict(), fall back
+            pass
 
-    # 3️⃣ containers
+    # ➡ 4) containers
     if isinstance(obj, (list, tuple, set)):
         return [to_serialisable(x) for x in obj]
     if isinstance(obj, dict):
         return {k: to_serialisable(v) for k, v in obj.items()}
 
-    # 4️⃣ everything else is assumed JSON‑ready (str, int, bool, None…)
+    # ➡ 5) anything else (str, int, bool, etc.) is JSON-ready
     return obj
  
 
@@ -440,11 +449,12 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
                 "content": json.dumps(to_serialisable(result)),
             },
         ]
+        # instruct the model to return pure HTML
         follow_up[0]["content"] = (
-            "You are a helpful Cisco AI assistant. "
-            "Use the data returned by the function to answer the user's question "
-            "in plain language. Do **NOT** output JSON."
-        )
+           "You are a helpful Cisco AI assistant. "
+           "Use the data returned by the function to answer the user's question "
+           "and return the answer as valid HTML only—no Markdown, JSON, or code fences."
+      )
         final = await llm.chat(follow_up)
 
     if isinstance(final, str):

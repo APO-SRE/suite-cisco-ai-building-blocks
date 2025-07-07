@@ -6,14 +6,12 @@ from app.llm.platform_clients.meraki_client import MerakiClient
 
 @register('getAdministeredIdentitiesMe')
 def getAdministeredIdentitiesMe():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -23,21 +21,21 @@ def getAdministeredIdentitiesMe():
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getAdministeredIdentitiesMe')
+    client = MerakiClient()
+    target = getattr(client, 'getAdministeredIdentitiesMe')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAdministeredIdentitiesMeApiKeys')
 def getAdministeredIdentitiesMeApiKeys():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -47,21 +45,23 @@ def getAdministeredIdentitiesMeApiKeys():
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getAdministeredIdentitiesMeApiKeys')
+    client = MerakiClient()
+    target = getattr(client, 'getAdministeredIdentitiesMeApiKeys')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAdministeredLicensingSubscriptionEntitlements')
 def getAdministeredLicensingSubscriptionEntitlements(skus: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'skus': 'skus'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if skus is not None:
+        final_kwargs['skus'] = skus
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -71,21 +71,41 @@ def getAdministeredLicensingSubscriptionEntitlements(skus: list = None):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getAdministeredLicensingSubscriptionEntitlements')
+    client = MerakiClient()
+    target = getattr(client, 'getAdministeredLicensingSubscriptionEntitlements')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAdministeredLicensingSubscriptionSubscriptions')
 def getAdministeredLicensingSubscriptionSubscriptions(perPage: int = None, startingAfter: str = None, endingBefore: str = None, subscriptionIds: list = None, organizationIds: list = None, statuses: list = None, productTypes: list = None, name: str = None, startDate: str = None, endDate: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'subscriptionIds': 'subscriptionIds', 'organizationIds': 'organizationIds', 'statuses': 'statuses', 'productTypes': 'productTypes', 'name': 'name', 'startDate': 'startDate', 'endDate': 'endDate'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if subscriptionIds is not None:
+        final_kwargs['subscriptionIds'] = subscriptionIds
+    if organizationIds is not None:
+        final_kwargs['organizationIds'] = organizationIds
+    if statuses is not None:
+        final_kwargs['statuses'] = statuses
+    if productTypes is not None:
+        final_kwargs['productTypes'] = productTypes
+    if name is not None:
+        final_kwargs['name'] = name
+    if startDate is not None:
+        final_kwargs['startDate'] = startDate
+    if endDate is not None:
+        final_kwargs['endDate'] = endDate
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -95,21 +115,25 @@ def getAdministeredLicensingSubscriptionSubscriptions(perPage: int = None, start
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getAdministeredLicensingSubscriptionSubscriptions')
+    client = MerakiClient()
+    target = getattr(client, 'getAdministeredLicensingSubscriptionSubscriptions')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAdministeredLicensingSubscriptionSubscriptionsComplianceStatu')
 def getAdministeredLicensingSubscriptionSubscriptionsComplianceStatu(organizationIds: list, subscriptionIds: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationIds': 'organizationIds', 'subscriptionIds': 'subscriptionIds'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationIds is not None:
+        final_kwargs['organizationIds'] = organizationIds
+    if subscriptionIds is not None:
+        final_kwargs['subscriptionIds'] = subscriptionIds
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -119,21 +143,23 @@ def getAdministeredLicensingSubscriptionSubscriptionsComplianceStatu(organizatio
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getAdministeredLicensingSubscriptionSubscriptionsComplianceStatu')
+    client = MerakiClient()
+    target = getattr(client, 'getAdministeredLicensingSubscriptionSubscriptionsComplianceStatu')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDevice')
 def getDevice(serial: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -143,21 +169,23 @@ def getDevice(serial: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDevice')
+    client = MerakiClient()
+    target = getattr(client, 'getDevice')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceApplianceDhcpSubnets')
 def getDeviceApplianceDhcpSubnets(serial: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -167,21 +195,29 @@ def getDeviceApplianceDhcpSubnets(serial: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceApplianceDhcpSubnets')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceApplianceDhcpSubnets')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceAppliancePerformance')
 def getDeviceAppliancePerformance(serial: str, t0: str = None, t1: str = None, timespan: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial', 't0': 't0', 't1': 't1', 'timespan': 'timespan'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -191,21 +227,23 @@ def getDeviceAppliancePerformance(serial: str, t0: str = None, t1: str = None, t
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceAppliancePerformance')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceAppliancePerformance')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceAppliancePrefixesDelegated')
 def getDeviceAppliancePrefixesDelegated(serial: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -215,21 +253,23 @@ def getDeviceAppliancePrefixesDelegated(serial: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceAppliancePrefixesDelegated')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceAppliancePrefixesDelegated')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceAppliancePrefixesDelegatedVlanAssignments')
 def getDeviceAppliancePrefixesDelegatedVlanAssignments(serial: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -239,21 +279,23 @@ def getDeviceAppliancePrefixesDelegatedVlanAssignments(serial: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceAppliancePrefixesDelegatedVlanAssignments')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceAppliancePrefixesDelegatedVlanAssignments')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceApplianceRadioSettings')
 def getDeviceApplianceRadioSettings(serial: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -263,21 +305,23 @@ def getDeviceApplianceRadioSettings(serial: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceApplianceRadioSettings')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceApplianceRadioSettings')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceApplianceUplinksSettings')
 def getDeviceApplianceUplinksSettings(serial: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -287,21 +331,23 @@ def getDeviceApplianceUplinksSettings(serial: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceApplianceUplinksSettings')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceApplianceUplinksSettings')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceCameraAnalyticsLive')
 def getDeviceCameraAnalyticsLive(serial: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -311,21 +357,31 @@ def getDeviceCameraAnalyticsLive(serial: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceCameraAnalyticsLive')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceCameraAnalyticsLive')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceCameraAnalyticsOverview')
 def getDeviceCameraAnalyticsOverview(serial: str, t0: str = None, t1: str = None, timespan: float = None, objectType: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'objectType': 'objectType'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if objectType is not None:
+        final_kwargs['objectType'] = objectType
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -335,21 +391,25 @@ def getDeviceCameraAnalyticsOverview(serial: str, t0: str = None, t1: str = None
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceCameraAnalyticsOverview')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceCameraAnalyticsOverview')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceCameraAnalyticsRecent')
 def getDeviceCameraAnalyticsRecent(serial: str, objectType: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial', 'objectType': 'objectType'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if objectType is not None:
+        final_kwargs['objectType'] = objectType
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -359,21 +419,23 @@ def getDeviceCameraAnalyticsRecent(serial: str, objectType: str = None):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceCameraAnalyticsRecent')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceCameraAnalyticsRecent')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceCameraAnalyticsZones')
 def getDeviceCameraAnalyticsZones(serial: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -383,21 +445,35 @@ def getDeviceCameraAnalyticsZones(serial: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceCameraAnalyticsZones')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceCameraAnalyticsZones')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceCameraAnalyticsZoneHistory')
 def getDeviceCameraAnalyticsZoneHistory(serial: str, zoneId: str, t0: str = None, t1: str = None, timespan: float = None, resolution: int = None, objectType: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial', 'zoneId': 'zoneId', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'resolution': 'resolution', 'objectType': 'objectType'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if zoneId is not None:
+        final_kwargs['zoneId'] = zoneId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if resolution is not None:
+        final_kwargs['resolution'] = resolution
+    if objectType is not None:
+        final_kwargs['objectType'] = objectType
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -407,21 +483,23 @@ def getDeviceCameraAnalyticsZoneHistory(serial: str, zoneId: str, t0: str = None
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceCameraAnalyticsZoneHistory')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceCameraAnalyticsZoneHistory')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceCameraCustomAnalytics')
 def getDeviceCameraCustomAnalytics(serial: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -431,21 +509,23 @@ def getDeviceCameraCustomAnalytics(serial: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceCameraCustomAnalytics')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceCameraCustomAnalytics')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceCameraQualityAndRetention')
 def getDeviceCameraQualityAndRetention(serial: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -455,21 +535,23 @@ def getDeviceCameraQualityAndRetention(serial: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceCameraQualityAndRetention')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceCameraQualityAndRetention')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceCameraSense')
 def getDeviceCameraSense(serial: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -479,21 +561,23 @@ def getDeviceCameraSense(serial: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceCameraSense')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceCameraSense')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceCameraSenseObjectDetectionModels')
 def getDeviceCameraSenseObjectDetectionModels(serial: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -503,21 +587,23 @@ def getDeviceCameraSenseObjectDetectionModels(serial: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceCameraSenseObjectDetectionModels')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceCameraSenseObjectDetectionModels')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceCameraVideoSettings')
 def getDeviceCameraVideoSettings(serial: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -527,21 +613,25 @@ def getDeviceCameraVideoSettings(serial: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceCameraVideoSettings')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceCameraVideoSettings')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceCameraVideoLink')
 def getDeviceCameraVideoLink(serial: str, timestamp: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial', 'timestamp': 'timestamp'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if timestamp is not None:
+        final_kwargs['timestamp'] = timestamp
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -551,21 +641,23 @@ def getDeviceCameraVideoLink(serial: str, timestamp: str = None):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceCameraVideoLink')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceCameraVideoLink')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceCameraWirelessProfiles')
 def getDeviceCameraWirelessProfiles(serial: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -575,21 +667,23 @@ def getDeviceCameraWirelessProfiles(serial: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceCameraWirelessProfiles')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceCameraWirelessProfiles')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceCellularSims')
 def getDeviceCellularSims(serial: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -599,21 +693,23 @@ def getDeviceCellularSims(serial: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceCellularSims')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceCellularSims')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceCellularGatewayLan')
 def getDeviceCellularGatewayLan(serial: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -623,21 +719,23 @@ def getDeviceCellularGatewayLan(serial: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceCellularGatewayLan')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceCellularGatewayLan')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceCellularGatewayPortForwardingRules')
 def getDeviceCellularGatewayPortForwardingRules(serial: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -647,21 +745,27 @@ def getDeviceCellularGatewayPortForwardingRules(serial: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceCellularGatewayPortForwardingRules')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceCellularGatewayPortForwardingRules')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceClients')
 def getDeviceClients(serial: str, t0: str = None, timespan: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial', 't0': 't0', 'timespan': 'timespan'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -671,21 +775,25 @@ def getDeviceClients(serial: str, t0: str = None, timespan: float = None):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceClients')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceClients')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceLiveToolsArpTable')
 def getDeviceLiveToolsArpTable(serial: str, arpTableId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial', 'arpTableId': 'arpTableId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if arpTableId is not None:
+        final_kwargs['arpTableId'] = arpTableId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -695,21 +803,25 @@ def getDeviceLiveToolsArpTable(serial: str, arpTableId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceLiveToolsArpTable')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceLiveToolsArpTable')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceLiveToolsCableTest')
 def getDeviceLiveToolsCableTest(serial: str, id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial', 'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -719,21 +831,25 @@ def getDeviceLiveToolsCableTest(serial: str, id: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceLiveToolsCableTest')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceLiveToolsCableTest')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceLiveToolsLedsBlink')
 def getDeviceLiveToolsLedsBlink(serial: str, ledsBlinkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial', 'ledsBlinkId': 'ledsBlinkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if ledsBlinkId is not None:
+        final_kwargs['ledsBlinkId'] = ledsBlinkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -743,21 +859,25 @@ def getDeviceLiveToolsLedsBlink(serial: str, ledsBlinkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceLiveToolsLedsBlink')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceLiveToolsLedsBlink')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceLiveToolsPing')
 def getDeviceLiveToolsPing(serial: str, id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial', 'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -767,21 +887,25 @@ def getDeviceLiveToolsPing(serial: str, id: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceLiveToolsPing')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceLiveToolsPing')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceLiveToolsPingDevice')
 def getDeviceLiveToolsPingDevice(serial: str, id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial', 'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -791,21 +915,25 @@ def getDeviceLiveToolsPingDevice(serial: str, id: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceLiveToolsPingDevice')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceLiveToolsPingDevice')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceLiveToolsThroughputTest')
 def getDeviceLiveToolsThroughputTest(serial: str, throughputTestId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial', 'throughputTestId': 'throughputTestId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if throughputTestId is not None:
+        final_kwargs['throughputTestId'] = throughputTestId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -815,21 +943,25 @@ def getDeviceLiveToolsThroughputTest(serial: str, throughputTestId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceLiveToolsThroughputTest')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceLiveToolsThroughputTest')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceLiveToolsWakeOnLan')
 def getDeviceLiveToolsWakeOnLan(serial: str, wakeOnLanId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial', 'wakeOnLanId': 'wakeOnLanId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if wakeOnLanId is not None:
+        final_kwargs['wakeOnLanId'] = wakeOnLanId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -839,21 +971,23 @@ def getDeviceLiveToolsWakeOnLan(serial: str, wakeOnLanId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceLiveToolsWakeOnLan')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceLiveToolsWakeOnLan')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceLldpCdp')
 def getDeviceLldpCdp(serial: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -863,21 +997,35 @@ def getDeviceLldpCdp(serial: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceLldpCdp')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceLldpCdp')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceLossAndLatencyHistory')
 def getDeviceLossAndLatencyHistory(serial: str, ip: str, t0: str = None, t1: str = None, timespan: float = None, resolution: int = None, uplink: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'resolution': 'resolution', 'uplink': 'uplink', 'ip': 'ip'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if resolution is not None:
+        final_kwargs['resolution'] = resolution
+    if uplink is not None:
+        final_kwargs['uplink'] = uplink
+    if ip is not None:
+        final_kwargs['ip'] = ip
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -887,21 +1035,23 @@ def getDeviceLossAndLatencyHistory(serial: str, ip: str, t0: str = None, t1: str
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceLossAndLatencyHistory')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceLossAndLatencyHistory')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceManagementInterface')
 def getDeviceManagementInterface(serial: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -911,21 +1061,39 @@ def getDeviceManagementInterface(serial: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceManagementInterface')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceManagementInterface')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceSensorCommands')
 def getDeviceSensorCommands(serial: str, operations: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, sortOrder: str = None, t0: str = None, t1: str = None, timespan: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial', 'operations': 'operations', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'sortOrder': 'sortOrder', 't0': 't0', 't1': 't1', 'timespan': 'timespan'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if operations is not None:
+        final_kwargs['operations'] = operations
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if sortOrder is not None:
+        final_kwargs['sortOrder'] = sortOrder
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -935,21 +1103,25 @@ def getDeviceSensorCommands(serial: str, operations: list = None, perPage: int =
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceSensorCommands')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceSensorCommands')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceSensorCommand')
 def getDeviceSensorCommand(serial: str, commandId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial', 'commandId': 'commandId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if commandId is not None:
+        final_kwargs['commandId'] = commandId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -959,21 +1131,23 @@ def getDeviceSensorCommand(serial: str, commandId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceSensorCommand')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceSensorCommand')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceSensorRelationships')
 def getDeviceSensorRelationships(serial: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -983,21 +1157,23 @@ def getDeviceSensorRelationships(serial: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceSensorRelationships')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceSensorRelationships')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceSwitchPorts')
 def getDeviceSwitchPorts(serial: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1007,21 +1183,27 @@ def getDeviceSwitchPorts(serial: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceSwitchPorts')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceSwitchPorts')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceSwitchPortsStatuses')
 def getDeviceSwitchPortsStatuses(serial: str, t0: str = None, timespan: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial', 't0': 't0', 'timespan': 'timespan'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1031,21 +1213,27 @@ def getDeviceSwitchPortsStatuses(serial: str, t0: str = None, timespan: float = 
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceSwitchPortsStatuses')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceSwitchPortsStatuses')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceSwitchPortsStatusesPackets')
 def getDeviceSwitchPortsStatusesPackets(serial: str, t0: str = None, timespan: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial', 't0': 't0', 'timespan': 'timespan'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1055,21 +1243,25 @@ def getDeviceSwitchPortsStatusesPackets(serial: str, t0: str = None, timespan: f
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceSwitchPortsStatusesPackets')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceSwitchPortsStatusesPackets')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceSwitchPort')
 def getDeviceSwitchPort(serial: str, portId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial', 'portId': 'portId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if portId is not None:
+        final_kwargs['portId'] = portId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1079,21 +1271,23 @@ def getDeviceSwitchPort(serial: str, portId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceSwitchPort')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceSwitchPort')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceSwitchRoutingInterfaces')
 def getDeviceSwitchRoutingInterfaces(serial: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1103,21 +1297,25 @@ def getDeviceSwitchRoutingInterfaces(serial: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceSwitchRoutingInterfaces')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceSwitchRoutingInterfaces')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceSwitchRoutingInterface')
 def getDeviceSwitchRoutingInterface(serial: str, interfaceId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial', 'interfaceId': 'interfaceId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if interfaceId is not None:
+        final_kwargs['interfaceId'] = interfaceId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1127,21 +1325,25 @@ def getDeviceSwitchRoutingInterface(serial: str, interfaceId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceSwitchRoutingInterface')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceSwitchRoutingInterface')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceSwitchRoutingInterfaceDhcp')
 def getDeviceSwitchRoutingInterfaceDhcp(serial: str, interfaceId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial', 'interfaceId': 'interfaceId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if interfaceId is not None:
+        final_kwargs['interfaceId'] = interfaceId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1151,21 +1353,23 @@ def getDeviceSwitchRoutingInterfaceDhcp(serial: str, interfaceId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceSwitchRoutingInterfaceDhcp')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceSwitchRoutingInterfaceDhcp')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceSwitchRoutingStaticRoutes')
 def getDeviceSwitchRoutingStaticRoutes(serial: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1175,21 +1379,25 @@ def getDeviceSwitchRoutingStaticRoutes(serial: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceSwitchRoutingStaticRoutes')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceSwitchRoutingStaticRoutes')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceSwitchRoutingStaticRoute')
 def getDeviceSwitchRoutingStaticRoute(serial: str, staticRouteId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial', 'staticRouteId': 'staticRouteId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if staticRouteId is not None:
+        final_kwargs['staticRouteId'] = staticRouteId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1199,21 +1407,23 @@ def getDeviceSwitchRoutingStaticRoute(serial: str, staticRouteId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceSwitchRoutingStaticRoute')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceSwitchRoutingStaticRoute')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceSwitchWarmSpare')
 def getDeviceSwitchWarmSpare(serial: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1223,21 +1433,23 @@ def getDeviceSwitchWarmSpare(serial: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceSwitchWarmSpare')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceSwitchWarmSpare')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceWirelessBluetoothSettings')
 def getDeviceWirelessBluetoothSettings(serial: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1247,21 +1459,37 @@ def getDeviceWirelessBluetoothSettings(serial: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceWirelessBluetoothSettings')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceWirelessBluetoothSettings')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceWirelessConnectionStats')
 def getDeviceWirelessConnectionStats(serial: str, t0: str = None, t1: str = None, timespan: float = None, band: str = None, ssid: int = None, vlan: int = None, apTag: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'band': 'band', 'ssid': 'ssid', 'vlan': 'vlan', 'apTag': 'apTag'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if band is not None:
+        final_kwargs['band'] = band
+    if ssid is not None:
+        final_kwargs['ssid'] = ssid
+    if vlan is not None:
+        final_kwargs['vlan'] = vlan
+    if apTag is not None:
+        final_kwargs['apTag'] = apTag
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1271,21 +1499,23 @@ def getDeviceWirelessConnectionStats(serial: str, t0: str = None, t1: str = None
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceWirelessConnectionStats')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceWirelessConnectionStats')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceWirelessElectronicShelfLabel')
 def getDeviceWirelessElectronicShelfLabel(serial: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1295,21 +1525,39 @@ def getDeviceWirelessElectronicShelfLabel(serial: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceWirelessElectronicShelfLabel')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceWirelessElectronicShelfLabel')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceWirelessLatencyStats')
 def getDeviceWirelessLatencyStats(serial: str, t0: str = None, t1: str = None, timespan: float = None, band: str = None, ssid: int = None, vlan: int = None, apTag: str = None, fields: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'band': 'band', 'ssid': 'ssid', 'vlan': 'vlan', 'apTag': 'apTag', 'fields': 'fields'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if band is not None:
+        final_kwargs['band'] = band
+    if ssid is not None:
+        final_kwargs['ssid'] = ssid
+    if vlan is not None:
+        final_kwargs['vlan'] = vlan
+    if apTag is not None:
+        final_kwargs['apTag'] = apTag
+    if fields is not None:
+        final_kwargs['fields'] = fields
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1319,21 +1567,23 @@ def getDeviceWirelessLatencyStats(serial: str, t0: str = None, t1: str = None, t
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceWirelessLatencyStats')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceWirelessLatencyStats')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceWirelessRadioSettings')
 def getDeviceWirelessRadioSettings(serial: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1343,21 +1593,23 @@ def getDeviceWirelessRadioSettings(serial: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceWirelessRadioSettings')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceWirelessRadioSettings')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceWirelessStatus')
 def getDeviceWirelessStatus(serial: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serial': 'serial'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1367,21 +1619,23 @@ def getDeviceWirelessStatus(serial: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getDeviceWirelessStatus')
+    client = MerakiClient()
+    target = getattr(client, 'getDeviceWirelessStatus')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetwork')
 def getNetwork(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1391,21 +1645,29 @@ def getNetwork(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetwork')
+    client = MerakiClient()
+    target = getattr(client, 'getNetwork')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkAlertsHistory')
 def getNetworkAlertsHistory(networkId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1415,21 +1677,23 @@ def getNetworkAlertsHistory(networkId: str, perPage: int = None, startingAfter: 
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkAlertsHistory')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkAlertsHistory')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkAlertsSettings')
 def getNetworkAlertsSettings(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1439,21 +1703,39 @@ def getNetworkAlertsSettings(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkAlertsSettings')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkAlertsSettings')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceClientSecurityEvents')
 def getNetworkApplianceClientSecurityEvents(networkId: str, clientId: str, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, sortOrder: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'clientId': 'clientId', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'sortOrder': 'sortOrder'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if clientId is not None:
+        final_kwargs['clientId'] = clientId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if sortOrder is not None:
+        final_kwargs['sortOrder'] = sortOrder
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1463,21 +1745,23 @@ def getNetworkApplianceClientSecurityEvents(networkId: str, clientId: str, t0: s
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceClientSecurityEvents')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceClientSecurityEvents')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceConnectivityMonitoringDestinations')
 def getNetworkApplianceConnectivityMonitoringDestinations(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1487,21 +1771,23 @@ def getNetworkApplianceConnectivityMonitoringDestinations(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceConnectivityMonitoringDestinations')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceConnectivityMonitoringDestinations')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceContentFiltering')
 def getNetworkApplianceContentFiltering(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1511,21 +1797,23 @@ def getNetworkApplianceContentFiltering(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceContentFiltering')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceContentFiltering')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceContentFilteringCategories')
 def getNetworkApplianceContentFilteringCategories(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1535,21 +1823,23 @@ def getNetworkApplianceContentFilteringCategories(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceContentFilteringCategories')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceContentFilteringCategories')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceFirewallCellularFirewallRules')
 def getNetworkApplianceFirewallCellularFirewallRules(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1559,21 +1849,23 @@ def getNetworkApplianceFirewallCellularFirewallRules(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceFirewallCellularFirewallRules')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceFirewallCellularFirewallRules')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceFirewallFirewalledServices')
 def getNetworkApplianceFirewallFirewalledServices(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1583,21 +1875,25 @@ def getNetworkApplianceFirewallFirewalledServices(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceFirewallFirewalledServices')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceFirewallFirewalledServices')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceFirewallFirewalledService')
 def getNetworkApplianceFirewallFirewalledService(networkId: str, service: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'service': 'service'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if service is not None:
+        final_kwargs['service'] = service
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1607,21 +1903,23 @@ def getNetworkApplianceFirewallFirewalledService(networkId: str, service: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceFirewallFirewalledService')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceFirewallFirewalledService')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceFirewallInboundCellularFirewallRules')
 def getNetworkApplianceFirewallInboundCellularFirewallRules(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1631,21 +1929,23 @@ def getNetworkApplianceFirewallInboundCellularFirewallRules(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceFirewallInboundCellularFirewallRules')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceFirewallInboundCellularFirewallRules')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceFirewallInboundFirewallRules')
 def getNetworkApplianceFirewallInboundFirewallRules(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1655,21 +1955,23 @@ def getNetworkApplianceFirewallInboundFirewallRules(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceFirewallInboundFirewallRules')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceFirewallInboundFirewallRules')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceFirewallL3FirewallRules')
 def getNetworkApplianceFirewallL3FirewallRules(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1679,21 +1981,23 @@ def getNetworkApplianceFirewallL3FirewallRules(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceFirewallL3FirewallRules')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceFirewallL3FirewallRules')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceFirewallL7FirewallRules')
 def getNetworkApplianceFirewallL7FirewallRules(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1703,21 +2007,23 @@ def getNetworkApplianceFirewallL7FirewallRules(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceFirewallL7FirewallRules')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceFirewallL7FirewallRules')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceFirewallL7FirewallRulesApplicationCategories')
 def getNetworkApplianceFirewallL7FirewallRulesApplicationCategories(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1727,21 +2033,23 @@ def getNetworkApplianceFirewallL7FirewallRulesApplicationCategories(networkId: s
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceFirewallL7FirewallRulesApplicationCategories')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceFirewallL7FirewallRulesApplicationCategories')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceFirewallOneToManyNatRules')
 def getNetworkApplianceFirewallOneToManyNatRules(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1751,21 +2059,23 @@ def getNetworkApplianceFirewallOneToManyNatRules(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceFirewallOneToManyNatRules')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceFirewallOneToManyNatRules')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceFirewallOneToOneNatRules')
 def getNetworkApplianceFirewallOneToOneNatRules(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1775,21 +2085,23 @@ def getNetworkApplianceFirewallOneToOneNatRules(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceFirewallOneToOneNatRules')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceFirewallOneToOneNatRules')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceFirewallPortForwardingRules')
 def getNetworkApplianceFirewallPortForwardingRules(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1799,21 +2111,23 @@ def getNetworkApplianceFirewallPortForwardingRules(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceFirewallPortForwardingRules')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceFirewallPortForwardingRules')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceFirewallSettings')
 def getNetworkApplianceFirewallSettings(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1823,21 +2137,23 @@ def getNetworkApplianceFirewallSettings(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceFirewallSettings')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceFirewallSettings')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkAppliancePorts')
 def getNetworkAppliancePorts(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1847,21 +2163,25 @@ def getNetworkAppliancePorts(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkAppliancePorts')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkAppliancePorts')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkAppliancePort')
 def getNetworkAppliancePort(networkId: str, portId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'portId': 'portId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if portId is not None:
+        final_kwargs['portId'] = portId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1871,21 +2191,23 @@ def getNetworkAppliancePort(networkId: str, portId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkAppliancePort')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkAppliancePort')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkAppliancePrefixesDelegatedStatics')
 def getNetworkAppliancePrefixesDelegatedStatics(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1895,21 +2217,25 @@ def getNetworkAppliancePrefixesDelegatedStatics(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkAppliancePrefixesDelegatedStatics')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkAppliancePrefixesDelegatedStatics')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkAppliancePrefixesDelegatedStatic')
 def getNetworkAppliancePrefixesDelegatedStatic(networkId: str, staticDelegatedPrefixId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'staticDelegatedPrefixId': 'staticDelegatedPrefixId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if staticDelegatedPrefixId is not None:
+        final_kwargs['staticDelegatedPrefixId'] = staticDelegatedPrefixId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1919,21 +2245,23 @@ def getNetworkAppliancePrefixesDelegatedStatic(networkId: str, staticDelegatedPr
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkAppliancePrefixesDelegatedStatic')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkAppliancePrefixesDelegatedStatic')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceRfProfiles')
 def getNetworkApplianceRfProfiles(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1943,21 +2271,25 @@ def getNetworkApplianceRfProfiles(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceRfProfiles')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceRfProfiles')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceRfProfile')
 def getNetworkApplianceRfProfile(networkId: str, rfProfileId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'rfProfileId': 'rfProfileId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if rfProfileId is not None:
+        final_kwargs['rfProfileId'] = rfProfileId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1967,21 +2299,37 @@ def getNetworkApplianceRfProfile(networkId: str, rfProfileId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceRfProfile')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceRfProfile')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceSecurityEvents')
 def getNetworkApplianceSecurityEvents(networkId: str, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, sortOrder: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'sortOrder': 'sortOrder'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if sortOrder is not None:
+        final_kwargs['sortOrder'] = sortOrder
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -1991,21 +2339,23 @@ def getNetworkApplianceSecurityEvents(networkId: str, t0: str = None, t1: str = 
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceSecurityEvents')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceSecurityEvents')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceSecurityIntrusion')
 def getNetworkApplianceSecurityIntrusion(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2015,21 +2365,23 @@ def getNetworkApplianceSecurityIntrusion(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceSecurityIntrusion')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceSecurityIntrusion')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceSecurityMalware')
 def getNetworkApplianceSecurityMalware(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2039,21 +2391,23 @@ def getNetworkApplianceSecurityMalware(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceSecurityMalware')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceSecurityMalware')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceSettings')
 def getNetworkApplianceSettings(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2063,21 +2417,23 @@ def getNetworkApplianceSettings(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceSettings')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceSettings')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceSingleLan')
 def getNetworkApplianceSingleLan(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2087,21 +2443,23 @@ def getNetworkApplianceSingleLan(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceSingleLan')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceSingleLan')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceSsids')
 def getNetworkApplianceSsids(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2111,21 +2469,25 @@ def getNetworkApplianceSsids(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceSsids')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceSsids')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceSsid')
 def getNetworkApplianceSsid(networkId: str, number: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'number': 'number'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if number is not None:
+        final_kwargs['number'] = number
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2135,21 +2497,23 @@ def getNetworkApplianceSsid(networkId: str, number: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceSsid')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceSsid')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceStaticRoutes')
 def getNetworkApplianceStaticRoutes(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2159,21 +2523,25 @@ def getNetworkApplianceStaticRoutes(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceStaticRoutes')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceStaticRoutes')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceStaticRoute')
 def getNetworkApplianceStaticRoute(networkId: str, staticRouteId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'staticRouteId': 'staticRouteId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if staticRouteId is not None:
+        final_kwargs['staticRouteId'] = staticRouteId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2183,21 +2551,23 @@ def getNetworkApplianceStaticRoute(networkId: str, staticRouteId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceStaticRoute')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceStaticRoute')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceTrafficShaping')
 def getNetworkApplianceTrafficShaping(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2207,21 +2577,23 @@ def getNetworkApplianceTrafficShaping(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceTrafficShaping')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceTrafficShaping')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceTrafficShapingCustomPerformanceClasses')
 def getNetworkApplianceTrafficShapingCustomPerformanceClasses(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2231,21 +2603,25 @@ def getNetworkApplianceTrafficShapingCustomPerformanceClasses(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceTrafficShapingCustomPerformanceClasses')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceTrafficShapingCustomPerformanceClasses')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceTrafficShapingCustomPerformanceClass')
 def getNetworkApplianceTrafficShapingCustomPerformanceClass(networkId: str, customPerformanceClassId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'customPerformanceClassId': 'customPerformanceClassId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if customPerformanceClassId is not None:
+        final_kwargs['customPerformanceClassId'] = customPerformanceClassId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2255,21 +2631,23 @@ def getNetworkApplianceTrafficShapingCustomPerformanceClass(networkId: str, cust
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceTrafficShapingCustomPerformanceClass')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceTrafficShapingCustomPerformanceClass')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceTrafficShapingRules')
 def getNetworkApplianceTrafficShapingRules(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2279,21 +2657,23 @@ def getNetworkApplianceTrafficShapingRules(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceTrafficShapingRules')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceTrafficShapingRules')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceTrafficShapingUplinkBandwidth')
 def getNetworkApplianceTrafficShapingUplinkBandwidth(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2303,21 +2683,23 @@ def getNetworkApplianceTrafficShapingUplinkBandwidth(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceTrafficShapingUplinkBandwidth')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceTrafficShapingUplinkBandwidth')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceTrafficShapingUplinkSelection')
 def getNetworkApplianceTrafficShapingUplinkSelection(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2327,21 +2709,31 @@ def getNetworkApplianceTrafficShapingUplinkSelection(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceTrafficShapingUplinkSelection')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceTrafficShapingUplinkSelection')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceUplinksUsageHistory')
 def getNetworkApplianceUplinksUsageHistory(networkId: str, t0: str = None, t1: str = None, timespan: float = None, resolution: int = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'resolution': 'resolution'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if resolution is not None:
+        final_kwargs['resolution'] = resolution
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2351,21 +2743,23 @@ def getNetworkApplianceUplinksUsageHistory(networkId: str, t0: str = None, t1: s
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceUplinksUsageHistory')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceUplinksUsageHistory')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceVlans')
 def getNetworkApplianceVlans(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2375,21 +2769,23 @@ def getNetworkApplianceVlans(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceVlans')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceVlans')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceVlansSettings')
 def getNetworkApplianceVlansSettings(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2399,21 +2795,25 @@ def getNetworkApplianceVlansSettings(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceVlansSettings')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceVlansSettings')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceVlan')
 def getNetworkApplianceVlan(networkId: str, vlanId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'vlanId': 'vlanId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if vlanId is not None:
+        final_kwargs['vlanId'] = vlanId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2423,21 +2823,23 @@ def getNetworkApplianceVlan(networkId: str, vlanId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceVlan')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceVlan')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceVpnBgp')
 def getNetworkApplianceVpnBgp(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2447,21 +2849,23 @@ def getNetworkApplianceVpnBgp(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceVpnBgp')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceVpnBgp')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceVpnSiteToSiteVpn')
 def getNetworkApplianceVpnSiteToSiteVpn(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2471,21 +2875,23 @@ def getNetworkApplianceVpnSiteToSiteVpn(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceVpnSiteToSiteVpn')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceVpnSiteToSiteVpn')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkApplianceWarmSpare')
 def getNetworkApplianceWarmSpare(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2495,21 +2901,35 @@ def getNetworkApplianceWarmSpare(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkApplianceWarmSpare')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkApplianceWarmSpare')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkBluetoothClients')
 def getNetworkBluetoothClients(networkId: str, t0: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, includeConnectivityHistory: bool = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 't0': 't0', 'timespan': 'timespan', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'includeConnectivityHistory': 'includeConnectivityHistory'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if includeConnectivityHistory is not None:
+        final_kwargs['includeConnectivityHistory'] = includeConnectivityHistory
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2519,21 +2939,29 @@ def getNetworkBluetoothClients(networkId: str, t0: str = None, timespan: float =
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkBluetoothClients')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkBluetoothClients')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkBluetoothClient')
 def getNetworkBluetoothClient(networkId: str, bluetoothClientId: str, includeConnectivityHistory: bool = None, connectivityHistoryTimespan: int = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'bluetoothClientId': 'bluetoothClientId', 'includeConnectivityHistory': 'includeConnectivityHistory', 'connectivityHistoryTimespan': 'connectivityHistoryTimespan'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if bluetoothClientId is not None:
+        final_kwargs['bluetoothClientId'] = bluetoothClientId
+    if includeConnectivityHistory is not None:
+        final_kwargs['includeConnectivityHistory'] = includeConnectivityHistory
+    if connectivityHistoryTimespan is not None:
+        final_kwargs['connectivityHistoryTimespan'] = connectivityHistoryTimespan
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2543,21 +2971,23 @@ def getNetworkBluetoothClient(networkId: str, bluetoothClientId: str, includeCon
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkBluetoothClient')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkBluetoothClient')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkCameraQualityRetentionProfiles')
 def getNetworkCameraQualityRetentionProfiles(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2567,21 +2997,25 @@ def getNetworkCameraQualityRetentionProfiles(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkCameraQualityRetentionProfiles')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkCameraQualityRetentionProfiles')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkCameraQualityRetentionProfile')
 def getNetworkCameraQualityRetentionProfile(networkId: str, qualityRetentionProfileId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'qualityRetentionProfileId': 'qualityRetentionProfileId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if qualityRetentionProfileId is not None:
+        final_kwargs['qualityRetentionProfileId'] = qualityRetentionProfileId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2591,21 +3025,23 @@ def getNetworkCameraQualityRetentionProfile(networkId: str, qualityRetentionProf
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkCameraQualityRetentionProfile')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkCameraQualityRetentionProfile')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkCameraSchedules')
 def getNetworkCameraSchedules(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2615,21 +3051,23 @@ def getNetworkCameraSchedules(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkCameraSchedules')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkCameraSchedules')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkCameraWirelessProfiles')
 def getNetworkCameraWirelessProfiles(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2639,21 +3077,25 @@ def getNetworkCameraWirelessProfiles(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkCameraWirelessProfiles')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkCameraWirelessProfiles')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkCameraWirelessProfile')
 def getNetworkCameraWirelessProfile(networkId: str, wirelessProfileId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'wirelessProfileId': 'wirelessProfileId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if wirelessProfileId is not None:
+        final_kwargs['wirelessProfileId'] = wirelessProfileId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2663,21 +3105,23 @@ def getNetworkCameraWirelessProfile(networkId: str, wirelessProfileId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkCameraWirelessProfile')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkCameraWirelessProfile')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkCellularGatewayConnectivityMonitoringDestinations')
 def getNetworkCellularGatewayConnectivityMonitoringDestinations(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2687,21 +3131,23 @@ def getNetworkCellularGatewayConnectivityMonitoringDestinations(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkCellularGatewayConnectivityMonitoringDestinations')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkCellularGatewayConnectivityMonitoringDestinations')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkCellularGatewayDhcp')
 def getNetworkCellularGatewayDhcp(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2711,21 +3157,23 @@ def getNetworkCellularGatewayDhcp(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkCellularGatewayDhcp')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkCellularGatewayDhcp')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkCellularGatewaySubnetPool')
 def getNetworkCellularGatewaySubnetPool(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2735,21 +3183,23 @@ def getNetworkCellularGatewaySubnetPool(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkCellularGatewaySubnetPool')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkCellularGatewaySubnetPool')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkCellularGatewayUplink')
 def getNetworkCellularGatewayUplink(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2759,21 +3209,55 @@ def getNetworkCellularGatewayUplink(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkCellularGatewayUplink')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkCellularGatewayUplink')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkClients')
 def getNetworkClients(networkId: str, t0: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, statuses: list = None, ip: str = None, ip6: str = None, ip6Local: str = None, mac: str = None, os: str = None, pskGroup: str = None, description: str = None, vlan: str = None, namedVlan: str = None, recentDeviceConnections: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 't0': 't0', 'timespan': 'timespan', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'statuses': 'statuses', 'ip': 'ip', 'ip6': 'ip6', 'ip6Local': 'ip6Local', 'mac': 'mac', 'os': 'os', 'pskGroup': 'pskGroup', 'description': 'description', 'vlan': 'vlan', 'namedVlan': 'namedVlan', 'recentDeviceConnections': 'recentDeviceConnections'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if statuses is not None:
+        final_kwargs['statuses'] = statuses
+    if ip is not None:
+        final_kwargs['ip'] = ip
+    if ip6 is not None:
+        final_kwargs['ip6'] = ip6
+    if ip6Local is not None:
+        final_kwargs['ip6Local'] = ip6Local
+    if mac is not None:
+        final_kwargs['mac'] = mac
+    if os is not None:
+        final_kwargs['os'] = os
+    if pskGroup is not None:
+        final_kwargs['pskGroup'] = pskGroup
+    if description is not None:
+        final_kwargs['description'] = description
+    if vlan is not None:
+        final_kwargs['vlan'] = vlan
+    if namedVlan is not None:
+        final_kwargs['namedVlan'] = namedVlan
+    if recentDeviceConnections is not None:
+        final_kwargs['recentDeviceConnections'] = recentDeviceConnections
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2783,21 +3267,39 @@ def getNetworkClients(networkId: str, t0: str = None, timespan: float = None, pe
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkClients')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkClients')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkClientsApplicationUsage')
 def getNetworkClientsApplicationUsage(networkId: str, clients: str, ssidNumber: int = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, t0: str = None, t1: str = None, timespan: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'clients': 'clients', 'ssidNumber': 'ssidNumber', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 't0': 't0', 't1': 't1', 'timespan': 'timespan'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if clients is not None:
+        final_kwargs['clients'] = clients
+    if ssidNumber is not None:
+        final_kwargs['ssidNumber'] = ssidNumber
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2807,21 +3309,35 @@ def getNetworkClientsApplicationUsage(networkId: str, clients: str, ssidNumber: 
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkClientsApplicationUsage')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkClientsApplicationUsage')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkClientsBandwidthUsageHistory')
 def getNetworkClientsBandwidthUsageHistory(networkId: str, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2831,21 +3347,31 @@ def getNetworkClientsBandwidthUsageHistory(networkId: str, t0: str = None, t1: s
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkClientsBandwidthUsageHistory')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkClientsBandwidthUsageHistory')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkClientsOverview')
 def getNetworkClientsOverview(networkId: str, t0: str = None, t1: str = None, timespan: float = None, resolution: int = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'resolution': 'resolution'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if resolution is not None:
+        final_kwargs['resolution'] = resolution
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2855,21 +3381,39 @@ def getNetworkClientsOverview(networkId: str, t0: str = None, t1: str = None, ti
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkClientsOverview')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkClientsOverview')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkClientsUsageHistories')
 def getNetworkClientsUsageHistories(networkId: str, clients: str, ssidNumber: int = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, t0: str = None, t1: str = None, timespan: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'clients': 'clients', 'ssidNumber': 'ssidNumber', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 't0': 't0', 't1': 't1', 'timespan': 'timespan'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if clients is not None:
+        final_kwargs['clients'] = clients
+    if ssidNumber is not None:
+        final_kwargs['ssidNumber'] = ssidNumber
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2879,21 +3423,25 @@ def getNetworkClientsUsageHistories(networkId: str, clients: str, ssidNumber: in
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkClientsUsageHistories')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkClientsUsageHistories')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkClient')
 def getNetworkClient(networkId: str, clientId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'clientId': 'clientId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if clientId is not None:
+        final_kwargs['clientId'] = clientId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2903,21 +3451,25 @@ def getNetworkClient(networkId: str, clientId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkClient')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkClient')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkClientPolicy')
 def getNetworkClientPolicy(networkId: str, clientId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'clientId': 'clientId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if clientId is not None:
+        final_kwargs['clientId'] = clientId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2927,21 +3479,25 @@ def getNetworkClientPolicy(networkId: str, clientId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkClientPolicy')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkClientPolicy')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkClientSplashAuthorizationStatus')
 def getNetworkClientSplashAuthorizationStatus(networkId: str, clientId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'clientId': 'clientId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if clientId is not None:
+        final_kwargs['clientId'] = clientId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2951,21 +3507,31 @@ def getNetworkClientSplashAuthorizationStatus(networkId: str, clientId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkClientSplashAuthorizationStatus')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkClientSplashAuthorizationStatus')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkClientTrafficHistory')
 def getNetworkClientTrafficHistory(networkId: str, clientId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'clientId': 'clientId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if clientId is not None:
+        final_kwargs['clientId'] = clientId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2975,21 +3541,25 @@ def getNetworkClientTrafficHistory(networkId: str, clientId: str, perPage: int =
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkClientTrafficHistory')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkClientTrafficHistory')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkClientUsageHistory')
 def getNetworkClientUsageHistory(networkId: str, clientId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'clientId': 'clientId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if clientId is not None:
+        final_kwargs['clientId'] = clientId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -2999,21 +3569,23 @@ def getNetworkClientUsageHistory(networkId: str, clientId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkClientUsageHistory')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkClientUsageHistory')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkDevices')
 def getNetworkDevices(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3023,21 +3595,57 @@ def getNetworkDevices(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkDevices')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkDevices')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkEvents')
 def getNetworkEvents(networkId: str, productType: str = None, includedEventTypes: list = None, excludedEventTypes: list = None, deviceMac: str = None, deviceSerial: str = None, deviceName: str = None, clientIp: str = None, clientMac: str = None, clientName: str = None, smDeviceMac: str = None, smDeviceName: str = None, eventDetails: str = None, eventSeverity: str = None, isCatalyst: bool = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'productType': 'productType', 'includedEventTypes': 'includedEventTypes', 'excludedEventTypes': 'excludedEventTypes', 'deviceMac': 'deviceMac', 'deviceSerial': 'deviceSerial', 'deviceName': 'deviceName', 'clientIp': 'clientIp', 'clientMac': 'clientMac', 'clientName': 'clientName', 'smDeviceMac': 'smDeviceMac', 'smDeviceName': 'smDeviceName', 'eventDetails': 'eventDetails', 'eventSeverity': 'eventSeverity', 'isCatalyst': 'isCatalyst', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if productType is not None:
+        final_kwargs['productType'] = productType
+    if includedEventTypes is not None:
+        final_kwargs['includedEventTypes'] = includedEventTypes
+    if excludedEventTypes is not None:
+        final_kwargs['excludedEventTypes'] = excludedEventTypes
+    if deviceMac is not None:
+        final_kwargs['deviceMac'] = deviceMac
+    if deviceSerial is not None:
+        final_kwargs['deviceSerial'] = deviceSerial
+    if deviceName is not None:
+        final_kwargs['deviceName'] = deviceName
+    if clientIp is not None:
+        final_kwargs['clientIp'] = clientIp
+    if clientMac is not None:
+        final_kwargs['clientMac'] = clientMac
+    if clientName is not None:
+        final_kwargs['clientName'] = clientName
+    if smDeviceMac is not None:
+        final_kwargs['smDeviceMac'] = smDeviceMac
+    if smDeviceName is not None:
+        final_kwargs['smDeviceName'] = smDeviceName
+    if eventDetails is not None:
+        final_kwargs['eventDetails'] = eventDetails
+    if eventSeverity is not None:
+        final_kwargs['eventSeverity'] = eventSeverity
+    if isCatalyst is not None:
+        final_kwargs['isCatalyst'] = isCatalyst
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3047,21 +3655,23 @@ def getNetworkEvents(networkId: str, productType: str = None, includedEventTypes
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkEvents')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkEvents')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkEventsEventTypes')
 def getNetworkEventsEventTypes(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3071,21 +3681,23 @@ def getNetworkEventsEventTypes(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkEventsEventTypes')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkEventsEventTypes')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkFirmwareUpgrades')
 def getNetworkFirmwareUpgrades(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3095,21 +3707,23 @@ def getNetworkFirmwareUpgrades(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkFirmwareUpgrades')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkFirmwareUpgrades')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkFirmwareUpgradesStagedEvents')
 def getNetworkFirmwareUpgradesStagedEvents(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3119,21 +3733,23 @@ def getNetworkFirmwareUpgradesStagedEvents(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkFirmwareUpgradesStagedEvents')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkFirmwareUpgradesStagedEvents')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkFirmwareUpgradesStagedGroups')
 def getNetworkFirmwareUpgradesStagedGroups(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3143,21 +3759,25 @@ def getNetworkFirmwareUpgradesStagedGroups(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkFirmwareUpgradesStagedGroups')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkFirmwareUpgradesStagedGroups')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkFirmwareUpgradesStagedGroup')
 def getNetworkFirmwareUpgradesStagedGroup(networkId: str, groupId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'groupId': 'groupId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if groupId is not None:
+        final_kwargs['groupId'] = groupId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3167,21 +3787,23 @@ def getNetworkFirmwareUpgradesStagedGroup(networkId: str, groupId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkFirmwareUpgradesStagedGroup')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkFirmwareUpgradesStagedGroup')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkFirmwareUpgradesStagedStages')
 def getNetworkFirmwareUpgradesStagedStages(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3191,21 +3813,23 @@ def getNetworkFirmwareUpgradesStagedStages(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkFirmwareUpgradesStagedStages')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkFirmwareUpgradesStagedStages')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkFloorPlans')
 def getNetworkFloorPlans(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3215,21 +3839,25 @@ def getNetworkFloorPlans(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkFloorPlans')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkFloorPlans')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkFloorPlan')
 def getNetworkFloorPlan(networkId: str, floorPlanId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'floorPlanId': 'floorPlanId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if floorPlanId is not None:
+        final_kwargs['floorPlanId'] = floorPlanId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3239,21 +3867,23 @@ def getNetworkFloorPlan(networkId: str, floorPlanId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkFloorPlan')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkFloorPlan')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkGroupPolicies')
 def getNetworkGroupPolicies(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3263,21 +3893,25 @@ def getNetworkGroupPolicies(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkGroupPolicies')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkGroupPolicies')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkGroupPolicy')
 def getNetworkGroupPolicy(networkId: str, groupPolicyId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'groupPolicyId': 'groupPolicyId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if groupPolicyId is not None:
+        final_kwargs['groupPolicyId'] = groupPolicyId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3287,21 +3921,23 @@ def getNetworkGroupPolicy(networkId: str, groupPolicyId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkGroupPolicy')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkGroupPolicy')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkHealthAlerts')
 def getNetworkHealthAlerts(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3311,21 +3947,33 @@ def getNetworkHealthAlerts(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkHealthAlerts')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkHealthAlerts')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkInsightApplicationHealthByTime')
 def getNetworkInsightApplicationHealthByTime(networkId: str, applicationId: str, t0: str = None, t1: str = None, timespan: float = None, resolution: int = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'applicationId': 'applicationId', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'resolution': 'resolution'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if applicationId is not None:
+        final_kwargs['applicationId'] = applicationId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if resolution is not None:
+        final_kwargs['resolution'] = resolution
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3335,21 +3983,23 @@ def getNetworkInsightApplicationHealthByTime(networkId: str, applicationId: str,
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkInsightApplicationHealthByTime')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkInsightApplicationHealthByTime')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkMerakiAuthUsers')
 def getNetworkMerakiAuthUsers(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3359,21 +4009,25 @@ def getNetworkMerakiAuthUsers(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkMerakiAuthUsers')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkMerakiAuthUsers')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkMerakiAuthUser')
 def getNetworkMerakiAuthUser(networkId: str, merakiAuthUserId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'merakiAuthUserId': 'merakiAuthUserId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if merakiAuthUserId is not None:
+        final_kwargs['merakiAuthUserId'] = merakiAuthUserId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3383,21 +4037,23 @@ def getNetworkMerakiAuthUser(networkId: str, merakiAuthUserId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkMerakiAuthUser')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkMerakiAuthUser')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkMqttBrokers')
 def getNetworkMqttBrokers(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3407,21 +4063,25 @@ def getNetworkMqttBrokers(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkMqttBrokers')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkMqttBrokers')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkMqttBroker')
 def getNetworkMqttBroker(networkId: str, mqttBrokerId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'mqttBrokerId': 'mqttBrokerId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if mqttBrokerId is not None:
+        final_kwargs['mqttBrokerId'] = mqttBrokerId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3431,21 +4091,23 @@ def getNetworkMqttBroker(networkId: str, mqttBrokerId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkMqttBroker')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkMqttBroker')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkNetflow')
 def getNetworkNetflow(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3455,21 +4117,37 @@ def getNetworkNetflow(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkNetflow')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkNetflow')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkNetworkHealthChannelUtilization')
 def getNetworkNetworkHealthChannelUtilization(networkId: str, t0: str = None, t1: str = None, timespan: float = None, resolution: int = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'resolution': 'resolution', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if resolution is not None:
+        final_kwargs['resolution'] = resolution
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3479,21 +4157,35 @@ def getNetworkNetworkHealthChannelUtilization(networkId: str, t0: str = None, t1
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkNetworkHealthChannelUtilization')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkNetworkHealthChannelUtilization')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkPiiPiiKeys')
 def getNetworkPiiPiiKeys(networkId: str, username: str = None, email: str = None, mac: str = None, serial: str = None, imei: str = None, bluetoothMac: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'username': 'username', 'email': 'email', 'mac': 'mac', 'serial': 'serial', 'imei': 'imei', 'bluetoothMac': 'bluetoothMac'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if username is not None:
+        final_kwargs['username'] = username
+    if email is not None:
+        final_kwargs['email'] = email
+    if mac is not None:
+        final_kwargs['mac'] = mac
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if imei is not None:
+        final_kwargs['imei'] = imei
+    if bluetoothMac is not None:
+        final_kwargs['bluetoothMac'] = bluetoothMac
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3503,21 +4195,23 @@ def getNetworkPiiPiiKeys(networkId: str, username: str = None, email: str = None
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkPiiPiiKeys')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkPiiPiiKeys')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkPiiRequests')
 def getNetworkPiiRequests(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3527,21 +4221,25 @@ def getNetworkPiiRequests(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkPiiRequests')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkPiiRequests')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkPiiRequest')
 def getNetworkPiiRequest(networkId: str, requestId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'requestId': 'requestId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if requestId is not None:
+        final_kwargs['requestId'] = requestId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3551,21 +4249,35 @@ def getNetworkPiiRequest(networkId: str, requestId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkPiiRequest')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkPiiRequest')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkPiiSmDevicesForKey')
 def getNetworkPiiSmDevicesForKey(networkId: str, username: str = None, email: str = None, mac: str = None, serial: str = None, imei: str = None, bluetoothMac: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'username': 'username', 'email': 'email', 'mac': 'mac', 'serial': 'serial', 'imei': 'imei', 'bluetoothMac': 'bluetoothMac'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if username is not None:
+        final_kwargs['username'] = username
+    if email is not None:
+        final_kwargs['email'] = email
+    if mac is not None:
+        final_kwargs['mac'] = mac
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if imei is not None:
+        final_kwargs['imei'] = imei
+    if bluetoothMac is not None:
+        final_kwargs['bluetoothMac'] = bluetoothMac
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3575,21 +4287,35 @@ def getNetworkPiiSmDevicesForKey(networkId: str, username: str = None, email: st
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkPiiSmDevicesForKey')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkPiiSmDevicesForKey')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkPiiSmOwnersForKey')
 def getNetworkPiiSmOwnersForKey(networkId: str, username: str = None, email: str = None, mac: str = None, serial: str = None, imei: str = None, bluetoothMac: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'username': 'username', 'email': 'email', 'mac': 'mac', 'serial': 'serial', 'imei': 'imei', 'bluetoothMac': 'bluetoothMac'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if username is not None:
+        final_kwargs['username'] = username
+    if email is not None:
+        final_kwargs['email'] = email
+    if mac is not None:
+        final_kwargs['mac'] = mac
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if imei is not None:
+        final_kwargs['imei'] = imei
+    if bluetoothMac is not None:
+        final_kwargs['bluetoothMac'] = bluetoothMac
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3599,21 +4325,33 @@ def getNetworkPiiSmOwnersForKey(networkId: str, username: str = None, email: str
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkPiiSmOwnersForKey')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkPiiSmOwnersForKey')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkPoliciesByClient')
 def getNetworkPoliciesByClient(networkId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, t0: str = None, timespan: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 't0': 't0', 'timespan': 'timespan'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3623,21 +4361,23 @@ def getNetworkPoliciesByClient(networkId: str, perPage: int = None, startingAfte
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkPoliciesByClient')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkPoliciesByClient')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSensorAlertsCurrentOverviewByMetric')
 def getNetworkSensorAlertsCurrentOverviewByMetric(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3647,21 +4387,31 @@ def getNetworkSensorAlertsCurrentOverviewByMetric(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSensorAlertsCurrentOverviewByMetric')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSensorAlertsCurrentOverviewByMetric')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSensorAlertsOverviewByMetric')
 def getNetworkSensorAlertsOverviewByMetric(networkId: str, t0: str = None, t1: str = None, timespan: float = None, interval: int = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'interval': 'interval'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if interval is not None:
+        final_kwargs['interval'] = interval
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3671,21 +4421,23 @@ def getNetworkSensorAlertsOverviewByMetric(networkId: str, t0: str = None, t1: s
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSensorAlertsOverviewByMetric')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSensorAlertsOverviewByMetric')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSensorAlertsProfiles')
 def getNetworkSensorAlertsProfiles(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3695,21 +4447,25 @@ def getNetworkSensorAlertsProfiles(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSensorAlertsProfiles')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSensorAlertsProfiles')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSensorAlertsProfile')
 def getNetworkSensorAlertsProfile(networkId: str, id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3719,21 +4475,23 @@ def getNetworkSensorAlertsProfile(networkId: str, id: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSensorAlertsProfile')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSensorAlertsProfile')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSensorMqttBrokers')
 def getNetworkSensorMqttBrokers(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3743,21 +4501,25 @@ def getNetworkSensorMqttBrokers(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSensorMqttBrokers')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSensorMqttBrokers')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSensorMqttBroker')
 def getNetworkSensorMqttBroker(networkId: str, mqttBrokerId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'mqttBrokerId': 'mqttBrokerId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if mqttBrokerId is not None:
+        final_kwargs['mqttBrokerId'] = mqttBrokerId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3767,21 +4529,23 @@ def getNetworkSensorMqttBroker(networkId: str, mqttBrokerId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSensorMqttBroker')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSensorMqttBroker')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSensorRelationships')
 def getNetworkSensorRelationships(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3791,21 +4555,23 @@ def getNetworkSensorRelationships(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSensorRelationships')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSensorRelationships')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSettings')
 def getNetworkSettings(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3815,21 +4581,25 @@ def getNetworkSettings(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSettings')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSettings')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSmBypassActivationLockAttempt')
 def getNetworkSmBypassActivationLockAttempt(networkId: str, attemptId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'attemptId': 'attemptId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if attemptId is not None:
+        final_kwargs['attemptId'] = attemptId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3839,21 +4609,43 @@ def getNetworkSmBypassActivationLockAttempt(networkId: str, attemptId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSmBypassActivationLockAttempt')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSmBypassActivationLockAttempt')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSmDevices')
 def getNetworkSmDevices(networkId: str, fields: list = None, wifiMacs: list = None, serials: list = None, ids: list = None, uuids: list = None, systemTypes: list = None, scope: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'fields': 'fields', 'wifiMacs': 'wifiMacs', 'serials': 'serials', 'ids': 'ids', 'uuids': 'uuids', 'systemTypes': 'systemTypes', 'scope': 'scope', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if fields is not None:
+        final_kwargs['fields'] = fields
+    if wifiMacs is not None:
+        final_kwargs['wifiMacs'] = wifiMacs
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if ids is not None:
+        final_kwargs['ids'] = ids
+    if uuids is not None:
+        final_kwargs['uuids'] = uuids
+    if systemTypes is not None:
+        final_kwargs['systemTypes'] = systemTypes
+    if scope is not None:
+        final_kwargs['scope'] = scope
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3863,21 +4655,25 @@ def getNetworkSmDevices(networkId: str, fields: list = None, wifiMacs: list = No
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSmDevices')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSmDevices')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSmDeviceCellularUsageHistory')
 def getNetworkSmDeviceCellularUsageHistory(networkId: str, deviceId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'deviceId': 'deviceId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3887,21 +4683,25 @@ def getNetworkSmDeviceCellularUsageHistory(networkId: str, deviceId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSmDeviceCellularUsageHistory')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSmDeviceCellularUsageHistory')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSmDeviceCerts')
 def getNetworkSmDeviceCerts(networkId: str, deviceId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'deviceId': 'deviceId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3911,21 +4711,31 @@ def getNetworkSmDeviceCerts(networkId: str, deviceId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSmDeviceCerts')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSmDeviceCerts')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSmDeviceConnectivity')
 def getNetworkSmDeviceConnectivity(networkId: str, deviceId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'deviceId': 'deviceId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3935,21 +4745,31 @@ def getNetworkSmDeviceConnectivity(networkId: str, deviceId: str, perPage: int =
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSmDeviceConnectivity')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSmDeviceConnectivity')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSmDeviceDesktopLogs')
 def getNetworkSmDeviceDesktopLogs(networkId: str, deviceId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'deviceId': 'deviceId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3959,21 +4779,31 @@ def getNetworkSmDeviceDesktopLogs(networkId: str, deviceId: str, perPage: int = 
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSmDeviceDesktopLogs')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSmDeviceDesktopLogs')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSmDeviceDeviceCommandLogs')
 def getNetworkSmDeviceDeviceCommandLogs(networkId: str, deviceId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'deviceId': 'deviceId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -3983,21 +4813,25 @@ def getNetworkSmDeviceDeviceCommandLogs(networkId: str, deviceId: str, perPage: 
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSmDeviceDeviceCommandLogs')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSmDeviceDeviceCommandLogs')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSmDeviceDeviceProfiles')
 def getNetworkSmDeviceDeviceProfiles(networkId: str, deviceId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'deviceId': 'deviceId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4007,21 +4841,25 @@ def getNetworkSmDeviceDeviceProfiles(networkId: str, deviceId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSmDeviceDeviceProfiles')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSmDeviceDeviceProfiles')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSmDeviceNetworkAdapters')
 def getNetworkSmDeviceNetworkAdapters(networkId: str, deviceId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'deviceId': 'deviceId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4031,21 +4869,31 @@ def getNetworkSmDeviceNetworkAdapters(networkId: str, deviceId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSmDeviceNetworkAdapters')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSmDeviceNetworkAdapters')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSmDevicePerformanceHistory')
 def getNetworkSmDevicePerformanceHistory(networkId: str, deviceId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'deviceId': 'deviceId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4055,21 +4903,25 @@ def getNetworkSmDevicePerformanceHistory(networkId: str, deviceId: str, perPage:
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSmDevicePerformanceHistory')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSmDevicePerformanceHistory')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSmDeviceRestrictions')
 def getNetworkSmDeviceRestrictions(networkId: str, deviceId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'deviceId': 'deviceId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4079,21 +4931,25 @@ def getNetworkSmDeviceRestrictions(networkId: str, deviceId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSmDeviceRestrictions')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSmDeviceRestrictions')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSmDeviceSecurityCenters')
 def getNetworkSmDeviceSecurityCenters(networkId: str, deviceId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'deviceId': 'deviceId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4103,21 +4959,25 @@ def getNetworkSmDeviceSecurityCenters(networkId: str, deviceId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSmDeviceSecurityCenters')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSmDeviceSecurityCenters')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSmDeviceSoftwares')
 def getNetworkSmDeviceSoftwares(networkId: str, deviceId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'deviceId': 'deviceId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4127,21 +4987,25 @@ def getNetworkSmDeviceSoftwares(networkId: str, deviceId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSmDeviceSoftwares')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSmDeviceSoftwares')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSmDeviceWlanLists')
 def getNetworkSmDeviceWlanLists(networkId: str, deviceId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'deviceId': 'deviceId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4151,21 +5015,25 @@ def getNetworkSmDeviceWlanLists(networkId: str, deviceId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSmDeviceWlanLists')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSmDeviceWlanLists')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSmProfiles')
 def getNetworkSmProfiles(networkId: str, payloadTypes: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'payloadTypes': 'payloadTypes'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if payloadTypes is not None:
+        final_kwargs['payloadTypes'] = payloadTypes
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4175,21 +5043,25 @@ def getNetworkSmProfiles(networkId: str, payloadTypes: list = None):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSmProfiles')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSmProfiles')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSmTargetGroups')
 def getNetworkSmTargetGroups(networkId: str, withDetails: bool = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'withDetails': 'withDetails'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if withDetails is not None:
+        final_kwargs['withDetails'] = withDetails
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4199,21 +5071,27 @@ def getNetworkSmTargetGroups(networkId: str, withDetails: bool = None):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSmTargetGroups')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSmTargetGroups')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSmTargetGroup')
 def getNetworkSmTargetGroup(networkId: str, targetGroupId: str, withDetails: bool = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'targetGroupId': 'targetGroupId', 'withDetails': 'withDetails'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if targetGroupId is not None:
+        final_kwargs['targetGroupId'] = targetGroupId
+    if withDetails is not None:
+        final_kwargs['withDetails'] = withDetails
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4223,21 +5101,29 @@ def getNetworkSmTargetGroup(networkId: str, targetGroupId: str, withDetails: boo
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSmTargetGroup')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSmTargetGroup')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSmTrustedAccessConfigs')
 def getNetworkSmTrustedAccessConfigs(networkId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4247,21 +5133,29 @@ def getNetworkSmTrustedAccessConfigs(networkId: str, perPage: int = None, starti
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSmTrustedAccessConfigs')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSmTrustedAccessConfigs')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSmUserAccessDevices')
 def getNetworkSmUserAccessDevices(networkId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4271,21 +5165,31 @@ def getNetworkSmUserAccessDevices(networkId: str, perPage: int = None, startingA
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSmUserAccessDevices')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSmUserAccessDevices')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSmUsers')
 def getNetworkSmUsers(networkId: str, ids: list = None, usernames: list = None, emails: list = None, scope: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'ids': 'ids', 'usernames': 'usernames', 'emails': 'emails', 'scope': 'scope'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if ids is not None:
+        final_kwargs['ids'] = ids
+    if usernames is not None:
+        final_kwargs['usernames'] = usernames
+    if emails is not None:
+        final_kwargs['emails'] = emails
+    if scope is not None:
+        final_kwargs['scope'] = scope
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4295,21 +5199,25 @@ def getNetworkSmUsers(networkId: str, ids: list = None, usernames: list = None, 
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSmUsers')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSmUsers')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSmUserDeviceProfiles')
 def getNetworkSmUserDeviceProfiles(networkId: str, userId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'userId': 'userId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if userId is not None:
+        final_kwargs['userId'] = userId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4319,21 +5227,25 @@ def getNetworkSmUserDeviceProfiles(networkId: str, userId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSmUserDeviceProfiles')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSmUserDeviceProfiles')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSmUserSoftwares')
 def getNetworkSmUserSoftwares(networkId: str, userId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'userId': 'userId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if userId is not None:
+        final_kwargs['userId'] = userId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4343,21 +5255,23 @@ def getNetworkSmUserSoftwares(networkId: str, userId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSmUserSoftwares')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSmUserSoftwares')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSnmp')
 def getNetworkSnmp(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4367,21 +5281,29 @@ def getNetworkSnmp(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSnmp')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSnmp')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSplashLoginAttempts')
 def getNetworkSplashLoginAttempts(networkId: str, ssidNumber: int = None, loginIdentifier: str = None, timespan: int = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'ssidNumber': 'ssidNumber', 'loginIdentifier': 'loginIdentifier', 'timespan': 'timespan'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if ssidNumber is not None:
+        final_kwargs['ssidNumber'] = ssidNumber
+    if loginIdentifier is not None:
+        final_kwargs['loginIdentifier'] = loginIdentifier
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4391,21 +5313,23 @@ def getNetworkSplashLoginAttempts(networkId: str, ssidNumber: int = None, loginI
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSplashLoginAttempts')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSplashLoginAttempts')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSwitchAccessControlLists')
 def getNetworkSwitchAccessControlLists(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4415,21 +5339,23 @@ def getNetworkSwitchAccessControlLists(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSwitchAccessControlLists')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSwitchAccessControlLists')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSwitchAccessPolicies')
 def getNetworkSwitchAccessPolicies(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4439,21 +5365,25 @@ def getNetworkSwitchAccessPolicies(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSwitchAccessPolicies')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSwitchAccessPolicies')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSwitchAccessPolicy')
 def getNetworkSwitchAccessPolicy(networkId: str, accessPolicyNumber: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'accessPolicyNumber': 'accessPolicyNumber'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if accessPolicyNumber is not None:
+        final_kwargs['accessPolicyNumber'] = accessPolicyNumber
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4463,21 +5393,23 @@ def getNetworkSwitchAccessPolicy(networkId: str, accessPolicyNumber: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSwitchAccessPolicy')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSwitchAccessPolicy')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSwitchAlternateManagementInterface')
 def getNetworkSwitchAlternateManagementInterface(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4487,21 +5419,33 @@ def getNetworkSwitchAlternateManagementInterface(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSwitchAlternateManagementInterface')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSwitchAlternateManagementInterface')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSwitchDhcpV4ServersSeen')
 def getNetworkSwitchDhcpV4ServersSeen(networkId: str, t0: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 't0': 't0', 'timespan': 'timespan', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4511,21 +5455,23 @@ def getNetworkSwitchDhcpV4ServersSeen(networkId: str, t0: str = None, timespan: 
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSwitchDhcpV4ServersSeen')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSwitchDhcpV4ServersSeen')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSwitchDhcpServerPolicy')
 def getNetworkSwitchDhcpServerPolicy(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4535,21 +5481,29 @@ def getNetworkSwitchDhcpServerPolicy(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSwitchDhcpServerPolicy')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSwitchDhcpServerPolicy')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSwitchDhcpServerPolicyArpInspectionTrustedServers')
 def getNetworkSwitchDhcpServerPolicyArpInspectionTrustedServers(networkId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4559,21 +5513,29 @@ def getNetworkSwitchDhcpServerPolicyArpInspectionTrustedServers(networkId: str, 
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSwitchDhcpServerPolicyArpInspectionTrustedServers')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSwitchDhcpServerPolicyArpInspectionTrustedServers')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSwitchDhcpServerPolicyArpInspectionWarningsByDevice')
 def getNetworkSwitchDhcpServerPolicyArpInspectionWarningsByDevice(networkId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4583,21 +5545,23 @@ def getNetworkSwitchDhcpServerPolicyArpInspectionWarningsByDevice(networkId: str
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSwitchDhcpServerPolicyArpInspectionWarningsByDevice')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSwitchDhcpServerPolicyArpInspectionWarningsByDevice')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSwitchDscpToCosMappings')
 def getNetworkSwitchDscpToCosMappings(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4607,21 +5571,23 @@ def getNetworkSwitchDscpToCosMappings(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSwitchDscpToCosMappings')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSwitchDscpToCosMappings')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSwitchLinkAggregations')
 def getNetworkSwitchLinkAggregations(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4631,21 +5597,23 @@ def getNetworkSwitchLinkAggregations(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSwitchLinkAggregations')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSwitchLinkAggregations')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSwitchMtu')
 def getNetworkSwitchMtu(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4655,21 +5623,23 @@ def getNetworkSwitchMtu(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSwitchMtu')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSwitchMtu')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSwitchPortSchedules')
 def getNetworkSwitchPortSchedules(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4679,21 +5649,23 @@ def getNetworkSwitchPortSchedules(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSwitchPortSchedules')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSwitchPortSchedules')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSwitchQosRules')
 def getNetworkSwitchQosRules(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4703,21 +5675,23 @@ def getNetworkSwitchQosRules(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSwitchQosRules')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSwitchQosRules')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSwitchQosRulesOrder')
 def getNetworkSwitchQosRulesOrder(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4727,21 +5701,25 @@ def getNetworkSwitchQosRulesOrder(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSwitchQosRulesOrder')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSwitchQosRulesOrder')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSwitchQosRule')
 def getNetworkSwitchQosRule(networkId: str, qosRuleId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'qosRuleId': 'qosRuleId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if qosRuleId is not None:
+        final_kwargs['qosRuleId'] = qosRuleId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4751,21 +5729,23 @@ def getNetworkSwitchQosRule(networkId: str, qosRuleId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSwitchQosRule')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSwitchQosRule')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSwitchRoutingMulticast')
 def getNetworkSwitchRoutingMulticast(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4775,21 +5755,23 @@ def getNetworkSwitchRoutingMulticast(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSwitchRoutingMulticast')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSwitchRoutingMulticast')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSwitchRoutingMulticastRendezvousPoints')
 def getNetworkSwitchRoutingMulticastRendezvousPoints(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4799,21 +5781,25 @@ def getNetworkSwitchRoutingMulticastRendezvousPoints(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSwitchRoutingMulticastRendezvousPoints')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSwitchRoutingMulticastRendezvousPoints')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSwitchRoutingMulticastRendezvousPoint')
 def getNetworkSwitchRoutingMulticastRendezvousPoint(networkId: str, rendezvousPointId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'rendezvousPointId': 'rendezvousPointId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if rendezvousPointId is not None:
+        final_kwargs['rendezvousPointId'] = rendezvousPointId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4823,21 +5809,23 @@ def getNetworkSwitchRoutingMulticastRendezvousPoint(networkId: str, rendezvousPo
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSwitchRoutingMulticastRendezvousPoint')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSwitchRoutingMulticastRendezvousPoint')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSwitchRoutingOspf')
 def getNetworkSwitchRoutingOspf(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4847,21 +5835,23 @@ def getNetworkSwitchRoutingOspf(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSwitchRoutingOspf')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSwitchRoutingOspf')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSwitchSettings')
 def getNetworkSwitchSettings(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4871,21 +5861,23 @@ def getNetworkSwitchSettings(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSwitchSettings')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSwitchSettings')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSwitchStacks')
 def getNetworkSwitchStacks(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4895,21 +5887,25 @@ def getNetworkSwitchStacks(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSwitchStacks')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSwitchStacks')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSwitchStack')
 def getNetworkSwitchStack(networkId: str, switchStackId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'switchStackId': 'switchStackId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if switchStackId is not None:
+        final_kwargs['switchStackId'] = switchStackId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4919,21 +5915,25 @@ def getNetworkSwitchStack(networkId: str, switchStackId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSwitchStack')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSwitchStack')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSwitchStackRoutingInterfaces')
 def getNetworkSwitchStackRoutingInterfaces(networkId: str, switchStackId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'switchStackId': 'switchStackId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if switchStackId is not None:
+        final_kwargs['switchStackId'] = switchStackId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4943,21 +5943,27 @@ def getNetworkSwitchStackRoutingInterfaces(networkId: str, switchStackId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSwitchStackRoutingInterfaces')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSwitchStackRoutingInterfaces')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSwitchStackRoutingInterface')
 def getNetworkSwitchStackRoutingInterface(networkId: str, switchStackId: str, interfaceId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'switchStackId': 'switchStackId', 'interfaceId': 'interfaceId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if switchStackId is not None:
+        final_kwargs['switchStackId'] = switchStackId
+    if interfaceId is not None:
+        final_kwargs['interfaceId'] = interfaceId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4967,21 +5973,27 @@ def getNetworkSwitchStackRoutingInterface(networkId: str, switchStackId: str, in
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSwitchStackRoutingInterface')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSwitchStackRoutingInterface')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSwitchStackRoutingInterfaceDhcp')
 def getNetworkSwitchStackRoutingInterfaceDhcp(networkId: str, switchStackId: str, interfaceId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'switchStackId': 'switchStackId', 'interfaceId': 'interfaceId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if switchStackId is not None:
+        final_kwargs['switchStackId'] = switchStackId
+    if interfaceId is not None:
+        final_kwargs['interfaceId'] = interfaceId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -4991,21 +6003,25 @@ def getNetworkSwitchStackRoutingInterfaceDhcp(networkId: str, switchStackId: str
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSwitchStackRoutingInterfaceDhcp')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSwitchStackRoutingInterfaceDhcp')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSwitchStackRoutingStaticRoutes')
 def getNetworkSwitchStackRoutingStaticRoutes(networkId: str, switchStackId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'switchStackId': 'switchStackId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if switchStackId is not None:
+        final_kwargs['switchStackId'] = switchStackId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5015,21 +6031,27 @@ def getNetworkSwitchStackRoutingStaticRoutes(networkId: str, switchStackId: str)
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSwitchStackRoutingStaticRoutes')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSwitchStackRoutingStaticRoutes')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSwitchStackRoutingStaticRoute')
 def getNetworkSwitchStackRoutingStaticRoute(networkId: str, switchStackId: str, staticRouteId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'switchStackId': 'switchStackId', 'staticRouteId': 'staticRouteId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if switchStackId is not None:
+        final_kwargs['switchStackId'] = switchStackId
+    if staticRouteId is not None:
+        final_kwargs['staticRouteId'] = staticRouteId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5039,21 +6061,23 @@ def getNetworkSwitchStackRoutingStaticRoute(networkId: str, switchStackId: str, 
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSwitchStackRoutingStaticRoute')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSwitchStackRoutingStaticRoute')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSwitchStormControl')
 def getNetworkSwitchStormControl(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5063,21 +6087,23 @@ def getNetworkSwitchStormControl(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSwitchStormControl')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSwitchStormControl')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSwitchStp')
 def getNetworkSwitchStp(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5087,21 +6113,23 @@ def getNetworkSwitchStp(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSwitchStp')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSwitchStp')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkSyslogServers')
 def getNetworkSyslogServers(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5111,21 +6139,23 @@ def getNetworkSyslogServers(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkSyslogServers')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkSyslogServers')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkTopologyLinkLayer')
 def getNetworkTopologyLinkLayer(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5135,21 +6165,29 @@ def getNetworkTopologyLinkLayer(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkTopologyLinkLayer')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkTopologyLinkLayer')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkTraffic')
 def getNetworkTraffic(networkId: str, t0: str = None, timespan: float = None, deviceType: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 't0': 't0', 'timespan': 'timespan', 'deviceType': 'deviceType'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if deviceType is not None:
+        final_kwargs['deviceType'] = deviceType
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5159,21 +6197,23 @@ def getNetworkTraffic(networkId: str, t0: str = None, timespan: float = None, de
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkTraffic')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkTraffic')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkTrafficAnalysis')
 def getNetworkTrafficAnalysis(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5183,21 +6223,23 @@ def getNetworkTrafficAnalysis(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkTrafficAnalysis')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkTrafficAnalysis')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkTrafficShapingApplicationCategories')
 def getNetworkTrafficShapingApplicationCategories(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5207,21 +6249,23 @@ def getNetworkTrafficShapingApplicationCategories(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkTrafficShapingApplicationCategories')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkTrafficShapingApplicationCategories')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkTrafficShapingDscpTaggingOptions')
 def getNetworkTrafficShapingDscpTaggingOptions(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5231,21 +6275,23 @@ def getNetworkTrafficShapingDscpTaggingOptions(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkTrafficShapingDscpTaggingOptions')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkTrafficShapingDscpTaggingOptions')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkVlanProfiles')
 def getNetworkVlanProfiles(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5255,21 +6301,35 @@ def getNetworkVlanProfiles(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkVlanProfiles')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkVlanProfiles')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkVlanProfilesAssignmentsByDevice')
 def getNetworkVlanProfilesAssignmentsByDevice(networkId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, serials: list = None, productTypes: list = None, stackIds: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'serials': 'serials', 'productTypes': 'productTypes', 'stackIds': 'stackIds'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if productTypes is not None:
+        final_kwargs['productTypes'] = productTypes
+    if stackIds is not None:
+        final_kwargs['stackIds'] = stackIds
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5279,21 +6339,25 @@ def getNetworkVlanProfilesAssignmentsByDevice(networkId: str, perPage: int = Non
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkVlanProfilesAssignmentsByDevice')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkVlanProfilesAssignmentsByDevice')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkVlanProfile')
 def getNetworkVlanProfile(networkId: str, iname: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'iname': 'iname'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if iname is not None:
+        final_kwargs['iname'] = iname
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5303,21 +6367,23 @@ def getNetworkVlanProfile(networkId: str, iname: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkVlanProfile')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkVlanProfile')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWebhooksHttpServers')
 def getNetworkWebhooksHttpServers(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5327,21 +6393,25 @@ def getNetworkWebhooksHttpServers(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWebhooksHttpServers')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWebhooksHttpServers')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWebhooksHttpServer')
 def getNetworkWebhooksHttpServer(networkId: str, httpServerId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'httpServerId': 'httpServerId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if httpServerId is not None:
+        final_kwargs['httpServerId'] = httpServerId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5351,21 +6421,23 @@ def getNetworkWebhooksHttpServer(networkId: str, httpServerId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWebhooksHttpServer')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWebhooksHttpServer')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWebhooksPayloadTemplates')
 def getNetworkWebhooksPayloadTemplates(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5375,21 +6447,25 @@ def getNetworkWebhooksPayloadTemplates(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWebhooksPayloadTemplates')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWebhooksPayloadTemplates')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWebhooksPayloadTemplate')
 def getNetworkWebhooksPayloadTemplate(networkId: str, payloadTemplateId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'payloadTemplateId': 'payloadTemplateId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if payloadTemplateId is not None:
+        final_kwargs['payloadTemplateId'] = payloadTemplateId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5399,21 +6475,25 @@ def getNetworkWebhooksPayloadTemplate(networkId: str, payloadTemplateId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWebhooksPayloadTemplate')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWebhooksPayloadTemplate')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWebhooksWebhookTest')
 def getNetworkWebhooksWebhookTest(networkId: str, webhookTestId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'webhookTestId': 'webhookTestId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if webhookTestId is not None:
+        final_kwargs['webhookTestId'] = webhookTestId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5423,21 +6503,27 @@ def getNetworkWebhooksWebhookTest(networkId: str, webhookTestId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWebhooksWebhookTest')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWebhooksWebhookTest')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessAirMarshal')
 def getNetworkWirelessAirMarshal(networkId: str, t0: str = None, timespan: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 't0': 't0', 'timespan': 'timespan'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5447,21 +6533,23 @@ def getNetworkWirelessAirMarshal(networkId: str, t0: str = None, timespan: float
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessAirMarshal')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessAirMarshal')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessAlternateManagementInterface')
 def getNetworkWirelessAlternateManagementInterface(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5471,21 +6559,23 @@ def getNetworkWirelessAlternateManagementInterface(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessAlternateManagementInterface')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessAlternateManagementInterface')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessBilling')
 def getNetworkWirelessBilling(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5495,21 +6585,23 @@ def getNetworkWirelessBilling(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessBilling')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessBilling')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessBluetoothSettings')
 def getNetworkWirelessBluetoothSettings(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5519,21 +6611,41 @@ def getNetworkWirelessBluetoothSettings(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessBluetoothSettings')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessBluetoothSettings')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessChannelUtilizationHistory')
 def getNetworkWirelessChannelUtilizationHistory(networkId: str, t0: str = None, t1: str = None, timespan: float = None, resolution: int = None, autoResolution: bool = None, clientId: str = None, deviceSerial: str = None, apTag: str = None, band: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'resolution': 'resolution', 'autoResolution': 'autoResolution', 'clientId': 'clientId', 'deviceSerial': 'deviceSerial', 'apTag': 'apTag', 'band': 'band'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if resolution is not None:
+        final_kwargs['resolution'] = resolution
+    if autoResolution is not None:
+        final_kwargs['autoResolution'] = autoResolution
+    if clientId is not None:
+        final_kwargs['clientId'] = clientId
+    if deviceSerial is not None:
+        final_kwargs['deviceSerial'] = deviceSerial
+    if apTag is not None:
+        final_kwargs['apTag'] = apTag
+    if band is not None:
+        final_kwargs['band'] = band
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5543,21 +6655,43 @@ def getNetworkWirelessChannelUtilizationHistory(networkId: str, t0: str = None, 
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessChannelUtilizationHistory')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessChannelUtilizationHistory')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessClientCountHistory')
 def getNetworkWirelessClientCountHistory(networkId: str, t0: str = None, t1: str = None, timespan: float = None, resolution: int = None, autoResolution: bool = None, clientId: str = None, deviceSerial: str = None, apTag: str = None, band: str = None, ssid: int = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'resolution': 'resolution', 'autoResolution': 'autoResolution', 'clientId': 'clientId', 'deviceSerial': 'deviceSerial', 'apTag': 'apTag', 'band': 'band', 'ssid': 'ssid'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if resolution is not None:
+        final_kwargs['resolution'] = resolution
+    if autoResolution is not None:
+        final_kwargs['autoResolution'] = autoResolution
+    if clientId is not None:
+        final_kwargs['clientId'] = clientId
+    if deviceSerial is not None:
+        final_kwargs['deviceSerial'] = deviceSerial
+    if apTag is not None:
+        final_kwargs['apTag'] = apTag
+    if band is not None:
+        final_kwargs['band'] = band
+    if ssid is not None:
+        final_kwargs['ssid'] = ssid
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5567,21 +6701,37 @@ def getNetworkWirelessClientCountHistory(networkId: str, t0: str = None, t1: str
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessClientCountHistory')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessClientCountHistory')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessClientsConnectionStats')
 def getNetworkWirelessClientsConnectionStats(networkId: str, t0: str = None, t1: str = None, timespan: float = None, band: str = None, ssid: int = None, vlan: int = None, apTag: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'band': 'band', 'ssid': 'ssid', 'vlan': 'vlan', 'apTag': 'apTag'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if band is not None:
+        final_kwargs['band'] = band
+    if ssid is not None:
+        final_kwargs['ssid'] = ssid
+    if vlan is not None:
+        final_kwargs['vlan'] = vlan
+    if apTag is not None:
+        final_kwargs['apTag'] = apTag
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5591,21 +6741,39 @@ def getNetworkWirelessClientsConnectionStats(networkId: str, t0: str = None, t1:
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessClientsConnectionStats')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessClientsConnectionStats')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessClientsLatencyStats')
 def getNetworkWirelessClientsLatencyStats(networkId: str, t0: str = None, t1: str = None, timespan: float = None, band: str = None, ssid: int = None, vlan: int = None, apTag: str = None, fields: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'band': 'band', 'ssid': 'ssid', 'vlan': 'vlan', 'apTag': 'apTag', 'fields': 'fields'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if band is not None:
+        final_kwargs['band'] = band
+    if ssid is not None:
+        final_kwargs['ssid'] = ssid
+    if vlan is not None:
+        final_kwargs['vlan'] = vlan
+    if apTag is not None:
+        final_kwargs['apTag'] = apTag
+    if fields is not None:
+        final_kwargs['fields'] = fields
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5615,21 +6783,39 @@ def getNetworkWirelessClientsLatencyStats(networkId: str, t0: str = None, t1: st
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessClientsLatencyStats')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessClientsLatencyStats')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessClientConnectionStats')
 def getNetworkWirelessClientConnectionStats(networkId: str, clientId: str, t0: str = None, t1: str = None, timespan: float = None, band: str = None, ssid: int = None, vlan: int = None, apTag: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'clientId': 'clientId', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'band': 'band', 'ssid': 'ssid', 'vlan': 'vlan', 'apTag': 'apTag'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if clientId is not None:
+        final_kwargs['clientId'] = clientId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if band is not None:
+        final_kwargs['band'] = band
+    if ssid is not None:
+        final_kwargs['ssid'] = ssid
+    if vlan is not None:
+        final_kwargs['vlan'] = vlan
+    if apTag is not None:
+        final_kwargs['apTag'] = apTag
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5639,21 +6825,49 @@ def getNetworkWirelessClientConnectionStats(networkId: str, clientId: str, t0: s
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessClientConnectionStats')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessClientConnectionStats')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessClientConnectivityEvents')
 def getNetworkWirelessClientConnectivityEvents(networkId: str, clientId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, sortOrder: str = None, t0: str = None, t1: str = None, timespan: float = None, types: list = None, band: str = None, ssidNumber: int = None, includedSeverities: list = None, deviceSerial: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'clientId': 'clientId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'sortOrder': 'sortOrder', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'types': 'types', 'band': 'band', 'ssidNumber': 'ssidNumber', 'includedSeverities': 'includedSeverities', 'deviceSerial': 'deviceSerial'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if clientId is not None:
+        final_kwargs['clientId'] = clientId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if sortOrder is not None:
+        final_kwargs['sortOrder'] = sortOrder
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if types is not None:
+        final_kwargs['types'] = types
+    if band is not None:
+        final_kwargs['band'] = band
+    if ssidNumber is not None:
+        final_kwargs['ssidNumber'] = ssidNumber
+    if includedSeverities is not None:
+        final_kwargs['includedSeverities'] = includedSeverities
+    if deviceSerial is not None:
+        final_kwargs['deviceSerial'] = deviceSerial
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5663,21 +6877,33 @@ def getNetworkWirelessClientConnectivityEvents(networkId: str, clientId: str, pe
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessClientConnectivityEvents')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessClientConnectivityEvents')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessClientLatencyHistory')
 def getNetworkWirelessClientLatencyHistory(networkId: str, clientId: str, t0: str = None, t1: str = None, timespan: float = None, resolution: int = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'clientId': 'clientId', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'resolution': 'resolution'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if clientId is not None:
+        final_kwargs['clientId'] = clientId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if resolution is not None:
+        final_kwargs['resolution'] = resolution
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5687,21 +6913,41 @@ def getNetworkWirelessClientLatencyHistory(networkId: str, clientId: str, t0: st
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessClientLatencyHistory')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessClientLatencyHistory')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessClientLatencyStats')
 def getNetworkWirelessClientLatencyStats(networkId: str, clientId: str, t0: str = None, t1: str = None, timespan: float = None, band: str = None, ssid: int = None, vlan: int = None, apTag: str = None, fields: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'clientId': 'clientId', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'band': 'band', 'ssid': 'ssid', 'vlan': 'vlan', 'apTag': 'apTag', 'fields': 'fields'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if clientId is not None:
+        final_kwargs['clientId'] = clientId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if band is not None:
+        final_kwargs['band'] = band
+    if ssid is not None:
+        final_kwargs['ssid'] = ssid
+    if vlan is not None:
+        final_kwargs['vlan'] = vlan
+    if apTag is not None:
+        final_kwargs['apTag'] = apTag
+    if fields is not None:
+        final_kwargs['fields'] = fields
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5711,21 +6957,37 @@ def getNetworkWirelessClientLatencyStats(networkId: str, clientId: str, t0: str 
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessClientLatencyStats')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessClientLatencyStats')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessConnectionStats')
 def getNetworkWirelessConnectionStats(networkId: str, t0: str = None, t1: str = None, timespan: float = None, band: str = None, ssid: int = None, vlan: int = None, apTag: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'band': 'band', 'ssid': 'ssid', 'vlan': 'vlan', 'apTag': 'apTag'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if band is not None:
+        final_kwargs['band'] = band
+    if ssid is not None:
+        final_kwargs['ssid'] = ssid
+    if vlan is not None:
+        final_kwargs['vlan'] = vlan
+    if apTag is not None:
+        final_kwargs['apTag'] = apTag
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5735,21 +6997,43 @@ def getNetworkWirelessConnectionStats(networkId: str, t0: str = None, t1: str = 
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessConnectionStats')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessConnectionStats')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessDataRateHistory')
 def getNetworkWirelessDataRateHistory(networkId: str, t0: str = None, t1: str = None, timespan: float = None, resolution: int = None, autoResolution: bool = None, clientId: str = None, deviceSerial: str = None, apTag: str = None, band: str = None, ssid: int = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'resolution': 'resolution', 'autoResolution': 'autoResolution', 'clientId': 'clientId', 'deviceSerial': 'deviceSerial', 'apTag': 'apTag', 'band': 'band', 'ssid': 'ssid'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if resolution is not None:
+        final_kwargs['resolution'] = resolution
+    if autoResolution is not None:
+        final_kwargs['autoResolution'] = autoResolution
+    if clientId is not None:
+        final_kwargs['clientId'] = clientId
+    if deviceSerial is not None:
+        final_kwargs['deviceSerial'] = deviceSerial
+    if apTag is not None:
+        final_kwargs['apTag'] = apTag
+    if band is not None:
+        final_kwargs['band'] = band
+    if ssid is not None:
+        final_kwargs['ssid'] = ssid
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5759,21 +7043,37 @@ def getNetworkWirelessDataRateHistory(networkId: str, t0: str = None, t1: str = 
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessDataRateHistory')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessDataRateHistory')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessDevicesConnectionStats')
 def getNetworkWirelessDevicesConnectionStats(networkId: str, t0: str = None, t1: str = None, timespan: float = None, band: str = None, ssid: int = None, vlan: int = None, apTag: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'band': 'band', 'ssid': 'ssid', 'vlan': 'vlan', 'apTag': 'apTag'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if band is not None:
+        final_kwargs['band'] = band
+    if ssid is not None:
+        final_kwargs['ssid'] = ssid
+    if vlan is not None:
+        final_kwargs['vlan'] = vlan
+    if apTag is not None:
+        final_kwargs['apTag'] = apTag
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5783,21 +7083,39 @@ def getNetworkWirelessDevicesConnectionStats(networkId: str, t0: str = None, t1:
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessDevicesConnectionStats')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessDevicesConnectionStats')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessDevicesLatencyStats')
 def getNetworkWirelessDevicesLatencyStats(networkId: str, t0: str = None, t1: str = None, timespan: float = None, band: str = None, ssid: int = None, vlan: int = None, apTag: str = None, fields: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'band': 'band', 'ssid': 'ssid', 'vlan': 'vlan', 'apTag': 'apTag', 'fields': 'fields'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if band is not None:
+        final_kwargs['band'] = band
+    if ssid is not None:
+        final_kwargs['ssid'] = ssid
+    if vlan is not None:
+        final_kwargs['vlan'] = vlan
+    if apTag is not None:
+        final_kwargs['apTag'] = apTag
+    if fields is not None:
+        final_kwargs['fields'] = fields
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5807,21 +7125,23 @@ def getNetworkWirelessDevicesLatencyStats(networkId: str, t0: str = None, t1: st
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessDevicesLatencyStats')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessDevicesLatencyStats')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessElectronicShelfLabel')
 def getNetworkWirelessElectronicShelfLabel(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5831,21 +7151,23 @@ def getNetworkWirelessElectronicShelfLabel(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessElectronicShelfLabel')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessElectronicShelfLabel')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessElectronicShelfLabelConfiguredDevices')
 def getNetworkWirelessElectronicShelfLabelConfiguredDevices(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5855,21 +7177,23 @@ def getNetworkWirelessElectronicShelfLabelConfiguredDevices(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessElectronicShelfLabelConfiguredDevices')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessElectronicShelfLabelConfiguredDevices')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessEthernetPortsProfiles')
 def getNetworkWirelessEthernetPortsProfiles(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5879,21 +7203,25 @@ def getNetworkWirelessEthernetPortsProfiles(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessEthernetPortsProfiles')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessEthernetPortsProfiles')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessEthernetPortsProfile')
 def getNetworkWirelessEthernetPortsProfile(networkId: str, profileId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'profileId': 'profileId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if profileId is not None:
+        final_kwargs['profileId'] = profileId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5903,21 +7231,41 @@ def getNetworkWirelessEthernetPortsProfile(networkId: str, profileId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessEthernetPortsProfile')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessEthernetPortsProfile')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessFailedConnections')
 def getNetworkWirelessFailedConnections(networkId: str, t0: str = None, t1: str = None, timespan: float = None, band: str = None, ssid: int = None, vlan: int = None, apTag: str = None, serial: str = None, clientId: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'band': 'band', 'ssid': 'ssid', 'vlan': 'vlan', 'apTag': 'apTag', 'serial': 'serial', 'clientId': 'clientId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if band is not None:
+        final_kwargs['band'] = band
+    if ssid is not None:
+        final_kwargs['ssid'] = ssid
+    if vlan is not None:
+        final_kwargs['vlan'] = vlan
+    if apTag is not None:
+        final_kwargs['apTag'] = apTag
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if clientId is not None:
+        final_kwargs['clientId'] = clientId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5927,21 +7275,45 @@ def getNetworkWirelessFailedConnections(networkId: str, t0: str = None, t1: str 
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessFailedConnections')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessFailedConnections')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessLatencyHistory')
 def getNetworkWirelessLatencyHistory(networkId: str, t0: str = None, t1: str = None, timespan: float = None, resolution: int = None, autoResolution: bool = None, clientId: str = None, deviceSerial: str = None, apTag: str = None, band: str = None, ssid: int = None, accessCategory: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'resolution': 'resolution', 'autoResolution': 'autoResolution', 'clientId': 'clientId', 'deviceSerial': 'deviceSerial', 'apTag': 'apTag', 'band': 'band', 'ssid': 'ssid', 'accessCategory': 'accessCategory'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if resolution is not None:
+        final_kwargs['resolution'] = resolution
+    if autoResolution is not None:
+        final_kwargs['autoResolution'] = autoResolution
+    if clientId is not None:
+        final_kwargs['clientId'] = clientId
+    if deviceSerial is not None:
+        final_kwargs['deviceSerial'] = deviceSerial
+    if apTag is not None:
+        final_kwargs['apTag'] = apTag
+    if band is not None:
+        final_kwargs['band'] = band
+    if ssid is not None:
+        final_kwargs['ssid'] = ssid
+    if accessCategory is not None:
+        final_kwargs['accessCategory'] = accessCategory
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5951,21 +7323,39 @@ def getNetworkWirelessLatencyHistory(networkId: str, t0: str = None, t1: str = N
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessLatencyHistory')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessLatencyHistory')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessLatencyStats')
 def getNetworkWirelessLatencyStats(networkId: str, t0: str = None, t1: str = None, timespan: float = None, band: str = None, ssid: int = None, vlan: int = None, apTag: str = None, fields: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'band': 'band', 'ssid': 'ssid', 'vlan': 'vlan', 'apTag': 'apTag', 'fields': 'fields'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if band is not None:
+        final_kwargs['band'] = band
+    if ssid is not None:
+        final_kwargs['ssid'] = ssid
+    if vlan is not None:
+        final_kwargs['vlan'] = vlan
+    if apTag is not None:
+        final_kwargs['apTag'] = apTag
+    if fields is not None:
+        final_kwargs['fields'] = fields
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5975,21 +7365,29 @@ def getNetworkWirelessLatencyStats(networkId: str, t0: str = None, t1: str = Non
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessLatencyStats')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessLatencyStats')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessMeshStatuses')
 def getNetworkWirelessMeshStatuses(networkId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -5999,21 +7397,25 @@ def getNetworkWirelessMeshStatuses(networkId: str, perPage: int = None, starting
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessMeshStatuses')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessMeshStatuses')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessRfProfiles')
 def getNetworkWirelessRfProfiles(networkId: str, includeTemplateProfiles: bool = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'includeTemplateProfiles': 'includeTemplateProfiles'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if includeTemplateProfiles is not None:
+        final_kwargs['includeTemplateProfiles'] = includeTemplateProfiles
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6023,21 +7425,25 @@ def getNetworkWirelessRfProfiles(networkId: str, includeTemplateProfiles: bool =
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessRfProfiles')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessRfProfiles')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessRfProfile')
 def getNetworkWirelessRfProfile(networkId: str, rfProfileId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'rfProfileId': 'rfProfileId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if rfProfileId is not None:
+        final_kwargs['rfProfileId'] = rfProfileId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6047,21 +7453,23 @@ def getNetworkWirelessRfProfile(networkId: str, rfProfileId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessRfProfile')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessRfProfile')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessSettings')
 def getNetworkWirelessSettings(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6071,21 +7479,43 @@ def getNetworkWirelessSettings(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessSettings')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessSettings')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessSignalQualityHistory')
 def getNetworkWirelessSignalQualityHistory(networkId: str, t0: str = None, t1: str = None, timespan: float = None, resolution: int = None, autoResolution: bool = None, clientId: str = None, deviceSerial: str = None, apTag: str = None, band: str = None, ssid: int = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'resolution': 'resolution', 'autoResolution': 'autoResolution', 'clientId': 'clientId', 'deviceSerial': 'deviceSerial', 'apTag': 'apTag', 'band': 'band', 'ssid': 'ssid'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if resolution is not None:
+        final_kwargs['resolution'] = resolution
+    if autoResolution is not None:
+        final_kwargs['autoResolution'] = autoResolution
+    if clientId is not None:
+        final_kwargs['clientId'] = clientId
+    if deviceSerial is not None:
+        final_kwargs['deviceSerial'] = deviceSerial
+    if apTag is not None:
+        final_kwargs['apTag'] = apTag
+    if band is not None:
+        final_kwargs['band'] = band
+    if ssid is not None:
+        final_kwargs['ssid'] = ssid
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6095,21 +7525,23 @@ def getNetworkWirelessSignalQualityHistory(networkId: str, t0: str = None, t1: s
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessSignalQualityHistory')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessSignalQualityHistory')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessSsids')
 def getNetworkWirelessSsids(networkId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6119,21 +7551,25 @@ def getNetworkWirelessSsids(networkId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessSsids')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessSsids')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessSsid')
 def getNetworkWirelessSsid(networkId: str, number: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'number': 'number'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if number is not None:
+        final_kwargs['number'] = number
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6143,21 +7579,25 @@ def getNetworkWirelessSsid(networkId: str, number: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessSsid')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessSsid')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessSsidBonjourForwarding')
 def getNetworkWirelessSsidBonjourForwarding(networkId: str, number: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'number': 'number'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if number is not None:
+        final_kwargs['number'] = number
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6167,21 +7607,25 @@ def getNetworkWirelessSsidBonjourForwarding(networkId: str, number: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessSsidBonjourForwarding')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessSsidBonjourForwarding')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessSsidDeviceTypeGroupPolicies')
 def getNetworkWirelessSsidDeviceTypeGroupPolicies(networkId: str, number: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'number': 'number'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if number is not None:
+        final_kwargs['number'] = number
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6191,21 +7635,25 @@ def getNetworkWirelessSsidDeviceTypeGroupPolicies(networkId: str, number: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessSsidDeviceTypeGroupPolicies')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessSsidDeviceTypeGroupPolicies')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessSsidEapOverride')
 def getNetworkWirelessSsidEapOverride(networkId: str, number: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'number': 'number'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if number is not None:
+        final_kwargs['number'] = number
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6215,21 +7663,25 @@ def getNetworkWirelessSsidEapOverride(networkId: str, number: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessSsidEapOverride')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessSsidEapOverride')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessSsidFirewallL3FirewallRules')
 def getNetworkWirelessSsidFirewallL3FirewallRules(networkId: str, number: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'number': 'number'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if number is not None:
+        final_kwargs['number'] = number
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6239,21 +7691,25 @@ def getNetworkWirelessSsidFirewallL3FirewallRules(networkId: str, number: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessSsidFirewallL3FirewallRules')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessSsidFirewallL3FirewallRules')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessSsidFirewallL7FirewallRules')
 def getNetworkWirelessSsidFirewallL7FirewallRules(networkId: str, number: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'number': 'number'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if number is not None:
+        final_kwargs['number'] = number
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6263,21 +7719,25 @@ def getNetworkWirelessSsidFirewallL7FirewallRules(networkId: str, number: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessSsidFirewallL7FirewallRules')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessSsidFirewallL7FirewallRules')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessSsidHotspot20')
 def getNetworkWirelessSsidHotspot20(networkId: str, number: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'number': 'number'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if number is not None:
+        final_kwargs['number'] = number
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6287,21 +7747,25 @@ def getNetworkWirelessSsidHotspot20(networkId: str, number: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessSsidHotspot20')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessSsidHotspot20')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessSsidIdentityPsks')
 def getNetworkWirelessSsidIdentityPsks(networkId: str, number: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'number': 'number'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if number is not None:
+        final_kwargs['number'] = number
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6311,21 +7775,27 @@ def getNetworkWirelessSsidIdentityPsks(networkId: str, number: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessSsidIdentityPsks')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessSsidIdentityPsks')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessSsidIdentityPsk')
 def getNetworkWirelessSsidIdentityPsk(networkId: str, number: str, identityPskId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'number': 'number', 'identityPskId': 'identityPskId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if number is not None:
+        final_kwargs['number'] = number
+    if identityPskId is not None:
+        final_kwargs['identityPskId'] = identityPskId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6335,21 +7805,25 @@ def getNetworkWirelessSsidIdentityPsk(networkId: str, number: str, identityPskId
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessSsidIdentityPsk')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessSsidIdentityPsk')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessSsidSchedules')
 def getNetworkWirelessSsidSchedules(networkId: str, number: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'number': 'number'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if number is not None:
+        final_kwargs['number'] = number
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6359,21 +7833,25 @@ def getNetworkWirelessSsidSchedules(networkId: str, number: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessSsidSchedules')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessSsidSchedules')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessSsidSplashSettings')
 def getNetworkWirelessSsidSplashSettings(networkId: str, number: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'number': 'number'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if number is not None:
+        final_kwargs['number'] = number
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6383,21 +7861,25 @@ def getNetworkWirelessSsidSplashSettings(networkId: str, number: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessSsidSplashSettings')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessSsidSplashSettings')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessSsidTrafficShapingRules')
 def getNetworkWirelessSsidTrafficShapingRules(networkId: str, number: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'number': 'number'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if number is not None:
+        final_kwargs['number'] = number
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6407,21 +7889,25 @@ def getNetworkWirelessSsidTrafficShapingRules(networkId: str, number: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessSsidTrafficShapingRules')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessSsidTrafficShapingRules')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessSsidVpn')
 def getNetworkWirelessSsidVpn(networkId: str, number: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 'number': 'number'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if number is not None:
+        final_kwargs['number'] = number
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6431,21 +7917,43 @@ def getNetworkWirelessSsidVpn(networkId: str, number: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessSsidVpn')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessSsidVpn')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkWirelessUsageHistory')
 def getNetworkWirelessUsageHistory(networkId: str, t0: str = None, t1: str = None, timespan: float = None, resolution: int = None, autoResolution: bool = None, clientId: str = None, deviceSerial: str = None, apTag: str = None, band: str = None, ssid: int = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkId': 'networkId', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'resolution': 'resolution', 'autoResolution': 'autoResolution', 'clientId': 'clientId', 'deviceSerial': 'deviceSerial', 'apTag': 'apTag', 'band': 'band', 'ssid': 'ssid'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if resolution is not None:
+        final_kwargs['resolution'] = resolution
+    if autoResolution is not None:
+        final_kwargs['autoResolution'] = autoResolution
+    if clientId is not None:
+        final_kwargs['clientId'] = clientId
+    if deviceSerial is not None:
+        final_kwargs['deviceSerial'] = deviceSerial
+    if apTag is not None:
+        final_kwargs['apTag'] = apTag
+    if band is not None:
+        final_kwargs['band'] = band
+    if ssid is not None:
+        final_kwargs['ssid'] = ssid
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6455,21 +7963,27 @@ def getNetworkWirelessUsageHistory(networkId: str, t0: str = None, t1: str = Non
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getNetworkWirelessUsageHistory')
+    client = MerakiClient()
+    target = getattr(client, 'getNetworkWirelessUsageHistory')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizations')
 def getOrganizations(perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6479,21 +7993,23 @@ def getOrganizations(perPage: int = None, startingAfter: str = None, endingBefor
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizations')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizations')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganization')
 def getOrganization(organizationId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6503,21 +8019,25 @@ def getOrganization(organizationId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganization')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganization')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationActionBatches')
 def getOrganizationActionBatches(organizationId: str, status: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'status': 'status'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if status is not None:
+        final_kwargs['status'] = status
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6527,21 +8047,25 @@ def getOrganizationActionBatches(organizationId: str, status: str = None):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationActionBatches')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationActionBatches')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationActionBatch')
 def getOrganizationActionBatch(organizationId: str, actionBatchId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'actionBatchId': 'actionBatchId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if actionBatchId is not None:
+        final_kwargs['actionBatchId'] = actionBatchId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6551,21 +8075,23 @@ def getOrganizationActionBatch(organizationId: str, actionBatchId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationActionBatch')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationActionBatch')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationAdaptivePolicyAcls')
 def getOrganizationAdaptivePolicyAcls(organizationId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6575,21 +8101,25 @@ def getOrganizationAdaptivePolicyAcls(organizationId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationAdaptivePolicyAcls')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationAdaptivePolicyAcls')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationAdaptivePolicyAcl')
 def getOrganizationAdaptivePolicyAcl(organizationId: str, aclId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'aclId': 'aclId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if aclId is not None:
+        final_kwargs['aclId'] = aclId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6599,21 +8129,23 @@ def getOrganizationAdaptivePolicyAcl(organizationId: str, aclId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationAdaptivePolicyAcl')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationAdaptivePolicyAcl')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationAdaptivePolicyGroups')
 def getOrganizationAdaptivePolicyGroups(organizationId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6623,21 +8155,25 @@ def getOrganizationAdaptivePolicyGroups(organizationId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationAdaptivePolicyGroups')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationAdaptivePolicyGroups')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationAdaptivePolicyGroup')
 def getOrganizationAdaptivePolicyGroup(organizationId: str, id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6647,21 +8183,23 @@ def getOrganizationAdaptivePolicyGroup(organizationId: str, id: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationAdaptivePolicyGroup')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationAdaptivePolicyGroup')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationAdaptivePolicyOverview')
 def getOrganizationAdaptivePolicyOverview(organizationId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6671,21 +8209,23 @@ def getOrganizationAdaptivePolicyOverview(organizationId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationAdaptivePolicyOverview')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationAdaptivePolicyOverview')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationAdaptivePolicyPolicies')
 def getOrganizationAdaptivePolicyPolicies(organizationId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6695,21 +8235,25 @@ def getOrganizationAdaptivePolicyPolicies(organizationId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationAdaptivePolicyPolicies')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationAdaptivePolicyPolicies')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationAdaptivePolicyPolicy')
 def getOrganizationAdaptivePolicyPolicy(organizationId: str, id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6719,21 +8263,23 @@ def getOrganizationAdaptivePolicyPolicy(organizationId: str, id: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationAdaptivePolicyPolicy')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationAdaptivePolicyPolicy')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationAdaptivePolicySettings')
 def getOrganizationAdaptivePolicySettings(organizationId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6743,21 +8289,25 @@ def getOrganizationAdaptivePolicySettings(organizationId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationAdaptivePolicySettings')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationAdaptivePolicySettings')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationAdmins')
 def getOrganizationAdmins(organizationId: str, networkIds: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'networkIds': 'networkIds'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6767,21 +8317,23 @@ def getOrganizationAdmins(organizationId: str, networkIds: list = None):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationAdmins')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationAdmins')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationAlertsProfiles')
 def getOrganizationAlertsProfiles(organizationId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6791,21 +8343,51 @@ def getOrganizationAlertsProfiles(organizationId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationAlertsProfiles')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationAlertsProfiles')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationApiRequests')
 def getOrganizationApiRequests(organizationId: str, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, adminId: str = None, path: str = None, method: str = None, responseCode: int = None, sourceIp: str = None, userAgent: str = None, version: int = None, operationIds: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'adminId': 'adminId', 'path': 'path', 'method': 'method', 'responseCode': 'responseCode', 'sourceIp': 'sourceIp', 'userAgent': 'userAgent', 'version': 'version', 'operationIds': 'operationIds'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if adminId is not None:
+        final_kwargs['adminId'] = adminId
+    if path is not None:
+        final_kwargs['path'] = path
+    if method is not None:
+        final_kwargs['method'] = method
+    if responseCode is not None:
+        final_kwargs['responseCode'] = responseCode
+    if sourceIp is not None:
+        final_kwargs['sourceIp'] = sourceIp
+    if userAgent is not None:
+        final_kwargs['userAgent'] = userAgent
+    if version is not None:
+        final_kwargs['version'] = version
+    if operationIds is not None:
+        final_kwargs['operationIds'] = operationIds
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6815,21 +8397,29 @@ def getOrganizationApiRequests(organizationId: str, t0: str = None, t1: str = No
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationApiRequests')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationApiRequests')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationApiRequestsOverview')
 def getOrganizationApiRequestsOverview(organizationId: str, t0: str = None, t1: str = None, timespan: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 't0': 't0', 't1': 't1', 'timespan': 'timespan'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6839,21 +8429,41 @@ def getOrganizationApiRequestsOverview(organizationId: str, t0: str = None, t1: 
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationApiRequestsOverview')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationApiRequestsOverview')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationApiRequestsOverviewResponseCodesByInterval')
 def getOrganizationApiRequestsOverviewResponseCodesByInterval(organizationId: str, t0: str = None, t1: str = None, timespan: float = None, interval: int = None, version: int = None, operationIds: list = None, sourceIps: list = None, adminIds: list = None, userAgent: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'interval': 'interval', 'version': 'version', 'operationIds': 'operationIds', 'sourceIps': 'sourceIps', 'adminIds': 'adminIds', 'userAgent': 'userAgent'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if interval is not None:
+        final_kwargs['interval'] = interval
+    if version is not None:
+        final_kwargs['version'] = version
+    if operationIds is not None:
+        final_kwargs['operationIds'] = operationIds
+    if sourceIps is not None:
+        final_kwargs['sourceIps'] = sourceIps
+    if adminIds is not None:
+        final_kwargs['adminIds'] = adminIds
+    if userAgent is not None:
+        final_kwargs['userAgent'] = userAgent
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6863,21 +8473,37 @@ def getOrganizationApiRequestsOverviewResponseCodesByInterval(organizationId: st
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationApiRequestsOverviewResponseCodesByInterval')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationApiRequestsOverviewResponseCodesByInterval')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationApplianceSecurityEvents')
 def getOrganizationApplianceSecurityEvents(organizationId: str, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, sortOrder: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'sortOrder': 'sortOrder'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if sortOrder is not None:
+        final_kwargs['sortOrder'] = sortOrder
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6887,21 +8513,23 @@ def getOrganizationApplianceSecurityEvents(organizationId: str, t0: str = None, 
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationApplianceSecurityEvents')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationApplianceSecurityEvents')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationApplianceSecurityIntrusion')
 def getOrganizationApplianceSecurityIntrusion(organizationId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6911,21 +8539,31 @@ def getOrganizationApplianceSecurityIntrusion(organizationId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationApplianceSecurityIntrusion')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationApplianceSecurityIntrusion')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationApplianceTrafficShapingVpnExclusionsByNetwork')
 def getOrganizationApplianceTrafficShapingVpnExclusionsByNetwork(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'networkIds': 'networkIds'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6935,21 +8573,35 @@ def getOrganizationApplianceTrafficShapingVpnExclusionsByNetwork(organizationId:
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationApplianceTrafficShapingVpnExclusionsByNetwork')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationApplianceTrafficShapingVpnExclusionsByNetwork')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationApplianceUplinkStatuses')
 def getOrganizationApplianceUplinkStatuses(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, serials: list = None, iccids: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'networkIds': 'networkIds', 'serials': 'serials', 'iccids': 'iccids'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if iccids is not None:
+        final_kwargs['iccids'] = iccids
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6959,21 +8611,23 @@ def getOrganizationApplianceUplinkStatuses(organizationId: str, perPage: int = N
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationApplianceUplinkStatuses')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationApplianceUplinkStatuses')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationApplianceUplinksStatusesOverview')
 def getOrganizationApplianceUplinksStatusesOverview(organizationId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -6983,21 +8637,29 @@ def getOrganizationApplianceUplinksStatusesOverview(organizationId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationApplianceUplinksStatusesOverview')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationApplianceUplinksStatusesOverview')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationApplianceUplinksUsageByNetwork')
 def getOrganizationApplianceUplinksUsageByNetwork(organizationId: str, t0: str = None, t1: str = None, timespan: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 't0': 't0', 't1': 't1', 'timespan': 'timespan'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7007,21 +8669,37 @@ def getOrganizationApplianceUplinksUsageByNetwork(organizationId: str, t0: str =
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationApplianceUplinksUsageByNetwork')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationApplianceUplinksUsageByNetwork')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationApplianceVpnStats')
 def getOrganizationApplianceVpnStats(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, t0: str = None, t1: str = None, timespan: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'networkIds': 'networkIds', 't0': 't0', 't1': 't1', 'timespan': 'timespan'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7031,21 +8709,31 @@ def getOrganizationApplianceVpnStats(organizationId: str, perPage: int = None, s
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationApplianceVpnStats')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationApplianceVpnStats')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationApplianceVpnStatuses')
 def getOrganizationApplianceVpnStatuses(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'networkIds': 'networkIds'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7055,21 +8743,23 @@ def getOrganizationApplianceVpnStatuses(organizationId: str, perPage: int = None
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationApplianceVpnStatuses')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationApplianceVpnStatuses')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationApplianceVpnThirdPartyVPNPeers')
 def getOrganizationApplianceVpnThirdPartyVPNPeers(organizationId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7079,21 +8769,23 @@ def getOrganizationApplianceVpnThirdPartyVPNPeers(organizationId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationApplianceVpnThirdPartyVPNPeers')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationApplianceVpnThirdPartyVPNPeers')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationApplianceVpnVpnFirewallRules')
 def getOrganizationApplianceVpnVpnFirewallRules(organizationId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7103,21 +8795,59 @@ def getOrganizationApplianceVpnVpnFirewallRules(organizationId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationApplianceVpnVpnFirewallRules')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationApplianceVpnVpnFirewallRules')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationAssuranceAlerts')
 def getOrganizationAssuranceAlerts(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, sortOrder: str = None, networkId: str = None, severity: str = None, types: list = None, tsStart: str = None, tsEnd: str = None, category: str = None, sortBy: str = None, serials: list = None, deviceTypes: list = None, deviceTags: list = None, active: bool = None, dismissed: bool = None, resolved: bool = None, suppressAlertsForOfflineNodes: bool = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'sortOrder': 'sortOrder', 'networkId': 'networkId', 'severity': 'severity', 'types': 'types', 'tsStart': 'tsStart', 'tsEnd': 'tsEnd', 'category': 'category', 'sortBy': 'sortBy', 'serials': 'serials', 'deviceTypes': 'deviceTypes', 'deviceTags': 'deviceTags', 'active': 'active', 'dismissed': 'dismissed', 'resolved': 'resolved', 'suppressAlertsForOfflineNodes': 'suppressAlertsForOfflineNodes'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if sortOrder is not None:
+        final_kwargs['sortOrder'] = sortOrder
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if severity is not None:
+        final_kwargs['severity'] = severity
+    if types is not None:
+        final_kwargs['types'] = types
+    if tsStart is not None:
+        final_kwargs['tsStart'] = tsStart
+    if tsEnd is not None:
+        final_kwargs['tsEnd'] = tsEnd
+    if category is not None:
+        final_kwargs['category'] = category
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if deviceTypes is not None:
+        final_kwargs['deviceTypes'] = deviceTypes
+    if deviceTags is not None:
+        final_kwargs['deviceTags'] = deviceTags
+    if active is not None:
+        final_kwargs['active'] = active
+    if dismissed is not None:
+        final_kwargs['dismissed'] = dismissed
+    if resolved is not None:
+        final_kwargs['resolved'] = resolved
+    if suppressAlertsForOfflineNodes is not None:
+        final_kwargs['suppressAlertsForOfflineNodes'] = suppressAlertsForOfflineNodes
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7127,21 +8857,49 @@ def getOrganizationAssuranceAlerts(organizationId: str, perPage: int = None, sta
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationAssuranceAlerts')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationAssuranceAlerts')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationAssuranceAlertsOverview')
 def getOrganizationAssuranceAlertsOverview(organizationId: str, networkId: str = None, severity: str = None, types: list = None, tsStart: str = None, tsEnd: str = None, category: str = None, serials: list = None, deviceTypes: list = None, deviceTags: list = None, active: bool = None, dismissed: bool = None, resolved: bool = None, suppressAlertsForOfflineNodes: bool = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'networkId': 'networkId', 'severity': 'severity', 'types': 'types', 'tsStart': 'tsStart', 'tsEnd': 'tsEnd', 'category': 'category', 'serials': 'serials', 'deviceTypes': 'deviceTypes', 'deviceTags': 'deviceTags', 'active': 'active', 'dismissed': 'dismissed', 'resolved': 'resolved', 'suppressAlertsForOfflineNodes': 'suppressAlertsForOfflineNodes'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if severity is not None:
+        final_kwargs['severity'] = severity
+    if types is not None:
+        final_kwargs['types'] = types
+    if tsStart is not None:
+        final_kwargs['tsStart'] = tsStart
+    if tsEnd is not None:
+        final_kwargs['tsEnd'] = tsEnd
+    if category is not None:
+        final_kwargs['category'] = category
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if deviceTypes is not None:
+        final_kwargs['deviceTypes'] = deviceTypes
+    if deviceTags is not None:
+        final_kwargs['deviceTags'] = deviceTags
+    if active is not None:
+        final_kwargs['active'] = active
+    if dismissed is not None:
+        final_kwargs['dismissed'] = dismissed
+    if resolved is not None:
+        final_kwargs['resolved'] = resolved
+    if suppressAlertsForOfflineNodes is not None:
+        final_kwargs['suppressAlertsForOfflineNodes'] = suppressAlertsForOfflineNodes
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7151,21 +8909,57 @@ def getOrganizationAssuranceAlertsOverview(organizationId: str, networkId: str =
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationAssuranceAlertsOverview')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationAssuranceAlertsOverview')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationAssuranceAlertsOverviewByNetwork')
 def getOrganizationAssuranceAlertsOverviewByNetwork(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, sortOrder: str = None, networkId: str = None, severity: str = None, types: list = None, tsStart: str = None, tsEnd: str = None, category: str = None, serials: list = None, deviceTypes: list = None, deviceTags: list = None, active: bool = None, dismissed: bool = None, resolved: bool = None, suppressAlertsForOfflineNodes: bool = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'sortOrder': 'sortOrder', 'networkId': 'networkId', 'severity': 'severity', 'types': 'types', 'tsStart': 'tsStart', 'tsEnd': 'tsEnd', 'category': 'category', 'serials': 'serials', 'deviceTypes': 'deviceTypes', 'deviceTags': 'deviceTags', 'active': 'active', 'dismissed': 'dismissed', 'resolved': 'resolved', 'suppressAlertsForOfflineNodes': 'suppressAlertsForOfflineNodes'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if sortOrder is not None:
+        final_kwargs['sortOrder'] = sortOrder
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if severity is not None:
+        final_kwargs['severity'] = severity
+    if types is not None:
+        final_kwargs['types'] = types
+    if tsStart is not None:
+        final_kwargs['tsStart'] = tsStart
+    if tsEnd is not None:
+        final_kwargs['tsEnd'] = tsEnd
+    if category is not None:
+        final_kwargs['category'] = category
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if deviceTypes is not None:
+        final_kwargs['deviceTypes'] = deviceTypes
+    if deviceTags is not None:
+        final_kwargs['deviceTags'] = deviceTags
+    if active is not None:
+        final_kwargs['active'] = active
+    if dismissed is not None:
+        final_kwargs['dismissed'] = dismissed
+    if resolved is not None:
+        final_kwargs['resolved'] = resolved
+    if suppressAlertsForOfflineNodes is not None:
+        final_kwargs['suppressAlertsForOfflineNodes'] = suppressAlertsForOfflineNodes
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7175,21 +8969,59 @@ def getOrganizationAssuranceAlertsOverviewByNetwork(organizationId: str, perPage
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationAssuranceAlertsOverviewByNetwork')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationAssuranceAlertsOverviewByNetwork')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationAssuranceAlertsOverviewByType')
 def getOrganizationAssuranceAlertsOverviewByType(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, sortOrder: str = None, networkId: str = None, severity: str = None, types: list = None, tsStart: str = None, tsEnd: str = None, category: str = None, sortBy: str = None, serials: list = None, deviceTypes: list = None, deviceTags: list = None, active: bool = None, dismissed: bool = None, resolved: bool = None, suppressAlertsForOfflineNodes: bool = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'sortOrder': 'sortOrder', 'networkId': 'networkId', 'severity': 'severity', 'types': 'types', 'tsStart': 'tsStart', 'tsEnd': 'tsEnd', 'category': 'category', 'sortBy': 'sortBy', 'serials': 'serials', 'deviceTypes': 'deviceTypes', 'deviceTags': 'deviceTags', 'active': 'active', 'dismissed': 'dismissed', 'resolved': 'resolved', 'suppressAlertsForOfflineNodes': 'suppressAlertsForOfflineNodes'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if sortOrder is not None:
+        final_kwargs['sortOrder'] = sortOrder
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if severity is not None:
+        final_kwargs['severity'] = severity
+    if types is not None:
+        final_kwargs['types'] = types
+    if tsStart is not None:
+        final_kwargs['tsStart'] = tsStart
+    if tsEnd is not None:
+        final_kwargs['tsEnd'] = tsEnd
+    if category is not None:
+        final_kwargs['category'] = category
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if deviceTypes is not None:
+        final_kwargs['deviceTypes'] = deviceTypes
+    if deviceTags is not None:
+        final_kwargs['deviceTags'] = deviceTags
+    if active is not None:
+        final_kwargs['active'] = active
+    if dismissed is not None:
+        final_kwargs['dismissed'] = dismissed
+    if resolved is not None:
+        final_kwargs['resolved'] = resolved
+    if suppressAlertsForOfflineNodes is not None:
+        final_kwargs['suppressAlertsForOfflineNodes'] = suppressAlertsForOfflineNodes
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7199,21 +9031,41 @@ def getOrganizationAssuranceAlertsOverviewByType(organizationId: str, perPage: i
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationAssuranceAlertsOverviewByType')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationAssuranceAlertsOverviewByType')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationAssuranceAlertsOverviewHistorical')
 def getOrganizationAssuranceAlertsOverviewHistorical(organizationId: str, segmentDuration: int, tsStart: str, networkId: str = None, severity: str = None, types: list = None, tsEnd: str = None, category: str = None, serials: list = None, deviceTypes: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'segmentDuration': 'segmentDuration', 'networkId': 'networkId', 'severity': 'severity', 'types': 'types', 'tsStart': 'tsStart', 'tsEnd': 'tsEnd', 'category': 'category', 'serials': 'serials', 'deviceTypes': 'deviceTypes'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if segmentDuration is not None:
+        final_kwargs['segmentDuration'] = segmentDuration
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if severity is not None:
+        final_kwargs['severity'] = severity
+    if types is not None:
+        final_kwargs['types'] = types
+    if tsStart is not None:
+        final_kwargs['tsStart'] = tsStart
+    if tsEnd is not None:
+        final_kwargs['tsEnd'] = tsEnd
+    if category is not None:
+        final_kwargs['category'] = category
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if deviceTypes is not None:
+        final_kwargs['deviceTypes'] = deviceTypes
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7223,21 +9075,25 @@ def getOrganizationAssuranceAlertsOverviewHistorical(organizationId: str, segmen
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationAssuranceAlertsOverviewHistorical')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationAssuranceAlertsOverviewHistorical')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationAssuranceAlert')
 def getOrganizationAssuranceAlert(organizationId: str, id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7247,21 +9103,23 @@ def getOrganizationAssuranceAlert(organizationId: str, id: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationAssuranceAlert')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationAssuranceAlert')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationBrandingPolicies')
 def getOrganizationBrandingPolicies(organizationId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7271,21 +9129,23 @@ def getOrganizationBrandingPolicies(organizationId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationBrandingPolicies')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationBrandingPolicies')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationBrandingPoliciesPriorities')
 def getOrganizationBrandingPoliciesPriorities(organizationId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7295,21 +9155,25 @@ def getOrganizationBrandingPoliciesPriorities(organizationId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationBrandingPoliciesPriorities')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationBrandingPoliciesPriorities')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationBrandingPolicy')
 def getOrganizationBrandingPolicy(organizationId: str, brandingPolicyId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'brandingPolicyId': 'brandingPolicyId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if brandingPolicyId is not None:
+        final_kwargs['brandingPolicyId'] = brandingPolicyId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7319,21 +9183,25 @@ def getOrganizationBrandingPolicy(organizationId: str, brandingPolicyId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationBrandingPolicy')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationBrandingPolicy')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationCameraBoundariesAreasByDevice')
 def getOrganizationCameraBoundariesAreasByDevice(organizationId: str, serials: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'serials': 'serials'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if serials is not None:
+        final_kwargs['serials'] = serials
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7343,21 +9211,25 @@ def getOrganizationCameraBoundariesAreasByDevice(organizationId: str, serials: l
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationCameraBoundariesAreasByDevice')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationCameraBoundariesAreasByDevice')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationCameraBoundariesLinesByDevice')
 def getOrganizationCameraBoundariesLinesByDevice(organizationId: str, serials: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'serials': 'serials'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if serials is not None:
+        final_kwargs['serials'] = serials
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7367,21 +9239,23 @@ def getOrganizationCameraBoundariesLinesByDevice(organizationId: str, serials: l
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationCameraBoundariesLinesByDevice')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationCameraBoundariesLinesByDevice')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationCameraCustomAnalyticsArtifacts')
 def getOrganizationCameraCustomAnalyticsArtifacts(organizationId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7391,21 +9265,25 @@ def getOrganizationCameraCustomAnalyticsArtifacts(organizationId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationCameraCustomAnalyticsArtifacts')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationCameraCustomAnalyticsArtifacts')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationCameraCustomAnalyticsArtifact')
 def getOrganizationCameraCustomAnalyticsArtifact(organizationId: str, artifactId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'artifactId': 'artifactId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if artifactId is not None:
+        final_kwargs['artifactId'] = artifactId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7415,21 +9293,33 @@ def getOrganizationCameraCustomAnalyticsArtifact(organizationId: str, artifactId
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationCameraCustomAnalyticsArtifact')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationCameraCustomAnalyticsArtifact')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationCameraDetectionsHistoryByBoundaryByInterval')
 def getOrganizationCameraDetectionsHistoryByBoundaryByInterval(organizationId: str, boundaryIds: list, ranges: list, duration: int = None, perPage: int = None, boundaryTypes: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'boundaryIds': 'boundaryIds', 'ranges': 'ranges', 'duration': 'duration', 'perPage': 'perPage', 'boundaryTypes': 'boundaryTypes'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if boundaryIds is not None:
+        final_kwargs['boundaryIds'] = boundaryIds
+    if ranges is not None:
+        final_kwargs['ranges'] = ranges
+    if duration is not None:
+        final_kwargs['duration'] = duration
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if boundaryTypes is not None:
+        final_kwargs['boundaryTypes'] = boundaryTypes
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7439,21 +9329,27 @@ def getOrganizationCameraDetectionsHistoryByBoundaryByInterval(organizationId: s
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationCameraDetectionsHistoryByBoundaryByInterval')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationCameraDetectionsHistoryByBoundaryByInterval')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationCameraOnboardingStatuses')
 def getOrganizationCameraOnboardingStatuses(organizationId: str, serials: list = None, networkIds: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'serials': 'serials', 'networkIds': 'networkIds'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7463,21 +9359,23 @@ def getOrganizationCameraOnboardingStatuses(organizationId: str, serials: list =
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationCameraOnboardingStatuses')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationCameraOnboardingStatuses')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationCameraPermissions')
 def getOrganizationCameraPermissions(organizationId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7487,21 +9385,25 @@ def getOrganizationCameraPermissions(organizationId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationCameraPermissions')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationCameraPermissions')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationCameraPermission')
 def getOrganizationCameraPermission(organizationId: str, permissionScopeId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'permissionScopeId': 'permissionScopeId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if permissionScopeId is not None:
+        final_kwargs['permissionScopeId'] = permissionScopeId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7511,21 +9413,23 @@ def getOrganizationCameraPermission(organizationId: str, permissionScopeId: str)
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationCameraPermission')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationCameraPermission')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationCameraRoles')
 def getOrganizationCameraRoles(organizationId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7535,21 +9439,25 @@ def getOrganizationCameraRoles(organizationId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationCameraRoles')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationCameraRoles')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationCameraRole')
 def getOrganizationCameraRole(organizationId: str, roleId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'roleId': 'roleId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if roleId is not None:
+        final_kwargs['roleId'] = roleId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7559,21 +9467,25 @@ def getOrganizationCameraRole(organizationId: str, roleId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationCameraRole')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationCameraRole')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationCellularGatewayEsimsInventory')
 def getOrganizationCellularGatewayEsimsInventory(organizationId: str, eids: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'eids': 'eids'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if eids is not None:
+        final_kwargs['eids'] = eids
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7583,21 +9495,23 @@ def getOrganizationCellularGatewayEsimsInventory(organizationId: str, eids: list
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationCellularGatewayEsimsInventory')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationCellularGatewayEsimsInventory')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationCellularGatewayEsimsServiceProviders')
 def getOrganizationCellularGatewayEsimsServiceProviders(organizationId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7607,21 +9521,25 @@ def getOrganizationCellularGatewayEsimsServiceProviders(organizationId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationCellularGatewayEsimsServiceProviders')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationCellularGatewayEsimsServiceProviders')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationCellularGatewayEsimsServiceProvidersAccounts')
 def getOrganizationCellularGatewayEsimsServiceProvidersAccounts(organizationId: str, accountIds: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'accountIds': 'accountIds'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if accountIds is not None:
+        final_kwargs['accountIds'] = accountIds
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7631,21 +9549,25 @@ def getOrganizationCellularGatewayEsimsServiceProvidersAccounts(organizationId: 
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationCellularGatewayEsimsServiceProvidersAccounts')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationCellularGatewayEsimsServiceProvidersAccounts')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationCellularGatewayEsimsServiceProvidersAccountsCommu')
 def getOrganizationCellularGatewayEsimsServiceProvidersAccountsCommu(organizationId: str, accountIds: list):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'accountIds': 'accountIds'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if accountIds is not None:
+        final_kwargs['accountIds'] = accountIds
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7655,21 +9577,25 @@ def getOrganizationCellularGatewayEsimsServiceProvidersAccountsCommu(organizatio
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationCellularGatewayEsimsServiceProvidersAccountsCommu')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationCellularGatewayEsimsServiceProvidersAccountsCommu')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationCellularGatewayEsimsServiceProvidersAccountsRateP')
 def getOrganizationCellularGatewayEsimsServiceProvidersAccountsRateP(organizationId: str, accountIds: list):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'accountIds': 'accountIds'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if accountIds is not None:
+        final_kwargs['accountIds'] = accountIds
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7679,21 +9605,35 @@ def getOrganizationCellularGatewayEsimsServiceProvidersAccountsRateP(organizatio
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationCellularGatewayEsimsServiceProvidersAccountsRateP')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationCellularGatewayEsimsServiceProvidersAccountsRateP')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationCellularGatewayUplinkStatuses')
 def getOrganizationCellularGatewayUplinkStatuses(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, serials: list = None, iccids: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'networkIds': 'networkIds', 'serials': 'serials', 'iccids': 'iccids'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if iccids is not None:
+        final_kwargs['iccids'] = iccids
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7703,21 +9643,37 @@ def getOrganizationCellularGatewayUplinkStatuses(organizationId: str, perPage: i
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationCellularGatewayUplinkStatuses')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationCellularGatewayUplinkStatuses')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationClientsBandwidthUsageHistory')
 def getOrganizationClientsBandwidthUsageHistory(organizationId: str, networkTag: str = None, deviceTag: str = None, ssidName: str = None, usageUplink: str = None, t0: str = None, t1: str = None, timespan: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'networkTag': 'networkTag', 'deviceTag': 'deviceTag', 'ssidName': 'ssidName', 'usageUplink': 'usageUplink', 't0': 't0', 't1': 't1', 'timespan': 'timespan'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if networkTag is not None:
+        final_kwargs['networkTag'] = networkTag
+    if deviceTag is not None:
+        final_kwargs['deviceTag'] = deviceTag
+    if ssidName is not None:
+        final_kwargs['ssidName'] = ssidName
+    if usageUplink is not None:
+        final_kwargs['usageUplink'] = usageUplink
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7727,21 +9683,29 @@ def getOrganizationClientsBandwidthUsageHistory(organizationId: str, networkTag:
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationClientsBandwidthUsageHistory')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationClientsBandwidthUsageHistory')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationClientsOverview')
 def getOrganizationClientsOverview(organizationId: str, t0: str = None, t1: str = None, timespan: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 't0': 't0', 't1': 't1', 'timespan': 'timespan'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7751,21 +9715,31 @@ def getOrganizationClientsOverview(organizationId: str, t0: str = None, t1: str 
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationClientsOverview')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationClientsOverview')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationClientsSearch')
 def getOrganizationClientsSearch(organizationId: str, mac: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'mac': 'mac'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if mac is not None:
+        final_kwargs['mac'] = mac
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7775,21 +9749,23 @@ def getOrganizationClientsSearch(organizationId: str, mac: str, perPage: int = N
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationClientsSearch')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationClientsSearch')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationConfigTemplates')
 def getOrganizationConfigTemplates(organizationId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7799,21 +9775,25 @@ def getOrganizationConfigTemplates(organizationId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationConfigTemplates')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationConfigTemplates')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationConfigTemplate')
 def getOrganizationConfigTemplate(organizationId: str, configTemplateId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'configTemplateId': 'configTemplateId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if configTemplateId is not None:
+        final_kwargs['configTemplateId'] = configTemplateId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7823,21 +9803,25 @@ def getOrganizationConfigTemplate(organizationId: str, configTemplateId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationConfigTemplate')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationConfigTemplate')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationConfigTemplateSwitchProfiles')
 def getOrganizationConfigTemplateSwitchProfiles(organizationId: str, configTemplateId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'configTemplateId': 'configTemplateId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if configTemplateId is not None:
+        final_kwargs['configTemplateId'] = configTemplateId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7847,21 +9831,27 @@ def getOrganizationConfigTemplateSwitchProfiles(organizationId: str, configTempl
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationConfigTemplateSwitchProfiles')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationConfigTemplateSwitchProfiles')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationConfigTemplateSwitchProfilePorts')
 def getOrganizationConfigTemplateSwitchProfilePorts(organizationId: str, configTemplateId: str, profileId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'configTemplateId': 'configTemplateId', 'profileId': 'profileId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if configTemplateId is not None:
+        final_kwargs['configTemplateId'] = configTemplateId
+    if profileId is not None:
+        final_kwargs['profileId'] = profileId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7871,21 +9861,29 @@ def getOrganizationConfigTemplateSwitchProfilePorts(organizationId: str, configT
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationConfigTemplateSwitchProfilePorts')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationConfigTemplateSwitchProfilePorts')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationConfigTemplateSwitchProfilePort')
 def getOrganizationConfigTemplateSwitchProfilePort(organizationId: str, configTemplateId: str, profileId: str, portId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'configTemplateId': 'configTemplateId', 'profileId': 'profileId', 'portId': 'portId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if configTemplateId is not None:
+        final_kwargs['configTemplateId'] = configTemplateId
+    if profileId is not None:
+        final_kwargs['profileId'] = profileId
+    if portId is not None:
+        final_kwargs['portId'] = portId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7895,21 +9893,39 @@ def getOrganizationConfigTemplateSwitchProfilePort(organizationId: str, configTe
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationConfigTemplateSwitchProfilePort')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationConfigTemplateSwitchProfilePort')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationConfigurationChanges')
 def getOrganizationConfigurationChanges(organizationId: str, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkId: str = None, adminId: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'networkId': 'networkId', 'adminId': 'adminId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if adminId is not None:
+        final_kwargs['adminId'] = adminId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7919,21 +9935,57 @@ def getOrganizationConfigurationChanges(organizationId: str, t0: str = None, t1:
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationConfigurationChanges')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationConfigurationChanges')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationDevices')
 def getOrganizationDevices(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, configurationUpdatedAfter: str = None, networkIds: list = None, productTypes: list = None, tags: list = None, tagsFilterType: str = None, name: str = None, mac: str = None, serial: str = None, model: str = None, macs: list = None, serials: list = None, sensorMetrics: list = None, sensorAlertProfileIds: list = None, models: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'configurationUpdatedAfter': 'configurationUpdatedAfter', 'networkIds': 'networkIds', 'productTypes': 'productTypes', 'tags': 'tags', 'tagsFilterType': 'tagsFilterType', 'name': 'name', 'mac': 'mac', 'serial': 'serial', 'model': 'model', 'macs': 'macs', 'serials': 'serials', 'sensorMetrics': 'sensorMetrics', 'sensorAlertProfileIds': 'sensorAlertProfileIds', 'models': 'models'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if configurationUpdatedAfter is not None:
+        final_kwargs['configurationUpdatedAfter'] = configurationUpdatedAfter
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if productTypes is not None:
+        final_kwargs['productTypes'] = productTypes
+    if tags is not None:
+        final_kwargs['tags'] = tags
+    if tagsFilterType is not None:
+        final_kwargs['tagsFilterType'] = tagsFilterType
+    if name is not None:
+        final_kwargs['name'] = name
+    if mac is not None:
+        final_kwargs['mac'] = mac
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if model is not None:
+        final_kwargs['model'] = model
+    if macs is not None:
+        final_kwargs['macs'] = macs
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if sensorMetrics is not None:
+        final_kwargs['sensorMetrics'] = sensorMetrics
+    if sensorAlertProfileIds is not None:
+        final_kwargs['sensorAlertProfileIds'] = sensorAlertProfileIds
+    if models is not None:
+        final_kwargs['models'] = models
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7943,21 +9995,41 @@ def getOrganizationDevices(organizationId: str, perPage: int = None, startingAft
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationDevices')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationDevices')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationDevicesAvailabilities')
 def getOrganizationDevicesAvailabilities(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, productTypes: list = None, serials: list = None, tags: list = None, tagsFilterType: str = None, statuses: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'networkIds': 'networkIds', 'productTypes': 'productTypes', 'serials': 'serials', 'tags': 'tags', 'tagsFilterType': 'tagsFilterType', 'statuses': 'statuses'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if productTypes is not None:
+        final_kwargs['productTypes'] = productTypes
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if tags is not None:
+        final_kwargs['tags'] = tags
+    if tagsFilterType is not None:
+        final_kwargs['tagsFilterType'] = tagsFilterType
+    if statuses is not None:
+        final_kwargs['statuses'] = statuses
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7967,21 +10039,43 @@ def getOrganizationDevicesAvailabilities(organizationId: str, perPage: int = Non
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationDevicesAvailabilities')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationDevicesAvailabilities')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationDevicesAvailabilitiesChangeHistory')
 def getOrganizationDevicesAvailabilitiesChangeHistory(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, t0: str = None, t1: str = None, timespan: float = None, serials: list = None, productTypes: list = None, networkIds: list = None, statuses: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'serials': 'serials', 'productTypes': 'productTypes', 'networkIds': 'networkIds', 'statuses': 'statuses'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if productTypes is not None:
+        final_kwargs['productTypes'] = productTypes
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if statuses is not None:
+        final_kwargs['statuses'] = statuses
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -7991,21 +10085,29 @@ def getOrganizationDevicesAvailabilitiesChangeHistory(organizationId: str, perPa
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationDevicesAvailabilitiesChangeHistory')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationDevicesAvailabilitiesChangeHistory')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationDevicesOverviewByModel')
 def getOrganizationDevicesOverviewByModel(organizationId: str, models: list = None, networkIds: list = None, productTypes: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'models': 'models', 'networkIds': 'networkIds', 'productTypes': 'productTypes'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if models is not None:
+        final_kwargs['models'] = models
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if productTypes is not None:
+        final_kwargs['productTypes'] = productTypes
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8015,21 +10117,39 @@ def getOrganizationDevicesOverviewByModel(organizationId: str, models: list = No
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationDevicesOverviewByModel')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationDevicesOverviewByModel')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationDevicesPowerModulesStatusesByDevice')
 def getOrganizationDevicesPowerModulesStatusesByDevice(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, productTypes: list = None, serials: list = None, tags: list = None, tagsFilterType: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'networkIds': 'networkIds', 'productTypes': 'productTypes', 'serials': 'serials', 'tags': 'tags', 'tagsFilterType': 'tagsFilterType'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if productTypes is not None:
+        final_kwargs['productTypes'] = productTypes
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if tags is not None:
+        final_kwargs['tags'] = tags
+    if tagsFilterType is not None:
+        final_kwargs['tagsFilterType'] = tagsFilterType
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8039,21 +10159,41 @@ def getOrganizationDevicesPowerModulesStatusesByDevice(organizationId: str, perP
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationDevicesPowerModulesStatusesByDevice')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationDevicesPowerModulesStatusesByDevice')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationDevicesProvisioningStatuses')
 def getOrganizationDevicesProvisioningStatuses(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, productTypes: list = None, serials: list = None, status: str = None, tags: list = None, tagsFilterType: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'networkIds': 'networkIds', 'productTypes': 'productTypes', 'serials': 'serials', 'status': 'status', 'tags': 'tags', 'tagsFilterType': 'tagsFilterType'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if productTypes is not None:
+        final_kwargs['productTypes'] = productTypes
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if status is not None:
+        final_kwargs['status'] = status
+    if tags is not None:
+        final_kwargs['tags'] = tags
+    if tagsFilterType is not None:
+        final_kwargs['tagsFilterType'] = tagsFilterType
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8063,21 +10203,43 @@ def getOrganizationDevicesProvisioningStatuses(organizationId: str, perPage: int
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationDevicesProvisioningStatuses')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationDevicesProvisioningStatuses')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationDevicesStatuses')
 def getOrganizationDevicesStatuses(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, serials: list = None, statuses: list = None, productTypes: list = None, models: list = None, tags: list = None, tagsFilterType: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'networkIds': 'networkIds', 'serials': 'serials', 'statuses': 'statuses', 'productTypes': 'productTypes', 'models': 'models', 'tags': 'tags', 'tagsFilterType': 'tagsFilterType'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if statuses is not None:
+        final_kwargs['statuses'] = statuses
+    if productTypes is not None:
+        final_kwargs['productTypes'] = productTypes
+    if models is not None:
+        final_kwargs['models'] = models
+    if tags is not None:
+        final_kwargs['tags'] = tags
+    if tagsFilterType is not None:
+        final_kwargs['tagsFilterType'] = tagsFilterType
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8087,21 +10249,27 @@ def getOrganizationDevicesStatuses(organizationId: str, perPage: int = None, sta
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationDevicesStatuses')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationDevicesStatuses')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationDevicesStatusesOverview')
 def getOrganizationDevicesStatusesOverview(organizationId: str, productTypes: list = None, networkIds: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'productTypes': 'productTypes', 'networkIds': 'networkIds'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if productTypes is not None:
+        final_kwargs['productTypes'] = productTypes
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8111,21 +10279,39 @@ def getOrganizationDevicesStatusesOverview(organizationId: str, productTypes: li
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationDevicesStatusesOverview')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationDevicesStatusesOverview')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationDevicesUplinksAddressesByDevice')
 def getOrganizationDevicesUplinksAddressesByDevice(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, productTypes: list = None, serials: list = None, tags: list = None, tagsFilterType: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'networkIds': 'networkIds', 'productTypes': 'productTypes', 'serials': 'serials', 'tags': 'tags', 'tagsFilterType': 'tagsFilterType'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if productTypes is not None:
+        final_kwargs['productTypes'] = productTypes
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if tags is not None:
+        final_kwargs['tags'] = tags
+    if tagsFilterType is not None:
+        final_kwargs['tagsFilterType'] = tagsFilterType
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8135,21 +10321,33 @@ def getOrganizationDevicesUplinksAddressesByDevice(organizationId: str, perPage:
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationDevicesUplinksAddressesByDevice')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationDevicesUplinksAddressesByDevice')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationDevicesUplinksLossAndLatency')
 def getOrganizationDevicesUplinksLossAndLatency(organizationId: str, t0: str = None, t1: str = None, timespan: float = None, uplink: str = None, ip: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'uplink': 'uplink', 'ip': 'ip'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if uplink is not None:
+        final_kwargs['uplink'] = uplink
+    if ip is not None:
+        final_kwargs['ip'] = ip
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8159,21 +10357,23 @@ def getOrganizationDevicesUplinksLossAndLatency(organizationId: str, t0: str = N
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationDevicesUplinksLossAndLatency')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationDevicesUplinksLossAndLatency')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationEarlyAccessFeatures')
 def getOrganizationEarlyAccessFeatures(organizationId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8183,21 +10383,23 @@ def getOrganizationEarlyAccessFeatures(organizationId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationEarlyAccessFeatures')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationEarlyAccessFeatures')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationEarlyAccessFeaturesOptIns')
 def getOrganizationEarlyAccessFeaturesOptIns(organizationId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8207,21 +10409,25 @@ def getOrganizationEarlyAccessFeaturesOptIns(organizationId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationEarlyAccessFeaturesOptIns')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationEarlyAccessFeaturesOptIns')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationEarlyAccessFeaturesOptIn')
 def getOrganizationEarlyAccessFeaturesOptIn(organizationId: str, optInId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'optInId': 'optInId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if optInId is not None:
+        final_kwargs['optInId'] = optInId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8231,21 +10437,33 @@ def getOrganizationEarlyAccessFeaturesOptIn(organizationId: str, optInId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationEarlyAccessFeaturesOptIn')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationEarlyAccessFeaturesOptIn')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationFirmwareUpgrades')
 def getOrganizationFirmwareUpgrades(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, status: list = None, productTypes: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'status': 'status', 'productTypes': 'productTypes'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if status is not None:
+        final_kwargs['status'] = status
+    if productTypes is not None:
+        final_kwargs['productTypes'] = productTypes
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8255,21 +10473,41 @@ def getOrganizationFirmwareUpgrades(organizationId: str, perPage: int = None, st
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationFirmwareUpgrades')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationFirmwareUpgrades')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationFirmwareUpgradesByDevice')
 def getOrganizationFirmwareUpgradesByDevice(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, serials: list = None, macs: list = None, firmwareUpgradeBatchIds: list = None, upgradeStatuses: list = None, currentUpgradesOnly: bool = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'networkIds': 'networkIds', 'serials': 'serials', 'macs': 'macs', 'firmwareUpgradeBatchIds': 'firmwareUpgradeBatchIds', 'upgradeStatuses': 'upgradeStatuses', 'currentUpgradesOnly': 'currentUpgradesOnly'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if macs is not None:
+        final_kwargs['macs'] = macs
+    if firmwareUpgradeBatchIds is not None:
+        final_kwargs['firmwareUpgradeBatchIds'] = firmwareUpgradeBatchIds
+    if upgradeStatuses is not None:
+        final_kwargs['upgradeStatuses'] = upgradeStatuses
+    if currentUpgradesOnly is not None:
+        final_kwargs['currentUpgradesOnly'] = currentUpgradesOnly
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8279,21 +10517,33 @@ def getOrganizationFirmwareUpgradesByDevice(organizationId: str, perPage: int = 
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationFirmwareUpgradesByDevice')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationFirmwareUpgradesByDevice')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationFloorPlansAutoLocateDevices')
 def getOrganizationFloorPlansAutoLocateDevices(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, floorPlanIds: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'networkIds': 'networkIds', 'floorPlanIds': 'floorPlanIds'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if floorPlanIds is not None:
+        final_kwargs['floorPlanIds'] = floorPlanIds
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8303,21 +10553,33 @@ def getOrganizationFloorPlansAutoLocateDevices(organizationId: str, perPage: int
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationFloorPlansAutoLocateDevices')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationFloorPlansAutoLocateDevices')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationFloorPlansAutoLocateStatuses')
 def getOrganizationFloorPlansAutoLocateStatuses(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, floorPlanIds: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'networkIds': 'networkIds', 'floorPlanIds': 'floorPlanIds'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if floorPlanIds is not None:
+        final_kwargs['floorPlanIds'] = floorPlanIds
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8327,21 +10589,23 @@ def getOrganizationFloorPlansAutoLocateStatuses(organizationId: str, perPage: in
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationFloorPlansAutoLocateStatuses')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationFloorPlansAutoLocateStatuses')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationInsightApplications')
 def getOrganizationInsightApplications(organizationId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8351,21 +10615,23 @@ def getOrganizationInsightApplications(organizationId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationInsightApplications')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationInsightApplications')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationInsightMonitoredMediaServers')
 def getOrganizationInsightMonitoredMediaServers(organizationId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8375,21 +10641,25 @@ def getOrganizationInsightMonitoredMediaServers(organizationId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationInsightMonitoredMediaServers')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationInsightMonitoredMediaServers')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationInsightMonitoredMediaServer')
 def getOrganizationInsightMonitoredMediaServer(organizationId: str, monitoredMediaServerId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'monitoredMediaServerId': 'monitoredMediaServerId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if monitoredMediaServerId is not None:
+        final_kwargs['monitoredMediaServerId'] = monitoredMediaServerId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8399,21 +10669,49 @@ def getOrganizationInsightMonitoredMediaServer(organizationId: str, monitoredMed
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationInsightMonitoredMediaServer')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationInsightMonitoredMediaServer')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationInventoryDevices')
 def getOrganizationInventoryDevices(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, usedState: str = None, search: str = None, macs: list = None, networkIds: list = None, serials: list = None, models: list = None, orderNumbers: list = None, tags: list = None, tagsFilterType: str = None, productTypes: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'usedState': 'usedState', 'search': 'search', 'macs': 'macs', 'networkIds': 'networkIds', 'serials': 'serials', 'models': 'models', 'orderNumbers': 'orderNumbers', 'tags': 'tags', 'tagsFilterType': 'tagsFilterType', 'productTypes': 'productTypes'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if usedState is not None:
+        final_kwargs['usedState'] = usedState
+    if search is not None:
+        final_kwargs['search'] = search
+    if macs is not None:
+        final_kwargs['macs'] = macs
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if models is not None:
+        final_kwargs['models'] = models
+    if orderNumbers is not None:
+        final_kwargs['orderNumbers'] = orderNumbers
+    if tags is not None:
+        final_kwargs['tags'] = tags
+    if tagsFilterType is not None:
+        final_kwargs['tagsFilterType'] = tagsFilterType
+    if productTypes is not None:
+        final_kwargs['productTypes'] = productTypes
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8423,21 +10721,25 @@ def getOrganizationInventoryDevices(organizationId: str, perPage: int = None, st
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationInventoryDevices')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationInventoryDevices')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationInventoryDevicesSwapsBulk')
 def getOrganizationInventoryDevicesSwapsBulk(organizationId: str, id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8447,21 +10749,25 @@ def getOrganizationInventoryDevicesSwapsBulk(organizationId: str, id: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationInventoryDevicesSwapsBulk')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationInventoryDevicesSwapsBulk')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationInventoryDevice')
 def getOrganizationInventoryDevice(organizationId: str, serial: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'serial': 'serial'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8471,21 +10777,25 @@ def getOrganizationInventoryDevice(organizationId: str, serial: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationInventoryDevice')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationInventoryDevice')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationInventoryOnboardingCloudMonitoringImports')
 def getOrganizationInventoryOnboardingCloudMonitoringImports(organizationId: str, importIds: list):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'importIds': 'importIds'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if importIds is not None:
+        final_kwargs['importIds'] = importIds
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8495,21 +10805,33 @@ def getOrganizationInventoryOnboardingCloudMonitoringImports(organizationId: str
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationInventoryOnboardingCloudMonitoringImports')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationInventoryOnboardingCloudMonitoringImports')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationInventoryOnboardingCloudMonitoringNetworks')
 def getOrganizationInventoryOnboardingCloudMonitoringNetworks(organizationId: str, deviceType: str, search: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'deviceType': 'deviceType', 'search': 'search', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if deviceType is not None:
+        final_kwargs['deviceType'] = deviceType
+    if search is not None:
+        final_kwargs['search'] = search
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8519,21 +10841,35 @@ def getOrganizationInventoryOnboardingCloudMonitoringNetworks(organizationId: st
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationInventoryOnboardingCloudMonitoringNetworks')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationInventoryOnboardingCloudMonitoringNetworks')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationLicenses')
 def getOrganizationLicenses(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, deviceSerial: str = None, networkId: str = None, state: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'deviceSerial': 'deviceSerial', 'networkId': 'networkId', 'state': 'state'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if deviceSerial is not None:
+        final_kwargs['deviceSerial'] = deviceSerial
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if state is not None:
+        final_kwargs['state'] = state
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8543,21 +10879,23 @@ def getOrganizationLicenses(organizationId: str, perPage: int = None, startingAf
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationLicenses')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationLicenses')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationLicensesOverview')
 def getOrganizationLicensesOverview(organizationId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8567,21 +10905,25 @@ def getOrganizationLicensesOverview(organizationId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationLicensesOverview')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationLicensesOverview')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationLicense')
 def getOrganizationLicense(organizationId: str, licenseId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'licenseId': 'licenseId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if licenseId is not None:
+        final_kwargs['licenseId'] = licenseId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8591,21 +10933,33 @@ def getOrganizationLicense(organizationId: str, licenseId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationLicense')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationLicense')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationLicensingCotermLicenses')
 def getOrganizationLicensingCotermLicenses(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, invalidated: bool = None, expired: bool = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'invalidated': 'invalidated', 'expired': 'expired'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if invalidated is not None:
+        final_kwargs['invalidated'] = invalidated
+    if expired is not None:
+        final_kwargs['expired'] = expired
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8615,21 +10969,23 @@ def getOrganizationLicensingCotermLicenses(organizationId: str, perPage: int = N
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationLicensingCotermLicenses')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationLicensingCotermLicenses')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationLoginSecurity')
 def getOrganizationLoginSecurity(organizationId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8639,21 +10995,39 @@ def getOrganizationLoginSecurity(organizationId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationLoginSecurity')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationLoginSecurity')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationNetworks')
 def getOrganizationNetworks(organizationId: str, configTemplateId: str = None, isBoundToConfigTemplate: bool = None, tags: list = None, tagsFilterType: str = None, productTypes: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'configTemplateId': 'configTemplateId', 'isBoundToConfigTemplate': 'isBoundToConfigTemplate', 'tags': 'tags', 'tagsFilterType': 'tagsFilterType', 'productTypes': 'productTypes', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if configTemplateId is not None:
+        final_kwargs['configTemplateId'] = configTemplateId
+    if isBoundToConfigTemplate is not None:
+        final_kwargs['isBoundToConfigTemplate'] = isBoundToConfigTemplate
+    if tags is not None:
+        final_kwargs['tags'] = tags
+    if tagsFilterType is not None:
+        final_kwargs['tagsFilterType'] = tagsFilterType
+    if productTypes is not None:
+        final_kwargs['productTypes'] = productTypes
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8663,21 +11037,25 @@ def getOrganizationNetworks(organizationId: str, configTemplateId: str = None, i
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationNetworks')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationNetworks')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationOpenapiSpec')
 def getOrganizationOpenapiSpec(organizationId: str, version: int = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'version': 'version'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if version is not None:
+        final_kwargs['version'] = version
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8687,21 +11065,29 @@ def getOrganizationOpenapiSpec(organizationId: str, version: int = None):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationOpenapiSpec')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationOpenapiSpec')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationPolicyObjects')
 def getOrganizationPolicyObjects(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8711,21 +11097,29 @@ def getOrganizationPolicyObjects(organizationId: str, perPage: int = None, start
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationPolicyObjects')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationPolicyObjects')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationPolicyObjectsGroups')
 def getOrganizationPolicyObjectsGroups(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8735,21 +11129,25 @@ def getOrganizationPolicyObjectsGroups(organizationId: str, perPage: int = None,
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationPolicyObjectsGroups')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationPolicyObjectsGroups')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationPolicyObjectsGroup')
 def getOrganizationPolicyObjectsGroup(organizationId: str, policyObjectGroupId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'policyObjectGroupId': 'policyObjectGroupId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if policyObjectGroupId is not None:
+        final_kwargs['policyObjectGroupId'] = policyObjectGroupId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8759,21 +11157,25 @@ def getOrganizationPolicyObjectsGroup(organizationId: str, policyObjectGroupId: 
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationPolicyObjectsGroup')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationPolicyObjectsGroup')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationPolicyObject')
 def getOrganizationPolicyObject(organizationId: str, policyObjectId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'policyObjectId': 'policyObjectId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if policyObjectId is not None:
+        final_kwargs['policyObjectId'] = policyObjectId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8783,21 +11185,23 @@ def getOrganizationPolicyObject(organizationId: str, policyObjectId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationPolicyObject')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationPolicyObject')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationSaml')
 def getOrganizationSaml(organizationId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8807,21 +11211,23 @@ def getOrganizationSaml(organizationId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationSaml')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationSaml')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationSamlIdps')
 def getOrganizationSamlIdps(organizationId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8831,21 +11237,25 @@ def getOrganizationSamlIdps(organizationId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationSamlIdps')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationSamlIdps')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationSamlIdp')
 def getOrganizationSamlIdp(organizationId: str, idpId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'idpId': 'idpId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if idpId is not None:
+        final_kwargs['idpId'] = idpId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8855,21 +11265,23 @@ def getOrganizationSamlIdp(organizationId: str, idpId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationSamlIdp')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationSamlIdp')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationSamlRoles')
 def getOrganizationSamlRoles(organizationId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8879,21 +11291,25 @@ def getOrganizationSamlRoles(organizationId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationSamlRoles')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationSamlRoles')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationSamlRole')
 def getOrganizationSamlRole(organizationId: str, samlRoleId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'samlRoleId': 'samlRoleId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if samlRoleId is not None:
+        final_kwargs['samlRoleId'] = samlRoleId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8903,21 +11319,41 @@ def getOrganizationSamlRole(organizationId: str, samlRoleId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationSamlRole')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationSamlRole')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationSensorReadingsHistory')
 def getOrganizationSensorReadingsHistory(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, t0: str = None, t1: str = None, timespan: float = None, networkIds: list = None, serials: list = None, metrics: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'networkIds': 'networkIds', 'serials': 'serials', 'metrics': 'metrics'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if metrics is not None:
+        final_kwargs['metrics'] = metrics
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8927,21 +11363,35 @@ def getOrganizationSensorReadingsHistory(organizationId: str, perPage: int = Non
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationSensorReadingsHistory')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationSensorReadingsHistory')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationSensorReadingsLatest')
 def getOrganizationSensorReadingsLatest(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, serials: list = None, metrics: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'networkIds': 'networkIds', 'serials': 'serials', 'metrics': 'metrics'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if metrics is not None:
+        final_kwargs['metrics'] = metrics
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8951,21 +11401,29 @@ def getOrganizationSensorReadingsLatest(organizationId: str, perPage: int = None
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationSensorReadingsLatest')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationSensorReadingsLatest')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationSmAdminsRoles')
 def getOrganizationSmAdminsRoles(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8975,21 +11433,25 @@ def getOrganizationSmAdminsRoles(organizationId: str, perPage: int = None, start
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationSmAdminsRoles')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationSmAdminsRoles')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationSmAdminsRole')
 def getOrganizationSmAdminsRole(organizationId: str, roleId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'roleId': 'roleId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if roleId is not None:
+        final_kwargs['roleId'] = roleId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -8999,21 +11461,23 @@ def getOrganizationSmAdminsRole(organizationId: str, roleId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationSmAdminsRole')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationSmAdminsRole')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationSmApnsCert')
 def getOrganizationSmApnsCert(organizationId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9023,21 +11487,31 @@ def getOrganizationSmApnsCert(organizationId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationSmApnsCert')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationSmApnsCert')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationSmSentryPoliciesAssignmentsByNetwork')
 def getOrganizationSmSentryPoliciesAssignmentsByNetwork(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'networkIds': 'networkIds'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9047,21 +11521,23 @@ def getOrganizationSmSentryPoliciesAssignmentsByNetwork(organizationId: str, per
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationSmSentryPoliciesAssignmentsByNetwork')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationSmSentryPoliciesAssignmentsByNetwork')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationSmVppAccounts')
 def getOrganizationSmVppAccounts(organizationId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9071,21 +11547,25 @@ def getOrganizationSmVppAccounts(organizationId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationSmVppAccounts')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationSmVppAccounts')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationSmVppAccount')
 def getOrganizationSmVppAccount(organizationId: str, vppAccountId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'vppAccountId': 'vppAccountId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if vppAccountId is not None:
+        final_kwargs['vppAccountId'] = vppAccountId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9095,21 +11575,23 @@ def getOrganizationSmVppAccount(organizationId: str, vppAccountId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationSmVppAccount')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationSmVppAccount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationSnmp')
 def getOrganizationSnmp(organizationId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9119,21 +11601,25 @@ def getOrganizationSnmp(organizationId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationSnmp')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationSnmp')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationSplashAsset')
 def getOrganizationSplashAsset(organizationId: str, id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9143,21 +11629,23 @@ def getOrganizationSplashAsset(organizationId: str, id: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationSplashAsset')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationSplashAsset')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationSplashThemes')
 def getOrganizationSplashThemes(organizationId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9167,21 +11655,29 @@ def getOrganizationSplashThemes(organizationId: str):
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationSplashThemes')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationSplashThemes')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationSummarySwitchPowerHistory')
 def getOrganizationSummarySwitchPowerHistory(organizationId: str, t0: str = None, t1: str = None, timespan: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 't0': 't0', 't1': 't1', 'timespan': 'timespan'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9191,21 +11687,39 @@ def getOrganizationSummarySwitchPowerHistory(organizationId: str, t0: str = None
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationSummarySwitchPowerHistory')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationSummarySwitchPowerHistory')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationSummaryTopAppliancesByUtilization')
 def getOrganizationSummaryTopAppliancesByUtilization(organizationId: str, networkTag: str = None, deviceTag: str = None, quantity: int = None, ssidName: str = None, usageUplink: str = None, t0: str = None, t1: str = None, timespan: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'networkTag': 'networkTag', 'deviceTag': 'deviceTag', 'quantity': 'quantity', 'ssidName': 'ssidName', 'usageUplink': 'usageUplink', 't0': 't0', 't1': 't1', 'timespan': 'timespan'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if networkTag is not None:
+        final_kwargs['networkTag'] = networkTag
+    if deviceTag is not None:
+        final_kwargs['deviceTag'] = deviceTag
+    if quantity is not None:
+        final_kwargs['quantity'] = quantity
+    if ssidName is not None:
+        final_kwargs['ssidName'] = ssidName
+    if usageUplink is not None:
+        final_kwargs['usageUplink'] = usageUplink
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9215,21 +11729,41 @@ def getOrganizationSummaryTopAppliancesByUtilization(organizationId: str, networ
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationSummaryTopAppliancesByUtilization')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationSummaryTopAppliancesByUtilization')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationSummaryTopApplicationsByUsage')
 def getOrganizationSummaryTopApplicationsByUsage(organizationId: str, networkTag: str = None, device: str = None, networkId: str = None, quantity: int = None, ssidName: str = None, usageUplink: str = None, t0: str = None, t1: str = None, timespan: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'networkTag': 'networkTag', 'device': 'device', 'networkId': 'networkId', 'quantity': 'quantity', 'ssidName': 'ssidName', 'usageUplink': 'usageUplink', 't0': 't0', 't1': 't1', 'timespan': 'timespan'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if networkTag is not None:
+        final_kwargs['networkTag'] = networkTag
+    if device is not None:
+        final_kwargs['device'] = device
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if quantity is not None:
+        final_kwargs['quantity'] = quantity
+    if ssidName is not None:
+        final_kwargs['ssidName'] = ssidName
+    if usageUplink is not None:
+        final_kwargs['usageUplink'] = usageUplink
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9239,21 +11773,41 @@ def getOrganizationSummaryTopApplicationsByUsage(organizationId: str, networkTag
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationSummaryTopApplicationsByUsage')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationSummaryTopApplicationsByUsage')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationSummaryTopApplicationsCategoriesByUsage')
 def getOrganizationSummaryTopApplicationsCategoriesByUsage(organizationId: str, networkTag: str = None, deviceTag: str = None, networkId: str = None, quantity: int = None, ssidName: str = None, usageUplink: str = None, t0: str = None, t1: str = None, timespan: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'networkTag': 'networkTag', 'deviceTag': 'deviceTag', 'networkId': 'networkId', 'quantity': 'quantity', 'ssidName': 'ssidName', 'usageUplink': 'usageUplink', 't0': 't0', 't1': 't1', 'timespan': 'timespan'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if networkTag is not None:
+        final_kwargs['networkTag'] = networkTag
+    if deviceTag is not None:
+        final_kwargs['deviceTag'] = deviceTag
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if quantity is not None:
+        final_kwargs['quantity'] = quantity
+    if ssidName is not None:
+        final_kwargs['ssidName'] = ssidName
+    if usageUplink is not None:
+        final_kwargs['usageUplink'] = usageUplink
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9263,21 +11817,39 @@ def getOrganizationSummaryTopApplicationsCategoriesByUsage(organizationId: str, 
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationSummaryTopApplicationsCategoriesByUsage')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationSummaryTopApplicationsCategoriesByUsage')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationSummaryTopClientsByUsage')
 def getOrganizationSummaryTopClientsByUsage(organizationId: str, networkTag: str = None, deviceTag: str = None, quantity: int = None, ssidName: str = None, usageUplink: str = None, t0: str = None, t1: str = None, timespan: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'networkTag': 'networkTag', 'deviceTag': 'deviceTag', 'quantity': 'quantity', 'ssidName': 'ssidName', 'usageUplink': 'usageUplink', 't0': 't0', 't1': 't1', 'timespan': 'timespan'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if networkTag is not None:
+        final_kwargs['networkTag'] = networkTag
+    if deviceTag is not None:
+        final_kwargs['deviceTag'] = deviceTag
+    if quantity is not None:
+        final_kwargs['quantity'] = quantity
+    if ssidName is not None:
+        final_kwargs['ssidName'] = ssidName
+    if usageUplink is not None:
+        final_kwargs['usageUplink'] = usageUplink
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9287,21 +11859,39 @@ def getOrganizationSummaryTopClientsByUsage(organizationId: str, networkTag: str
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationSummaryTopClientsByUsage')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationSummaryTopClientsByUsage')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationSummaryTopClientsManufacturersByUsage')
 def getOrganizationSummaryTopClientsManufacturersByUsage(organizationId: str, networkTag: str = None, deviceTag: str = None, quantity: int = None, ssidName: str = None, usageUplink: str = None, t0: str = None, t1: str = None, timespan: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'networkTag': 'networkTag', 'deviceTag': 'deviceTag', 'quantity': 'quantity', 'ssidName': 'ssidName', 'usageUplink': 'usageUplink', 't0': 't0', 't1': 't1', 'timespan': 'timespan'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if networkTag is not None:
+        final_kwargs['networkTag'] = networkTag
+    if deviceTag is not None:
+        final_kwargs['deviceTag'] = deviceTag
+    if quantity is not None:
+        final_kwargs['quantity'] = quantity
+    if ssidName is not None:
+        final_kwargs['ssidName'] = ssidName
+    if usageUplink is not None:
+        final_kwargs['usageUplink'] = usageUplink
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9311,21 +11901,39 @@ def getOrganizationSummaryTopClientsManufacturersByUsage(organizationId: str, ne
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationSummaryTopClientsManufacturersByUsage')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationSummaryTopClientsManufacturersByUsage')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationSummaryTopDevicesByUsage')
 def getOrganizationSummaryTopDevicesByUsage(organizationId: str, networkTag: str = None, deviceTag: str = None, quantity: int = None, ssidName: str = None, usageUplink: str = None, t0: str = None, t1: str = None, timespan: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'networkTag': 'networkTag', 'deviceTag': 'deviceTag', 'quantity': 'quantity', 'ssidName': 'ssidName', 'usageUplink': 'usageUplink', 't0': 't0', 't1': 't1', 'timespan': 'timespan'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if networkTag is not None:
+        final_kwargs['networkTag'] = networkTag
+    if deviceTag is not None:
+        final_kwargs['deviceTag'] = deviceTag
+    if quantity is not None:
+        final_kwargs['quantity'] = quantity
+    if ssidName is not None:
+        final_kwargs['ssidName'] = ssidName
+    if usageUplink is not None:
+        final_kwargs['usageUplink'] = usageUplink
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9335,21 +11943,39 @@ def getOrganizationSummaryTopDevicesByUsage(organizationId: str, networkTag: str
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationSummaryTopDevicesByUsage')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationSummaryTopDevicesByUsage')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationSummaryTopDevicesModelsByUsage')
 def getOrganizationSummaryTopDevicesModelsByUsage(organizationId: str, networkTag: str = None, deviceTag: str = None, quantity: int = None, ssidName: str = None, usageUplink: str = None, t0: str = None, t1: str = None, timespan: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'networkTag': 'networkTag', 'deviceTag': 'deviceTag', 'quantity': 'quantity', 'ssidName': 'ssidName', 'usageUplink': 'usageUplink', 't0': 't0', 't1': 't1', 'timespan': 'timespan'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if networkTag is not None:
+        final_kwargs['networkTag'] = networkTag
+    if deviceTag is not None:
+        final_kwargs['deviceTag'] = deviceTag
+    if quantity is not None:
+        final_kwargs['quantity'] = quantity
+    if ssidName is not None:
+        final_kwargs['ssidName'] = ssidName
+    if usageUplink is not None:
+        final_kwargs['usageUplink'] = usageUplink
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9359,21 +11985,39 @@ def getOrganizationSummaryTopDevicesModelsByUsage(organizationId: str, networkTa
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationSummaryTopDevicesModelsByUsage')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationSummaryTopDevicesModelsByUsage')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationSummaryTopNetworksByStatus')
 def getOrganizationSummaryTopNetworksByStatus(organizationId: str, networkTag: str = None, deviceTag: str = None, quantity: int = None, ssidName: str = None, usageUplink: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'networkTag': 'networkTag', 'deviceTag': 'deviceTag', 'quantity': 'quantity', 'ssidName': 'ssidName', 'usageUplink': 'usageUplink', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if networkTag is not None:
+        final_kwargs['networkTag'] = networkTag
+    if deviceTag is not None:
+        final_kwargs['deviceTag'] = deviceTag
+    if quantity is not None:
+        final_kwargs['quantity'] = quantity
+    if ssidName is not None:
+        final_kwargs['ssidName'] = ssidName
+    if usageUplink is not None:
+        final_kwargs['usageUplink'] = usageUplink
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9383,21 +12027,39 @@ def getOrganizationSummaryTopNetworksByStatus(organizationId: str, networkTag: s
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationSummaryTopNetworksByStatus')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationSummaryTopNetworksByStatus')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationSummaryTopSsidsByUsage')
 def getOrganizationSummaryTopSsidsByUsage(organizationId: str, networkTag: str = None, deviceTag: str = None, quantity: int = None, ssidName: str = None, usageUplink: str = None, t0: str = None, t1: str = None, timespan: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'networkTag': 'networkTag', 'deviceTag': 'deviceTag', 'quantity': 'quantity', 'ssidName': 'ssidName', 'usageUplink': 'usageUplink', 't0': 't0', 't1': 't1', 'timespan': 'timespan'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if networkTag is not None:
+        final_kwargs['networkTag'] = networkTag
+    if deviceTag is not None:
+        final_kwargs['deviceTag'] = deviceTag
+    if quantity is not None:
+        final_kwargs['quantity'] = quantity
+    if ssidName is not None:
+        final_kwargs['ssidName'] = ssidName
+    if usageUplink is not None:
+        final_kwargs['usageUplink'] = usageUplink
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9407,21 +12069,39 @@ def getOrganizationSummaryTopSsidsByUsage(organizationId: str, networkTag: str =
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationSummaryTopSsidsByUsage')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationSummaryTopSsidsByUsage')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationSummaryTopSwitchesByEnergyUsage')
 def getOrganizationSummaryTopSwitchesByEnergyUsage(organizationId: str, networkTag: str = None, deviceTag: str = None, quantity: int = None, ssidName: str = None, usageUplink: str = None, t0: str = None, t1: str = None, timespan: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'networkTag': 'networkTag', 'deviceTag': 'deviceTag', 'quantity': 'quantity', 'ssidName': 'ssidName', 'usageUplink': 'usageUplink', 't0': 't0', 't1': 't1', 'timespan': 'timespan'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if networkTag is not None:
+        final_kwargs['networkTag'] = networkTag
+    if deviceTag is not None:
+        final_kwargs['deviceTag'] = deviceTag
+    if quantity is not None:
+        final_kwargs['quantity'] = quantity
+    if ssidName is not None:
+        final_kwargs['ssidName'] = ssidName
+    if usageUplink is not None:
+        final_kwargs['usageUplink'] = usageUplink
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9431,21 +12111,45 @@ def getOrganizationSummaryTopSwitchesByEnergyUsage(organizationId: str, networkT
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationSummaryTopSwitchesByEnergyUsage')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationSummaryTopSwitchesByEnergyUsage')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationSwitchPortsBySwitch')
 def getOrganizationSwitchPortsBySwitch(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, configurationUpdatedAfter: str = None, mac: str = None, macs: list = None, name: str = None, networkIds: list = None, portProfileIds: list = None, serial: str = None, serials: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'configurationUpdatedAfter': 'configurationUpdatedAfter', 'mac': 'mac', 'macs': 'macs', 'name': 'name', 'networkIds': 'networkIds', 'portProfileIds': 'portProfileIds', 'serial': 'serial', 'serials': 'serials'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if configurationUpdatedAfter is not None:
+        final_kwargs['configurationUpdatedAfter'] = configurationUpdatedAfter
+    if mac is not None:
+        final_kwargs['mac'] = mac
+    if macs is not None:
+        final_kwargs['macs'] = macs
+    if name is not None:
+        final_kwargs['name'] = name
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if portProfileIds is not None:
+        final_kwargs['portProfileIds'] = portProfileIds
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if serials is not None:
+        final_kwargs['serials'] = serials
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9455,21 +12159,49 @@ def getOrganizationSwitchPortsBySwitch(organizationId: str, perPage: int = None,
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationSwitchPortsBySwitch')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationSwitchPortsBySwitch')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationSwitchPortsClientsOverviewByDevice')
 def getOrganizationSwitchPortsClientsOverviewByDevice(organizationId: str, t0: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, configurationUpdatedAfter: str = None, mac: str = None, macs: list = None, name: str = None, networkIds: list = None, portProfileIds: list = None, serial: str = None, serials: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 't0': 't0', 'timespan': 'timespan', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'configurationUpdatedAfter': 'configurationUpdatedAfter', 'mac': 'mac', 'macs': 'macs', 'name': 'name', 'networkIds': 'networkIds', 'portProfileIds': 'portProfileIds', 'serial': 'serial', 'serials': 'serials'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if configurationUpdatedAfter is not None:
+        final_kwargs['configurationUpdatedAfter'] = configurationUpdatedAfter
+    if mac is not None:
+        final_kwargs['mac'] = mac
+    if macs is not None:
+        final_kwargs['macs'] = macs
+    if name is not None:
+        final_kwargs['name'] = name
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if portProfileIds is not None:
+        final_kwargs['portProfileIds'] = portProfileIds
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if serials is not None:
+        final_kwargs['serials'] = serials
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9479,21 +12211,29 @@ def getOrganizationSwitchPortsClientsOverviewByDevice(organizationId: str, t0: s
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationSwitchPortsClientsOverviewByDevice')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationSwitchPortsClientsOverviewByDevice')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationSwitchPortsOverview')
 def getOrganizationSwitchPortsOverview(organizationId: str, t0: str = None, t1: str = None, timespan: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 't0': 't0', 't1': 't1', 'timespan': 'timespan'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9503,21 +12243,45 @@ def getOrganizationSwitchPortsOverview(organizationId: str, t0: str = None, t1: 
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationSwitchPortsOverview')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationSwitchPortsOverview')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationSwitchPortsStatusesBySwitch')
 def getOrganizationSwitchPortsStatusesBySwitch(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, configurationUpdatedAfter: str = None, mac: str = None, macs: list = None, name: str = None, networkIds: list = None, portProfileIds: list = None, serial: str = None, serials: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'configurationUpdatedAfter': 'configurationUpdatedAfter', 'mac': 'mac', 'macs': 'macs', 'name': 'name', 'networkIds': 'networkIds', 'portProfileIds': 'portProfileIds', 'serial': 'serial', 'serials': 'serials'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if configurationUpdatedAfter is not None:
+        final_kwargs['configurationUpdatedAfter'] = configurationUpdatedAfter
+    if mac is not None:
+        final_kwargs['mac'] = mac
+    if macs is not None:
+        final_kwargs['macs'] = macs
+    if name is not None:
+        final_kwargs['name'] = name
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if portProfileIds is not None:
+        final_kwargs['portProfileIds'] = portProfileIds
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if serials is not None:
+        final_kwargs['serials'] = serials
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9527,21 +12291,49 @@ def getOrganizationSwitchPortsStatusesBySwitch(organizationId: str, perPage: int
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationSwitchPortsStatusesBySwitch')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationSwitchPortsStatusesBySwitch')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationSwitchPortsTopologyDiscoveryByDevice')
 def getOrganizationSwitchPortsTopologyDiscoveryByDevice(organizationId: str, t0: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, configurationUpdatedAfter: str = None, mac: str = None, macs: list = None, name: str = None, networkIds: list = None, portProfileIds: list = None, serial: str = None, serials: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 't0': 't0', 'timespan': 'timespan', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'configurationUpdatedAfter': 'configurationUpdatedAfter', 'mac': 'mac', 'macs': 'macs', 'name': 'name', 'networkIds': 'networkIds', 'portProfileIds': 'portProfileIds', 'serial': 'serial', 'serials': 'serials'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if configurationUpdatedAfter is not None:
+        final_kwargs['configurationUpdatedAfter'] = configurationUpdatedAfter
+    if mac is not None:
+        final_kwargs['mac'] = mac
+    if macs is not None:
+        final_kwargs['macs'] = macs
+    if name is not None:
+        final_kwargs['name'] = name
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if portProfileIds is not None:
+        final_kwargs['portProfileIds'] = portProfileIds
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if serials is not None:
+        final_kwargs['serials'] = serials
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9551,21 +12343,35 @@ def getOrganizationSwitchPortsTopologyDiscoveryByDevice(organizationId: str, t0:
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationSwitchPortsTopologyDiscoveryByDevice')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationSwitchPortsTopologyDiscoveryByDevice')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationUplinksStatuses')
 def getOrganizationUplinksStatuses(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, serials: list = None, iccids: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'networkIds': 'networkIds', 'serials': 'serials', 'iccids': 'iccids'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if iccids is not None:
+        final_kwargs['iccids'] = iccids
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9575,21 +12381,25 @@ def getOrganizationUplinksStatuses(organizationId: str, perPage: int = None, sta
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationUplinksStatuses')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationUplinksStatuses')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationWebhooksAlertTypes')
 def getOrganizationWebhooksAlertTypes(organizationId: str, productType: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'productType': 'productType'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if productType is not None:
+        final_kwargs['productType'] = productType
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9599,21 +12409,25 @@ def getOrganizationWebhooksAlertTypes(organizationId: str, productType: str = No
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationWebhooksAlertTypes')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationWebhooksAlertTypes')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationWebhooksCallbacksStatus')
 def getOrganizationWebhooksCallbacksStatus(organizationId: str, callbackId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'callbackId': 'callbackId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if callbackId is not None:
+        final_kwargs['callbackId'] = callbackId
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9623,21 +12437,37 @@ def getOrganizationWebhooksCallbacksStatus(organizationId: str, callbackId: str)
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationWebhooksCallbacksStatus')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationWebhooksCallbacksStatus')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationWebhooksLogs')
 def getOrganizationWebhooksLogs(organizationId: str, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, url: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'url': 'url'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if url is not None:
+        final_kwargs['url'] = url
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9647,21 +12477,31 @@ def getOrganizationWebhooksLogs(organizationId: str, t0: str = None, t1: str = N
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationWebhooksLogs')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationWebhooksLogs')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessAirMarshalRules')
 def getOrganizationWirelessAirMarshalRules(organizationId: str, networkIds: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'networkIds': 'networkIds', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9671,21 +12511,31 @@ def getOrganizationWirelessAirMarshalRules(organizationId: str, networkIds: list
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationWirelessAirMarshalRules')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationWirelessAirMarshalRules')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessAirMarshalSettingsByNetwork')
 def getOrganizationWirelessAirMarshalSettingsByNetwork(organizationId: str, networkIds: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'networkIds': 'networkIds', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9695,21 +12545,35 @@ def getOrganizationWirelessAirMarshalSettingsByNetwork(organizationId: str, netw
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationWirelessAirMarshalSettingsByNetwork')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationWirelessAirMarshalSettingsByNetwork')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessClientsOverviewByDevice')
 def getOrganizationWirelessClientsOverviewByDevice(organizationId: str, networkIds: list = None, serials: list = None, campusGatewayClusterIds: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'networkIds': 'networkIds', 'serials': 'serials', 'campusGatewayClusterIds': 'campusGatewayClusterIds', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if campusGatewayClusterIds is not None:
+        final_kwargs['campusGatewayClusterIds'] = campusGatewayClusterIds
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9719,21 +12583,41 @@ def getOrganizationWirelessClientsOverviewByDevice(organizationId: str, networkI
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationWirelessClientsOverviewByDevice')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationWirelessClientsOverviewByDevice')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessDevicesChannelUtilizationByDevice')
 def getOrganizationWirelessDevicesChannelUtilizationByDevice(organizationId: str, networkIds: list = None, serials: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, t0: str = None, t1: str = None, timespan: float = None, interval: int = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'networkIds': 'networkIds', 'serials': 'serials', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'interval': 'interval'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if interval is not None:
+        final_kwargs['interval'] = interval
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9743,21 +12627,41 @@ def getOrganizationWirelessDevicesChannelUtilizationByDevice(organizationId: str
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationWirelessDevicesChannelUtilizationByDevice')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationWirelessDevicesChannelUtilizationByDevice')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessDevicesChannelUtilizationByNetwork')
 def getOrganizationWirelessDevicesChannelUtilizationByNetwork(organizationId: str, networkIds: list = None, serials: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, t0: str = None, t1: str = None, timespan: float = None, interval: int = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'networkIds': 'networkIds', 'serials': 'serials', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'interval': 'interval'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if interval is not None:
+        final_kwargs['interval'] = interval
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9767,21 +12671,41 @@ def getOrganizationWirelessDevicesChannelUtilizationByNetwork(organizationId: st
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationWirelessDevicesChannelUtilizationByNetwork')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationWirelessDevicesChannelUtilizationByNetwork')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessDevicesChannelUtilizationHistoryByDeviceB')
 def getOrganizationWirelessDevicesChannelUtilizationHistoryByDeviceB(organizationId: str, networkIds: list = None, serials: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, t0: str = None, t1: str = None, timespan: float = None, interval: int = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'networkIds': 'networkIds', 'serials': 'serials', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'interval': 'interval'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if interval is not None:
+        final_kwargs['interval'] = interval
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9791,21 +12715,41 @@ def getOrganizationWirelessDevicesChannelUtilizationHistoryByDeviceB(organizatio
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationWirelessDevicesChannelUtilizationHistoryByDeviceB')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationWirelessDevicesChannelUtilizationHistoryByDeviceB')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessDevicesChannelUtilizationHistoryByNetwork')
 def getOrganizationWirelessDevicesChannelUtilizationHistoryByNetwork(organizationId: str, networkIds: list = None, serials: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, t0: str = None, t1: str = None, timespan: float = None, interval: int = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'networkIds': 'networkIds', 'serials': 'serials', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'interval': 'interval'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if interval is not None:
+        final_kwargs['interval'] = interval
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9815,21 +12759,31 @@ def getOrganizationWirelessDevicesChannelUtilizationHistoryByNetwork(organizatio
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationWirelessDevicesChannelUtilizationHistoryByNetwork')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationWirelessDevicesChannelUtilizationHistoryByNetwork')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessDevicesEthernetStatuses')
 def getOrganizationWirelessDevicesEthernetStatuses(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'networkIds': 'networkIds'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9839,21 +12793,43 @@ def getOrganizationWirelessDevicesEthernetStatuses(organizationId: str, perPage:
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationWirelessDevicesEthernetStatuses')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationWirelessDevicesEthernetStatuses')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessDevicesPacketLossByClient')
 def getOrganizationWirelessDevicesPacketLossByClient(organizationId: str, networkIds: list = None, ssids: list = None, bands: list = None, macs: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, t0: str = None, t1: str = None, timespan: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'networkIds': 'networkIds', 'ssids': 'ssids', 'bands': 'bands', 'macs': 'macs', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 't0': 't0', 't1': 't1', 'timespan': 'timespan'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if ssids is not None:
+        final_kwargs['ssids'] = ssids
+    if bands is not None:
+        final_kwargs['bands'] = bands
+    if macs is not None:
+        final_kwargs['macs'] = macs
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9863,21 +12839,43 @@ def getOrganizationWirelessDevicesPacketLossByClient(organizationId: str, networ
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationWirelessDevicesPacketLossByClient')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationWirelessDevicesPacketLossByClient')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessDevicesPacketLossByDevice')
 def getOrganizationWirelessDevicesPacketLossByDevice(organizationId: str, networkIds: list = None, serials: list = None, ssids: list = None, bands: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, t0: str = None, t1: str = None, timespan: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'networkIds': 'networkIds', 'serials': 'serials', 'ssids': 'ssids', 'bands': 'bands', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 't0': 't0', 't1': 't1', 'timespan': 'timespan'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if ssids is not None:
+        final_kwargs['ssids'] = ssids
+    if bands is not None:
+        final_kwargs['bands'] = bands
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9887,21 +12885,43 @@ def getOrganizationWirelessDevicesPacketLossByDevice(organizationId: str, networ
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationWirelessDevicesPacketLossByDevice')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationWirelessDevicesPacketLossByDevice')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessDevicesPacketLossByNetwork')
 def getOrganizationWirelessDevicesPacketLossByNetwork(organizationId: str, networkIds: list = None, serials: list = None, ssids: list = None, bands: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, t0: str = None, t1: str = None, timespan: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'networkIds': 'networkIds', 'serials': 'serials', 'ssids': 'ssids', 'bands': 'bands', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 't0': 't0', 't1': 't1', 'timespan': 'timespan'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if ssids is not None:
+        final_kwargs['ssids'] = ssids
+    if bands is not None:
+        final_kwargs['bands'] = bands
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9911,21 +12931,35 @@ def getOrganizationWirelessDevicesPacketLossByNetwork(organizationId: str, netwo
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationWirelessDevicesPacketLossByNetwork')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationWirelessDevicesPacketLossByNetwork')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessDevicesWirelessControllersByDevice')
 def getOrganizationWirelessDevicesWirelessControllersByDevice(organizationId: str, networkIds: list = None, serials: list = None, controllerSerials: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'networkIds': 'networkIds', 'serials': 'serials', 'controllerSerials': 'controllerSerials', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if controllerSerials is not None:
+        final_kwargs['controllerSerials'] = controllerSerials
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9935,21 +12969,47 @@ def getOrganizationWirelessDevicesWirelessControllersByDevice(organizationId: st
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationWirelessDevicesWirelessControllersByDevice')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationWirelessDevicesWirelessControllersByDevice')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessRfProfilesAssignmentsByDevice')
 def getOrganizationWirelessRfProfilesAssignmentsByDevice(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, productTypes: list = None, name: str = None, mac: str = None, serial: str = None, model: str = None, macs: list = None, serials: list = None, models: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'networkIds': 'networkIds', 'productTypes': 'productTypes', 'name': 'name', 'mac': 'mac', 'serial': 'serial', 'model': 'model', 'macs': 'macs', 'serials': 'serials', 'models': 'models'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if productTypes is not None:
+        final_kwargs['productTypes'] = productTypes
+    if name is not None:
+        final_kwargs['name'] = name
+    if mac is not None:
+        final_kwargs['mac'] = mac
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if model is not None:
+        final_kwargs['model'] = model
+    if macs is not None:
+        final_kwargs['macs'] = macs
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if models is not None:
+        final_kwargs['models'] = models
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9959,21 +13019,37 @@ def getOrganizationWirelessRfProfilesAssignmentsByDevice(organizationId: str, pe
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationWirelessRfProfilesAssignmentsByDevice')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationWirelessRfProfilesAssignmentsByDevice')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessSsidsStatusesByDevice')
 def getOrganizationWirelessSsidsStatusesByDevice(organizationId: str, networkIds: list = None, serials: list = None, bssids: list = None, hideDisabled: bool = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'networkIds': 'networkIds', 'serials': 'serials', 'bssids': 'bssids', 'hideDisabled': 'hideDisabled', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if bssids is not None:
+        final_kwargs['bssids'] = bssids
+    if hideDisabled is not None:
+        final_kwargs['hideDisabled'] = hideDisabled
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -9983,21 +13059,37 @@ def getOrganizationWirelessSsidsStatusesByDevice(organizationId: str, networkIds
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationWirelessSsidsStatusesByDevice')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationWirelessSsidsStatusesByDevice')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessControllerAvailabilitiesChangeHistory')
 def getOrganizationWirelessControllerAvailabilitiesChangeHistory(organizationId: str, serials: list = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'serials': 'serials', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -10007,21 +13099,41 @@ def getOrganizationWirelessControllerAvailabilitiesChangeHistory(organizationId:
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationWirelessControllerAvailabilitiesChangeHistory')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationWirelessControllerAvailabilitiesChangeHistory')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessControllerClientsOverviewHistoryByDeviceB')
 def getOrganizationWirelessControllerClientsOverviewHistoryByDeviceB(organizationId: str, networkIds: list = None, serials: list = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, resolution: int = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'networkIds': 'networkIds', 'serials': 'serials', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore', 'resolution': 'resolution'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+    if resolution is not None:
+        final_kwargs['resolution'] = resolution
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -10031,21 +13143,33 @@ def getOrganizationWirelessControllerClientsOverviewHistoryByDeviceB(organizatio
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationWirelessControllerClientsOverviewHistoryByDeviceB')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationWirelessControllerClientsOverviewHistoryByDeviceB')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessControllerConnections')
 def getOrganizationWirelessControllerConnections(organizationId: str, networkIds: list = None, controllerSerials: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'networkIds': 'networkIds', 'controllerSerials': 'controllerSerials', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if controllerSerials is not None:
+        final_kwargs['controllerSerials'] = controllerSerials
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -10055,21 +13179,37 @@ def getOrganizationWirelessControllerConnections(organizationId: str, networkIds
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationWirelessControllerConnections')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationWirelessControllerConnections')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessControllerDevicesInterfacesL2ByDevice')
 def getOrganizationWirelessControllerDevicesInterfacesL2ByDevice(organizationId: str, serials: list = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'serials': 'serials', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -10079,21 +13219,39 @@ def getOrganizationWirelessControllerDevicesInterfacesL2ByDevice(organizationId:
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationWirelessControllerDevicesInterfacesL2ByDevice')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationWirelessControllerDevicesInterfacesL2ByDevice')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessControllerDevicesInterfacesL2StatusesChan')
 def getOrganizationWirelessControllerDevicesInterfacesL2StatusesChan(organizationId: str, serials: list = None, includeInterfacesWithoutChanges: bool = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'serials': 'serials', 'includeInterfacesWithoutChanges': 'includeInterfacesWithoutChanges', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if includeInterfacesWithoutChanges is not None:
+        final_kwargs['includeInterfacesWithoutChanges'] = includeInterfacesWithoutChanges
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -10103,21 +13261,37 @@ def getOrganizationWirelessControllerDevicesInterfacesL2StatusesChan(organizatio
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationWirelessControllerDevicesInterfacesL2StatusesChan')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationWirelessControllerDevicesInterfacesL2StatusesChan')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessControllerDevicesInterfacesL2UsageHistory')
 def getOrganizationWirelessControllerDevicesInterfacesL2UsageHistory(organizationId: str, serials: list = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'serials': 'serials', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -10127,21 +13301,37 @@ def getOrganizationWirelessControllerDevicesInterfacesL2UsageHistory(organizatio
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationWirelessControllerDevicesInterfacesL2UsageHistory')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationWirelessControllerDevicesInterfacesL2UsageHistory')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessControllerDevicesInterfacesL3ByDevice')
 def getOrganizationWirelessControllerDevicesInterfacesL3ByDevice(organizationId: str, serials: list = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'serials': 'serials', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -10151,21 +13341,39 @@ def getOrganizationWirelessControllerDevicesInterfacesL3ByDevice(organizationId:
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationWirelessControllerDevicesInterfacesL3ByDevice')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationWirelessControllerDevicesInterfacesL3ByDevice')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessControllerDevicesInterfacesL3StatusesChan')
 def getOrganizationWirelessControllerDevicesInterfacesL3StatusesChan(organizationId: str, serials: list = None, includeInterfacesWithoutChanges: bool = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'serials': 'serials', 'includeInterfacesWithoutChanges': 'includeInterfacesWithoutChanges', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if includeInterfacesWithoutChanges is not None:
+        final_kwargs['includeInterfacesWithoutChanges'] = includeInterfacesWithoutChanges
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -10175,21 +13383,37 @@ def getOrganizationWirelessControllerDevicesInterfacesL3StatusesChan(organizatio
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationWirelessControllerDevicesInterfacesL3StatusesChan')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationWirelessControllerDevicesInterfacesL3StatusesChan')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessControllerDevicesInterfacesL3UsageHistory')
 def getOrganizationWirelessControllerDevicesInterfacesL3UsageHistory(organizationId: str, serials: list = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'serials': 'serials', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -10199,21 +13423,39 @@ def getOrganizationWirelessControllerDevicesInterfacesL3UsageHistory(organizatio
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationWirelessControllerDevicesInterfacesL3UsageHistory')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationWirelessControllerDevicesInterfacesL3UsageHistory')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessControllerDevicesInterfacesPacketsOvervie')
 def getOrganizationWirelessControllerDevicesInterfacesPacketsOvervie(organizationId: str, serials: list = None, names: list = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'serials': 'serials', 'names': 'names', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if names is not None:
+        final_kwargs['names'] = names
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -10223,21 +13465,39 @@ def getOrganizationWirelessControllerDevicesInterfacesPacketsOvervie(organizatio
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationWirelessControllerDevicesInterfacesPacketsOvervie')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationWirelessControllerDevicesInterfacesPacketsOvervie')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessControllerDevicesInterfacesUsageHistoryBy')
 def getOrganizationWirelessControllerDevicesInterfacesUsageHistoryBy(organizationId: str, serials: list = None, names: list = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'serials': 'serials', 'names': 'names', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if names is not None:
+        final_kwargs['names'] = names
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -10247,21 +13507,37 @@ def getOrganizationWirelessControllerDevicesInterfacesUsageHistoryBy(organizatio
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationWirelessControllerDevicesInterfacesUsageHistoryBy')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationWirelessControllerDevicesInterfacesUsageHistoryBy')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessControllerDevicesRedundancyFailoverHistor')
 def getOrganizationWirelessControllerDevicesRedundancyFailoverHistor(organizationId: str, serials: list = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'serials': 'serials', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -10271,21 +13547,31 @@ def getOrganizationWirelessControllerDevicesRedundancyFailoverHistor(organizatio
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationWirelessControllerDevicesRedundancyFailoverHistor')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationWirelessControllerDevicesRedundancyFailoverHistor')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessControllerDevicesRedundancyStatuses')
 def getOrganizationWirelessControllerDevicesRedundancyStatuses(organizationId: str, serials: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'serials': 'serials', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -10295,21 +13581,37 @@ def getOrganizationWirelessControllerDevicesRedundancyStatuses(organizationId: s
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationWirelessControllerDevicesRedundancyStatuses')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationWirelessControllerDevicesRedundancyStatuses')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessControllerDevicesSystemUtilizationHistory')
 def getOrganizationWirelessControllerDevicesSystemUtilizationHistory(organizationId: str, serials: list = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'serials': 'serials', 't0': 't0', 't1': 't1', 'timespan': 'timespan', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if t0 is not None:
+        final_kwargs['t0'] = t0
+    if t1 is not None:
+        final_kwargs['t1'] = t1
+    if timespan is not None:
+        final_kwargs['timespan'] = timespan
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -10319,21 +13621,33 @@ def getOrganizationWirelessControllerDevicesSystemUtilizationHistory(organizatio
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationWirelessControllerDevicesSystemUtilizationHistory')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationWirelessControllerDevicesSystemUtilizationHistory')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessControllerOverviewByDevice')
 def getOrganizationWirelessControllerOverviewByDevice(organizationId: str, networkIds: list = None, serials: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'organizationId': 'organizationId', 'networkIds': 'networkIds', 'serials': 'serials', 'perPage': 'perPage', 'startingAfter': 'startingAfter', 'endingBefore': 'endingBefore'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if networkIds is not None:
+        final_kwargs['networkIds'] = networkIds
+    if serials is not None:
+        final_kwargs['serials'] = serials
+    if perPage is not None:
+        final_kwargs['perPage'] = perPage
+    if startingAfter is not None:
+        final_kwargs['startingAfter'] = startingAfter
+    if endingBefore is not None:
+        final_kwargs['endingBefore'] = endingBefore
+
+    # No body parameter for this function.
+    body_payload = None
 
     # ── auto‑inject MERAKI_ORG_ID ───────────────────────────────
     org_env = os.getenv('MERAKI_ORG_ID')
@@ -10343,7 +13657,9 @@ def getOrganizationWirelessControllerOverviewByDevice(organizationId: str, netwo
                 final_kwargs[cand] = org_env
                 break
 
-    target = MerakiClient().__getattr__('getOrganizationWirelessControllerOverviewByDevice')
+    client = MerakiClient()
+    target = getattr(client, 'getOrganizationWirelessControllerOverviewByDevice')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
