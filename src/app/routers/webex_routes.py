@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3
 from __future__ import annotations
 ################################################################################
@@ -25,57 +24,25 @@ environments. You are solely responsible for any modifications or adaptations ma
 By using this code, you agree that you have read, understood, and accept these terms.
 """
 
-from fastapi import APIRouter, HTTPException
-from fastapi.responses import JSONResponse
-import logging
-import os
+from fastapi import APIRouter
+from app.llm.unified_service import UnifiedService
 
-# Import the unified service that encapsulates Webex functionality.
- 
+# Create a router instance for Webex endpoints, following the standard pattern.
+# This file's primary purpose is to be discovered by main.py so the platform
+# is recognized as "active". The actual tool calls are handled by the
+# function dispatcher in chat_routes.py.
+router = APIRouter(prefix="/webex", tags=["webex"])
 
-# Create a router instance for Webex endpoints.
-router = APIRouter()
-
-@router.get("/webex/meetings")
-def get_webex_meetings():
+@router.get("/")
+async def webex_info():
     """
-    Retrieve a list of Webex meetings.
-    This stub endpoint uses the unified service to obtain a response.
+    Returns basic information about the Webex platform integration.
     """
-    try:
-        service = CiscoUnifiedService(
-            catalyst_username=os.getenv("CISCO_CATALYST_USERNAME", ""),
-            catalyst_password=os.getenv("CISCO_CATALYST_PASSWORD", ""),
-            catalyst_url=os.getenv("CISCO_CATALYST_URL", "https://sandboxdnac.cisco.com:443"),
-            catalyst_version=os.getenv("CISCO_CATALYST_VERSION", "2.3.7.6"),
-            meraki_api_key=os.getenv("CISCO_MERAKI_API_KEY", ""),
-            spaces_token=os.getenv("CISCO_SPACES_API_KEY", ""),
-            webex_token=os.getenv("CISCO_WEBEX_TOKEN", "")
-        )
-        # Call the stub method for Webex meetings.
-        result = service.get_webex_meetings()
-        return JSONResponse(content={"webex_meetings": result})
-    except Exception as e:
-        logging.error(f"Error retrieving Webex meetings: {e}")
-        raise HTTPException(status_code=500, detail=str(e))
-
-@router.get("/webex/meetings/{meeting_id}")
-def get_webex_meeting_by_id(meeting_id: str):
-    """
-    Retrieve details of a specific Webex meeting by its meeting ID.
-    """
-    try:
-        service = CiscoUnifiedService(
-            catalyst_username=os.getenv("CISCO_CATALYST_USERNAME", ""),
-            catalyst_password=os.getenv("CISCO_CATALYST_PASSWORD", ""),
-            catalyst_url=os.getenv("CISCO_CATALYST_URL", "https://sandboxdnac.cisco.com:443"),
-            catalyst_version=os.getenv("CISCO_CATALYST_VERSION", "2.3.7.6"),
-            meraki_api_key=os.getenv("CISCO_MERAKI_API_KEY", ""),
-            spaces_token=os.getenv("CISCO_SPACES_API_KEY", ""),
-            webex_token=os.getenv("CISCO_WEBEX_TOKEN", "")
-        )
-        result = service.get_webex_meeting_by_id(meeting_id)
-        return JSONResponse(content={"webex_meeting": result})
-    except Exception as e:
-        logging.error(f"Error retrieving Webex meeting with ID {meeting_id}: {e}")
-        raise HTTPException(status_code=500, detail=str(e))
+    # Note: We do not need to instantiate the service here. The UnifiedService
+    # is called automatically by the dispatcher when a Webex tool is used.
+    # This endpoint simply confirms the router is active.
+    return {
+        "platform": "webex",
+        "status": "active",
+        "description": "Provides tool-calling capabilities for the Webex API."
+    }
