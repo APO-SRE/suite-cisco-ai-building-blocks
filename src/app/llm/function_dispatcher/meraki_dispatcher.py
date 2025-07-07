@@ -8001,7 +8001,7 @@ def getOrganizations(perPage: int = None, startingAfter: str = None, endingBefor
     return target(**final_kwargs)
 
 @register('getOrganization')
-def getOrganization(organizationId: str):
+def getOrganization(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -8027,7 +8027,7 @@ def getOrganization(organizationId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationActionBatches')
-def getOrganizationActionBatches(organizationId: str, status: str = None):
+def getOrganizationActionBatches(organizationId: str = None, status: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -8055,7 +8055,7 @@ def getOrganizationActionBatches(organizationId: str, status: str = None):
     return target(**final_kwargs)
 
 @register('getOrganizationActionBatch')
-def getOrganizationActionBatch(organizationId: str, actionBatchId: str):
+def getOrganizationActionBatch(actionBatchId: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -8083,7 +8083,7 @@ def getOrganizationActionBatch(organizationId: str, actionBatchId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationAdaptivePolicyAcls')
-def getOrganizationAdaptivePolicyAcls(organizationId: str):
+def getOrganizationAdaptivePolicyAcls(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -8109,7 +8109,7 @@ def getOrganizationAdaptivePolicyAcls(organizationId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationAdaptivePolicyAcl')
-def getOrganizationAdaptivePolicyAcl(organizationId: str, aclId: str):
+def getOrganizationAdaptivePolicyAcl(aclId: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -8137,7 +8137,7 @@ def getOrganizationAdaptivePolicyAcl(organizationId: str, aclId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationAdaptivePolicyGroups')
-def getOrganizationAdaptivePolicyGroups(organizationId: str):
+def getOrganizationAdaptivePolicyGroups(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -8163,7 +8163,7 @@ def getOrganizationAdaptivePolicyGroups(organizationId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationAdaptivePolicyGroup')
-def getOrganizationAdaptivePolicyGroup(organizationId: str, id: str):
+def getOrganizationAdaptivePolicyGroup(id: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -8191,7 +8191,7 @@ def getOrganizationAdaptivePolicyGroup(organizationId: str, id: str):
     return target(**final_kwargs)
 
 @register('getOrganizationAdaptivePolicyOverview')
-def getOrganizationAdaptivePolicyOverview(organizationId: str):
+def getOrganizationAdaptivePolicyOverview(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -8217,7 +8217,7 @@ def getOrganizationAdaptivePolicyOverview(organizationId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationAdaptivePolicyPolicies')
-def getOrganizationAdaptivePolicyPolicies(organizationId: str):
+def getOrganizationAdaptivePolicyPolicies(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -8243,7 +8243,7 @@ def getOrganizationAdaptivePolicyPolicies(organizationId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationAdaptivePolicyPolicy')
-def getOrganizationAdaptivePolicyPolicy(organizationId: str, id: str):
+def getOrganizationAdaptivePolicyPolicy(id: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -8271,7 +8271,7 @@ def getOrganizationAdaptivePolicyPolicy(organizationId: str, id: str):
     return target(**final_kwargs)
 
 @register('getOrganizationAdaptivePolicySettings')
-def getOrganizationAdaptivePolicySettings(organizationId: str):
+def getOrganizationAdaptivePolicySettings(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -8297,7 +8297,7 @@ def getOrganizationAdaptivePolicySettings(organizationId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationAdmins')
-def getOrganizationAdmins(organizationId: str, networkIds: list = None):
+def getOrganizationAdmins(organizationId: str = None, networkIds: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -8325,7 +8325,7 @@ def getOrganizationAdmins(organizationId: str, networkIds: list = None):
     return target(**final_kwargs)
 
 @register('getOrganizationAlertsProfiles')
-def getOrganizationAlertsProfiles(organizationId: str):
+def getOrganizationAlertsProfiles(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -8351,7 +8351,7 @@ def getOrganizationAlertsProfiles(organizationId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationApiRequests')
-def getOrganizationApiRequests(organizationId: str, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, adminId: str = None, path: str = None, method: str = None, responseCode: int = None, sourceIp: str = None, userAgent: str = None, version: int = None, operationIds: list = None):
+def getOrganizationApiRequests(organizationId: str = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, adminId: str = None, path: str = None, method: str = None, responseCode: int = None, sourceIp: str = None, userAgent: str = None, version: int = None, operationIds: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -8405,7 +8405,7 @@ def getOrganizationApiRequests(organizationId: str, t0: str = None, t1: str = No
     return target(**final_kwargs)
 
 @register('getOrganizationApiRequestsOverview')
-def getOrganizationApiRequestsOverview(organizationId: str, t0: str = None, t1: str = None, timespan: float = None):
+def getOrganizationApiRequestsOverview(organizationId: str = None, t0: str = None, t1: str = None, timespan: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -8437,7 +8437,7 @@ def getOrganizationApiRequestsOverview(organizationId: str, t0: str = None, t1: 
     return target(**final_kwargs)
 
 @register('getOrganizationApiRequestsOverviewResponseCodesByInterval')
-def getOrganizationApiRequestsOverviewResponseCodesByInterval(organizationId: str, t0: str = None, t1: str = None, timespan: float = None, interval: int = None, version: int = None, operationIds: list = None, sourceIps: list = None, adminIds: list = None, userAgent: str = None):
+def getOrganizationApiRequestsOverviewResponseCodesByInterval(organizationId: str = None, t0: str = None, t1: str = None, timespan: float = None, interval: int = None, version: int = None, operationIds: list = None, sourceIps: list = None, adminIds: list = None, userAgent: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -8481,7 +8481,7 @@ def getOrganizationApiRequestsOverviewResponseCodesByInterval(organizationId: st
     return target(**final_kwargs)
 
 @register('getOrganizationApplianceSecurityEvents')
-def getOrganizationApplianceSecurityEvents(organizationId: str, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, sortOrder: str = None):
+def getOrganizationApplianceSecurityEvents(organizationId: str = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, sortOrder: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -8521,7 +8521,7 @@ def getOrganizationApplianceSecurityEvents(organizationId: str, t0: str = None, 
     return target(**final_kwargs)
 
 @register('getOrganizationApplianceSecurityIntrusion')
-def getOrganizationApplianceSecurityIntrusion(organizationId: str):
+def getOrganizationApplianceSecurityIntrusion(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -8547,7 +8547,7 @@ def getOrganizationApplianceSecurityIntrusion(organizationId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationApplianceTrafficShapingVpnExclusionsByNetwork')
-def getOrganizationApplianceTrafficShapingVpnExclusionsByNetwork(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None):
+def getOrganizationApplianceTrafficShapingVpnExclusionsByNetwork(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -8581,7 +8581,7 @@ def getOrganizationApplianceTrafficShapingVpnExclusionsByNetwork(organizationId:
     return target(**final_kwargs)
 
 @register('getOrganizationApplianceUplinkStatuses')
-def getOrganizationApplianceUplinkStatuses(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, serials: list = None, iccids: list = None):
+def getOrganizationApplianceUplinkStatuses(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, serials: list = None, iccids: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -8619,7 +8619,7 @@ def getOrganizationApplianceUplinkStatuses(organizationId: str, perPage: int = N
     return target(**final_kwargs)
 
 @register('getOrganizationApplianceUplinksStatusesOverview')
-def getOrganizationApplianceUplinksStatusesOverview(organizationId: str):
+def getOrganizationApplianceUplinksStatusesOverview(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -8645,7 +8645,7 @@ def getOrganizationApplianceUplinksStatusesOverview(organizationId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationApplianceUplinksUsageByNetwork')
-def getOrganizationApplianceUplinksUsageByNetwork(organizationId: str, t0: str = None, t1: str = None, timespan: float = None):
+def getOrganizationApplianceUplinksUsageByNetwork(organizationId: str = None, t0: str = None, t1: str = None, timespan: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -8677,7 +8677,7 @@ def getOrganizationApplianceUplinksUsageByNetwork(organizationId: str, t0: str =
     return target(**final_kwargs)
 
 @register('getOrganizationApplianceVpnStats')
-def getOrganizationApplianceVpnStats(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, t0: str = None, t1: str = None, timespan: float = None):
+def getOrganizationApplianceVpnStats(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, t0: str = None, t1: str = None, timespan: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -8717,7 +8717,7 @@ def getOrganizationApplianceVpnStats(organizationId: str, perPage: int = None, s
     return target(**final_kwargs)
 
 @register('getOrganizationApplianceVpnStatuses')
-def getOrganizationApplianceVpnStatuses(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None):
+def getOrganizationApplianceVpnStatuses(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -8751,7 +8751,7 @@ def getOrganizationApplianceVpnStatuses(organizationId: str, perPage: int = None
     return target(**final_kwargs)
 
 @register('getOrganizationApplianceVpnThirdPartyVPNPeers')
-def getOrganizationApplianceVpnThirdPartyVPNPeers(organizationId: str):
+def getOrganizationApplianceVpnThirdPartyVPNPeers(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -8777,7 +8777,7 @@ def getOrganizationApplianceVpnThirdPartyVPNPeers(organizationId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationApplianceVpnVpnFirewallRules')
-def getOrganizationApplianceVpnVpnFirewallRules(organizationId: str):
+def getOrganizationApplianceVpnVpnFirewallRules(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -8803,7 +8803,7 @@ def getOrganizationApplianceVpnVpnFirewallRules(organizationId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationAssuranceAlerts')
-def getOrganizationAssuranceAlerts(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, sortOrder: str = None, networkId: str = None, severity: str = None, types: list = None, tsStart: str = None, tsEnd: str = None, category: str = None, sortBy: str = None, serials: list = None, deviceTypes: list = None, deviceTags: list = None, active: bool = None, dismissed: bool = None, resolved: bool = None, suppressAlertsForOfflineNodes: bool = None):
+def getOrganizationAssuranceAlerts(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, sortOrder: str = None, networkId: str = None, severity: str = None, types: list = None, tsStart: str = None, tsEnd: str = None, category: str = None, sortBy: str = None, serials: list = None, deviceTypes: list = None, deviceTags: list = None, active: bool = None, dismissed: bool = None, resolved: bool = None, suppressAlertsForOfflineNodes: bool = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -8865,7 +8865,7 @@ def getOrganizationAssuranceAlerts(organizationId: str, perPage: int = None, sta
     return target(**final_kwargs)
 
 @register('getOrganizationAssuranceAlertsOverview')
-def getOrganizationAssuranceAlertsOverview(organizationId: str, networkId: str = None, severity: str = None, types: list = None, tsStart: str = None, tsEnd: str = None, category: str = None, serials: list = None, deviceTypes: list = None, deviceTags: list = None, active: bool = None, dismissed: bool = None, resolved: bool = None, suppressAlertsForOfflineNodes: bool = None):
+def getOrganizationAssuranceAlertsOverview(organizationId: str = None, networkId: str = None, severity: str = None, types: list = None, tsStart: str = None, tsEnd: str = None, category: str = None, serials: list = None, deviceTypes: list = None, deviceTags: list = None, active: bool = None, dismissed: bool = None, resolved: bool = None, suppressAlertsForOfflineNodes: bool = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -8917,7 +8917,7 @@ def getOrganizationAssuranceAlertsOverview(organizationId: str, networkId: str =
     return target(**final_kwargs)
 
 @register('getOrganizationAssuranceAlertsOverviewByNetwork')
-def getOrganizationAssuranceAlertsOverviewByNetwork(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, sortOrder: str = None, networkId: str = None, severity: str = None, types: list = None, tsStart: str = None, tsEnd: str = None, category: str = None, serials: list = None, deviceTypes: list = None, deviceTags: list = None, active: bool = None, dismissed: bool = None, resolved: bool = None, suppressAlertsForOfflineNodes: bool = None):
+def getOrganizationAssuranceAlertsOverviewByNetwork(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, sortOrder: str = None, networkId: str = None, severity: str = None, types: list = None, tsStart: str = None, tsEnd: str = None, category: str = None, serials: list = None, deviceTypes: list = None, deviceTags: list = None, active: bool = None, dismissed: bool = None, resolved: bool = None, suppressAlertsForOfflineNodes: bool = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -8977,7 +8977,7 @@ def getOrganizationAssuranceAlertsOverviewByNetwork(organizationId: str, perPage
     return target(**final_kwargs)
 
 @register('getOrganizationAssuranceAlertsOverviewByType')
-def getOrganizationAssuranceAlertsOverviewByType(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, sortOrder: str = None, networkId: str = None, severity: str = None, types: list = None, tsStart: str = None, tsEnd: str = None, category: str = None, sortBy: str = None, serials: list = None, deviceTypes: list = None, deviceTags: list = None, active: bool = None, dismissed: bool = None, resolved: bool = None, suppressAlertsForOfflineNodes: bool = None):
+def getOrganizationAssuranceAlertsOverviewByType(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, sortOrder: str = None, networkId: str = None, severity: str = None, types: list = None, tsStart: str = None, tsEnd: str = None, category: str = None, sortBy: str = None, serials: list = None, deviceTypes: list = None, deviceTags: list = None, active: bool = None, dismissed: bool = None, resolved: bool = None, suppressAlertsForOfflineNodes: bool = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -9039,7 +9039,7 @@ def getOrganizationAssuranceAlertsOverviewByType(organizationId: str, perPage: i
     return target(**final_kwargs)
 
 @register('getOrganizationAssuranceAlertsOverviewHistorical')
-def getOrganizationAssuranceAlertsOverviewHistorical(organizationId: str, segmentDuration: int, tsStart: str, networkId: str = None, severity: str = None, types: list = None, tsEnd: str = None, category: str = None, serials: list = None, deviceTypes: list = None):
+def getOrganizationAssuranceAlertsOverviewHistorical(segmentDuration: int, tsStart: str, organizationId: str = None, networkId: str = None, severity: str = None, types: list = None, tsEnd: str = None, category: str = None, serials: list = None, deviceTypes: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -9083,7 +9083,7 @@ def getOrganizationAssuranceAlertsOverviewHistorical(organizationId: str, segmen
     return target(**final_kwargs)
 
 @register('getOrganizationAssuranceAlert')
-def getOrganizationAssuranceAlert(organizationId: str, id: str):
+def getOrganizationAssuranceAlert(id: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -9111,7 +9111,7 @@ def getOrganizationAssuranceAlert(organizationId: str, id: str):
     return target(**final_kwargs)
 
 @register('getOrganizationBrandingPolicies')
-def getOrganizationBrandingPolicies(organizationId: str):
+def getOrganizationBrandingPolicies(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -9137,7 +9137,7 @@ def getOrganizationBrandingPolicies(organizationId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationBrandingPoliciesPriorities')
-def getOrganizationBrandingPoliciesPriorities(organizationId: str):
+def getOrganizationBrandingPoliciesPriorities(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -9163,7 +9163,7 @@ def getOrganizationBrandingPoliciesPriorities(organizationId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationBrandingPolicy')
-def getOrganizationBrandingPolicy(organizationId: str, brandingPolicyId: str):
+def getOrganizationBrandingPolicy(brandingPolicyId: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -9191,7 +9191,7 @@ def getOrganizationBrandingPolicy(organizationId: str, brandingPolicyId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationCameraBoundariesAreasByDevice')
-def getOrganizationCameraBoundariesAreasByDevice(organizationId: str, serials: list = None):
+def getOrganizationCameraBoundariesAreasByDevice(organizationId: str = None, serials: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -9219,7 +9219,7 @@ def getOrganizationCameraBoundariesAreasByDevice(organizationId: str, serials: l
     return target(**final_kwargs)
 
 @register('getOrganizationCameraBoundariesLinesByDevice')
-def getOrganizationCameraBoundariesLinesByDevice(organizationId: str, serials: list = None):
+def getOrganizationCameraBoundariesLinesByDevice(organizationId: str = None, serials: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -9247,7 +9247,7 @@ def getOrganizationCameraBoundariesLinesByDevice(organizationId: str, serials: l
     return target(**final_kwargs)
 
 @register('getOrganizationCameraCustomAnalyticsArtifacts')
-def getOrganizationCameraCustomAnalyticsArtifacts(organizationId: str):
+def getOrganizationCameraCustomAnalyticsArtifacts(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -9273,7 +9273,7 @@ def getOrganizationCameraCustomAnalyticsArtifacts(organizationId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationCameraCustomAnalyticsArtifact')
-def getOrganizationCameraCustomAnalyticsArtifact(organizationId: str, artifactId: str):
+def getOrganizationCameraCustomAnalyticsArtifact(artifactId: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -9301,7 +9301,7 @@ def getOrganizationCameraCustomAnalyticsArtifact(organizationId: str, artifactId
     return target(**final_kwargs)
 
 @register('getOrganizationCameraDetectionsHistoryByBoundaryByInterval')
-def getOrganizationCameraDetectionsHistoryByBoundaryByInterval(organizationId: str, boundaryIds: list, ranges: list, duration: int = None, perPage: int = None, boundaryTypes: list = None):
+def getOrganizationCameraDetectionsHistoryByBoundaryByInterval(boundaryIds: list, ranges: list, organizationId: str = None, duration: int = None, perPage: int = None, boundaryTypes: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -9337,7 +9337,7 @@ def getOrganizationCameraDetectionsHistoryByBoundaryByInterval(organizationId: s
     return target(**final_kwargs)
 
 @register('getOrganizationCameraOnboardingStatuses')
-def getOrganizationCameraOnboardingStatuses(organizationId: str, serials: list = None, networkIds: list = None):
+def getOrganizationCameraOnboardingStatuses(organizationId: str = None, serials: list = None, networkIds: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -9367,7 +9367,7 @@ def getOrganizationCameraOnboardingStatuses(organizationId: str, serials: list =
     return target(**final_kwargs)
 
 @register('getOrganizationCameraPermissions')
-def getOrganizationCameraPermissions(organizationId: str):
+def getOrganizationCameraPermissions(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -9393,7 +9393,7 @@ def getOrganizationCameraPermissions(organizationId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationCameraPermission')
-def getOrganizationCameraPermission(organizationId: str, permissionScopeId: str):
+def getOrganizationCameraPermission(permissionScopeId: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -9421,7 +9421,7 @@ def getOrganizationCameraPermission(organizationId: str, permissionScopeId: str)
     return target(**final_kwargs)
 
 @register('getOrganizationCameraRoles')
-def getOrganizationCameraRoles(organizationId: str):
+def getOrganizationCameraRoles(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -9447,7 +9447,7 @@ def getOrganizationCameraRoles(organizationId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationCameraRole')
-def getOrganizationCameraRole(organizationId: str, roleId: str):
+def getOrganizationCameraRole(roleId: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -9475,7 +9475,7 @@ def getOrganizationCameraRole(organizationId: str, roleId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationCellularGatewayEsimsInventory')
-def getOrganizationCellularGatewayEsimsInventory(organizationId: str, eids: list = None):
+def getOrganizationCellularGatewayEsimsInventory(organizationId: str = None, eids: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -9503,7 +9503,7 @@ def getOrganizationCellularGatewayEsimsInventory(organizationId: str, eids: list
     return target(**final_kwargs)
 
 @register('getOrganizationCellularGatewayEsimsServiceProviders')
-def getOrganizationCellularGatewayEsimsServiceProviders(organizationId: str):
+def getOrganizationCellularGatewayEsimsServiceProviders(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -9529,7 +9529,7 @@ def getOrganizationCellularGatewayEsimsServiceProviders(organizationId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationCellularGatewayEsimsServiceProvidersAccounts')
-def getOrganizationCellularGatewayEsimsServiceProvidersAccounts(organizationId: str, accountIds: list = None):
+def getOrganizationCellularGatewayEsimsServiceProvidersAccounts(organizationId: str = None, accountIds: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -9557,7 +9557,7 @@ def getOrganizationCellularGatewayEsimsServiceProvidersAccounts(organizationId: 
     return target(**final_kwargs)
 
 @register('getOrganizationCellularGatewayEsimsServiceProvidersAccountsCommu')
-def getOrganizationCellularGatewayEsimsServiceProvidersAccountsCommu(organizationId: str, accountIds: list):
+def getOrganizationCellularGatewayEsimsServiceProvidersAccountsCommu(accountIds: list, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -9585,7 +9585,7 @@ def getOrganizationCellularGatewayEsimsServiceProvidersAccountsCommu(organizatio
     return target(**final_kwargs)
 
 @register('getOrganizationCellularGatewayEsimsServiceProvidersAccountsRateP')
-def getOrganizationCellularGatewayEsimsServiceProvidersAccountsRateP(organizationId: str, accountIds: list):
+def getOrganizationCellularGatewayEsimsServiceProvidersAccountsRateP(accountIds: list, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -9613,7 +9613,7 @@ def getOrganizationCellularGatewayEsimsServiceProvidersAccountsRateP(organizatio
     return target(**final_kwargs)
 
 @register('getOrganizationCellularGatewayUplinkStatuses')
-def getOrganizationCellularGatewayUplinkStatuses(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, serials: list = None, iccids: list = None):
+def getOrganizationCellularGatewayUplinkStatuses(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, serials: list = None, iccids: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -9651,7 +9651,7 @@ def getOrganizationCellularGatewayUplinkStatuses(organizationId: str, perPage: i
     return target(**final_kwargs)
 
 @register('getOrganizationClientsBandwidthUsageHistory')
-def getOrganizationClientsBandwidthUsageHistory(organizationId: str, networkTag: str = None, deviceTag: str = None, ssidName: str = None, usageUplink: str = None, t0: str = None, t1: str = None, timespan: float = None):
+def getOrganizationClientsBandwidthUsageHistory(organizationId: str = None, networkTag: str = None, deviceTag: str = None, ssidName: str = None, usageUplink: str = None, t0: str = None, t1: str = None, timespan: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -9691,7 +9691,7 @@ def getOrganizationClientsBandwidthUsageHistory(organizationId: str, networkTag:
     return target(**final_kwargs)
 
 @register('getOrganizationClientsOverview')
-def getOrganizationClientsOverview(organizationId: str, t0: str = None, t1: str = None, timespan: float = None):
+def getOrganizationClientsOverview(organizationId: str = None, t0: str = None, t1: str = None, timespan: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -9723,7 +9723,7 @@ def getOrganizationClientsOverview(organizationId: str, t0: str = None, t1: str 
     return target(**final_kwargs)
 
 @register('getOrganizationClientsSearch')
-def getOrganizationClientsSearch(organizationId: str, mac: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
+def getOrganizationClientsSearch(mac: str, organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -9757,7 +9757,7 @@ def getOrganizationClientsSearch(organizationId: str, mac: str, perPage: int = N
     return target(**final_kwargs)
 
 @register('getOrganizationConfigTemplates')
-def getOrganizationConfigTemplates(organizationId: str):
+def getOrganizationConfigTemplates(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -9783,7 +9783,7 @@ def getOrganizationConfigTemplates(organizationId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationConfigTemplate')
-def getOrganizationConfigTemplate(organizationId: str, configTemplateId: str):
+def getOrganizationConfigTemplate(configTemplateId: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -9811,7 +9811,7 @@ def getOrganizationConfigTemplate(organizationId: str, configTemplateId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationConfigTemplateSwitchProfiles')
-def getOrganizationConfigTemplateSwitchProfiles(organizationId: str, configTemplateId: str):
+def getOrganizationConfigTemplateSwitchProfiles(configTemplateId: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -9839,7 +9839,7 @@ def getOrganizationConfigTemplateSwitchProfiles(organizationId: str, configTempl
     return target(**final_kwargs)
 
 @register('getOrganizationConfigTemplateSwitchProfilePorts')
-def getOrganizationConfigTemplateSwitchProfilePorts(organizationId: str, configTemplateId: str, profileId: str):
+def getOrganizationConfigTemplateSwitchProfilePorts(configTemplateId: str, profileId: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -9869,7 +9869,7 @@ def getOrganizationConfigTemplateSwitchProfilePorts(organizationId: str, configT
     return target(**final_kwargs)
 
 @register('getOrganizationConfigTemplateSwitchProfilePort')
-def getOrganizationConfigTemplateSwitchProfilePort(organizationId: str, configTemplateId: str, profileId: str, portId: str):
+def getOrganizationConfigTemplateSwitchProfilePort(configTemplateId: str, profileId: str, portId: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -9901,7 +9901,7 @@ def getOrganizationConfigTemplateSwitchProfilePort(organizationId: str, configTe
     return target(**final_kwargs)
 
 @register('getOrganizationConfigurationChanges')
-def getOrganizationConfigurationChanges(organizationId: str, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkId: str = None, adminId: str = None):
+def getOrganizationConfigurationChanges(organizationId: str = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkId: str = None, adminId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -9943,7 +9943,7 @@ def getOrganizationConfigurationChanges(organizationId: str, t0: str = None, t1:
     return target(**final_kwargs)
 
 @register('getOrganizationDevices')
-def getOrganizationDevices(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, configurationUpdatedAfter: str = None, networkIds: list = None, productTypes: list = None, tags: list = None, tagsFilterType: str = None, name: str = None, mac: str = None, serial: str = None, model: str = None, macs: list = None, serials: list = None, sensorMetrics: list = None, sensorAlertProfileIds: list = None, models: list = None):
+def getOrganizationDevices(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, configurationUpdatedAfter: str = None, networkIds: list = None, productTypes: list = None, tags: list = None, tagsFilterType: str = None, name: str = None, mac: str = None, serial: str = None, model: str = None, macs: list = None, serials: list = None, sensorMetrics: list = None, sensorAlertProfileIds: list = None, models: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -10003,7 +10003,7 @@ def getOrganizationDevices(organizationId: str, perPage: int = None, startingAft
     return target(**final_kwargs)
 
 @register('getOrganizationDevicesAvailabilities')
-def getOrganizationDevicesAvailabilities(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, productTypes: list = None, serials: list = None, tags: list = None, tagsFilterType: str = None, statuses: list = None):
+def getOrganizationDevicesAvailabilities(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, productTypes: list = None, serials: list = None, tags: list = None, tagsFilterType: str = None, statuses: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -10047,7 +10047,7 @@ def getOrganizationDevicesAvailabilities(organizationId: str, perPage: int = Non
     return target(**final_kwargs)
 
 @register('getOrganizationDevicesAvailabilitiesChangeHistory')
-def getOrganizationDevicesAvailabilitiesChangeHistory(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, t0: str = None, t1: str = None, timespan: float = None, serials: list = None, productTypes: list = None, networkIds: list = None, statuses: list = None):
+def getOrganizationDevicesAvailabilitiesChangeHistory(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, t0: str = None, t1: str = None, timespan: float = None, serials: list = None, productTypes: list = None, networkIds: list = None, statuses: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -10093,7 +10093,7 @@ def getOrganizationDevicesAvailabilitiesChangeHistory(organizationId: str, perPa
     return target(**final_kwargs)
 
 @register('getOrganizationDevicesOverviewByModel')
-def getOrganizationDevicesOverviewByModel(organizationId: str, models: list = None, networkIds: list = None, productTypes: list = None):
+def getOrganizationDevicesOverviewByModel(organizationId: str = None, models: list = None, networkIds: list = None, productTypes: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -10125,7 +10125,7 @@ def getOrganizationDevicesOverviewByModel(organizationId: str, models: list = No
     return target(**final_kwargs)
 
 @register('getOrganizationDevicesPowerModulesStatusesByDevice')
-def getOrganizationDevicesPowerModulesStatusesByDevice(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, productTypes: list = None, serials: list = None, tags: list = None, tagsFilterType: str = None):
+def getOrganizationDevicesPowerModulesStatusesByDevice(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, productTypes: list = None, serials: list = None, tags: list = None, tagsFilterType: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -10167,7 +10167,7 @@ def getOrganizationDevicesPowerModulesStatusesByDevice(organizationId: str, perP
     return target(**final_kwargs)
 
 @register('getOrganizationDevicesProvisioningStatuses')
-def getOrganizationDevicesProvisioningStatuses(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, productTypes: list = None, serials: list = None, status: str = None, tags: list = None, tagsFilterType: str = None):
+def getOrganizationDevicesProvisioningStatuses(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, productTypes: list = None, serials: list = None, status: str = None, tags: list = None, tagsFilterType: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -10211,7 +10211,7 @@ def getOrganizationDevicesProvisioningStatuses(organizationId: str, perPage: int
     return target(**final_kwargs)
 
 @register('getOrganizationDevicesStatuses')
-def getOrganizationDevicesStatuses(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, serials: list = None, statuses: list = None, productTypes: list = None, models: list = None, tags: list = None, tagsFilterType: str = None):
+def getOrganizationDevicesStatuses(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, serials: list = None, statuses: list = None, productTypes: list = None, models: list = None, tags: list = None, tagsFilterType: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -10257,7 +10257,7 @@ def getOrganizationDevicesStatuses(organizationId: str, perPage: int = None, sta
     return target(**final_kwargs)
 
 @register('getOrganizationDevicesStatusesOverview')
-def getOrganizationDevicesStatusesOverview(organizationId: str, productTypes: list = None, networkIds: list = None):
+def getOrganizationDevicesStatusesOverview(organizationId: str = None, productTypes: list = None, networkIds: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -10287,7 +10287,7 @@ def getOrganizationDevicesStatusesOverview(organizationId: str, productTypes: li
     return target(**final_kwargs)
 
 @register('getOrganizationDevicesUplinksAddressesByDevice')
-def getOrganizationDevicesUplinksAddressesByDevice(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, productTypes: list = None, serials: list = None, tags: list = None, tagsFilterType: str = None):
+def getOrganizationDevicesUplinksAddressesByDevice(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, productTypes: list = None, serials: list = None, tags: list = None, tagsFilterType: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -10329,7 +10329,7 @@ def getOrganizationDevicesUplinksAddressesByDevice(organizationId: str, perPage:
     return target(**final_kwargs)
 
 @register('getOrganizationDevicesUplinksLossAndLatency')
-def getOrganizationDevicesUplinksLossAndLatency(organizationId: str, t0: str = None, t1: str = None, timespan: float = None, uplink: str = None, ip: str = None):
+def getOrganizationDevicesUplinksLossAndLatency(organizationId: str = None, t0: str = None, t1: str = None, timespan: float = None, uplink: str = None, ip: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -10365,7 +10365,7 @@ def getOrganizationDevicesUplinksLossAndLatency(organizationId: str, t0: str = N
     return target(**final_kwargs)
 
 @register('getOrganizationEarlyAccessFeatures')
-def getOrganizationEarlyAccessFeatures(organizationId: str):
+def getOrganizationEarlyAccessFeatures(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -10391,7 +10391,7 @@ def getOrganizationEarlyAccessFeatures(organizationId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationEarlyAccessFeaturesOptIns')
-def getOrganizationEarlyAccessFeaturesOptIns(organizationId: str):
+def getOrganizationEarlyAccessFeaturesOptIns(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -10417,7 +10417,7 @@ def getOrganizationEarlyAccessFeaturesOptIns(organizationId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationEarlyAccessFeaturesOptIn')
-def getOrganizationEarlyAccessFeaturesOptIn(organizationId: str, optInId: str):
+def getOrganizationEarlyAccessFeaturesOptIn(optInId: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -10445,7 +10445,7 @@ def getOrganizationEarlyAccessFeaturesOptIn(organizationId: str, optInId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationFirmwareUpgrades')
-def getOrganizationFirmwareUpgrades(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, status: list = None, productTypes: list = None):
+def getOrganizationFirmwareUpgrades(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, status: list = None, productTypes: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -10481,7 +10481,7 @@ def getOrganizationFirmwareUpgrades(organizationId: str, perPage: int = None, st
     return target(**final_kwargs)
 
 @register('getOrganizationFirmwareUpgradesByDevice')
-def getOrganizationFirmwareUpgradesByDevice(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, serials: list = None, macs: list = None, firmwareUpgradeBatchIds: list = None, upgradeStatuses: list = None, currentUpgradesOnly: bool = None):
+def getOrganizationFirmwareUpgradesByDevice(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, serials: list = None, macs: list = None, firmwareUpgradeBatchIds: list = None, upgradeStatuses: list = None, currentUpgradesOnly: bool = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -10525,7 +10525,7 @@ def getOrganizationFirmwareUpgradesByDevice(organizationId: str, perPage: int = 
     return target(**final_kwargs)
 
 @register('getOrganizationFloorPlansAutoLocateDevices')
-def getOrganizationFloorPlansAutoLocateDevices(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, floorPlanIds: list = None):
+def getOrganizationFloorPlansAutoLocateDevices(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, floorPlanIds: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -10561,7 +10561,7 @@ def getOrganizationFloorPlansAutoLocateDevices(organizationId: str, perPage: int
     return target(**final_kwargs)
 
 @register('getOrganizationFloorPlansAutoLocateStatuses')
-def getOrganizationFloorPlansAutoLocateStatuses(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, floorPlanIds: list = None):
+def getOrganizationFloorPlansAutoLocateStatuses(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, floorPlanIds: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -10597,7 +10597,7 @@ def getOrganizationFloorPlansAutoLocateStatuses(organizationId: str, perPage: in
     return target(**final_kwargs)
 
 @register('getOrganizationInsightApplications')
-def getOrganizationInsightApplications(organizationId: str):
+def getOrganizationInsightApplications(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -10623,7 +10623,7 @@ def getOrganizationInsightApplications(organizationId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationInsightMonitoredMediaServers')
-def getOrganizationInsightMonitoredMediaServers(organizationId: str):
+def getOrganizationInsightMonitoredMediaServers(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -10649,7 +10649,7 @@ def getOrganizationInsightMonitoredMediaServers(organizationId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationInsightMonitoredMediaServer')
-def getOrganizationInsightMonitoredMediaServer(organizationId: str, monitoredMediaServerId: str):
+def getOrganizationInsightMonitoredMediaServer(monitoredMediaServerId: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -10677,7 +10677,7 @@ def getOrganizationInsightMonitoredMediaServer(organizationId: str, monitoredMed
     return target(**final_kwargs)
 
 @register('getOrganizationInventoryDevices')
-def getOrganizationInventoryDevices(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, usedState: str = None, search: str = None, macs: list = None, networkIds: list = None, serials: list = None, models: list = None, orderNumbers: list = None, tags: list = None, tagsFilterType: str = None, productTypes: list = None):
+def getOrganizationInventoryDevices(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, usedState: str = None, search: str = None, macs: list = None, networkIds: list = None, serials: list = None, models: list = None, orderNumbers: list = None, tags: list = None, tagsFilterType: str = None, productTypes: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -10729,7 +10729,7 @@ def getOrganizationInventoryDevices(organizationId: str, perPage: int = None, st
     return target(**final_kwargs)
 
 @register('getOrganizationInventoryDevicesSwapsBulk')
-def getOrganizationInventoryDevicesSwapsBulk(organizationId: str, id: str):
+def getOrganizationInventoryDevicesSwapsBulk(id: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -10757,7 +10757,7 @@ def getOrganizationInventoryDevicesSwapsBulk(organizationId: str, id: str):
     return target(**final_kwargs)
 
 @register('getOrganizationInventoryDevice')
-def getOrganizationInventoryDevice(organizationId: str, serial: str):
+def getOrganizationInventoryDevice(serial: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -10785,7 +10785,7 @@ def getOrganizationInventoryDevice(organizationId: str, serial: str):
     return target(**final_kwargs)
 
 @register('getOrganizationInventoryOnboardingCloudMonitoringImports')
-def getOrganizationInventoryOnboardingCloudMonitoringImports(organizationId: str, importIds: list):
+def getOrganizationInventoryOnboardingCloudMonitoringImports(importIds: list, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -10813,7 +10813,7 @@ def getOrganizationInventoryOnboardingCloudMonitoringImports(organizationId: str
     return target(**final_kwargs)
 
 @register('getOrganizationInventoryOnboardingCloudMonitoringNetworks')
-def getOrganizationInventoryOnboardingCloudMonitoringNetworks(organizationId: str, deviceType: str, search: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
+def getOrganizationInventoryOnboardingCloudMonitoringNetworks(deviceType: str, organizationId: str = None, search: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -10849,7 +10849,7 @@ def getOrganizationInventoryOnboardingCloudMonitoringNetworks(organizationId: st
     return target(**final_kwargs)
 
 @register('getOrganizationLicenses')
-def getOrganizationLicenses(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, deviceSerial: str = None, networkId: str = None, state: str = None):
+def getOrganizationLicenses(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, deviceSerial: str = None, networkId: str = None, state: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -10887,7 +10887,7 @@ def getOrganizationLicenses(organizationId: str, perPage: int = None, startingAf
     return target(**final_kwargs)
 
 @register('getOrganizationLicensesOverview')
-def getOrganizationLicensesOverview(organizationId: str):
+def getOrganizationLicensesOverview(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -10913,7 +10913,7 @@ def getOrganizationLicensesOverview(organizationId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationLicense')
-def getOrganizationLicense(organizationId: str, licenseId: str):
+def getOrganizationLicense(licenseId: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -10941,7 +10941,7 @@ def getOrganizationLicense(organizationId: str, licenseId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationLicensingCotermLicenses')
-def getOrganizationLicensingCotermLicenses(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, invalidated: bool = None, expired: bool = None):
+def getOrganizationLicensingCotermLicenses(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, invalidated: bool = None, expired: bool = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -10977,7 +10977,7 @@ def getOrganizationLicensingCotermLicenses(organizationId: str, perPage: int = N
     return target(**final_kwargs)
 
 @register('getOrganizationLoginSecurity')
-def getOrganizationLoginSecurity(organizationId: str):
+def getOrganizationLoginSecurity(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -11003,7 +11003,7 @@ def getOrganizationLoginSecurity(organizationId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationNetworks')
-def getOrganizationNetworks(organizationId: str, configTemplateId: str = None, isBoundToConfigTemplate: bool = None, tags: list = None, tagsFilterType: str = None, productTypes: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
+def getOrganizationNetworks(organizationId: str = None, configTemplateId: str = None, isBoundToConfigTemplate: bool = None, tags: list = None, tagsFilterType: str = None, productTypes: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -11045,7 +11045,7 @@ def getOrganizationNetworks(organizationId: str, configTemplateId: str = None, i
     return target(**final_kwargs)
 
 @register('getOrganizationOpenapiSpec')
-def getOrganizationOpenapiSpec(organizationId: str, version: int = None):
+def getOrganizationOpenapiSpec(organizationId: str = None, version: int = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -11073,7 +11073,7 @@ def getOrganizationOpenapiSpec(organizationId: str, version: int = None):
     return target(**final_kwargs)
 
 @register('getOrganizationPolicyObjects')
-def getOrganizationPolicyObjects(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
+def getOrganizationPolicyObjects(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -11105,7 +11105,7 @@ def getOrganizationPolicyObjects(organizationId: str, perPage: int = None, start
     return target(**final_kwargs)
 
 @register('getOrganizationPolicyObjectsGroups')
-def getOrganizationPolicyObjectsGroups(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
+def getOrganizationPolicyObjectsGroups(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -11137,7 +11137,7 @@ def getOrganizationPolicyObjectsGroups(organizationId: str, perPage: int = None,
     return target(**final_kwargs)
 
 @register('getOrganizationPolicyObjectsGroup')
-def getOrganizationPolicyObjectsGroup(organizationId: str, policyObjectGroupId: str):
+def getOrganizationPolicyObjectsGroup(policyObjectGroupId: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -11165,7 +11165,7 @@ def getOrganizationPolicyObjectsGroup(organizationId: str, policyObjectGroupId: 
     return target(**final_kwargs)
 
 @register('getOrganizationPolicyObject')
-def getOrganizationPolicyObject(organizationId: str, policyObjectId: str):
+def getOrganizationPolicyObject(policyObjectId: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -11193,7 +11193,7 @@ def getOrganizationPolicyObject(organizationId: str, policyObjectId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationSaml')
-def getOrganizationSaml(organizationId: str):
+def getOrganizationSaml(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -11219,7 +11219,7 @@ def getOrganizationSaml(organizationId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationSamlIdps')
-def getOrganizationSamlIdps(organizationId: str):
+def getOrganizationSamlIdps(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -11245,7 +11245,7 @@ def getOrganizationSamlIdps(organizationId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationSamlIdp')
-def getOrganizationSamlIdp(organizationId: str, idpId: str):
+def getOrganizationSamlIdp(idpId: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -11273,7 +11273,7 @@ def getOrganizationSamlIdp(organizationId: str, idpId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationSamlRoles')
-def getOrganizationSamlRoles(organizationId: str):
+def getOrganizationSamlRoles(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -11299,7 +11299,7 @@ def getOrganizationSamlRoles(organizationId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationSamlRole')
-def getOrganizationSamlRole(organizationId: str, samlRoleId: str):
+def getOrganizationSamlRole(samlRoleId: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -11327,7 +11327,7 @@ def getOrganizationSamlRole(organizationId: str, samlRoleId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationSensorReadingsHistory')
-def getOrganizationSensorReadingsHistory(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, t0: str = None, t1: str = None, timespan: float = None, networkIds: list = None, serials: list = None, metrics: list = None):
+def getOrganizationSensorReadingsHistory(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, t0: str = None, t1: str = None, timespan: float = None, networkIds: list = None, serials: list = None, metrics: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -11371,7 +11371,7 @@ def getOrganizationSensorReadingsHistory(organizationId: str, perPage: int = Non
     return target(**final_kwargs)
 
 @register('getOrganizationSensorReadingsLatest')
-def getOrganizationSensorReadingsLatest(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, serials: list = None, metrics: list = None):
+def getOrganizationSensorReadingsLatest(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, serials: list = None, metrics: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -11409,7 +11409,7 @@ def getOrganizationSensorReadingsLatest(organizationId: str, perPage: int = None
     return target(**final_kwargs)
 
 @register('getOrganizationSmAdminsRoles')
-def getOrganizationSmAdminsRoles(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
+def getOrganizationSmAdminsRoles(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -11441,7 +11441,7 @@ def getOrganizationSmAdminsRoles(organizationId: str, perPage: int = None, start
     return target(**final_kwargs)
 
 @register('getOrganizationSmAdminsRole')
-def getOrganizationSmAdminsRole(organizationId: str, roleId: str):
+def getOrganizationSmAdminsRole(roleId: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -11469,7 +11469,7 @@ def getOrganizationSmAdminsRole(organizationId: str, roleId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationSmApnsCert')
-def getOrganizationSmApnsCert(organizationId: str):
+def getOrganizationSmApnsCert(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -11495,7 +11495,7 @@ def getOrganizationSmApnsCert(organizationId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationSmSentryPoliciesAssignmentsByNetwork')
-def getOrganizationSmSentryPoliciesAssignmentsByNetwork(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None):
+def getOrganizationSmSentryPoliciesAssignmentsByNetwork(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -11529,7 +11529,7 @@ def getOrganizationSmSentryPoliciesAssignmentsByNetwork(organizationId: str, per
     return target(**final_kwargs)
 
 @register('getOrganizationSmVppAccounts')
-def getOrganizationSmVppAccounts(organizationId: str):
+def getOrganizationSmVppAccounts(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -11555,7 +11555,7 @@ def getOrganizationSmVppAccounts(organizationId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationSmVppAccount')
-def getOrganizationSmVppAccount(organizationId: str, vppAccountId: str):
+def getOrganizationSmVppAccount(vppAccountId: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -11583,7 +11583,7 @@ def getOrganizationSmVppAccount(organizationId: str, vppAccountId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationSnmp')
-def getOrganizationSnmp(organizationId: str):
+def getOrganizationSnmp(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -11609,7 +11609,7 @@ def getOrganizationSnmp(organizationId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationSplashAsset')
-def getOrganizationSplashAsset(organizationId: str, id: str):
+def getOrganizationSplashAsset(id: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -11637,7 +11637,7 @@ def getOrganizationSplashAsset(organizationId: str, id: str):
     return target(**final_kwargs)
 
 @register('getOrganizationSplashThemes')
-def getOrganizationSplashThemes(organizationId: str):
+def getOrganizationSplashThemes(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -11663,7 +11663,7 @@ def getOrganizationSplashThemes(organizationId: str):
     return target(**final_kwargs)
 
 @register('getOrganizationSummarySwitchPowerHistory')
-def getOrganizationSummarySwitchPowerHistory(organizationId: str, t0: str = None, t1: str = None, timespan: float = None):
+def getOrganizationSummarySwitchPowerHistory(organizationId: str = None, t0: str = None, t1: str = None, timespan: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -11695,7 +11695,7 @@ def getOrganizationSummarySwitchPowerHistory(organizationId: str, t0: str = None
     return target(**final_kwargs)
 
 @register('getOrganizationSummaryTopAppliancesByUtilization')
-def getOrganizationSummaryTopAppliancesByUtilization(organizationId: str, networkTag: str = None, deviceTag: str = None, quantity: int = None, ssidName: str = None, usageUplink: str = None, t0: str = None, t1: str = None, timespan: float = None):
+def getOrganizationSummaryTopAppliancesByUtilization(organizationId: str = None, networkTag: str = None, deviceTag: str = None, quantity: int = None, ssidName: str = None, usageUplink: str = None, t0: str = None, t1: str = None, timespan: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -11737,7 +11737,7 @@ def getOrganizationSummaryTopAppliancesByUtilization(organizationId: str, networ
     return target(**final_kwargs)
 
 @register('getOrganizationSummaryTopApplicationsByUsage')
-def getOrganizationSummaryTopApplicationsByUsage(organizationId: str, networkTag: str = None, device: str = None, networkId: str = None, quantity: int = None, ssidName: str = None, usageUplink: str = None, t0: str = None, t1: str = None, timespan: float = None):
+def getOrganizationSummaryTopApplicationsByUsage(organizationId: str = None, networkTag: str = None, device: str = None, networkId: str = None, quantity: int = None, ssidName: str = None, usageUplink: str = None, t0: str = None, t1: str = None, timespan: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -11781,7 +11781,7 @@ def getOrganizationSummaryTopApplicationsByUsage(organizationId: str, networkTag
     return target(**final_kwargs)
 
 @register('getOrganizationSummaryTopApplicationsCategoriesByUsage')
-def getOrganizationSummaryTopApplicationsCategoriesByUsage(organizationId: str, networkTag: str = None, deviceTag: str = None, networkId: str = None, quantity: int = None, ssidName: str = None, usageUplink: str = None, t0: str = None, t1: str = None, timespan: float = None):
+def getOrganizationSummaryTopApplicationsCategoriesByUsage(organizationId: str = None, networkTag: str = None, deviceTag: str = None, networkId: str = None, quantity: int = None, ssidName: str = None, usageUplink: str = None, t0: str = None, t1: str = None, timespan: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -11825,7 +11825,7 @@ def getOrganizationSummaryTopApplicationsCategoriesByUsage(organizationId: str, 
     return target(**final_kwargs)
 
 @register('getOrganizationSummaryTopClientsByUsage')
-def getOrganizationSummaryTopClientsByUsage(organizationId: str, networkTag: str = None, deviceTag: str = None, quantity: int = None, ssidName: str = None, usageUplink: str = None, t0: str = None, t1: str = None, timespan: float = None):
+def getOrganizationSummaryTopClientsByUsage(organizationId: str = None, networkTag: str = None, deviceTag: str = None, quantity: int = None, ssidName: str = None, usageUplink: str = None, t0: str = None, t1: str = None, timespan: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -11867,7 +11867,7 @@ def getOrganizationSummaryTopClientsByUsage(organizationId: str, networkTag: str
     return target(**final_kwargs)
 
 @register('getOrganizationSummaryTopClientsManufacturersByUsage')
-def getOrganizationSummaryTopClientsManufacturersByUsage(organizationId: str, networkTag: str = None, deviceTag: str = None, quantity: int = None, ssidName: str = None, usageUplink: str = None, t0: str = None, t1: str = None, timespan: float = None):
+def getOrganizationSummaryTopClientsManufacturersByUsage(organizationId: str = None, networkTag: str = None, deviceTag: str = None, quantity: int = None, ssidName: str = None, usageUplink: str = None, t0: str = None, t1: str = None, timespan: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -11909,7 +11909,7 @@ def getOrganizationSummaryTopClientsManufacturersByUsage(organizationId: str, ne
     return target(**final_kwargs)
 
 @register('getOrganizationSummaryTopDevicesByUsage')
-def getOrganizationSummaryTopDevicesByUsage(organizationId: str, networkTag: str = None, deviceTag: str = None, quantity: int = None, ssidName: str = None, usageUplink: str = None, t0: str = None, t1: str = None, timespan: float = None):
+def getOrganizationSummaryTopDevicesByUsage(organizationId: str = None, networkTag: str = None, deviceTag: str = None, quantity: int = None, ssidName: str = None, usageUplink: str = None, t0: str = None, t1: str = None, timespan: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -11951,7 +11951,7 @@ def getOrganizationSummaryTopDevicesByUsage(organizationId: str, networkTag: str
     return target(**final_kwargs)
 
 @register('getOrganizationSummaryTopDevicesModelsByUsage')
-def getOrganizationSummaryTopDevicesModelsByUsage(organizationId: str, networkTag: str = None, deviceTag: str = None, quantity: int = None, ssidName: str = None, usageUplink: str = None, t0: str = None, t1: str = None, timespan: float = None):
+def getOrganizationSummaryTopDevicesModelsByUsage(organizationId: str = None, networkTag: str = None, deviceTag: str = None, quantity: int = None, ssidName: str = None, usageUplink: str = None, t0: str = None, t1: str = None, timespan: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -11993,7 +11993,7 @@ def getOrganizationSummaryTopDevicesModelsByUsage(organizationId: str, networkTa
     return target(**final_kwargs)
 
 @register('getOrganizationSummaryTopNetworksByStatus')
-def getOrganizationSummaryTopNetworksByStatus(organizationId: str, networkTag: str = None, deviceTag: str = None, quantity: int = None, ssidName: str = None, usageUplink: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
+def getOrganizationSummaryTopNetworksByStatus(organizationId: str = None, networkTag: str = None, deviceTag: str = None, quantity: int = None, ssidName: str = None, usageUplink: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -12035,7 +12035,7 @@ def getOrganizationSummaryTopNetworksByStatus(organizationId: str, networkTag: s
     return target(**final_kwargs)
 
 @register('getOrganizationSummaryTopSsidsByUsage')
-def getOrganizationSummaryTopSsidsByUsage(organizationId: str, networkTag: str = None, deviceTag: str = None, quantity: int = None, ssidName: str = None, usageUplink: str = None, t0: str = None, t1: str = None, timespan: float = None):
+def getOrganizationSummaryTopSsidsByUsage(organizationId: str = None, networkTag: str = None, deviceTag: str = None, quantity: int = None, ssidName: str = None, usageUplink: str = None, t0: str = None, t1: str = None, timespan: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -12077,7 +12077,7 @@ def getOrganizationSummaryTopSsidsByUsage(organizationId: str, networkTag: str =
     return target(**final_kwargs)
 
 @register('getOrganizationSummaryTopSwitchesByEnergyUsage')
-def getOrganizationSummaryTopSwitchesByEnergyUsage(organizationId: str, networkTag: str = None, deviceTag: str = None, quantity: int = None, ssidName: str = None, usageUplink: str = None, t0: str = None, t1: str = None, timespan: float = None):
+def getOrganizationSummaryTopSwitchesByEnergyUsage(organizationId: str = None, networkTag: str = None, deviceTag: str = None, quantity: int = None, ssidName: str = None, usageUplink: str = None, t0: str = None, t1: str = None, timespan: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -12119,7 +12119,7 @@ def getOrganizationSummaryTopSwitchesByEnergyUsage(organizationId: str, networkT
     return target(**final_kwargs)
 
 @register('getOrganizationSwitchPortsBySwitch')
-def getOrganizationSwitchPortsBySwitch(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, configurationUpdatedAfter: str = None, mac: str = None, macs: list = None, name: str = None, networkIds: list = None, portProfileIds: list = None, serial: str = None, serials: list = None):
+def getOrganizationSwitchPortsBySwitch(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, configurationUpdatedAfter: str = None, mac: str = None, macs: list = None, name: str = None, networkIds: list = None, portProfileIds: list = None, serial: str = None, serials: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -12167,7 +12167,7 @@ def getOrganizationSwitchPortsBySwitch(organizationId: str, perPage: int = None,
     return target(**final_kwargs)
 
 @register('getOrganizationSwitchPortsClientsOverviewByDevice')
-def getOrganizationSwitchPortsClientsOverviewByDevice(organizationId: str, t0: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, configurationUpdatedAfter: str = None, mac: str = None, macs: list = None, name: str = None, networkIds: list = None, portProfileIds: list = None, serial: str = None, serials: list = None):
+def getOrganizationSwitchPortsClientsOverviewByDevice(organizationId: str = None, t0: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, configurationUpdatedAfter: str = None, mac: str = None, macs: list = None, name: str = None, networkIds: list = None, portProfileIds: list = None, serial: str = None, serials: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -12219,7 +12219,7 @@ def getOrganizationSwitchPortsClientsOverviewByDevice(organizationId: str, t0: s
     return target(**final_kwargs)
 
 @register('getOrganizationSwitchPortsOverview')
-def getOrganizationSwitchPortsOverview(organizationId: str, t0: str = None, t1: str = None, timespan: float = None):
+def getOrganizationSwitchPortsOverview(organizationId: str = None, t0: str = None, t1: str = None, timespan: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -12251,7 +12251,7 @@ def getOrganizationSwitchPortsOverview(organizationId: str, t0: str = None, t1: 
     return target(**final_kwargs)
 
 @register('getOrganizationSwitchPortsStatusesBySwitch')
-def getOrganizationSwitchPortsStatusesBySwitch(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, configurationUpdatedAfter: str = None, mac: str = None, macs: list = None, name: str = None, networkIds: list = None, portProfileIds: list = None, serial: str = None, serials: list = None):
+def getOrganizationSwitchPortsStatusesBySwitch(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, configurationUpdatedAfter: str = None, mac: str = None, macs: list = None, name: str = None, networkIds: list = None, portProfileIds: list = None, serial: str = None, serials: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -12299,7 +12299,7 @@ def getOrganizationSwitchPortsStatusesBySwitch(organizationId: str, perPage: int
     return target(**final_kwargs)
 
 @register('getOrganizationSwitchPortsTopologyDiscoveryByDevice')
-def getOrganizationSwitchPortsTopologyDiscoveryByDevice(organizationId: str, t0: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, configurationUpdatedAfter: str = None, mac: str = None, macs: list = None, name: str = None, networkIds: list = None, portProfileIds: list = None, serial: str = None, serials: list = None):
+def getOrganizationSwitchPortsTopologyDiscoveryByDevice(organizationId: str = None, t0: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, configurationUpdatedAfter: str = None, mac: str = None, macs: list = None, name: str = None, networkIds: list = None, portProfileIds: list = None, serial: str = None, serials: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -12351,7 +12351,7 @@ def getOrganizationSwitchPortsTopologyDiscoveryByDevice(organizationId: str, t0:
     return target(**final_kwargs)
 
 @register('getOrganizationUplinksStatuses')
-def getOrganizationUplinksStatuses(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, serials: list = None, iccids: list = None):
+def getOrganizationUplinksStatuses(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, serials: list = None, iccids: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -12389,7 +12389,7 @@ def getOrganizationUplinksStatuses(organizationId: str, perPage: int = None, sta
     return target(**final_kwargs)
 
 @register('getOrganizationWebhooksAlertTypes')
-def getOrganizationWebhooksAlertTypes(organizationId: str, productType: str = None):
+def getOrganizationWebhooksAlertTypes(organizationId: str = None, productType: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -12417,7 +12417,7 @@ def getOrganizationWebhooksAlertTypes(organizationId: str, productType: str = No
     return target(**final_kwargs)
 
 @register('getOrganizationWebhooksCallbacksStatus')
-def getOrganizationWebhooksCallbacksStatus(organizationId: str, callbackId: str):
+def getOrganizationWebhooksCallbacksStatus(callbackId: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -12445,7 +12445,7 @@ def getOrganizationWebhooksCallbacksStatus(organizationId: str, callbackId: str)
     return target(**final_kwargs)
 
 @register('getOrganizationWebhooksLogs')
-def getOrganizationWebhooksLogs(organizationId: str, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, url: str = None):
+def getOrganizationWebhooksLogs(organizationId: str = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, url: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -12485,7 +12485,7 @@ def getOrganizationWebhooksLogs(organizationId: str, t0: str = None, t1: str = N
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessAirMarshalRules')
-def getOrganizationWirelessAirMarshalRules(organizationId: str, networkIds: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
+def getOrganizationWirelessAirMarshalRules(organizationId: str = None, networkIds: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -12519,7 +12519,7 @@ def getOrganizationWirelessAirMarshalRules(organizationId: str, networkIds: list
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessAirMarshalSettingsByNetwork')
-def getOrganizationWirelessAirMarshalSettingsByNetwork(organizationId: str, networkIds: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
+def getOrganizationWirelessAirMarshalSettingsByNetwork(organizationId: str = None, networkIds: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -12553,7 +12553,7 @@ def getOrganizationWirelessAirMarshalSettingsByNetwork(organizationId: str, netw
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessClientsOverviewByDevice')
-def getOrganizationWirelessClientsOverviewByDevice(organizationId: str, networkIds: list = None, serials: list = None, campusGatewayClusterIds: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
+def getOrganizationWirelessClientsOverviewByDevice(organizationId: str = None, networkIds: list = None, serials: list = None, campusGatewayClusterIds: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -12591,7 +12591,7 @@ def getOrganizationWirelessClientsOverviewByDevice(organizationId: str, networkI
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessDevicesChannelUtilizationByDevice')
-def getOrganizationWirelessDevicesChannelUtilizationByDevice(organizationId: str, networkIds: list = None, serials: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, t0: str = None, t1: str = None, timespan: float = None, interval: int = None):
+def getOrganizationWirelessDevicesChannelUtilizationByDevice(organizationId: str = None, networkIds: list = None, serials: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, t0: str = None, t1: str = None, timespan: float = None, interval: int = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -12635,7 +12635,7 @@ def getOrganizationWirelessDevicesChannelUtilizationByDevice(organizationId: str
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessDevicesChannelUtilizationByNetwork')
-def getOrganizationWirelessDevicesChannelUtilizationByNetwork(organizationId: str, networkIds: list = None, serials: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, t0: str = None, t1: str = None, timespan: float = None, interval: int = None):
+def getOrganizationWirelessDevicesChannelUtilizationByNetwork(organizationId: str = None, networkIds: list = None, serials: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, t0: str = None, t1: str = None, timespan: float = None, interval: int = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -12679,7 +12679,7 @@ def getOrganizationWirelessDevicesChannelUtilizationByNetwork(organizationId: st
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessDevicesChannelUtilizationHistoryByDeviceB')
-def getOrganizationWirelessDevicesChannelUtilizationHistoryByDeviceB(organizationId: str, networkIds: list = None, serials: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, t0: str = None, t1: str = None, timespan: float = None, interval: int = None):
+def getOrganizationWirelessDevicesChannelUtilizationHistoryByDeviceB(organizationId: str = None, networkIds: list = None, serials: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, t0: str = None, t1: str = None, timespan: float = None, interval: int = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -12723,7 +12723,7 @@ def getOrganizationWirelessDevicesChannelUtilizationHistoryByDeviceB(organizatio
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessDevicesChannelUtilizationHistoryByNetwork')
-def getOrganizationWirelessDevicesChannelUtilizationHistoryByNetwork(organizationId: str, networkIds: list = None, serials: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, t0: str = None, t1: str = None, timespan: float = None, interval: int = None):
+def getOrganizationWirelessDevicesChannelUtilizationHistoryByNetwork(organizationId: str = None, networkIds: list = None, serials: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, t0: str = None, t1: str = None, timespan: float = None, interval: int = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -12767,7 +12767,7 @@ def getOrganizationWirelessDevicesChannelUtilizationHistoryByNetwork(organizatio
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessDevicesEthernetStatuses')
-def getOrganizationWirelessDevicesEthernetStatuses(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None):
+def getOrganizationWirelessDevicesEthernetStatuses(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -12801,7 +12801,7 @@ def getOrganizationWirelessDevicesEthernetStatuses(organizationId: str, perPage:
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessDevicesPacketLossByClient')
-def getOrganizationWirelessDevicesPacketLossByClient(organizationId: str, networkIds: list = None, ssids: list = None, bands: list = None, macs: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, t0: str = None, t1: str = None, timespan: float = None):
+def getOrganizationWirelessDevicesPacketLossByClient(organizationId: str = None, networkIds: list = None, ssids: list = None, bands: list = None, macs: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, t0: str = None, t1: str = None, timespan: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -12847,7 +12847,7 @@ def getOrganizationWirelessDevicesPacketLossByClient(organizationId: str, networ
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessDevicesPacketLossByDevice')
-def getOrganizationWirelessDevicesPacketLossByDevice(organizationId: str, networkIds: list = None, serials: list = None, ssids: list = None, bands: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, t0: str = None, t1: str = None, timespan: float = None):
+def getOrganizationWirelessDevicesPacketLossByDevice(organizationId: str = None, networkIds: list = None, serials: list = None, ssids: list = None, bands: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, t0: str = None, t1: str = None, timespan: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -12893,7 +12893,7 @@ def getOrganizationWirelessDevicesPacketLossByDevice(organizationId: str, networ
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessDevicesPacketLossByNetwork')
-def getOrganizationWirelessDevicesPacketLossByNetwork(organizationId: str, networkIds: list = None, serials: list = None, ssids: list = None, bands: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, t0: str = None, t1: str = None, timespan: float = None):
+def getOrganizationWirelessDevicesPacketLossByNetwork(organizationId: str = None, networkIds: list = None, serials: list = None, ssids: list = None, bands: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, t0: str = None, t1: str = None, timespan: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -12939,7 +12939,7 @@ def getOrganizationWirelessDevicesPacketLossByNetwork(organizationId: str, netwo
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessDevicesWirelessControllersByDevice')
-def getOrganizationWirelessDevicesWirelessControllersByDevice(organizationId: str, networkIds: list = None, serials: list = None, controllerSerials: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
+def getOrganizationWirelessDevicesWirelessControllersByDevice(organizationId: str = None, networkIds: list = None, serials: list = None, controllerSerials: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -12977,7 +12977,7 @@ def getOrganizationWirelessDevicesWirelessControllersByDevice(organizationId: st
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessRfProfilesAssignmentsByDevice')
-def getOrganizationWirelessRfProfilesAssignmentsByDevice(organizationId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, productTypes: list = None, name: str = None, mac: str = None, serial: str = None, model: str = None, macs: list = None, serials: list = None, models: list = None):
+def getOrganizationWirelessRfProfilesAssignmentsByDevice(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, productTypes: list = None, name: str = None, mac: str = None, serial: str = None, model: str = None, macs: list = None, serials: list = None, models: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -13027,7 +13027,7 @@ def getOrganizationWirelessRfProfilesAssignmentsByDevice(organizationId: str, pe
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessSsidsStatusesByDevice')
-def getOrganizationWirelessSsidsStatusesByDevice(organizationId: str, networkIds: list = None, serials: list = None, bssids: list = None, hideDisabled: bool = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
+def getOrganizationWirelessSsidsStatusesByDevice(organizationId: str = None, networkIds: list = None, serials: list = None, bssids: list = None, hideDisabled: bool = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -13067,7 +13067,7 @@ def getOrganizationWirelessSsidsStatusesByDevice(organizationId: str, networkIds
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessControllerAvailabilitiesChangeHistory')
-def getOrganizationWirelessControllerAvailabilitiesChangeHistory(organizationId: str, serials: list = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
+def getOrganizationWirelessControllerAvailabilitiesChangeHistory(organizationId: str = None, serials: list = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -13107,7 +13107,7 @@ def getOrganizationWirelessControllerAvailabilitiesChangeHistory(organizationId:
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessControllerClientsOverviewHistoryByDeviceB')
-def getOrganizationWirelessControllerClientsOverviewHistoryByDeviceB(organizationId: str, networkIds: list = None, serials: list = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, resolution: int = None):
+def getOrganizationWirelessControllerClientsOverviewHistoryByDeviceB(organizationId: str = None, networkIds: list = None, serials: list = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, resolution: int = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -13151,7 +13151,7 @@ def getOrganizationWirelessControllerClientsOverviewHistoryByDeviceB(organizatio
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessControllerConnections')
-def getOrganizationWirelessControllerConnections(organizationId: str, networkIds: list = None, controllerSerials: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
+def getOrganizationWirelessControllerConnections(organizationId: str = None, networkIds: list = None, controllerSerials: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -13187,7 +13187,7 @@ def getOrganizationWirelessControllerConnections(organizationId: str, networkIds
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessControllerDevicesInterfacesL2ByDevice')
-def getOrganizationWirelessControllerDevicesInterfacesL2ByDevice(organizationId: str, serials: list = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
+def getOrganizationWirelessControllerDevicesInterfacesL2ByDevice(organizationId: str = None, serials: list = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -13227,7 +13227,7 @@ def getOrganizationWirelessControllerDevicesInterfacesL2ByDevice(organizationId:
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessControllerDevicesInterfacesL2StatusesChan')
-def getOrganizationWirelessControllerDevicesInterfacesL2StatusesChan(organizationId: str, serials: list = None, includeInterfacesWithoutChanges: bool = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
+def getOrganizationWirelessControllerDevicesInterfacesL2StatusesChan(organizationId: str = None, serials: list = None, includeInterfacesWithoutChanges: bool = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -13269,7 +13269,7 @@ def getOrganizationWirelessControllerDevicesInterfacesL2StatusesChan(organizatio
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessControllerDevicesInterfacesL2UsageHistory')
-def getOrganizationWirelessControllerDevicesInterfacesL2UsageHistory(organizationId: str, serials: list = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
+def getOrganizationWirelessControllerDevicesInterfacesL2UsageHistory(organizationId: str = None, serials: list = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -13309,7 +13309,7 @@ def getOrganizationWirelessControllerDevicesInterfacesL2UsageHistory(organizatio
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessControllerDevicesInterfacesL3ByDevice')
-def getOrganizationWirelessControllerDevicesInterfacesL3ByDevice(organizationId: str, serials: list = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
+def getOrganizationWirelessControllerDevicesInterfacesL3ByDevice(organizationId: str = None, serials: list = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -13349,7 +13349,7 @@ def getOrganizationWirelessControllerDevicesInterfacesL3ByDevice(organizationId:
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessControllerDevicesInterfacesL3StatusesChan')
-def getOrganizationWirelessControllerDevicesInterfacesL3StatusesChan(organizationId: str, serials: list = None, includeInterfacesWithoutChanges: bool = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
+def getOrganizationWirelessControllerDevicesInterfacesL3StatusesChan(organizationId: str = None, serials: list = None, includeInterfacesWithoutChanges: bool = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -13391,7 +13391,7 @@ def getOrganizationWirelessControllerDevicesInterfacesL3StatusesChan(organizatio
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessControllerDevicesInterfacesL3UsageHistory')
-def getOrganizationWirelessControllerDevicesInterfacesL3UsageHistory(organizationId: str, serials: list = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
+def getOrganizationWirelessControllerDevicesInterfacesL3UsageHistory(organizationId: str = None, serials: list = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -13431,7 +13431,7 @@ def getOrganizationWirelessControllerDevicesInterfacesL3UsageHistory(organizatio
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessControllerDevicesInterfacesPacketsOvervie')
-def getOrganizationWirelessControllerDevicesInterfacesPacketsOvervie(organizationId: str, serials: list = None, names: list = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
+def getOrganizationWirelessControllerDevicesInterfacesPacketsOvervie(organizationId: str = None, serials: list = None, names: list = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -13473,7 +13473,7 @@ def getOrganizationWirelessControllerDevicesInterfacesPacketsOvervie(organizatio
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessControllerDevicesInterfacesUsageHistoryBy')
-def getOrganizationWirelessControllerDevicesInterfacesUsageHistoryBy(organizationId: str, serials: list = None, names: list = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
+def getOrganizationWirelessControllerDevicesInterfacesUsageHistoryBy(organizationId: str = None, serials: list = None, names: list = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -13515,7 +13515,7 @@ def getOrganizationWirelessControllerDevicesInterfacesUsageHistoryBy(organizatio
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessControllerDevicesRedundancyFailoverHistor')
-def getOrganizationWirelessControllerDevicesRedundancyFailoverHistor(organizationId: str, serials: list = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
+def getOrganizationWirelessControllerDevicesRedundancyFailoverHistor(organizationId: str = None, serials: list = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -13555,7 +13555,7 @@ def getOrganizationWirelessControllerDevicesRedundancyFailoverHistor(organizatio
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessControllerDevicesRedundancyStatuses')
-def getOrganizationWirelessControllerDevicesRedundancyStatuses(organizationId: str, serials: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
+def getOrganizationWirelessControllerDevicesRedundancyStatuses(organizationId: str = None, serials: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -13589,7 +13589,7 @@ def getOrganizationWirelessControllerDevicesRedundancyStatuses(organizationId: s
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessControllerDevicesSystemUtilizationHistory')
-def getOrganizationWirelessControllerDevicesSystemUtilizationHistory(organizationId: str, serials: list = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
+def getOrganizationWirelessControllerDevicesSystemUtilizationHistory(organizationId: str = None, serials: list = None, t0: str = None, t1: str = None, timespan: float = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}
@@ -13629,7 +13629,7 @@ def getOrganizationWirelessControllerDevicesSystemUtilizationHistory(organizatio
     return target(**final_kwargs)
 
 @register('getOrganizationWirelessControllerOverviewByDevice')
-def getOrganizationWirelessControllerOverviewByDevice(organizationId: str, networkIds: list = None, serials: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
+def getOrganizationWirelessControllerOverviewByDevice(organizationId: str = None, networkIds: list = None, serials: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
     # Explicitly build keyword arguments, excluding None values.
     final_kwargs = {}

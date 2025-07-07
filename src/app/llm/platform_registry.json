@@ -52,7 +52,7 @@
     "openapi_name": "cisco_catalyst_sd_wan_manager_api_2_0_0",
     "sdk_module": "catalystwan.session",
     "created_by_us": false,
-    "installed": true,
+    "installed": false,
     "route": false
   },
   "ai_defense": {
