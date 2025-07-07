@@ -99,18 +99,27 @@ PLATFORM_OVERRIDES = {
 # ── OVERRIDES END HERE ──────────────────────────────────────────────────────────────────────────────────
 ###############################################################################################################
 
-
-
-
-
-
-
-
-
-
-
-
-
+#################################################################################################################
+#################################################################################################################
+#  IMPORTANT !!!!
+# This dictionary defines all parameters that are automatically injected by the
+# dispatcher. By listing them here, we can ensure they are marked as optional
+# for the LLM, allowing the injection logic to work seamlessly.
+# ── INJECTED PARAMETERS START HERE ──────────────────────────────────────────────────────────────────────────────────
+INJECTED_PARAMETERS = {
+    "meraki": {
+        "organization_id",
+        "organizationId",
+        "org_id"
+    },
+    "intersight": {
+        "organization_moid",
+        "filter",
+        "$filter"
+    },
+    # Add other platforms and their injected parameters here in the future
+}
+# ── INJECTED PARAMETERS STOP HERE ──────────────────────────────────────────────────────────────────────────────────
 
 
 ALWAYS_KEEP_TAGS = {"devices", "inventory"}
@@ -779,6 +788,24 @@ def scaffold_one(
                 },
             }
  
+
+
+            # Get the set of injected parameters for the current platform.
+            injected_keys = INJECTED_PARAMETERS.get(platform.lower(), set())
+
+            if injected_keys:
+                required_params = schema['parameters'].get('required', [])
+                
+                # Create a new list of required params, excluding any that will be injected.
+                new_required = [p for p in required_params if p not in injected_keys]
+                
+                # If we removed any parameters, update the schema and log it.
+                if len(new_required) < len(required_params):
+                    removed_keys = set(required_params) - set(new_required)
+                    log.info(f"✓ Making injected keys optional for '{op_id}': {', '.join(removed_keys)}")
+                    schema['parameters']['required'] = new_required
+ 
+
             # Check for and apply platform-specific description overrides.
             # We use the raw, un-sanitized operationId as the key.
             if raw_op_id in platform_config.get("descriptions", {}):

@@ -220,6 +220,39 @@ async def webex_webhook(req: Request):
 
     return JSONResponse({"status": "sent"})
 
+def summarize_api_data(data: Any, max_items: int = 10) -> str:
+    """
+    Intelligently summarizes raw API data to create a concise payload for the LLM,
+    preventing performance bottlenecks with large responses.
+    """
+    if data is None:
+        return "The API call returned no data (None)."
+
+    # Use the existing to_serialisable function to handle complex objects
+    serialised_data = to_serialisable(data)
+
+    if not isinstance(serialised_data, list):
+        # If it's not a list (e.g., a single dictionary), convert to string
+        return json.dumps(serialised_data, indent=2)
+
+    total_items = len(serialised_data)
+    if total_items == 0:
+        return "The API call returned an empty list."
+    
+    if total_items <= max_items:
+        # If the list is small enough, return it as is
+        return json.dumps(serialised_data, indent=2)
+
+    # If the list is large, truncate it and add a summary message
+    summary_message = (
+        f"The API call returned {total_items} items. "
+        f"Showing the first {max_items} for summarization."
+    )
+    truncated_data = serialised_data[:max_items]
+    
+    # Combine the summary message with the truncated data
+    return f"{summary_message}\n\n{json.dumps(truncated_data, indent=2)}"
+
 # ---------------------------------------------------------------------------
 # Utility – convert SDK objects (attrs classes) into plain JSON‑serialisable
 # structures before we pass them to json.dumps().
@@ -440,15 +473,18 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
         if isinstance(fc.get("arguments"), dict):
             fc["arguments"] = json.dumps(fc["arguments"])
 
+        summarized_content = summarize_api_data(result)
+
         follow_up = [
             *messages,
             {"role": "assistant", "content": None, "function_call": fc},
             {
                 "role": "function",
                 "name": fname,
-                "content": json.dumps(to_serialisable(result)),
+                "content": summarized_content, # <-- Use the summarized content here
             },
         ]
+
         # instruct the model to return pure HTML
         follow_up[0]["content"] = (
            "You are a helpful Cisco AI assistant. "
