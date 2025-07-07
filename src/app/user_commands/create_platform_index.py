@@ -13,14 +13,15 @@ from __future__ import annotations
 ║ A polished step-by-step CLI to run the index_functions script without the flags. ║
 ║ Hover over links or type '?' at prompts for examples.                            ║
 ║                                                                                  ║
-║ FEATURES                                                                          ║
+║ FEATURES                                                                         ║
 ║   • Select a single existing platform, index ALL platforms, or exit              ║
-║   • Automatically configures PYTHONPATH                                            ║
-║   • Shows the SDK module behind each platform                                      ║
-║   • Displays current vector-store collections and actual indexed platforms         ║
-║   • Reads FASTAPI_* environment settings from .env                                 ║
-║   • Highlights the active backend first                                           ║
-║   • Shows the exact command in a copyable block                                   ║
+║   • Automatically configures PYTHONPATH                                          ║
+║   • Shows the SDK module behind each platform                                    ║
+║   • Displays current vector-store collections and actual indexed platforms       ║
+║   • Reads FASTAPI_* environment settings from .env                               ║
+║   • Highlights the active backend first                                          ║
+║   • Shows the exact command in a copyable block                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════╝
 """
  
 

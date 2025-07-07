@@ -31,7 +31,7 @@ import logging
 import structlog
 import os
 from pathlib import Path
-from typing import Annotated, Any, Tuple
+from typing import Annotated, Any, Tuple, Dict
 
 from fastapi import Depends, FastAPI, HTTPException, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
@@ -41,7 +41,7 @@ from app.user_commands.update_platform_registry import load_registry
 from prometheus_client import Histogram
 
 from app.config import cfg
-from app.telemetry_helper import init_telemetry_helper  # <— our helper
+from app.telemetry_helper import init_telemetry_helper
 
 # ── structured logging ─────────────────────────────────────────
 structlog.configure(
@@ -84,48 +84,52 @@ request_latency = Histogram(
     "chat_latency_ms",
     "End-to-end latency of /chat route in milliseconds",
 )
-# ── Check Platform Enabled, Routes, etc.. ───────────────────────────
 
-log = logging.getLogger("uvicorn.error")
-registry = load_registry()
+# --- MODIFIED SECTION: Centralized Credential Mapping ---
+# This dictionary is the single source of truth for platform credential requirements.
+PLATFORM_CREDENTIAL_MAP: Dict[str, list[str]] = {
+    "ai_defense": ["AI_DEFENSE_API_KEY"],
+    "catalyst": [
+        "DNACENTER_USERNAME", "DNACENTER_PASSWORD", "DNACENTER_BASE_URL",
+        "DNACENTER_VERSION", "DNACENTER_VERIFY_SSL"
+    ],
+    "cisco_spaces": ["CISCO_SPACES_API_KEY", "CISCO_SPACES_BASE_URL"],
+    "cloudlock": ["CLOUDLOCK_API_KEY", "CLOUDLOCK_API_SECRET"],
+    "intersight": [
+        "INTERSIGHT_API_KEY", "INTERSIGHT_API_SECRET", "INTERSIGHT_BASE_URL",
+        "INTERSIGHT_ORGANIZATION_MOID"
+    ],
+    "meraki": ["CISCO_MERAKI_API_KEY", "MERAKI_ORG_ID"],
+    "nexus_dashboard": ["NEXUS_DASHBOARD_API_KEY", "NEXUS_DASHBOARD_BASE_URL"],
+    "nexus_hyperfabric": ["NEXUS_HYPERFABRIC_BEARER_TOKEN", "NEXUS_HYPERFABRIC_BASE_URL"],
+    "sdwan_mngr": [
+        "CISCO_SD_WAN_USERNAME", "CISCO_SD_WAN_PASSWORD", "CISCO_SD_WAN_BASE_URL"
+    ],
+    "secure_access": [
+        "SECURE_ACCESS_CLIENT_ID", "SECURE_ACCESS_CLIENT_SECRET",
+        "SECURE_ACCESS_TOKEN_URL"
+    ],
+    "umbrella": ["UMBRELLA_API_KEY", "UMBRELLA_API_SECRET"],
+}
 
 def check_credentials(short: str) -> Tuple[bool, str]:
     """
     Return (True, "") if all needed env vars for `short` are non-empty;
-    otherwise return (False, reason).
+    otherwise return (False, reason), using the centralized map.
     """
-    if short == "ai_defense":
-        needed = ["AI_DEFENSE_API_KEY"]
-    elif short == "catalyst":
-        needed = ["DNACENTER_USERNAME", "DNACENTER_PASSWORD", "DNACENTER_BASE_URL"]
-    elif short == "cloudlock":
-        needed = ["CLOUDLOCK_API_KEY", "CLOUDLOCK_API_SECRET"]
-    elif short == "intersight":
-        needed = ["INTERSIGHT_API_KEY", "INTERSIGHT_API_SECRET", "INTERSIGHT_BASE_URL"]
-    elif short == "meraki":
-        needed = ["CISCO_MERAKI_API_KEY"]
-    elif short == "nexus_dashboard":
-        needed = ["NEXUS_DASHBOARD_API_KEY", "NEXUS_DASHBOARD_BASE_URL"]
-    elif short == "nexus_hyperfabric":
-        needed = ["NEXUS_HYPERFABRIC_BEARER_TOKEN",
-                  "NEXUS_HYPERFABRIC_BASE_URL"]
-    elif short == "sdwan_mngr":
-        needed = ["CISCO_SD_WAN_USERNAME",
-                  "CISCO_SD_WAN_PASSWORD",
-                  "CISCO_SD_WAN_BASE_URL"]
-    elif short == "secure_access":
-        needed = ["SECURE_ACCESS_CLIENT_ID",
-                  "SECURE_ACCESS_CLIENT_SECRET",
-                  "SECURE_ACCESS_TOKEN_URL"]
-    elif short == "umbrella":
-        needed = ["UMBRELLA_API_KEY", "UMBRELLA_API_SECRET"]
-    else:
-        return True, ""  # no credentials needed
+    needed = PLATFORM_CREDENTIAL_MAP.get(short)
+    if not needed:
+        return True, ""  # No credentials configured for this platform
 
     missing = [k for k in needed if not os.getenv(k)]
     if missing:
         return False, f"missing {', '.join(missing)}"
     return True, ""
+# --- END OF MODIFIED SECTION ---
+
+# ── Dynamic Router Loading ───────────────────────────────────────────
+log = logging.getLogger("uvicorn.error")
+registry = load_registry()
 
 for short, entry in registry.items():
     wants_route = bool(entry.get("route", False))
@@ -177,20 +181,11 @@ for short, entry in registry.items():
 
 # ── Static & assets ────────────────────────────────────────────
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-
-# 1) Your UI lives under src/app/static
 STATIC_DIR = Path(__file__).resolve().parent / "static"
-
-# 2) Your images (logo, favicon, etc) live under src/app/assets
 ASSETS_DIR = Path(__file__).resolve().parent / "assets"
 
-# serve the assets at /assets
 app.mount("/assets", StaticFiles(directory=ASSETS_DIR), name="assets")
-
-# serve the rest of the UI under /static
 app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
-
- 
 
 @app.get("/", tags=["meta"], response_class=HTMLResponse)
 async def root() -> HTMLResponse:
@@ -199,10 +194,7 @@ async def root() -> HTMLResponse:
     """
     index_path = STATIC_DIR / "index.html"
     if not index_path.exists():
-        return HTMLResponse(
-            "<h2>index.html not found — did you copy the static folder?</h2>",
-            status_code=404,
-        )
+        return HTMLResponse("<h2>index.html not found</h2>", status_code=404)
     return HTMLResponse(index_path.read_text(encoding="utf-8"), status_code=200)
 
 # ── CORS ───────────────────────────────────────────────────────
@@ -219,10 +211,8 @@ app.add_middleware(
 @app.on_event("startup")
 async def _startup() -> None:
     layer    = cfg("ACTIVE_LAYER", default="FASTAPI").upper()
-    backend  = cfg("VECTOR_BACKEND", layer=layer,
-                   default=os.getenv("FASTAPI_VECTOR_BACKEND", "chroma")).lower()
-    provider = cfg("LLM_PROVIDER", layer=layer,
-                   default=os.getenv("FASTAPI_LLM_PROVIDER", "azure"))
+    backend  = cfg("VECTOR_BACKEND", layer=layer, default=os.getenv("FASTAPI_VECTOR_BACKEND", "chroma")).lower()
+    provider = cfg("LLM_PROVIDER", layer=layer, default=os.getenv("FASTAPI_LLM_PROVIDER", "azure"))
 
     logger.info("=== AI-Agent startup ===")
     logger.info("Layer=%s | VectorBackend=%s | LLM=%s", layer, backend, provider)
@@ -265,16 +255,12 @@ async def search_endpoint(q: str, retriever: RetrieverDep):
 async def health():
     return {"status": "ok", "layer": cfg("ACTIVE_LAYER", default="FASTAPI")}
 
-# ── Routers ───────────────────────────────────────────────────
+# ── Main Chat Router ───────────────────────────────────────────────────
 try:
-    from app.routers import chat_routes          # noqa: WPS433
+    from app.routers import chat_routes
     app.include_router(chat_routes.router, prefix="/chat")
 except ImportError as exc:
     logger.warning("chat_routes not present – skipping (%s).", exc)
 
-try:
-    from app.routers.meraki_routes import router as meraki_router
-    app.include_router(meraki_router)  
-    logger.info("Mounted Meraki routes")
-except ImportError as exc:
-    logger.warning("meraki_routes not present – skipping (%s)", exc)
+# Note: The specific, hardcoded Meraki router has been removed
+# because the dynamic loading loop above now handles all platforms correctly.
