@@ -379,8 +379,14 @@ def _emit_client_stub(platform: str, sdk_module: str) -> None:
     ''').splitlines()
 
 
- 
-    # Meraki-specific injection
+#################################################################################################################
+#################################################################################################################
+#  IMPORTANT !!!!
+#  This is where you add AUTHORIZATION INFORMATION for different platforms. 
+#
+# ── PLATFORM AUTHORIZATION START HERE ──────────────────────────────────────────────────────────────────────────────────
+#
+    # Meraki-specific auth injection
     if platform.lower() == "meraki":
         extra_imports.append("import os")
         extra_init.extend([
@@ -391,7 +397,25 @@ def _emit_client_stub(platform: str, sdk_module: str) -> None:
             "",
         ])
 
-    # Nexus auth injection
+    # Catalyst Center (DNA Center) auth injection
+    if platform.lower() == "catalyst":
+        extra_imports.append("import os")
+        extra_init.extend([
+            "username = os.getenv('DNACENTER_USERNAME')",
+            "password = os.getenv('DNACENTER_PASSWORD')",
+            "base_url = os.getenv('DNACENTER_BASE_URL')",
+            "if not username or not password or not base_url:",
+            "    raise ValueError('Missing DNACENTER_USERNAME, DNACENTER_PASSWORD, or DNACENTER_BASE_URL')",
+            "kwargs['username'] = username",
+            "kwargs['password'] = password",
+            "kwargs['base_url']  = base_url",
+            "version = os.getenv('DNACENTER_VERSION', '2.3.7.6')",
+            "kwargs['version']   = version",
+            "",
+        ])
+
+
+    # Nexus Hyperfabric auth injection
     if platform.lower() == "nexus_hyperfabric":
         extra_imports.append("import os")
         extra_init.extend([
@@ -404,7 +428,7 @@ def _emit_client_stub(platform: str, sdk_module: str) -> None:
             "",
         ])
 
-    # Intersight-specific injection
+    # Intersight-specific auth injection
     if platform.lower() == "intersight":
         extra_imports.append("import os")
         extra_imports.append("from pathlib import Path")
@@ -449,8 +473,9 @@ def _emit_client_stub(platform: str, sdk_module: str) -> None:
             "kwargs['configuration'] = config",
             "",
         ])
-
-
+#
+# ── PLATFORM AUTHRIZATIONS STOP HERE ─────────────────────────────────────────────────────────────────────────
+###############################################################################################################
     # inject common methods
     extra_methods.extend(f"    {l}" for l in common_helpers)
 
