@@ -72,30 +72,26 @@ from app.user_commands.update_platform_registry import (
 )
 # ───────────────────── env helpers ───────────────────────────────────────
 
+# --- MODIFIED FUNCTION ---
 def ensure_enable_flag_in_env(short: str, default: bool = False) -> None:
     """
     Ensure `.env` contains 'ENABLE_<SHORT>=<true|false>' under section 1.3.
-    If missing, insert 'ENABLE_<SHORT>=<default>' just after the last existing
-    ENABLE_… line in “1.3) PLATFORM TOGGLE SETTINGS” (or at EOF if not found).
+    If missing, insert the '# Allowed:' comment and the variable itself.
     """
     var_name = f"ENABLE_{short.upper()}"
     toggle_header_rx = re.compile(r"^#\s*1\.3\)\s*PLATFORM\s+TOGGLE\s+SETTINGS", re.IGNORECASE)
     toggle_line_rx   = re.compile(r"^ENABLE_[A-Z0-9_]+\s*=", re.IGNORECASE)
     exists_rx        = re.compile(rf"^{var_name}\s*=", re.IGNORECASE)
 
-    # Create .env if it doesn’t exist
     if not DOTENV_PATH.exists():
         DOTENV_PATH.parent.mkdir(parents=True, exist_ok=True)
         DOTENV_PATH.write_text("", encoding="utf-8")
 
     lines = DOTENV_PATH.read_text(encoding="utf-8").splitlines()
 
-    # If ENABLE_<SHORT> already exists, do nothing
-    for ln in lines:
-        if exists_rx.match(ln.strip()):
-            return
+    if any(exists_rx.match(ln.strip()) for ln in lines):
+        return
 
-    # Otherwise, locate “1.3) PLATFORM TOGGLE SETTINGS”
     in_toggle = False
     insert_idx = None
     for idx, ln in enumerate(lines):
@@ -104,51 +100,46 @@ def ensure_enable_flag_in_env(short: str, default: bool = False) -> None:
             insert_idx = idx + 1
             continue
         if in_toggle:
-            if toggle_line_rx.match(ln.strip()):
+            # Find the last line that is either an ENABLE toggle or its 'Allowed' comment
+            if toggle_line_rx.match(ln.strip()) or ln.lstrip().startswith("# Allowed:"):
                 insert_idx = idx + 1
             else:
-                # Once we hit a non-ENABLE_… line, stop scanning
-                break
+                break # Stop once we hit a different kind of line
 
     if insert_idx is None:
-        # No “1.3” header found → append at end
         insert_idx = len(lines)
 
     val = "true" if default else "false"
-    new_line = f"{var_name}={val}"
-    lines.insert(insert_idx, new_line)
+    
+    # Insert the comment and the variable
+    lines.insert(insert_idx, "# Allowed: true, false")
+    lines.insert(insert_idx + 1, f"{var_name}={val}")
 
     DOTENV_PATH.write_text("\n".join(lines) + "\n", encoding="utf-8")
-    print(f"[create_platform] Inserted `{new_line}` into .env (section 1.3) at line {insert_idx+1}.")
+    print(f"[create_platform] Inserted `{var_name}` toggle into .env (section 1.3) at line {insert_idx+2}.")
+# --- END OF MODIFIED FUNCTION ---
 
 
-def ensure_credentials_in_env(short: str, keys: list[str]) -> None:
+def ensure_credentials_in_env(short: str, creds_map: Dict[str, str]) -> None:
     """
-    Ensure `.env` contains a placeholder for each credential in `keys` under section 1.4.
-    Each missing key (e.g. “DNACENTER_USERNAME”) will be inserted as “KEY=” just after
-    the last existing credential in “1.4) PLATFORM SPECIFIC CREDENTIALS” (or at EOF).
+    Ensure `.env` contains a placeholder and its '# Allowed:' comment for each credential.
+    Each missing key will be inserted just after the last existing credential in
+    “1.4) PLATFORM SPECIFIC CREDENTIALS” (or at EOF).
     """
     creds_header_rx = re.compile(r"^#\s*1\.4\)\s*PLATFORM\s+SPECIFIC\s+CREDENTIALS", re.IGNORECASE)
     any_k_rx        = re.compile(r"^[A-Z0-9_]+\s*=", re.IGNORECASE)
-    key_rxs         = {key: re.compile(rf"^{key}\s*=", re.IGNORECASE) for key in keys}
+    key_rxs         = {key: re.compile(rf"^{key}\s*=", re.IGNORECASE) for key in creds_map.keys()}
 
-    # Create .env if it doesn’t exist
     if not DOTENV_PATH.exists():
         DOTENV_PATH.parent.mkdir(parents=True, exist_ok=True)
         DOTENV_PATH.write_text("", encoding="utf-8")
 
     lines = DOTENV_PATH.read_text(encoding="utf-8").splitlines()
 
-    # Determine which keys are missing
-    missing = []
-    for key, pat in key_rxs.items():
-        found = any(pat.match(ln.strip()) for ln in lines)
-        if not found:
-            missing.append(key)
+    missing = {key: comment for key, comment in creds_map.items() if not any(key_rxs[key].match(ln.strip()) for ln in lines)}
     if not missing:
-        return  # nothing to do
+        return
 
-    # Find “1.4) PLATFORM SPECIFIC CREDENTIALS”
     in_creds = False
     insert_idx = None
     for idx, ln in enumerate(lines):
@@ -157,19 +148,19 @@ def ensure_credentials_in_env(short: str, keys: list[str]) -> None:
             insert_idx = idx + 1
             continue
         if in_creds:
-            if any_k_rx.match(ln.strip()):
+            if any_k_rx.match(ln.strip()) or ln.lstrip().startswith("# Allowed:"):
                 insert_idx = idx + 1
             else:
                 break
 
     if insert_idx is None:
-        # No “1.4” header found → append at end
         insert_idx = len(lines)
 
-    # Insert each missing key=
-    for key in missing:
+    for key, comment in missing.items():
+        lines.insert(insert_idx, f"# Allowed: {comment}")
+        insert_idx += 1
         lines.insert(insert_idx, f"{key}=")
-        print(f"[create_platform] Inserted placeholder `{key}=` into .env (section 1.4) at line {insert_idx+1}.")
+        print(f"[create_platform] Inserted placeholder for `{key}` into .env (section 1.4) at line {insert_idx+1}.")
         insert_idx += 1
 
     DOTENV_PATH.write_text("\n".join(lines) + "\n", encoding="utf-8")
@@ -179,10 +170,10 @@ def ensure_credentials_in_env(short: str, keys: list[str]) -> None:
 registry: Dict[str, Dict[str, str]] = load_registry()
 
 def registry_get_sdk(short: str) -> str | None:
-    return registry.get(short, {}).get("sdk_module") or None
+    return registry.get(short, {}).get("sdk_module")
 
 def registry_get_spec(short: str) -> str | None:
-    return registry.get(short, {}).get("openapi_name") or None
+    return registry.get(short, {}).get("openapi_name")
 
 def registry_set(
     short: str,
@@ -192,7 +183,6 @@ def registry_set(
     created_by_us: bool | None = None,
     installed: bool = False,
 ) -> None:
-    # Preserve any existing "route" flag; default to False if not present
     old_entry = registry.get(short, {})
     route_flag = old_entry.get("route", False)
     if created_by_us is None:
@@ -219,9 +209,6 @@ def clear_screen() -> None:
         os.system("cls" if os.name == "nt" else "clear")
 
 def preview_table(rows: List[Tuple[str, str]]) -> None:
-    """
-    Given a list of (key, value) tuples, render a two-column table inside a Panel.
-    """
     table = Table(box=box.ROUNDED, padding=(0, 1))
     table.add_column(justify="right", style="bold green", no_wrap=True)
     table.add_column()
@@ -253,16 +240,13 @@ def main() -> None:
     parser.add_argument("--dry-run", action="store_true")
     args, _ = parser.parse_known_args()
     
-    # Show the registry before anything else
     display_registry(registry)
 
-    # ── show platforms that already have scaffolding ──────────────────────────
     generated = {p.stem for p in (AGENT_ROOT / "llm" / "function_definitions").glob("*.json")}
     console.print(Panel(", ".join(sorted(generated)) or "None", title="Existing Platforms", border_style="magenta"))
 
     console.print(Panel.fit("🛠 Welcome to the Unified Platform Scaffolder Wizard", style="green"))
 
-    # Step 1/4 — short name (now driven by registry) ───────────────────────────
     console.print(Panel.fit("Step 1/4: Platform identifier", style="cyan"))
 
     if registry:
@@ -297,53 +281,27 @@ def main() -> None:
         platform = ask("Enter platform short name", None)
 
     console.print(f":white_check_mark: Platform = [bold]{platform}[/bold]\n")
-    is_new = platform not in registry
 
-    # ── Step 1b/4 — SDK module (prefill from registry) ────────────────────────
     console.print(Panel.fit("Step 1b/4: SDK module import path", style="cyan"))
     default_sdk = registry_get_sdk(platform) or platform
-    candidates = []
+    candidates = [default_sdk]
     if default_sdk:
-        candidates.append(default_sdk)
         candidates.append(f"{default_sdk}.session")
-
-    # Deduplicate in case default_sdk == base_mod
     candidates = list(dict.fromkeys(candidates))
 
     import importlib
-    importable: List[str] = []
-    loadable: List[str]   = []
-
-    # 1) Which candidates import at all?
-    for guess in candidates:
+    loadable = []
+    for modname in candidates:
         try:
-            importlib.import_module(guess)
-            importable.append(guess)
-        except ImportError:
-            continue
-
-    # 2) Among importable, which also load_client(...) okay?
-    for modname in importable:
-        try:
+            importlib.import_module(modname)
             load_client(modname)
             loadable.append(modname)
-        except Exception:
+        except (ImportError, Exception):
             continue
 
-    # Decide which set to show:
-    if loadable:
-        options = loadable
-        default_index = 1  # pick the first loadable by default
-    elif importable:
-        options = importable
-        default_index = 1  # first importable
-    else:
-        # If nothing even imports, show both guesses so user can type a custom path
-        options = candidates
-        default_index = 1 if candidates else None
-        console.print("[yellow]No candidates imported; you may enter a custom SDK path.[/yellow]")
+    options = loadable if loadable else candidates
+    default_index = 1 if options else None
 
-    # Render the table of possible SDK module names
     table = Table(box=box.SIMPLE)
     table.add_column("#", style="bold cyan")
     table.add_column("Module")
@@ -351,13 +309,10 @@ def main() -> None:
         table.add_row(str(i), mod)
     console.print(table)
 
-    # Prompt user (preselect default_index)
     while True:
         sel_default = str(default_index) if default_index else None
         sel = ask("Select module number or enter custom (or 'exit')", sel_default)
-        if sel.lower() == "exit":
-            console.print("[yellow]Exiting…[/yellow]")
-            sys.exit(0)
+        if sel.lower() == "exit": sys.exit(0)
         if sel.isdigit() and 1 <= (j := int(sel)) <= len(options):
             sdk_module = options[j-1]
             break
@@ -366,83 +321,50 @@ def main() -> None:
             break
         console.print("[red]→ Invalid selection.[/red]")
 
-    # Finally, warn if load_client(...) fails for the chosen SDK
     sdk_ok = True
     try:
         load_client(sdk_module)
     except Exception as e:
-        console.print(
-            f"[yellow]Warning:[/yellow] Imported '{sdk_module}', "
-            f"but load_client() failed to find a client-class (details: {e})."
-        )
+        console.print(f"[yellow]Warning: load_client() failed for '{sdk_module}': {e}[/yellow]")
         sdk_ok = False
 
     console.print(f":white_check_mark: SDK module = [bold]{sdk_module}[/bold]\n")
 
-    # ── Step 2/4 — OpenAPI spec (prefill from registry if available) ─────────
     console.print(Panel.fit("Step 2/4: Choose OpenAPI spec", style="cyan"))
     stored_spec = registry_get_spec(platform)
     specs = sorted(chain(SPEC_DIR.glob("*.json"), SPEC_DIR.glob("*.yaml"), SPEC_DIR.glob("*.yml")))
-    stem_to_path = {fp.stem: fp for fp in specs}
-
+    
     table = Table(box=box.SIMPLE_HEAVY)
     table.add_column("#", style="bold cyan")
     table.add_column("File")
     table.add_column("Size (KB)", justify="right")
     table.add_column("Modified")
-    default_spec_index = None
-    for i, fp in enumerate(specs, 1):
-        table.add_row(
-            str(i), fp.name,
-            str(fp.stat().st_size // 1024),
-            datetime.fromtimestamp(fp.stat().st_mtime).strftime("%Y-%m-%d"),
-        )
-        if stored_spec and fp.stem == stored_spec:
-            default_spec_index = i
+    default_spec_index = next((i for i, fp in enumerate(specs, 1) if stored_spec and fp.stem == stored_spec), None)
 
+    for i, fp in enumerate(specs, 1):
+        table.add_row(str(i), fp.name, str(fp.stat().st_size // 1024), datetime.fromtimestamp(fp.stat().st_mtime).strftime("%Y-%m-%d"))
     console.print(table)
 
-    if default_spec_index:
-        default_spec_prompt = str(default_spec_index)
-    else:
-        default_spec_prompt = "1"
-
+    default_spec_prompt = str(default_spec_index) if default_spec_index else "1"
     choice = ask("Select spec number", default_spec_prompt)
-    if choice.isdigit() and 1 <= (idx := int(choice)) <= len(specs):
-        spec_file = str(specs[idx-1])
-    else:
-        spec_file = ask("Enter path to OpenAPI spec", None)
-
+    spec_file = str(specs[int(choice)-1]) if choice.isdigit() and 1 <= int(choice) <= len(specs) else ask("Enter path to OpenAPI spec", None)
+    
     spec_ok = Path(spec_file).exists()
-    if not spec_ok:
-        console.print(f"[red]→ Spec file '{spec_file}' not found.[/red]")
-
+    if not spec_ok: console.print(f"[red]→ Spec file '{spec_file}' not found.[/red]")
     console.print(f":white_check_mark: Spec = [bold]{Path(spec_file).name}[/bold]\n")
 
-    # Step 3/4 — Configure HTTP verbs
     console.print(Panel.fit("Step 3/4: Configure HTTP verbs", style="cyan"))
-
-    verbs_menu = ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS", "ALL"]
-    console.print(f"[grey]Available verbs: {', '.join(verbs_menu)}[/grey]")
-
+    verbs_menu = ", ".join(VALID_VERBS)
+    console.print(f"[grey]Available verbs: {verbs_menu}, ALL[/grey]")
     raw = ask("HTTP verbs (comma-separated, 'ALL'=every verb)", "GET").upper()
-    chosen = [v.strip() for v in raw.split(",") if v.strip()]
-
-    if not chosen or "ALL" in chosen:
-        cleaned = sorted(VALID_VERBS)                # every verb
-    else:
-        cleaned = [v for v in chosen if v in VALID_VERBS]
-
+    chosen = {v.strip() for v in raw.split(",") if v.strip()}
+    cleaned = sorted(VALID_VERBS) if "ALL" in chosen or not chosen else sorted(list(chosen & VALID_VERBS))
     console.print(f":white_check_mark: Verbs = [bold]{', '.join(cleaned)}[/bold]\n")
 
-
-
-    # Step 4/4 — Regex filter for operationIds
     console.print(Panel.fit("Step 4/4: Regex filter for operationIds", style="cyan"))
     name_re = ask("Regex filter (blank=none)", "").strip()
-    console.print(f":white_check_mark: Regex = [bold]{name_re or "None"}[/bold]\n")
+    console.print(f":white_check_mark: Regex = [bold]{name_re or 'None'}[/bold]\n")
 
-    # ── Preview & confirm ─────────────────────────────────────────────────────
     preview_table([
         ("Platform",    platform),
         ("SDK module",  sdk_module),
@@ -452,27 +374,16 @@ def main() -> None:
     ])
 
     if DIAGRAM_PATH.exists():
-        console.print(Panel.fit("-----------------------"))
         console.print(f"[cyan]file://{DIAGRAM_PATH}[/cyan]")
 
-    # ── call platform_scaffolder.py ───────────────────────────────────────────
     scaffolder_path = PROJECT_ROOT / "src" / "scripts" / "platform_scaffolder.py"
-    cmd = [
-        sys.executable, str(scaffolder_path),
-        "--platform",      platform,
-        "--sdk-module",    sdk_module,
-        "--openapi-spec",  spec_file,
-    ]
-    verbs_arg = ",".join(cleaned)
-    if set(cleaned) != VALID_VERBS:                  # only restrict if not ALL
-        cmd += ["--include-http-methods", verbs_arg]
- 
+    cmd = [sys.executable, str(scaffolder_path), "--platform", platform, "--sdk-module", sdk_module, "--openapi-spec", spec_file]
+    if set(cleaned) != VALID_VERBS:
+        cmd += ["--include-http-methods", ",".join(cleaned)]
     if name_re:
         cmd += ["--name-pattern", name_re]
 
-    # Only mark installed=True if both SDK import and spec exist
     final_installed_flag = sdk_ok and spec_ok
-
     if args.dry_run:
         console.print(Panel(f"**DRY RUN**\n{' '.join(shlex.quote(c) for c in cmd)}", border_style="yellow"))
     else:
@@ -485,51 +396,63 @@ def main() -> None:
             console.print(f"[red]Error: scaffolder failed with exit code {e.returncode}[/red]")
             final_installed_flag = False
 
-    # ── update registry (single source of truth) ──────────────────────────────
-    registry_set(
-        platform,
-        sdk_pkg        = sdk_module,
-        openapi_stem   = Path(spec_file).stem,
-        installed      = final_installed_flag,
-        created_by_us  = None,
-    )
+    registry_set(platform, sdk_pkg=sdk_module, openapi_stem=Path(spec_file).stem, installed=final_installed_flag)
 
-    # ── Ensure .env has the toggle & credential placeholders ───────────────────
+    PLATFORM_CREDENTIAL_MAP = {
+        "ai_defense": {"AI_DEFENSE_API_KEY": "any valid API key string"},
+        "catalyst": {
+            "DNACENTER_USERNAME": "any valid username string",
+            "DNACENTER_PASSWORD": "any valid password string",
+            "DNACENTER_BASE_URL": "any valid HTTP/HTTPS URL",
+            "DNACENTER_VERSION": "version string, e.g. x.y.z",
+            "DNACENTER_VERIFY_SSL": "true, false"
+        },
+        "cisco_spaces": {
+            "CISCO_SPACES_API_KEY": "any valid API key string",
+            "CISCO_SPACES_BASE_URL": "any valid URL"
+        },
+        "cloudlock": {
+            "CLOUDLOCK_API_KEY": "any valid API key string",
+            "CLOUDLOCK_API_SECRET": "any valid API secret string"
+        },
+        "intersight": {
+            "INTERSIGHT_API_KEY": "any valid API secret string",
+            "INTERSIGHT_API_SECRET": "path to a valid .pem key file",
+            "INTERSIGHT_BASE_URL": "any valid HTTP/HTTPS URL",
+            "INTERSIGHT_ORGANIZATION_MOID": "any valid Moid string"
+        },
+        "meraki": {
+            "CISCO_MERAKI_API_KEY": "Meraki API key—secret",
+            "MERAKI_ORG_ID": "numeric organization ID"
+        },
+        "nexus_dashboard": {
+            "NEXUS_DASHBOARD_API_KEY": "any valid API key string",
+            "NEXUS_DASHBOARD_BASE_URL": "any valid HTTP/HTTPS URL"
+        },
+        "nexus_hyperfabric": {
+            "NEXUS_HYPERFABRIC_BEARER_TOKEN": "secret string—no fixed “allowed” set",
+            "NEXUS_HYPERFABRIC_BASE_URL": "any valid HTTP/HTTPS URL"
+        },
+        "sdwan_mngr": {
+            "CISCO_SD_WAN_USERNAME": "any valid username string",
+            "CISCO_SD_WAN_PASSWORD": "any valid password string",
+            "CISCO_SD_WAN_BASE_URL": "any valid HTTP/HTTPS URL"
+        },
+        "secure_access": {
+            "SECURE_ACCESS_CLIENT_ID": "any valid client ID string",
+            "SECURE_ACCESS_CLIENT_SECRET": "any valid client secret string",
+            "SECURE_ACCESS_TOKEN_URL": "any valid HTTP/HTTPS URL"
+        },
+        "umbrella": {
+            "UMBRELLA_API_KEY": "any valid API key string",
+            "UMBRELLA_API_SECRET": "any valid API secret string"
+        },
+    }
+
     ensure_enable_flag_in_env(platform)
-
-    # Decide which credential keys this platform needs:
-    if platform == "ai_defense":
-        creds = ["AI_DEFENSE_API_KEY"]
-    elif platform == "catalyst":
-        creds = ["DNACENTER_USERNAME", "DNACENTER_PASSWORD", "DNACENTER_BASE_URL"]
-    elif platform == "cloudlock":
-        creds = ["CLOUDLOCK_API_KEY", "CLOUDLOCK_API_SECRET"]
-    elif platform == "intersight":
-        creds = ["INTERSIGHT_API_KEY", "INTERSIGHT_API_SECRET", "INTERSIGHT_BASE_URL"]
-    elif platform == "meraki":
-        creds = ["CISCO_MERAKI_API_KEY"]
-    elif platform == "nexus_dashboard":
-        creds = ["NEXUS_DASHBOARD_API_KEY", "NEXUS_DASHBOARD_BASE_URL"]
-    elif platform == "nexus_hyperfabric":
-        creds = ["NEXUS_HYPERFABRIC_API_KEY",
-                 "NEXUS_HYPERFABRIC_API_SECRET",
-                 "NEXUS_HYPERFABRIC_BASE_URL"]
-    elif platform == "sdwan_mngr":
-        creds = ["CISCO_SD_WAN_USERNAME",
-                 "CISCO_SD_WAN_PASSWORD",
-                 "CISCO_SD_WAN_BASE_URL"]
-    elif platform == "secure_access":
-        creds = ["SECURE_ACCESS_CLIENT_ID",
-                 "SECURE_ACCESS_CLIENT_SECRET",
-                 "SECURE_ACCESS_TOKEN_URL"]
-    elif platform == "umbrella":
-        creds = ["UMBRELLA_API_KEY", "UMBRELLA_API_SECRET"]
-    else:
-        creds = []
-
-    if creds:
-        ensure_credentials_in_env(platform, creds)
-
+    creds_map = PLATFORM_CREDENTIAL_MAP.get(platform, {})
+    if creds_map:
+        ensure_credentials_in_env(platform, creds_map)
 
     if final_installed_flag:
         console.print(Panel.fit(":white_check_mark: Scaffolding complete!", style="green"))
