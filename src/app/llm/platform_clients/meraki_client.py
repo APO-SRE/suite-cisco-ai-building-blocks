@@ -44,23 +44,25 @@ class MerakiClient:
     # ──────────────────────────────────────────────────────────────
     def _resolve(self, name: str):
         """
-        Locate <operationId> and return a callable.
+        Locate <operationId> and return a callable. This method attempts multiple
+        strategies to support different SDK architectures.
     
         Scheme (in order):
-        1. Direct attr on ApiClient (PascalCase or snake_case)
-        2. Attr on any nested sub‑client
-        3. openapi‑python‑client free function  *.api.<tag>.<func>.sync
-        4. Class‑based handler          *.api.<Tag>Api.<func>
-        5. Suffix match fallback        *_<operationId>
+        1. Direct attr on ApiClient (e.g., PascalCase or snake_case).
+        2. Attr on any nested sub-client (for Meraki-style SDKs).
+        3. Standalone module function (for openapi-python-client SDKs like Nexus Hyperfabric).
+        4. Class-based API tag handler (for Intersight-style SDKs).
+        5. Suffix match as a final fallback.
         """
-        # 1 ─ direct
+        snake = _CAMEL_TO_SNAKE.sub('_', name).lower()
+    
+        # Strategy 1: Direct attribute on the SDK client
         if hasattr(self._sdk, name):
             return getattr(self._sdk, name)
-        snake = _CAMEL_TO_SNAKE.sub('_', name).lower()
         if hasattr(self._sdk, snake):
             return getattr(self._sdk, snake)
     
-        # 2 ─ look inside sub‑clients
+        # Strategy 2: Look inside nested sub-clients (for Meraki)
         for sub_name in dir(self._sdk):
             if sub_name.startswith('_'):
                 continue
@@ -69,53 +71,57 @@ class MerakiClient:
                 if hasattr(sub, cand):
                     return getattr(sub, cand)
     
-        # 3 / 4 ─ derive tag + func
-        verbs = {'get', 'create', 'update', 'delete', 'post', 'put', 'patch'}
+        # Strategy 3: Handle openapi-python-client's standalone function pattern (for Nexus Hyperfabric)
+        # Tries to import a module like: nexus_hyperfabric.api.fabrics.fabrics_get_all_fabrics
         parts = snake.split('_')
-        if parts and parts[0] in verbs:
-            parts = parts[1:]
-        if not parts:
-            raise AttributeError(f"{name!r} could not be resolved")
-    
-        # try increasing tag length until module import succeeds
-        for i in range(len(parts), 0, -1):
-            tag = '_'.join(parts[:i])
-            func_tail = '_'.join(parts[i:])
-            func_name = snake                     # full op id
-            # 3‑a  openapi‑python‑client free function
+        if parts:
+            tag = parts[0]
+            func_module_name = snake
             try:
-                mod = importlib.import_module(f"{_SDK_PKG}.api.{tag}")
-            except ImportError:
-                mod = None
-            if mod and hasattr(mod, func_name):
-                fn_mod = getattr(mod, func_name)
-                return partial(fn_mod.sync, client=self._sdk) if hasattr(fn_mod, 'sync') else fn_mod
-    
-            # 4 ─ class‑based handler (e.g. OrganizationApi)
-            try:
-                cls_mod = importlib.import_module(f"{_SDK_PKG}.api.{tag}_api")
-                class_name = f"{''.join(p.capitalize() for p in tag.split('_'))}Api"
-                cls = getattr(cls_mod, class_name)
-                inst = cls(self._sdk)
-                if hasattr(inst, func_name):
-                    return getattr(inst, func_name)
+                module_path = f"{_SDK_PKG}.api.{tag}.{func_module_name}"
+                mod = importlib.import_module(module_path)
+                if hasattr(mod, 'sync'):
+                    # Wrap the `sync` function to pre-fill the `client` argument
+                    return partial(mod.sync, client=self._sdk)
             except (ImportError, AttributeError):
-                pass
+                pass  # If this fails, it's not this architecture; proceed to the next strategy.
     
-        # 5 ─ suffix match as last resort
+        # Strategy 4: Class-based API tag handler (for Intersight)
+        # Tries to import a class like intersight.api.compute_api.ComputeApi
+        if parts:
+            # This loop logic is important for Intersight's naming conventions
+            for i in range(len(parts), 0, -1):
+                tag = '_'.join(parts[:i])
+                try:
+                    cls_mod = importlib.import_module(f"{_SDK_PKG}.api.{tag}_api")
+                    class_name = f"{''.join(p.capitalize() for p in tag.split('_'))}Api"
+                    if hasattr(cls_mod, class_name):
+                        cls = getattr(cls_mod, class_name)
+                        inst = cls(self._sdk)
+                        if hasattr(inst, snake):
+                            return getattr(inst, snake)
+                except (ImportError, AttributeError):
+                    continue
+    
+        # Strategy 5: Suffix match as a last resort
         for cand in (name, snake):
             for attr in dir(self._sdk):
                 if attr.endswith('_' + cand):
                     return getattr(self._sdk, attr)
     
-        raise AttributeError(f"{self.__class__.__name__} has no attribute {name!r}")
+        raise AttributeError(f"{self.__class__.__name__} could not resolve attribute {name!r}")
+    
+    
+    
     
     # expose everything through __getattr__
     def __getattr__(self, name: str):
+        print(f"[{self.__class__.__name__}] Attempting to resolve function: '{name}'") # <-- ADD THIS LINE
         target = self._resolve(name)
         if callable(target):
             return self._wrap_method(target)
         return target
+    
     
     def _wrap_method(self, target):
         """

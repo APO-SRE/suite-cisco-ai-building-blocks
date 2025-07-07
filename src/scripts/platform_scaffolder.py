@@ -70,6 +70,49 @@ for p in OUT_DIRS.values():
 logging.basicConfig(level=logging.INFO, format="%(levelname)s | %(message)s")
 log = logging.getLogger("scaffolder")
 
+
+#################################################################################################################
+#################################################################################################################
+#  IMPORTANT !!!!
+# This dictionary holds all platform-specific rules and overrides.
+# It allows us to safely modify behavior for one platform without
+# affecting any others.
+# ── OVERRIDES START HERE ──────────────────────────────────────────────────────────────────────────────────
+PLATFORM_OVERRIDES = {
+    "catalyst": {
+        "blocklist": {
+            # This operationId is ambiguous and unhelpful for Catalyst.
+            "getInterfaces",
+        },
+        "descriptions": {
+            # This makes the correct function much more attractive to the LLM.
+            "getAllInterfaces": "Crucial for users asking to list, show, or get all network interfaces from all devices. This is the primary tool for interface inventory.",
+        },
+    },
+    "meraki": {
+        "blocklist": set(), # No blocked functions for Meraki yet
+        "descriptions": {}, # No description overrides for Meraki yet
+    },
+    # Add other platforms here as needed
+}
+
+# ── OVERRIDES END HERE ──────────────────────────────────────────────────────────────────────────────────
+###############################################################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ALWAYS_KEEP_TAGS = {"devices", "inventory"}
 
 DEFAULT_DYNAMIC_CACHE = LLM_DIR / "platform_dynamic_cache"
@@ -287,23 +330,25 @@ def _emit_client_stub(platform: str, sdk_module: str) -> None:
         # ──────────────────────────────────────────────────────────────
         def _resolve(self, name: str):
             """
-            Locate <operationId> and return a callable.
+            Locate <operationId> and return a callable. This method attempts multiple
+            strategies to support different SDK architectures.
 
             Scheme (in order):
-            1. Direct attr on ApiClient (PascalCase or snake_case)
-            2. Attr on any nested sub‑client
-            3. openapi‑python‑client free function  *.api.<tag>.<func>.sync
-            4. Class‑based handler          *.api.<Tag>Api.<func>
-            5. Suffix match fallback        *_<operationId>
+            1. Direct attr on ApiClient (e.g., PascalCase or snake_case).
+            2. Attr on any nested sub-client (for Meraki-style SDKs).
+            3. Standalone module function (for openapi-python-client SDKs like Nexus Hyperfabric).
+            4. Class-based API tag handler (for Intersight-style SDKs).
+            5. Suffix match as a final fallback.
             """
-            # 1 ─ direct
+            snake = _CAMEL_TO_SNAKE.sub('_', name).lower()
+
+            # Strategy 1: Direct attribute on the SDK client
             if hasattr(self._sdk, name):
                 return getattr(self._sdk, name)
-            snake = _CAMEL_TO_SNAKE.sub('_', name).lower()
             if hasattr(self._sdk, snake):
                 return getattr(self._sdk, snake)
 
-            # 2 ─ look inside sub‑clients
+            # Strategy 2: Look inside nested sub-clients (for Meraki)
             for sub_name in dir(self._sdk):
                 if sub_name.startswith('_'):
                     continue
@@ -312,53 +357,57 @@ def _emit_client_stub(platform: str, sdk_module: str) -> None:
                     if hasattr(sub, cand):
                         return getattr(sub, cand)
 
-            # 3 / 4 ─ derive tag + func
-            verbs = {'get', 'create', 'update', 'delete', 'post', 'put', 'patch'}
+            # Strategy 3: Handle openapi-python-client's standalone function pattern (for Nexus Hyperfabric)
+            # Tries to import a module like: nexus_hyperfabric.api.fabrics.fabrics_get_all_fabrics
             parts = snake.split('_')
-            if parts and parts[0] in verbs:
-                parts = parts[1:]
-            if not parts:
-                raise AttributeError(f"{name!r} could not be resolved")
-
-            # try increasing tag length until module import succeeds
-            for i in range(len(parts), 0, -1):
-                tag = '_'.join(parts[:i])
-                func_tail = '_'.join(parts[i:])
-                func_name = snake                     # full op id
-                # 3‑a  openapi‑python‑client free function
+            if parts:
+                tag = parts[0]
+                func_module_name = snake
                 try:
-                    mod = importlib.import_module(f"{_SDK_PKG}.api.{tag}")
-                except ImportError:
-                    mod = None
-                if mod and hasattr(mod, func_name):
-                    fn_mod = getattr(mod, func_name)
-                    return partial(fn_mod.sync, client=self._sdk) if hasattr(fn_mod, 'sync') else fn_mod
-
-                # 4 ─ class‑based handler (e.g. OrganizationApi)
-                try:
-                    cls_mod = importlib.import_module(f"{_SDK_PKG}.api.{tag}_api")
-                    class_name = f"{''.join(p.capitalize() for p in tag.split('_'))}Api"
-                    cls = getattr(cls_mod, class_name)
-                    inst = cls(self._sdk)
-                    if hasattr(inst, func_name):
-                        return getattr(inst, func_name)
+                    module_path = f"{_SDK_PKG}.api.{tag}.{func_module_name}"
+                    mod = importlib.import_module(module_path)
+                    if hasattr(mod, 'sync'):
+                        # Wrap the `sync` function to pre-fill the `client` argument
+                        return partial(mod.sync, client=self._sdk)
                 except (ImportError, AttributeError):
-                    pass
+                    pass  # If this fails, it's not this architecture; proceed to the next strategy.
 
-            # 5 ─ suffix match as last resort
+            # Strategy 4: Class-based API tag handler (for Intersight)
+            # Tries to import a class like intersight.api.compute_api.ComputeApi
+            if parts:
+                # This loop logic is important for Intersight's naming conventions
+                for i in range(len(parts), 0, -1):
+                    tag = '_'.join(parts[:i])
+                    try:
+                        cls_mod = importlib.import_module(f"{_SDK_PKG}.api.{tag}_api")
+                        class_name = f"{''.join(p.capitalize() for p in tag.split('_'))}Api"
+                        if hasattr(cls_mod, class_name):
+                            cls = getattr(cls_mod, class_name)
+                            inst = cls(self._sdk)
+                            if hasattr(inst, snake):
+                                return getattr(inst, snake)
+                    except (ImportError, AttributeError):
+                        continue
+
+            # Strategy 5: Suffix match as a last resort
             for cand in (name, snake):
                 for attr in dir(self._sdk):
                     if attr.endswith('_' + cand):
                         return getattr(self._sdk, attr)
 
-            raise AttributeError(f"{self.__class__.__name__} has no attribute {name!r}")
+            raise AttributeError(f"{self.__class__.__name__} could not resolve attribute {name!r}")
+                                     
+
+
 
         # expose everything through __getattr__
         def __getattr__(self, name: str):
+            print(f"[{self.__class__.__name__}] Attempting to resolve function: '{name}'") # <-- ADD THIS LINE
             target = self._resolve(name)
             if callable(target):
                 return self._wrap_method(target)
             return target
+ 
 
         def _wrap_method(self, target):
             """
@@ -410,6 +459,8 @@ def _emit_client_stub(platform: str, sdk_module: str) -> None:
             "kwargs['password'] = password",
             "kwargs['base_url']  = base_url",
             "version = os.getenv('DNACENTER_VERSION', '2.3.7.6')",
+            "verify_env = os.getenv('DNACENTER_VERIFY_SSL','true').lower() in ('true','1','yes')",
+            "kwargs['verify'] = verify_env",
             "kwargs['version']   = version",
             "",
         ])
@@ -592,8 +643,9 @@ def _emit_unified_service(platform: str):
 
 
 # ╭─────────────────────────────────────────────────────────────────────╮
-# │ 3 ─ per-platform scaffolding                                       │
+# │ 3 ─ per-platform scaffolding                                        │
 # ╰─────────────────────────────────────────────────────────────────────╯
+
 def scaffold_one(
     platform: str,
     sdk_module: str,
@@ -601,6 +653,11 @@ def scaffold_one(
     include_http: set[str] | None,
     name_re: re.Pattern | None,
 ) -> None:
+ 
+    # Get the specific overrides for the current platform from the global config.
+    # This safely returns an empty dictionary if no rules are defined for the platform.
+    platform_config = PLATFORM_OVERRIDES.get(platform.lower(), {})
+    
     full_spec = load_spec(spec_path)
 
     _write_json(OUT_DIRS["full"] / f"{platform}.json",        full_spec, pretty=True)
@@ -622,9 +679,19 @@ def scaffold_one(
             if include_http and verb.upper() not in include_http:
                 continue
 
+ 
+            # Get the raw operationId once to use for platform-specific checks.
+            raw_op_id = op.get("operationId")
+
+            # Check against the platform-specific blocklist.
+            if raw_op_id in platform_config.get("blocklist", set()):
+                log.info(f"🚫  Skipping blocked operationId for '{platform}': {raw_op_id}")
+                continue
+
             # 👉 robust name sanitisation  (always OpenAI‑safe)
-            raw_op_id = op.get("operationId") or f"{verb}_{path}"
-            op_id = NAME_ALLOWED_RX.sub('_', raw_op_id)       # illegal → "_"
+            # Use the raw_op_id we already fetched.
+            op_id = raw_op_id or f"{verb}_{path}"
+            op_id = NAME_ALLOWED_RX.sub('_', op_id)       # illegal → "_"
             op_id = re.sub(r'__+', '_', op_id)                # collapse "___"
             op_id = op_id.lstrip('.-')                        # cannot start with "." | "-"
             if not op_id:                                     # empty after clean‑up
@@ -634,47 +701,11 @@ def scaffold_one(
                 skipped_ops.append({"op": op_id, "reason": "view endpoint"})
                 continue
 
-
-
-
             if name_re and not name_re.search(op_id):
                 continue
             op_params  = op.get("parameters", [])
             all_params = {p["name"]: p for p in op_params if "name" in p}
-
-            # ─────────────── NEW: pull in JSON requestBody as single “body” param ─────────
-            # ─────────────── NEW: Recursive Schema Resolver ─────────
-            def resolve_schema(schema_ref, full_spec):
-                """Recursively resolve $ref schema references."""
-                if '$ref' in schema_ref:
-                    ref_path = schema_ref['$ref'].split('/')[1:]  # ["components", "schemas", "SchemaName"]
-                    resolved = full_spec
-                    for part in ref_path:
-                        resolved = resolved.get(part, {})
-                    return resolve_schema(resolved, full_spec)
-                elif schema_ref.get('type') == 'object':
-                    return {
-                        "type": "object",
-                        "properties": {
-                            prop_name: resolve_schema(prop_schema, full_spec)
-                            for prop_name, prop_schema in schema_ref.get('properties', {}).items()
-                        },
-                        "required": schema_ref.get('required', [])
-                    }
-                elif schema_ref.get('type') == 'array':
-                    items_schema = resolve_schema(schema_ref.get('items', {}), full_spec)
-                    return {
-                        "type": "array",
-                        "items": items_schema
-                    }
-                else:
-                    # Base types: string, integer, boolean, etc.
-                    return {
-                        "type": schema_ref.get('type', 'string'),
-                        "description": schema_ref.get('description', '')
-                    }
-
-            # ─────────────── UPDATED: Handle requestBody schema ─────────
+ 
             def resolve_schema(schema_ref, full_spec):
                 if '$ref' in schema_ref:
                     ref_path = schema_ref['$ref'].split('/')[1:]
@@ -683,7 +714,7 @@ def scaffold_one(
                         resolved = resolved.get(part, {})
                     return resolved
                 return schema_ref
-
+ 
             def build_properties(schema, full_spec):
                 properties = {}
                 required_fields = schema.get('required', [])
@@ -698,7 +729,7 @@ def scaffold_one(
                         prop_entry.update(build_properties(resolved_prop_schema, full_spec))
                     elif prop_type == "array":
                         prop_entry["items"] = build_properties(resolved_prop_schema.get("items", {}), full_spec)
-                    properties[prop_name] = prop_entry
+                    properties[prop_name] =  prop_entry
 
                 return {
                     "properties": properties,
@@ -721,14 +752,12 @@ def scaffold_one(
                     "name": "body",
                     "schema": {
                         "type": "object",
-                        "properties": schema_details["properties"],  # Ensure explicit properties key
+                        "properties": schema_details["properties"],
                         "required": schema_details["required"]
                     },
                     "description": description,
                     "required": rb.get("required", False),
                 }
-
-
 
             schema = {
                 "name": op_id,
@@ -749,6 +778,14 @@ def scaffold_one(
                     ] + list(path_level_params),
                 },
             }
+ 
+            # Check for and apply platform-specific description overrides.
+            # We use the raw, un-sanitized operationId as the key.
+            if raw_op_id in platform_config.get("descriptions", {}):
+                schema['description'] = platform_config["descriptions"][raw_op_id]
+                log.info(f"✓ Overwrote description for '{platform}': {raw_op_id}")
+
+ 
 
 
             # ------------------------------------------------------------------
@@ -824,36 +861,55 @@ def scaffold_one(
             sig_parts.append(f"{py_name(pname)}: {type_mapping.get(meta.get('type'), 'Any')} = None")
         signature = ", ".join(sig_parts)
 
+
+
         # dispatcher body
-        non_body = {p: py_name(p) for p in props if p != "body"}
+        non_body_params = {p: py_name(p) for p in props if p != "body"}
+        
         lines.extend([
             f"@register('{fn['name']}')",
             f"def {safe_name}({signature}):",
-            '    """Auto‑generated wrapper (org‑ID injection included)."""',
-            "    locals_ = locals()",
-            "    body_payload = locals_.pop('body', None) if 'body' in locals_ else None",
-            "    final_kwargs = {",
-            "        orig: locals_[san]",
-            "        for orig, san in " + repr(non_body) + ".items()",
-            "        if locals_[san] is not None",
-            "    }",
-            "",
+            '    """Auto-generated wrapper for clarity and maintainability."""',
+            "    # Explicitly build keyword arguments, excluding None values.",
+            "    final_kwargs = {}",
         ])
 
+        # Generate an explicit check for each non-body parameter
+        for orig, san in non_body_params.items():
+            lines.append(f"    if {san} is not None:")
+            lines.append(f"        final_kwargs['{orig}'] = {san}")
+        lines.append("")
+
+        # Handle the body payload explicitly if it exists
+        if 'body' in props:
+            py_body_name = py_name('body')
+            lines.extend([
+                f"    # The 'body' parameter is handled separately.",
+                f"    body_payload = {py_body_name} if {py_body_name} is not None else None",
+            ])
+        else:
+            lines.extend([
+                "    # No body parameter for this function.",
+                "    body_payload = None",
+            ])
+        lines.append("")
+
         # insert injection
-        non_body_keys = list(non_body.keys())
+        non_body_keys = list(non_body_params.keys())
         lines.extend(_emit_org_injection(platform, non_body_keys))
 
-        # finish with target call
+        # finish with a clearer target call
         lines.extend([
-            f"    target = {platform.capitalize()}Client().__getattr__('{safe_name}')",
+            f"    client = {platform.capitalize()}Client()",
+            f"    target = getattr(client, '{safe_name}')",
+            "",
             "    if body_payload is not None:",
             "        return target(body=body_payload, **final_kwargs)",
             "    return target(**final_kwargs)",
             "",
         ])
 
-
+        
 
 
         
@@ -887,6 +943,17 @@ def scaffold_one(
                     f"register('{alias}')(globals()['{safe_name}'])",
                     ""
                 ])
+        
+        # 3-c. hand-crafted aliases for Catalyst interfaces
+        # This makes the LLM much more likely to choose the correct function.
+        if fn['name'] == 'getAllInterfaces':
+            for alias in {'list_interfaces', 'get_interfaces', 'show_interfaces', 'interfaces'}:
+                lines.extend([
+                    f"# alias for {fn['name']} -> {alias}",
+                    f"register('{alias}')(globals()['{safe_name}'])",
+                    ""
+                ])
+        # ------------------------------------------------------------
 
         # ── ALISES END HERE ────────────────────────────────────────────────────────────────────────────────
         #####################################################################################################

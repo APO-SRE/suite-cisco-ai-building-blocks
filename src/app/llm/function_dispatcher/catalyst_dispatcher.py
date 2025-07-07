@@ -6,352 +6,480 @@ from app.llm.platform_clients.catalyst_client import CatalystClient
 
 @register('retrievesNetworkDeviceProductNamesAssignedToASoftwareImage.')
 def retrievesNetworkDeviceProductNamesAssignedToASoftwareImage_(imageId: str, productName: str = None, productId: str = None, recommended: str = None, assigned: str = None, offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'imageId': 'imageId', 'productName': 'productName', 'productId': 'productId', 'recommended': 'recommended', 'assigned': 'assigned', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if imageId is not None:
+        final_kwargs['imageId'] = imageId
+    if productName is not None:
+        final_kwargs['productName'] = productName
+    if productId is not None:
+        final_kwargs['productId'] = productId
+    if recommended is not None:
+        final_kwargs['recommended'] = recommended
+    if assigned is not None:
+        final_kwargs['assigned'] = assigned
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('retrievesNetworkDeviceProductNamesAssignedToASoftwareImage_')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrievesNetworkDeviceProductNamesAssignedToASoftwareImage_')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getsAllTheVersionsOfAGivenTemplate')
 def getsAllTheVersionsOfAGivenTemplate(templateId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'templateId': 'templateId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if templateId is not None:
+        final_kwargs['templateId'] = templateId
 
-    target = CatalystClient().__getattr__('getsAllTheVersionsOfAGivenTemplate')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getsAllTheVersionsOfAGivenTemplate')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('returnsTheCountOfNetworkDeviceProductNamesForASite')
 def returnsTheCountOfNetworkDeviceProductNamesForASite(siteId: str = None, productName: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'siteId': 'siteId', 'productName': 'productName'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if productName is not None:
+        final_kwargs['productName'] = productName
 
-    target = CatalystClient().__getattr__('returnsTheCountOfNetworkDeviceProductNamesForASite')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'returnsTheCountOfNetworkDeviceProductNamesForASite')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getMulticastVirtualNetworks')
 def getMulticastVirtualNetworks(fabricId: str = None, virtualNetworkName: str = None, offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'fabricId': 'fabricId', 'virtualNetworkName': 'virtualNetworkName', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if fabricId is not None:
+        final_kwargs['fabricId'] = fabricId
+    if virtualNetworkName is not None:
+        final_kwargs['virtualNetworkName'] = virtualNetworkName
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('getMulticastVirtualNetworks')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getMulticastVirtualNetworks')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceControllabilitySettings')
 def getDeviceControllabilitySettings():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getDeviceControllabilitySettings')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDeviceControllabilitySettings')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getChassisDetailsForDevice')
 def getChassisDetailsForDevice(deviceId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'deviceId': 'deviceId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
 
-    target = CatalystClient().__getattr__('getChassisDetailsForDevice')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getChassisDetailsForDevice')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getsABuilding')
 def getsABuilding(id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('getsABuilding')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getsABuilding')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getCountOfAllDiscoveryJobs')
 def getCountOfAllDiscoveryJobs():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getCountOfAllDiscoveryJobs')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getCountOfAllDiscoveryJobs')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getViewsForAGivenViewGroup')
 def getViewsForAGivenViewGroup(viewGroupId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'viewGroupId': 'viewGroupId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if viewGroupId is not None:
+        final_kwargs['viewGroupId'] = viewGroupId
 
-    target = CatalystClient().__getattr__('getViewsForAGivenViewGroup')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getViewsForAGivenViewGroup')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceById')
 def getDeviceById(id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('getDeviceById')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDeviceById')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrieveTheVLANsAndSSIDsMappedToTheVLANWithinAFabricSite.')
 def retrieveTheVLANsAndSSIDsMappedToTheVLANWithinAFabricSite_(Content_Type: str, fabricId: str, limit: float = None, offset: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'Content-Type': 'Content_Type', 'fabricId': 'fabricId', 'limit': 'limit', 'offset': 'offset'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if fabricId is not None:
+        final_kwargs['fabricId'] = fabricId
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if offset is not None:
+        final_kwargs['offset'] = offset
 
-    target = CatalystClient().__getattr__('retrieveTheVLANsAndSSIDsMappedToTheVLANWithinAFabricSite_')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrieveTheVLANsAndSSIDsMappedToTheVLANWithinAFabricSite_')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrieveImageDistributionServers')
 def retrieveImageDistributionServers():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('retrieveImageDistributionServers')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrieveImageDistributionServers')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrieveTagsAssociatedWithNetworkDevices.')
 def retrieveTagsAssociatedWithNetworkDevices_(offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('retrieveTagsAssociatedWithNetworkDevices_')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrieveTagsAssociatedWithNetworkDevices_')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('statusOfTemplateDeployment')
 def statusOfTemplateDeployment(deploymentId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'deploymentId': 'deploymentId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deploymentId is not None:
+        final_kwargs['deploymentId'] = deploymentId
 
-    target = CatalystClient().__getattr__('statusOfTemplateDeployment')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'statusOfTemplateDeployment')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getIssueTriggerDefinitionForGivenId.')
 def getIssueTriggerDefinitionForGivenId_(id: str, X_CALLER_ID: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'X-CALLER-ID': 'X_CALLER_ID', 'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('getIssueTriggerDefinitionForGivenId_')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getIssueTriggerDefinitionForGivenId_')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrieveBannerSettingsForASite')
 def retrieveBannerSettingsForASite(id: str, _inherited: bool = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', '_inherited': '_inherited'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if _inherited is not None:
+        final_kwargs['_inherited'] = _inherited
 
-    target = CatalystClient().__getattr__('retrieveBannerSettingsForASite')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrieveBannerSettingsForASite')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getSiteAssignedNetworkDevices')
 def getSiteAssignedNetworkDevices(siteId: str, offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'siteId': 'siteId', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('getSiteAssignedNetworkDevices')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getSiteAssignedNetworkDevices')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkDevicesCredentialsSyncStatus')
 def getNetworkDevicesCredentialsSyncStatus(id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('getNetworkDevicesCredentialsSyncStatus')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getNetworkDevicesCredentialsSyncStatus')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getSoftwareImageDetails')
 def getSoftwareImageDetails(imageUuid: str = None, name: str = None, family: str = None, applicationType: str = None, imageIntegrityStatus: str = None, version: str = None, imageSeries: str = None, imageName: str = None, isTaggedGolden: bool = None, isCCORecommended: bool = None, isCCOLatest: bool = None, createdTime: int = None, imageSizeGreaterThan: int = None, imageSizeLesserThan: int = None, sortBy: str = None, sortOrder: str = None, limit: int = None, offset: int = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'imageUuid': 'imageUuid', 'name': 'name', 'family': 'family', 'applicationType': 'applicationType', 'imageIntegrityStatus': 'imageIntegrityStatus', 'version': 'version', 'imageSeries': 'imageSeries', 'imageName': 'imageName', 'isTaggedGolden': 'isTaggedGolden', 'isCCORecommended': 'isCCORecommended', 'isCCOLatest': 'isCCOLatest', 'createdTime': 'createdTime', 'imageSizeGreaterThan': 'imageSizeGreaterThan', 'imageSizeLesserThan': 'imageSizeLesserThan', 'sortBy': 'sortBy', 'sortOrder': 'sortOrder', 'limit': 'limit', 'offset': 'offset'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if imageUuid is not None:
+        final_kwargs['imageUuid'] = imageUuid
+    if name is not None:
+        final_kwargs['name'] = name
+    if family is not None:
+        final_kwargs['family'] = family
+    if applicationType is not None:
+        final_kwargs['applicationType'] = applicationType
+    if imageIntegrityStatus is not None:
+        final_kwargs['imageIntegrityStatus'] = imageIntegrityStatus
+    if version is not None:
+        final_kwargs['version'] = version
+    if imageSeries is not None:
+        final_kwargs['imageSeries'] = imageSeries
+    if imageName is not None:
+        final_kwargs['imageName'] = imageName
+    if isTaggedGolden is not None:
+        final_kwargs['isTaggedGolden'] = isTaggedGolden
+    if isCCORecommended is not None:
+        final_kwargs['isCCORecommended'] = isCCORecommended
+    if isCCOLatest is not None:
+        final_kwargs['isCCOLatest'] = isCCOLatest
+    if createdTime is not None:
+        final_kwargs['createdTime'] = createdTime
+    if imageSizeGreaterThan is not None:
+        final_kwargs['imageSizeGreaterThan'] = imageSizeGreaterThan
+    if imageSizeLesserThan is not None:
+        final_kwargs['imageSizeLesserThan'] = imageSizeLesserThan
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if sortOrder is not None:
+        final_kwargs['sortOrder'] = sortOrder
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if offset is not None:
+        final_kwargs['offset'] = offset
 
-    target = CatalystClient().__getattr__('getSoftwareImageDetails')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getSoftwareImageDetails')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getInterfaceByID')
 def getInterfaceByID(id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('getInterfaceByID')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getInterfaceByID')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAnycastGateways')
 def getAnycastGateways(id: str = None, fabricId: str = None, virtualNetworkName: str = None, ipPoolName: str = None, vlanName: str = None, vlanId: float = None, offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', 'fabricId': 'fabricId', 'virtualNetworkName': 'virtualNetworkName', 'ipPoolName': 'ipPoolName', 'vlanName': 'vlanName', 'vlanId': 'vlanId', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if fabricId is not None:
+        final_kwargs['fabricId'] = fabricId
+    if virtualNetworkName is not None:
+        final_kwargs['virtualNetworkName'] = virtualNetworkName
+    if ipPoolName is not None:
+        final_kwargs['ipPoolName'] = ipPoolName
+    if vlanName is not None:
+        final_kwargs['vlanName'] = vlanName
+    if vlanId is not None:
+        final_kwargs['vlanId'] = vlanId
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('getAnycastGateways')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getAnycastGateways')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getApplicationSet_s')
 def getApplicationSet_s(attributes: str, offset: float, limit: float, name: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'attributes': 'attributes', 'name': 'name', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if attributes is not None:
+        final_kwargs['attributes'] = attributes
+    if name is not None:
+        final_kwargs['name'] = name
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('getApplicationSet_s')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getApplicationSet_s')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
@@ -361,944 +489,1448 @@ register('s')(globals()['getApplicationSet_s'])
 
 @register('s')
 def s(attributes: str, offset: float, limit: float, name: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'attributes': 'attributes', 'name': 'name', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if attributes is not None:
+        final_kwargs['attributes'] = attributes
+    if name is not None:
+        final_kwargs['name'] = name
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('s')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 's')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getTagMembersById')
 def getTagMembersById(id: str, memberType: str, offset: float = None, limit: float = None, memberAssociationType: str = None, level: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', 'memberType': 'memberType', 'offset': 'offset', 'limit': 'limit', 'memberAssociationType': 'memberAssociationType', 'level': 'level'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if memberType is not None:
+        final_kwargs['memberType'] = memberType
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if memberAssociationType is not None:
+        final_kwargs['memberAssociationType'] = memberAssociationType
+    if level is not None:
+        final_kwargs['level'] = level
 
-    target = CatalystClient().__getattr__('getTagMembersById')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getTagMembersById')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getFabricSiteCount')
 def getFabricSiteCount():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getFabricSiteCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getFabricSiteCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrievesAllTheValidationSets')
 def retrievesAllTheValidationSets(view: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'view': 'view'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if view is not None:
+        final_kwargs['view'] = view
 
-    target = CatalystClient().__getattr__('retrievesAllTheValidationSets')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrievesAllTheValidationSets')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrievesTheListOfSitesThatTheGivenNetworkProfileForSitesIsAssig')
 def retrievesTheListOfSitesThatTheGivenNetworkProfileForSitesIsAssig(profileId: str, offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'profileId': 'profileId', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if profileId is not None:
+        final_kwargs['profileId'] = profileId
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('retrievesTheListOfSitesThatTheGivenNetworkProfileForSitesIsAssig')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrievesTheListOfSitesThatTheGivenNetworkProfileForSitesIsAssig')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getFabricDevicesLayer2HandoffsCount')
 def getFabricDevicesLayer2HandoffsCount(fabricId: str, networkDeviceId: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'fabricId': 'fabricId', 'networkDeviceId': 'networkDeviceId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if fabricId is not None:
+        final_kwargs['fabricId'] = fabricId
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
 
-    target = CatalystClient().__getattr__('getFabricDevicesLayer2HandoffsCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getFabricDevicesLayer2HandoffsCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('countOfEventSubscriptions')
 def countOfEventSubscriptions(eventIds: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'eventIds': 'eventIds'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if eventIds is not None:
+        final_kwargs['eventIds'] = eventIds
 
-    target = CatalystClient().__getattr__('countOfEventSubscriptions')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'countOfEventSubscriptions')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getSSIDBySite')
 def getSSIDBySite(siteId: str, limit: float = None, offset: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'siteId': 'siteId', 'limit': 'limit', 'offset': 'offset'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if offset is not None:
+        final_kwargs['offset'] = offset
 
-    target = CatalystClient().__getattr__('getSSIDBySite')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getSSIDBySite')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getITSMIntegrationSettingById')
 def getITSMIntegrationSettingById(instanceId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'instanceId': 'instanceId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if instanceId is not None:
+        final_kwargs['instanceId'] = instanceId
 
-    target = CatalystClient().__getattr__('getITSMIntegrationSettingById')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getITSMIntegrationSettingById')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDetailsOfASingleAssuranceEvent')
 def getDetailsOfASingleAssuranceEvent(id: str, X_CALLER_ID: str = None, attribute: str = None, view: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'X-CALLER-ID': 'X_CALLER_ID', 'id': 'id', 'attribute': 'attribute', 'view': 'view'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+    if id is not None:
+        final_kwargs['id'] = id
+    if attribute is not None:
+        final_kwargs['attribute'] = attribute
+    if view is not None:
+        final_kwargs['view'] = view
 
-    target = CatalystClient().__getattr__('getDetailsOfASingleAssuranceEvent')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDetailsOfASingleAssuranceEvent')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getRFProfiles')
 def getRFProfiles(limit: float = None, offset: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'limit': 'limit', 'offset': 'offset'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if offset is not None:
+        final_kwargs['offset'] = offset
 
-    target = CatalystClient().__getattr__('getRFProfiles')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getRFProfiles')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrieveTelemetrySettingsForASite')
 def retrieveTelemetrySettingsForASite(id: str, _inherited: bool = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', '_inherited': '_inherited'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if _inherited is not None:
+        final_kwargs['_inherited'] = _inherited
 
-    target = CatalystClient().__getattr__('retrieveTelemetrySettingsForASite')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrieveTelemetrySettingsForASite')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAllUser-Defined-Fields')
 def getAllUser_Defined_Fields(id: str = None, name: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', 'name': 'name'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if name is not None:
+        final_kwargs['name'] = name
 
-    target = CatalystClient().__getattr__('getAllUser_Defined_Fields')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getAllUser_Defined_Fields')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('queryAssuranceEvents')
 def queryAssuranceEvents(deviceFamily: str, X_CALLER_ID: str = None, startTime: float = None, endTime: float = None, messageType: str = None, severity: float = None, siteId: str = None, siteHierarchyId: str = None, networkDeviceName: str = None, networkDeviceId: str = None, apMac: str = None, clientMac: str = None, attribute: str = None, view: str = None, offset: float = None, limit: float = None, sortBy: str = None, order: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'X-CALLER-ID': 'X_CALLER_ID', 'deviceFamily': 'deviceFamily', 'startTime': 'startTime', 'endTime': 'endTime', 'messageType': 'messageType', 'severity': 'severity', 'siteId': 'siteId', 'siteHierarchyId': 'siteHierarchyId', 'networkDeviceName': 'networkDeviceName', 'networkDeviceId': 'networkDeviceId', 'apMac': 'apMac', 'clientMac': 'clientMac', 'attribute': 'attribute', 'view': 'view', 'offset': 'offset', 'limit': 'limit', 'sortBy': 'sortBy', 'order': 'order'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+    if deviceFamily is not None:
+        final_kwargs['deviceFamily'] = deviceFamily
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if messageType is not None:
+        final_kwargs['messageType'] = messageType
+    if severity is not None:
+        final_kwargs['severity'] = severity
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if siteHierarchyId is not None:
+        final_kwargs['siteHierarchyId'] = siteHierarchyId
+    if networkDeviceName is not None:
+        final_kwargs['networkDeviceName'] = networkDeviceName
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
+    if apMac is not None:
+        final_kwargs['apMac'] = apMac
+    if clientMac is not None:
+        final_kwargs['clientMac'] = clientMac
+    if attribute is not None:
+        final_kwargs['attribute'] = attribute
+    if view is not None:
+        final_kwargs['view'] = view
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
 
-    target = CatalystClient().__getattr__('queryAssuranceEvents')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'queryAssuranceEvents')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getFloorSettings')
 def getFloorSettings():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getFloorSettings')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getFloorSettings')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getTheTotalNumberOfIssuesForGivenSetOfFilters')
 def getTheTotalNumberOfIssuesForGivenSetOfFilters(X_CALLER_ID: str = None, startTime: float = None, endTime: float = None, isGlobal: bool = None, priority: str = None, severity: str = None, status: str = None, entityType: str = None, category: str = None, deviceType: str = None, name: str = None, issueId: str = None, entityId: str = None, updatedBy: str = None, siteHierarchy: str = None, siteHierarchyId: str = None, siteName: str = None, siteId: str = None, fabricSiteId: str = None, fabricVnName: str = None, fabricTransitSiteId: str = None, networkDeviceId: str = None, networkDeviceIpAddress: str = None, macAddress: str = None, aiDriven: bool = None, fabricDriven: bool = None, fabricSiteDriven: bool = None, fabricVnDriven: bool = None, fabricTransitDriven: bool = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'X-CALLER-ID': 'X_CALLER_ID', 'startTime': 'startTime', 'endTime': 'endTime', 'isGlobal': 'isGlobal', 'priority': 'priority', 'severity': 'severity', 'status': 'status', 'entityType': 'entityType', 'category': 'category', 'deviceType': 'deviceType', 'name': 'name', 'issueId': 'issueId', 'entityId': 'entityId', 'updatedBy': 'updatedBy', 'siteHierarchy': 'siteHierarchy', 'siteHierarchyId': 'siteHierarchyId', 'siteName': 'siteName', 'siteId': 'siteId', 'fabricSiteId': 'fabricSiteId', 'fabricVnName': 'fabricVnName', 'fabricTransitSiteId': 'fabricTransitSiteId', 'networkDeviceId': 'networkDeviceId', 'networkDeviceIpAddress': 'networkDeviceIpAddress', 'macAddress': 'macAddress', 'aiDriven': 'aiDriven', 'fabricDriven': 'fabricDriven', 'fabricSiteDriven': 'fabricSiteDriven', 'fabricVnDriven': 'fabricVnDriven', 'fabricTransitDriven': 'fabricTransitDriven'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if isGlobal is not None:
+        final_kwargs['isGlobal'] = isGlobal
+    if priority is not None:
+        final_kwargs['priority'] = priority
+    if severity is not None:
+        final_kwargs['severity'] = severity
+    if status is not None:
+        final_kwargs['status'] = status
+    if entityType is not None:
+        final_kwargs['entityType'] = entityType
+    if category is not None:
+        final_kwargs['category'] = category
+    if deviceType is not None:
+        final_kwargs['deviceType'] = deviceType
+    if name is not None:
+        final_kwargs['name'] = name
+    if issueId is not None:
+        final_kwargs['issueId'] = issueId
+    if entityId is not None:
+        final_kwargs['entityId'] = entityId
+    if updatedBy is not None:
+        final_kwargs['updatedBy'] = updatedBy
+    if siteHierarchy is not None:
+        final_kwargs['siteHierarchy'] = siteHierarchy
+    if siteHierarchyId is not None:
+        final_kwargs['siteHierarchyId'] = siteHierarchyId
+    if siteName is not None:
+        final_kwargs['siteName'] = siteName
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if fabricSiteId is not None:
+        final_kwargs['fabricSiteId'] = fabricSiteId
+    if fabricVnName is not None:
+        final_kwargs['fabricVnName'] = fabricVnName
+    if fabricTransitSiteId is not None:
+        final_kwargs['fabricTransitSiteId'] = fabricTransitSiteId
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
+    if networkDeviceIpAddress is not None:
+        final_kwargs['networkDeviceIpAddress'] = networkDeviceIpAddress
+    if macAddress is not None:
+        final_kwargs['macAddress'] = macAddress
+    if aiDriven is not None:
+        final_kwargs['aiDriven'] = aiDriven
+    if fabricDriven is not None:
+        final_kwargs['fabricDriven'] = fabricDriven
+    if fabricSiteDriven is not None:
+        final_kwargs['fabricSiteDriven'] = fabricSiteDriven
+    if fabricVnDriven is not None:
+        final_kwargs['fabricVnDriven'] = fabricVnDriven
+    if fabricTransitDriven is not None:
+        final_kwargs['fabricTransitDriven'] = fabricTransitDriven
 
-    target = CatalystClient().__getattr__('getTheTotalNumberOfIssuesForGivenSetOfFilters')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getTheTotalNumberOfIssuesForGivenSetOfFilters')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getTag')
 def getTag(name: str = None, additionalInfo_nameSpace: str = None, additionalInfo_attributes: str = None, level: str = None, offset: float = None, limit: float = None, size: str = None, field: str = None, sortBy: str = None, order: str = None, systemTag: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'name': 'name', 'additionalInfo.nameSpace': 'additionalInfo_nameSpace', 'additionalInfo.attributes': 'additionalInfo_attributes', 'level': 'level', 'offset': 'offset', 'limit': 'limit', 'size': 'size', 'field': 'field', 'sortBy': 'sortBy', 'order': 'order', 'systemTag': 'systemTag'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if name is not None:
+        final_kwargs['name'] = name
+    if additionalInfo_nameSpace is not None:
+        final_kwargs['additionalInfo.nameSpace'] = additionalInfo_nameSpace
+    if additionalInfo_attributes is not None:
+        final_kwargs['additionalInfo.attributes'] = additionalInfo_attributes
+    if level is not None:
+        final_kwargs['level'] = level
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if size is not None:
+        final_kwargs['size'] = size
+    if field is not None:
+        final_kwargs['field'] = field
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
+    if systemTag is not None:
+        final_kwargs['systemTag'] = systemTag
 
-    target = CatalystClient().__getattr__('getTag')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getTag')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getLayer2VirtualNetworks')
 def getLayer2VirtualNetworks(id: str = None, fabricId: str = None, vlanName: str = None, vlanId: float = None, trafficType: str = None, associatedLayer3VirtualNetworkName: str = None, offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', 'fabricId': 'fabricId', 'vlanName': 'vlanName', 'vlanId': 'vlanId', 'trafficType': 'trafficType', 'associatedLayer3VirtualNetworkName': 'associatedLayer3VirtualNetworkName', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if fabricId is not None:
+        final_kwargs['fabricId'] = fabricId
+    if vlanName is not None:
+        final_kwargs['vlanName'] = vlanName
+    if vlanId is not None:
+        final_kwargs['vlanId'] = vlanId
+    if trafficType is not None:
+        final_kwargs['trafficType'] = trafficType
+    if associatedLayer3VirtualNetworkName is not None:
+        final_kwargs['associatedLayer3VirtualNetworkName'] = associatedLayer3VirtualNetworkName
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('getLayer2VirtualNetworks')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getLayer2VirtualNetworks')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getFabricZoneCount')
 def getFabricZoneCount():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getFabricZoneCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getFabricZoneCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getWebhookDestination')
 def getWebhookDestination(webhookIds: str = None, offset: float = None, limit: float = None, sortBy: str = None, order: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'webhookIds': 'webhookIds', 'offset': 'offset', 'limit': 'limit', 'sortBy': 'sortBy', 'order': 'order'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if webhookIds is not None:
+        final_kwargs['webhookIds'] = webhookIds
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
 
-    target = CatalystClient().__getattr__('getWebhookDestination')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getWebhookDestination')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrieveTimeZoneSettingsForASite')
 def retrieveTimeZoneSettingsForASite(id: str, _inherited: bool = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', '_inherited': '_inherited'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if _inherited is not None:
+        final_kwargs['_inherited'] = _inherited
 
-    target = CatalystClient().__getattr__('retrieveTimeZoneSettingsForASite')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrieveTimeZoneSettingsForASite')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceByID')
 def getDeviceByID(id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('getDeviceByID')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDeviceByID')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getApplicationPolicyQueuingProfile')
 def getApplicationPolicyQueuingProfile(name: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'name': 'name'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if name is not None:
+        final_kwargs['name'] = name
 
-    target = CatalystClient().__getattr__('getApplicationPolicyQueuingProfile')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getApplicationPolicyQueuingProfile')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getSyslogDestination')
 def getSyslogDestination(configId: str = None, name: str = None, protocol: str = None, offset: float = None, limit: float = None, sortBy: str = None, order: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'configId': 'configId', 'name': 'name', 'protocol': 'protocol', 'offset': 'offset', 'limit': 'limit', 'sortBy': 'sortBy', 'order': 'order'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if configId is not None:
+        final_kwargs['configId'] = configId
+    if name is not None:
+        final_kwargs['name'] = name
+    if protocol is not None:
+        final_kwargs['protocol'] = protocol
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
 
-    target = CatalystClient().__getattr__('getSyslogDestination')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getSyslogDestination')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAll802.11beProfiles')
 def getAll802_11beProfiles(limit: float = None, offset: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'limit': 'limit', 'offset': 'offset'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if offset is not None:
+        final_kwargs['offset'] = offset
 
-    target = CatalystClient().__getattr__('getAll802_11beProfiles')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getAll802_11beProfiles')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getSyncResultForVirtualAccount')
 def getSyncResultForVirtualAccount(domain: str, name: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'domain': 'domain', 'name': 'name'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if domain is not None:
+        final_kwargs['domain'] = domain
+    if name is not None:
+        final_kwargs['name'] = name
 
-    target = CatalystClient().__getattr__('getSyncResultForVirtualAccount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getSyncResultForVirtualAccount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAllTheCustomIssueDefinitionsBasedOnTheGivenFilters.')
 def getAllTheCustomIssueDefinitionsBasedOnTheGivenFilters_(X_CALLER_ID: str = None, id: str = None, profileId: str = None, name: str = None, priority: str = None, isEnabled: bool = None, severity: float = None, facility: str = None, mnemonic: str = None, limit: float = None, offset: float = None, sortBy: str = None, order: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'X-CALLER-ID': 'X_CALLER_ID', 'id': 'id', 'profileId': 'profileId', 'name': 'name', 'priority': 'priority', 'isEnabled': 'isEnabled', 'severity': 'severity', 'facility': 'facility', 'mnemonic': 'mnemonic', 'limit': 'limit', 'offset': 'offset', 'sortBy': 'sortBy', 'order': 'order'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+    if id is not None:
+        final_kwargs['id'] = id
+    if profileId is not None:
+        final_kwargs['profileId'] = profileId
+    if name is not None:
+        final_kwargs['name'] = name
+    if priority is not None:
+        final_kwargs['priority'] = priority
+    if isEnabled is not None:
+        final_kwargs['isEnabled'] = isEnabled
+    if severity is not None:
+        final_kwargs['severity'] = severity
+    if facility is not None:
+        final_kwargs['facility'] = facility
+    if mnemonic is not None:
+        final_kwargs['mnemonic'] = mnemonic
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
 
-    target = CatalystClient().__getattr__('getAllTheCustomIssueDefinitionsBasedOnTheGivenFilters_')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getAllTheCustomIssueDefinitionsBasedOnTheGivenFilters_')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getApplicationPolicyDefault')
 def getApplicationPolicyDefault():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getApplicationPolicyDefault')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getApplicationPolicyDefault')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getPrimaryManagedAPLocationsForSpecificWirelessController')
 def getPrimaryManagedAPLocationsForSpecificWirelessController(networkDeviceId: str, limit: float = None, offset: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkDeviceId': 'networkDeviceId', 'limit': 'limit', 'offset': 'offset'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if offset is not None:
+        final_kwargs['offset'] = offset
 
-    target = CatalystClient().__getattr__('getPrimaryManagedAPLocationsForSpecificWirelessController')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getPrimaryManagedAPLocationsForSpecificWirelessController')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getModuleInfoById')
 def getModuleInfoById(id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('getModuleInfoById')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getModuleInfoById')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getFabricDevicesLayer3HandoffsWithSdaTransit')
 def getFabricDevicesLayer3HandoffsWithSdaTransit(fabricId: str, networkDeviceId: str = None, offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'fabricId': 'fabricId', 'networkDeviceId': 'networkDeviceId', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if fabricId is not None:
+        final_kwargs['fabricId'] = fabricId
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('getFabricDevicesLayer3HandoffsWithSdaTransit')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getFabricDevicesLayer3HandoffsWithSdaTransit')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getFabricDevicesLayer3HandoffsWithIpTransit')
 def getFabricDevicesLayer3HandoffsWithIpTransit(fabricId: str, networkDeviceId: str = None, offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'fabricId': 'fabricId', 'networkDeviceId': 'networkDeviceId', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if fabricId is not None:
+        final_kwargs['fabricId'] = fabricId
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('getFabricDevicesLayer3HandoffsWithIpTransit')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getFabricDevicesLayer3HandoffsWithIpTransit')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('returnsNetworkDeviceProductNamesForASite')
 def returnsNetworkDeviceProductNamesForASite(siteId: str = None, productName: str = None, offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'siteId': 'siteId', 'productName': 'productName', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if productName is not None:
+        final_kwargs['productName'] = productName
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('returnsNetworkDeviceProductNamesForASite')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'returnsNetworkDeviceProductNamesForASite')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('countOfNotifications')
 def countOfNotifications(eventIds: str = None, startTime: float = None, endTime: float = None, category: str = None, type: str = None, severity: str = None, domain: str = None, subDomain: str = None, source: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'eventIds': 'eventIds', 'startTime': 'startTime', 'endTime': 'endTime', 'category': 'category', 'type': 'type', 'severity': 'severity', 'domain': 'domain', 'subDomain': 'subDomain', 'source': 'source'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if eventIds is not None:
+        final_kwargs['eventIds'] = eventIds
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if category is not None:
+        final_kwargs['category'] = category
+    if type is not None:
+        final_kwargs['type'] = type
+    if severity is not None:
+        final_kwargs['severity'] = severity
+    if domain is not None:
+        final_kwargs['domain'] = domain
+    if subDomain is not None:
+        final_kwargs['subDomain'] = subDomain
+    if source is not None:
+        final_kwargs['source'] = source
 
-    target = CatalystClient().__getattr__('countOfNotifications')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'countOfNotifications')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAScheduledReport')
 def getAScheduledReport(reportId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'reportId': 'reportId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if reportId is not None:
+        final_kwargs['reportId'] = reportId
 
-    target = CatalystClient().__getattr__('getAScheduledReport')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getAScheduledReport')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getSiteHealth')
 def getSiteHealth(siteType: str = None, offset: float = None, limit: float = None, timestamp: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'siteType': 'siteType', 'offset': 'offset', 'limit': 'limit', 'timestamp': 'timestamp'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteType is not None:
+        final_kwargs['siteType'] = siteType
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if timestamp is not None:
+        final_kwargs['timestamp'] = timestamp
 
-    target = CatalystClient().__getattr__('getSiteHealth')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getSiteHealth')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('returnsPOEInterfaceDetailsForTheDevice.')
 def returnsPOEInterfaceDetailsForTheDevice_(deviceUuid: str, interfaceNameList: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'deviceUuid': 'deviceUuid', 'interfaceNameList': 'interfaceNameList'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceUuid is not None:
+        final_kwargs['deviceUuid'] = deviceUuid
+    if interfaceNameList is not None:
+        final_kwargs['interfaceNameList'] = interfaceNameList
 
-    target = CatalystClient().__getattr__('returnsPOEInterfaceDetailsForTheDevice_')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'returnsPOEInterfaceDetailsForTheDevice_')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getSitesCount')
 def getSitesCount(name: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'name': 'name'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if name is not None:
+        final_kwargs['name'] = name
 
-    target = CatalystClient().__getattr__('getSitesCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getSitesCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrievesTheListOfValidationWorkflows')
 def retrievesTheListOfValidationWorkflows(startTime: float = None, endTime: float = None, runStatus: str = None, offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'startTime': 'startTime', 'endTime': 'endTime', 'runStatus': 'runStatus', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if runStatus is not None:
+        final_kwargs['runStatus'] = runStatus
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('retrievesTheListOfValidationWorkflows')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrievesTheListOfValidationWorkflows')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('readAnAggregatedSummaryOfSiteHealthData.')
 def readAnAggregatedSummaryOfSiteHealthData_(X_CALLER_ID: str = None, startTime: float = None, endTime: float = None, siteHierarchy: str = None, siteHierarchyId: str = None, siteType: str = None, id: str = None, view: str = None, attribute: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'X-CALLER-ID': 'X_CALLER_ID', 'startTime': 'startTime', 'endTime': 'endTime', 'siteHierarchy': 'siteHierarchy', 'siteHierarchyId': 'siteHierarchyId', 'siteType': 'siteType', 'id': 'id', 'view': 'view', 'attribute': 'attribute'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if siteHierarchy is not None:
+        final_kwargs['siteHierarchy'] = siteHierarchy
+    if siteHierarchyId is not None:
+        final_kwargs['siteHierarchyId'] = siteHierarchyId
+    if siteType is not None:
+        final_kwargs['siteType'] = siteType
+    if id is not None:
+        final_kwargs['id'] = id
+    if view is not None:
+        final_kwargs['view'] = view
+    if attribute is not None:
+        final_kwargs['attribute'] = attribute
 
-    target = CatalystClient().__getattr__('readAnAggregatedSummaryOfSiteHealthData_')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'readAnAggregatedSummaryOfSiteHealthData_')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrievesTheCountOfProfilesThatTheGivenSiteHasBeenAssigned')
 def retrievesTheCountOfProfilesThatTheGivenSiteHasBeenAssigned(siteId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'siteId': 'siteId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
 
-    target = CatalystClient().__getattr__('retrievesTheCountOfProfilesThatTheGivenSiteHasBeenAssigned')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrievesTheCountOfProfilesThatTheGivenSiteHasBeenAssigned')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getSiteCountV2')
 def getSiteCountV2(id: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('getSiteCountV2')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getSiteCountV2')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('returnsCountOfSoftwareImages')
 def returnsCountOfSoftwareImages(siteId: str = None, productNameOrdinal: float = None, supervisorProductNameOrdinal: float = None, imported: bool = None, name: str = None, version: str = None, golden: str = None, integrity: str = None, hasAddonImages: bool = None, isAddonImages: bool = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'siteId': 'siteId', 'productNameOrdinal': 'productNameOrdinal', 'supervisorProductNameOrdinal': 'supervisorProductNameOrdinal', 'imported': 'imported', 'name': 'name', 'version': 'version', 'golden': 'golden', 'integrity': 'integrity', 'hasAddonImages': 'hasAddonImages', 'isAddonImages': 'isAddonImages'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if productNameOrdinal is not None:
+        final_kwargs['productNameOrdinal'] = productNameOrdinal
+    if supervisorProductNameOrdinal is not None:
+        final_kwargs['supervisorProductNameOrdinal'] = supervisorProductNameOrdinal
+    if imported is not None:
+        final_kwargs['imported'] = imported
+    if name is not None:
+        final_kwargs['name'] = name
+    if version is not None:
+        final_kwargs['version'] = version
+    if golden is not None:
+        final_kwargs['golden'] = golden
+    if integrity is not None:
+        final_kwargs['integrity'] = integrity
+    if hasAddonImages is not None:
+        final_kwargs['hasAddonImages'] = hasAddonImages
+    if isAddonImages is not None:
+        final_kwargs['isAddonImages'] = isAddonImages
 
-    target = CatalystClient().__getattr__('returnsCountOfSoftwareImages')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'returnsCountOfSoftwareImages')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getExtranetPolicies')
 def getExtranetPolicies(extranetPolicyName: str = None, offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'extranetPolicyName': 'extranetPolicyName', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if extranetPolicyName is not None:
+        final_kwargs['extranetPolicyName'] = extranetPolicyName
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('getExtranetPolicies')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getExtranetPolicies')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getWirelessProfileByID')
 def getWirelessProfileByID(id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('getWirelessProfileByID')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getWirelessProfileByID')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getFlexibleReportScheduleByReportId')
 def getFlexibleReportScheduleByReportId(Content_Type: str, reportId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'Content-Type': 'Content_Type', 'reportId': 'reportId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if reportId is not None:
+        final_kwargs['reportId'] = reportId
 
-    target = CatalystClient().__getattr__('getFlexibleReportScheduleByReportId')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getFlexibleReportScheduleByReportId')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getPortChannels')
 def getPortChannels(fabricId: str = None, networkDeviceId: str = None, portChannelName: str = None, connectedDeviceType: str = None, offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'fabricId': 'fabricId', 'networkDeviceId': 'networkDeviceId', 'portChannelName': 'portChannelName', 'connectedDeviceType': 'connectedDeviceType', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if fabricId is not None:
+        final_kwargs['fabricId'] = fabricId
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
+    if portChannelName is not None:
+        final_kwargs['portChannelName'] = portChannelName
+    if connectedDeviceType is not None:
+        final_kwargs['connectedDeviceType'] = connectedDeviceType
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('getPortChannels')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getPortChannels')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getRFProfileByID')
 def getRFProfileByID(id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('getRFProfileByID')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getRFProfileByID')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getsTheTemplatesAvailable')
 def getsTheTemplatesAvailable(projectId: str = None, softwareType: str = None, softwareVersion: str = None, productFamily: str = None, productSeries: str = None, productType: str = None, filterConflictingTemplates: bool = None, tags: list = None, projectNames: list = None, unCommitted: bool = None, sortOrder: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'projectId': 'projectId', 'softwareType': 'softwareType', 'softwareVersion': 'softwareVersion', 'productFamily': 'productFamily', 'productSeries': 'productSeries', 'productType': 'productType', 'filterConflictingTemplates': 'filterConflictingTemplates', 'tags': 'tags', 'projectNames': 'projectNames', 'unCommitted': 'unCommitted', 'sortOrder': 'sortOrder'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if projectId is not None:
+        final_kwargs['projectId'] = projectId
+    if softwareType is not None:
+        final_kwargs['softwareType'] = softwareType
+    if softwareVersion is not None:
+        final_kwargs['softwareVersion'] = softwareVersion
+    if productFamily is not None:
+        final_kwargs['productFamily'] = productFamily
+    if productSeries is not None:
+        final_kwargs['productSeries'] = productSeries
+    if productType is not None:
+        final_kwargs['productType'] = productType
+    if filterConflictingTemplates is not None:
+        final_kwargs['filterConflictingTemplates'] = filterConflictingTemplates
+    if tags is not None:
+        final_kwargs['tags'] = tags
+    if projectNames is not None:
+        final_kwargs['projectNames'] = projectNames
+    if unCommitted is not None:
+        final_kwargs['unCommitted'] = unCommitted
+    if sortOrder is not None:
+        final_kwargs['sortOrder'] = sortOrder
 
-    target = CatalystClient().__getattr__('getsTheTemplatesAvailable')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getsTheTemplatesAvailable')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getSyslogSubscriptionDetails')
 def getSyslogSubscriptionDetails(name: str = None, instanceId: str = None, offset: float = None, limit: float = None, sortBy: str = None, order: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'name': 'name', 'instanceId': 'instanceId', 'offset': 'offset', 'limit': 'limit', 'sortBy': 'sortBy', 'order': 'order'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if name is not None:
+        final_kwargs['name'] = name
+    if instanceId is not None:
+        final_kwargs['instanceId'] = instanceId
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
 
-    target = CatalystClient().__getattr__('getSyslogSubscriptionDetails')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getSyslogSubscriptionDetails')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('returnsAllIssueTriggerDefinitionsForGivenFilters.')
 def returnsAllIssueTriggerDefinitionsForGivenFilters_(X_CALLER_ID: str = None, deviceType: str = None, profileId: str = None, id: str = None, name: str = None, priority: str = None, issueEnabled: bool = None, attribute: str = None, offset: float = None, limit: float = None, sortBy: str = None, order: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'X-CALLER-ID': 'X_CALLER_ID', 'deviceType': 'deviceType', 'profileId': 'profileId', 'id': 'id', 'name': 'name', 'priority': 'priority', 'issueEnabled': 'issueEnabled', 'attribute': 'attribute', 'offset': 'offset', 'limit': 'limit', 'sortBy': 'sortBy', 'order': 'order'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+    if deviceType is not None:
+        final_kwargs['deviceType'] = deviceType
+    if profileId is not None:
+        final_kwargs['profileId'] = profileId
+    if id is not None:
+        final_kwargs['id'] = id
+    if name is not None:
+        final_kwargs['name'] = name
+    if priority is not None:
+        final_kwargs['priority'] = priority
+    if issueEnabled is not None:
+        final_kwargs['issueEnabled'] = issueEnabled
+    if attribute is not None:
+        final_kwargs['attribute'] = attribute
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
 
-    target = CatalystClient().__getattr__('returnsAllIssueTriggerDefinitionsForGivenFilters_')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'returnsAllIssueTriggerDefinitionsForGivenFilters_')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getListOfScheduledReports')
 def getListOfScheduledReports(viewGroupId: str = None, viewId: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'viewGroupId': 'viewGroupId', 'viewId': 'viewId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if viewGroupId is not None:
+        final_kwargs['viewGroupId'] = viewGroupId
+    if viewId is not None:
+        final_kwargs['viewId'] = viewId
 
-    target = CatalystClient().__getattr__('getListOfScheduledReports')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getListOfScheduledReports')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAAAAttributeAPI')
 def getAAAAttributeAPI():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getAAAAttributeAPI')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getAAAAttributeAPI')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getClientDetail')
 def getClientDetail(macAddress: str, timestamp: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'macAddress': 'macAddress', 'timestamp': 'timestamp'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if macAddress is not None:
+        final_kwargs['macAddress'] = macAddress
+    if timestamp is not None:
+        final_kwargs['timestamp'] = timestamp
 
-    target = CatalystClient().__getattr__('getClientDetail')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getClientDetail')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('countTheNumberOfEvents')
 def countTheNumberOfEvents(deviceFamily: str, X_CALLER_ID: str = None, startTime: str = None, endTime: str = None, messageType: str = None, severity: str = None, siteId: str = None, siteHierarchyId: str = None, networkDeviceName: str = None, networkDeviceId: str = None, apMac: str = None, clientMac: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'X-CALLER-ID': 'X_CALLER_ID', 'deviceFamily': 'deviceFamily', 'startTime': 'startTime', 'endTime': 'endTime', 'messageType': 'messageType', 'severity': 'severity', 'siteId': 'siteId', 'siteHierarchyId': 'siteHierarchyId', 'networkDeviceName': 'networkDeviceName', 'networkDeviceId': 'networkDeviceId', 'apMac': 'apMac', 'clientMac': 'clientMac'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+    if deviceFamily is not None:
+        final_kwargs['deviceFamily'] = deviceFamily
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if messageType is not None:
+        final_kwargs['messageType'] = messageType
+    if severity is not None:
+        final_kwargs['severity'] = severity
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if siteHierarchyId is not None:
+        final_kwargs['siteHierarchyId'] = siteHierarchyId
+    if networkDeviceName is not None:
+        final_kwargs['networkDeviceName'] = networkDeviceName
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
+    if apMac is not None:
+        final_kwargs['apMac'] = apMac
+    if clientMac is not None:
+        final_kwargs['clientMac'] = clientMac
 
-    target = CatalystClient().__getattr__('countTheNumberOfEvents')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'countTheNumberOfEvents')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getEoXStatusForAllDevices')
 def getEoXStatusForAllDevices():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getEoXStatusForAllDevices')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getEoXStatusForAllDevices')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getTagMemberCount')
 def getTagMemberCount(id: str, memberType: str, memberAssociationType: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', 'memberType': 'memberType', 'memberAssociationType': 'memberAssociationType'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if memberType is not None:
+        final_kwargs['memberType'] = memberType
+    if memberAssociationType is not None:
+        final_kwargs['memberAssociationType'] = memberAssociationType
 
-    target = CatalystClient().__getattr__('getTagMemberCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getTagMemberCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrievesConfigurationDetailsOfTheExternalIPAMServer.')
 def retrievesConfigurationDetailsOfTheExternalIPAMServer_():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('retrievesConfigurationDetailsOfTheExternalIPAMServer_')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrievesConfigurationDetailsOfTheExternalIPAMServer_')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getViewDetailsForAGivenViewGroup_View')
 def getViewDetailsForAGivenViewGroup_View(viewGroupId: str, viewId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'viewGroupId': 'viewGroupId', 'viewId': 'viewId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if viewGroupId is not None:
+        final_kwargs['viewGroupId'] = viewGroupId
+    if viewId is not None:
+        final_kwargs['viewId'] = viewId
 
-    target = CatalystClient().__getattr__('getViewDetailsForAGivenViewGroup_View')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getViewDetailsForAGivenViewGroup_View')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
@@ -1308,752 +1940,984 @@ register('View')(globals()['getViewDetailsForAGivenViewGroup_View'])
 
 @register('View')
 def View(viewGroupId: str, viewId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'viewGroupId': 'viewGroupId', 'viewId': 'viewId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if viewGroupId is not None:
+        final_kwargs['viewGroupId'] = viewGroupId
+    if viewId is not None:
+        final_kwargs['viewId'] = viewId
 
-    target = CatalystClient().__getattr__('View')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'View')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getTheDetailsOfPhysicalComponentsOfTheGivenDevice.')
 def getTheDetailsOfPhysicalComponentsOfTheGivenDevice_(deviceUuid: str, type: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'deviceUuid': 'deviceUuid', 'type': 'type'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceUuid is not None:
+        final_kwargs['deviceUuid'] = deviceUuid
+    if type is not None:
+        final_kwargs['type'] = type
 
-    target = CatalystClient().__getattr__('getTheDetailsOfPhysicalComponentsOfTheGivenDevice_')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getTheDetailsOfPhysicalComponentsOfTheGivenDevice_')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceInterfacesBySpecifiedRange')
 def getDeviceInterfacesBySpecifiedRange(deviceId: str, startIndex: int, recordsToReturn: int):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'deviceId': 'deviceId', 'startIndex': 'startIndex', 'recordsToReturn': 'recordsToReturn'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
+    if startIndex is not None:
+        final_kwargs['startIndex'] = startIndex
+    if recordsToReturn is not None:
+        final_kwargs['recordsToReturn'] = recordsToReturn
 
-    target = CatalystClient().__getattr__('getDeviceInterfacesBySpecifiedRange')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDeviceInterfacesBySpecifiedRange')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getPollingIntervalForAllDevices')
 def getPollingIntervalForAllDevices():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getPollingIntervalForAllDevices')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getPollingIntervalForAllDevices')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceList')
 def getDeviceList(hostname: list = None, managementIpAddress: list = None, macAddress: list = None, locationName: list = None, serialNumber: list = None, location: list = None, family: list = None, type: list = None, series: list = None, collectionStatus: list = None, collectionInterval: list = None, notSyncedForMinutes: list = None, errorCode: list = None, errorDescription: list = None, softwareVersion: list = None, softwareType: list = None, platformId: list = None, role: list = None, reachabilityStatus: list = None, upTime: list = None, associatedWlcIp: list = None, license_name: list = None, license_type: list = None, license_status: list = None, module_name: list = None, module_equpimenttype: list = None, module_servicestate: list = None, module_vendorequipmenttype: list = None, module_partnumber: list = None, module_operationstatecode: list = None, id: str = None, deviceSupportLevel: str = None, offset: int = None, limit: int = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'hostname': 'hostname', 'managementIpAddress': 'managementIpAddress', 'macAddress': 'macAddress', 'locationName': 'locationName', 'serialNumber': 'serialNumber', 'location': 'location', 'family': 'family', 'type': 'type', 'series': 'series', 'collectionStatus': 'collectionStatus', 'collectionInterval': 'collectionInterval', 'notSyncedForMinutes': 'notSyncedForMinutes', 'errorCode': 'errorCode', 'errorDescription': 'errorDescription', 'softwareVersion': 'softwareVersion', 'softwareType': 'softwareType', 'platformId': 'platformId', 'role': 'role', 'reachabilityStatus': 'reachabilityStatus', 'upTime': 'upTime', 'associatedWlcIp': 'associatedWlcIp', 'license.name': 'license_name', 'license.type': 'license_type', 'license.status': 'license_status', 'module+name': 'module_name', 'module+equpimenttype': 'module_equpimenttype', 'module+servicestate': 'module_servicestate', 'module+vendorequipmenttype': 'module_vendorequipmenttype', 'module+partnumber': 'module_partnumber', 'module+operationstatecode': 'module_operationstatecode', 'id': 'id', 'deviceSupportLevel': 'deviceSupportLevel', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if hostname is not None:
+        final_kwargs['hostname'] = hostname
+    if managementIpAddress is not None:
+        final_kwargs['managementIpAddress'] = managementIpAddress
+    if macAddress is not None:
+        final_kwargs['macAddress'] = macAddress
+    if locationName is not None:
+        final_kwargs['locationName'] = locationName
+    if serialNumber is not None:
+        final_kwargs['serialNumber'] = serialNumber
+    if location is not None:
+        final_kwargs['location'] = location
+    if family is not None:
+        final_kwargs['family'] = family
+    if type is not None:
+        final_kwargs['type'] = type
+    if series is not None:
+        final_kwargs['series'] = series
+    if collectionStatus is not None:
+        final_kwargs['collectionStatus'] = collectionStatus
+    if collectionInterval is not None:
+        final_kwargs['collectionInterval'] = collectionInterval
+    if notSyncedForMinutes is not None:
+        final_kwargs['notSyncedForMinutes'] = notSyncedForMinutes
+    if errorCode is not None:
+        final_kwargs['errorCode'] = errorCode
+    if errorDescription is not None:
+        final_kwargs['errorDescription'] = errorDescription
+    if softwareVersion is not None:
+        final_kwargs['softwareVersion'] = softwareVersion
+    if softwareType is not None:
+        final_kwargs['softwareType'] = softwareType
+    if platformId is not None:
+        final_kwargs['platformId'] = platformId
+    if role is not None:
+        final_kwargs['role'] = role
+    if reachabilityStatus is not None:
+        final_kwargs['reachabilityStatus'] = reachabilityStatus
+    if upTime is not None:
+        final_kwargs['upTime'] = upTime
+    if associatedWlcIp is not None:
+        final_kwargs['associatedWlcIp'] = associatedWlcIp
+    if license_name is not None:
+        final_kwargs['license.name'] = license_name
+    if license_type is not None:
+        final_kwargs['license.type'] = license_type
+    if license_status is not None:
+        final_kwargs['license.status'] = license_status
+    if module_name is not None:
+        final_kwargs['module+name'] = module_name
+    if module_equpimenttype is not None:
+        final_kwargs['module+equpimenttype'] = module_equpimenttype
+    if module_servicestate is not None:
+        final_kwargs['module+servicestate'] = module_servicestate
+    if module_vendorequipmenttype is not None:
+        final_kwargs['module+vendorequipmenttype'] = module_vendorequipmenttype
+    if module_partnumber is not None:
+        final_kwargs['module+partnumber'] = module_partnumber
+    if module_operationstatecode is not None:
+        final_kwargs['module+operationstatecode'] = module_operationstatecode
+    if id is not None:
+        final_kwargs['id'] = id
+    if deviceSupportLevel is not None:
+        final_kwargs['deviceSupportLevel'] = deviceSupportLevel
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('getDeviceList')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDeviceList')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAllKeywordsOfCLIsAcceptedByCommandRunner')
 def getAllKeywordsOfCLIsAcceptedByCommandRunner():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getAllKeywordsOfCLIsAcceptedByCommandRunner')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getAllKeywordsOfCLIsAcceptedByCommandRunner')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getQosDeviceInterfaceInfo')
 def getQosDeviceInterfaceInfo(networkDeviceId: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkDeviceId': 'networkDeviceId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
 
-    target = CatalystClient().__getattr__('getQosDeviceInterfaceInfo')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getQosDeviceInterfaceInfo')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrieveTheCountOfInterfacesThatAreAssociatedWithAtLeastOneTag.')
 def retrieveTheCountOfInterfacesThatAreAssociatedWithAtLeastOneTag_():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('retrieveTheCountOfInterfacesThatAreAssociatedWithAtLeastOneTag_')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrieveTheCountOfInterfacesThatAreAssociatedWithAtLeastOneTag_')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceFamilyIdentifiers')
 def getDeviceFamilyIdentifiers(Accept: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'Accept': 'Accept'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Accept is not None:
+        final_kwargs['Accept'] = Accept
 
-    target = CatalystClient().__getattr__('getDeviceFamilyIdentifiers')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDeviceFamilyIdentifiers')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getTaskCount')
 def getTaskCount(startTime: str = None, endTime: str = None, data: str = None, errorCode: str = None, serviceType: str = None, username: str = None, progress: str = None, isError: str = None, failureReason: str = None, parentId: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'startTime': 'startTime', 'endTime': 'endTime', 'data': 'data', 'errorCode': 'errorCode', 'serviceType': 'serviceType', 'username': 'username', 'progress': 'progress', 'isError': 'isError', 'failureReason': 'failureReason', 'parentId': 'parentId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if data is not None:
+        final_kwargs['data'] = data
+    if errorCode is not None:
+        final_kwargs['errorCode'] = errorCode
+    if serviceType is not None:
+        final_kwargs['serviceType'] = serviceType
+    if username is not None:
+        final_kwargs['username'] = username
+    if progress is not None:
+        final_kwargs['progress'] = progress
+    if isError is not None:
+        final_kwargs['isError'] = isError
+    if failureReason is not None:
+        final_kwargs['failureReason'] = failureReason
+    if parentId is not None:
+        final_kwargs['parentId'] = parentId
 
-    target = CatalystClient().__getattr__('getTaskCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getTaskCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('devices')
 def devices(deviceRole: str = None, siteId: str = None, health: str = None, startTime: float = None, endTime: float = None, limit: float = None, offset: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'deviceRole': 'deviceRole', 'siteId': 'siteId', 'health': 'health', 'startTime': 'startTime', 'endTime': 'endTime', 'limit': 'limit', 'offset': 'offset'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceRole is not None:
+        final_kwargs['deviceRole'] = deviceRole
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if health is not None:
+        final_kwargs['health'] = health
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if offset is not None:
+        final_kwargs['offset'] = offset
 
-    target = CatalystClient().__getattr__('devices')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'devices')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getSSIDCountForSpecificWirelessController')
 def getSSIDCountForSpecificWirelessController(networkDeviceId: str, adminStatus: bool = None, managed: bool = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkDeviceId': 'networkDeviceId', 'adminStatus': 'adminStatus', 'managed': 'managed'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
+    if adminStatus is not None:
+        final_kwargs['adminStatus'] = adminStatus
+    if managed is not None:
+        final_kwargs['managed'] = managed
 
-    target = CatalystClient().__getattr__('getSSIDCountForSpecificWirelessController')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getSSIDCountForSpecificWirelessController')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrievesValidationDetailsForAValidationSet')
 def retrievesValidationDetailsForAValidationSet(id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('retrievesValidationDetailsForAValidationSet')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrievesValidationDetailsForAValidationSet')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getSmartAccountList')
 def getSmartAccountList():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getSmartAccountList')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getSmartAccountList')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getLayer3VirtualNetworks')
 def getLayer3VirtualNetworks(virtualNetworkName: str = None, fabricId: str = None, anchoredSiteId: str = None, offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'virtualNetworkName': 'virtualNetworkName', 'fabricId': 'fabricId', 'anchoredSiteId': 'anchoredSiteId', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if virtualNetworkName is not None:
+        final_kwargs['virtualNetworkName'] = virtualNetworkName
+    if fabricId is not None:
+        final_kwargs['fabricId'] = fabricId
+    if anchoredSiteId is not None:
+        final_kwargs['anchoredSiteId'] = anchoredSiteId
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('getLayer3VirtualNetworks')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getLayer3VirtualNetworks')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getListOfAvailableNamespaces')
 def getListOfAvailableNamespaces():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getListOfAvailableNamespaces')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getListOfAvailableNamespaces')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getSSIDByID')
 def getSSIDByID(siteId: str, id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'siteId': 'siteId', 'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('getSSIDByID')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getSSIDByID')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrieveNetworkDeviceProductName')
 def retrieveNetworkDeviceProductName(productNameOrdinal: float):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'productNameOrdinal': 'productNameOrdinal'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if productNameOrdinal is not None:
+        final_kwargs['productNameOrdinal'] = productNameOrdinal
 
-    target = CatalystClient().__getattr__('retrieveNetworkDeviceProductName')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrieveNetworkDeviceProductName')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getExecutionIdByReportId')
 def getExecutionIdByReportId(Content_Type: str, reportId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'Content-Type': 'Content_Type', 'reportId': 'reportId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if reportId is not None:
+        final_kwargs['reportId'] = reportId
 
-    target = CatalystClient().__getattr__('getExecutionIdByReportId')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getExecutionIdByReportId')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getMobilityGroupsCount')
 def getMobilityGroupsCount():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getMobilityGroupsCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getMobilityGroupsCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getTaskDetailsByID')
 def getTaskDetailsByID(id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('getTaskDetailsByID')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getTaskDetailsByID')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('custom-promptSupportGETAPI')
 def custom_promptSupportGETAPI():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('custom_promptSupportGETAPI')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'custom_promptSupportGETAPI')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAdvisoriesList')
 def getAdvisoriesList():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getAdvisoriesList')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getAdvisoriesList')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceInterfaceVLANs')
 def getDeviceInterfaceVLANs(id: str, interfaceType: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', 'interfaceType': 'interfaceType'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if interfaceType is not None:
+        final_kwargs['interfaceType'] = interfaceType
 
-    target = CatalystClient().__getattr__('getDeviceInterfaceVLANs')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDeviceInterfaceVLANs')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getListOfFiles')
 def getListOfFiles(nameSpace: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'nameSpace': 'nameSpace'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if nameSpace is not None:
+        final_kwargs['nameSpace'] = nameSpace
 
-    target = CatalystClient().__getattr__('getListOfFiles')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getListOfFiles')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrieveSpecificImageDistributionServer')
 def retrieveSpecificImageDistributionServer(id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('retrieveSpecificImageDistributionServer')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrieveSpecificImageDistributionServer')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getApplicationPolicy')
 def getApplicationPolicy(policyScope: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'policyScope': 'policyScope'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if policyScope is not None:
+        final_kwargs['policyScope'] = policyScope
 
-    target = CatalystClient().__getattr__('getApplicationPolicy')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getApplicationPolicy')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getWorkflowById')
 def getWorkflowById(id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('getWorkflowById')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getWorkflowById')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAdvisoriesSummary')
 def getAdvisoriesSummary():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getAdvisoriesSummary')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getAdvisoriesSummary')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getTagResourceTypes')
 def getTagResourceTypes():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getTagResourceTypes')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getTagResourceTypes')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getPortAssignmentCount')
 def getPortAssignmentCount(fabricId: str = None, networkDeviceId: str = None, interfaceName: str = None, dataVlanName: str = None, voiceVlanName: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'fabricId': 'fabricId', 'networkDeviceId': 'networkDeviceId', 'interfaceName': 'interfaceName', 'dataVlanName': 'dataVlanName', 'voiceVlanName': 'voiceVlanName'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if fabricId is not None:
+        final_kwargs['fabricId'] = fabricId
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
+    if interfaceName is not None:
+        final_kwargs['interfaceName'] = interfaceName
+    if dataVlanName is not None:
+        final_kwargs['dataVlanName'] = dataVlanName
+    if voiceVlanName is not None:
+        final_kwargs['voiceVlanName'] = voiceVlanName
 
-    target = CatalystClient().__getattr__('getPortAssignmentCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getPortAssignmentCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDiscoveriesByRange')
 def getDiscoveriesByRange(startIndex: int, recordsToReturn: int):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'startIndex': 'startIndex', 'recordsToReturn': 'recordsToReturn'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if startIndex is not None:
+        final_kwargs['startIndex'] = startIndex
+    if recordsToReturn is not None:
+        final_kwargs['recordsToReturn'] = recordsToReturn
 
-    target = CatalystClient().__getattr__('getDiscoveriesByRange')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDiscoveriesByRange')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAllITSMIntegrationSettings')
 def getAllITSMIntegrationSettings():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getAllITSMIntegrationSettings')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getAllITSMIntegrationSettings')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('licenseUsageDetails')
 def licenseUsageDetails(smart_account_id: str, virtual_account_name: str, device_type: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'smart_account_id': 'smart_account_id', 'virtual_account_name': 'virtual_account_name', 'device_type': 'device_type'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if smart_account_id is not None:
+        final_kwargs['smart_account_id'] = smart_account_id
+    if virtual_account_name is not None:
+        final_kwargs['virtual_account_name'] = virtual_account_name
+    if device_type is not None:
+        final_kwargs['device_type'] = device_type
 
-    target = CatalystClient().__getattr__('licenseUsageDetails')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'licenseUsageDetails')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getsAnArea')
 def getsAnArea(id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('getsAnArea')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getsAnArea')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getTheCountOfHealthScoreDefinitionsBasedOnProvidedFilters.')
 def getTheCountOfHealthScoreDefinitionsBasedOnProvidedFilters_(X_CALLER_ID: str = None, deviceType: str = None, id: str = None, includeForOverallHealth: bool = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'X-CALLER-ID': 'X_CALLER_ID', 'deviceType': 'deviceType', 'id': 'id', 'includeForOverallHealth': 'includeForOverallHealth'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+    if deviceType is not None:
+        final_kwargs['deviceType'] = deviceType
+    if id is not None:
+        final_kwargs['id'] = id
+    if includeForOverallHealth is not None:
+        final_kwargs['includeForOverallHealth'] = includeForOverallHealth
 
-    target = CatalystClient().__getattr__('getTheCountOfHealthScoreDefinitionsBasedOnProvidedFilters_')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getTheCountOfHealthScoreDefinitionsBasedOnProvidedFilters_')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getExtranetPolicyCount')
 def getExtranetPolicyCount():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getExtranetPolicyCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getExtranetPolicyCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getResyncIntervalForTheNetworkDevice')
 def getResyncIntervalForTheNetworkDevice(id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('getResyncIntervalForTheNetworkDevice')
-    if body_payload is not None:
-        return target(body=body_payload, **final_kwargs)
-    return target(**final_kwargs)
+    # No body parameter for this function.
+    body_payload = None
 
-@register('getInterfaces')
-def getInterfaces(limit: float = None, offset: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'limit': 'limit', 'offset': 'offset'}.items()
-        if locals_[san] is not None
-    }
+    client = CatalystClient()
+    target = getattr(client, 'getResyncIntervalForTheNetworkDevice')
 
-    target = CatalystClient().__getattr__('getInterfaces')
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAllViewGroups')
 def getAllViewGroups():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getAllViewGroups')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getAllViewGroups')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getEvents')
 def getEvents(tags: str, eventId: str = None, offset: float = None, limit: float = None, sortBy: str = None, order: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'eventId': 'eventId', 'tags': 'tags', 'offset': 'offset', 'limit': 'limit', 'sortBy': 'sortBy', 'order': 'order'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if eventId is not None:
+        final_kwargs['eventId'] = eventId
+    if tags is not None:
+        final_kwargs['tags'] = tags
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
 
-    target = CatalystClient().__getattr__('getEvents')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getEvents')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getEmailEventSubscriptions')
 def getEmailEventSubscriptions(eventIds: str = None, offset: float = None, limit: float = None, sortBy: str = None, order: str = None, domain: str = None, subDomain: str = None, category: str = None, type: str = None, name: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'eventIds': 'eventIds', 'offset': 'offset', 'limit': 'limit', 'sortBy': 'sortBy', 'order': 'order', 'domain': 'domain', 'subDomain': 'subDomain', 'category': 'category', 'type': 'type', 'name': 'name'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if eventIds is not None:
+        final_kwargs['eventIds'] = eventIds
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
+    if domain is not None:
+        final_kwargs['domain'] = domain
+    if subDomain is not None:
+        final_kwargs['subDomain'] = subDomain
+    if category is not None:
+        final_kwargs['category'] = category
+    if type is not None:
+        final_kwargs['type'] = type
+    if name is not None:
+        final_kwargs['name'] = name
 
-    target = CatalystClient().__getattr__('getEmailEventSubscriptions')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getEmailEventSubscriptions')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getEmailSubscriptionDetails')
 def getEmailSubscriptionDetails(name: str = None, instanceId: str = None, offset: float = None, limit: float = None, sortBy: str = None, order: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'name': 'name', 'instanceId': 'instanceId', 'offset': 'offset', 'limit': 'limit', 'sortBy': 'sortBy', 'order': 'order'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if name is not None:
+        final_kwargs['name'] = name
+    if instanceId is not None:
+        final_kwargs['instanceId'] = instanceId
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
 
-    target = CatalystClient().__getattr__('getEmailSubscriptionDetails')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getEmailSubscriptionDetails')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrieveAAASettingsForASite')
 def retrieveAAASettingsForASite(id: str, _inherited: bool = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', '_inherited': '_inherited'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if _inherited is not None:
+        final_kwargs['_inherited'] = _inherited
 
-    target = CatalystClient().__getattr__('retrieveAAASettingsForASite')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrieveAAASettingsForASite')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getInterfaceDetailsByDeviceIdAndInterfaceName')
 def getInterfaceDetailsByDeviceIdAndInterfaceName(deviceId: str, name: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'deviceId': 'deviceId', 'name': 'name'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
+    if name is not None:
+        final_kwargs['name'] = name
 
-    target = CatalystClient().__getattr__('getInterfaceDetailsByDeviceIdAndInterfaceName')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getInterfaceDetailsByDeviceIdAndInterfaceName')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAllGlobalCredentialsV2')
 def getAllGlobalCredentialsV2():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getAllGlobalCredentialsV2')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getAllGlobalCredentialsV2')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAccessPoint_s_FactoryResetStatus')
 def getAccessPoint_s_FactoryResetStatus(taskId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'taskId': 'taskId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if taskId is not None:
+        final_kwargs['taskId'] = taskId
 
-    target = CatalystClient().__getattr__('getAccessPoint_s_FactoryResetStatus')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getAccessPoint_s_FactoryResetStatus')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
@@ -2066,16 +2930,18 @@ register('s_FactoryResetStatu')(globals()['getAccessPoint_s_FactoryResetStatus']
 
 @register('s_FactoryResetStatus')
 def s_FactoryResetStatus(taskId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'taskId': 'taskId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if taskId is not None:
+        final_kwargs['taskId'] = taskId
 
-    target = CatalystClient().__getattr__('s_FactoryResetStatus')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 's_FactoryResetStatus')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
@@ -2088,16 +2954,18 @@ register('FactoryResetStatus')(globals()['s_FactoryResetStatus'])
 
 @register('s_FactoryResetStatu')
 def s_FactoryResetStatu(taskId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'taskId': 'taskId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if taskId is not None:
+        final_kwargs['taskId'] = taskId
 
-    target = CatalystClient().__getattr__('s_FactoryResetStatu')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 's_FactoryResetStatu')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
@@ -2107,496 +2975,778 @@ register('FactoryResetStatu')(globals()['s_FactoryResetStatu'])
 
 @register('getNetworkDevicesFromDiscovery')
 def getNetworkDevicesFromDiscovery(id: str, taskId: str = None, sortBy: str = None, sortOrder: str = None, ipAddress: list = None, pingStatus: list = None, snmpStatus: list = None, cliStatus: list = None, netconfStatus: list = None, httpStatus: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', 'taskId': 'taskId', 'sortBy': 'sortBy', 'sortOrder': 'sortOrder', 'ipAddress': 'ipAddress', 'pingStatus': 'pingStatus', 'snmpStatus': 'snmpStatus', 'cliStatus': 'cliStatus', 'netconfStatus': 'netconfStatus', 'httpStatus': 'httpStatus'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if taskId is not None:
+        final_kwargs['taskId'] = taskId
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if sortOrder is not None:
+        final_kwargs['sortOrder'] = sortOrder
+    if ipAddress is not None:
+        final_kwargs['ipAddress'] = ipAddress
+    if pingStatus is not None:
+        final_kwargs['pingStatus'] = pingStatus
+    if snmpStatus is not None:
+        final_kwargs['snmpStatus'] = snmpStatus
+    if cliStatus is not None:
+        final_kwargs['cliStatus'] = cliStatus
+    if netconfStatus is not None:
+        final_kwargs['netconfStatus'] = netconfStatus
+    if httpStatus is not None:
+        final_kwargs['httpStatus'] = httpStatus
 
-    target = CatalystClient().__getattr__('getNetworkDevicesFromDiscovery')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getNetworkDevicesFromDiscovery')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getSites')
 def getSites(name: str = None, nameHierarchy: str = None, type: str = None, _unitsOfMeasure: str = None, offset: int = None, limit: int = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'name': 'name', 'nameHierarchy': 'nameHierarchy', 'type': 'type', '_unitsOfMeasure': '_unitsOfMeasure', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if name is not None:
+        final_kwargs['name'] = name
+    if nameHierarchy is not None:
+        final_kwargs['nameHierarchy'] = nameHierarchy
+    if type is not None:
+        final_kwargs['type'] = type
+    if _unitsOfMeasure is not None:
+        final_kwargs['_unitsOfMeasure'] = _unitsOfMeasure
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('getSites')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getSites')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('returnTheCountOfAllTheFabricSiteWhichHasSSIDToIPPoolMapping')
 def returnTheCountOfAllTheFabricSiteWhichHasSSIDToIPPoolMapping():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('returnTheCountOfAllTheFabricSiteWhichHasSSIDToIPPoolMapping')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'returnTheCountOfAllTheFabricSiteWhichHasSSIDToIPPoolMapping')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getEventSubscriptions')
 def getEventSubscriptions(eventIds: str = None, offset: float = None, limit: float = None, sortBy: str = None, order: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'eventIds': 'eventIds', 'offset': 'offset', 'limit': 'limit', 'sortBy': 'sortBy', 'order': 'order'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if eventIds is not None:
+        final_kwargs['eventIds'] = eventIds
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
 
-    target = CatalystClient().__getattr__('getEventSubscriptions')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getEventSubscriptions')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('readSiteHealthSummaryDataBySiteId.')
 def readSiteHealthSummaryDataBySiteId_(id: str, X_CALLER_ID: str = None, startTime: float = None, endTime: float = None, view: str = None, attribute: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'X-CALLER-ID': 'X_CALLER_ID', 'id': 'id', 'startTime': 'startTime', 'endTime': 'endTime', 'view': 'view', 'attribute': 'attribute'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+    if id is not None:
+        final_kwargs['id'] = id
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if view is not None:
+        final_kwargs['view'] = view
+    if attribute is not None:
+        final_kwargs['attribute'] = attribute
 
-    target = CatalystClient().__getattr__('readSiteHealthSummaryDataBySiteId_')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'readSiteHealthSummaryDataBySiteId_')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getPlannedAccessPointsForFloor')
 def getPlannedAccessPointsForFloor(floorId: str, limit: float = None, offset: float = None, radios: bool = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'floorId': 'floorId', 'limit': 'limit', 'offset': 'offset', 'radios': 'radios'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if floorId is not None:
+        final_kwargs['floorId'] = floorId
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if radios is not None:
+        final_kwargs['radios'] = radios
 
-    target = CatalystClient().__getattr__('getPlannedAccessPointsForFloor')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getPlannedAccessPointsForFloor')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('returnListOfReplacementDevicesWithReplacementDetails')
 def returnListOfReplacementDevicesWithReplacementDetails(faultyDeviceName: str = None, faultyDevicePlatform: str = None, replacementDevicePlatform: str = None, faultyDeviceSerialNumber: str = None, replacementDeviceSerialNumber: str = None, replacementStatus: list = None, family: list = None, sortBy: str = None, sortOrder: str = None, offset: int = None, limit: int = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'faultyDeviceName': 'faultyDeviceName', 'faultyDevicePlatform': 'faultyDevicePlatform', 'replacementDevicePlatform': 'replacementDevicePlatform', 'faultyDeviceSerialNumber': 'faultyDeviceSerialNumber', 'replacementDeviceSerialNumber': 'replacementDeviceSerialNumber', 'replacementStatus': 'replacementStatus', 'family': 'family', 'sortBy': 'sortBy', 'sortOrder': 'sortOrder', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if faultyDeviceName is not None:
+        final_kwargs['faultyDeviceName'] = faultyDeviceName
+    if faultyDevicePlatform is not None:
+        final_kwargs['faultyDevicePlatform'] = faultyDevicePlatform
+    if replacementDevicePlatform is not None:
+        final_kwargs['replacementDevicePlatform'] = replacementDevicePlatform
+    if faultyDeviceSerialNumber is not None:
+        final_kwargs['faultyDeviceSerialNumber'] = faultyDeviceSerialNumber
+    if replacementDeviceSerialNumber is not None:
+        final_kwargs['replacementDeviceSerialNumber'] = replacementDeviceSerialNumber
+    if replacementStatus is not None:
+        final_kwargs['replacementStatus'] = replacementStatus
+    if family is not None:
+        final_kwargs['family'] = family
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if sortOrder is not None:
+        final_kwargs['sortOrder'] = sortOrder
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('returnListOfReplacementDevicesWithReplacementDetails')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'returnListOfReplacementDevicesWithReplacementDetails')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDiscoveryById')
 def getDiscoveryById(id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('getDiscoveryById')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDiscoveryById')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getConfigurationArchiveDetails')
 def getConfigurationArchiveDetails(deviceId: str = None, fileType: str = None, createdTime: str = None, createdBy: str = None, offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'deviceId': 'deviceId', 'fileType': 'fileType', 'createdTime': 'createdTime', 'createdBy': 'createdBy', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
+    if fileType is not None:
+        final_kwargs['fileType'] = fileType
+    if createdTime is not None:
+        final_kwargs['createdTime'] = createdTime
+    if createdBy is not None:
+        final_kwargs['createdBy'] = createdBy
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('getConfigurationArchiveDetails')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getConfigurationArchiveDetails')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAdvisoriesPerDevice')
 def getAdvisoriesPerDevice(deviceId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'deviceId': 'deviceId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
 
-    target = CatalystClient().__getattr__('getAdvisoriesPerDevice')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getAdvisoriesPerDevice')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceInterfaceCountForMultipleDevices')
 def getDeviceInterfaceCountForMultipleDevices():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getDeviceInterfaceCountForMultipleDevices')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDeviceInterfaceCountForMultipleDevices')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrievesTheCountOfValidationWorkflows')
 def retrievesTheCountOfValidationWorkflows(startTime: float = None, endTime: float = None, runStatus: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'startTime': 'startTime', 'endTime': 'endTime', 'runStatus': 'runStatus'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if runStatus is not None:
+        final_kwargs['runStatus'] = runStatus
 
-    target = CatalystClient().__getattr__('retrievesTheCountOfValidationWorkflows')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrievesTheCountOfValidationWorkflows')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getSNMPProperties')
 def getSNMPProperties():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getSNMPProperties')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getSNMPProperties')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getComplianceDetailCount')
 def getComplianceDetailCount(complianceType: str = None, complianceStatus: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'complianceType': 'complianceType', 'complianceStatus': 'complianceStatus'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if complianceType is not None:
+        final_kwargs['complianceType'] = complianceType
+    if complianceStatus is not None:
+        final_kwargs['complianceStatus'] = complianceStatus
 
-    target = CatalystClient().__getattr__('getComplianceDetailCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getComplianceDetailCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOverallClientHealth')
 def getOverallClientHealth(timestamp: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'timestamp': 'timestamp'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if timestamp is not None:
+        final_kwargs['timestamp'] = timestamp
 
-    target = CatalystClient().__getattr__('getOverallClientHealth')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getOverallClientHealth')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getLinecardDetails')
 def getLinecardDetails(deviceUuid: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'deviceUuid': 'deviceUuid'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceUuid is not None:
+        final_kwargs['deviceUuid'] = deviceUuid
 
-    target = CatalystClient().__getattr__('getLinecardDetails')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getLinecardDetails')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getsTheTotalNetworkDeviceInterfaceCountsInTheSpecifiedTimeRange.')
 def getsTheTotalNetworkDeviceInterfaceCountsInTheSpecifiedTimeRange_(startTime: float = None, endTime: float = None, siteHierarchy: str = None, siteHierarchyId: str = None, siteId: str = None, networkDeviceId: str = None, networkDeviceIpAddress: str = None, networkDeviceMacAddress: str = None, interfaceId: str = None, interfaceName: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'startTime': 'startTime', 'endTime': 'endTime', 'siteHierarchy': 'siteHierarchy', 'siteHierarchyId': 'siteHierarchyId', 'siteId': 'siteId', 'networkDeviceId': 'networkDeviceId', 'networkDeviceIpAddress': 'networkDeviceIpAddress', 'networkDeviceMacAddress': 'networkDeviceMacAddress', 'interfaceId': 'interfaceId', 'interfaceName': 'interfaceName'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if siteHierarchy is not None:
+        final_kwargs['siteHierarchy'] = siteHierarchy
+    if siteHierarchyId is not None:
+        final_kwargs['siteHierarchyId'] = siteHierarchyId
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
+    if networkDeviceIpAddress is not None:
+        final_kwargs['networkDeviceIpAddress'] = networkDeviceIpAddress
+    if networkDeviceMacAddress is not None:
+        final_kwargs['networkDeviceMacAddress'] = networkDeviceMacAddress
+    if interfaceId is not None:
+        final_kwargs['interfaceId'] = interfaceId
+    if interfaceName is not None:
+        final_kwargs['interfaceName'] = interfaceName
 
-    target = CatalystClient().__getattr__('getsTheTotalNetworkDeviceInterfaceCountsInTheSpecifiedTimeRange_')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getsTheTotalNetworkDeviceInterfaceCountsInTheSpecifiedTimeRange_')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getWirelessProfilesCount')
 def getWirelessProfilesCount():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getWirelessProfilesCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getWirelessProfilesCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getTagById')
 def getTagById(id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('getTagById')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getTagById')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAuditLogSummary')
 def getAuditLogSummary(parentInstanceId: str = None, isParentOnly: bool = None, instanceId: str = None, name: str = None, eventId: str = None, category: str = None, severity: str = None, domain: str = None, subDomain: str = None, source: str = None, userId: str = None, context: str = None, eventHierarchy: str = None, siteId: str = None, deviceId: str = None, isSystemEvents: bool = None, description: str = None, startTime: float = None, endTime: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'parentInstanceId': 'parentInstanceId', 'isParentOnly': 'isParentOnly', 'instanceId': 'instanceId', 'name': 'name', 'eventId': 'eventId', 'category': 'category', 'severity': 'severity', 'domain': 'domain', 'subDomain': 'subDomain', 'source': 'source', 'userId': 'userId', 'context': 'context', 'eventHierarchy': 'eventHierarchy', 'siteId': 'siteId', 'deviceId': 'deviceId', 'isSystemEvents': 'isSystemEvents', 'description': 'description', 'startTime': 'startTime', 'endTime': 'endTime'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if parentInstanceId is not None:
+        final_kwargs['parentInstanceId'] = parentInstanceId
+    if isParentOnly is not None:
+        final_kwargs['isParentOnly'] = isParentOnly
+    if instanceId is not None:
+        final_kwargs['instanceId'] = instanceId
+    if name is not None:
+        final_kwargs['name'] = name
+    if eventId is not None:
+        final_kwargs['eventId'] = eventId
+    if category is not None:
+        final_kwargs['category'] = category
+    if severity is not None:
+        final_kwargs['severity'] = severity
+    if domain is not None:
+        final_kwargs['domain'] = domain
+    if subDomain is not None:
+        final_kwargs['subDomain'] = subDomain
+    if source is not None:
+        final_kwargs['source'] = source
+    if userId is not None:
+        final_kwargs['userId'] = userId
+    if context is not None:
+        final_kwargs['context'] = context
+    if eventHierarchy is not None:
+        final_kwargs['eventHierarchy'] = eventHierarchy
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
+    if isSystemEvents is not None:
+        final_kwargs['isSystemEvents'] = isSystemEvents
+    if description is not None:
+        final_kwargs['description'] = description
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
 
-    target = CatalystClient().__getattr__('getAuditLogSummary')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getAuditLogSummary')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getsAListOfProjects')
 def getsAListOfProjects(name: str = None, sortOrder: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'name': 'name', 'sortOrder': 'sortOrder'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if name is not None:
+        final_kwargs['name'] = name
+    if sortOrder is not None:
+        final_kwargs['sortOrder'] = sortOrder
 
-    target = CatalystClient().__getattr__('getsAListOfProjects')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getsAListOfProjects')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('systemHealthCountAPI')
 def systemHealthCountAPI(domain: str = None, subdomain: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'domain': 'domain', 'subdomain': 'subdomain'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if domain is not None:
+        final_kwargs['domain'] = domain
+    if subdomain is not None:
+        final_kwargs['subdomain'] = subdomain
 
-    target = CatalystClient().__getattr__('systemHealthCountAPI')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'systemHealthCountAPI')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAuthenticationAndPolicyServers')
 def getAuthenticationAndPolicyServers(isIseEnabled: bool = None, state: str = None, role: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'isIseEnabled': 'isIseEnabled', 'state': 'state', 'role': 'role'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if isIseEnabled is not None:
+        final_kwargs['isIseEnabled'] = isIseEnabled
+    if state is not None:
+        final_kwargs['state'] = state
+    if role is not None:
+        final_kwargs['role'] = role
 
-    target = CatalystClient().__getattr__('getAuthenticationAndPolicyServers')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getAuthenticationAndPolicyServers')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getSSIDCountBySite')
 def getSSIDCountBySite(siteId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'siteId': 'siteId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
 
-    target = CatalystClient().__getattr__('getSSIDCountBySite')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getSSIDCountBySite')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('deviceLicenseSummary')
 def deviceLicenseSummary(page_number: float, order: str, limit: float, sort_by: str = None, dna_level: str = None, device_type: str = None, registration_status: str = None, virtual_account_name: str = None, smart_account_id: str = None, device_uuid: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'page_number': 'page_number', 'order': 'order', 'sort_by': 'sort_by', 'dna_level': 'dna_level', 'device_type': 'device_type', 'limit': 'limit', 'registration_status': 'registration_status', 'virtual_account_name': 'virtual_account_name', 'smart_account_id': 'smart_account_id', 'device_uuid': 'device_uuid'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if page_number is not None:
+        final_kwargs['page_number'] = page_number
+    if order is not None:
+        final_kwargs['order'] = order
+    if sort_by is not None:
+        final_kwargs['sort_by'] = sort_by
+    if dna_level is not None:
+        final_kwargs['dna_level'] = dna_level
+    if device_type is not None:
+        final_kwargs['device_type'] = device_type
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if registration_status is not None:
+        final_kwargs['registration_status'] = registration_status
+    if virtual_account_name is not None:
+        final_kwargs['virtual_account_name'] = virtual_account_name
+    if smart_account_id is not None:
+        final_kwargs['smart_account_id'] = smart_account_id
+    if device_uuid is not None:
+        final_kwargs['device_uuid'] = device_uuid
 
-    target = CatalystClient().__getattr__('deviceLicenseSummary')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'deviceLicenseSummary')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('complianceDetailsOfDevice')
 def complianceDetailsOfDevice(deviceUuid: str, category: str = None, complianceType: str = None, diffList: bool = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'deviceUuid': 'deviceUuid', 'category': 'category', 'complianceType': 'complianceType', 'diffList': 'diffList'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceUuid is not None:
+        final_kwargs['deviceUuid'] = deviceUuid
+    if category is not None:
+        final_kwargs['category'] = category
+    if complianceType is not None:
+        final_kwargs['complianceType'] = complianceType
+    if diffList is not None:
+        final_kwargs['diffList'] = diffList
 
-    target = CatalystClient().__getattr__('complianceDetailsOfDevice')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'complianceDetailsOfDevice')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrievesTheCountOfSitesThatTheGivenNetworkProfileForSitesIsAssi')
 def retrievesTheCountOfSitesThatTheGivenNetworkProfileForSitesIsAssi(profileId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'profileId': 'profileId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if profileId is not None:
+        final_kwargs['profileId'] = profileId
 
-    target = CatalystClient().__getattr__('retrievesTheCountOfSitesThatTheGivenNetworkProfileForSitesIsAssi')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrievesTheCountOfSitesThatTheGivenNetworkProfileForSitesIsAssi')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getProvisionedDevices')
 def getProvisionedDevices(id: str = None, networkDeviceId: str = None, siteId: str = None, offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', 'networkDeviceId': 'networkDeviceId', 'siteId': 'siteId', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('getProvisionedDevices')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getProvisionedDevices')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrievesAllPreviousPathtracesSummary')
 def retrievesAllPreviousPathtracesSummary(periodicRefresh: bool = None, sourceIP: str = None, destIP: str = None, sourcePort: float = None, destPort: float = None, gtCreateTime: float = None, ltCreateTime: float = None, protocol: str = None, status: str = None, taskId: str = None, lastUpdateTime: float = None, limit: float = None, offset: float = None, order: str = None, sortBy: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'periodicRefresh': 'periodicRefresh', 'sourceIP': 'sourceIP', 'destIP': 'destIP', 'sourcePort': 'sourcePort', 'destPort': 'destPort', 'gtCreateTime': 'gtCreateTime', 'ltCreateTime': 'ltCreateTime', 'protocol': 'protocol', 'status': 'status', 'taskId': 'taskId', 'lastUpdateTime': 'lastUpdateTime', 'limit': 'limit', 'offset': 'offset', 'order': 'order', 'sortBy': 'sortBy'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if periodicRefresh is not None:
+        final_kwargs['periodicRefresh'] = periodicRefresh
+    if sourceIP is not None:
+        final_kwargs['sourceIP'] = sourceIP
+    if destIP is not None:
+        final_kwargs['destIP'] = destIP
+    if sourcePort is not None:
+        final_kwargs['sourcePort'] = sourcePort
+    if destPort is not None:
+        final_kwargs['destPort'] = destPort
+    if gtCreateTime is not None:
+        final_kwargs['gtCreateTime'] = gtCreateTime
+    if ltCreateTime is not None:
+        final_kwargs['ltCreateTime'] = ltCreateTime
+    if protocol is not None:
+        final_kwargs['protocol'] = protocol
+    if status is not None:
+        final_kwargs['status'] = status
+    if taskId is not None:
+        final_kwargs['taskId'] = taskId
+    if lastUpdateTime is not None:
+        final_kwargs['lastUpdateTime'] = lastUpdateTime
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if order is not None:
+        final_kwargs['order'] = order
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
 
-    target = CatalystClient().__getattr__('retrievesAllPreviousPathtracesSummary')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrievesAllPreviousPathtracesSummary')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('inventoryInsightDeviceLinkMismatchAPI')
 def inventoryInsightDeviceLinkMismatchAPI(siteId: str, category: str, offset: int = None, limit: int = None, sortBy: str = None, order: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'siteId': 'siteId', 'offset': 'offset', 'limit': 'limit', 'category': 'category', 'sortBy': 'sortBy', 'order': 'order'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if category is not None:
+        final_kwargs['category'] = category
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
 
-    target = CatalystClient().__getattr__('inventoryInsightDeviceLinkMismatchAPI')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'inventoryInsightDeviceLinkMismatchAPI')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getTheDeviceDataForTheGivenDeviceId_Uuid_')
 def getTheDeviceDataForTheGivenDeviceId_Uuid_(id: str, startTime: float = None, endTime: float = None, view: str = None, attribute: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', 'startTime': 'startTime', 'endTime': 'endTime', 'view': 'view', 'attribute': 'attribute'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if view is not None:
+        final_kwargs['view'] = view
+    if attribute is not None:
+        final_kwargs['attribute'] = attribute
 
-    target = CatalystClient().__getattr__('getTheDeviceDataForTheGivenDeviceId_Uuid_')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getTheDeviceDataForTheGivenDeviceId_Uuid_')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
@@ -2606,256 +3756,354 @@ register('Uuid_')(globals()['getTheDeviceDataForTheGivenDeviceId_Uuid_'])
 
 @register('Uuid_')
 def Uuid_(id: str, startTime: float = None, endTime: float = None, view: str = None, attribute: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', 'startTime': 'startTime', 'endTime': 'endTime', 'view': 'view', 'attribute': 'attribute'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if view is not None:
+        final_kwargs['view'] = view
+    if attribute is not None:
+        final_kwargs['attribute'] = attribute
 
-    target = CatalystClient().__getattr__('Uuid_')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'Uuid_')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('lANAutomationLogById')
 def lANAutomationLogById(id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('lANAutomationLogById')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'lANAutomationLogById')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceCredentialSettingsForASite')
 def getDeviceCredentialSettingsForASite(id: str, _inherited: bool = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', '_inherited': '_inherited'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if _inherited is not None:
+        final_kwargs['_inherited'] = _inherited
 
-    target = CatalystClient().__getattr__('getDeviceCredentialSettingsForASite')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDeviceCredentialSettingsForASite')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceInterfaceCount')
 def getDeviceInterfaceCount(deviceId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'deviceId': 'deviceId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
 
-    target = CatalystClient().__getattr__('getDeviceInterfaceCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDeviceInterfaceCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('ciscoDNACenterReleaseSummary')
 def ciscoDNACenterReleaseSummary():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('ciscoDNACenterReleaseSummary')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'ciscoDNACenterReleaseSummary')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getLayer2VirtualNetworkCount')
 def getLayer2VirtualNetworkCount(fabricId: str = None, vlanName: str = None, vlanId: float = None, trafficType: str = None, associatedLayer3VirtualNetworkName: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'fabricId': 'fabricId', 'vlanName': 'vlanName', 'vlanId': 'vlanId', 'trafficType': 'trafficType', 'associatedLayer3VirtualNetworkName': 'associatedLayer3VirtualNetworkName'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if fabricId is not None:
+        final_kwargs['fabricId'] = fabricId
+    if vlanName is not None:
+        final_kwargs['vlanName'] = vlanName
+    if vlanId is not None:
+        final_kwargs['vlanId'] = vlanId
+    if trafficType is not None:
+        final_kwargs['trafficType'] = trafficType
+    if associatedLayer3VirtualNetworkName is not None:
+        final_kwargs['associatedLayer3VirtualNetworkName'] = associatedLayer3VirtualNetworkName
 
-    target = CatalystClient().__getattr__('getLayer2VirtualNetworkCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getLayer2VirtualNetworkCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrievesTheCountOfNetworkProfilesForSites')
 def retrievesTheCountOfNetworkProfilesForSites(type: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'type': 'type'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if type is not None:
+        final_kwargs['type'] = type
 
-    target = CatalystClient().__getattr__('retrievesTheCountOfNetworkProfilesForSites')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrievesTheCountOfNetworkProfilesForSites')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceCount')
 def getDeviceCount(hostname: list = None, managementIpAddress: list = None, macAddress: list = None, locationName: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'hostname': 'hostname', 'managementIpAddress': 'managementIpAddress', 'macAddress': 'macAddress', 'locationName': 'locationName'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if hostname is not None:
+        final_kwargs['hostname'] = hostname
+    if managementIpAddress is not None:
+        final_kwargs['managementIpAddress'] = managementIpAddress
+    if macAddress is not None:
+        final_kwargs['macAddress'] = macAddress
+    if locationName is not None:
+        final_kwargs['locationName'] = locationName
 
-    target = CatalystClient().__getattr__('getDeviceCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDeviceCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getFabricDevicesLayer2Handoffs')
 def getFabricDevicesLayer2Handoffs(fabricId: str, networkDeviceId: str = None, offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'fabricId': 'fabricId', 'networkDeviceId': 'networkDeviceId', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if fabricId is not None:
+        final_kwargs['fabricId'] = fabricId
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('getFabricDevicesLayer2Handoffs')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getFabricDevicesLayer2Handoffs')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getSyslogEventSubscriptions')
 def getSyslogEventSubscriptions(eventIds: str = None, offset: float = None, limit: float = None, sortBy: str = None, order: str = None, domain: str = None, subDomain: str = None, category: str = None, type: str = None, name: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'eventIds': 'eventIds', 'offset': 'offset', 'limit': 'limit', 'sortBy': 'sortBy', 'order': 'order', 'domain': 'domain', 'subDomain': 'subDomain', 'category': 'category', 'type': 'type', 'name': 'name'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if eventIds is not None:
+        final_kwargs['eventIds'] = eventIds
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
+    if domain is not None:
+        final_kwargs['domain'] = domain
+    if subDomain is not None:
+        final_kwargs['subDomain'] = subDomain
+    if category is not None:
+        final_kwargs['category'] = category
+    if type is not None:
+        final_kwargs['type'] = type
+    if name is not None:
+        final_kwargs['name'] = name
 
-    target = CatalystClient().__getattr__('getSyslogEventSubscriptions')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getSyslogEventSubscriptions')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getVLANDetails')
 def getVLANDetails():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getVLANDetails')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getVLANDetails')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAllMobilityGroups_')
 def getAllMobilityGroups_(networkDeviceId: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkDeviceId': 'networkDeviceId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
 
-    target = CatalystClient().__getattr__('getAllMobilityGroups_')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getAllMobilityGroups_')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getSiteV2')
 def getSiteV2(groupNameHierarchy: str = None, id: str = None, type: str = None, offset: str = None, limit: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'groupNameHierarchy': 'groupNameHierarchy', 'id': 'id', 'type': 'type', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if groupNameHierarchy is not None:
+        final_kwargs['groupNameHierarchy'] = groupNameHierarchy
+    if id is not None:
+        final_kwargs['id'] = id
+    if type is not None:
+        final_kwargs['type'] = type
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('getSiteV2')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getSiteV2')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('systemHealthAPI')
 def systemHealthAPI(summary: bool = None, domain: str = None, subdomain: str = None, limit: float = None, offset: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'summary': 'summary', 'domain': 'domain', 'subdomain': 'subdomain', 'limit': 'limit', 'offset': 'offset'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if summary is not None:
+        final_kwargs['summary'] = summary
+    if domain is not None:
+        final_kwargs['domain'] = domain
+    if subdomain is not None:
+        final_kwargs['subdomain'] = subdomain
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if offset is not None:
+        final_kwargs['offset'] = offset
 
-    target = CatalystClient().__getattr__('systemHealthAPI')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'systemHealthAPI')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('lANAutomationStatusById')
 def lANAutomationStatusById(id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('lANAutomationStatusById')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'lANAutomationStatusById')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getApplication_s')
 def getApplication_s(attributes: str, offset: float, limit: float, name: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'attributes': 'attributes', 'name': 'name', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if attributes is not None:
+        final_kwargs['attributes'] = attributes
+    if name is not None:
+        final_kwargs['name'] = name
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('getApplication_s')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getApplication_s')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
@@ -2865,1122 +4113,1578 @@ register('s')(globals()['getApplication_s'])
 
 @register('getFabricDevices')
 def getFabricDevices(fabricId: str, networkDeviceId: str = None, deviceRoles: str = None, offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'fabricId': 'fabricId', 'networkDeviceId': 'networkDeviceId', 'deviceRoles': 'deviceRoles', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if fabricId is not None:
+        final_kwargs['fabricId'] = fabricId
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
+    if deviceRoles is not None:
+        final_kwargs['deviceRoles'] = deviceRoles
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('getFabricDevices')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getFabricDevices')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('get802.11beProfileByID')
 def get802_11beProfileByID(id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('get802_11beProfileByID')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'get802_11beProfileByID')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getTasksCount')
 def getTasksCount(startTime: int = None, endTime: int = None, parentId: str = None, rootId: str = None, status: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'startTime': 'startTime', 'endTime': 'endTime', 'parentId': 'parentId', 'rootId': 'rootId', 'status': 'status'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if parentId is not None:
+        final_kwargs['parentId'] = parentId
+    if rootId is not None:
+        final_kwargs['rootId'] = rootId
+    if status is not None:
+        final_kwargs['status'] = status
 
-    target = CatalystClient().__getattr__('getTasksCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getTasksCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getsAFloor')
 def getsAFloor(id: str, _unitsOfMeasure: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', '_unitsOfMeasure': '_unitsOfMeasure'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if _unitsOfMeasure is not None:
+        final_kwargs['_unitsOfMeasure'] = _unitsOfMeasure
 
-    target = CatalystClient().__getattr__('getsAFloor')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getsAFloor')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getUsersAPI')
 def getUsersAPI(invokeSource: str, authSource: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'invokeSource': 'invokeSource', 'authSource': 'authSource'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if invokeSource is not None:
+        final_kwargs['invokeSource'] = invokeSource
+    if authSource is not None:
+        final_kwargs['authSource'] = authSource
 
-    target = CatalystClient().__getattr__('getUsersAPI')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getUsersAPI')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getFabricZones')
 def getFabricZones(id: str = None, siteId: str = None, offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', 'siteId': 'siteId', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('getFabricZones')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getFabricZones')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getVirtualAccountList')
 def getVirtualAccountList(domain: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'domain': 'domain'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if domain is not None:
+        final_kwargs['domain'] = domain
 
-    target = CatalystClient().__getattr__('getVirtualAccountList')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getVirtualAccountList')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getQosDeviceInterfaceInfoCount')
 def getQosDeviceInterfaceInfoCount():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getQosDeviceInterfaceInfoCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getQosDeviceInterfaceInfoCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('countOfEvents')
 def countOfEvents(tags: str, eventId: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'eventId': 'eventId', 'tags': 'tags'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if eventId is not None:
+        final_kwargs['eventId'] = eventId
+    if tags is not None:
+        final_kwargs['tags'] = tags
 
-    target = CatalystClient().__getattr__('countOfEvents')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'countOfEvents')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOSPFInterfaces')
 def getOSPFInterfaces():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getOSPFInterfaces')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getOSPFInterfaces')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkDeviceImageUpdates')
 def getNetworkDeviceImageUpdates(id: str = None, parentId: str = None, networkDeviceId: str = None, status: str = None, imageName: str = None, hostName: str = None, managementAddress: str = None, startTime: float = None, endTime: float = None, sortBy: str = None, order: str = None, offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', 'parentId': 'parentId', 'networkDeviceId': 'networkDeviceId', 'status': 'status', 'imageName': 'imageName', 'hostName': 'hostName', 'managementAddress': 'managementAddress', 'startTime': 'startTime', 'endTime': 'endTime', 'sortBy': 'sortBy', 'order': 'order', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if parentId is not None:
+        final_kwargs['parentId'] = parentId
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
+    if status is not None:
+        final_kwargs['status'] = status
+    if imageName is not None:
+        final_kwargs['imageName'] = imageName
+    if hostName is not None:
+        final_kwargs['hostName'] = hostName
+    if managementAddress is not None:
+        final_kwargs['managementAddress'] = managementAddress
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('getNetworkDeviceImageUpdates')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getNetworkDeviceImageUpdates')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getTransitNetworks')
 def getTransitNetworks(id: str = None, name: str = None, type: str = None, offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', 'name': 'name', 'type': 'type', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if name is not None:
+        final_kwargs['name'] = name
+    if type is not None:
+        final_kwargs['type'] = type
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('getTransitNetworks')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getTransitNetworks')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getStackDetailsForDevice')
 def getStackDetailsForDevice(deviceId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'deviceId': 'deviceId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
 
-    target = CatalystClient().__getattr__('getStackDetailsForDevice')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getStackDetailsForDevice')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getApplicationSetCount')
 def getApplicationSetCount(scalableGroupType: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'scalableGroupType': 'scalableGroupType'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if scalableGroupType is not None:
+        final_kwargs['scalableGroupType'] = scalableGroupType
 
-    target = CatalystClient().__getattr__('getApplicationSetCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getApplicationSetCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getWorkflowCount')
 def getWorkflowCount(name: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'name': 'name'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if name is not None:
+        final_kwargs['name'] = name
 
-    target = CatalystClient().__getattr__('getWorkflowCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getWorkflowCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('deviceComplianceStatus')
 def deviceComplianceStatus(deviceUuid: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'deviceUuid': 'deviceUuid'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceUuid is not None:
+        final_kwargs['deviceUuid'] = deviceUuid
 
-    target = CatalystClient().__getattr__('deviceComplianceStatus')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'deviceComplianceStatus')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrievesPreviousPathtrace')
 def retrievesPreviousPathtrace(flowAnalysisId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'flowAnalysisId': 'flowAnalysisId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if flowAnalysisId is not None:
+        final_kwargs['flowAnalysisId'] = flowAnalysisId
 
-    target = CatalystClient().__getattr__('retrievesPreviousPathtrace')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrievesPreviousPathtrace')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOverallNetworkHealth')
 def getOverallNetworkHealth(timestamp: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'timestamp': 'timestamp'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if timestamp is not None:
+        final_kwargs['timestamp'] = timestamp
 
-    target = CatalystClient().__getattr__('getOverallNetworkHealth')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getOverallNetworkHealth')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getPnPGlobalSettings')
 def getPnPGlobalSettings():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getPnPGlobalSettings')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getPnPGlobalSettings')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getServiceProviderDetailsV2')
 def getServiceProviderDetailsV2():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getServiceProviderDetailsV2')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getServiceProviderDetailsV2')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getWirelessProfiles')
 def getWirelessProfiles(limit: float = None, offset: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'limit': 'limit', 'offset': 'offset'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if offset is not None:
+        final_kwargs['offset'] = offset
 
-    target = CatalystClient().__getattr__('getWirelessProfiles')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getWirelessProfiles')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getConfigTaskDetails')
 def getConfigTaskDetails(parentTaskId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'parentTaskId': 'parentTaskId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if parentTaskId is not None:
+        final_kwargs['parentTaskId'] = parentTaskId
 
-    target = CatalystClient().__getattr__('getConfigTaskDetails')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getConfigTaskDetails')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrieveTheCountOfNetworkDevicesThatAreAssociatedWithAtLeastOneT')
 def retrieveTheCountOfNetworkDevicesThatAreAssociatedWithAtLeastOneT():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('retrieveTheCountOfNetworkDevicesThatAreAssociatedWithAtLeastOneT')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrieveTheCountOfNetworkDevicesThatAreAssociatedWithAtLeastOneT')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getMulticastVirtualNetworkCount')
 def getMulticastVirtualNetworkCount(fabricId: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'fabricId': 'fabricId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if fabricId is not None:
+        final_kwargs['fabricId'] = fabricId
 
-    target = CatalystClient().__getattr__('getMulticastVirtualNetworkCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getMulticastVirtualNetworkCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getTagCount')
 def getTagCount(name: str = None, nameSpace: str = None, attributeName: str = None, size: str = None, systemTag: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'name': 'name', 'nameSpace': 'nameSpace', 'attributeName': 'attributeName', 'size': 'size', 'systemTag': 'systemTag'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if name is not None:
+        final_kwargs['name'] = name
+    if nameSpace is not None:
+        final_kwargs['nameSpace'] = nameSpace
+    if attributeName is not None:
+        final_kwargs['attributeName'] = attributeName
+    if size is not None:
+        final_kwargs['size'] = size
+    if systemTag is not None:
+        final_kwargs['systemTag'] = systemTag
 
-    target = CatalystClient().__getattr__('getTagCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getTagCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceSummary')
 def getDeviceSummary(id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('getDeviceSummary')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDeviceSummary')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAuthenticationProfiles')
 def getAuthenticationProfiles(fabricId: str = None, authenticationProfileName: str = None, offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'fabricId': 'fabricId', 'authenticationProfileName': 'authenticationProfileName', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if fabricId is not None:
+        final_kwargs['fabricId'] = fabricId
+    if authenticationProfileName is not None:
+        final_kwargs['authenticationProfileName'] = authenticationProfileName
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('getAuthenticationProfiles')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getAuthenticationProfiles')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAllFlexibleReportSchedules')
 def getAllFlexibleReportSchedules(Content_Type: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'Content-Type': 'Content_Type'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
 
-    target = CatalystClient().__getattr__('getAllFlexibleReportSchedules')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getAllFlexibleReportSchedules')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('virtualAccountDetails')
 def virtualAccountDetails(smart_account_id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'smart_account_id': 'smart_account_id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if smart_account_id is not None:
+        final_kwargs['smart_account_id'] = smart_account_id
 
-    target = CatalystClient().__getattr__('virtualAccountDetails')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'virtualAccountDetails')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getFunctionalCapabilityById')
 def getFunctionalCapabilityById(id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('getFunctionalCapabilityById')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getFunctionalCapabilityById')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getFabricSites')
 def getFabricSites(id: str = None, siteId: str = None, offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', 'siteId': 'siteId', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('getFabricSites')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getFabricSites')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getWorkflows')
 def getWorkflows(limit: int = None, offset: int = None, sort: list = None, sortOrder: str = None, type: list = None, name: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'limit': 'limit', 'offset': 'offset', 'sort': 'sort', 'sortOrder': 'sortOrder', 'type': 'type', 'name': 'name'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if sort is not None:
+        final_kwargs['sort'] = sort
+    if sortOrder is not None:
+        final_kwargs['sortOrder'] = sortOrder
+    if type is not None:
+        final_kwargs['type'] = type
+    if name is not None:
+        final_kwargs['name'] = name
 
-    target = CatalystClient().__getattr__('getWorkflows')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getWorkflows')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceConfigById')
 def getDeviceConfigById(networkDeviceId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkDeviceId': 'networkDeviceId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
 
-    target = CatalystClient().__getattr__('getDeviceConfigById')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDeviceConfigById')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrievesSpecificClientInformationMatchingTheMACAddress.')
 def retrievesSpecificClientInformationMatchingTheMACAddress_(id: str, X_CALLER_ID: str = None, startTime: float = None, endTime: float = None, view: str = None, attribute: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'X-CALLER-ID': 'X_CALLER_ID', 'id': 'id', 'startTime': 'startTime', 'endTime': 'endTime', 'view': 'view', 'attribute': 'attribute'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+    if id is not None:
+        final_kwargs['id'] = id
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if view is not None:
+        final_kwargs['view'] = view
+    if attribute is not None:
+        final_kwargs['attribute'] = attribute
 
-    target = CatalystClient().__getattr__('retrievesSpecificClientInformationMatchingTheMACAddress_')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrievesSpecificClientInformationMatchingTheMACAddress_')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getOrganizationListForMeraki')
 def getOrganizationListForMeraki(id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('getOrganizationListForMeraki')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getOrganizationListForMeraki')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getPollingIntervalById')
 def getPollingIntervalById(id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('getPollingIntervalById')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getPollingIntervalById')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNotifications')
 def getNotifications(eventIds: str = None, startTime: float = None, endTime: float = None, category: str = None, type: str = None, severity: str = None, domain: str = None, subDomain: str = None, source: str = None, offset: float = None, limit: float = None, sortBy: str = None, order: str = None, tags: str = None, namespace: str = None, siteId: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'eventIds': 'eventIds', 'startTime': 'startTime', 'endTime': 'endTime', 'category': 'category', 'type': 'type', 'severity': 'severity', 'domain': 'domain', 'subDomain': 'subDomain', 'source': 'source', 'offset': 'offset', 'limit': 'limit', 'sortBy': 'sortBy', 'order': 'order', 'tags': 'tags', 'namespace': 'namespace', 'siteId': 'siteId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if eventIds is not None:
+        final_kwargs['eventIds'] = eventIds
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if category is not None:
+        final_kwargs['category'] = category
+    if type is not None:
+        final_kwargs['type'] = type
+    if severity is not None:
+        final_kwargs['severity'] = severity
+    if domain is not None:
+        final_kwargs['domain'] = domain
+    if subDomain is not None:
+        final_kwargs['subDomain'] = subDomain
+    if source is not None:
+        final_kwargs['source'] = source
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
+    if tags is not None:
+        final_kwargs['tags'] = tags
+    if namespace is not None:
+        final_kwargs['namespace'] = namespace
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
 
-    target = CatalystClient().__getattr__('getNotifications')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getNotifications')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAllTheDetailsAndSuggestedActionsOfAnIssueForTheGivenIssueId')
 def getAllTheDetailsAndSuggestedActionsOfAnIssueForTheGivenIssueId(id: str, Accept_Language: str = None, X_CALLER_ID: str = None, view: str = None, attribute: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'Accept-Language': 'Accept_Language', 'X-CALLER-ID': 'X_CALLER_ID', 'id': 'id', 'view': 'view', 'attribute': 'attribute'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Accept_Language is not None:
+        final_kwargs['Accept-Language'] = Accept_Language
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+    if id is not None:
+        final_kwargs['id'] = id
+    if view is not None:
+        final_kwargs['view'] = view
+    if attribute is not None:
+        final_kwargs['attribute'] = attribute
 
-    target = CatalystClient().__getattr__('getAllTheDetailsAndSuggestedActionsOfAnIssueForTheGivenIssueId')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getAllTheDetailsAndSuggestedActionsOfAnIssueForTheGivenIssueId')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('legitOperationsForInterface')
 def legitOperationsForInterface(interfaceUuid: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'interfaceUuid': 'interfaceUuid'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if interfaceUuid is not None:
+        final_kwargs['interfaceUuid'] = interfaceUuid
 
-    target = CatalystClient().__getattr__('legitOperationsForInterface')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'legitOperationsForInterface')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceConfigCount')
 def getDeviceConfigCount():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getDeviceConfigCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDeviceConfigCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getISISInterfaces')
 def getISISInterfaces():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getISISInterfaces')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getISISInterfaces')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrieveANetworkProfileForSitesById')
 def retrieveANetworkProfileForSitesById(id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('retrieveANetworkProfileForSitesById')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrieveANetworkProfileForSitesById')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAuditLogRecords')
 def getAuditLogRecords(parentInstanceId: str = None, instanceId: str = None, name: str = None, eventId: str = None, category: str = None, severity: str = None, domain: str = None, subDomain: str = None, source: str = None, userId: str = None, context: str = None, eventHierarchy: str = None, siteId: str = None, deviceId: str = None, isSystemEvents: bool = None, description: str = None, offset: float = None, limit: float = None, startTime: float = None, endTime: float = None, sortBy: str = None, order: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'parentInstanceId': 'parentInstanceId', 'instanceId': 'instanceId', 'name': 'name', 'eventId': 'eventId', 'category': 'category', 'severity': 'severity', 'domain': 'domain', 'subDomain': 'subDomain', 'source': 'source', 'userId': 'userId', 'context': 'context', 'eventHierarchy': 'eventHierarchy', 'siteId': 'siteId', 'deviceId': 'deviceId', 'isSystemEvents': 'isSystemEvents', 'description': 'description', 'offset': 'offset', 'limit': 'limit', 'startTime': 'startTime', 'endTime': 'endTime', 'sortBy': 'sortBy', 'order': 'order'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if parentInstanceId is not None:
+        final_kwargs['parentInstanceId'] = parentInstanceId
+    if instanceId is not None:
+        final_kwargs['instanceId'] = instanceId
+    if name is not None:
+        final_kwargs['name'] = name
+    if eventId is not None:
+        final_kwargs['eventId'] = eventId
+    if category is not None:
+        final_kwargs['category'] = category
+    if severity is not None:
+        final_kwargs['severity'] = severity
+    if domain is not None:
+        final_kwargs['domain'] = domain
+    if subDomain is not None:
+        final_kwargs['subDomain'] = subDomain
+    if source is not None:
+        final_kwargs['source'] = source
+    if userId is not None:
+        final_kwargs['userId'] = userId
+    if context is not None:
+        final_kwargs['context'] = context
+    if eventHierarchy is not None:
+        final_kwargs['eventHierarchy'] = eventHierarchy
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
+    if isSystemEvents is not None:
+        final_kwargs['isSystemEvents'] = isSystemEvents
+    if description is not None:
+        final_kwargs['description'] = description
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
 
-    target = CatalystClient().__getattr__('getAuditLogRecords')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getAuditLogRecords')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('systemPerformanceHistoricalAPI')
 def systemPerformanceHistoricalAPI(kpi: str = None, startTime: float = None, endTime: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'kpi': 'kpi', 'startTime': 'startTime', 'endTime': 'endTime'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if kpi is not None:
+        final_kwargs['kpi'] = kpi
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
 
-    target = CatalystClient().__getattr__('systemPerformanceHistoricalAPI')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'systemPerformanceHistoricalAPI')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getSupervisorCardDetail')
 def getSupervisorCardDetail(deviceUuid: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'deviceUuid': 'deviceUuid'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceUuid is not None:
+        final_kwargs['deviceUuid'] = deviceUuid
 
-    target = CatalystClient().__getattr__('getSupervisorCardDetail')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getSupervisorCardDetail')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrieveImageDistributionSettingsForASite')
 def retrieveImageDistributionSettingsForASite(id: str, _inherited: bool = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', '_inherited': '_inherited'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if _inherited is not None:
+        final_kwargs['_inherited'] = _inherited
 
-    target = CatalystClient().__getattr__('retrieveImageDistributionSettingsForASite')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrieveImageDistributionSettingsForASite')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getSSIDDetailsForSpecificWirelessController')
 def getSSIDDetailsForSpecificWirelessController(networkDeviceId: str, ssidName: str = None, adminStatus: bool = None, managed: bool = None, limit: float = None, offset: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkDeviceId': 'networkDeviceId', 'ssidName': 'ssidName', 'adminStatus': 'adminStatus', 'managed': 'managed', 'limit': 'limit', 'offset': 'offset'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
+    if ssidName is not None:
+        final_kwargs['ssidName'] = ssidName
+    if adminStatus is not None:
+        final_kwargs['adminStatus'] = adminStatus
+    if managed is not None:
+        final_kwargs['managed'] = managed
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if offset is not None:
+        final_kwargs['offset'] = offset
 
-    target = CatalystClient().__getattr__('getSSIDDetailsForSpecificWirelessController')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getSSIDDetailsForSpecificWirelessController')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getsDetailsOfAGivenTemplate')
 def getsDetailsOfAGivenTemplate(templateId: str, latestVersion: bool = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'templateId': 'templateId', 'latestVersion': 'latestVersion'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if templateId is not None:
+        final_kwargs['templateId'] = templateId
+    if latestVersion is not None:
+        final_kwargs['latestVersion'] = latestVersion
 
-    target = CatalystClient().__getattr__('getsDetailsOfAGivenTemplate')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getsDetailsOfAGivenTemplate')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getEventArtifacts')
 def getEventArtifacts(eventIds: str = None, tags: str = None, offset: float = None, limit: float = None, sortBy: str = None, order: str = None, search: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'eventIds': 'eventIds', 'tags': 'tags', 'offset': 'offset', 'limit': 'limit', 'sortBy': 'sortBy', 'order': 'order', 'search': 'search'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if eventIds is not None:
+        final_kwargs['eventIds'] = eventIds
+    if tags is not None:
+        final_kwargs['tags'] = tags
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
+    if search is not None:
+        final_kwargs['search'] = search
 
-    target = CatalystClient().__getattr__('getEventArtifacts')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getEventArtifacts')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getsTheDetailsOfAGivenProject.')
 def getsTheDetailsOfAGivenProject_(projectId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'projectId': 'projectId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if projectId is not None:
+        final_kwargs['projectId'] = projectId
 
-    target = CatalystClient().__getattr__('getsTheDetailsOfAGivenProject_')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getsTheDetailsOfAGivenProject_')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrievesValidationWorkflowDetails')
 def retrievesValidationWorkflowDetails(id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('retrievesValidationWorkflowDetails')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrievesValidationWorkflowDetails')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getModuleCount')
 def getModuleCount(deviceId: str, nameList: list = None, vendorEquipmentTypeList: list = None, partNumberList: list = None, operationalStateCodeList: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'deviceId': 'deviceId', 'nameList': 'nameList', 'vendorEquipmentTypeList': 'vendorEquipmentTypeList', 'partNumberList': 'partNumberList', 'operationalStateCodeList': 'operationalStateCodeList'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
+    if nameList is not None:
+        final_kwargs['nameList'] = nameList
+    if vendorEquipmentTypeList is not None:
+        final_kwargs['vendorEquipmentTypeList'] = vendorEquipmentTypeList
+    if partNumberList is not None:
+        final_kwargs['partNumberList'] = partNumberList
+    if operationalStateCodeList is not None:
+        final_kwargs['operationalStateCodeList'] = operationalStateCodeList
 
-    target = CatalystClient().__getattr__('getModuleCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getModuleCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getTransitNetworksCount')
 def getTransitNetworksCount(type: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'type': 'type'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if type is not None:
+        final_kwargs['type'] = type
 
-    target = CatalystClient().__getattr__('getTransitNetworksCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getTransitNetworksCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('returnsAllTheFabricSitesThatHaveVLANToSSIDMapping.')
 def returnsAllTheFabricSitesThatHaveVLANToSSIDMapping_(limit: float = None, offset: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'limit': 'limit', 'offset': 'offset'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if offset is not None:
+        final_kwargs['offset'] = offset
 
-    target = CatalystClient().__getattr__('returnsAllTheFabricSitesThatHaveVLANToSSIDMapping_')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'returnsAllTheFabricSitesThatHaveVLANToSSIDMapping_')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('deviceCountDetails')
 def deviceCountDetails(device_type: str = None, registration_status: str = None, dna_level: str = None, virtual_account_name: str = None, smart_account_id: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'device_type': 'device_type', 'registration_status': 'registration_status', 'dna_level': 'dna_level', 'virtual_account_name': 'virtual_account_name', 'smart_account_id': 'smart_account_id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if device_type is not None:
+        final_kwargs['device_type'] = device_type
+    if registration_status is not None:
+        final_kwargs['registration_status'] = registration_status
+    if dna_level is not None:
+        final_kwargs['dna_level'] = dna_level
+    if virtual_account_name is not None:
+        final_kwargs['virtual_account_name'] = virtual_account_name
+    if smart_account_id is not None:
+        final_kwargs['smart_account_id'] = smart_account_id
 
-    target = CatalystClient().__getattr__('deviceCountDetails')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'deviceCountDetails')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAllExecutionDetailsForAGivenReport')
 def getAllExecutionDetailsForAGivenReport(reportId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'reportId': 'reportId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if reportId is not None:
+        final_kwargs['reportId'] = reportId
 
-    target = CatalystClient().__getattr__('getAllExecutionDetailsForAGivenReport')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getAllExecutionDetailsForAGivenReport')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getRest_WebhookEventSubscriptions')
 def getRest_WebhookEventSubscriptions(eventIds: str = None, offset: float = None, limit: float = None, sortBy: str = None, order: str = None, domain: str = None, subDomain: str = None, category: str = None, type: str = None, name: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'eventIds': 'eventIds', 'offset': 'offset', 'limit': 'limit', 'sortBy': 'sortBy', 'order': 'order', 'domain': 'domain', 'subDomain': 'subDomain', 'category': 'category', 'type': 'type', 'name': 'name'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if eventIds is not None:
+        final_kwargs['eventIds'] = eventIds
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
+    if domain is not None:
+        final_kwargs['domain'] = domain
+    if subDomain is not None:
+        final_kwargs['subDomain'] = subDomain
+    if category is not None:
+        final_kwargs['category'] = category
+    if type is not None:
+        final_kwargs['type'] = type
+    if name is not None:
+        final_kwargs['name'] = name
 
-    target = CatalystClient().__getattr__('getRest_WebhookEventSubscriptions')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getRest_WebhookEventSubscriptions')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
-
-# alias → easier for LLM
-register('WebhookEventSubscription')(globals()['getRest_WebhookEventSubscriptions'])
 
 # alias → easier for LLM
 register('WebhookEventSubscriptions')(globals()['getRest_WebhookEventSubscriptions'])
 
-@register('WebhookEventSubscription')
-def WebhookEventSubscription(eventIds: str = None, offset: float = None, limit: float = None, sortBy: str = None, order: str = None, domain: str = None, subDomain: str = None, category: str = None, type: str = None, name: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'eventIds': 'eventIds', 'offset': 'offset', 'limit': 'limit', 'sortBy': 'sortBy', 'order': 'order', 'domain': 'domain', 'subDomain': 'subDomain', 'category': 'category', 'type': 'type', 'name': 'name'}.items()
-        if locals_[san] is not None
-    }
+# alias → easier for LLM
+register('WebhookEventSubscription')(globals()['getRest_WebhookEventSubscriptions'])
 
-    target = CatalystClient().__getattr__('WebhookEventSubscription')
+@register('WebhookEventSubscriptions')
+def WebhookEventSubscriptions(eventIds: str = None, offset: float = None, limit: float = None, sortBy: str = None, order: str = None, domain: str = None, subDomain: str = None, category: str = None, type: str = None, name: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if eventIds is not None:
+        final_kwargs['eventIds'] = eventIds
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
+    if domain is not None:
+        final_kwargs['domain'] = domain
+    if subDomain is not None:
+        final_kwargs['subDomain'] = subDomain
+    if category is not None:
+        final_kwargs['category'] = category
+    if type is not None:
+        final_kwargs['type'] = type
+    if name is not None:
+        final_kwargs['name'] = name
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'WebhookEventSubscriptions')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
-@register('WebhookEventSubscriptions')
-def WebhookEventSubscriptions(eventIds: str = None, offset: float = None, limit: float = None, sortBy: str = None, order: str = None, domain: str = None, subDomain: str = None, category: str = None, type: str = None, name: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'eventIds': 'eventIds', 'offset': 'offset', 'limit': 'limit', 'sortBy': 'sortBy', 'order': 'order', 'domain': 'domain', 'subDomain': 'subDomain', 'category': 'category', 'type': 'type', 'name': 'name'}.items()
-        if locals_[san] is not None
-    }
+@register('WebhookEventSubscription')
+def WebhookEventSubscription(eventIds: str = None, offset: float = None, limit: float = None, sortBy: str = None, order: str = None, domain: str = None, subDomain: str = None, category: str = None, type: str = None, name: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if eventIds is not None:
+        final_kwargs['eventIds'] = eventIds
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
+    if domain is not None:
+        final_kwargs['domain'] = domain
+    if subDomain is not None:
+        final_kwargs['subDomain'] = subDomain
+    if category is not None:
+        final_kwargs['category'] = category
+    if type is not None:
+        final_kwargs['type'] = type
+    if name is not None:
+        final_kwargs['name'] = name
 
-    target = CatalystClient().__getattr__('WebhookEventSubscriptions')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'WebhookEventSubscription')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getRolesAPI')
 def getRolesAPI(invokeSource: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'invokeSource': 'invokeSource'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if invokeSource is not None:
+        final_kwargs['invokeSource'] = invokeSource
 
-    target = CatalystClient().__getattr__('getRolesAPI')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getRolesAPI')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getGoldenTagStatusOfAnImage.')
 def getGoldenTagStatusOfAnImage_(Accept: str, siteId: str, deviceFamilyIdentifier: str, deviceRole: str, imageId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'Accept': 'Accept', 'siteId': 'siteId', 'deviceFamilyIdentifier': 'deviceFamilyIdentifier', 'deviceRole': 'deviceRole', 'imageId': 'imageId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Accept is not None:
+        final_kwargs['Accept'] = Accept
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if deviceFamilyIdentifier is not None:
+        final_kwargs['deviceFamilyIdentifier'] = deviceFamilyIdentifier
+    if deviceRole is not None:
+        final_kwargs['deviceRole'] = deviceRole
+    if imageId is not None:
+        final_kwargs['imageId'] = imageId
 
-    target = CatalystClient().__getattr__('getGoldenTagStatusOfAnImage_')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getGoldenTagStatusOfAnImage_')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getPortChannelCount')
 def getPortChannelCount(fabricId: str = None, networkDeviceId: str = None, portChannelName: str = None, connectedDeviceType: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'fabricId': 'fabricId', 'networkDeviceId': 'networkDeviceId', 'portChannelName': 'portChannelName', 'connectedDeviceType': 'connectedDeviceType'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if fabricId is not None:
+        final_kwargs['fabricId'] = fabricId
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
+    if portChannelName is not None:
+        final_kwargs['portChannelName'] = portChannelName
+    if connectedDeviceType is not None:
+        final_kwargs['connectedDeviceType'] = connectedDeviceType
 
-    target = CatalystClient().__getattr__('getPortChannelCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getPortChannelCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('mapsSupportedAccessPoints')
 def mapsSupportedAccessPoints():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('mapsSupportedAccessPoints')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'mapsSupportedAccessPoints')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAuditLogParentRecords')
 def getAuditLogParentRecords(instanceId: str = None, name: str = None, eventId: str = None, category: str = None, severity: str = None, domain: str = None, subDomain: str = None, source: str = None, userId: str = None, context: str = None, eventHierarchy: str = None, siteId: str = None, deviceId: str = None, isSystemEvents: bool = None, description: str = None, offset: float = None, limit: float = None, startTime: float = None, endTime: float = None, sortBy: str = None, order: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'instanceId': 'instanceId', 'name': 'name', 'eventId': 'eventId', 'category': 'category', 'severity': 'severity', 'domain': 'domain', 'subDomain': 'subDomain', 'source': 'source', 'userId': 'userId', 'context': 'context', 'eventHierarchy': 'eventHierarchy', 'siteId': 'siteId', 'deviceId': 'deviceId', 'isSystemEvents': 'isSystemEvents', 'description': 'description', 'offset': 'offset', 'limit': 'limit', 'startTime': 'startTime', 'endTime': 'endTime', 'sortBy': 'sortBy', 'order': 'order'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if instanceId is not None:
+        final_kwargs['instanceId'] = instanceId
+    if name is not None:
+        final_kwargs['name'] = name
+    if eventId is not None:
+        final_kwargs['eventId'] = eventId
+    if category is not None:
+        final_kwargs['category'] = category
+    if severity is not None:
+        final_kwargs['severity'] = severity
+    if domain is not None:
+        final_kwargs['domain'] = domain
+    if subDomain is not None:
+        final_kwargs['subDomain'] = subDomain
+    if source is not None:
+        final_kwargs['source'] = source
+    if userId is not None:
+        final_kwargs['userId'] = userId
+    if context is not None:
+        final_kwargs['context'] = context
+    if eventHierarchy is not None:
+        final_kwargs['eventHierarchy'] = eventHierarchy
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
+    if isSystemEvents is not None:
+        final_kwargs['isSystemEvents'] = isSystemEvents
+    if description is not None:
+        final_kwargs['description'] = description
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
 
-    target = CatalystClient().__getattr__('getAuditLogParentRecords')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getAuditLogParentRecords')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrieveDNSSettingsForASite')
 def retrieveDNSSettingsForASite(id: str, _inherited: bool = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', '_inherited': '_inherited'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if _inherited is not None:
+        final_kwargs['_inherited'] = _inherited
 
-    target = CatalystClient().__getattr__('retrieveDNSSettingsForASite')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrieveDNSSettingsForASite')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getHealthScoreDefinitionForTheGivenId.')
 def getHealthScoreDefinitionForTheGivenId_(id: str, X_CALLER_ID: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'X-CALLER-ID': 'X_CALLER_ID', 'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('getHealthScoreDefinitionForTheGivenId_')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getHealthScoreDefinitionForTheGivenId_')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getProject_s_Details')
 def getProject_s_Details(id: str = None, name: str = None, offset: int = None, limit: int = None, sortOrder: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', 'name': 'name', 'offset': 'offset', 'limit': 'limit', 'sortOrder': 'sortOrder'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if name is not None:
+        final_kwargs['name'] = name
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if sortOrder is not None:
+        final_kwargs['sortOrder'] = sortOrder
 
-    target = CatalystClient().__getattr__('getProject_s_Details')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getProject_s_Details')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
-
-# alias → easier for LLM
-register('s_Details')(globals()['getProject_s_Details'])
 
 # alias → easier for LLM
 register('s_Detail')(globals()['getProject_s_Details'])
 
-@register('s_Details')
-def s_Details(id: str = None, name: str = None, offset: int = None, limit: int = None, sortOrder: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', 'name': 'name', 'offset': 'offset', 'limit': 'limit', 'sortOrder': 'sortOrder'}.items()
-        if locals_[san] is not None
-    }
-
-    target = CatalystClient().__getattr__('s_Details')
-    if body_payload is not None:
-        return target(body=body_payload, **final_kwargs)
-    return target(**final_kwargs)
-
 # alias → easier for LLM
-register('Detail')(globals()['s_Details'])
-
-# alias → easier for LLM
-register('Details')(globals()['s_Details'])
+register('s_Details')(globals()['getProject_s_Details'])
 
 @register('s_Detail')
 def s_Detail(id: str = None, name: str = None, offset: int = None, limit: int = None, sortOrder: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', 'name': 'name', 'offset': 'offset', 'limit': 'limit', 'sortOrder': 'sortOrder'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if name is not None:
+        final_kwargs['name'] = name
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if sortOrder is not None:
+        final_kwargs['sortOrder'] = sortOrder
 
-    target = CatalystClient().__getattr__('s_Detail')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 's_Detail')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
@@ -3988,1208 +5692,1750 @@ def s_Detail(id: str = None, name: str = None, offset: int = None, limit: int = 
 # alias → easier for LLM
 register('Detail')(globals()['s_Detail'])
 
+@register('s_Details')
+def s_Details(id: str = None, name: str = None, offset: int = None, limit: int = None, sortOrder: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if name is not None:
+        final_kwargs['name'] = name
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if sortOrder is not None:
+        final_kwargs['sortOrder'] = sortOrder
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 's_Details')
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+# alias → easier for LLM
+register('Details')(globals()['s_Details'])
+
+# alias → easier for LLM
+register('Detail')(globals()['s_Details'])
+
 @register('downloadAFileByFileId')
 def downloadAFileByFileId(fileId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'fileId': 'fileId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if fileId is not None:
+        final_kwargs['fileId'] = fileId
 
-    target = CatalystClient().__getattr__('downloadAFileByFileId')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'downloadAFileByFileId')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAllHealthScoreDefinitionsForGivenFilters.')
 def getAllHealthScoreDefinitionsForGivenFilters_(X_CALLER_ID: str = None, deviceType: str = None, id: str = None, includeForOverallHealth: bool = None, attribute: str = None, offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'X-CALLER-ID': 'X_CALLER_ID', 'deviceType': 'deviceType', 'id': 'id', 'includeForOverallHealth': 'includeForOverallHealth', 'attribute': 'attribute', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+    if deviceType is not None:
+        final_kwargs['deviceType'] = deviceType
+    if id is not None:
+        final_kwargs['id'] = id
+    if includeForOverallHealth is not None:
+        final_kwargs['includeForOverallHealth'] = includeForOverallHealth
+    if attribute is not None:
+        final_kwargs['attribute'] = attribute
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('getAllHealthScoreDefinitionsForGivenFilters_')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getAllHealthScoreDefinitionsForGivenFilters_')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getEmailDestination')
 def getEmailDestination():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getEmailDestination')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getEmailDestination')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getsInterfacesAlongWithStatisticsDataFromAllNetworkDevices.')
 def getsInterfacesAlongWithStatisticsDataFromAllNetworkDevices_(startTime: float = None, endTime: float = None, limit: float = None, offset: float = None, sortBy: str = None, order: str = None, siteHierarchy: str = None, siteHierarchyId: str = None, siteId: str = None, view: str = None, attribute: str = None, networkDeviceId: str = None, networkDeviceIpAddress: str = None, networkDeviceMacAddress: str = None, interfaceId: str = None, interfaceName: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'startTime': 'startTime', 'endTime': 'endTime', 'limit': 'limit', 'offset': 'offset', 'sortBy': 'sortBy', 'order': 'order', 'siteHierarchy': 'siteHierarchy', 'siteHierarchyId': 'siteHierarchyId', 'siteId': 'siteId', 'view': 'view', 'attribute': 'attribute', 'networkDeviceId': 'networkDeviceId', 'networkDeviceIpAddress': 'networkDeviceIpAddress', 'networkDeviceMacAddress': 'networkDeviceMacAddress', 'interfaceId': 'interfaceId', 'interfaceName': 'interfaceName'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
+    if siteHierarchy is not None:
+        final_kwargs['siteHierarchy'] = siteHierarchy
+    if siteHierarchyId is not None:
+        final_kwargs['siteHierarchyId'] = siteHierarchyId
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if view is not None:
+        final_kwargs['view'] = view
+    if attribute is not None:
+        final_kwargs['attribute'] = attribute
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
+    if networkDeviceIpAddress is not None:
+        final_kwargs['networkDeviceIpAddress'] = networkDeviceIpAddress
+    if networkDeviceMacAddress is not None:
+        final_kwargs['networkDeviceMacAddress'] = networkDeviceMacAddress
+    if interfaceId is not None:
+        final_kwargs['interfaceId'] = interfaceId
+    if interfaceName is not None:
+        final_kwargs['interfaceName'] = interfaceName
 
-    target = CatalystClient().__getattr__('getsInterfacesAlongWithStatisticsDataFromAllNetworkDevices_')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getsInterfacesAlongWithStatisticsDataFromAllNetworkDevices_')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrieveLicenseSetting')
 def retrieveLicenseSetting():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('retrieveLicenseSetting')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrieveLicenseSetting')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getTheTotalCustomIssueDefinitionsCountBasedOnTheProvidedFilters.')
 def getTheTotalCustomIssueDefinitionsCountBasedOnTheProvidedFilters_(X_CALLER_ID: str = None, id: str = None, profileId: str = None, name: str = None, priority: str = None, isEnabled: bool = None, severity: float = None, facility: str = None, mnemonic: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'X-CALLER-ID': 'X_CALLER_ID', 'id': 'id', 'profileId': 'profileId', 'name': 'name', 'priority': 'priority', 'isEnabled': 'isEnabled', 'severity': 'severity', 'facility': 'facility', 'mnemonic': 'mnemonic'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+    if id is not None:
+        final_kwargs['id'] = id
+    if profileId is not None:
+        final_kwargs['profileId'] = profileId
+    if name is not None:
+        final_kwargs['name'] = name
+    if priority is not None:
+        final_kwargs['priority'] = priority
+    if isEnabled is not None:
+        final_kwargs['isEnabled'] = isEnabled
+    if severity is not None:
+        final_kwargs['severity'] = severity
+    if facility is not None:
+        final_kwargs['facility'] = facility
+    if mnemonic is not None:
+        final_kwargs['mnemonic'] = mnemonic
 
-    target = CatalystClient().__getattr__('getTheTotalCustomIssueDefinitionsCountBasedOnTheProvidedFilters_')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getTheTotalCustomIssueDefinitionsCountBasedOnTheProvidedFilters_')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('get802.11beProfilesCount')
 def get802_11beProfilesCount():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('get802_11beProfilesCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'get802_11beProfilesCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getMulticast')
 def getMulticast(fabricId: str = None, offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'fabricId': 'fabricId', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if fabricId is not None:
+        final_kwargs['fabricId'] = fabricId
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('getMulticast')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getMulticast')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getFabricDevicesCount')
 def getFabricDevicesCount(fabricId: str, networkDeviceId: str = None, deviceRoles: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'fabricId': 'fabricId', 'networkDeviceId': 'networkDeviceId', 'deviceRoles': 'deviceRoles'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if fabricId is not None:
+        final_kwargs['fabricId'] = fabricId
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
+    if deviceRoles is not None:
+        final_kwargs['deviceRoles'] = deviceRoles
 
-    target = CatalystClient().__getattr__('getFabricDevicesCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getFabricDevicesCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('downloadFlexibleReport')
 def downloadFlexibleReport(Content_Type: str, reportId: str, executionId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'Content-Type': 'Content_Type', 'reportId': 'reportId', 'executionId': 'executionId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if reportId is not None:
+        final_kwargs['reportId'] = reportId
+    if executionId is not None:
+        final_kwargs['executionId'] = executionId
 
-    target = CatalystClient().__getattr__('downloadFlexibleReport')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'downloadFlexibleReport')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getExternalAuthenticationServersAPI')
 def getExternalAuthenticationServersAPI(invokeSource: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'invokeSource': 'invokeSource'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if invokeSource is not None:
+        final_kwargs['invokeSource'] = invokeSource
 
-    target = CatalystClient().__getattr__('getExternalAuthenticationServersAPI')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getExternalAuthenticationServersAPI')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getLayer3VirtualNetworksCount')
 def getLayer3VirtualNetworksCount(fabricId: str = None, anchoredSiteId: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'fabricId': 'fabricId', 'anchoredSiteId': 'anchoredSiteId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if fabricId is not None:
+        final_kwargs['fabricId'] = fabricId
+    if anchoredSiteId is not None:
+        final_kwargs['anchoredSiteId'] = anchoredSiteId
 
-    target = CatalystClient().__getattr__('getLayer3VirtualNetworksCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getLayer3VirtualNetworksCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('lANAutomationStatus')
 def lANAutomationStatus(offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('lANAutomationStatus')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'lANAutomationStatus')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDevicesDiscoveredById')
 def getDevicesDiscoveredById(id: str, taskId: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', 'taskId': 'taskId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if taskId is not None:
+        final_kwargs['taskId'] = taskId
 
-    target = CatalystClient().__getattr__('getDevicesDiscoveredById')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDevicesDiscoveredById')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getTaskById')
 def getTaskById(taskId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'taskId': 'taskId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if taskId is not None:
+        final_kwargs['taskId'] = taskId
 
-    target = CatalystClient().__getattr__('getTaskById')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getTaskById')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getPermissionsAPI')
 def getPermissionsAPI():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getPermissionsAPI')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getPermissionsAPI')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDiscoveredDevicesByRange')
 def getDiscoveredDevicesByRange(id: str, startIndex: int, recordsToReturn: int, taskId: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', 'startIndex': 'startIndex', 'recordsToReturn': 'recordsToReturn', 'taskId': 'taskId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if startIndex is not None:
+        final_kwargs['startIndex'] = startIndex
+    if recordsToReturn is not None:
+        final_kwargs['recordsToReturn'] = recordsToReturn
+    if taskId is not None:
+        final_kwargs['taskId'] = taskId
 
-    target = CatalystClient().__getattr__('getDiscoveredDevicesByRange')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDiscoveredDevicesByRange')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrievesTheTotalCountOfClientsByApplyingBasicFiltering')
 def retrievesTheTotalCountOfClientsByApplyingBasicFiltering(X_CALLER_ID: str = None, startTime: float = None, endTime: float = None, type: str = None, osType: str = None, osVersion: str = None, siteHierarchy: str = None, siteHierarchyId: str = None, siteId: str = None, ipv4Address: str = None, ipv6Address: str = None, macAddress: str = None, wlcName: str = None, connectedNetworkDeviceName: str = None, ssid: str = None, band: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'X-CALLER-ID': 'X_CALLER_ID', 'startTime': 'startTime', 'endTime': 'endTime', 'type': 'type', 'osType': 'osType', 'osVersion': 'osVersion', 'siteHierarchy': 'siteHierarchy', 'siteHierarchyId': 'siteHierarchyId', 'siteId': 'siteId', 'ipv4Address': 'ipv4Address', 'ipv6Address': 'ipv6Address', 'macAddress': 'macAddress', 'wlcName': 'wlcName', 'connectedNetworkDeviceName': 'connectedNetworkDeviceName', 'ssid': 'ssid', 'band': 'band'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if type is not None:
+        final_kwargs['type'] = type
+    if osType is not None:
+        final_kwargs['osType'] = osType
+    if osVersion is not None:
+        final_kwargs['osVersion'] = osVersion
+    if siteHierarchy is not None:
+        final_kwargs['siteHierarchy'] = siteHierarchy
+    if siteHierarchyId is not None:
+        final_kwargs['siteHierarchyId'] = siteHierarchyId
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if ipv4Address is not None:
+        final_kwargs['ipv4Address'] = ipv4Address
+    if ipv6Address is not None:
+        final_kwargs['ipv6Address'] = ipv6Address
+    if macAddress is not None:
+        final_kwargs['macAddress'] = macAddress
+    if wlcName is not None:
+        final_kwargs['wlcName'] = wlcName
+    if connectedNetworkDeviceName is not None:
+        final_kwargs['connectedNetworkDeviceName'] = connectedNetworkDeviceName
+    if ssid is not None:
+        final_kwargs['ssid'] = ssid
+    if band is not None:
+        final_kwargs['band'] = band
 
-    target = CatalystClient().__getattr__('retrievesTheTotalCountOfClientsByApplyingBasicFiltering')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrievesTheTotalCountOfClientsByApplyingBasicFiltering')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('pOEDetails')
 def pOEDetails(deviceUuid: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'deviceUuid': 'deviceUuid'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceUuid is not None:
+        final_kwargs['deviceUuid'] = deviceUuid
 
-    target = CatalystClient().__getattr__('pOEDetails')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'pOEDetails')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrievesTheListOfNetworkDeviceProductNames')
 def retrievesTheListOfNetworkDeviceProductNames(productName: str = None, productId: str = None, offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'productName': 'productName', 'productId': 'productId', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if productName is not None:
+        final_kwargs['productName'] = productName
+    if productId is not None:
+        final_kwargs['productId'] = productId
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('retrievesTheListOfNetworkDeviceProductNames')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrievesTheListOfNetworkDeviceProductNames')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAnchorManagedAPLocationsForSpecificWirelessController')
 def getAnchorManagedAPLocationsForSpecificWirelessController(networkDeviceId: str, limit: float = None, offset: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkDeviceId': 'networkDeviceId', 'limit': 'limit', 'offset': 'offset'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if offset is not None:
+        final_kwargs['offset'] = offset
 
-    target = CatalystClient().__getattr__('getAnchorManagedAPLocationsForSpecificWirelessController')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getAnchorManagedAPLocationsForSpecificWirelessController')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getConnectedDeviceDetail')
 def getConnectedDeviceDetail(deviceUuid: str, interfaceUuid: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'deviceUuid': 'deviceUuid', 'interfaceUuid': 'interfaceUuid'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceUuid is not None:
+        final_kwargs['deviceUuid'] = deviceUuid
+    if interfaceUuid is not None:
+        final_kwargs['interfaceUuid'] = interfaceUuid
 
-    target = CatalystClient().__getattr__('getConnectedDeviceDetail')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getConnectedDeviceDetail')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDevicesThatAreAssignedToASite')
 def getDevicesThatAreAssignedToASite(id: str, memberType: str, offset: str = None, limit: str = None, level: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', 'offset': 'offset', 'limit': 'limit', 'memberType': 'memberType', 'level': 'level'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if memberType is not None:
+        final_kwargs['memberType'] = memberType
+    if level is not None:
+        final_kwargs['level'] = level
 
-    target = CatalystClient().__getattr__('getDevicesThatAreAssignedToASite')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDevicesThatAreAssignedToASite')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('lANAutomationLog')
 def lANAutomationLog(offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('lANAutomationLog')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'lANAutomationLog')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrievesTheListOfNetworkProfilesThatTheGivenSiteHasBeenAssigned')
 def retrievesTheListOfNetworkProfilesThatTheGivenSiteHasBeenAssigned(siteId: str, offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'siteId': 'siteId', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('retrievesTheListOfNetworkProfilesThatTheGivenSiteHasBeenAssigned')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrievesTheListOfNetworkProfilesThatTheGivenSiteHasBeenAssigned')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDiscoveryJobsByIP')
 def getDiscoveryJobsByIP(ipAddress: str, offset: int = None, limit: int = None, name: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'offset': 'offset', 'limit': 'limit', 'ipAddress': 'ipAddress', 'name': 'name'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if ipAddress is not None:
+        final_kwargs['ipAddress'] = ipAddress
+    if name is not None:
+        final_kwargs['name'] = name
 
-    target = CatalystClient().__getattr__('getDiscoveryJobsByIP')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDiscoveryJobsByIP')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getTemplate_s_Details')
 def getTemplate_s_Details(id: str = None, name: str = None, projectId: str = None, projectName: str = None, softwareType: str = None, softwareVersion: str = None, productFamily: str = None, productSeries: str = None, productType: str = None, filterConflictingTemplates: bool = None, tags: list = None, unCommitted: bool = None, sortOrder: str = None, allTemplateAttributes: bool = None, includeVersionDetails: bool = None, offset: int = None, limit: int = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', 'name': 'name', 'projectId': 'projectId', 'projectName': 'projectName', 'softwareType': 'softwareType', 'softwareVersion': 'softwareVersion', 'productFamily': 'productFamily', 'productSeries': 'productSeries', 'productType': 'productType', 'filterConflictingTemplates': 'filterConflictingTemplates', 'tags': 'tags', 'unCommitted': 'unCommitted', 'sortOrder': 'sortOrder', 'allTemplateAttributes': 'allTemplateAttributes', 'includeVersionDetails': 'includeVersionDetails', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if name is not None:
+        final_kwargs['name'] = name
+    if projectId is not None:
+        final_kwargs['projectId'] = projectId
+    if projectName is not None:
+        final_kwargs['projectName'] = projectName
+    if softwareType is not None:
+        final_kwargs['softwareType'] = softwareType
+    if softwareVersion is not None:
+        final_kwargs['softwareVersion'] = softwareVersion
+    if productFamily is not None:
+        final_kwargs['productFamily'] = productFamily
+    if productSeries is not None:
+        final_kwargs['productSeries'] = productSeries
+    if productType is not None:
+        final_kwargs['productType'] = productType
+    if filterConflictingTemplates is not None:
+        final_kwargs['filterConflictingTemplates'] = filterConflictingTemplates
+    if tags is not None:
+        final_kwargs['tags'] = tags
+    if unCommitted is not None:
+        final_kwargs['unCommitted'] = unCommitted
+    if sortOrder is not None:
+        final_kwargs['sortOrder'] = sortOrder
+    if allTemplateAttributes is not None:
+        final_kwargs['allTemplateAttributes'] = allTemplateAttributes
+    if includeVersionDetails is not None:
+        final_kwargs['includeVersionDetails'] = includeVersionDetails
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('getTemplate_s_Details')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getTemplate_s_Details')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 # alias → easier for LLM
-register('s_Details')(globals()['getTemplate_s_Details'])
+register('s_Detail')(globals()['getTemplate_s_Details'])
 
 # alias → easier for LLM
-register('s_Detail')(globals()['getTemplate_s_Details'])
+register('s_Details')(globals()['getTemplate_s_Details'])
 
 @register('lANAutomationLogsForIndividualDevices')
 def lANAutomationLogsForIndividualDevices(id: str, serialNumber: str, logLevel: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', 'serialNumber': 'serialNumber', 'logLevel': 'logLevel'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if serialNumber is not None:
+        final_kwargs['serialNumber'] = serialNumber
+    if logLevel is not None:
+        final_kwargs['logLevel'] = logLevel
 
-    target = CatalystClient().__getattr__('lANAutomationLogsForIndividualDevices')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'lANAutomationLogsForIndividualDevices')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getListOfDiscoveriesByDiscoveryId')
 def getListOfDiscoveriesByDiscoveryId(id: str, offset: int = None, limit: int = None, ipAddress: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', 'offset': 'offset', 'limit': 'limit', 'ipAddress': 'ipAddress'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if ipAddress is not None:
+        final_kwargs['ipAddress'] = ipAddress
 
-    target = CatalystClient().__getattr__('getListOfDiscoveriesByDiscoveryId')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getListOfDiscoveriesByDiscoveryId')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getPhysicalTopology')
 def getPhysicalTopology(nodeType: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'nodeType': 'nodeType'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if nodeType is not None:
+        final_kwargs['nodeType'] = nodeType
 
-    target = CatalystClient().__getattr__('getPhysicalTopology')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getPhysicalTopology')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getSiteTopology')
 def getSiteTopology():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getSiteTopology')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getSiteTopology')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getITSMIntegrationStatus')
 def getITSMIntegrationStatus():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getITSMIntegrationStatus')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getITSMIntegrationStatus')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getSecondaryManagedAPLocationsForSpecificWirelessController')
 def getSecondaryManagedAPLocationsForSpecificWirelessController(networkDeviceId: str, limit: float = None, offset: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkDeviceId': 'networkDeviceId', 'limit': 'limit', 'offset': 'offset'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if offset is not None:
+        final_kwargs['offset'] = offset
 
-    target = CatalystClient().__getattr__('getSecondaryManagedAPLocationsForSpecificWirelessController')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getSecondaryManagedAPLocationsForSpecificWirelessController')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrieveNTPSettingsForASite')
 def retrieveNTPSettingsForASite(id: str, _inherited: bool = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', '_inherited': '_inherited'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if _inherited is not None:
+        final_kwargs['_inherited'] = _inherited
 
-    target = CatalystClient().__getattr__('retrieveNTPSettingsForASite')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrieveNTPSettingsForASite')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrieveTagsAssociatedWithTheInterfaces.')
 def retrieveTagsAssociatedWithTheInterfaces_(offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('retrieveTagsAssociatedWithTheInterfaces_')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrieveTagsAssociatedWithTheInterfaces_')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('countOfNetworkDeviceImageUpdates')
 def countOfNetworkDeviceImageUpdates(id: str = None, parentId: str = None, networkDeviceId: str = None, status: str = None, imageName: str = None, hostName: str = None, managementAddress: str = None, startTime: float = None, endTime: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', 'parentId': 'parentId', 'networkDeviceId': 'networkDeviceId', 'status': 'status', 'imageName': 'imageName', 'hostName': 'hostName', 'managementAddress': 'managementAddress', 'startTime': 'startTime', 'endTime': 'endTime'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if parentId is not None:
+        final_kwargs['parentId'] = parentId
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
+    if status is not None:
+        final_kwargs['status'] = status
+    if imageName is not None:
+        final_kwargs['imageName'] = imageName
+    if hostName is not None:
+        final_kwargs['hostName'] = hostName
+    if managementAddress is not None:
+        final_kwargs['managementAddress'] = managementAddress
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
 
-    target = CatalystClient().__getattr__('countOfNetworkDeviceImageUpdates')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'countOfNetworkDeviceImageUpdates')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('returnReplacementDevicesCount')
 def returnReplacementDevicesCount(replacementStatus: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'replacementStatus': 'replacementStatus'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if replacementStatus is not None:
+        final_kwargs['replacementStatus'] = replacementStatus
 
-    target = CatalystClient().__getattr__('returnReplacementDevicesCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'returnReplacementDevicesCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getPlannedAccessPointsForBuilding')
 def getPlannedAccessPointsForBuilding(buildingId: str, limit: float = None, offset: float = None, radios: bool = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'buildingId': 'buildingId', 'limit': 'limit', 'offset': 'offset', 'radios': 'radios'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if buildingId is not None:
+        final_kwargs['buildingId'] = buildingId
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if radios is not None:
+        final_kwargs['radios'] = radios
 
-    target = CatalystClient().__getattr__('getPlannedAccessPointsForBuilding')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getPlannedAccessPointsForBuilding')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getTheCountOfSystemDefinedIssueDefinitionsBasedOnProvidedFilters')
 def getTheCountOfSystemDefinedIssueDefinitionsBasedOnProvidedFilters(X_CALLER_ID: str = None, deviceType: str = None, profileId: str = None, id: str = None, name: str = None, priority: str = None, issueEnabled: bool = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'X-CALLER-ID': 'X_CALLER_ID', 'deviceType': 'deviceType', 'profileId': 'profileId', 'id': 'id', 'name': 'name', 'priority': 'priority', 'issueEnabled': 'issueEnabled'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+    if deviceType is not None:
+        final_kwargs['deviceType'] = deviceType
+    if profileId is not None:
+        final_kwargs['profileId'] = profileId
+    if id is not None:
+        final_kwargs['id'] = id
+    if name is not None:
+        final_kwargs['name'] = name
+    if priority is not None:
+        final_kwargs['priority'] = priority
+    if issueEnabled is not None:
+        final_kwargs['issueEnabled'] = issueEnabled
 
-    target = CatalystClient().__getattr__('getTheCountOfSystemDefinedIssueDefinitionsBasedOnProvidedFilters')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getTheCountOfSystemDefinedIssueDefinitionsBasedOnProvidedFilters')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('countOfNetworkProductNames')
 def countOfNetworkProductNames(productName: str = None, productId: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'productName': 'productName', 'productId': 'productId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if productName is not None:
+        final_kwargs['productName'] = productName
+    if productId is not None:
+        final_kwargs['productId'] = productId
 
-    target = CatalystClient().__getattr__('countOfNetworkProductNames')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'countOfNetworkProductNames')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAccessPointConfiguration')
 def getAccessPointConfiguration(key: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'key': 'key'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if key is not None:
+        final_kwargs['key'] = key
 
-    target = CatalystClient().__getattr__('getAccessPointConfiguration')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getAccessPointConfiguration')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceConfigForAllDevices')
 def getDeviceConfigForAllDevices():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getDeviceConfigForAllDevices')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDeviceConfigForAllDevices')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getTopologyDetails')
 def getTopologyDetails(vlanID: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'vlanID': 'vlanID'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if vlanID is not None:
+        final_kwargs['vlanID'] = vlanID
 
-    target = CatalystClient().__getattr__('getTopologyDetails')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getTopologyDetails')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getTheDetailsOfIssuesForGivenSetOfFilters-2')
 def getTheDetailsOfIssuesForGivenSetOfFilters_2(Accept_Language: str = None, X_CALLER_ID: str = None, startTime: float = None, endTime: float = None, limit: float = None, offset: float = None, sortBy: str = None, order: str = None, isGlobal: bool = None, priority: str = None, severity: str = None, status: str = None, entityType: str = None, category: str = None, deviceType: str = None, name: str = None, issueId: str = None, entityId: str = None, updatedBy: str = None, siteHierarchy: str = None, siteHierarchyId: str = None, siteName: str = None, siteId: str = None, fabricSiteId: str = None, fabricVnName: str = None, fabricTransitSiteId: str = None, networkDeviceId: str = None, networkDeviceIpAddress: str = None, macAddress: str = None, view: str = None, attribute: str = None, aiDriven: bool = None, fabricDriven: bool = None, fabricSiteDriven: bool = None, fabricVnDriven: bool = None, fabricTransitDriven: bool = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'Accept-Language': 'Accept_Language', 'X-CALLER-ID': 'X_CALLER_ID', 'startTime': 'startTime', 'endTime': 'endTime', 'limit': 'limit', 'offset': 'offset', 'sortBy': 'sortBy', 'order': 'order', 'isGlobal': 'isGlobal', 'priority': 'priority', 'severity': 'severity', 'status': 'status', 'entityType': 'entityType', 'category': 'category', 'deviceType': 'deviceType', 'name': 'name', 'issueId': 'issueId', 'entityId': 'entityId', 'updatedBy': 'updatedBy', 'siteHierarchy': 'siteHierarchy', 'siteHierarchyId': 'siteHierarchyId', 'siteName': 'siteName', 'siteId': 'siteId', 'fabricSiteId': 'fabricSiteId', 'fabricVnName': 'fabricVnName', 'fabricTransitSiteId': 'fabricTransitSiteId', 'networkDeviceId': 'networkDeviceId', 'networkDeviceIpAddress': 'networkDeviceIpAddress', 'macAddress': 'macAddress', 'view': 'view', 'attribute': 'attribute', 'aiDriven': 'aiDriven', 'fabricDriven': 'fabricDriven', 'fabricSiteDriven': 'fabricSiteDriven', 'fabricVnDriven': 'fabricVnDriven', 'fabricTransitDriven': 'fabricTransitDriven'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Accept_Language is not None:
+        final_kwargs['Accept-Language'] = Accept_Language
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
+    if isGlobal is not None:
+        final_kwargs['isGlobal'] = isGlobal
+    if priority is not None:
+        final_kwargs['priority'] = priority
+    if severity is not None:
+        final_kwargs['severity'] = severity
+    if status is not None:
+        final_kwargs['status'] = status
+    if entityType is not None:
+        final_kwargs['entityType'] = entityType
+    if category is not None:
+        final_kwargs['category'] = category
+    if deviceType is not None:
+        final_kwargs['deviceType'] = deviceType
+    if name is not None:
+        final_kwargs['name'] = name
+    if issueId is not None:
+        final_kwargs['issueId'] = issueId
+    if entityId is not None:
+        final_kwargs['entityId'] = entityId
+    if updatedBy is not None:
+        final_kwargs['updatedBy'] = updatedBy
+    if siteHierarchy is not None:
+        final_kwargs['siteHierarchy'] = siteHierarchy
+    if siteHierarchyId is not None:
+        final_kwargs['siteHierarchyId'] = siteHierarchyId
+    if siteName is not None:
+        final_kwargs['siteName'] = siteName
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if fabricSiteId is not None:
+        final_kwargs['fabricSiteId'] = fabricSiteId
+    if fabricVnName is not None:
+        final_kwargs['fabricVnName'] = fabricVnName
+    if fabricTransitSiteId is not None:
+        final_kwargs['fabricTransitSiteId'] = fabricTransitSiteId
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
+    if networkDeviceIpAddress is not None:
+        final_kwargs['networkDeviceIpAddress'] = networkDeviceIpAddress
+    if macAddress is not None:
+        final_kwargs['macAddress'] = macAddress
+    if view is not None:
+        final_kwargs['view'] = view
+    if attribute is not None:
+        final_kwargs['attribute'] = attribute
+    if aiDriven is not None:
+        final_kwargs['aiDriven'] = aiDriven
+    if fabricDriven is not None:
+        final_kwargs['fabricDriven'] = fabricDriven
+    if fabricSiteDriven is not None:
+        final_kwargs['fabricSiteDriven'] = fabricSiteDriven
+    if fabricVnDriven is not None:
+        final_kwargs['fabricVnDriven'] = fabricVnDriven
+    if fabricTransitDriven is not None:
+        final_kwargs['fabricTransitDriven'] = fabricTransitDriven
 
-    target = CatalystClient().__getattr__('getTheDetailsOfIssuesForGivenSetOfFilters_2')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getTheDetailsOfIssuesForGivenSetOfFilters_2')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('smartAccountDetails')
 def smartAccountDetails():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('smartAccountDetails')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'smartAccountDetails')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getFabricDevicesLayer3HandoffsWithIpTransitCount')
 def getFabricDevicesLayer3HandoffsWithIpTransitCount(fabricId: str, networkDeviceId: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'fabricId': 'fabricId', 'networkDeviceId': 'networkDeviceId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if fabricId is not None:
+        final_kwargs['fabricId'] = fabricId
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
 
-    target = CatalystClient().__getattr__('getFabricDevicesLayer3HandoffsWithIpTransitCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getFabricDevicesLayer3HandoffsWithIpTransitCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getFabricDevicesLayer3HandoffsWithSdaTransitCount')
 def getFabricDevicesLayer3HandoffsWithSdaTransitCount(fabricId: str, networkDeviceId: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'fabricId': 'fabricId', 'networkDeviceId': 'networkDeviceId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if fabricId is not None:
+        final_kwargs['fabricId'] = fabricId
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
 
-    target = CatalystClient().__getattr__('getFabricDevicesLayer3HandoffsWithSdaTransitCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getFabricDevicesLayer3HandoffsWithSdaTransitCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrievesTheListOfNetworkProfilesForSites')
 def retrievesTheListOfNetworkProfilesForSites(offset: float = None, limit: float = None, sortBy: str = None, order: str = None, type: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'offset': 'offset', 'limit': 'limit', 'sortBy': 'sortBy', 'order': 'order', 'type': 'type'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
+    if type is not None:
+        final_kwargs['type'] = type
 
-    target = CatalystClient().__getattr__('retrievesTheListOfNetworkProfilesForSites')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrievesTheListOfNetworkProfilesForSites')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getFunctionalCapabilityForDevices')
 def getFunctionalCapabilityForDevices(deviceId: str, functionName: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'deviceId': 'deviceId', 'functionName': 'functionName'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
+    if functionName is not None:
+        final_kwargs['functionName'] = functionName
 
-    target = CatalystClient().__getattr__('getFunctionalCapabilityForDevices')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getFunctionalCapabilityForDevices')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getPortAssignments')
 def getPortAssignments(fabricId: str = None, networkDeviceId: str = None, interfaceName: str = None, dataVlanName: str = None, voiceVlanName: str = None, offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'fabricId': 'fabricId', 'networkDeviceId': 'networkDeviceId', 'interfaceName': 'interfaceName', 'dataVlanName': 'dataVlanName', 'voiceVlanName': 'voiceVlanName', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if fabricId is not None:
+        final_kwargs['fabricId'] = fabricId
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
+    if interfaceName is not None:
+        final_kwargs['interfaceName'] = interfaceName
+    if dataVlanName is not None:
+        final_kwargs['dataVlanName'] = dataVlanName
+    if voiceVlanName is not None:
+        final_kwargs['voiceVlanName'] = voiceVlanName
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('getPortAssignments')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getPortAssignments')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getBusinessAPIExecutionDetails')
 def getBusinessAPIExecutionDetails(executionId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'executionId': 'executionId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if executionId is not None:
+        final_kwargs['executionId'] = executionId
 
-    target = CatalystClient().__getattr__('getBusinessAPIExecutionDetails')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getBusinessAPIExecutionDetails')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('lANAutomationActiveSessions')
 def lANAutomationActiveSessions():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('lANAutomationActiveSessions')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'lANAutomationActiveSessions')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getSiteNotAssignedNetworkDevices')
 def getSiteNotAssignedNetworkDevices(offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('getSiteNotAssignedNetworkDevices')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getSiteNotAssignedNetworkDevices')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAccessPointRebootTaskResult')
 def getAccessPointRebootTaskResult(parentTaskId: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'parentTaskId': 'parentTaskId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if parentTaskId is not None:
+        final_kwargs['parentTaskId'] = parentTaskId
 
-    target = CatalystClient().__getattr__('getAccessPointRebootTaskResult')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getAccessPointRebootTaskResult')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceDetail')
 def getDeviceDetail(identifier: str, searchBy: str, timestamp: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'timestamp': 'timestamp', 'identifier': 'identifier', 'searchBy': 'searchBy'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if timestamp is not None:
+        final_kwargs['timestamp'] = timestamp
+    if identifier is not None:
+        final_kwargs['identifier'] = identifier
+    if searchBy is not None:
+        final_kwargs['searchBy'] = searchBy
 
-    target = CatalystClient().__getattr__('getDeviceDetail')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDeviceDetail')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('lANAutomationSessionCount')
 def lANAutomationSessionCount():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('lANAutomationSessionCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'lANAutomationSessionCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkDeviceByIP')
 def getNetworkDeviceByIP(ipAddress: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'ipAddress': 'ipAddress'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if ipAddress is not None:
+        final_kwargs['ipAddress'] = ipAddress
 
-    target = CatalystClient().__getattr__('getNetworkDeviceByIP')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getNetworkDeviceByIP')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getSiteNotAssignedNetworkDevicesCount')
 def getSiteNotAssignedNetworkDevicesCount():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getSiteNotAssignedNetworkDevicesCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getSiteNotAssignedNetworkDevicesCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceBySerialNumber')
 def getDeviceBySerialNumber(serialNumber: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serialNumber': 'serialNumber'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serialNumber is not None:
+        final_kwargs['serialNumber'] = serialNumber
 
-    target = CatalystClient().__getattr__('getDeviceBySerialNumber')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDeviceBySerialNumber')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getApplicationCount')
 def getApplicationCount(scalableGroupType: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'scalableGroupType': 'scalableGroupType'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if scalableGroupType is not None:
+        final_kwargs['scalableGroupType'] = scalableGroupType
 
-    target = CatalystClient().__getattr__('getApplicationCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getApplicationCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('downloadReportContent')
 def downloadReportContent(reportId: str, executionId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'reportId': 'reportId', 'executionId': 'executionId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if reportId is not None:
+        final_kwargs['reportId'] = reportId
+    if executionId is not None:
+        final_kwargs['executionId'] = executionId
 
-    target = CatalystClient().__getattr__('downloadReportContent')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'downloadReportContent')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceCount-2')
 def getDeviceCount_2(serialNumber: list = None, state: list = None, onbState: list = None, name: list = None, pid: list = None, source: list = None, workflowId: list = None, workflowName: list = None, smartAccountId: list = None, virtualAccountId: list = None, lastContact: bool = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serialNumber': 'serialNumber', 'state': 'state', 'onbState': 'onbState', 'name': 'name', 'pid': 'pid', 'source': 'source', 'workflowId': 'workflowId', 'workflowName': 'workflowName', 'smartAccountId': 'smartAccountId', 'virtualAccountId': 'virtualAccountId', 'lastContact': 'lastContact'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serialNumber is not None:
+        final_kwargs['serialNumber'] = serialNumber
+    if state is not None:
+        final_kwargs['state'] = state
+    if onbState is not None:
+        final_kwargs['onbState'] = onbState
+    if name is not None:
+        final_kwargs['name'] = name
+    if pid is not None:
+        final_kwargs['pid'] = pid
+    if source is not None:
+        final_kwargs['source'] = source
+    if workflowId is not None:
+        final_kwargs['workflowId'] = workflowId
+    if workflowName is not None:
+        final_kwargs['workflowName'] = workflowName
+    if smartAccountId is not None:
+        final_kwargs['smartAccountId'] = smartAccountId
+    if virtualAccountId is not None:
+        final_kwargs['virtualAccountId'] = virtualAccountId
+    if lastContact is not None:
+        final_kwargs['lastContact'] = lastContact
 
-    target = CatalystClient().__getattr__('getDeviceCount_2')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDeviceCount_2')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('eventArtifactCount')
 def eventArtifactCount():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('eventArtifactCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'eventArtifactCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getComplianceStatusCount')
 def getComplianceStatusCount(complianceStatus: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'complianceStatus': 'complianceStatus'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if complianceStatus is not None:
+        final_kwargs['complianceStatus'] = complianceStatus
 
-    target = CatalystClient().__getattr__('getComplianceStatusCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getComplianceStatusCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getTasks')
 def getTasks(offset: int = None, limit: int = None, sortBy: str = None, order: str = None, startTime: int = None, endTime: int = None, parentId: str = None, rootId: str = None, status: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'offset': 'offset', 'limit': 'limit', 'sortBy': 'sortBy', 'order': 'order', 'startTime': 'startTime', 'endTime': 'endTime', 'parentId': 'parentId', 'rootId': 'rootId', 'status': 'status'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if parentId is not None:
+        final_kwargs['parentId'] = parentId
+    if rootId is not None:
+        final_kwargs['rootId'] = rootId
+    if status is not None:
+        final_kwargs['status'] = status
 
-    target = CatalystClient().__getattr__('getTasks')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getTasks')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getListOfChildEventsForTheGivenWirelessClientEvent')
 def getListOfChildEventsForTheGivenWirelessClientEvent(id: str, X_CALLER_ID: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'X-CALLER-ID': 'X_CALLER_ID', 'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('getListOfChildEventsForTheGivenWirelessClientEvent')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getListOfChildEventsForTheGivenWirelessClientEvent')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getProvisioningSettings')
 def getProvisioningSettings():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getProvisioningSettings')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getProvisioningSettings')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('readSiteCount.')
 def readSiteCount_(X_CALLER_ID: str = None, endTime: float = None, siteHierarchy: str = None, siteHierarchyId: str = None, siteType: str = None, id: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'X-CALLER-ID': 'X_CALLER_ID', 'endTime': 'endTime', 'siteHierarchy': 'siteHierarchy', 'siteHierarchyId': 'siteHierarchyId', 'siteType': 'siteType', 'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if siteHierarchy is not None:
+        final_kwargs['siteHierarchy'] = siteHierarchy
+    if siteHierarchyId is not None:
+        final_kwargs['siteHierarchyId'] = siteHierarchyId
+    if siteType is not None:
+        final_kwargs['siteType'] = siteType
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('readSiteCount_')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'readSiteCount_')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getEoXDetailsPerDevice')
 def getEoXDetailsPerDevice(deviceId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'deviceId': 'deviceId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
 
-    target = CatalystClient().__getattr__('getEoXDetailsPerDevice')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getEoXDetailsPerDevice')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('ciscoDNACenterNodesConfigurationSummary')
 def ciscoDNACenterNodesConfigurationSummary():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('ciscoDNACenterNodesConfigurationSummary')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'ciscoDNACenterNodesConfigurationSummary')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('importMapArchive-ImportStatus')
 def importMapArchive_ImportStatus(importContextUuid: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'importContextUuid': 'importContextUuid'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if importContextUuid is not None:
+        final_kwargs['importContextUuid'] = importContextUuid
 
-    target = CatalystClient().__getattr__('importMapArchive_ImportStatus')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'importMapArchive_ImportStatus')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getExternalAuthenticationSettingAPI')
 def getExternalAuthenticationSettingAPI():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getExternalAuthenticationSettingAPI')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getExternalAuthenticationSettingAPI')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getInterfaceById')
 def getInterfaceById(id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('getInterfaceById')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getInterfaceById')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('deviceLicenseDetails')
 def deviceLicenseDetails(device_uuid: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'device_uuid': 'device_uuid'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if device_uuid is not None:
+        final_kwargs['device_uuid'] = device_uuid
 
-    target = CatalystClient().__getattr__('deviceLicenseDetails')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'deviceLicenseDetails')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getTheInterfaceDataForTheGivenInterfaceId_instanceUuid_AlongWith')
 def getTheInterfaceDataForTheGivenInterfaceId_instanceUuid_AlongWith(id: str, startTime: float = None, endTime: float = None, view: str = None, attribute: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', 'startTime': 'startTime', 'endTime': 'endTime', 'view': 'view', 'attribute': 'attribute'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if view is not None:
+        final_kwargs['view'] = view
+    if attribute is not None:
+        final_kwargs['attribute'] = attribute
 
-    target = CatalystClient().__getattr__('getTheInterfaceDataForTheGivenInterfaceId_instanceUuid_AlongWith')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getTheInterfaceDataForTheGivenInterfaceId_instanceUuid_AlongWith')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
@@ -5199,16 +7445,26 @@ register('instanceUuid_AlongWith')(globals()['getTheInterfaceDataForTheGivenInte
 
 @register('instanceUuid_AlongWith')
 def instanceUuid_AlongWith(id: str, startTime: float = None, endTime: float = None, view: str = None, attribute: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', 'startTime': 'startTime', 'endTime': 'endTime', 'view': 'view', 'attribute': 'attribute'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if view is not None:
+        final_kwargs['view'] = view
+    if attribute is not None:
+        final_kwargs['attribute'] = attribute
 
-    target = CatalystClient().__getattr__('instanceUuid_AlongWith')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'instanceUuid_AlongWith')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
@@ -5218,256 +7474,400 @@ register('AlongWith')(globals()['instanceUuid_AlongWith'])
 
 @register('getInterfaceInfoById')
 def getInterfaceInfoById(deviceId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'deviceId': 'deviceId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
 
-    target = CatalystClient().__getattr__('getInterfaceInfoById')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getInterfaceInfoById')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getTaskByOperationId')
 def getTaskByOperationId(operationId: str, offset: int, limit: int):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'operationId': 'operationId', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if operationId is not None:
+        final_kwargs['operationId'] = operationId
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('getTaskByOperationId')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getTaskByOperationId')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('ciscoISEServerIntegrationStatus')
 def ciscoISEServerIntegrationStatus():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('ciscoISEServerIntegrationStatus')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'ciscoISEServerIntegrationStatus')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getL3TopologyDetails')
 def getL3TopologyDetails(topologyType: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'topologyType': 'topologyType'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if topologyType is not None:
+        final_kwargs['topologyType'] = topologyType
 
-    target = CatalystClient().__getattr__('getL3TopologyDetails')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getL3TopologyDetails')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAdvisoryDeviceDetail')
 def getAdvisoryDeviceDetail(deviceId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'deviceId': 'deviceId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
 
-    target = CatalystClient().__getattr__('getAdvisoryDeviceDetail')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getAdvisoryDeviceDetail')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getConnectorTypes')
 def getConnectorTypes():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getConnectorTypes')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getConnectorTypes')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getTasksByID')
 def getTasksByID(id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('getTasksByID')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getTasksByID')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('licenseTermDetails')
 def licenseTermDetails(smart_account_id: str, virtual_account_name: str, device_type: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'smart_account_id': 'smart_account_id', 'virtual_account_name': 'virtual_account_name', 'device_type': 'device_type'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if smart_account_id is not None:
+        final_kwargs['smart_account_id'] = smart_account_id
+    if virtual_account_name is not None:
+        final_kwargs['virtual_account_name'] = virtual_account_name
+    if device_type is not None:
+        final_kwargs['device_type'] = device_type
 
-    target = CatalystClient().__getattr__('licenseTermDetails')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'licenseTermDetails')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrieveDHCPSettingsForASite')
 def retrieveDHCPSettingsForASite(id: str, _inherited: bool = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', '_inherited': '_inherited'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if _inherited is not None:
+        final_kwargs['_inherited'] = _inherited
 
-    target = CatalystClient().__getattr__('retrieveDHCPSettingsForASite')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrieveDHCPSettingsForASite')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAnycastGatewayCount')
 def getAnycastGatewayCount(fabricId: str = None, virtualNetworkName: str = None, ipPoolName: str = None, vlanName: str = None, vlanId: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'fabricId': 'fabricId', 'virtualNetworkName': 'virtualNetworkName', 'ipPoolName': 'ipPoolName', 'vlanName': 'vlanName', 'vlanId': 'vlanId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if fabricId is not None:
+        final_kwargs['fabricId'] = fabricId
+    if virtualNetworkName is not None:
+        final_kwargs['virtualNetworkName'] = virtualNetworkName
+    if ipPoolName is not None:
+        final_kwargs['ipPoolName'] = ipPoolName
+    if vlanName is not None:
+        final_kwargs['vlanName'] = vlanName
+    if vlanId is not None:
+        final_kwargs['vlanId'] = vlanId
 
-    target = CatalystClient().__getattr__('getAnycastGatewayCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getAnycastGatewayCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getsTheNetworkDeviceDetailsBasedOnTheProvidedQueryParameters.')
 def getsTheNetworkDeviceDetailsBasedOnTheProvidedQueryParameters_(startTime: float = None, endTime: float = None, limit: float = None, offset: float = None, sortBy: str = None, order: str = None, siteHierarchy: str = None, siteHierarchyId: str = None, siteId: str = None, id: str = None, managementIpAddress: str = None, macAddress: str = None, family: str = None, type: str = None, role: str = None, serialNumber: str = None, maintenanceMode: bool = None, softwareVersion: str = None, healthScore: str = None, view: str = None, attribute: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'startTime': 'startTime', 'endTime': 'endTime', 'limit': 'limit', 'offset': 'offset', 'sortBy': 'sortBy', 'order': 'order', 'siteHierarchy': 'siteHierarchy', 'siteHierarchyId': 'siteHierarchyId', 'siteId': 'siteId', 'id': 'id', 'managementIpAddress': 'managementIpAddress', 'macAddress': 'macAddress', 'family': 'family', 'type': 'type', 'role': 'role', 'serialNumber': 'serialNumber', 'maintenanceMode': 'maintenanceMode', 'softwareVersion': 'softwareVersion', 'healthScore': 'healthScore', 'view': 'view', 'attribute': 'attribute'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
+    if siteHierarchy is not None:
+        final_kwargs['siteHierarchy'] = siteHierarchy
+    if siteHierarchyId is not None:
+        final_kwargs['siteHierarchyId'] = siteHierarchyId
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if id is not None:
+        final_kwargs['id'] = id
+    if managementIpAddress is not None:
+        final_kwargs['managementIpAddress'] = managementIpAddress
+    if macAddress is not None:
+        final_kwargs['macAddress'] = macAddress
+    if family is not None:
+        final_kwargs['family'] = family
+    if type is not None:
+        final_kwargs['type'] = type
+    if role is not None:
+        final_kwargs['role'] = role
+    if serialNumber is not None:
+        final_kwargs['serialNumber'] = serialNumber
+    if maintenanceMode is not None:
+        final_kwargs['maintenanceMode'] = maintenanceMode
+    if softwareVersion is not None:
+        final_kwargs['softwareVersion'] = softwareVersion
+    if healthScore is not None:
+        final_kwargs['healthScore'] = healthScore
+    if view is not None:
+        final_kwargs['view'] = view
+    if attribute is not None:
+        final_kwargs['attribute'] = attribute
 
-    target = CatalystClient().__getattr__('getsTheNetworkDeviceDetailsBasedOnTheProvidedQueryParameters_')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getsTheNetworkDeviceDetailsBasedOnTheProvidedQueryParameters_')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('issues')
 def issues(startTime: float = None, endTime: float = None, siteId: str = None, deviceId: str = None, macAddress: str = None, priority: str = None, issueStatus: str = None, aiDriven: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'startTime': 'startTime', 'endTime': 'endTime', 'siteId': 'siteId', 'deviceId': 'deviceId', 'macAddress': 'macAddress', 'priority': 'priority', 'issueStatus': 'issueStatus', 'aiDriven': 'aiDriven'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
+    if macAddress is not None:
+        final_kwargs['macAddress'] = macAddress
+    if priority is not None:
+        final_kwargs['priority'] = priority
+    if issueStatus is not None:
+        final_kwargs['issueStatus'] = issueStatus
+    if aiDriven is not None:
+        final_kwargs['aiDriven'] = aiDriven
 
-    target = CatalystClient().__getattr__('issues')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'issues')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDevicesRegisteredForWSANotification')
 def getDevicesRegisteredForWSANotification(serialNumber: str = None, macaddress: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serialNumber': 'serialNumber', 'macaddress': 'macaddress'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serialNumber is not None:
+        final_kwargs['serialNumber'] = serialNumber
+    if macaddress is not None:
+        final_kwargs['macaddress'] = macaddress
 
-    target = CatalystClient().__getattr__('getDevicesRegisteredForWSANotification')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDevicesRegisteredForWSANotification')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getInterfaceByIP')
 def getInterfaceByIP(ipAddress: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'ipAddress': 'ipAddress'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if ipAddress is not None:
+        final_kwargs['ipAddress'] = ipAddress
 
-    target = CatalystClient().__getattr__('getInterfaceByIP')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getInterfaceByIP')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrieveApplicableAdd-onImagesForTheGivenSoftwareImage')
 def retrieveApplicableAdd_onImagesForTheGivenSoftwareImage(id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('retrieveApplicableAdd_onImagesForTheGivenSoftwareImage')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrieveApplicableAdd_onImagesForTheGivenSoftwareImage')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrievesTheListOfClients_WhileAlsoOfferingBasicFilteringAndSort')
 def retrievesTheListOfClients_WhileAlsoOfferingBasicFilteringAndSort(X_CALLER_ID: str = None, startTime: float = None, endTime: float = None, limit: float = None, offset: float = None, sortBy: str = None, order: str = None, type: str = None, osType: str = None, osVersion: str = None, siteHierarchy: str = None, siteHierarchyId: str = None, siteId: str = None, ipv4Address: str = None, ipv6Address: str = None, macAddress: str = None, wlcName: str = None, connectedNetworkDeviceName: str = None, ssid: str = None, band: str = None, view: str = None, attribute: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'X-CALLER-ID': 'X_CALLER_ID', 'startTime': 'startTime', 'endTime': 'endTime', 'limit': 'limit', 'offset': 'offset', 'sortBy': 'sortBy', 'order': 'order', 'type': 'type', 'osType': 'osType', 'osVersion': 'osVersion', 'siteHierarchy': 'siteHierarchy', 'siteHierarchyId': 'siteHierarchyId', 'siteId': 'siteId', 'ipv4Address': 'ipv4Address', 'ipv6Address': 'ipv6Address', 'macAddress': 'macAddress', 'wlcName': 'wlcName', 'connectedNetworkDeviceName': 'connectedNetworkDeviceName', 'ssid': 'ssid', 'band': 'band', 'view': 'view', 'attribute': 'attribute'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
+    if type is not None:
+        final_kwargs['type'] = type
+    if osType is not None:
+        final_kwargs['osType'] = osType
+    if osVersion is not None:
+        final_kwargs['osVersion'] = osVersion
+    if siteHierarchy is not None:
+        final_kwargs['siteHierarchy'] = siteHierarchy
+    if siteHierarchyId is not None:
+        final_kwargs['siteHierarchyId'] = siteHierarchyId
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if ipv4Address is not None:
+        final_kwargs['ipv4Address'] = ipv4Address
+    if ipv6Address is not None:
+        final_kwargs['ipv6Address'] = ipv6Address
+    if macAddress is not None:
+        final_kwargs['macAddress'] = macAddress
+    if wlcName is not None:
+        final_kwargs['wlcName'] = wlcName
+    if connectedNetworkDeviceName is not None:
+        final_kwargs['connectedNetworkDeviceName'] = connectedNetworkDeviceName
+    if ssid is not None:
+        final_kwargs['ssid'] = ssid
+    if band is not None:
+        final_kwargs['band'] = band
+    if view is not None:
+        final_kwargs['view'] = view
+    if attribute is not None:
+        final_kwargs['attribute'] = attribute
 
-    target = CatalystClient().__getattr__('retrievesTheListOfClients_WhileAlsoOfferingBasicFilteringAndSort')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrievesTheListOfClients_WhileAlsoOfferingBasicFilteringAndSort')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
@@ -5477,1318 +7877,1896 @@ register('WhileAlsoOfferingBasicFilteringAndSort')(globals()['retrievesTheListOf
 
 @register('WhileAlsoOfferingBasicFilteringAndSort')
 def WhileAlsoOfferingBasicFilteringAndSort(X_CALLER_ID: str = None, startTime: float = None, endTime: float = None, limit: float = None, offset: float = None, sortBy: str = None, order: str = None, type: str = None, osType: str = None, osVersion: str = None, siteHierarchy: str = None, siteHierarchyId: str = None, siteId: str = None, ipv4Address: str = None, ipv6Address: str = None, macAddress: str = None, wlcName: str = None, connectedNetworkDeviceName: str = None, ssid: str = None, band: str = None, view: str = None, attribute: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'X-CALLER-ID': 'X_CALLER_ID', 'startTime': 'startTime', 'endTime': 'endTime', 'limit': 'limit', 'offset': 'offset', 'sortBy': 'sortBy', 'order': 'order', 'type': 'type', 'osType': 'osType', 'osVersion': 'osVersion', 'siteHierarchy': 'siteHierarchy', 'siteHierarchyId': 'siteHierarchyId', 'siteId': 'siteId', 'ipv4Address': 'ipv4Address', 'ipv6Address': 'ipv6Address', 'macAddress': 'macAddress', 'wlcName': 'wlcName', 'connectedNetworkDeviceName': 'connectedNetworkDeviceName', 'ssid': 'ssid', 'band': 'band', 'view': 'view', 'attribute': 'attribute'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
+    if type is not None:
+        final_kwargs['type'] = type
+    if osType is not None:
+        final_kwargs['osType'] = osType
+    if osVersion is not None:
+        final_kwargs['osVersion'] = osVersion
+    if siteHierarchy is not None:
+        final_kwargs['siteHierarchy'] = siteHierarchy
+    if siteHierarchyId is not None:
+        final_kwargs['siteHierarchyId'] = siteHierarchyId
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if ipv4Address is not None:
+        final_kwargs['ipv4Address'] = ipv4Address
+    if ipv6Address is not None:
+        final_kwargs['ipv6Address'] = ipv6Address
+    if macAddress is not None:
+        final_kwargs['macAddress'] = macAddress
+    if wlcName is not None:
+        final_kwargs['wlcName'] = wlcName
+    if connectedNetworkDeviceName is not None:
+        final_kwargs['connectedNetworkDeviceName'] = connectedNetworkDeviceName
+    if ssid is not None:
+        final_kwargs['ssid'] = ssid
+    if band is not None:
+        final_kwargs['band'] = band
+    if view is not None:
+        final_kwargs['view'] = view
+    if attribute is not None:
+        final_kwargs['attribute'] = attribute
 
-    target = CatalystClient().__getattr__('WhileAlsoOfferingBasicFilteringAndSort')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'WhileAlsoOfferingBasicFilteringAndSort')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getEoXSummary')
 def getEoXSummary():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getEoXSummary')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getEoXSummary')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('systemPerformanceAPI')
 def systemPerformanceAPI(kpi: str = None, function: str = None, startTime: float = None, endTime: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'kpi': 'kpi', 'function': 'function', 'startTime': 'startTime', 'endTime': 'endTime'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if kpi is not None:
+        final_kwargs['kpi'] = kpi
+    if function is not None:
+        final_kwargs['function'] = function
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
 
-    target = CatalystClient().__getattr__('systemPerformanceAPI')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'systemPerformanceAPI')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getManagedAPLocationsCountForSpecificWirelessController')
 def getManagedAPLocationsCountForSpecificWirelessController(networkDeviceId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'networkDeviceId': 'networkDeviceId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
 
-    target = CatalystClient().__getattr__('getManagedAPLocationsCountForSpecificWirelessController')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getManagedAPLocationsCountForSpecificWirelessController')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkDeviceByPaginationRange')
 def getNetworkDeviceByPaginationRange(startIndex: int, recordsToReturn: int):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'startIndex': 'startIndex', 'recordsToReturn': 'recordsToReturn'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if startIndex is not None:
+        final_kwargs['startIndex'] = startIndex
+    if recordsToReturn is not None:
+        final_kwargs['recordsToReturn'] = recordsToReturn
 
-    target = CatalystClient().__getattr__('getNetworkDeviceByPaginationRange')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getNetworkDeviceByPaginationRange')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getSiteAssignedNetworkDevice')
 def getSiteAssignedNetworkDevice(id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('getSiteAssignedNetworkDevice')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getSiteAssignedNetworkDevice')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getTheCustomIssueDefinitionForTheGivenCustomIssueDefinitionId.')
 def getTheCustomIssueDefinitionForTheGivenCustomIssueDefinitionId_(id: str, X_CALLER_ID: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'X-CALLER-ID': 'X_CALLER_ID', 'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('getTheCustomIssueDefinitionForTheGivenCustomIssueDefinitionId_')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getTheCustomIssueDefinitionForTheGivenCustomIssueDefinitionId_')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAllInterfaces')
 def getAllInterfaces(offset: int = None, limit: int = None, lastInputTime: str = None, lastOutputTime: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'offset': 'offset', 'limit': 'limit', 'lastInputTime': 'lastInputTime', 'lastOutputTime': 'lastOutputTime'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if lastInputTime is not None:
+        final_kwargs['lastInputTime'] = lastInputTime
+    if lastOutputTime is not None:
+        final_kwargs['lastOutputTime'] = lastOutputTime
 
-    target = CatalystClient().__getattr__('getAllInterfaces')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getAllInterfaces')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+# alias for getAllInterfaces -> interfaces
+register('interfaces')(globals()['getAllInterfaces'])
+
+# alias for getAllInterfaces -> show_interfaces
+register('show_interfaces')(globals()['getAllInterfaces'])
+
+# alias for getAllInterfaces -> list_interfaces
+register('list_interfaces')(globals()['getAllInterfaces'])
+
+# alias for getAllInterfaces -> get_interfaces
+register('get_interfaces')(globals()['getAllInterfaces'])
+
 @register('returnsCountOfAdd-onImages')
 def returnsCountOfAdd_onImages(id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('returnsCountOfAdd_onImages')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'returnsCountOfAdd_onImages')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getWirelessLanControllerDetailsById')
 def getWirelessLanControllerDetailsById(id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
 
-    target = CatalystClient().__getattr__('getWirelessLanControllerDetailsById')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getWirelessLanControllerDetailsById')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('ciscoDNACenterPackagesSummary')
 def ciscoDNACenterPackagesSummary():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('ciscoDNACenterPackagesSummary')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'ciscoDNACenterPackagesSummary')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getRFProfilesCount')
 def getRFProfilesCount():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getRFProfilesCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getRFProfilesCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDevicesPerAdvisory')
 def getDevicesPerAdvisory(advisoryId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'advisoryId': 'advisoryId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if advisoryId is not None:
+        final_kwargs['advisoryId'] = advisoryId
 
-    target = CatalystClient().__getattr__('getDevicesPerAdvisory')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDevicesPerAdvisory')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getAccessPointConfigurationTaskResult')
 def getAccessPointConfigurationTaskResult(task_id: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'task_id': 'task_id'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if task_id is not None:
+        final_kwargs['task_id'] = task_id
 
-    target = CatalystClient().__getattr__('getAccessPointConfigurationTaskResult')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getAccessPointConfigurationTaskResult')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getComplianceDetail')
 def getComplianceDetail(complianceType: str = None, complianceStatus: str = None, deviceUuid: str = None, offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'complianceType': 'complianceType', 'complianceStatus': 'complianceStatus', 'deviceUuid': 'deviceUuid', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if complianceType is not None:
+        final_kwargs['complianceType'] = complianceType
+    if complianceStatus is not None:
+        final_kwargs['complianceStatus'] = complianceStatus
+    if deviceUuid is not None:
+        final_kwargs['deviceUuid'] = deviceUuid
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('getComplianceDetail')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getComplianceDetail')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('returnsTheCountOfVLANsMappedToSSIDsInAFabricSite.')
 def returnsTheCountOfVLANsMappedToSSIDsInAFabricSite_(Content_Type: str, fabricId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'Content-Type': 'Content_Type', 'fabricId': 'fabricId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if fabricId is not None:
+        final_kwargs['fabricId'] = fabricId
 
-    target = CatalystClient().__getattr__('returnsTheCountOfVLANsMappedToSSIDsInAFabricSite_')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'returnsTheCountOfVLANsMappedToSSIDsInAFabricSite_')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getGlobalCredentials')
 def getGlobalCredentials(credentialSubType: str, sortBy: str = None, order: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'credentialSubType': 'credentialSubType', 'sortBy': 'sortBy', 'order': 'order'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if credentialSubType is not None:
+        final_kwargs['credentialSubType'] = credentialSubType
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
 
-    target = CatalystClient().__getattr__('getGlobalCredentials')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getGlobalCredentials')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getComplianceStatus')
 def getComplianceStatus(complianceStatus: str = None, deviceUuid: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'complianceStatus': 'complianceStatus', 'deviceUuid': 'deviceUuid'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if complianceStatus is not None:
+        final_kwargs['complianceStatus'] = complianceStatus
+    if deviceUuid is not None:
+        final_kwargs['deviceUuid'] = deviceUuid
 
-    target = CatalystClient().__getattr__('getComplianceStatus')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getComplianceStatus')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getSNMPDestination')
 def getSNMPDestination(configId: str = None, offset: float = None, limit: float = None, sortBy: str = None, order: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'configId': 'configId', 'offset': 'offset', 'limit': 'limit', 'sortBy': 'sortBy', 'order': 'order'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if configId is not None:
+        final_kwargs['configId'] = configId
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
 
-    target = CatalystClient().__getattr__('getSNMPDestination')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getSNMPDestination')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getProvisionedDevicesCount')
 def getProvisionedDevicesCount(siteId: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'siteId': 'siteId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
 
-    target = CatalystClient().__getattr__('getProvisionedDevicesCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getProvisionedDevicesCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('returnsListOfSoftwareImages')
 def returnsListOfSoftwareImages(siteId: str = None, productNameOrdinal: float = None, supervisorProductNameOrdinal: float = None, imported: bool = None, name: str = None, version: str = None, golden: bool = None, integrity: str = None, hasAddonImages: bool = None, isAddonImages: bool = None, offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'siteId': 'siteId', 'productNameOrdinal': 'productNameOrdinal', 'supervisorProductNameOrdinal': 'supervisorProductNameOrdinal', 'imported': 'imported', 'name': 'name', 'version': 'version', 'golden': 'golden', 'integrity': 'integrity', 'hasAddonImages': 'hasAddonImages', 'isAddonImages': 'isAddonImages', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if productNameOrdinal is not None:
+        final_kwargs['productNameOrdinal'] = productNameOrdinal
+    if supervisorProductNameOrdinal is not None:
+        final_kwargs['supervisorProductNameOrdinal'] = supervisorProductNameOrdinal
+    if imported is not None:
+        final_kwargs['imported'] = imported
+    if name is not None:
+        final_kwargs['name'] = name
+    if version is not None:
+        final_kwargs['version'] = version
+    if golden is not None:
+        final_kwargs['golden'] = golden
+    if integrity is not None:
+        final_kwargs['integrity'] = integrity
+    if hasAddonImages is not None:
+        final_kwargs['hasAddonImages'] = hasAddonImages
+    if isAddonImages is not None:
+        final_kwargs['isAddonImages'] = isAddonImages
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('returnsListOfSoftwareImages')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'returnsListOfSoftwareImages')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getInterfacesCount')
 def getInterfacesCount():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getInterfacesCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getInterfacesCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('readListOfSiteHealthSummaries.')
 def readListOfSiteHealthSummaries_(X_CALLER_ID: str = None, startTime: float = None, endTime: float = None, limit: float = None, offset: float = None, sortBy: str = None, order: str = None, siteHierarchy: str = None, siteHierarchyId: str = None, siteType: str = None, id: str = None, view: str = None, attribute: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'X-CALLER-ID': 'X_CALLER_ID', 'startTime': 'startTime', 'endTime': 'endTime', 'limit': 'limit', 'offset': 'offset', 'sortBy': 'sortBy', 'order': 'order', 'siteHierarchy': 'siteHierarchy', 'siteHierarchyId': 'siteHierarchyId', 'siteType': 'siteType', 'id': 'id', 'view': 'view', 'attribute': 'attribute'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
+    if siteHierarchy is not None:
+        final_kwargs['siteHierarchy'] = siteHierarchy
+    if siteHierarchyId is not None:
+        final_kwargs['siteHierarchyId'] = siteHierarchyId
+    if siteType is not None:
+        final_kwargs['siteType'] = siteType
+    if id is not None:
+        final_kwargs['id'] = id
+    if view is not None:
+        final_kwargs['view'] = view
+    if attribute is not None:
+        final_kwargs['attribute'] = attribute
 
-    target = CatalystClient().__getattr__('readListOfSiteHealthSummaries_')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'readListOfSiteHealthSummaries_')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceList-2')
 def getDeviceList_2(limit: int = None, offset: int = None, sort: list = None, sortOrder: str = None, serialNumber: list = None, state: list = None, onbState: list = None, name: list = None, pid: list = None, source: list = None, workflowId: list = None, workflowName: list = None, smartAccountId: list = None, virtualAccountId: list = None, lastContact: bool = None, macAddress: str = None, hostname: str = None, siteName: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'limit': 'limit', 'offset': 'offset', 'sort': 'sort', 'sortOrder': 'sortOrder', 'serialNumber': 'serialNumber', 'state': 'state', 'onbState': 'onbState', 'name': 'name', 'pid': 'pid', 'source': 'source', 'workflowId': 'workflowId', 'workflowName': 'workflowName', 'smartAccountId': 'smartAccountId', 'virtualAccountId': 'virtualAccountId', 'lastContact': 'lastContact', 'macAddress': 'macAddress', 'hostname': 'hostname', 'siteName': 'siteName'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if sort is not None:
+        final_kwargs['sort'] = sort
+    if sortOrder is not None:
+        final_kwargs['sortOrder'] = sortOrder
+    if serialNumber is not None:
+        final_kwargs['serialNumber'] = serialNumber
+    if state is not None:
+        final_kwargs['state'] = state
+    if onbState is not None:
+        final_kwargs['onbState'] = onbState
+    if name is not None:
+        final_kwargs['name'] = name
+    if pid is not None:
+        final_kwargs['pid'] = pid
+    if source is not None:
+        final_kwargs['source'] = source
+    if workflowId is not None:
+        final_kwargs['workflowId'] = workflowId
+    if workflowName is not None:
+        final_kwargs['workflowName'] = workflowName
+    if smartAccountId is not None:
+        final_kwargs['smartAccountId'] = smartAccountId
+    if virtualAccountId is not None:
+        final_kwargs['virtualAccountId'] = virtualAccountId
+    if lastContact is not None:
+        final_kwargs['lastContact'] = lastContact
+    if macAddress is not None:
+        final_kwargs['macAddress'] = macAddress
+    if hostname is not None:
+        final_kwargs['hostname'] = hostname
+    if siteName is not None:
+        final_kwargs['siteName'] = siteName
 
-    target = CatalystClient().__getattr__('getDeviceList_2')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDeviceList_2')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getTasks-2')
 def getTasks_2(startTime: str = None, endTime: str = None, data: str = None, errorCode: str = None, serviceType: str = None, username: str = None, progress: str = None, isError: str = None, failureReason: str = None, parentId: str = None, offset: int = None, limit: int = None, sortBy: str = None, order: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'startTime': 'startTime', 'endTime': 'endTime', 'data': 'data', 'errorCode': 'errorCode', 'serviceType': 'serviceType', 'username': 'username', 'progress': 'progress', 'isError': 'isError', 'failureReason': 'failureReason', 'parentId': 'parentId', 'offset': 'offset', 'limit': 'limit', 'sortBy': 'sortBy', 'order': 'order'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if data is not None:
+        final_kwargs['data'] = data
+    if errorCode is not None:
+        final_kwargs['errorCode'] = errorCode
+    if serviceType is not None:
+        final_kwargs['serviceType'] = serviceType
+    if username is not None:
+        final_kwargs['username'] = username
+    if progress is not None:
+        final_kwargs['progress'] = progress
+    if isError is not None:
+        final_kwargs['isError'] = isError
+    if failureReason is not None:
+        final_kwargs['failureReason'] = failureReason
+    if parentId is not None:
+        final_kwargs['parentId'] = parentId
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
 
-    target = CatalystClient().__getattr__('getTasks_2')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getTasks_2')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getModules')
 def getModules(deviceId: str, limit: int = None, offset: int = None, nameList: list = None, vendorEquipmentTypeList: list = None, partNumberList: list = None, operationalStateCodeList: list = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'deviceId': 'deviceId', 'limit': 'limit', 'offset': 'offset', 'nameList': 'nameList', 'vendorEquipmentTypeList': 'vendorEquipmentTypeList', 'partNumberList': 'partNumberList', 'operationalStateCodeList': 'operationalStateCodeList'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if nameList is not None:
+        final_kwargs['nameList'] = nameList
+    if vendorEquipmentTypeList is not None:
+        final_kwargs['vendorEquipmentTypeList'] = vendorEquipmentTypeList
+    if partNumberList is not None:
+        final_kwargs['partNumberList'] = partNumberList
+    if operationalStateCodeList is not None:
+        final_kwargs['operationalStateCodeList'] = operationalStateCodeList
 
-    target = CatalystClient().__getattr__('getModules')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getModules')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrievesTheCountOfAssignedNetworkDeviceProducts')
 def retrievesTheCountOfAssignedNetworkDeviceProducts(imageId: str, productName: str = None, productId: str = None, recommended: str = None, assigned: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'imageId': 'imageId', 'productName': 'productName', 'productId': 'productId', 'recommended': 'recommended', 'assigned': 'assigned'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if imageId is not None:
+        final_kwargs['imageId'] = imageId
+    if productName is not None:
+        final_kwargs['productName'] = productName
+    if productId is not None:
+        final_kwargs['productId'] = productId
+    if recommended is not None:
+        final_kwargs['recommended'] = recommended
+    if assigned is not None:
+        final_kwargs['assigned'] = assigned
 
-    target = CatalystClient().__getattr__('retrievesTheCountOfAssignedNetworkDeviceProducts')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrievesTheCountOfAssignedNetworkDeviceProducts')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getRest_WebhookSubscriptionDetails')
 def getRest_WebhookSubscriptionDetails(name: str = None, instanceId: str = None, offset: float = None, limit: float = None, sortBy: str = None, order: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'name': 'name', 'instanceId': 'instanceId', 'offset': 'offset', 'limit': 'limit', 'sortBy': 'sortBy', 'order': 'order'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if name is not None:
+        final_kwargs['name'] = name
+    if instanceId is not None:
+        final_kwargs['instanceId'] = instanceId
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
 
-    target = CatalystClient().__getattr__('getRest_WebhookSubscriptionDetails')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getRest_WebhookSubscriptionDetails')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
-
-# alias → easier for LLM
-register('WebhookSubscriptionDetail')(globals()['getRest_WebhookSubscriptionDetails'])
 
 # alias → easier for LLM
 register('WebhookSubscriptionDetails')(globals()['getRest_WebhookSubscriptionDetails'])
 
-@register('WebhookSubscriptionDetail')
-def WebhookSubscriptionDetail(name: str = None, instanceId: str = None, offset: float = None, limit: float = None, sortBy: str = None, order: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'name': 'name', 'instanceId': 'instanceId', 'offset': 'offset', 'limit': 'limit', 'sortBy': 'sortBy', 'order': 'order'}.items()
-        if locals_[san] is not None
-    }
+# alias → easier for LLM
+register('WebhookSubscriptionDetail')(globals()['getRest_WebhookSubscriptionDetails'])
 
-    target = CatalystClient().__getattr__('WebhookSubscriptionDetail')
+@register('WebhookSubscriptionDetails')
+def WebhookSubscriptionDetails(name: str = None, instanceId: str = None, offset: float = None, limit: float = None, sortBy: str = None, order: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if name is not None:
+        final_kwargs['name'] = name
+    if instanceId is not None:
+        final_kwargs['instanceId'] = instanceId
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'WebhookSubscriptionDetails')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
-@register('WebhookSubscriptionDetails')
-def WebhookSubscriptionDetails(name: str = None, instanceId: str = None, offset: float = None, limit: float = None, sortBy: str = None, order: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'name': 'name', 'instanceId': 'instanceId', 'offset': 'offset', 'limit': 'limit', 'sortBy': 'sortBy', 'order': 'order'}.items()
-        if locals_[san] is not None
-    }
+@register('WebhookSubscriptionDetail')
+def WebhookSubscriptionDetail(name: str = None, instanceId: str = None, offset: float = None, limit: float = None, sortBy: str = None, order: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if name is not None:
+        final_kwargs['name'] = name
+    if instanceId is not None:
+        final_kwargs['instanceId'] = instanceId
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
 
-    target = CatalystClient().__getattr__('WebhookSubscriptionDetails')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'WebhookSubscriptionDetail')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceHistory')
 def getDeviceHistory(serialNumber: str, sort: list = None, sortOrder: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'serialNumber': 'serialNumber', 'sort': 'sort', 'sortOrder': 'sortOrder'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serialNumber is not None:
+        final_kwargs['serialNumber'] = serialNumber
+    if sort is not None:
+        final_kwargs['sort'] = sort
+    if sortOrder is not None:
+        final_kwargs['sortOrder'] = sortOrder
 
-    target = CatalystClient().__getattr__('getDeviceHistory')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDeviceHistory')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getApplicationPolicyQueuingProfileCount')
 def getApplicationPolicyQueuingProfileCount():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getApplicationPolicyQueuingProfileCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getApplicationPolicyQueuingProfileCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getsTheTotalNetworkDeviceCountsBasedOnTheProvidedQueryParameters')
 def getsTheTotalNetworkDeviceCountsBasedOnTheProvidedQueryParameters(startTime: float = None, endTime: float = None, id: str = None, siteHierarchy: str = None, siteHierarchyId: str = None, siteId: str = None, managementIpAddress: str = None, macAddress: str = None, family: str = None, type: str = None, role: str = None, serialNumber: str = None, maintenanceMode: bool = None, softwareVersion: str = None, healthScore: str = None, view: str = None, attribute: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'startTime': 'startTime', 'endTime': 'endTime', 'id': 'id', 'siteHierarchy': 'siteHierarchy', 'siteHierarchyId': 'siteHierarchyId', 'siteId': 'siteId', 'managementIpAddress': 'managementIpAddress', 'macAddress': 'macAddress', 'family': 'family', 'type': 'type', 'role': 'role', 'serialNumber': 'serialNumber', 'maintenanceMode': 'maintenanceMode', 'softwareVersion': 'softwareVersion', 'healthScore': 'healthScore', 'view': 'view', 'attribute': 'attribute'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if id is not None:
+        final_kwargs['id'] = id
+    if siteHierarchy is not None:
+        final_kwargs['siteHierarchy'] = siteHierarchy
+    if siteHierarchyId is not None:
+        final_kwargs['siteHierarchyId'] = siteHierarchyId
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if managementIpAddress is not None:
+        final_kwargs['managementIpAddress'] = managementIpAddress
+    if macAddress is not None:
+        final_kwargs['macAddress'] = macAddress
+    if family is not None:
+        final_kwargs['family'] = family
+    if type is not None:
+        final_kwargs['type'] = type
+    if role is not None:
+        final_kwargs['role'] = role
+    if serialNumber is not None:
+        final_kwargs['serialNumber'] = serialNumber
+    if maintenanceMode is not None:
+        final_kwargs['maintenanceMode'] = maintenanceMode
+    if softwareVersion is not None:
+        final_kwargs['softwareVersion'] = softwareVersion
+    if healthScore is not None:
+        final_kwargs['healthScore'] = healthScore
+    if view is not None:
+        final_kwargs['view'] = view
+    if attribute is not None:
+        final_kwargs['attribute'] = attribute
 
-    target = CatalystClient().__getattr__('getsTheTotalNetworkDeviceCountsBasedOnTheProvidedQueryParameters')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getsTheTotalNetworkDeviceCountsBasedOnTheProvidedQueryParameters')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getTaskTree')
 def getTaskTree(taskId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'taskId': 'taskId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if taskId is not None:
+        final_kwargs['taskId'] = taskId
 
-    target = CatalystClient().__getattr__('getTaskTree')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getTaskTree')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDiscoveredNetworkDevicesByDiscoveryId')
 def getDiscoveredNetworkDevicesByDiscoveryId(id: str, taskId: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'id': 'id', 'taskId': 'taskId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if taskId is not None:
+        final_kwargs['taskId'] = taskId
 
-    target = CatalystClient().__getattr__('getDiscoveredNetworkDevicesByDiscoveryId')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDiscoveredNetworkDevicesByDiscoveryId')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getStatusAPIForEvents')
 def getStatusAPIForEvents(executionId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'executionId': 'executionId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if executionId is not None:
+        final_kwargs['executionId'] = executionId
 
-    target = CatalystClient().__getattr__('getStatusAPIForEvents')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getStatusAPIForEvents')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getSiteAssignedNetworkDevicesCount')
 def getSiteAssignedNetworkDevicesCount(siteId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'siteId': 'siteId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
 
-    target = CatalystClient().__getattr__('getSiteAssignedNetworkDevicesCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getSiteAssignedNetworkDevicesCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetworkV2')
 def getNetworkV2(siteId: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'siteId': 'siteId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
 
-    target = CatalystClient().__getattr__('getNetworkV2')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getNetworkV2')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceValuesThatMatchFullyOrPartiallyAnAttribute')
 def getDeviceValuesThatMatchFullyOrPartiallyAnAttribute(vrfName: str = None, managementIpAddress: str = None, hostname: str = None, macAddress: str = None, family: str = None, collectionStatus: str = None, collectionInterval: str = None, softwareVersion: str = None, softwareType: str = None, reachabilityStatus: str = None, reachabilityFailureReason: str = None, errorCode: str = None, platformId: str = None, series: str = None, type: str = None, serialNumber: str = None, upTime: str = None, role: str = None, roleSource: str = None, associatedWlcIp: str = None, offset: int = None, limit: int = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'vrfName': 'vrfName', 'managementIpAddress': 'managementIpAddress', 'hostname': 'hostname', 'macAddress': 'macAddress', 'family': 'family', 'collectionStatus': 'collectionStatus', 'collectionInterval': 'collectionInterval', 'softwareVersion': 'softwareVersion', 'softwareType': 'softwareType', 'reachabilityStatus': 'reachabilityStatus', 'reachabilityFailureReason': 'reachabilityFailureReason', 'errorCode': 'errorCode', 'platformId': 'platformId', 'series': 'series', 'type': 'type', 'serialNumber': 'serialNumber', 'upTime': 'upTime', 'role': 'role', 'roleSource': 'roleSource', 'associatedWlcIp': 'associatedWlcIp', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if vrfName is not None:
+        final_kwargs['vrfName'] = vrfName
+    if managementIpAddress is not None:
+        final_kwargs['managementIpAddress'] = managementIpAddress
+    if hostname is not None:
+        final_kwargs['hostname'] = hostname
+    if macAddress is not None:
+        final_kwargs['macAddress'] = macAddress
+    if family is not None:
+        final_kwargs['family'] = family
+    if collectionStatus is not None:
+        final_kwargs['collectionStatus'] = collectionStatus
+    if collectionInterval is not None:
+        final_kwargs['collectionInterval'] = collectionInterval
+    if softwareVersion is not None:
+        final_kwargs['softwareVersion'] = softwareVersion
+    if softwareType is not None:
+        final_kwargs['softwareType'] = softwareType
+    if reachabilityStatus is not None:
+        final_kwargs['reachabilityStatus'] = reachabilityStatus
+    if reachabilityFailureReason is not None:
+        final_kwargs['reachabilityFailureReason'] = reachabilityFailureReason
+    if errorCode is not None:
+        final_kwargs['errorCode'] = errorCode
+    if platformId is not None:
+        final_kwargs['platformId'] = platformId
+    if series is not None:
+        final_kwargs['series'] = series
+    if type is not None:
+        final_kwargs['type'] = type
+    if serialNumber is not None:
+        final_kwargs['serialNumber'] = serialNumber
+    if upTime is not None:
+        final_kwargs['upTime'] = upTime
+    if role is not None:
+        final_kwargs['role'] = role
+    if roleSource is not None:
+        final_kwargs['roleSource'] = roleSource
+    if associatedWlcIp is not None:
+        final_kwargs['associatedWlcIp'] = associatedWlcIp
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('getDeviceValuesThatMatchFullyOrPartiallyAnAttribute')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDeviceValuesThatMatchFullyOrPartiallyAnAttribute')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('sensors')
 def sensors(siteId: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'siteId': 'siteId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
 
-    target = CatalystClient().__getattr__('sensors')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'sensors')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceInfoFromSDAFabric')
 def getDeviceInfoFromSDAFabric(deviceManagementIpAddress: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'deviceManagementIpAddress': 'deviceManagementIpAddress'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceManagementIpAddress is not None:
+        final_kwargs['deviceManagementIpAddress'] = deviceManagementIpAddress
 
-    target = CatalystClient().__getattr__('getDeviceInfoFromSDAFabric')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDeviceInfoFromSDAFabric')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getPortAssignmentForAccessPointInSDAFabric')
 def getPortAssignmentForAccessPointInSDAFabric(deviceManagementIpAddress: str, interfaceName: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'deviceManagementIpAddress': 'deviceManagementIpAddress', 'interfaceName': 'interfaceName'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceManagementIpAddress is not None:
+        final_kwargs['deviceManagementIpAddress'] = deviceManagementIpAddress
+    if interfaceName is not None:
+        final_kwargs['interfaceName'] = interfaceName
 
-    target = CatalystClient().__getattr__('getPortAssignmentForAccessPointInSDAFabric')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getPortAssignmentForAccessPointInSDAFabric')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getIPPoolFromSDAVirtualNetwork')
 def getIPPoolFromSDAVirtualNetwork(siteNameHierarchy: str, virtualNetworkName: str, ipPoolName: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'siteNameHierarchy': 'siteNameHierarchy', 'virtualNetworkName': 'virtualNetworkName', 'ipPoolName': 'ipPoolName'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteNameHierarchy is not None:
+        final_kwargs['siteNameHierarchy'] = siteNameHierarchy
+    if virtualNetworkName is not None:
+        final_kwargs['virtualNetworkName'] = virtualNetworkName
+    if ipPoolName is not None:
+        final_kwargs['ipPoolName'] = ipPoolName
 
-    target = CatalystClient().__getattr__('getIPPoolFromSDAVirtualNetwork')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getIPPoolFromSDAVirtualNetwork')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getEdgeDeviceFromSDAFabric')
 def getEdgeDeviceFromSDAFabric(deviceManagementIpAddress: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'deviceManagementIpAddress': 'deviceManagementIpAddress'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceManagementIpAddress is not None:
+        final_kwargs['deviceManagementIpAddress'] = deviceManagementIpAddress
 
-    target = CatalystClient().__getattr__('getEdgeDeviceFromSDAFabric')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getEdgeDeviceFromSDAFabric')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getMulticastDetailsFromSDAFabric')
 def getMulticastDetailsFromSDAFabric(siteNameHierarchy: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'siteNameHierarchy': 'siteNameHierarchy'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteNameHierarchy is not None:
+        final_kwargs['siteNameHierarchy'] = siteNameHierarchy
 
-    target = CatalystClient().__getattr__('getMulticastDetailsFromSDAFabric')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getMulticastDetailsFromSDAFabric')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getApplications')
 def getApplications(offset: float = None, limit: float = None, name: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'offset': 'offset', 'limit': 'limit', 'name': 'name'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if name is not None:
+        final_kwargs['name'] = name
 
-    target = CatalystClient().__getattr__('getApplications')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getApplications')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('retrieveRFProfiles')
 def retrieveRFProfiles(rf_profile_name: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'rf-profile-name': 'rf_profile_name'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if rf_profile_name is not None:
+        final_kwargs['rf-profile-name'] = rf_profile_name
 
-    target = CatalystClient().__getattr__('retrieveRFProfiles')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'retrieveRFProfiles')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getNetwork')
 def getNetwork(siteId: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'siteId': 'siteId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
 
-    target = CatalystClient().__getattr__('getNetwork')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getNetwork')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getReserveIPSubpool')
 def getReserveIPSubpool(siteId: str = None, offset: float = None, limit: float = None, ignoreInheritedGroups: str = None, poolUsage: str = None, groupName: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'siteId': 'siteId', 'offset': 'offset', 'limit': 'limit', 'ignoreInheritedGroups': 'ignoreInheritedGroups', 'poolUsage': 'poolUsage', 'groupName': 'groupName'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if ignoreInheritedGroups is not None:
+        final_kwargs['ignoreInheritedGroups'] = ignoreInheritedGroups
+    if poolUsage is not None:
+        final_kwargs['poolUsage'] = poolUsage
+    if groupName is not None:
+        final_kwargs['groupName'] = groupName
 
-    target = CatalystClient().__getattr__('getReserveIPSubpool')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getReserveIPSubpool')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getTransitPeerNetworkInfo')
 def getTransitPeerNetworkInfo(transitPeerNetworkName: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'transitPeerNetworkName': 'transitPeerNetworkName'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if transitPeerNetworkName is not None:
+        final_kwargs['transitPeerNetworkName'] = transitPeerNetworkName
 
-    target = CatalystClient().__getattr__('getTransitPeerNetworkInfo')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getTransitPeerNetworkInfo')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('clientProximity')
 def clientProximity(username: str, number_days: float = None, time_resolution: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'username': 'username', 'number_days': 'number_days', 'time_resolution': 'time_resolution'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if username is not None:
+        final_kwargs['username'] = username
+    if number_days is not None:
+        final_kwargs['number_days'] = number_days
+    if time_resolution is not None:
+        final_kwargs['time_resolution'] = time_resolution
 
-    target = CatalystClient().__getattr__('clientProximity')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'clientProximity')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('applications')
 def applications(siteId: str = None, deviceId: str = None, macAddress: str = None, startTime: float = None, endTime: float = None, applicationHealth: str = None, offset: float = None, limit: float = None, applicationName: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'siteId': 'siteId', 'deviceId': 'deviceId', 'macAddress': 'macAddress', 'startTime': 'startTime', 'endTime': 'endTime', 'applicationHealth': 'applicationHealth', 'offset': 'offset', 'limit': 'limit', 'applicationName': 'applicationName'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
+    if macAddress is not None:
+        final_kwargs['macAddress'] = macAddress
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if applicationHealth is not None:
+        final_kwargs['applicationHealth'] = applicationHealth
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if applicationName is not None:
+        final_kwargs['applicationName'] = applicationName
 
-    target = CatalystClient().__getattr__('applications')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'applications')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getApplicationSets')
 def getApplicationSets(offset: float = None, limit: float = None, name: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'offset': 'offset', 'limit': 'limit', 'name': 'name'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if name is not None:
+        final_kwargs['name'] = name
 
-    target = CatalystClient().__getattr__('getApplicationSets')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getApplicationSets')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getApplicationsCount')
 def getApplicationsCount():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getApplicationsCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getApplicationsCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getGlobalPool')
 def getGlobalPool(offset: float = None, limit: float = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('getGlobalPool')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getGlobalPool')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getVNFromSDAFabric')
 def getVNFromSDAFabric(virtualNetworkName: str, siteNameHierarchy: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'virtualNetworkName': 'virtualNetworkName', 'siteNameHierarchy': 'siteNameHierarchy'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if virtualNetworkName is not None:
+        final_kwargs['virtualNetworkName'] = virtualNetworkName
+    if siteNameHierarchy is not None:
+        final_kwargs['siteNameHierarchy'] = siteNameHierarchy
 
-    target = CatalystClient().__getattr__('getVNFromSDAFabric')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getVNFromSDAFabric')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDefaultAuthenticationProfileFromSDAFabric')
 def getDefaultAuthenticationProfileFromSDAFabric(siteNameHierarchy: str, authenticateTemplateName: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'siteNameHierarchy': 'siteNameHierarchy', 'authenticateTemplateName': 'authenticateTemplateName'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteNameHierarchy is not None:
+        final_kwargs['siteNameHierarchy'] = siteNameHierarchy
+    if authenticateTemplateName is not None:
+        final_kwargs['authenticateTemplateName'] = authenticateTemplateName
 
-    target = CatalystClient().__getattr__('getDefaultAuthenticationProfileFromSDAFabric')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDefaultAuthenticationProfileFromSDAFabric')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getProvisionedWiredDevice')
 def getProvisionedWiredDevice(deviceManagementIpAddress: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'deviceManagementIpAddress': 'deviceManagementIpAddress'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceManagementIpAddress is not None:
+        final_kwargs['deviceManagementIpAddress'] = deviceManagementIpAddress
 
-    target = CatalystClient().__getattr__('getProvisionedWiredDevice')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getProvisionedWiredDevice')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceCredentialDetails')
 def getDeviceCredentialDetails(siteId: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'siteId': 'siteId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
 
-    target = CatalystClient().__getattr__('getDeviceCredentialDetails')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDeviceCredentialDetails')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getSiteFromSDAFabric')
 def getSiteFromSDAFabric(siteNameHierarchy: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'siteNameHierarchy': 'siteNameHierarchy'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteNameHierarchy is not None:
+        final_kwargs['siteNameHierarchy'] = siteNameHierarchy
 
-    target = CatalystClient().__getattr__('getSiteFromSDAFabric')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getSiteFromSDAFabric')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getServiceProviderDetails')
 def getServiceProviderDetails():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getServiceProviderDetails')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getServiceProviderDetails')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getSite')
 def getSite(name: str = None, siteId: str = None, type: str = None, offset: int = None, limit: int = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'name': 'name', 'siteId': 'siteId', 'type': 'type', 'offset': 'offset', 'limit': 'limit'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if name is not None:
+        final_kwargs['name'] = name
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if type is not None:
+        final_kwargs['type'] = type
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
 
-    target = CatalystClient().__getattr__('getSite')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getSite')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getVirtualNetworkSummary')
 def getVirtualNetworkSummary(siteNameHierarchy: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'siteNameHierarchy': 'siteNameHierarchy'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteNameHierarchy is not None:
+        final_kwargs['siteNameHierarchy'] = siteNameHierarchy
 
-    target = CatalystClient().__getattr__('getVirtualNetworkSummary')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getVirtualNetworkSummary')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getWirelessProfile')
 def getWirelessProfile(profileName: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'profileName': 'profileName'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if profileName is not None:
+        final_kwargs['profileName'] = profileName
 
-    target = CatalystClient().__getattr__('getWirelessProfile')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getWirelessProfile')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getIssueEnrichmentDetails')
 def getIssueEnrichmentDetails(entity_type: str, entity_value: str, __persistbapioutput: bool = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'entity_type': 'entity_type', 'entity_value': 'entity_value', '__persistbapioutput': '__persistbapioutput'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if entity_type is not None:
+        final_kwargs['entity_type'] = entity_type
+    if entity_value is not None:
+        final_kwargs['entity_value'] = entity_value
+    if __persistbapioutput is not None:
+        final_kwargs['__persistbapioutput'] = __persistbapioutput
 
-    target = CatalystClient().__getattr__('getIssueEnrichmentDetails')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getIssueEnrichmentDetails')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('sensorTestResults')
 def sensorTestResults(siteId: str = None, startTime: float = None, endTime: float = None, testFailureBy: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'siteId': 'siteId', 'startTime': 'startTime', 'endTime': 'endTime', 'testFailureBy': 'testFailureBy'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if startTime is not None:
+        final_kwargs['startTime'] = startTime
+    if endTime is not None:
+        final_kwargs['endTime'] = endTime
+    if testFailureBy is not None:
+        final_kwargs['testFailureBy'] = testFailureBy
 
-    target = CatalystClient().__getattr__('sensorTestResults')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'sensorTestResults')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceRoleInSDAFabric')
 def getDeviceRoleInSDAFabric(deviceManagementIpAddress: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'deviceManagementIpAddress': 'deviceManagementIpAddress'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceManagementIpAddress is not None:
+        final_kwargs['deviceManagementIpAddress'] = deviceManagementIpAddress
 
-    target = CatalystClient().__getattr__('getDeviceRoleInSDAFabric')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDeviceRoleInSDAFabric')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getEnterpriseSSID')
 def getEnterpriseSSID(ssidName: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'ssidName': 'ssidName'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if ssidName is not None:
+        final_kwargs['ssidName'] = ssidName
 
-    target = CatalystClient().__getattr__('getEnterpriseSSID')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getEnterpriseSSID')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getBorderDeviceDetailFromSDAFabric')
 def getBorderDeviceDetailFromSDAFabric(deviceManagementIpAddress: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'deviceManagementIpAddress': 'deviceManagementIpAddress'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceManagementIpAddress is not None:
+        final_kwargs['deviceManagementIpAddress'] = deviceManagementIpAddress
 
-    target = CatalystClient().__getattr__('getBorderDeviceDetailFromSDAFabric')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getBorderDeviceDetailFromSDAFabric')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getPortAssignmentForUserDeviceInSDAFabric')
 def getPortAssignmentForUserDeviceInSDAFabric(deviceManagementIpAddress: str, interfaceName: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'deviceManagementIpAddress': 'deviceManagementIpAddress', 'interfaceName': 'interfaceName'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceManagementIpAddress is not None:
+        final_kwargs['deviceManagementIpAddress'] = deviceManagementIpAddress
+    if interfaceName is not None:
+        final_kwargs['interfaceName'] = interfaceName
 
-    target = CatalystClient().__getattr__('getPortAssignmentForUserDeviceInSDAFabric')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getPortAssignmentForUserDeviceInSDAFabric')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getFailedITSMEvents')
 def getFailedITSMEvents(instanceId: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'instanceId': 'instanceId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if instanceId is not None:
+        final_kwargs['instanceId'] = instanceId
 
-    target = CatalystClient().__getattr__('getFailedITSMEvents')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getFailedITSMEvents')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getSSIDToIPPoolMapping')
 def getSSIDToIPPoolMapping(vlanName: str, siteNameHierarchy: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'vlanName': 'vlanName', 'siteNameHierarchy': 'siteNameHierarchy'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if vlanName is not None:
+        final_kwargs['vlanName'] = vlanName
+    if siteNameHierarchy is not None:
+        final_kwargs['siteNameHierarchy'] = siteNameHierarchy
 
-    target = CatalystClient().__getattr__('getSSIDToIPPoolMapping')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getSSIDToIPPoolMapping')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getControlPlaneDeviceFromSDAFabric')
 def getControlPlaneDeviceFromSDAFabric(deviceManagementIpAddress: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'deviceManagementIpAddress': 'deviceManagementIpAddress'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceManagementIpAddress is not None:
+        final_kwargs['deviceManagementIpAddress'] = deviceManagementIpAddress
 
-    target = CatalystClient().__getattr__('getControlPlaneDeviceFromSDAFabric')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getControlPlaneDeviceFromSDAFabric')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getCMDBSyncStatus')
 def getCMDBSyncStatus(status: str = None, date: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'status': 'status', 'date': 'date'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if status is not None:
+        final_kwargs['status'] = status
+    if date is not None:
+        final_kwargs['date'] = date
 
-    target = CatalystClient().__getattr__('getCMDBSyncStatus')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getCMDBSyncStatus')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getSiteCount')
 def getSiteCount(siteId: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'siteId': 'siteId'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
 
-    target = CatalystClient().__getattr__('getSiteCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getSiteCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getClientEnrichmentDetails')
 def getClientEnrichmentDetails(entity_type: str, entity_value: str, issueCategory: str = None, __persistbapioutput: bool = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'entity_type': 'entity_type', 'entity_value': 'entity_value', 'issueCategory': 'issueCategory', '__persistbapioutput': '__persistbapioutput'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if entity_type is not None:
+        final_kwargs['entity_type'] = entity_type
+    if entity_value is not None:
+        final_kwargs['entity_value'] = entity_value
+    if issueCategory is not None:
+        final_kwargs['issueCategory'] = issueCategory
+    if __persistbapioutput is not None:
+        final_kwargs['__persistbapioutput'] = __persistbapioutput
 
-    target = CatalystClient().__getattr__('getClientEnrichmentDetails')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getClientEnrichmentDetails')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getVirtualNetworkWithScalableGroups')
 def getVirtualNetworkWithScalableGroups(virtualNetworkName: str):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'virtualNetworkName': 'virtualNetworkName'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if virtualNetworkName is not None:
+        final_kwargs['virtualNetworkName'] = virtualNetworkName
 
-    target = CatalystClient().__getattr__('getVirtualNetworkWithScalableGroups')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getVirtualNetworkWithScalableGroups')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDynamicInterface')
 def getDynamicInterface(__runsync: bool = None, __timeout: float = None, interface_name: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'__runsync': '__runsync', '__timeout': '__timeout', 'interface-name': 'interface_name'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if __runsync is not None:
+        final_kwargs['__runsync'] = __runsync
+    if __timeout is not None:
+        final_kwargs['__timeout'] = __timeout
+    if interface_name is not None:
+        final_kwargs['interface-name'] = interface_name
 
-    target = CatalystClient().__getattr__('getDynamicInterface')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDynamicInterface')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getApplicationSetsCount')
 def getApplicationSetsCount():
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
 
-    target = CatalystClient().__getattr__('getApplicationSetsCount')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getApplicationSetsCount')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getUserEnrichmentDetails')
 def getUserEnrichmentDetails(entity_type: str, entity_value: str, __persistbapioutput: bool = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'entity_type': 'entity_type', 'entity_value': 'entity_value', '__persistbapioutput': '__persistbapioutput'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if entity_type is not None:
+        final_kwargs['entity_type'] = entity_type
+    if entity_value is not None:
+        final_kwargs['entity_value'] = entity_value
+    if __persistbapioutput is not None:
+        final_kwargs['__persistbapioutput'] = __persistbapioutput
 
-    target = CatalystClient().__getattr__('getUserEnrichmentDetails')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getUserEnrichmentDetails')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getDeviceEnrichmentDetails')
 def getDeviceEnrichmentDetails(entity_type: str, entity_value: str, __persistbapioutput: bool = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'entity_type': 'entity_type', 'entity_value': 'entity_value', '__persistbapioutput': '__persistbapioutput'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if entity_type is not None:
+        final_kwargs['entity_type'] = entity_type
+    if entity_value is not None:
+        final_kwargs['entity_value'] = entity_value
+    if __persistbapioutput is not None:
+        final_kwargs['__persistbapioutput'] = __persistbapioutput
 
-    target = CatalystClient().__getattr__('getDeviceEnrichmentDetails')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getDeviceEnrichmentDetails')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
 @register('getMembership')
 def getMembership(siteId: str, offset: float = None, limit: float = None, deviceFamily: str = None, serialNumber: str = None):
-    """Auto‑generated wrapper (org‑ID injection included)."""
-    locals_ = locals()
-    body_payload = locals_.pop('body', None) if 'body' in locals_ else None
-    final_kwargs = {
-        orig: locals_[san]
-        for orig, san in {'siteId': 'siteId', 'offset': 'offset', 'limit': 'limit', 'deviceFamily': 'deviceFamily', 'serialNumber': 'serialNumber'}.items()
-        if locals_[san] is not None
-    }
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if deviceFamily is not None:
+        final_kwargs['deviceFamily'] = deviceFamily
+    if serialNumber is not None:
+        final_kwargs['serialNumber'] = serialNumber
 
-    target = CatalystClient().__getattr__('getMembership')
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    target = getattr(client, 'getMembership')
+
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
