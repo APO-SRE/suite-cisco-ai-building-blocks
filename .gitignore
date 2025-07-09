@@ -15,7 +15,7 @@ build/
 env/
 ENV/
 venv/
-
+teeter/
 # ─── Editor / OS files ────────────────────────────────────────────────────────
 .vscode/
 .idea/
