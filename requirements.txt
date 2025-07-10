@@ -1,3 +1,8 @@
+azure-common==1.1.28
+azure-core==1.32.0
+azure-identity==1.19.0
+azure-search-documents==11.6.0b9
+
 aiohttp==3.11.11
 attrs==25.3.0
 catalystwan==0.40.2
@@ -11,6 +16,7 @@ langchain==0.3.25
 meraki==1.53.0
 numpy==1.26.4
 openai==0.27.0
+openapi-python-client==0.25.0
 opentelemetry-api==1.34.0
 opentelemetry-sdk==1.34.0
 opentelemetry-exporter-otlp==1.34.0
