@@ -174,7 +174,8 @@ def _emit_org_injection(platform: str, non_body_keys: list[str]) -> list[str]:
         # --- THE FIX IS HERE ---
         # Use triple quotes to create the f-string. This prevents syntax errors
         # if the template itself contains single or double quotes.
-        formatted_value = f"f'''{final_template}'''"
+        formatted_value = f'f"""{final_template}"""'
+  
 
         lines.extend([
             f"        if '{param_name}' in {non_body_keys} and '{param_name}' not in final_kwargs:",
