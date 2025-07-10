@@ -38,7 +38,7 @@ SOURCE_DIR   = PROJECT_ROOT / "src" / "source_open_api"
 OUTPUT_BASE  = PROJECT_ROOT / "src" / "db_scripts" / "output_sdk"
 
 # We will *call into* the bulk generator, so import it lazily
-GENERATOR_MOD = "db_scripts.scripts.generate_openapi_sdks"
+GENERATOR_MOD = "db_scripts.generate_openapi_sdks"
 
 # ──────────────────────────── Helper utilities
 def clear_screen() -> None:
