@@ -60,8 +60,11 @@ def _sanitize_version(version: str) -> str:
     )
     if match:
         base = match.group("base")
-        return f"{base}.post{match.group('year')}.{match.group('month')}.{match.group('day')}.{match.group('build')}"
+        # CORRECTED LINE: No dots in the post-release segment
+        return f"{base}.post{match.group('year')}{match.group('month')}{match.group('day')}{match.group('build')}"
     return re.sub(r"[^0-9A-Za-z.]+", ".", version)
+
+ 
 
 def sanitize_pyproject_version(pyproject: Path) -> None:
     if not pyproject.exists():

@@ -63,13 +63,8 @@
   "nexus_hyperfabric": {
     "openapi_name": "cisco_nexus_hyperfabric_rest_api_1_0_6_rev_2025_03_11_13103",
     "sdk_module": "cisco_nexus_hyperfabric_rest_api_client",
-    "created_by_us": false,
+    "created_by_us": true,
     "installed": true,
     "route": true
-  },
-  "cisco_nexus_hyperfabric_rest_api_1_0_6_rev_2025_03_11_13103": {
-    "openapi_name": "cisco_nexus_hyperfabric_rest_api_1_0_6_rev_2025_03_11_13103",
-    "sdk_module": "cisco_nexus_hyperfabric_rest_api_client",
-    "created_by_us": true
   }
 }
