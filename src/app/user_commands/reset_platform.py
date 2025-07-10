@@ -201,7 +201,12 @@ def main() -> None:
         return
 
     display_platforms(platforms)
-    choice = Prompt.ask(f"Enter choice [1-{len(platforms)+2}]")
+
+    # allow empty input (just Enter) to exit gracefully
+    choice = Prompt.ask(f"Enter choice [1-{len(platforms)+2}]", default="")
+    if not choice.strip():
+        console.print("[cyan]No selection made. Exiting without changes.[/cyan]")
+        sys.exit(0)
     try:
         sel = int(choice)
     except ValueError:
