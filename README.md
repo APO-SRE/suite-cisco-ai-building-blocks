@@ -92,40 +92,101 @@ suite-cisco-ai-building-blocks/
 
 ---
 
+Here’s a revamped **Quick Start** that adds the minimal Docker/Compose steps you needed, and points readers to the full guide in `docs/getting_started.md` for all the details:
+
+````markdown
 ## ⚡ Quick Start
 
-```bash
-# 1. Clone the repository
-git clone https://github.com/APO-SRE/suite-cisco-ai-building-blocks.git
-cd suite-cisco-ai-building-blocks
+1. **Clone the repo**  
+   ```bash
+   git clone https://github.com/APO-SRE/suite-cisco-ai-building-blocks.git
+   cd suite-cisco-ai-building-blocks
+````
 
-# 2. Create and activate a Python virtual environment
-python3 -m venv .venv
-source .venv/bin/activate
+2. **(Ubuntu only) Install Python 3.12**
 
-# 3. Configure your environment
-cp env.example .env
-# Then edit .env to configure platforms, credentials, backends, etc.
+   ```bash
+   sudo apt-get update
+   sudo apt-get install -y software-properties-common
+   sudo add-apt-repository ppa:deadsnakes/ppa -y
+   sudo apt-get update
+   sudo apt-get install -y python3.12 python3.12-venv python3.12-dev build-essential
+   ```
 
-# 4. Install required modules (includes FastAPI and Uvicorn)
-pip install -r requirements.txt
-pip install -e .
+3. **Create & activate your venv**
 
-# 5. Index data (optional but recommended)
-create-domain-demo-index
-create-events-index
-create-platform-index
+   ```bash
+   python3.12 -m venv .venv
+   source .venv/bin/activate
+   ```
 
-# 6. Launch the interactive menu and enable telemetry
-menu
-# Then select option **3 – Start Telemetry Stack** to bring up Grafana, Tempo, and Prometheus.
-# Next choose option **1 – Start Cisco Platform AI**. When prompted,
-# answer `y` to **Enable OpenTelemetry export? (y/n)**.
+4. **Copy & edit your `.env`**
 
-# 7. Open browser UI
-http://127.0.0.1:8000/static/
-# When finished, use menu option **4 – Stop Telemetry Stack** to tear it down.
+   ```bash
+   cp env.sample .env
+   # ➡️  Edit .env for VECTOR_BACKEND, credentials, feature flags, etc.
+   ```
+
+5. **Install Python deps**
+
+   ```bash
+   pip install --upgrade pip
+   pip install -r requirements.txt
+   pip install -e .
+   ```
+
+6. **(Optional) Pre‐index sample data**
+
+   ```bash
+   create-domain-demo-index
+   create-events-index
+   create-platform-index
+   ```
+
+7. **Install Docker & Compose (needed for telemetry)**
+
+   ```bash
+   # Docker Engine
+   sudo apt-get install -y docker.io
+   sudo systemctl enable --now docker
+
+   # Compose v2 CLI plugin
+   sudo mkdir -p /usr/lib/docker/cli-plugins
+   sudo curl -SL \
+     "https://github.com/docker/compose/releases/download/v2.17.3/docker-compose-$(uname -s)-$(uname -m)" \
+     -o /usr/lib/docker/cli-plugins/docker-compose
+   sudo chmod +x /usr/lib/docker/cli-plugins/docker-compose
+
+   # Grant Docker permissions
+   sudo usermod -aG docker $USER
+   newgrp docker
+   ```
+
+8. **Launch menu & bring up telemetry**
+
+   ```bash
+   menu
+   #  ➤ Select “3 – Start Telemetry Stack”
+   #  ➤ Then “1 – Start Cisco Platform AI” (answer “y” to OpenTelemetry export)
+   ```
+
+9. **Open the UI**
+   Browse to [http://127.0.0.1:8000/static/](http://127.0.0.1:8000/static/)
+
+10. **When you’re done**
+
+    ```bash
+    # menu → “4 – Stop Telemetry Stack”
+    ```
+
+---
+
+🔍 **For the full step-by-step guide (env setup, deep troubleshooting, Azure details, etc.) see**
+[docs/getting\_started.md](docs/getting_started.md)
+
 ```
+```
+
 
 ---
 

@@ -91,9 +91,51 @@ python -m db_scripts.process_domain    # For API docs
 python -m db_scripts.process_events    # For events enrichment
 ```
 
+--- 
+
+
+
+## 8. Configure Docker & Enable Compose
+
+To get the telemetry stack working, you must install and configure Docker and Docker Compose, and grant your user permission to talk to the Docker daemon:
+
+1. **Install Docker Engine**
+
+   ```bash
+   sudo apt-get update
+   sudo apt-get install -y docker.io
+   sudo systemctl enable --now docker
+   ```
+2. **Install the Docker Compose v2 CLI plugin**
+
+   ```bash
+   sudo mkdir -p /usr/lib/docker/cli-plugins
+   sudo curl -SL \
+     "https://github.com/docker/compose/releases/download/v2.17.3/docker-compose-$(uname -s)-$(uname -m)" \
+     -o /usr/lib/docker/cli-plugins/docker-compose
+   sudo chmod +x /usr/lib/docker/cli-plugins/docker-compose
+   ```
+
+   > Alternatively install legacy via `sudo apt-get install docker-compose`, but v2 is recommended.
+3. **Add your user to the Docker group**
+
+   ```bash
+   sudo groupadd docker   # only if the group doesn’t already exist
+   sudo usermod -aG docker $USER
+   newgrp docker          # apply changes to this session
+   ```
+4. **Verify installation**
+
+   ```bash
+   docker --version         # e.g. Docker version 20.10.x
+   docker compose version   # e.g. Docker Compose v2.x.x
+   ```
+
+Once Docker and Compose are configured, the `start-telemetry-stack` command will successfully bring up Tempo, Prometheus, and Grafana.
+
 ---
 
-## 8. Interactive CLI Tools
+## 9. Interactive CLI Tools
 
 After installation, the following CLI commands are available:
 
@@ -127,7 +169,7 @@ menu
 
 ---
 
-## 9. Cisco Integrations
+## 10. Cisco Integrations
 
 To integrate Cisco platforms:
 
@@ -141,23 +183,25 @@ To integrate Cisco platforms:
 
 ---
 
-## 10. Testing the AI Agent
+## 11. Testing the AI Agent
 
 * Visit [http://127.0.0.1:8000/static](http://127.0.0.1:8000/static) for the sample UI.
 * Run sample queries to verify AI & Cisco integrations.
 
 ---
 
-## 11. Troubleshooting
+## 12. Troubleshooting
 
+* **Docker socket permission**: If you see “permission denied” on `/var/run/docker.sock`, ensure you’ve added your user to the `docker` group and run `newgrp docker`.
+* **Compose command not found**: Double‑check the CLI‑plugins folder and executable name (`docker-compose`) in `/usr/lib/docker/cli-plugins`.
 * **Python version mismatch**: Ensure your venv uses Python 3.12 per `pyproject.toml` (`>=3.12`).
 * **C++ build errors** (e.g. `Unsupported compiler`): Install `build-essential` and `python3.12-dev`.
-* **ChromaDB native backend fails**: Either install the toolchain or remove `chroma-hnswlib` from dependencies to fall back to the pure-Python parser.
+* **ChromaDB native backend fails**: Either install the toolchain or remove `chroma-hnswlib` from dependencies to fall back to the pure‑Python parser.
 * **Permission or SSH issues**: If using VS Code Remote – SSH, confirm your SSH `authorized_keys` and `IdentityFile` settings (see the VS Code Remote SSH guide).
 
 ---
 
-## 12. Additional Resources
+## 13. Additional Resources
 
 * [Azure OpenAI Docs](https://learn.microsoft.com/azure/cognitive-services/openai/)
 * [Cisco DevNet Sandbox](https://developer.cisco.com/site/sandbox/)
