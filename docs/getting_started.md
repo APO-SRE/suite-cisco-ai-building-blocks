@@ -109,12 +109,12 @@ To get the telemetry stack working, you must install and configure Docker and Do
 2. **Install the Docker Compose v2 CLI plugin**
 
    ```bash
-   sudo mkdir -p /usr/lib/docker/cli-plugins
+   sudo mkdir -p ~/.docker/cli-plugins
    sudo curl -SL \
       "https://github.com/docker/compose/releases/download/v2.36.2/docker-compose-linux-$(uname -m)" \
       -o ~/.docker/cli-plugins/docker-compose
  
-   sudo chmod +x /usr/lib/docker/cli-plugins/docker-compose
+   sudo chmod +x ~/.docker/cli-plugins/docker-compose
    ```
 
    > Alternatively install legacy via `sudo apt-get install docker-compose`, but v2 is recommended.
