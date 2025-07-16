@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "cisco-nexus-hyperfabric-rest-api-client"
-version = "1.0.6.post2025.03.11.13103"
+version = "1.0.6.post2025031113103"
 description = "A client library for accessing Cisco Nexus Hyperfabric REST API"
 authors = []
 readme = "README.md"
