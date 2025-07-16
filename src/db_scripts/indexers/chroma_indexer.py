@@ -99,7 +99,7 @@ class ChromaIndexer(BaseIndexer):
         self.db_dir = Path(base_path).expanduser().resolve() / self.collection_name
 
         recreate_env = os.getenv(f"{self.layer_key}_CHROMA_RECREATE_INDEX", "").strip().lower()
-
+        
         # ── decision happens only once per process per collection ──────────
         with _lock:
             if self.collection_name not in _handled:
@@ -107,22 +107,25 @@ class ChromaIndexer(BaseIndexer):
 
                 # ① choose behaviour
                 if exists:
+                    # env overrides prompt
                     if recreate_env == "true":
                         choice = "r"
-                        print(f"[ChromaIndexer] {self.collection_name}: env forces **recreate**")
+                        print(f"[ChromaIndexer] {self.collection_name}: env forces RECREATE")
                     elif recreate_env == "false":
                         choice = "a"
-                        print(f"[ChromaIndexer] {self.collection_name}: env forces append")
+                        print(f"[ChromaIndexer] {self.collection_name}: env forces APPEND")
                     else:
                         ans = input(
                             f"Collection '{self.collection_name}' exists. "
                             "(R)ecreate or (A)ppend? [R/a]: "
                         ).strip().lower()
                         choice = "r" if ans.startswith("r") else "a"
+
                 else:
                     choice = "a"     # nothing to recreate on first run
 
                 # ② carry out choice
+                # only delete if the user really chose RECREATE
                 if choice == "r" and self.db_dir.exists():
                     print(f"[ChromaIndexer] Deleting {self.db_dir} …")
                     shutil.rmtree(self.db_dir, ignore_errors=True)

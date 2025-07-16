@@ -283,7 +283,6 @@ def chroma_list_platforms() -> list[str]:
     db_root = ensure_abs_env("FASTAPI_CHROMA_DB_PATH", "chroma_dbs/fastapi")
     found: set[str] = set()
 
-    # for each collection-folder (e.g. fastapi/function-definitions-index)
     for coll_dir in db_root.iterdir():
         if not coll_dir.is_dir() or not (coll_dir / "chroma.sqlite3").exists():
             continue
@@ -295,6 +294,7 @@ def chroma_list_platforms() -> list[str]:
         try:
             col = client.get_collection(coll_dir.name)
         except (KeyError, ValueError):
+            # drop this client and move on
             continue
 
         metas = col.get(where={}, include=["metadatas"], limit=100_000)["metadatas"]
@@ -320,6 +320,7 @@ def list_definitions() -> list[str]:
 
 # ── helper to render header + status ───────────────────────────────────────
 def show_status() -> None:
+    load_dotenv(override=True)
     clear_screen()
 
   
@@ -606,6 +607,7 @@ def main() -> None:
             console.print(f"🚀 Running {COMMANDS[sel-1]['function']}…")
             subprocess.run([sys.executable, str(script)], check=True, cwd=str(AGENT_ROOT))
             console.print(":white_check_mark: Done!")
+            #show_status()
             action = Prompt.ask("What now? [b]m[/b]enu/[b]e[/b]xit", choices=["m", "e"], default="m")
             if action == "e":
                 console.print("[green]Goodbye![/green]")
