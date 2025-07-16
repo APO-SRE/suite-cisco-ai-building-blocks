@@ -276,30 +276,26 @@ def chroma_list_platforms() -> str:
     Return a comma-separated list of distinct `platform` values stored in the
     Chroma collection selected by FASTAPI_CHROMA_* env-vars.
     """
-
-    # 1) resolve paths ----------------------------------------------------
+    # 1) always point at the DB root, never the subfolder
     db_root   = ensure_abs_env("FASTAPI_CHROMA_DB_PATH", "chroma_dbs/fastapi")
     coll_name = os.getenv("FASTAPI_CHROMA_COLLECTION_PLATFORM",
-                          "function-definitions-index")   # default matches indexer
+                          "function-definitions-index")
 
-    db_path = db_root / coll_name        # ← **collection directory**
-
-    # 2) open the collection ---------------------------------------------
-    import chromadb
-    from chromadb.config import Settings
-
-    client = chromadb.PersistentClient(path=str(db_path),
-                                       settings=Settings(anonymized_telemetry=False))
+    client = chromadb.PersistentClient(
+        path=str(db_root),
+        settings=Settings(anonymized_telemetry=False),
+    )
     try:
         col = client.get_collection(coll_name)
     except (KeyError, ValueError):
-        return "(none)"                  # collection not there (yet)
+        return "(none)"   # collection not there (yet)
 
-    # 3) gather unique platform names ------------------------------------
+    # 2) gather unique platform names
     metas = col.get(where={}, include=["metadatas"], limit=100_000)["metadatas"]
     platforms = sorted({m.get("platform") for m in metas if m and m.get("platform")})
-
     return ", ".join(platforms) if platforms else "(none)"
+
+ 
 
 
  
