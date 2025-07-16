@@ -111,8 +111,9 @@ To get the telemetry stack working, you must install and configure Docker and Do
    ```bash
    sudo mkdir -p /usr/lib/docker/cli-plugins
    sudo curl -SL \
-     "https://github.com/docker/compose/releases/download/v2.17.3/docker-compose-$(uname -s)-$(uname -m)" \
+     "https://github.com/docker/compose/releases/download/v2.36.2/docker-compose-linux-$(uname -m)" \
      -o /usr/lib/docker/cli-plugins/docker-compose
+ 
    sudo chmod +x /usr/lib/docker/cli-plugins/docker-compose
    ```
 

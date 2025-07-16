@@ -36,9 +36,10 @@ console = Console()
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 SOURCE_DIR   = PROJECT_ROOT / "src" / "source_open_api"
 OUTPUT_BASE  = PROJECT_ROOT / "src" / "db_scripts" / "output_sdk"
+PLATFORM_REGISTRY_FILE = PROJECT_ROOT / "src" / "app" / "llm" / "platform_registry.json"
 
 # We will *call into* the bulk generator, so import it lazily
-GENERATOR_MOD = "db_scripts.scripts.generate_openapi_sdks"
+GENERATOR_MOD = "db_scripts.generate_openapi_sdks"
 
 # ──────────────────────────── Helper utilities
 def clear_screen() -> None:
@@ -52,6 +53,13 @@ def list_specs() -> List[Path]:
         if p.is_file() and p.suffix.lower() in {".json", ".yaml", ".yml"}
     )
 
+def load_registry() -> dict:
+    if PLATFORM_REGISTRY_FILE.exists():
+        try:
+            return json.loads(PLATFORM_REGISTRY_FILE.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            pass  # Fail silently in the wizard, default to long name
+    return {}
 
 def list_existing_sdks() -> List[str]:
     return sorted(p.name for p in OUTPUT_BASE.iterdir() if p.is_dir()) if OUTPUT_BASE.exists() else []
@@ -106,7 +114,16 @@ def main() -> None:
     console.print(f":white_check_mark: Selected [bold]{spec_path.name}[/bold]\n")
 
     # Step 2 – folder / package name
-    sdk_folder_raw = ask("Enter folder name for the SDK (will live under output_sdk/)", spec_path.stem)
+    registry = load_registry()
+    short_name = next(
+        (k for k, v in registry.items() if v.get("openapi_name") == spec_path.stem),
+        None
+    )
+    default_name = short_name or spec_path.stem
+
+    sdk_folder_raw = ask("Enter folder name for the SDK (will live under output_sdk/)", default_name)
+    # <<< END of new code >>>
+
     sdk_folder     = sanitize_folder(sdk_folder_raw)
     console.print(f":white_check_mark: Folder will be [bold]{sdk_folder}[/bold]\n")
 
@@ -146,7 +163,7 @@ def main() -> None:
     # ----------------------------------------------------------------------
     edit_path = OUTPUT_BASE / sdk_folder
     console.print(Panel.fit("📦 Installing SDK in editable mode…", style="cyan"))
-    subprocess.run([sys.executable, "-m", "pip", "install", "-e", str(edit_path)])
+    subprocess.run([sys.executable, "-m", "pip", "install", "-e", str(edit_path)], check=True)
 
     # Show tree
     tree = Tree(f"[bold]{OUTPUT_BASE.name}[/bold]")

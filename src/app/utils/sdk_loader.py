@@ -7,20 +7,14 @@ from __future__ import annotations
 ## Licensed under the Apache License, Version 2.0 (see LICENSE)
 ## Distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND.
 ################################################################################
+ 
 
-"""
-Utility to locate the main *client* class in a vendor SDK so that the scaffolder
-can wrap it automatically.
+import importlib
+import inspect
+from types import ModuleType
+from typing import Type, Any
 
-Matching rules — in order of preference — are:
-
-1.  Class name ends with **DashboardAPI**        (e.g. ``DashboardAPI``)
-2.  Class name ends with **Client**              (e.g. ``MerakiClient``)
-3.  Class name ends with **API**                 (e.g. ``DNACenterAPI``)
-4.  Class name ends with **Session**             (e.g. ``ManagerSession``)
-
-The comparison is case-insensitive.  The first match encountered is returned.
-"""
+# src/app/utils/sdk_loader.py
 
 import importlib
 import inspect
@@ -30,28 +24,32 @@ from typing import Type, Any
 
 def load_client(module_name: str) -> Type[Any]:
     """
-    Dynamically import *module_name* and return the first class that looks like
-    an SDK entry-point according to the rules above.
+    Dynamically import *module_name* and return the SDK's main entry-point class.
 
-    Parameters
-    ----------
-    module_name : str
-        The fully-qualified name of the SDK module, e.g. ``"meraki"``,
-        ``"dnacentersdk"``.
-
-    Raises
-    ------
-    RuntimeError
-        If no suitable client class is found.
-
-    Examples
-    --------
-    >>> load_client("meraki").__name__
-    'DashboardAPI'
-    >>> load_client("dnacentersdk").__name__
-    'DNACenterAPI'
+    This function uses a two-stage strategy to ensure accuracy:
+    1.  **Platform-Specific Checks:** For complex SDKs with known, unique structures
+        (like Intersight), an explicit check is performed first.
+    2.  **Generic Fallback:** If no specific rule matches, it falls back to a
+        generic search based on common class name suffixes.
     """
     mod: ModuleType = importlib.import_module(module_name)
+
+    # --- STRATEGY 1: EXPLICIT CHECKS FOR KNOWN PLATFORMS ---
+    # This is the most reliable method and should be used for any SDK
+    # that doesn't follow a simple naming convention.
+
+    if module_name == "intersight":
+        # The Intersight SDK's main entry point is the `ApiClient` class.
+        if hasattr(mod, "ApiClient"):
+            return getattr(mod, "ApiClient")
+        else:
+            # If the module is 'intersight' but ApiClient is missing,
+            # something is fundamentally wrong with the SDK installation.
+            raise RuntimeError("Intersight SDK is imported but the ApiClient class is missing.")
+
+
+    # --- STRATEGY 2: GENERIC SUFFIX-BASED FALLBACK ---
+    # This works for simpler SDKs like Meraki, Catalyst, etc.
 
     for attr in dir(mod):
         obj = getattr(mod, attr)
@@ -59,7 +57,10 @@ def load_client(module_name: str) -> Type[Any]:
             continue
 
         lower_name = attr.lower()
-        if lower_name.endswith("dashboardapi") or lower_name.endswith("client") or lower_name.endswith("api") or lower_name.endswith("session"):
-            return obj
+        # Check for suffixes in order of preference
+        if lower_name.endswith("dashboardapi"): return obj
+        if lower_name.endswith("client"): return obj
+        if lower_name.endswith("api"): return obj
+        if lower_name.endswith("session"): return obj
 
-    raise RuntimeError(f"No SDK client found in {module_name!r}")
+    raise RuntimeError(f"No recognized SDK client class found in {module_name!r}")
