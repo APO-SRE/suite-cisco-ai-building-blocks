@@ -129,14 +129,15 @@ def main() -> None:
         title = f"{be.capitalize()} Backend" + (" (active)" if is_active else "")
         collections: List[str] = []
         indexed:    List[str] = []
-
         if be == "chroma":
             col = os.getenv("FASTAPI_CHROMA_COLLECTION_PLATFORM", "")
             if col:
                 collections.append(col)
-                from app.user_commands.update_platform_registry import load_registry as _;
-                # reuse registry for chroma listing if needed
-                indexed = list_definitions()
+                # import the real Chroma‐store inspector
+                from app.user_commands.command_menu import chroma_list_platforms
+                # now chroma_list_platforms() returns List[str]
+                indexed = chroma_list_platforms()
+
         elif be == "azure":
             col = os.getenv("FASTAPI_AZURE_PLATFORM_INDEX", "")
             if col:

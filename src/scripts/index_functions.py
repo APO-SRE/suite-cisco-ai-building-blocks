@@ -124,7 +124,7 @@ def index_one(platform: str) -> None:
     # collection / index name selected from env for the chosen backend
     if BACKEND == "chroma":
         index_name = os.getenv("FASTAPI_CHROMA_COLLECTION_PLATFORM",
-                               "platform-summaries-index")
+                               "function-definitions-index")
     elif BACKEND == "azure":
         index_name = os.getenv("FASTAPI_AZURE_PLATFORM_INDEX",
                                "platform-summaries-index")

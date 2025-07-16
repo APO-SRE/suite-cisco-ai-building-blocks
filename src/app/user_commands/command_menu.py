@@ -20,7 +20,7 @@ import os
 import sys
 import subprocess
 import chromadb  
-
+import logging
 from dotenv import load_dotenv  
 from pathlib import Path
 from rich.console import Console, Group
@@ -40,7 +40,11 @@ from app.utils.paths import ensure_abs_env
 load_dotenv() 
 install()
 console = Console()
-
+logging.basicConfig(
+    filename="chroma_debug.log",
+    level=logging.DEBUG,
+    format="%(asctime)s %(levelname)s %(message)s",
+)
 # Paths and imports
 AGENT_ROOT = Path(__file__).resolve().parents[1]
 # CLI entry scripts live under src/app/user_commands
@@ -271,30 +275,36 @@ def clear_screen() -> None:
 
 
 # ─── helper: list which platforms are already in Chroma ─────────────
-def chroma_list_platforms() -> str:
+def chroma_list_platforms() -> list[str]:
     """
-    Return a comma-separated list of distinct `platform` values stored in the
-    Chroma collection selected by FASTAPI_CHROMA_* env-vars.
+    Return a list of distinct `platform` values stored in all Chroma collections
+    under FASTAPI_CHROMA_DB_PATH (one folder per collection).
     """
-    # 1) always point at the DB root, never the subfolder
-    db_root   = ensure_abs_env("FASTAPI_CHROMA_DB_PATH", "chroma_dbs/fastapi")
-    coll_name = os.getenv("FASTAPI_CHROMA_COLLECTION_PLATFORM",
-                          "function-definitions-index")
+    db_root = ensure_abs_env("FASTAPI_CHROMA_DB_PATH", "chroma_dbs/fastapi")
+    found: set[str] = set()
 
-    client = chromadb.PersistentClient(
-        path=str(db_root),
-        settings=Settings(anonymized_telemetry=False),
-    )
-    try:
-        col = client.get_collection(coll_name)
-    except (KeyError, ValueError):
-        return "(none)"   # collection not there (yet)
+    # for each collection-folder (e.g. fastapi/function-definitions-index)
+    for coll_dir in db_root.iterdir():
+        if not coll_dir.is_dir() or not (coll_dir / "chroma.sqlite3").exists():
+            continue
 
-    # 2) gather unique platform names
-    metas = col.get(where={}, include=["metadatas"], limit=100_000)["metadatas"]
-    platforms = sorted({m.get("platform") for m in metas if m and m.get("platform")})
-    return ", ".join(platforms) if platforms else "(none)"
+        client = chromadb.PersistentClient(
+            path=str(coll_dir),
+            settings=Settings(anonymized_telemetry=False),
+        )
+        try:
+            col = client.get_collection(coll_dir.name)
+        except (KeyError, ValueError):
+            continue
 
+        metas = col.get(where={}, include=["metadatas"], limit=100_000)["metadatas"]
+        for m in metas:
+            plat = m.get("platform")
+            if plat:
+                found.add(plat)
+
+    return sorted(found)
+ 
  
 
 
@@ -429,11 +439,10 @@ def show_status() -> None:
     # ─────────────────────────────────────────────────────────────────
 
 
-
     # Row 1: scaffolded vs indexed vs vector backend
     grid.add_row(
         f"[yellow]Scaffolded[/yellow]:\n{', '.join(scaffolded) or '(none)'}",
-        f"[yellow]Chroma Indexed[/yellow]:\n{indexed_chroma}",
+        f"[yellow]Chroma Indexed[/yellow]:\n{', '.join(indexed_chroma) or '(none)'}",
         f"[yellow]Active Vector Backend[/yellow]:\n[white]{vec}[/white]"
     )
 
@@ -443,6 +452,8 @@ def show_status() -> None:
         f"[yellow]Azure Indexed[/yellow]:\n{', '.join(indexed_azure) or '(none)'}",
         f"[yellow]Active Embedding Provider[/yellow]:\n[white]{embed}[/white]"
     )
+
+ 
     # Row 3  →  Elastic Indexed + Active LLM Provider
     grid.add_row(
         "",                                                     # col-1 still blank
@@ -464,7 +475,7 @@ def show_status() -> None:
     grid.add_row(
         # Chroma details
         f"[bright_blue]Index[/bright_blue]: [white]{c_coll}[/white]\n"
-        f"[bright_blue]Platforms[/bright_blue]: [white]{indexed_chroma or '(none)'}[/white]\n"
+        f"[bright_blue]Platforms[/bright_blue]: [white]{', '.join(indexed_chroma) or '(none)'}[/white]\n"
         #f"[bright_blue]DB Path[/bright_blue]: {c_db}\n"
         f"[bright_blue]Concurrency[/bright_blue]: [white]OMP={chroma_omp}, MKL={chroma_mkl}, CPUs={chroma_cpus}, Workers={chroma_workers}[/white]\n"
         f"[bright_blue]Embed Batch Size[/bright_blue]: [white]{c_e_batch}[/white]\n"
