@@ -54,8 +54,21 @@ def _set_route_flag(short: str, present: bool) -> None:
     registry.setdefault(short, {
         "openapi_name": "",
         "sdk_module": "",
+        "sdk_pattern": short,
+        "sdk_class": "Client",
         "created_by_us": False,
         "installed": False,
+        "route": False,
+        "auth_config": {
+            "type": "api_key",
+            "env_vars": {},
+            "init_params": {
+                "required": [],
+                "optional": []
+            }
+        },
+        "sub_clients": False,
+        "example_init": ""
     })["route"] = present
 
     REGISTRY_PATH.write_text(json.dumps(registry, indent=2), "utf-8")

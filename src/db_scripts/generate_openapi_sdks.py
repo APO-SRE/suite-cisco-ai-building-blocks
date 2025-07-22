@@ -159,8 +159,23 @@ def main() -> None:
             print(f"❌ '{pkg_dir}.api' is empty", file=sys.stderr)
             continue
 
-        # Update registry entry
-        entry = registry.setdefault(sdk_name, {})
+        # Update registry entry, preserving existing fields and adding defaults for new ones
+        entry = registry.setdefault(sdk_name, {
+            "sdk_pattern": sdk_name,
+            "sdk_class": "Client",
+            "installed": False,
+            "route": False,
+            "auth_config": {
+                "type": "api_key",
+                "env_vars": {},
+                "init_params": {
+                    "required": [],
+                    "optional": []
+                }
+            },
+            "sub_clients": False,
+            "example_init": ""
+        })
         entry["openapi_name"] = spec.stem
         entry["sdk_module"] = pkg_dir
         entry["created_by_us"] = True
