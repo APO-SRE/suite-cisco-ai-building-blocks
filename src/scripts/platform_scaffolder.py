@@ -70,7 +70,7 @@ for p in OUT_DIRS.values():
 logging.basicConfig(level=logging.INFO, format="%(levelname)s | %(message)s")
 log = logging.getLogger("scaffolder")
 
-
+# Section 0
 #################################################################################################################
 #################################################################################################################
 #  IMPORTANT !!!!
@@ -92,6 +92,25 @@ PLATFORM_OVERRIDES = {
     "meraki": {
         "blocklist": set(), # No blocked functions for Meraki yet
         "descriptions": {}, # No description overrides for Meraki yet
+    },
+    
+    # --- CHANGE #1: ADDED THE FULL SD-WAN CONFIGURATION ---
+    "sdwan_mngr": {
+        # 1. Block the redundant functions so the LLM doesn't see them.
+        "blocklist": {
+            "listAllDevices",
+            "getDevicesList",
+        },
+        
+        # 2. Give the one canonical function a great description so the LLM chooses it.
+        "descriptions": {
+            "getAllDeviceStatus": "Primary function to get a complete list and operational status of all SD-WAN devices. Use this for device inventory and listing."
+        },
+        
+        # 3. Map our chosen operationId to the PROVEN SDK function name.
+        "operation_id_map": {
+            "getAllDeviceStatus": "list_all_dget_device_status_listevices", 
+        }
     },
     # Add other platforms here as needed
 }
@@ -166,28 +185,15 @@ def _emit_org_injection(platform: str, non_body_keys: list[str]) -> list[str]:
     lines.append("    if env_val:")
     
     for param_name, value_template in params_to_inject.items():
-        # Build a string for the *generated* code. The generated code will use
-        # a variable named 'env_val'. Replace the placeholder '{value}' with
-        # the literal text '{env_val}' to construct the correct f-string.
         final_template = value_template.replace('{value}', '{env_val}')
-        
-        # --- THE FIX IS HERE ---
-        # Use triple quotes to create the f-string. This prevents syntax errors
-        # if the template itself contains single or double quotes.
         formatted_value = f'f"""{final_template}"""'
   
-
         lines.extend([
             f"        if '{param_name}' in {non_body_keys} and '{param_name}' not in final_kwargs:",
             f"            final_kwargs['{param_name}'] = {formatted_value}",
         ])
     lines.append("")
     return lines
-
- 
-
- 
- 
 
 # ╭─────────────────────────────────────────────────────────────────────╮
 # │ 1 ─ package initialisation helpers                                 │
@@ -307,6 +313,7 @@ def _py_identifier(raw: str, seen: Dict[str, int]) -> str:
 
 # ── helpers ────────────────────────────────────────────────────────────────
  
+
 
 
 def _emit_client_stub(platform: str, sdk_module: str) -> None:
