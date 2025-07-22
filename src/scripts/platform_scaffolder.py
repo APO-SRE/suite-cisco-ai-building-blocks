@@ -23,7 +23,7 @@ environments. You are solely responsible for any modifications or adaptations ma
 By using this code, you agree that you have read, understood, and accept these terms.
 """
 """
-Unified Platform Scaffolder – phase-1
+Unified Platform Scaffolder – phase-1 with Enhanced SDK Integration
 AUTO-GENERATES:
 
 * app/llm/function_definitions/<platform>.json
@@ -31,6 +31,7 @@ AUTO-GENERATES:
 * app/llm/platform_clients/<platform>_client.py
 * app/llm/function_dispatcher/<platform>_dispatcher.py
 * app/llm/unified_service/<platform>_service.py
+* app/llm/sdk_coverage/<platform>_coverage.json (NEW)
 """
 import sys
 import os
@@ -40,7 +41,7 @@ import json
 import logging
 import re
 import textwrap
-from typing import Dict, List
+from typing import Dict, List, Set, Tuple, Optional
 import keyword
 from dotenv import load_dotenv
 from functools import partial
@@ -49,6 +50,26 @@ from functools import partial
 from app.utils.openapi_loader import load_spec
 from app.utils.sdk_loader     import load_client
 from app.utils.dietify        import dietify_schema
+from app.utils.sdk_initialization import SDKInitializer
+from app.utils.registry_io import load_registry
+
+# Import the enhanced SDK introspection
+try:
+    from app.utils.sdk_introspection import (
+        SDKIntrospector,
+        SDKOpenAPIFilter,
+        SDKPattern
+    )
+    ENHANCED_INTROSPECTION = True
+except ImportError:
+    # Fall back to original introspection if enhanced not available
+    from app.utils.sdk_introspection import (
+        discover_sdk_methods,
+        discover_sdk_methods_from_client,
+        filter_openapi_by_sdk,
+        check_operation_id_availability
+    )
+    ENHANCED_INTROSPECTION = False
 
 # ───────── constants ───────────────────────────────────────────────────
 load_dotenv()
@@ -63,6 +84,7 @@ OUT_DIRS = {
     "client":  LLM_DIR / "platform_clients",
     "disp":    LLM_DIR / "function_dispatcher",
     "service": LLM_DIR / "unified_service",
+    "coverage": LLM_DIR / "sdk_coverage",  # NEW: Coverage reports
 }
 for p in OUT_DIRS.values():
     p.mkdir(parents=True, exist_ok=True)
@@ -92,6 +114,21 @@ PLATFORM_OVERRIDES = {
     "meraki": {
         "blocklist": set(), # No blocked functions for Meraki yet
         "descriptions": {}, # No description overrides for Meraki yet
+    },
+    
+    "intersight": {
+        "blocklist": {
+            # Block this so only the alias version exists
+            "GetServerProfileList"
+        },
+        "descriptions": {
+            "GetComputePhysicalSummaryList": "Get list of all physical servers (compute nodes) in your infrastructure. Use this to retrieve server inventory, hardware details, and server status. This is the primary function for listing servers, server list, getting all servers, listing compute servers, or listing intersight servers. Keywords: servers, compute, physical, inventory, list servers, intersight servers.",
+            "GetServerProfileList": "Get list of server configuration profiles/templates. These are policies applied to servers, NOT the actual physical servers themselves.",
+            "GetComputeRackUnitList": "Get list of rack-mounted servers. Use this for rack servers specifically, not blade servers.",
+            "GetComputeBladeList": "Get list of blade servers in chassis. Use this for blade servers specifically, not rack servers."
+        },
+        # Enable SDK filtering for Intersight
+        "disable_sdk_filtering": False,
     },
     
     # --- CHANGE #1: ADDED THE FULL SD-WAN CONFIGURATION ---
@@ -668,6 +705,149 @@ def _emit_unified_service(platform: str):
     log.info("✓ %s", fp.relative_to(ROOT))
 
 
+# ── Enhanced SDK introspection helpers ─────────────────────────────────────
+def perform_sdk_introspection(
+    platform: str, 
+    sdk_module_name: str, 
+    openapi_spec: dict
+) -> Tuple[dict, dict, dict]:
+    """
+    Perform enhanced SDK introspection and filter OpenAPI spec.
+    
+    Returns:
+        Tuple of (filtered_spec, operation_mapping, coverage_report)
+    """
+    platform_config = PLATFORM_OVERRIDES.get(platform.lower(), {})
+    
+    registry = load_registry()  
+    registry_config = registry.get(platform.lower(), {})
+
+    # Check if SDK filtering is disabled
+    if platform_config.get("disable_sdk_filtering", False):
+        log.info(f"ℹ️  SDK filtering disabled for {platform}")
+        return openapi_spec, {}, {"coverage_percentage": 100, "note": "SDK filtering disabled"}
+    
+    if ENHANCED_INTROSPECTION:
+        try:
+            # Use the enhanced introspector
+            introspector = SDKIntrospector(platform, sdk_module_name)
+            
+            # Create the filter
+            sdk_filter = SDKOpenAPIFilter(introspector)
+            
+            # Apply custom operation_id_map if provided
+            custom_map = platform_config.get("operation_id_map", {})
+            if custom_map:
+                log.info(f"Applying custom operation ID mappings: {custom_map}")
+                for op_id, sdk_method in custom_map.items():
+                    # Create a mock SDK method for the mapping
+                    from app.utils.sdk_introspection import SDKMethod
+                    sdk_filter.methods[sdk_method] = SDKMethod(
+                        name=sdk_method,
+                        signature=None,
+                        parent_class="Unknown"
+                    )
+                    sdk_filter.operation_id_map[op_id] = sdk_filter.methods[sdk_method]
+            
+            # Filter the OpenAPI spec
+            filtered_spec, operation_mapping = sdk_filter.filter_openapi_spec(openapi_spec)
+            
+            # Generate coverage report
+            coverage_report = sdk_filter.generate_coverage_report(openapi_spec)
+            
+            log.info(f"✓ SDK Coverage for {platform}: {coverage_report['coverage_percentage']:.1f}%")
+            log.info(f"  - Total operations: {coverage_report['total_operations']}")
+            log.info(f"  - Covered: {coverage_report['covered_operations']}")
+            log.info(f"  - Missing: {len(coverage_report['missing_operations'])}")
+            
+            return filtered_spec, operation_mapping, coverage_report
+            
+        except Exception as e:
+            log.warning(f"⚠️  Enhanced SDK introspection failed for {platform}: {e}")
+            log.warning("Falling back to original introspection")
+            # Fall through to original introspection
+    
+    # Original introspection logic
+    sdk_methods = set()
+    log.info(f"🔍 Discovering SDK methods for {platform}...")
+    try:
+        # Create a temporary client instance to discover methods
+        sdk_client_module = load_client(sdk_module_name)
+        
+        # Try to create a minimal instance for introspection
+        temp_client = None
+        if platform.lower() == "meraki":
+            import os
+            api_key = os.getenv('CISCO_MERAKI_API_KEY', 'dummy-key-for-introspection')
+            temp_client = sdk_client_module(api_key=api_key, suppress_logging=True)
+        elif platform.lower() == "catalyst":
+            try:
+                temp_client = sdk_client_module()
+            except:
+                pass
+        elif platform.lower() == "intersight":
+            import importlib
+            intersight_module = importlib.import_module(sdk_module_name)
+            sdk_methods = discover_sdk_methods(intersight_module)
+            if sdk_methods:
+                log.info(f"✓ Discovered {len(sdk_methods)} SDK methods from module introspection")
+            else:
+                try:
+                    temp_client = sdk_client_module()
+                except:
+                    pass
+        else:
+            try:
+                temp_client = sdk_client_module()
+            except:
+                pass
+        
+        if temp_client and not sdk_methods:
+            sdk_methods = discover_sdk_methods_from_client(temp_client)
+            log.info(f"✓ Discovered {len(sdk_methods)} SDK methods")
+        elif not sdk_methods:
+            log.warning(f"⚠️  Could not discover SDK methods, proceeding without SDK filtering")
+    except Exception as e:
+        log.warning(f"⚠️  SDK introspection failed: {e}, proceeding without filtering")
+    
+    # Filter OpenAPI spec if we have SDK methods
+    if sdk_methods:
+        log.info("🔧 Filtering OpenAPI spec to match SDK capabilities...")
+        filtered_spec = filter_openapi_by_sdk(openapi_spec, sdk_methods)
+        log.info(f"✓ Filtered spec: {len(filtered_spec.get('paths', {}))} paths remaining from {len(openapi_spec.get('paths', {}))}")
+        
+        # Calculate coverage
+        total_ops = sum(1 for path in openapi_spec.get('paths', {}).values() 
+                       for method in path.values() 
+                       if isinstance(method, dict) and 'operationId' in method)
+        filtered_ops = sum(1 for path in filtered_spec.get('paths', {}).values() 
+                          for method in path.values() 
+                          if isinstance(method, dict) and 'operationId' in method)
+        coverage = (filtered_ops / total_ops * 100) if total_ops > 0 else 0
+        
+        coverage_report = {
+            "platform": platform,
+            "sdk_module": sdk_module_name,
+            "total_operations": total_ops,
+            "covered_operations": filtered_ops,
+            "coverage_percentage": coverage,
+            "sdk_methods_count": len(sdk_methods)
+        }
+        
+        return filtered_spec, {}, coverage_report
+    
+    return openapi_spec, {}, {"coverage_percentage": 100, "note": "No SDK filtering applied"}
+
+def write_coverage_report(platform: str, coverage_report: dict):
+    """Write SDK coverage report to file."""
+    coverage_file = OUT_DIRS["coverage"] / f"{platform}_coverage.json"
+    coverage_file.write_text(
+        json.dumps(coverage_report, indent=2),
+        encoding="utf-8"
+    )
+    log.info(f"✓ Coverage report: {coverage_file.relative_to(ROOT)}")
+
+
 # ╭─────────────────────────────────────────────────────────────────────╮
 # │ 3 ─ per-platform scaffolding                                        │
 # ╰─────────────────────────────────────────────────────────────────────╯
@@ -678,13 +858,65 @@ def scaffold_one(
     spec_path: Path,
     include_http: set[str] | None,
     name_re: re.Pattern | None,
+    disable_sdk_filtering: bool = False,
 ) -> None:
+    # Initialize total_spec_operations at function scope
+    total_spec_operations = 0
  
-    # Get the specific overrides for the current platform from the global config.
-    # This safely returns an empty dictionary if no rules are defined for the platform.
+    # EXISTING CODE: Get the specific overrides for the current platform from the global config.
     platform_config = PLATFORM_OVERRIDES.get(platform.lower(), {})
     
+    # NEW CODE: Load the full registry and merge with overrides
+    registry = load_registry()  # This loads your platform_registry.json
+    registry_config = registry.get(platform.lower(), {})
+    
+    # Merge registry config with PLATFORM_OVERRIDES (overrides take precedence)
+    full_platform_config = {**registry_config, **platform_config}
+    platform_config = full_platform_config
+    
+    # NEW CODE: Initialize SDK helper only if SDK filtering is enabled
+    if not platform_config.get("disable_sdk_filtering", False):
+        try:
+            initializer = SDKInitializer()  # It will auto-find platform_registry.json
+        except Exception as e:
+            log.warning(f"Failed to initialize SDK helper: {e}")
+            # Continue without SDK initialization
+    
+    # Override sdk_module if specified in registry
+    if not sdk_module and platform_config.get("sdk_module"):
+        sdk_module = platform_config["sdk_module"]
+        log.info(f"Using SDK module from registry: {sdk_module}")
+    
+    # EXISTING CODE: Load the OpenAPI spec
     full_spec = load_spec(spec_path)
+    
+    # NEW CODE: Analyze HTTP method breakdown
+    http_method_counts = {}
+    for path, path_item in full_spec.get("paths", {}).items():
+        for verb, op in path_item.items():
+            if verb.upper() in {"GET", "POST", "PUT", "PATCH", "DELETE"}:
+                http_method_counts[verb.upper()] = http_method_counts.get(verb.upper(), 0) + 1
+                total_spec_operations += 1
+    
+    log.info(f"📊 OpenAPI Spec Analysis for {platform}:")
+    log.info(f"  - Total operations: {total_spec_operations}")
+    for method in ["GET", "POST", "PUT", "PATCH", "DELETE"]:
+        if method in http_method_counts:
+            log.info(f"  - {method}: {http_method_counts[method]} operations")
+    
+    # MODIFIED CODE: Enhanced SDK introspection with registry awareness
+    filtered_spec, operation_mapping, coverage_report = perform_sdk_introspection(
+        platform, sdk_module, full_spec
+    )
+    
+    # EXISTING CODE: Write coverage report
+    write_coverage_report(platform, coverage_report)
+    
+    # Store operation mapping in platform config for later use
+    platform_config["_operation_mapping"] = operation_mapping
+    
+    # EXISTING CODE: Use filtered spec
+    full_spec = filtered_spec
 
     _write_json(OUT_DIRS["full"] / f"{platform}.json",        full_spec, pretty=True)
     _write_json(OUT_DIRS["full"] / f"full_{platform}.json",   full_spec, pretty=True)
@@ -713,6 +945,23 @@ def scaffold_one(
             if raw_op_id in platform_config.get("blocklist", set()):
                 log.info(f"🚫  Skipping blocked operationId for '{platform}': {raw_op_id}")
                 continue
+            
+            # Check if operation is available in SDK (already filtered but double-check)
+            sdk_methods = set()  # This would come from introspection
+            if sdk_methods and raw_op_id:
+                # Check custom operation_id_map first
+                operation_id_map = platform_config.get("operation_id_map", {})
+                if raw_op_id in operation_id_map:
+                    # Use the mapped SDK method name
+                    sdk_method_name = operation_id_map[raw_op_id]
+                    if sdk_method_name not in sdk_methods:
+                        log.info(f"⚠️  Skipping {raw_op_id} - mapped method {sdk_method_name} not found in SDK")
+                        skipped_ops.append({"op": raw_op_id, "reason": f"mapped SDK method '{sdk_method_name}' not found"})
+                        continue
+                elif not check_operation_id_availability(raw_op_id, sdk_methods):
+                    log.info(f"⚠️  Skipping {raw_op_id} - not found in SDK")
+                    skipped_ops.append({"op": raw_op_id, "reason": "not available in SDK"})
+                    continue
 
             # 👉 robust name sanitisation  (always OpenAI‑safe)
             # Use the raw_op_id we already fetched.
@@ -855,6 +1104,18 @@ def scaffold_one(
 
     _write_json(OUT_DIRS["diet"] / f"{platform}.json",   diet_fns)
     _write_json(ROOT / "scaffold_skip.log", skipped_ops, pretty=True)
+    
+    # NEW CODE: Report what's actually being written
+    log.info(f"📝 Functions actually scaffolded:")
+    if include_http:
+        log.info(f"  - Filtered to HTTP methods: {', '.join(sorted(include_http))}")
+    log.info(f"  - Skipped operations: {len(skipped_ops)}")
+    log.info(f"  - Functions written to file: {len(diet_fns)}")
+    
+    # Show difference if significant
+    if total_spec_operations > 0 and len(diet_fns) < total_spec_operations * 0.9:
+        reduction_pct = ((total_spec_operations - len(diet_fns)) / total_spec_operations) * 100
+        log.info(f"  - Reduction from spec: {reduction_pct:.1f}% ({total_spec_operations} → {len(diet_fns)})")
 
     _emit_client_stub(platform,   sdk_module)
     _emit_unified_service(platform)
@@ -960,7 +1221,7 @@ def scaffold_one(
         # ── ALIASES START HERE ────────────────────────────────────────────────────────────────────────────────
         #
         #
-        # 3.a - generic “drop‑tag / singular” aliases ──────────────────────────────────────────────────────
+        # 3.a - generic "drop‑tag / singular" aliases ──────────────────────────────────────────────────────
         #     This is a generic alias creation that strips the platform tag or makes it singular.
         #     Automatically create aliases by stripping the platform tag or making it singular. 
         #     For instanceadd aliases for easier LLM use (e.g. "get_device" → "device_get", OR devcie) 
@@ -976,8 +1237,8 @@ def scaffold_one(
 
         # 3‑b. hand‑crafted aliases for server inventory (INTERSIGHT)──────────────────────────────────────────
         # maps get_compute_physical_summary_list → get_server_list / servers …
-        if fn['name'] == 'get_compute_physical_summary_list':
-            for alias in {'get_server_list', 'server_list', 'servers'}:
+        if fn['name'] == 'get_compute_physical_summary_list' or fn['name'] == 'GetComputePhysicalSummaryList':
+            for alias in {'get_server_list', 'server_list', 'servers', 'GetServerList', 'GetServerProfileList'}:
                 lines.extend([
                     f"register('{alias}')(globals()['{safe_name}'])",
                     ""
@@ -1016,6 +1277,10 @@ def _parse_cli():
     ap.add_argument("--name-pattern")
     ap.add_argument("--all", action="store_true",
                     help="Scaffold for every full_*.json already present")
+    ap.add_argument("--disable-sdk-filtering", action="store_true",
+                    help="Disable SDK introspection and filtering (generate all functions from OpenAPI)")
+    ap.add_argument("--coverage-only", action="store_true",
+                    help="Only generate coverage reports without scaffolding")
     return ap.parse_args()
 
 
@@ -1033,6 +1298,34 @@ def _looks_too_big(op: dict) -> bool:
 
 def main():
     args = _parse_cli()
+    
+    # Add coverage-only mode
+    if args.coverage_only:
+        log.info("Running in coverage-only mode")
+        for platform in PLATFORM_OVERRIDES.keys():
+            spec_path = OUT_DIRS["full"] / f"full_{platform}.json"
+            if spec_path.exists():
+                log.info(f"Generating coverage for {platform}")
+                full_spec = json.loads(spec_path.read_text())
+                # Look up SDK module from existing logic or config
+                sdk_module = None
+                # Try to find it from existing generated files or config
+                if platform.lower() == "meraki":
+                    sdk_module = "meraki"
+                elif platform.lower() == "catalyst":
+                    sdk_module = "dnacentersdk"
+                elif platform.lower() == "intersight":
+                    sdk_module = "intersight"
+                # Add other platforms as needed
+                
+                if sdk_module:
+                    _, _, coverage = perform_sdk_introspection(
+                        platform, 
+                        sdk_module, 
+                        full_spec
+                    )
+                    write_coverage_report(platform, coverage)
+        return
 
     if args.all and (args.platform or args.sdk_module or args.openapi_spec):
         raise SystemExit("--all cannot be used with other flags")
@@ -1060,7 +1353,7 @@ def main():
             else OUT_DIRS["full"] / f"{plat}.json"
         )
         log.info("⏳ Scaffolding %s …", plat)
-        scaffold_one(plat, args.sdk_module, spec, include_http, name_re)
+        scaffold_one(plat, args.sdk_module or plat, spec, include_http, name_re, args.disable_sdk_filtering)
 
     log.info("✅ DONE – all artefacts generated")
     _drop_dynamic_cache()

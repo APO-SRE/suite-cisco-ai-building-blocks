@@ -1,0 +1,9 @@
+{
+  "platform": "intersight",
+  "sdk_module": "intersight",
+  "total_operations": 4019,
+  "covered_operations": 4019,
+  "coverage_percentage": 100.0,
+  "missing_operations": [],
+  "sdk_methods_count": 4019
+}

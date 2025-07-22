@@ -135,9 +135,21 @@ def main() -> None:
         registry[short] = {
             "openapi_name":  "",
             "sdk_module":   "",
+            "sdk_pattern": short,
+            "sdk_class": "Client",
             "created_by_us": False,
             "installed":     True,
             "route":         check_route_exists(short),
+            "auth_config": {
+                "type": "api_key",
+                "env_vars": {},
+                "init_params": {
+                    "required": [],
+                    "optional": []
+                }
+            },
+            "sub_clients": False,
+            "example_init": ""
         }
         changes.append((short, "added stub entry (installed ✔)"))
 
