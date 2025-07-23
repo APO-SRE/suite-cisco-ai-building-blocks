@@ -1,0 +1,674 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+################################################################################
+## suite-cisco-ai-building-blocks/src/app/llm/dynamic.py
+## Copyright (c) 2025 Jeff Teeter, Ph.D.
+## Cisco Systems, Inc.
+## Licensed under the Apache License, Version 2.0 (see LICENSE)
+## Distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND.
+################################################################################
+ 
+"""
+DISCLAIMER: USE AT YOUR OWN RISK
+
+This software is provided "as is", without any express or implied warranties, including, but not limited to,
+the implied warranties of merchantability and fitness for a particular purpose. In no event shall the authors or
+contributors be liable for any direct, indirect, incidental, special, exemplary, or consequential damages
+(including, but not limited to, procurement of substitute goods or services; loss of use, data, or profits;
+or business interruption) however caused and on any theory of liability, whether in contract, strict liability,
+or tort (including negligence or otherwise) arising in any way out of the use of this software.
+
+This script is provided for demonstration and development purposes only and is not intended for use in production
+environments. You are solely responsible for any modifications or adaptations made for your specific use case.
+
+By using this code, you agree that you have read, understood, and accept these terms.
+"""
+
+"""
+Dynamic helper that chooses the correct vector-search retriever and
+builds the diet-function list the LLM receives.
+
+* Never raises AttributeError if a given retriever class name is missing.
+* Supports Chroma, Azure Cognitive Search and Elastic back-ends out-of-the-box.
+* Falls back to the first "SomethingRetriever" class it can find, so adding new
+  back-ends later is zero-touch.
+* Implements intelligent function prioritization for all Cisco platforms.
+
+ENV VARS
+--------
+FASTAPI_VECTOR_BACKEND              chroma | azure | elastic   (default: chroma)
+FASTAPI_CHROMA_COLLECTION_PLATFORM  override Chroma collection name
+FASTAPI_FUNCTION_TOKEN_BUDGET       max tokens for function payload (default: 16384)
+FASTAPI_FUNCTION_TOP_K              number of functions to retrieve (default: 50)
+"""
+import importlib
+import inspect
+import json
+import os
+import logging
+from pathlib import Path
+from typing import Any, Dict, List, Tuple, Optional
+from collections import defaultdict
+
+log = logging.getLogger(__name__)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# PLATFORM-SPECIFIC FUNCTION PRIORITIES
+# ─────────────────────────────────────────────────────────────────────────────
+FUNCTION_PRIORITIES = {
+    "meraki": {
+        # Organization and network management (most common)
+        "getOrganizations": 95,
+        "getOrganization": 90,
+        "getNetworks": 90,
+        "getNetwork": 85,
+        "getOrganizationDevices": 85,
+        "getDevices": 85,
+        "getDevice": 80,
+        
+        # Configuration and monitoring
+        "getNetworkClients": 75,
+        "getOrganizationNetworks": 75,
+        "getNetworkDevices": 70,
+        "getDeviceClients": 70,
+        
+        # Specialized operations
+        "getNetworkTraffic": 50,
+        "getOrganizationInventoryDevices": 50,
+        "updateDevice": 40,
+        "createNetwork": 40,
+        
+        # Low priority - rarely needed directly
+        "getNetworkSmDevices": 20,
+        "getNetworkPiiRequests": 15,
+        "getNetworkMqttBrokers": 10,
+    },
+    
+    "catalyst": {
+        # Device and interface management (most common)
+        "getDeviceList": 95,
+        "getAllInterfaces": 90,
+        "getDeviceCount": 85,
+        "getNetworkDeviceList": 85,
+        "getInterfaces": 80,
+        "getDeviceDetail": 80,
+        
+        # Network health and monitoring
+        "getOverallNetworkHealth": 75,
+        "getDeviceHealthStats": 70,
+        "getSiteHealth": 70,
+        
+        # Configuration and discovery
+        "getDiscoveryById": 50,
+        "getGlobalPool": 50,
+        "getSites": 50,
+        
+        # Specialized/administrative
+        "getExecutionByExecutionId": 20,
+        "getTaskById": 20,
+        "getEventSubscriptions": 15,
+    },
+    
+    "intersight": {
+        # Server inventory (MOST common)
+        "GetComputePhysicalSummaryList": 100,  # PRIMARY server list function
+        "GetComputeRackUnitList": 75,
+        "GetComputeBladeList": 75,
+        "GetEquipmentChassisIdByMoid": 70,
+        
+        # Server management
+        "GetServerProfileList": 40,  # Profiles, not actual servers
+        "GetComputeServerSettingList": 35,
+        "GetBootPrecisionPolicyList": 30,
+        
+        # Alerts and monitoring
+        "GetCondAlarmList": 60,
+        "GetCondHclStatusList": 55,
+        
+        # Storage and network
+        "GetStoragePhysicalDiskList": 50,
+        "GetNetworkElementList": 50,
+        
+        # Specialized - rarely what users want
+        "GetServerDisruptionList": 10,  # NOT for general server listing
+        "GetThermalPolicyList": 15,
+        "GetVnicEthQosPolicyList": 15,
+        
+        # View endpoints - typically lower priority
+        "GetViewComputePhysicalSummaryList": 25,
+        "GetViewServerList": 25,
+    },
+    
+    "nexus_dashboard": {
+        # Fabric and site management
+        "getFabrics": 90,
+        "getSites": 85,
+        "getFabricHealth": 80,
+        "getNodes": 75,
+        
+        # Policy and configuration
+        "getPolicies": 60,
+        "getTemplates": 55,
+        
+        # Analytics and insights
+        "getAnalytics": 50,
+        "getInsights": 50,
+    },
+    
+    "nexus_hyperfabric": {
+        # Fabric operations
+        "fabricsGetAllFabrics": 95,
+        "fabricsGetFabric": 90,
+        "nodesGetAllNodes": 85,
+        "fabricsGetFabricHealth": 80,
+        
+        # Configuration
+        "policiesGetPolicies": 60,
+        "templatesGetTemplates": 55,
+    },
+    
+    "sdwan_mngr": {
+        # Device management (most common)
+        "getAllDeviceStatus": 95,  # Primary device list
+        "getDeviceCounters": 85,
+        "getDeviceModels": 80,
+        "getControlStatus": 75,
+        
+        # Templates and policies
+        "getDeviceTemplates": 60,
+        "getPolicyList": 55,
+        
+        # Specialized
+        "getAlarmsCount": 50,
+        "getDeviceRebootHistory": 30,
+        
+        # Avoid these for basic queries
+        "listAllDevices": 10,  # Deprecated/confusing
+        "getDevicesList": 10,  # Deprecated/confusing
+    },
+    
+    "secure_access": {
+        # User and authentication
+        "getUsers": 90,
+        "getGroups": 85,
+        "getAuthentications": 80,
+        
+        # Policy and admin
+        "getPolicies": 60,
+        "getAdmins": 55,
+    },
+    
+    "umbrella": {
+        # Organization and identity
+        "getOrganizations": 90,
+        "getNetworks": 85,
+        "getIdentities": 80,
+        
+        # Security and reporting
+        "getSecurityActivity": 70,
+        "getDestinationLists": 65,
+        "getReports": 60,
+    },
+    
+    "cloudlock": {
+        # Incidents and policies
+        "getIncidents": 85,
+        "getPolicies": 80,
+        "getUsers": 75,
+        
+        # Data and compliance
+        "getDataPatterns": 60,
+        "getComplianceScans": 55,
+    },
+    
+    "ai_defense": {
+        # Threat detection
+        "getThreatDetections": 90,
+        "getSecurityAlerts": 85,
+        "getIncidentList": 80,
+        
+        # Analysis and response
+        "getAnalysisResults": 70,
+        "getResponseActions": 65,
+    }
+}
+
+# Query pattern to function boost mapping
+QUERY_PATTERN_BOOSTS = {
+    "list servers": {
+        "intersight": {
+            "GetComputePhysicalSummaryList": 50,
+            "GetComputeRackUnitList": 20,
+            "GetComputeBladeList": 20,
+            "GetServerDisruptionList": -40,  # Negative boost
+            "GetServerProfileList": -20,
+        }
+    },
+    "server inventory": {
+        "intersight": {
+            "GetComputePhysicalSummaryList": 40,
+            "GetComputeRackUnitList": 15,
+            "GetComputeBladeList": 15,
+        }
+    },
+    "all devices": {
+        "meraki": {
+            "getOrganizationDevices": 30,
+            "getDevices": 25,
+        },
+        "catalyst": {
+            "getDeviceList": 30,
+            "getNetworkDeviceList": 20,
+        },
+        "sdwan_mngr": {
+            "getAllDeviceStatus": 40,
+            "listAllDevices": -30,  # Discourage deprecated
+        }
+    },
+    "network health": {
+        "catalyst": {
+            "getOverallNetworkHealth": 40,
+            "getSiteHealth": 20,
+            "getDeviceHealthStats": 20,
+        },
+        "nexus_dashboard": {
+            "getFabricHealth": 30,
+        }
+    },
+    "interfaces": {
+        "catalyst": {
+            "getAllInterfaces": 50,
+            "getInterfaces": 30,
+        }
+    },
+    "alerts": {
+        "intersight": {
+            "GetCondAlarmList": 40,
+        },
+        "ai_defense": {
+            "getSecurityAlerts": 40,
+        }
+    }
+}
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 1.  Pick retriever backend
+# ─────────────────────────────────────────────────────────────────────────────
+BACKEND = os.getenv("FASTAPI_VECTOR_BACKEND", "chroma").lower()
+
+RETRIEVER_MODULES: dict[str, str] = {
+    "chroma":  "app.retrievers.chroma_retriever",
+    "azure":   "app.retrievers.ai_search_retriever",
+    "elastic": "app.retrievers.elastic_retriever",
+}
+if BACKEND not in RETRIEVER_MODULES:
+    raise ValueError(
+        f"Unsupported FASTAPI_VECTOR_BACKEND={BACKEND!r}. "
+        f"Expected one of: {', '.join(RETRIEVER_MODULES)}"
+    )
+
+mod = importlib.import_module(RETRIEVER_MODULES[BACKEND])
+
+# Try the common names first, then fall back to "any *Retriever class"
+Retriever = (
+    getattr(mod, "FunctionRetriever", None)
+    or getattr(mod, "ChromaRetriever", None)
+    or getattr(mod, "AzureSearchRetriever", None)
+    or getattr(mod, "ElasticRetriever", None)
+)
+
+if Retriever is None:
+    for attr in dir(mod):
+        obj = getattr(mod, attr)
+        if inspect.isclass(obj) and attr.endswith("Retriever"):
+            Retriever = obj
+            break
+
+if Retriever is None:  # still nothing?  bail out clearly.
+    raise ImportError(
+        f"No retriever class found in module {RETRIEVER_MODULES[BACKEND]}"
+    )
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 2.  Instantiate a singleton
+# ─────────────────────────────────────────────────────────────────────────────
+if BACKEND == "chroma":
+    retriever = Retriever(
+        collection_name=os.getenv(
+            "FASTAPI_CHROMA_COLLECTION_PLATFORM",
+            "platform-summaries-index",
+        )
+    )
+    # honour dynamic override if the Chroma client exposes helpers
+    custom_col = os.getenv(
+        "FASTAPI_CHROMA_COLLECTION_PLATFORM",
+        "platform-summaries-index",
+    )
+    if hasattr(retriever, "set_collection"):
+        retriever.set_collection(custom_col)
+    elif hasattr(retriever, "collection_name"):
+        setattr(retriever, "collection_name", custom_col)
+else:  # Azure / Elastic (both accept layer kwarg)
+    retriever = Retriever(layer="FASTAPI")
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 3.  Full-schema KV (lazy build + cache)
+# ─────────────────────────────────────────────────────────────────────────────
+
+DYNAMIC_CACHE_ROOT = Path(
+    os.getenv(
+        "PLATFORM_DYNAMIC_CACHE_PATH",
+        # Default: <repo-root>/src/app/llm/platform_dynamic_cache
+        (Path(__file__).resolve().parent / "platform_dynamic_cache").as_posix(),
+    )
+).resolve()
+DYNAMIC_CACHE_ROOT.mkdir(parents=True, exist_ok=True)
+
+CACHE_FILE = DYNAMIC_CACHE_ROOT / "full_schemas.json"
+SPEC_DIR   = Path(__file__).resolve().parent / "openapi_specs"
+
+
+def _build_full_kv() -> Dict[str, Any]:
+    """Load `openapi_specs/full_*.json` files into a single lookup table."""
+    kv: dict[str, Any] = {}
+    for fp in SPEC_DIR.glob("full_*.json"):
+        platform = fp.stem.replace("full_", "")
+        spec     = json.loads(fp.read_text(encoding="utf-8"))
+        for path_item in spec.get("paths", {}).values():
+            for op in path_item.values():
+                op_id = op.get("operationId")
+                if op_id:
+                    kv[f"{platform}:{op_id}"] = op
+    CACHE_FILE.write_text(json.dumps(kv), encoding="utf-8")
+    return kv
+
+
+FULL_KV: Dict[str, Any] = (
+    json.loads(CACHE_FILE.read_text(encoding="utf-8"))
+    if CACHE_FILE.exists()
+    else _build_full_kv()
+)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 4.  Priority calculation helpers
+# ─────────────────────────────────────────────────────────────────────────────
+
+def calculate_function_score(
+    func_name: str,
+    platform: str,
+    query: str,
+    is_lexical_match: bool = False
+) -> float:
+    """
+    Calculate priority score for a function based on multiple factors.
+    
+    Args:
+        func_name: Name of the function
+        platform: Platform name (e.g., 'intersight', 'meraki')
+        query: User's query string
+        is_lexical_match: Whether this was a lexical token match
+        
+    Returns:
+        Priority score (higher = more relevant)
+    """
+    # Base priority from platform configuration
+    platform_priorities = FUNCTION_PRIORITIES.get(platform, {})
+    base_score = platform_priorities.get(func_name, 50)  # Default priority is 50
+    
+    # Apply lexical match boost
+    if is_lexical_match:
+        base_score += 25
+    
+    # Apply query pattern boosts
+    query_lower = query.lower()
+    for pattern, platform_boosts in QUERY_PATTERN_BOOSTS.items():
+        if pattern in query_lower and platform in platform_boosts:
+            boost = platform_boosts[platform].get(func_name, 0)
+            base_score += boost
+    
+    # Additional heuristics based on function name and query
+    func_name_lower = func_name.lower()
+    
+    # Common action words get a boost
+    if any(action in func_name_lower for action in ['get', 'list', 'show']):
+        base_score += 5
+    
+    # Penalty for specialized/administrative functions
+    if any(term in func_name_lower for term in ['debug', 'diagnostic', 'internal', 'test']):
+        base_score -= 20
+    
+    # Platform-specific adjustments
+    if platform == "intersight" and "server" in query_lower:
+        if "physical" in func_name_lower and "summary" in func_name_lower:
+            base_score += 30  # Extra boost for the primary server function
+        elif "disruption" in func_name_lower or "profile" in func_name_lower:
+            base_score -= 30  # Penalty for confusing functions
+    
+    return max(0, base_score)  # Ensure non-negative score
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 5.  Public helpers
+# ─────────────────────────────────────────────────────────────────────────────
+def build_functions_for_llm(
+    query: str,
+    enabled: list[str],
+    *,
+    token_budget: int = int(os.getenv("FASTAPI_FUNCTION_TOKEN_BUDGET", 16_384)),
+    k: int = int(os.getenv("FASTAPI_FUNCTION_TOP_K", 50)),
+) -> List[dict]:
+    """
+    Return a list of diet-function JSON objects that the LLM will receive.
+
+    1. Top-k vector search over enabled platforms.
+    2. Lexical fallback: include any function whose *name* contains a user token
+       (case-insensitive, plural⇢singular).
+    3. Priority-based reranking for optimal function selection.
+    4. Trim JSON payload to fit within *token_budget*.
+    """
+    # ── FORCE CRITICAL FUNCTIONS FOR SPECIFIC QUERIES ──────────────────
+    forced_functions = []
+    query_lower = query.lower()
+    
+    if "intersight" in enabled and any(term in query_lower for term in ["server", "compute", "physical"]):
+        # Force GetComputePhysicalSummaryList to be included
+        critical_search = retriever.query(
+            "GetComputePhysicalSummaryList",  # Search for exact function name
+            k=1,
+            filter={"platform": {"$in": ["intersight"]}}
+        )
+        if critical_search:
+            forced_functions.extend(critical_search)
+            log.info("Forced GetComputePhysicalSummaryList for server query")
+        else:
+            log.warning("GetComputePhysicalSummaryList not found in ChromaDB!")
+    
+    # ── 1. vector search ────────────────────────────────────────────────
+    vec_hits: list[dict] = retriever.query(
+        query,
+        k=min(k * 2, 100),  # Get up to 2x candidates, max 100
+        filter={"platform": {"$in": enabled}},
+    )
+    
+    # Remove forced functions from vec_hits to avoid duplicates
+    forced_names = {f["name"] for f in forced_functions}
+    vec_hits = [h for h in vec_hits if h["name"] not in forced_names]
+    
+    # Combine with forced functions first
+    vec_hits = forced_functions + vec_hits
+    
+    have: set[str] = {d["name"] for d in vec_hits}
+
+    # ── 2. lexical fallback  ────────────────────────────────────────────
+    raw_tokens = [t.lower().strip(".,!?") for t in query.split()]
+    tokens: set[str] = set()
+    for tok in raw_tokens:
+        tokens.add(tok)
+        if tok.endswith("s") and len(tok) > 3:
+            tokens.add(tok[:-1])  # Singular form
+
+    lex_hits: list[dict] = []
+    for platform in enabled:
+        every = retriever.query(
+            "",                  # empty query returns everything
+            k=200,               # Limited to prevent performance issues
+            filter={"platform": {"$in": [platform]}},
+        )
+        for d in every:
+            if d["name"] in have:
+                continue
+            if any(tok in d["name"].lower() for tok in tokens):
+                lex_hits.append(d)
+                have.add(d["name"])
+
+    # ── 3. Priority-based reranking ─────────────────────────────────────
+    all_hits = lex_hits + vec_hits
+    
+    # Score and sort all candidates
+    scored_hits: List[Tuple[float, dict]] = []
+    for hit in all_hits:
+        platform = hit.get("metadata", {}).get("platform", "")
+        func_name = hit["name"]
+        is_lexical = hit in lex_hits
+        
+        score = calculate_function_score(func_name, platform, query, is_lexical)
+        scored_hits.append((score, hit))
+    
+    # Sort by score (highest first)
+    scored_hits.sort(key=lambda x: x[0], reverse=True)
+    
+    if "server" in query.lower() and "intersight" in enabled:
+        print(f"\n=== DEBUG: Query '{query}' ===")
+        print("Top 10 functions after scoring:")
+        for i, (score, hit) in enumerate(scored_hits[:10]):
+            print(f"{i+1}. {hit['name']} (score: {score})")
+    # Take top k after scoring
+    docs = [hit for score, hit in scored_hits[:k]]
+
+    # ── 4. unwrap + schema enhancement + trimming ─────────────────────────
+    size = 0
+    out: list[dict] = []
+
+    for d in docs:
+        try:
+            fn_schema = json.loads(d["content"])
+        except (KeyError, json.JSONDecodeError):
+            continue
+
+        # Enhance description based on priority
+        platform = d.get("metadata", {}).get("platform", "")
+        func_name = fn_schema.get("name", "")
+        platform_priorities = FUNCTION_PRIORITIES.get(platform, {})
+        priority = platform_priorities.get(func_name, 50)
+        
+        # Add priority indicators to description
+        original_desc = fn_schema.get("description", "")
+        if priority >= 90:
+            fn_schema["description"] = f"⭐ [PRIMARY] {original_desc}"
+        elif priority >= 70:
+            fn_schema["description"] = f"[RECOMMENDED] {original_desc}"
+        elif priority <= 20:
+            fn_schema["description"] = f"[SPECIALIZED] {original_desc}"
+        
+        # Platform-specific description enhancements
+        if platform == "intersight" and func_name == "GetComputePhysicalSummaryList":
+            fn_schema["description"] = "⭐ [PRIMARY] Main function to list all servers. Use this for: list servers, show servers, get servers, server inventory."
+        elif platform == "catalyst" and func_name == "getAllInterfaces":
+            fn_schema["description"] = "⭐ [PRIMARY] Get all network interfaces from all devices. Use this for interface inventory."
+        elif platform == "sdwan_mngr" and func_name == "getAllDeviceStatus":
+            fn_schema["description"] = "⭐ [PRIMARY] Get complete list and status of all SD-WAN devices."
+
+        # Fix OpenAI array-schema quirk (missing "items")
+        for pschema in fn_schema.get("parameters", {}).get("properties", {}).values():
+            if pschema.get("type") == "array" and "items" not in pschema:
+                pschema["items"] = {"type": "string"}
+
+        payload = json.dumps(fn_schema, separators=(",", ":"))
+        if size + len(payload) > token_budget:
+            break
+
+        size += len(payload)
+        out.append(fn_schema)
+
+    # Log function selection for debugging
+    if log.isEnabledFor(logging.DEBUG):
+        selected_names = [fn["name"] for fn in out[:10]]  # First 10
+        log.debug(f"Query: '{query}' -> Selected functions: {selected_names}")
+
+    if "server" in query.lower() and "intersight" in enabled:
+        print("\nFunctions being sent to LLM:")
+        for i, fn in enumerate(out[:10]):
+            print(f"{i+1}. {fn['name']}: {fn.get('description', '')[:80]}...")
+        print(f"Total functions sent: {len(out)}\n")
+
+    return out
+
+
+def full_schema_lookup(platform: str, name: str) -> dict | None:
+    """Return the full OpenAPI operation object (or `None` if not found)."""
+    return FULL_KV.get(f"{platform}:{name}")
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 6. Configuration management
+# ─────────────────────────────────────────────────────────────────────────────
+
+def load_custom_priorities() -> None:
+    """Load custom function priorities from external JSON file if available."""
+    priority_file = DYNAMIC_CACHE_ROOT / "function_priorities.json"
+    if priority_file.exists():
+        try:
+            with open(priority_file, 'r') as f:
+                custom_priorities = json.load(f)
+                # Merge with default priorities (custom takes precedence)
+                for platform, priorities in custom_priorities.items():
+                    if platform in FUNCTION_PRIORITIES:
+                        FUNCTION_PRIORITIES[platform].update(priorities)
+                    else:
+                        FUNCTION_PRIORITIES[platform] = priorities
+                log.info(f"Loaded custom function priorities from {priority_file}")
+        except Exception as e:
+            log.warning(f"Failed to load custom priorities: {e}")
+
+
+def export_current_priorities() -> None:
+    """Export current function priorities for review/editing."""
+    export_file = DYNAMIC_CACHE_ROOT / "function_priorities_export.json"
+    with open(export_file, 'w') as f:
+        json.dump(FUNCTION_PRIORITIES, f, indent=2, sort_keys=True)
+    log.info(f"Exported function priorities to {export_file}")
+
+
+# Load custom priorities on module import
+load_custom_priorities()
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 7. Testing and debugging helpers
+# ─────────────────────────────────────────────────────────────────────────────
+
+def test_function_selection(query: str, platform: str) -> None:
+    """Test function selection for a given query and platform."""
+    print(f"\nTesting query: '{query}' for platform: {platform}")
+    print("-" * 60)
+    
+    functions = build_functions_for_llm(query, [platform], k=10)
+    
+    for i, func in enumerate(functions, 1):
+        name = func.get("name", "Unknown")
+        desc = func.get("description", "No description")[:100]
+        print(f"{i:2d}. {name}")
+        print(f"    {desc}...")
+    print()
+
+
+if __name__ == "__main__":
+    # Test the function selection
+    test_queries = [
+        ("list servers", "intersight"),
+        ("get all devices", "meraki"),
+        ("show interfaces", "catalyst"),
+        ("network health", "catalyst"),
+        ("get fabrics", "nexus_dashboard"),
+    ]
+    
+    for query, platform in test_queries:
+        test_function_selection(query, platform)

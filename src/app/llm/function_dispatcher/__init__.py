@@ -46,8 +46,24 @@ def _call_meraki(fname: str, kwargs: Dict[str, Any]):
     raise AttributeError(f'No Meraki SDK method {fname!r} found')
 
 def dispatch_function_call(name: str, arguments: Dict[str, Any]):
+    # Try direct lookup first
     if name in _registry:
         return _registry[name](**arguments)
+    
+    # Convert snake_case to PascalCase and try again
+    # e.g., get_compute_physical_summary_list -> GetComputePhysicalSummaryList
+    pascal_name = ''.join(word.capitalize() for word in name.split('_'))
+    if pascal_name in _registry:
+        return _registry[pascal_name](**arguments)
+    
+    # Also try without 'get_' prefix for some cases
+    # e.g., get_devices -> Devices
+    if name.startswith('get_'):
+        alt_name = ''.join(word.capitalize() for word in name[4:].split('_'))
+        if alt_name in _registry:
+            return _registry[alt_name](**arguments)
+    
+    # Fall back to Meraki SDK
     return _call_meraki(name, arguments)
 
 __all__ = ['dispatch_function_call', 'register']

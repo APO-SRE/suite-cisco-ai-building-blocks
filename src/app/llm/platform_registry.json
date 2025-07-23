@@ -5,7 +5,7 @@
     "sdk_pattern": "meraki",
     "sdk_class": "DashboardAPI",
     "created_by_us": false,
-    "installed": true,
+    "installed": false,
     "route": true,
     "auth_config": {
       "type": "api_key",
@@ -33,7 +33,7 @@
     "sdk_pattern": "catalyst",
     "sdk_class": "DNACenterAPI",
     "created_by_us": false,
-    "installed": true,
+    "installed": false,
     "route": true,
     "auth_config": {
       "type": "basic_auth",
@@ -198,7 +198,7 @@
     "sdk_pattern": "sdwan",
     "sdk_class": "vManageAPI",
     "created_by_us": false,
-    "installed": true,
+    "installed": false,
     "route": true,
     "auth_config": {
       "type": "session_based",
@@ -264,7 +264,7 @@
     "sdk_pattern": "nexus_hyperfabric",
     "sdk_class": "Client",
     "created_by_us": true,
-    "installed": true,
+    "installed": false,
     "route": true,
     "auth_config": {
       "type": "bearer_token",

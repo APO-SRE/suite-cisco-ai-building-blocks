@@ -346,34 +346,12 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
 
     # 2️⃣ Build candidate functions
     with tracer.start_as_current_span("build.functions") as bfspan:
-        functions: List[dict] = []
-        if VECTOR_BACKEND == "chroma":
-            raw_hits = func_retriever.query(
-                prompt,
-                k=500,
-                filter={"platform": {"$in": platforms}}
-    )
-
-            hits     = sorted(raw_hits, key=lambda x: x.get("distance", 1.0))[:128]
-            for h in hits:
-                try:
-                    schema = json.loads(h["content"])
-                    # ─── ensure array parameters have an 'items' definition ────────────────
-                    for prop in schema.get("parameters", {}).get("properties", {}).values():
-                        if prop.get("type") == "array" and "items" not in prop:
-                            prop["items"] = {"type": "string"}
-                    # ─── (leave the rest of your sanitize code here as before) ─────────────
-                    functions.append(schema)
-                    '''
-                    schema = json.loads(h["content"])
-                    for ps in schema.get("parameters", {}).get("properties", {}).values():
-                        if ps.get("type") == "array" and "items" not in ps:
-                            ps["items"] = {"type": "string"}
-                    functions.append(schema) '''
-                except Exception as exc:
-                    log.warning("bad_schema", name=h.get("name"), err=str(exc))
-        else:
-            functions = build_functions_for_llm(prompt, platforms)
+        # Always use build_functions_for_llm which includes priority-based reranking
+        functions = build_functions_for_llm(prompt, platforms)
+        
+        # Set span attributes for observability
+        bfspan.set_attribute("functions.count", len(functions))
+        bfspan.set_attribute("platforms", platforms)
   
       
 
