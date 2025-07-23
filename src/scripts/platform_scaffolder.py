@@ -127,6 +127,13 @@ PLATFORM_OVERRIDES = {
             "GetComputeRackUnitList": "Get list of rack-mounted servers. Use this for rack servers specifically, not blade servers.",
             "GetComputeBladeList": "Get list of blade servers in chassis. Use this for blade servers specifically, not rack servers."
         },
+        # Map PascalCase operation IDs to snake_case SDK methods
+        "operation_id_map": {
+            "GetComputePhysicalSummaryList": "get_compute_physical_summary_list",
+            "GetComputePhysicalSummaryByMoid": "get_compute_physical_summary_by_moid",
+            "GetComputeRackUnitList": "get_compute_rack_unit_list",
+            "GetComputeBladeList": "get_compute_blade_list",
+        },
         # Enable SDK filtering for Intersight
         "disable_sdk_filtering": False,
     },
@@ -438,9 +445,17 @@ def _emit_client_stub(platform: str, sdk_module: str) -> None:
             # Strategy 4: Class-based API tag handler (for Intersight)
             # Tries to import a class like intersight.api.compute_api.ComputeApi
             if parts:
+                # For Intersight, we need to handle get_/post_/patch_/delete_ prefixes
+                # get_compute_physical_summary_list -> compute_api.ComputeApi
+                if parts[0] in ['get', 'post', 'patch', 'delete', 'put']:
+                    # Skip the HTTP method prefix for API class detection
+                    api_parts = parts[1:]
+                else:
+                    api_parts = parts
+                
                 # This loop logic is important for Intersight's naming conventions
-                for i in range(len(parts), 0, -1):
-                    tag = '_'.join(parts[:i])
+                for i in range(len(api_parts), 0, -1):
+                    tag = '_'.join(api_parts[:i])
                     try:
                         cls_mod = importlib.import_module(f"{_SDK_PKG}.api.{tag}_api")
                         class_name = f"{''.join(p.capitalize() for p in tag.split('_'))}Api"
@@ -1199,9 +1214,15 @@ def scaffold_one(
         lines.extend(_emit_org_injection(platform, non_body_keys))
 
         # finish with a clearer target call
+        # Check if we have a mapped SDK method name for this operation
+        platform_config = PLATFORM_OVERRIDES.get(platform, {})
+        operation_id_map = platform_config.get("operation_id_map", {})
+        target_method_name = operation_id_map.get(fn['name'], safe_name)
+        
         lines.extend([
             f"    client = {platform.capitalize()}Client()",
-            f"    target = getattr(client, '{safe_name}')",
+            f"    # Use attribute access to trigger __getattr__ for dynamic resolution",
+            f"    target = client.{target_method_name}",
             "",
             "    if body_payload is not None:",
             "        return target(body=body_payload, **final_kwargs)",

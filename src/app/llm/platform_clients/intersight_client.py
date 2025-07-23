@@ -124,9 +124,17 @@ class IntersightClient:
         # Strategy 4: Class-based API tag handler (for Intersight)
         # Tries to import a class like intersight.api.compute_api.ComputeApi
         if parts:
+            # For Intersight, we need to handle get_/post_/patch_/delete_ prefixes
+            # get_compute_physical_summary_list -> compute_api.ComputeApi
+            if parts[0] in ['get', 'post', 'patch', 'delete', 'put']:
+                # Skip the HTTP method prefix for API class detection
+                api_parts = parts[1:]
+            else:
+                api_parts = parts
+    
             # This loop logic is important for Intersight's naming conventions
-            for i in range(len(parts), 0, -1):
-                tag = '_'.join(parts[:i])
+            for i in range(len(api_parts), 0, -1):
+                tag = '_'.join(api_parts[:i])
                 try:
                     cls_mod = importlib.import_module(f"{_SDK_PKG}.api.{tag}_api")
                     class_name = f"{''.join(p.capitalize() for p in tag.split('_'))}Api"
