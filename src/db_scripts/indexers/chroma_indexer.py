@@ -240,6 +240,12 @@ class PlatformFunctionIndexer(ChromaIndexer):
         # ---------- bulk upsert ----------
         print(f"[ChromaIndexer] Upserting {len(ids)} docs into '{self.collection_name}'")
         ids = dedupe_ids(ids)          # ← NEW
+        
+        # Skip upsert if no functions to index
+        if not ids:
+            print(f"[ChromaIndexer] No functions to index for this platform")
+            return
+            
         self.collection.upsert(
             ids=ids,
             documents=docs,

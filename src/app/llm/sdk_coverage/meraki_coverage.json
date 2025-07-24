@@ -1,0 +1,106 @@
+{
+  "platform": "meraki",
+  "sdk_module": "meraki",
+  "total_operations": 773,
+  "covered_operations": 758,
+  "coverage_percentage": 98.05950840879689,
+  "missing_operations": [
+    {
+      "operationId": "getOrganizationWirelessControllerAvailabilitiesChangeHistory",
+      "path": "/organizations/{organizationId}/wirelessController/availabilities/changeHistory",
+      "method": "get",
+      "summary": "List connectivity data of wireless LAN controllers in an organization"
+    },
+    {
+      "operationId": "getOrganizationWirelessControllerClientsOverviewHistoryByDeviceByInterval",
+      "path": "/organizations/{organizationId}/wirelessController/clients/overview/history/byDevice/byInterval",
+      "method": "get",
+      "summary": "List wireless client counts of wireless LAN controllers over time in an organization"
+    },
+    {
+      "operationId": "getOrganizationWirelessControllerConnections",
+      "path": "/organizations/{organizationId}/wirelessController/connections",
+      "method": "get",
+      "summary": "List all access points associated with wireless LAN controllers in an organization"
+    },
+    {
+      "operationId": "getOrganizationWirelessControllerDevicesInterfacesL2ByDevice",
+      "path": "/organizations/{organizationId}/wirelessController/devices/interfaces/l2/byDevice",
+      "method": "get",
+      "summary": "List wireless LAN controller layer 2 interfaces in an organization"
+    },
+    {
+      "operationId": "getOrganizationWirelessControllerDevicesInterfacesL2StatusesChangeHistoryByDevice",
+      "path": "/organizations/{organizationId}/wirelessController/devices/interfaces/l2/statuses/changeHistory/byDevice",
+      "method": "get",
+      "summary": "List wireless LAN controller layer 2 interfaces history status in an organization"
+    },
+    {
+      "operationId": "getOrganizationWirelessControllerDevicesInterfacesL2UsageHistoryByInterval",
+      "path": "/organizations/{organizationId}/wirelessController/devices/interfaces/l2/usage/history/byInterval",
+      "method": "get",
+      "summary": "List wireless LAN controller layer 2 interfaces history usage in an organization"
+    },
+    {
+      "operationId": "getOrganizationWirelessControllerDevicesInterfacesL3ByDevice",
+      "path": "/organizations/{organizationId}/wirelessController/devices/interfaces/l3/byDevice",
+      "method": "get",
+      "summary": "List wireless LAN controller layer 3 interfaces in an organization"
+    },
+    {
+      "operationId": "getOrganizationWirelessControllerDevicesInterfacesL3StatusesChangeHistoryByDevice",
+      "path": "/organizations/{organizationId}/wirelessController/devices/interfaces/l3/statuses/changeHistory/byDevice",
+      "method": "get",
+      "summary": "List wireless LAN controller layer 3 interfaces history status in an organization"
+    },
+    {
+      "operationId": "getOrganizationWirelessControllerDevicesInterfacesL3UsageHistoryByInterval",
+      "path": "/organizations/{organizationId}/wirelessController/devices/interfaces/l3/usage/history/byInterval",
+      "method": "get",
+      "summary": "List wireless LAN controller layer 3 interfaces history usage in an organization"
+    },
+    {
+      "operationId": "getOrganizationWirelessControllerDevicesInterfacesPacketsOverviewByDevice",
+      "path": "/organizations/{organizationId}/wirelessController/devices/interfaces/packets/overview/byDevice",
+      "method": "get",
+      "summary": "Retrieve the packet counters for the interfaces of a Wireless LAN controller"
+    },
+    {
+      "operationId": "getOrganizationWirelessControllerDevicesInterfacesUsageHistoryByInterval",
+      "path": "/organizations/{organizationId}/wirelessController/devices/interfaces/usage/history/byInterval",
+      "method": "get",
+      "summary": "Retrieve the traffic for the interfaces of a Wireless LAN controller"
+    },
+    {
+      "operationId": "getOrganizationWirelessControllerDevicesRedundancyFailoverHistory",
+      "path": "/organizations/{organizationId}/wirelessController/devices/redundancy/failover/history",
+      "method": "get",
+      "summary": "List the failover events of wireless LAN controllers in an organization"
+    },
+    {
+      "operationId": "getOrganizationWirelessControllerDevicesRedundancyStatuses",
+      "path": "/organizations/{organizationId}/wirelessController/devices/redundancy/statuses",
+      "method": "get",
+      "summary": "List redundancy details of wireless LAN controllers in an organization"
+    },
+    {
+      "operationId": "getOrganizationWirelessControllerDevicesSystemUtilizationHistoryByInterval",
+      "path": "/organizations/{organizationId}/wirelessController/devices/system/utilization/history/byInterval",
+      "method": "get",
+      "summary": "List cpu utilization data of wireless LAN controllers in an organization"
+    },
+    {
+      "operationId": "getOrganizationWirelessControllerOverviewByDevice",
+      "path": "/organizations/{organizationId}/wirelessController/overview/byDevice",
+      "method": "get",
+      "summary": "List the overview information of wireless LAN controllers in an organization and it is updated every minute."
+    }
+  ],
+  "sdk_methods_count": 760,
+  "http_method_breakdown": {
+    "GET": 431,
+    "POST": 128,
+    "PUT": 158,
+    "DELETE": 56
+  }
+}

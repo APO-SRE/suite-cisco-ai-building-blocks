@@ -64,9 +64,9 @@ SEMANTIC_MAPPINGS = {
         "primary_functions": ["GetComputePhysicalSummaryList", "GetComputeRackUnitList", "GetComputeBladeList"]
     },
     "devices": {
-        "boost_terms": ["device", "equipment", "hardware", "network", "controller"],
+        "boost_terms": ["device", "equipment", "hardware", "network", "controller", "router", "switch", "vedge", "cedge"],
         "avoid_terms": ["template", "policy", "config", "setting"],
-        "primary_functions": ["getDeviceList", "getAllDeviceStatus", "getOrganizationDevices", "getNetworkDeviceList"]
+        "primary_functions": ["getDeviceList", "getAllDeviceStatus", "getOrganizationDevices", "getNetworkDeviceList", "listAllDevices"]
     },
     "interfaces": {
         "boost_terms": ["interface", "port", "ethernet", "adapter", "nic", "network"],
@@ -74,14 +74,14 @@ SEMANTIC_MAPPINGS = {
         "primary_functions": ["getAllInterfaces", "getInterfaces", "GetVnicEthIfList"]
     },
     "users": {
-        "boost_terms": ["user", "account", "identity", "person", "people"],
+        "boost_terms": ["user", "account", "identity", "person", "people", "admin", "operator"],
         "avoid_terms": ["policy", "setting", "template"],
-        "primary_functions": ["getUsers", "getUserList", "GetIamUserList"]
+        "primary_functions": ["getUsers", "getUserList", "GetIamUserList", "findUsers_1"]
     },
     "alerts": {
-        "boost_terms": ["alert", "alarm", "notification", "event", "warning"],
+        "boost_terms": ["alert", "alarm", "notification", "event", "warning", "issue", "problem"],
         "avoid_terms": ["policy", "template", "setting"],
-        "primary_functions": ["GetCondAlarmList", "getSecurityAlerts", "getAlarmsCount"]
+        "primary_functions": ["GetCondAlarmList", "getSecurityAlerts", "getAlarmsCount", "getRawAlarmData", "getActiveAlarms"]
     },
     "networks": {
         "boost_terms": ["network", "vlan", "subnet", "fabric", "vpc", "segment"],
@@ -96,7 +96,27 @@ SEMANTIC_MAPPINGS = {
     "inventory": {
         "boost_terms": ["inventory", "assets", "equipment", "hardware"],
         "avoid_terms": ["policy", "template"],
-        "primary_functions": ["getOrganizationInventoryDevices", "GetComputePhysicalSummaryList"]
+        "primary_functions": ["getOrganizationInventoryDevices", "GetComputePhysicalSummaryList", "listAllDevices"]
+    },
+    "templates": {
+        "boost_terms": ["template", "configuration", "blueprint", "model"],
+        "avoid_terms": ["policy", "rule"],
+        "primary_functions": ["getAllDeviceTemplates", "getFeatureTemplateList", "getTemplatePolicy"]
+    },
+    "sites": {
+        "boost_terms": ["site", "location", "branch", "office", "campus"],
+        "avoid_terms": ["policy", "template"],
+        "primary_functions": ["getAllSites", "getSiteHealth", "getSites"]
+    },
+    "policies": {
+        "boost_terms": ["policy", "rule", "configuration", "setting"],
+        "avoid_terms": ["template", "device"],
+        "primary_functions": ["getAllVedgePolicies", "getPolicyList", "getApplicationAwareRoutingPolicyList"]
+    },
+    "sdwan": {
+        "boost_terms": ["sdwan", "sd-wan", "vmanage", "vedge", "cedge", "viptela"],
+        "avoid_terms": ["meraki", "catalyst"],
+        "primary_functions": ["listAllDevices", "getAllDeviceStatus", "getRawAlarmData"]
     }
 }
 
@@ -217,22 +237,53 @@ FUNCTION_PRIORITIES = {
     
     "sdwan_mngr": {
         # Device management (most common)
-        "getAllDeviceStatus": 95,  # Primary device list
-        "getDeviceCounters": 85,
-        "getDeviceModels": 80,
-        "getControlStatus": 75,
+        "listAllDevices": 95,  # Primary device inventory function
+        "getAllDeviceStatus": 90,  # Device operational status
+        "getDevicesDetails": 85,  # Detailed device information
+        "getDevicesHealth": 85,  # Device health metrics
+        "getDevicesHealthOverview": 80,  # Health overview
+        "getDeviceCounters": 75,
+        "getDeviceModels": 70,
+        "getControlStatus": 70,
         
-        # Templates and policies
-        "getDeviceTemplates": 60,
-        "getPolicyList": 55,
+        # Alarms and monitoring
+        "getRawAlarmData": 85,  # Primary alarm data function
+        "getActiveAlarms": 85,  # Active alarms only
+        "getNonViewedAlarms": 80,  # Unviewed alarms
+        "getAlarmsCount": 70,  # Just counts
+        "getRunningAlarmCount": 65,
         
-        # Specialized
-        "getAlarmsCount": 50,
+        # Users and AAA
+        "findUsers_1": 85,  # Primary user list function
+        "getUserRole": 75,
+        "getUserGroups": 75,
+        "getAaaConfig": 70,
+        
+        # Templates and configuration
+        "getAllDeviceTemplates": 80,  # Device templates
+        "getFeatureTemplateList": 75,
+        "getTemplatePolicy": 70,
+        "getDeviceTemplateList": 70,
+        
+        # Sites and topology
+        "getAllSites": 85,  # Site list
+        "getSiteHealth": 80,
+        "getTopology": 75,
+        "getControlConnections": 70,
+        
+        # Policies
+        "getAllVedgePolicies": 75,  # vEdge policies
+        "getPolicyList": 70,
+        "getApplicationAwareRoutingPolicyList": 65,
+        "getControlPolicyList": 65,
+        
+        # Lower priority - specialized operations
         "getDeviceRebootHistory": 30,
+        "getDeviceRunningConfig": 40,
+        "getStatisticsRawData": 35,
         
-        # Avoid these for basic queries
-        "listAllDevices": 10,  # Deprecated/confusing
-        "getDevicesList": 10,  # Deprecated/confusing
+        # Deprecated or less useful
+        "getDevicesList": 20,  # Use listAllDevices instead
     },
     
     "secure_access": {
@@ -278,6 +329,42 @@ FUNCTION_PRIORITIES = {
         # Analysis and response
         "getAnalysisResults": 70,
         "getResponseActions": 65,
+    },
+    
+    "sdwan_mngr": {
+        # Device management (MOST common)
+        "listAllDevices": 100,  # PRIMARY device list function
+        "getAllDeviceStatus": 95,  # PRIMARY device status
+        "getDeviceDetails": 85,
+        "getSystemDeviceList": 80,
+        
+        # Alarms and monitoring
+        "getRawAlarmData": 90,
+        "getActiveAlarms": 85,
+        "getAlarmsCount": 80,
+        "getCriticalAlarmsCount": 75,
+        
+        # Policy management (HIGH priority)
+        "getAllVedgePolicies": 90,
+        "getSecurityPolicyDeviceList": 85,
+        "getApplicationAwareRoutingPolicyList": 80,
+        "getControlPolicyList": 80,
+        "getDataPolicyList": 80,
+        "getTrafficPolicyList": 75,
+        
+        # Templates
+        "getAllDeviceTemplates": 75,
+        "getFeatureTemplateList": 70,
+        "getTemplatePolicy": 65,
+        
+        # Sites and topology
+        "getAllSites": 70,
+        "getTopology": 65,
+        
+        # Specialized operations (lower priority)
+        "getCloudxDeviceList": 30,
+        "getMasterOrchestrators": 25,
+        "getCloudConnections": 20,
     }
 }
 
@@ -309,8 +396,10 @@ QUERY_PATTERN_BOOSTS = {
             "getNetworkDeviceList": 20,
         },
         "sdwan_mngr": {
-            "getAllDeviceStatus": 40,
-            "listAllDevices": -30,  # Discourage deprecated
+            "listAllDevices": 40,  # Primary device list
+            "getAllDeviceStatus": 30,
+            "getDevicesDetails": 25,
+            "getDevicesList": -30,  # Discourage less useful variant
         }
     },
     "network health": {
@@ -335,6 +424,57 @@ QUERY_PATTERN_BOOSTS = {
         },
         "ai_defense": {
             "getSecurityAlerts": 40,
+        }
+    },
+    "alarms": {
+        "sdwan_mngr": {
+            "getRawAlarmData": 50,  # Primary alarm function
+            "getActiveAlarms": 40,
+            "getNonViewedAlarms": 30,
+            "getAlarmsCount": 20,  # Just count
+        }
+    },
+    "sd-wan devices": {
+        "sdwan_mngr": {
+            "listAllDevices": 50,
+            "getAllDeviceStatus": 40,
+            "getDevicesDetails": 35,
+            "getDevicesHealth": 30,
+        }
+    },
+    "vmanage devices": {
+        "sdwan_mngr": {
+            "listAllDevices": 50,
+            "getAllDeviceStatus": 40,
+            "getDevicesDetails": 35,
+        }
+    },
+    "users": {
+        "sdwan_mngr": {
+            "findUsers_1": 50,
+            "getUserRole": 30,
+            "getUserGroups": 30,
+        }
+    },
+    "templates": {
+        "sdwan_mngr": {
+            "getAllDeviceTemplates": 50,
+            "getFeatureTemplateList": 40,
+            "getTemplatePolicy": 30,
+        }
+    },
+    "sites": {
+        "sdwan_mngr": {
+            "getAllSites": 50,
+            "getSiteHealth": 40,
+        }
+    },
+    "policies": {
+        "sdwan_mngr": {
+            "getAllVedgePolicies": 40,
+            "getPolicyList": 35,
+            "getApplicationAwareRoutingPolicyList": 30,
+            "getControlPolicyList": 30,
         }
     }
 }
@@ -610,16 +750,31 @@ def build_functions_for_llm(
         "show servers": ["GetComputePhysicalSummaryList", "server inventory"],
         "get servers": ["GetComputePhysicalSummaryList", "server inventory"],
         "all servers": ["GetComputePhysicalSummaryList", "server inventory"],
-        "list devices": ["getDeviceList", "getAllDeviceStatus", "device inventory"],
-        "show devices": ["getDeviceList", "getAllDeviceStatus"],
-        "all devices": ["getAllDeviceStatus", "device inventory"],
+        "list devices": ["getDeviceList", "getAllDeviceStatus", "device inventory", "listAllDevices"],
+        "show devices": ["getDeviceList", "getAllDeviceStatus", "listAllDevices"],
+        "all devices": ["getAllDeviceStatus", "device inventory", "listAllDevices"],
+        "sd-wan devices": ["listAllDevices", "getAllDeviceStatus", "getDevicesDetails"],
+        "sdwan devices": ["listAllDevices", "getAllDeviceStatus", "getDevicesDetails"],
+        "vmanage devices": ["listAllDevices", "getAllDeviceStatus", "getDevicesDetails"],
+        "list sd-wan": ["listAllDevices", "getAllDeviceStatus", "getDevicesDetails"],
+        "list sdwan": ["listAllDevices", "getAllDeviceStatus", "getDevicesDetails"],
+        "list alarms": ["getRawAlarmData", "getActiveAlarms", "getNonViewedAlarms"],
+        "show alarms": ["getRawAlarmData", "getActiveAlarms"],
+        "sd-wan alarms": ["getRawAlarmData", "getActiveAlarms", "getNonViewedAlarms"],
         "list interfaces": ["getAllInterfaces", "getInterfaces", "interface inventory"],
         "show interfaces": ["getAllInterfaces", "interface inventory"],
-        "list users": ["getUsers", "getUserList", "user inventory"],
+        "list users": ["getUsers", "getUserList", "user inventory", "findUsers_1"],
+        "sd-wan users": ["findUsers_1", "getUserRole", "getUserGroups"],
         "list alerts": ["GetCondAlarmList", "getSecurityAlerts", "alarm list"],
         "list networks": ["getNetworks", "getNetworkList", "network inventory"],
         "network health": ["getOverallNetworkHealth", "getSiteHealth", "health status"],
-        "device health": ["getDeviceHealthStats", "device health status"],
+        "device health": ["getDeviceHealthStats", "device health status", "getDevicesHealth"],
+        "sd-wan templates": ["getAllDeviceTemplates", "getFeatureTemplateList"],
+        "list templates": ["getAllDeviceTemplates", "getFeatureTemplateList"],
+        "sd-wan sites": ["getAllSites", "getSiteHealth"],
+        "list sites": ["getAllSites", "getSiteHealth"],
+        "sd-wan policies": ["getAllVedgePolicies", "getPolicyList"],
+        "list policies": ["getAllVedgePolicies", "getPolicyList"],
     }
     
     # Find matching patterns and add their expansions
@@ -755,13 +910,15 @@ def build_functions_for_llm(
     # Sort by score (highest first)
     scored_hits.sort(key=lambda x: x[0], reverse=True)
     
-    if "server" in query.lower() and "intersight" in enabled:
+    if ("server" in query.lower() and "intersight" in enabled) or ("device" in query.lower() and "sdwan_mngr" in enabled):
         print(f"\n=== DEBUG: Query '{query}' ===")
         primary_target, _ = extract_query_intent(query)
         print(f"Detected semantic target: '{primary_target}'")
+        print(f"Enabled platforms: {enabled}")
         print("Top 10 functions after scoring:")
         for i, (score, hit) in enumerate(scored_hits[:10]):
-            print(f"{i+1}. {hit['name']} (score: {score})")
+            platform = hit.get("metadata", {}).get("platform", hit.get("platform", ""))
+            print(f"{i+1}. {hit['name']} ({platform}) (score: {score})")
     # Take top k after scoring
     docs = [hit for score, hit in scored_hits[:k]]
 
@@ -802,6 +959,9 @@ def build_functions_for_llm(
         for pschema in fn_schema.get("parameters", {}).get("properties", {}).values():
             if pschema.get("type") == "array" and "items" not in pschema:
                 pschema["items"] = {"type": "string"}
+
+        # Add platform metadata to the function schema
+        fn_schema["metadata"] = {"platform": platform}
 
         payload = json.dumps(fn_schema, separators=(",", ":"))
         if size + len(payload) > token_budget:

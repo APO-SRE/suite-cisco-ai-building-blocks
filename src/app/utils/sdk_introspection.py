@@ -92,6 +92,7 @@ class SDKIntrospector:
         pattern_mapping = {
             'meraki': SDKPattern.MERAKI,
             'dnacentersdk': SDKPattern.CATALYST,
+            'catalystwan': SDKPattern.SDWAN,  # Check this before 'catalyst'
             'catalyst': SDKPattern.CATALYST,
             'webexteamssdk': SDKPattern.WEBEX,
             'webex': SDKPattern.WEBEX,
@@ -357,27 +358,79 @@ class SDKIntrospector:
                         self._static_inspection(obj, name)
     
     def _discover_sdwan_methods(self, sdk_module):
-        """Discover methods for SD-WAN Manager (vManage) SDK"""
-        # SD-WAN uses vManage REST API pattern
-        for name, obj in inspect.getmembers(sdk_module, inspect.isclass):
-            if any(keyword in name.lower() for keyword in ['vmanage', 'sdwan', 'api', 'rest']):
-                log.info(f"Found SD-WAN API class: {name}")
-                
+        """Discover methods for SD-WAN Manager (vManage) SDK using catalystwan"""
+        try:
+            import catalystwan.api as api_module
+            import pkgutil
+            import importlib
+            
+            log.info("Using catalystwan SDK pattern for SD-WAN discovery")
+            
+            # Iterate through all API submodules
+            for importer, modname, ispkg in pkgutil.iter_modules(api_module.__path__):
+                if modname in ['api_container', 'versions_utils']:  # Skip non-API modules
+                    continue
+                    
                 try:
-                    # vManage typically needs host and session
-                    dummy_instance = obj(
-                        vmanage_host='dummy.viptela.com',
-                        username='admin',
-                        password='admin'
-                    )
-                    self._introspect_instance(dummy_instance, name)
-                except Exception:
-                    try:
-                        dummy_instance = obj(host='dummy.com', port=8443)
-                        self._introspect_instance(dummy_instance, name)
-                    except Exception as e:
-                        log.warning(f"Could not instantiate {name}: {e}")
-                        self._static_inspection(obj, name)
+                    # Import the API module
+                    full_module_name = f'catalystwan.api.{modname}'
+                    api_submodule = importlib.import_module(full_module_name)
+                    
+                    # Find API classes in the module
+                    for class_name, class_obj in inspect.getmembers(api_submodule, inspect.isclass):
+                        # Skip imported classes and base classes
+                        if (class_obj.__module__ != full_module_name or 
+                            class_name.startswith('_') or
+                            class_name in ['ABC', 'BaseModel']):
+                            continue
+                            
+                        log.info(f"Found SD-WAN API class: {class_name} in {modname}")
+                        
+                        # Introspect methods from the API class
+                        for method_name, method in inspect.getmembers(class_obj):
+                            if (method_name.startswith('_') or 
+                                not callable(method) or 
+                                isinstance(method, type)):
+                                continue
+                                
+                            try:
+                                sig = inspect.signature(method)
+                                # Skip if it's a property or classmethod
+                                if any(param.name == 'cls' for param in sig.parameters.values()):
+                                    continue
+                                    
+                                sdk_method = SDKMethod(
+                                    name=method_name,
+                                    signature=sig,
+                                    parent_class=class_name,
+                                    sub_client=modname.replace('_api', '')
+                                )
+                                self.methods[method_name] = sdk_method
+                                
+                                # Also add camelCase variant for better matching
+                                camel_case_name = self._to_camel_case(method_name)
+                                if camel_case_name != method_name:
+                                    self.methods[camel_case_name] = sdk_method
+                                    
+                                # For SD-WAN, also try to match OpenAPI operation IDs
+                                # which often have patterns like getAllDeviceStatus
+                                if method_name.startswith('get_'):
+                                    # get_all_device_status -> getAllDeviceStatus
+                                    parts = method_name.split('_')
+                                    if len(parts) > 1:
+                                        open_api_style = parts[0] + ''.join(p.title() for p in parts[1:])
+                                        self.methods[open_api_style] = sdk_method
+                                        
+                            except (ValueError, TypeError) as e:
+                                log.debug(f"Could not get signature for {class_name}.{method_name}: {e}")
+                                
+                except Exception as e:
+                    log.debug(f"Error importing/introspecting {modname}: {e}")
+                    
+        except ImportError as e:
+            log.warning(f"Could not import catalystwan.api: {e}")
+            # Fall back to generic discovery
+            self._discover_generic_methods(sdk_module)
     
     def _discover_ai_defense_methods(self, sdk_module):
         """Discover methods for Cisco AI Defense SDK"""
@@ -516,6 +569,11 @@ class SDKIntrospector:
                     self.methods[method_name] = sdk_method
                 except (ValueError, TypeError):
                     continue
+    
+    def _to_camel_case(self, snake_str: str) -> str:
+        """Convert snake_case to camelCase"""
+        components = snake_str.split('_')
+        return components[0] + ''.join(x.title() for x in components[1:])
 
 
 class SDKOpenAPIFilter:
@@ -590,6 +648,7 @@ class SDKOpenAPIFilter:
         total_operations = 0
         covered_operations = 0
         missing_operations = []
+        http_method_breakdown = {}
         
         for path, path_item in openapi_spec.get('paths', {}).items():
             for method, operation in path_item.items():
@@ -601,6 +660,11 @@ class SDKOpenAPIFilter:
                     continue
                 
                 total_operations += 1
+                
+                # Count HTTP methods
+                method_upper = method.upper()
+                if method_upper in ["GET", "POST", "PUT", "PATCH", "DELETE"]:
+                    http_method_breakdown[method_upper] = http_method_breakdown.get(method_upper, 0) + 1
                 
                 if (operation_id in self.operation_id_map or 
                     operation_id.lower() in self.operation_id_map):
@@ -622,7 +686,8 @@ class SDKOpenAPIFilter:
             'covered_operations': covered_operations,
             'coverage_percentage': coverage_percentage,
             'missing_operations': missing_operations,
-            'sdk_methods_count': len(self.methods)
+            'sdk_methods_count': len(self.methods),
+            'http_method_breakdown': http_method_breakdown
         }
 
 

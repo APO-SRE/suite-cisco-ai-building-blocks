@@ -2,64 +2,16 @@
   "meraki": {
     "openapi_name": "meraki-dashboard-openapi-3.0.1",
     "sdk_module": "meraki",
-    "sdk_pattern": "meraki",
-    "sdk_class": "DashboardAPI",
     "created_by_us": false,
-    "installed": false,
-    "route": true,
-    "auth_config": {
-      "type": "api_key",
-      "env_vars": {
-        "api_key": "CISCO_MERAKI_API_KEY"
-      },
-      "init_params": {
-        "required": [
-          "api_key"
-        ],
-        "optional": [
-          "base_url",
-          "maximum_retries",
-          "wait_on_rate_limit",
-          "output_log"
-        ]
-      }
-    },
-    "sub_clients": true,
-    "example_init": "client = meraki.DashboardAPI(api_key='YOUR_API_KEY')"
+    "installed": true,
+    "route": true
   },
   "catalyst": {
     "openapi_name": "cisco-catalyst-center-intent-api-openai-3.0.1",
     "sdk_module": "dnacentersdk",
-    "sdk_pattern": "catalyst",
-    "sdk_class": "DNACenterAPI",
     "created_by_us": false,
-    "installed": false,
-    "route": true,
-    "auth_config": {
-      "type": "basic_auth",
-      "env_vars": {
-        "username": "DNACENTER_USERNAME",
-        "password": "DNACENTER_PASSWORD",
-        "base_url": "DNACENTER_BASE_URL",
-        "version": "DNACENTER_VERSION",
-        "verify_ssl": "DNACENTER_VERIFY_SSL"
-      },
-      "init_params": {
-        "required": [
-          "base_url",
-          "username",
-          "password"
-        ],
-        "optional": [
-          "version",
-          "verify",
-          "debug",
-          "ssl_verify"
-        ]
-      }
-    },
-    "sub_clients": true,
-    "example_init": "client = DNACenterAPI(base_url='https://dnac.example.com', username='admin', password='pass')"
+    "installed": true,
+    "route": true
   },
   "intersight": {
     "openapi_name": "intersight-openapi-v3-1.0.11-20250410042505149",
@@ -195,34 +147,9 @@
   "sdwan_mngr": {
     "openapi_name": "cisco_catalyst_sd_wan_manager_api_2_0_0",
     "sdk_module": "catalystwan.session",
-    "sdk_pattern": "sdwan",
-    "sdk_class": "vManageAPI",
     "created_by_us": false,
-    "installed": false,
-    "route": true,
-    "auth_config": {
-      "type": "session_based",
-      "env_vars": {
-        "host": "SDWAN_VMANAGE_HOST",
-        "username": "SDWAN_USERNAME",
-        "password": "SDWAN_PASSWORD"
-      },
-      "init_params": {
-        "required": [
-          "vmanage_host",
-          "username",
-          "password"
-        ],
-        "optional": [
-          "port",
-          "validate_certs",
-          "tenant"
-        ]
-      }
-    },
-    "sub_clients": true,
-    "api_structure": "rest_based",
-    "example_init": "client = vManageAPI(vmanage_host='vmanage.example.com', username='admin', password='pass')"
+    "installed": true,
+    "route": true
   },
   "ai_defense": {
     "openapi_name": "ai_defense_ap_is_1_0_0_2025_02_28",
@@ -261,31 +188,8 @@
   "nexus_hyperfabric": {
     "openapi_name": "cisco_nexus_hyperfabric_rest_api_1_0_6_rev_2025_03_11_13103",
     "sdk_module": "cisco_nexus_hyperfabric_rest_api_client",
-    "sdk_pattern": "nexus_hyperfabric",
-    "sdk_class": "Client",
-    "created_by_us": true,
-    "installed": false,
-    "route": true,
-    "auth_config": {
-      "type": "bearer_token",
-      "env_vars": {
-        "base_url": "NEXUS_HYPERFABRIC_BASE_URL",
-        "token": "NEXUS_HYPERFABRIC_BEARER_TOKEN"
-      },
-      "init_params": {
-        "required": [
-          "base_url",
-          "token"
-        ],
-        "optional": [
-          "verify_ssl",
-          "timeout",
-          "max_retries"
-        ]
-      }
-    },
-    "sub_clients": false,
-    "api_structure": "openapi_python_client",
-    "example_init": "client = Client(base_url='https://hyperfabric.example.com', headers={'Authorization': f'Bearer {token}'})"
+    "created_by_us": false,
+    "installed": true,
+    "route": true
   }
 }

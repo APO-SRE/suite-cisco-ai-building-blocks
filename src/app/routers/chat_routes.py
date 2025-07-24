@@ -220,14 +220,51 @@ async def webex_webhook(req: Request):
 
     return JSONResponse({"status": "sent"})
 
-def summarize_api_data(data: Any, max_items: int = 10) -> str:
+def summarize_api_data(data: Any, max_items: int = 50, platform: str = None, function_name: str = None) -> str:
     """
     Intelligently summarizes raw API data to create a concise payload for the LLM,
     preventing performance bottlenecks with large responses.
+    
+    Platform-aware summarization:
+    - SD-WAN: Preserves more detail for device/alarm operations
+    - Other platforms: Standard summarization
+    
+    Controlled by LLM2_SUMMARIZER environment variable:
+    - "false" or "0": Disable summarization, return full data
+    - numeric value (e.g., "50"): Use as max_items
+    - "true" or unset: Use default max_items with platform-aware logic
     """
+    # Check LLM2_SUMMARIZER environment variable
+    summarizer_config = os.getenv("LLM2_SUMMARIZER", "true").lower()
+    
+    # Disable summarization if set to false or 0
+    if summarizer_config in ["false", "0", "no", "disable", "disabled"]:
+        if data is None:
+            return "The API call returned no data (None)."
+        serialised_data = to_serialisable(data)
+        return json.dumps(serialised_data, indent=2)
+    
+    # Check if it's a numeric value to use as max_items override
+    if summarizer_config.isdigit():
+        max_items = int(summarizer_config)
+    
     if data is None:
         return "The API call returned no data (None)."
 
+    # Platform-specific handling for SD-WAN
+    if platform == "sdwan_mngr":
+        # Critical operations that need full data
+        if function_name in ["getRawAlarmData", "getActiveAlarms", "getNonViewedAlarms", 
+                             "listAllDevices", "getAllDeviceStatus", "getDevicesDetails",
+                             "getDevices", "getDeviceListAsKeyValue"]:
+            max_items = 100  # Show more items for these critical operations
+        # For alarm operations specifically, try to show all alarms
+        elif "alarm" in function_name.lower():
+            max_items = 200
+        # For user/admin operations, show reasonable amount
+        elif function_name in ["findUsers_1", "getAAAUsers", "getUserGroups"]:
+            max_items = 50
+        
     # Use the existing to_serialisable function to handle complex objects
     serialised_data = to_serialisable(data)
 
@@ -239,18 +276,64 @@ def summarize_api_data(data: Any, max_items: int = 10) -> str:
     if total_items == 0:
         return "The API call returned an empty list."
     
+    # For SD-WAN operations, provide smart summaries
+    if platform == "sdwan_mngr" and total_items > max_items:
+        # Device-specific summary
+        if "device" in function_name.lower() or function_name in ["listAllDevices", "getAllDeviceStatus"]:
+            device_summary = []
+            for device in serialised_data[:max_items]:
+                if isinstance(device, dict):
+                    # Extract key fields that vary based on the operation
+                    summary_item = {}
+                    # Common device identifiers
+                    for field in ["host-name", "hostname", "deviceId", "uuid", "system-ip", "systemIP"]:
+                        if field in device:
+                            summary_item[field] = device[field]
+                    # Status fields
+                    for field in ["reachability", "status", "state", "device-state"]:
+                        if field in device:
+                            summary_item[field] = device[field]
+                    # Additional useful fields
+                    for field in ["device-model", "deviceModel", "version", "site-id"]:
+                        if field in device:
+                            summary_item[field] = device[field]
+                    
+                    if summary_item:  # Only add if we extracted some data
+                        device_summary.append(summary_item)
+                    else:  # Fallback to full device data if no known fields
+                        device_summary.append(device)
+            
+            return (
+                f"The API call returned {total_items} devices. "
+                f"Showing details for the first {len(device_summary)}:\n\n"
+                f"{json.dumps(device_summary, indent=2)}"
+            )
+        
+        # Alarm-specific summary
+        elif "alarm" in function_name.lower():
+            alarm_summary = []
+            for alarm in serialised_data[:max_items]:
+                if isinstance(alarm, dict):
+                    # Include all alarm data as it's critical
+                    alarm_summary.append(alarm)
+            
+            return (
+                f"The API call returned {total_items} alarms. "
+                f"Showing all details for the first {len(alarm_summary)}:\n\n"
+                f"{json.dumps(alarm_summary, indent=2)}"
+            )
+    
     if total_items <= max_items:
         # If the list is small enough, return it as is
         return json.dumps(serialised_data, indent=2)
 
-    # If the list is large, truncate it and add a summary message
+    # Default truncation for other cases
     summary_message = (
         f"The API call returned {total_items} items. "
-        f"Showing the first {max_items} for summarization."
+        f"Showing the first {max_items} for detailed analysis."
     )
     truncated_data = serialised_data[:max_items]
     
-    # Combine the summary message with the truncated data
     return f"{summary_message}\n\n{json.dumps(truncated_data, indent=2)}"
 
 # ---------------------------------------------------------------------------
@@ -352,6 +435,17 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
         # Set span attributes for observability
         bfspan.set_attribute("functions.count", len(functions))
         bfspan.set_attribute("platforms", platforms)
+        
+        # DEBUG: Log which functions were selected for the LLM
+        print(f"\n📋 FUNCTIONS PRESENTED TO LLM (top 10):")
+        for i, func in enumerate(functions[:10]):
+            func_name = func.get("name", "unknown")
+            func_platform = func.get("metadata", {}).get("platform", "unknown")
+            func_desc = func.get("description", "")[:50] + "..." if len(func.get("description", "")) > 50 else func.get("description", "")
+            print(f"   {i+1}. {func_name} ({func_platform}) - {func_desc}")
+        if len(functions) > 10:
+            print(f"   ... and {len(functions) - 10} more functions")
+        print()
   
       
 
@@ -394,10 +488,23 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
     fargs = fc.get("arguments", {})
     if isinstance(fargs, str):
         fargs = json.loads(fargs)
-    fname = fc["name"].removeprefix("functions.")
-    fargs = fc.get("arguments", {})
-    if isinstance(fargs, str):
-        fargs = json.loads(fargs)
+    
+    # DEBUG: Log which function the LLM selected
+    log.info(f"🎯 LLM selected function: {fname}")
+    log.info(f"   Arguments: {json.dumps(fargs, indent=2)}")
+    
+    # Also print to console for visibility
+    print(f"\n🎯 LLM FUNCTION SELECTION:")
+    print(f"   Function: {fname}")
+    print(f"   Arguments: {json.dumps(fargs, indent=2)}")
+    
+    # Find which platform this function belongs to
+    selected_platform = None
+    for func in functions:
+        if func.get("name") == fname:
+            selected_platform = func.get("metadata", {}).get("platform", "unknown")
+            break
+    print(f"   Platform: {selected_platform}\n")
 
     # ------------------------------------------------------------------
     # PATCH: if the target function expects a 'body' argument but the
@@ -431,6 +538,24 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
     with tracer.start_as_current_span(f"dispatch.{fname}") as dspan:
         try:
             result = dispatch_function_call(fname, fargs)
+            
+            # DEBUG: Log the result
+            print(f"\n📊 SDK CALL RESULT:")
+            print(f"   Result type: {type(result)}")
+            if result is None:
+                print(f"   Result is None!")
+            elif isinstance(result, dict):
+                print(f"   Result keys: {list(result.keys())[:10]}")
+                if 'error' in result:
+                    print(f"   Error: {result['error']}")
+            elif isinstance(result, list):
+                print(f"   Result length: {len(result)}")
+                if result:
+                    print(f"   First item type: {type(result[0])}")
+            else:
+                print(f"   Result preview: {str(result)[:200]}")
+            print()
+            
         except Exception as exc:
             log.exception("dispatcher_error", name=fname, err=str(exc))
             msg = str(exc)
@@ -451,7 +576,20 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
         if isinstance(fc.get("arguments"), dict):
             fc["arguments"] = json.dumps(fc["arguments"])
 
-        summarized_content = summarize_api_data(result)
+        # Determine which platform this function belongs to
+        function_platform = None
+        for func in functions:
+            if func.get("name") == fname:
+                # Extract platform from function metadata
+                func_metadata = func.get("metadata", {})
+                function_platform = func_metadata.get("platform")
+                break
+        
+        summarized_content = summarize_api_data(
+            result, 
+            platform=function_platform,
+            function_name=fname
+        )
 
         follow_up = [
             *messages,

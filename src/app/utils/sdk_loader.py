@@ -46,6 +46,14 @@ def load_client(module_name: str) -> Type[Any]:
             # If the module is 'intersight' but ApiClient is missing,
             # something is fundamentally wrong with the SDK installation.
             raise RuntimeError("Intersight SDK is imported but the ApiClient class is missing.")
+    
+    if module_name == "catalystwan.session":
+        # SD-WAN uses a different pattern - return a dummy class
+        # The actual session creation happens in the generated client
+        class SDWANSessionPlaceholder:
+            """Placeholder for SD-WAN session - actual session created in client __init__"""
+            pass
+        return SDWANSessionPlaceholder
 
 
     # --- STRATEGY 2: GENERIC SUFFIX-BASED FALLBACK ---
