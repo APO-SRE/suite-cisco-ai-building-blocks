@@ -1,0 +1,10 @@
+{
+  "coverage_percentage": 100,
+  "note": "SDK filtering disabled",
+  "http_method_breakdown": {
+    "GET": 2151,
+    "PUT": 463,
+    "POST": 897,
+    "DELETE": 412
+  }
+}
