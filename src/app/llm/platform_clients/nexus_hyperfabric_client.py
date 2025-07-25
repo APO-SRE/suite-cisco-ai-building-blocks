@@ -4,7 +4,7 @@ import cisco_nexus_hyperfabric_rest_api_client as _sdk
 import re, importlib
 from functools import partial
 import inspect
-from typing import get_origin, get_args
+from typing import get_origin, get_args, Any
 import os
 
 # camel→snake splitter

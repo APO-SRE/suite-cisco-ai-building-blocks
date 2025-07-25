@@ -2547,11 +2547,6 @@
           "name": "site-id",
           "type": "string",
           "required": false
-        },
-        {
-          "name": "includeTenantvSmart",
-          "type": "boolean",
-          "required": false
         }
       ]
     },
@@ -12324,28 +12319,28 @@
     "getDeviceDetailsForDashboard": {
       "path": "/msla/monitoring/licensedDeviceCount",
       "method": "get",
-      "sdk_endpoint": "msla.monitoring",
+      "sdk_endpoint": "mlsa.monitoring",
       "sdk_method": "get",
       "description": "Get licenses associated to device"
     },
     "getLicenseDistributionDetails": {
       "path": "/msla/monitoring/licensedDistributionDetails",
       "method": "get",
-      "sdk_endpoint": "msla.monitoring",
+      "sdk_endpoint": "dashboard",
       "sdk_method": "get",
       "description": "Get all license distribution"
     },
     "getPackagingDistributionDetails": {
       "path": "/msla/monitoring/packagingDistributionDetails",
       "method": "get",
-      "sdk_endpoint": "msla.monitoring",
+      "sdk_endpoint": "mlsa.monitoring",
       "sdk_method": "get",
       "description": "Get all license distribution"
     },
     "getAllTemplate": {
       "path": "/msla/template",
       "method": "get",
-      "sdk_endpoint": "msla.template",
+      "sdk_endpoint": "template",
       "sdk_method": "get",
       "description": "Retrieve all MSLA template"
     },
@@ -12354,7 +12349,7 @@
       "method": "post",
       "sdk_endpoint": "msla.template",
       "sdk_method": "create",
-      "description": "Retrieve MSLA subscription/licenses"
+      "description": "⭐ PRIMARY function to get a list of all device and feature templates. Use for queries like 'list all templates', 'show templates', or 'get templates'"
     },
     "getSubscriptions": {
       "path": "/msla/va/License",

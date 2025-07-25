@@ -41,7 +41,7 @@ from opentelemetry import trace
 from opentelemetry.trace import Tracer
 import structlog
 from pydantic import BaseModel
-
+from app.utils.paths import REPO_ROOT
 from datetime import datetime, date, time
 from enum import Enum
 from decimal import Decimal
@@ -57,14 +57,19 @@ from app.llm.prompt_templates import (
     BASE_SYSTEM_PROMPT_LOB as BASE_SYSTEM_PROMPT_DOMAIN,
     USER_PROMPT_TEMPLATE,
     FUNCTIONS_LLM_PROMPT,
+    GENERIC_RESPONSE_PROMPT,
+    HTML_SDWAN_DEVICE_STATUS_PROMPT
 )
 from app.retrievers.chroma_retriever import FunctionRetriever
 from app.routers._domain_keywords import DOMAIN_KEYWORDS_MAP
 from app.main import request_latency  # prometheus histogram
 from app.user_commands.update_platform_registry import load_registry
+LLM_DIR = REPO_ROOT / "src" / "app" / "llm"
 # ──────────────────────────────── env / logging / tracing
 load_dotenv()
 registry = load_registry()
+
+
 
 structlog.configure(
     wrapper_class=structlog.make_filtering_bound_logger(logging.INFO),
@@ -78,7 +83,15 @@ tracer: Tracer = trace.get_tracer("chat_routes")
 
 TIMING = os.getenv("DEBUG_TIMING", "false").lower() == "true"
 VECTOR_BACKEND = os.getenv("FASTAPI_VECTOR_BACKEND", "chroma").lower()
+try:
+    with open(LLM_DIR / "platform_hints.json", 'r') as f:
+        platform_hints = json.load(f)
+    log.info("✅ Loaded platform hints.")
+except (FileNotFoundError, json.JSONDecodeError) as e:
+    log.warning(f"⚠️ Platform hints file not found or invalid, hint filter will be disabled: {e}")
+    platform_hints = {} #
 
+    
 # ──────────────────────────────── helper timer ctx mgr
 @contextmanager
 def timer(label: str):
@@ -353,14 +366,37 @@ def to_serialisable(obj):
     if isinstance(obj, Decimal):
         return float(obj)
 
-    # ➡ 3) openapi-python-client / pydantic models: only if .to_dict() exists and is callable
+    # ➡ 3) Handle catalystwan SDK objects and other custom classes
+    # The catalystwan objects often have a .data attribute or can be cast to a dict.
+    # We also keep the original .to_dict() for other SDKs.
+    if hasattr(obj, 'data') and isinstance(obj.data, dict):
+        # This handles many catalystwan objects which store their payload in a .data dict
+        return to_serialisable(obj.data)
+    
     to_dict = getattr(obj, "to_dict", None)
     if callable(to_dict):
         try:
             return to_serialisable(to_dict())
         except Exception:
-            # if something goes wrong inside to_dict(), fall back
-            pass
+            pass # Fall through if .to_dict() fails
+
+    # This is a robust way to handle Pydantic models (v1 and v2)
+    model_dump = getattr(obj, "model_dump", None)
+    if callable(model_dump):
+        try:
+            return model_dump() # model_dump already returns a serializable dict
+        except Exception:
+            pass # Fall through
+            
+    # As a last resort for custom objects, try converting its __dict__
+    if hasattr(obj, '__dict__'):
+        # This will convert an arbitrary class instance to a dict,
+        # excluding private/magic methods.
+        return {
+            k: to_serialisable(v)
+            for k, v in obj.__dict__.items()
+            if not k.startswith('_')
+        }
 
     # ➡ 4) containers
     if isinstance(obj, (list, tuple, set)):
@@ -389,10 +425,16 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
         lower      = prompt.lower()
         # ── DETECT EXPLICIT PLATFORM NAME IN PROMPT ────────────────────────────────────
         if PLATFORM_HINT_FILTER:
-            hinted = [
-                p for p, meta in registry.items()
-                if p in lower and meta.get("installed", False)
-            ]
+            hinted = []
+            # Iterate through the hints loaded from platform_hints.json
+            for platform_key, aliases in platform_hints.items():
+                # Check if this platform is actually installed and enabled
+                if not registry.get(platform_key, {}).get("installed", False):
+                    continue
+                
+                # Check if any of the platform's aliases are in the user's query
+                if any(alias in lower for alias in aliases):
+                    hinted.append(platform_key)
             if hinted:
                 # narrow to only the platforms explicitly named
                 platforms = hinted
@@ -429,8 +471,9 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
 
     # 2️⃣ Build candidate functions
     with tracer.start_as_current_span("build.functions") as bfspan:
-        # Always use build_functions_for_llm which includes priority-based reranking
-        functions = build_functions_for_llm(prompt, platforms)
+        # This line should unpack the tuple
+        functions, platform_map = build_functions_for_llm(prompt, platforms)
+         
         
         # Set span attributes for observability
         bfspan.set_attribute("functions.count", len(functions))
@@ -576,14 +619,9 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
         if isinstance(fc.get("arguments"), dict):
             fc["arguments"] = json.dumps(fc["arguments"])
 
-        # Determine which platform this function belongs to
-        function_platform = None
-        for func in functions:
-            if func.get("name") == fname:
-                # Extract platform from function metadata
-                func_metadata = func.get("metadata", {})
-                function_platform = func_metadata.get("platform")
-                break
+        # Determine which platform this function belongs to by looking at the
+        # original list of functions retrieved from the vector store.
+        function_platform = platform_map.get(fname)
         
         summarized_content = summarize_api_data(
             result, 
@@ -597,16 +635,28 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
             {
                 "role": "function",
                 "name": fname,
-                "content": summarized_content, # <-- Use the summarized content here
+                "content": summarized_content,  
             },
         ]
 
-        # instruct the model to return pure HTML
-        follow_up[0]["content"] = (
-           "You are a helpful Cisco AI assistant. "
-           "Use the data returned by the function to answer the user's question "
-           "and return the answer as valid HTML only—no Markdown, JSON, or code fences."
-      )
+         # Select the system prompt based on the platform.
+        if function_platform == 'sdwan_mngr':
+            # Use the specific, detailed prompt for any SD-WAN function.
+            system_prompt = HTML_SDWAN_DEVICE_STATUS_PROMPT
+            log.info("Using SD-WAN specific response prompt.")
+        else:
+            # For all other platforms, use the improved generic prompt.
+            system_prompt = GENERIC_RESPONSE_PROMPT
+            log.info(f"Using generic response prompt for platform: {function_platform or 'unknown'}.")
+
+        # Instruct the model using the selected prompt.
+        follow_up[0]["content"] = system_prompt
+        print("\n" + "="*50)
+        print("  FINAL PAYLOAD BEING SENT TO LLM  ")
+        print("="*50)
+        # Use json.dumps for pretty printing the complex structure
+        print(json.dumps(follow_up, indent=2))
+        print("="*50 + "\n")
         final = await llm.chat(follow_up)
 
     if isinstance(final, str):

@@ -143,20 +143,39 @@ PLATFORM_OVERRIDES = {
     
     # --- CHANGE #1: ADDED THE FULL SD-WAN CONFIGURATION ---
     "sdwan_mngr": {
-        # SD-WAN SDK uses generic methods (get, create, update, delete) on different API classes
-        # This doesn't map well to specific OpenAPI operation IDs, so SDK filtering remains disabled (default)
-        
-        # 1. No blocklist - these operations serve different purposes
         "blocklist": set(),
-        
-        # 2. Give clear descriptions to help the LLM choose the right function
         "descriptions": {
-            "getAllDeviceStatus": "Get operational status of all SD-WAN devices (vSmart, vBond, vEdge, cEdge). Shows device health, reachability, and status. Best for monitoring and dashboard views.",
-            "listAllDevices": "Get basic inventory list of all devices. Supports filtering. Best for device management and inventory.",
-            "getDevicesList": "Get list of devices for certificate management. Best for certificate-related operations.",
-            "getDevicesHealth": "Get detailed health metrics and operational data for SD-WAN devices. Best for troubleshooting.",
-            "getDevicesHealthOverview": "Get high-level health overview across the SD-WAN fabric. Best for summary dashboards.",
-            "getAaaConfig": "Get AAA (Authentication, Authorization, Accounting) configuration"
+          
+            # --- Alarm Operations ---
+            "getRawAlarmData": "⭐ PRIMARY function to retrieve a list of all alarms from the SD-WAN system. Use for queries like 'list all alarms', 'show alarms', 'get alarms', or 'alarm list'.",
+            "getActiveAlarms": "Get a list of only the currently active alarms.",
+            "getAlarmsCount": "Get the total count of alarms, useful for dashboard summaries.",
+
+            # --- Device Operations ---
+            "listAllDevices": "⭐ PRIMARY function to get a basic inventory of all devices. Use for queries like 'list all devices', 'show devices', 'get devices', or 'device list'.",
+            "getAllDeviceStatus": "⭐ PRIMARY function to get the operational status of all SD-WAN devices (vSmart, vBond, vEdge, cEdge). Shows health, reachability, and status.",
+            "getDevicesDetails": "Get detailed configuration and operational information for SD-WAN devices.",
+            "getDevicesHealth": "Get detailed health metrics for SD-WAN devices, ideal for troubleshooting.",
+
+            # --- Network Operations ---
+            "getSegment": "⭐ PRIMARY function to list all network segments (also known as VPNs or VRFs) in the SD-WAN fabric. Use this for queries like 'list all networks', 'show segments', or 'get all networks'.",
+
+            # --- Policy Operations ---
+            "getAllVedgePolicies": "⭐ PRIMARY function to get a list of all vEdge policies. Use for queries like 'list all policies', 'show policies', 'get policies', or 'policy list'.",
+            "getApplicationAwareRoutingPolicyList": "Get a list of all Application-Aware Routing (AAR) policies.",
+            "getControlPolicyList": "Get a list of all control policies.",
+
+            # --- Site Operations ---
+            "getAllSites": "⭐ PRIMARY function to get a list of all configured sites. Use for queries like 'list all sites', 'show sites', 'get sites', or 'site list'.",
+            "getSiteHealth": "Get detailed health information for a specific site.",
+
+            # --- Template Operations ---
+            "getAllDeviceTemplates": "⭐ PRIMARY function to get a list of all device templates. Use for queries like 'list all templates', 'show templates', 'get templates', or 'device templates'.",
+            "getFeatureTemplateList": "Get a list of all available feature templates in the system.",
+
+            # --- User Operations ---
+            "findUsers_1": "⭐ PRIMARY function to get a list of all administrative users configured in the SD-WAN system. Use for queries like 'list all users', 'show users', 'get users', or 'user list'.",
+            "getAAAUsers": "Get a list of all AAA (Authentication, Authorization, and Accounting) users from a specific device in real-time."
         }
     },
     
@@ -382,7 +401,7 @@ def _emit_client_stub(platform: str, sdk_module: str) -> None:
     "import re, importlib",
     "from functools import partial",
     "import inspect",
-    "from typing import get_origin, get_args",
+    "from typing import get_origin, get_args, Any",
 ]
    
     extra_init, extra_methods = [], []
@@ -619,154 +638,90 @@ def _emit_client_stub(platform: str, sdk_module: str) -> None:
         
         # Override the common_helpers for SD-WAN to include custom _resolve
         common_helpers = textwrap.dedent('''
+
         @classmethod
         def _load_registry(cls):
-            \"\"\"Load the SD-WAN operation registry\"\"\"
+            """Load the SD-WAN operation registry"""
             if cls._operation_registry is None:
                 registry_path = Path(__file__).parent.parent / 'sdwan_operation_registry_full.json'
                 if registry_path.exists():
                     with open(registry_path) as f:
                         cls._operation_registry = json.load(f)
                 else:
-                    # Fallback to minimal registry
-                    cls._operation_registry = {
-                        'operations': {},
-                        'comment': 'Registry file not found'
-                    }
+                    cls._operation_registry = {'operations': {}, 'comment': 'Registry file not found'}
             return cls._operation_registry
 
-        @staticmethod
-        def _unwrap_model(annotation):
-            """
-            Return the concrete model class if *annotation* is Optional[T],
-            Union[T, None], etc.  Otherwise return the annotation itself.
-            """
-            origin = get_origin(annotation)
-            if origin is None:
-                return annotation
-            if origin is list:           # body=None edge‑case, keep original
-                return annotation
-            # Union / Optional
-            args = [a for a in get_args(annotation) if a is not type(None)]  # noqa: E721
-            return args[0] if args else annotation
-
         def _resolve(self, name: str):
-            \"\"\"Custom resolution for SD-WAN operations\"\"\"
-            # Load the operation registry
+            """Custom resolution for SD-WAN operations"""
             registry = self._load_registry()
-            
-            # Look up the operation
             op_info = registry.get('operations', {}).get(name)
             if not op_info:
-                # Try the default resolution logic first
                 return self._default_resolve(name)
-            
-            # Create a wrapper that makes the actual SDK call
+
             def sdk_call(**kwargs):
                 try:
-                    # Get the SDK endpoint and method
                     endpoint_path = op_info.get('sdk_endpoint', '')
                     sdk_method = op_info.get('sdk_method', 'get')
                     
-                    # Navigate to the endpoint
                     endpoint = self._api
                     for part in endpoint_path.split('.'):
-                        if hasattr(endpoint, part):
-                            endpoint = getattr(endpoint, part)
-                        else:
-                            return {
-                                'error': f'SDK endpoint {endpoint_path} not found',
-                                'available': [a for a in dir(endpoint) if not a.startswith('_')][:10]
-                            }
+                        if not hasattr(endpoint, part):
+                            return {'error': f'SDK endpoint {endpoint_path} not found'}
+                        endpoint = getattr(endpoint, part)
                     
-                    # Get the method
-                    if hasattr(endpoint, sdk_method):
-                        method = getattr(endpoint, sdk_method)
-                    else:
-                        return {
-                            'error': f'Method {sdk_method} not found on {endpoint_path}',
-                            'available_methods': [m for m in dir(endpoint) if not m.startswith('_') and callable(getattr(endpoint, m))]
-                        }
+                    if not hasattr(endpoint, sdk_method):
+                        return {'error': f'Method {sdk_method} not found on {endpoint_path}'}
                     
-                    # Handle parameters
+                    method = getattr(endpoint, sdk_method)
+                    
                     call_params = {}
-                    
-                    # Path parameters (like deviceId)
-                    if op_info.get('needs_id') and op_info.get('path_params'):
+                    if op_info.get('path_params'):
                         for param in op_info['path_params']:
                             if param in kwargs:
                                 call_params[param] = kwargs.pop(param)
                     
-                    # Query parameters
                     if op_info.get('query_params'):
                         for param_info in op_info['query_params']:
                             param_name = param_info['name']
                             if param_name in kwargs:
                                 call_params[param_name] = kwargs.pop(param_name)
                     
-                    # Body parameter
-                    if 'body' in kwargs:
-                        call_params['body'] = kwargs.pop('body')
-                    
-                    # Add any remaining kwargs
                     call_params.update(kwargs)
                     
-                    # Make the actual SDK call
                     result = method(**call_params)
                     
-                    # Return the result
-                    if hasattr(result, 'json'):
-                        return result.json()
-                    elif hasattr(result, 'to_dict'):
-                        return result.to_dict()
-                    elif hasattr(result, '__iter__') and not isinstance(result, (str, bytes)):
-                        # Handle DataSequence and other iterables from SD-WAN SDK
-                        try:
-                            # Convert to list and extract data
-                            items = list(result)
-                            if not items:
-                                return []
-                            
-                            # Check first item to determine conversion method
-                            first_item = items[0]
-                            
-                            # Try different serialization methods
-                            if hasattr(first_item, 'to_dict'):
-                                return [item.to_dict() for item in items]
-                            elif hasattr(first_item, 'model_dump'):
-                                # Handle pydantic v2 models
-                                return [item.model_dump() for item in items]
-                            elif hasattr(first_item, '__dict__'):
-                                # Handle SD-WAN Device objects and similar
-                                def serialize_obj(obj):
-                                    # Get all non-private attributes
-                                    data = {}
-                                    for key, value in obj.__dict__.items():
-                                        if not key.startswith('_'):
-                                            # Recursively handle nested objects
-                                            if hasattr(value, '__dict__') and not isinstance(value, (str, int, float, bool, list, dict)):
-                                                data[key] = serialize_obj(value)
-                                            else:
-                                                data[key] = value
-                                    return data
-                                
-                                return [serialize_obj(item) for item in items]
-                            else:
-                                # Return as-is if items are already serializable
-                                return items
-                        except Exception as e:
-                            # Log the error for debugging
-                            print(f"Error serializing result: {e}")
-                            return str(result)
-                    elif hasattr(result, '__dict__'):
-                        # Handle single SD-WAN objects
-                        data = {}
-                        for key, value in result.__dict__.items():
-                            if not key.startswith('_'):
-                                data[key] = value
-                        return data
-                    else:
-                        return result
+                    # --- THIS IS THE NEW, BULLETPROOF SERIALIZATION LOGIC ---
+                    def serialize_item(item):
+                        """
+                        Serialize a single item from the catalystwan SDK, robustly handling
+                        different object types like Device and User.
+                        """
+                        # This import is necessary to check for the FieldInfo type
+                        from pydantic.fields import FieldInfo
+
+                        # First, try the .to_dict() method, which is common.
+                        if hasattr(item, 'to_dict') and callable(item.to_dict):
+                            return item.to_dict()
+                        
+                        # If that fails, fall back to inspecting the object's attributes.
+                        # This handles the 'Device' and 'User' objects.
+                        elif hasattr(item, '__dict__'):
+                            item_dict = {}
+                            for key, value in item.__dict__.items():
+                                # CRITICAL FIX: Skip internal attributes and non-serializable FieldInfo objects
+                                if not key.startswith('_') and not isinstance(value, FieldInfo):
+                                    item_dict[key] = value
+                            return item_dict
+                        
+                        # If it's a basic type that is already serializable, return it directly.
+                        return item
+
+                    # Check if the result is iterable (like a list or DataSequence)
+                    if hasattr(result, '__iter__') and not isinstance(result, (str, bytes, dict)):
+                        return [serialize_item(item) for item in result]
+                    
+                    # If the result is a single object, serialize it.
+                    return serialize_item(result)
                         
                 except Exception as e:
                     import traceback
@@ -780,62 +735,28 @@ def _emit_client_stub(platform: str, sdk_module: str) -> None:
             return sdk_call
             
         def _default_resolve(self, name: str):
-            """
-            Fallback resolution when operation is not in registry.
-            """
+            """Fallback resolution when operation is not in registry."""
             snake = _CAMEL_TO_SNAKE.sub('_', name).lower()
+            if hasattr(self._sdk, name): return getattr(self._sdk, name)
+            if hasattr(self._sdk, snake): return getattr(self._sdk, snake)
             
-            # Try basic attribute lookup
-            if hasattr(self._sdk, name):
-                return getattr(self._sdk, name)
-            if hasattr(self._sdk, snake):
-                return getattr(self._sdk, snake)
-            
-            # Look inside the API container
             if hasattr(self, '_api'):
                 for attr_name in dir(self._api):
-                    if attr_name.startswith('_'):
-                        continue
+                    if attr_name.startswith('_'): continue
                     attr = getattr(self._api, attr_name)
-                    if hasattr(attr, name):
-                        return getattr(attr, name)
-                    if hasattr(attr, snake):
-                        return getattr(attr, snake)
+                    if hasattr(attr, name): return getattr(attr, name)
+                    if hasattr(attr, snake): return getattr(attr, snake)
             
             raise AttributeError(f"{self.__class__.__name__} could not resolve attribute {name!r}")
-        
+
         def __getattr__(self, name: str):
             """Dynamic <operationId> lookup, with exception trapping."""
             try:
                 return self._resolve(name)
             except Exception as e:
                 raise AttributeError(f"{self.__class__.__name__} could not resolve attribute {name!r} ({e})")
-        
-        def _wrap_method(self, target):
-            """
-            Wrap SDK call so that a plain dict passed as *body* is automatically
-            converted into the expected pydantic/model class.
-            """
-            sig        = inspect.signature(target)
-            body_param = sig.parameters.get("body")
-            model_cls  = self._unwrap_model(body_param.annotation) if body_param else None
-
-            # no body/model → no conversion
-            if model_cls is None or not hasattr(model_cls, "__init__"):
-                return target
-
-            # wrapper: auto-convert dicts to model_cls
-            from functools import wraps
-            @wraps(target)
-            def wrapper(**kwargs):
-                body = kwargs.get("body")
-                if body and isinstance(body, dict):
-                    kwargs["body"] = model_cls(**body)
-                return target(**kwargs)
-
-            return wrapper
         ''')
-    
+
     # Intersight-specific auth injection
     if platform.lower() == "intersight":
         extra_imports.append("import os")
@@ -1362,7 +1283,7 @@ def scaffold_one(
                     ] + list(path_level_params),
                 },
             }
- 
+            schema['metadata'] = {'platform': platform}
             # Get the set of injected parameter names for the current platform.
             injected_keys = INJECTION_CONFIG.get(platform.lower(), {}).get("params", {}).keys()
 
