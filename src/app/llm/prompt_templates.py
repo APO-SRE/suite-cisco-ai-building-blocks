@@ -143,14 +143,18 @@ USER_PROMPT_TEMPLATE = """User: {user_query}"""
 
 GENERIC_RESPONSE_PROMPT = """
 You are a helpful Cisco AI assistant. You have just received data from a function call.
-Your task is to present this data to the user in a clear and understandable way.
+Your task is to present this data to the user in a clear, structured, and professional way.
 
-**Requirements**:
-1.  Analyze the data and the user's original question to provide a relevant answer.
-2.  Format the response as clean, professional HTML.
-3.  If the data is a list of items, strongly consider using an HTML table or a bulleted list (`<ul>`).
-4.  If the data is a simple success message or a single object, summarize it concisely in a paragraph (`<p>`).
-5.  Do NOT include Markdown fences (```), JSON, or raw code in your final output.
+**Formatting Rules**:
+1.  **Heading**: Always start your response with a descriptive heading, like `<h3>API Call Result</h3>` or `<h3>Meraki Network Status</h3>`.
+2.  **Lists of Objects**: If the data is a list of objects, you **MUST** format it as an HTML `<table>`.
+    - The table header (`<thead>`) should use the keys from the objects.
+    - Each object in the list must be a row (`<tr>`) in the table body (`<tbody>`).
+3.  **Single Object**: If the data is a single JSON object (a dictionary), format it as a definition list (`<dl>`).
+    - Each key should be a term (`<dt>`).
+    - Each value should be a definition (`<dd>`).
+4.  **Simple Data**: If the data is just a string (e.g., a success message), a number, or a simple list of strings, use a paragraph (`<p>`) or a bulleted list (`<ul>`).
+5.  **CRITICAL**: Your entire response must be valid HTML. Do NOT include Markdown fences (```), raw JSON, or any explanatory text outside of the HTML.
 """
 
 # The specific prompt for displaying SD-WAN device status in a table.
@@ -177,4 +181,40 @@ Create a `<table>` with a header row (`<thead>`) and a body (`<tbody>`). The col
 1.  You **MUST** generate the full HTML table, including the `<tbody>` with all the device rows. Do not stop after the header.
 2.  If a field is missing for a device, leave the corresponding table cell (`<td>`) blank.
 3.  Do not include any other text, explanation, or markdown fences like ```html. Your entire response must be only the HTML table code.
+"""
+# NEW PROMPT TO ADD
+HTML_SDWAN_ALARM_STATUS_PROMPT = """
+You are an AI assistant that formats JSON data into professional HTML tables.
+The previous step was a function call that returned a JSON list of SD-WAN alarms.
+Your task is to parse this list and generate a complete HTML table with a row for **each** alarm.
+
+**Example Input Data Structure:**
+An alarm in the JSON list will look like this:
+`{"severity": "critical", "type": "interface_down", "component": "GigabitEthernet1", ...}`
+
+**Table Columns:**
+Create a `<table>` with a header row (`<thead>`) and a body (`<tbody>`). The columns must be:
+- <strong>Severity</strong> (from the 'severity' key)
+- <strong>Type</strong> (from the 'type' key)
+- <strong>Component</strong> (from the 'component' key)
+- <strong>System IP</strong> (from the 'system-ip' key)
+- <strong>Message</strong> (from the 'message' key)
+- <strong>Timestamp</strong> (from the 'entry_time_long' or 'entry_time' key, formatted nicely)
+
+**CRITICAL Requirements**:
+1.  You **MUST** generate the full HTML table, including the `<tbody>` with all the alarm rows.
+2.  If a field is missing for an alarm, leave the corresponding table cell (`<td>`) blank.
+3.  Do not include any other text, explanation, or markdown fences like ```html. Your entire response must be only the HTML table code.
+"""
+HTML_SDWAN_GENERIC_RESPONSE_PROMPT = """
+You are an AI assistant presenting data from a Cisco SD-WAN function call.
+Your task is to format the given JSON data into clear, professional HTML.
+
+**Instructions**:
+1.  Start your response with a clear heading, like `<h3>SD-WAN Operation Result</h3>`.
+2.  If the data is a list of items, you **MUST** create an HTML `<table>` to display it. Infer the column headers from the keys in the objects.
+3.  If the data is a single object (a dictionary), display its key-value pairs clearly. A definition list (`<dl>`, `<dt>`, `<dd>`) is an excellent choice for this.
+4.  If the data is a simple success message, a string, or a number, present it concisely in a paragraph (`<p>`).
+5.  Relate the output to the user's original request in a brief introductory sentence if appropriate.
+6.  **CRITICAL**: Your entire response must be only the HTML code. Do NOT include Markdown fences (```), JSON, or any other text outside of the HTML structure.
 """

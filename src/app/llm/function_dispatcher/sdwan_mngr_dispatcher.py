@@ -268,17 +268,17 @@ def findUsers_1():
 # alias → easier for LLM
 register('1')(globals()['findUsers_1'])
 
-# alias for findUsers_1 -> users
-register('users')(globals()['findUsers_1'])
-
-# alias for findUsers_1 -> get_users
-register('get_users')(globals()['findUsers_1'])
-
 # alias for findUsers_1 -> user_list
 register('user_list')(globals()['findUsers_1'])
 
+# alias for findUsers_1 -> users
+register('users')(globals()['findUsers_1'])
+
 # alias for findUsers_1 -> show_users
 register('show_users')(globals()['findUsers_1'])
+
+# alias for findUsers_1 -> get_users
+register('get_users')(globals()['findUsers_1'])
 
 @register('createUser_1')
 def createUser_1():
@@ -769,14 +769,14 @@ def getRawAlarmData(query: str = None, site_id: str = None, includeTenants: bool
 # alias for getRawAlarmData -> alarm_list
 register('alarm_list')(globals()['getRawAlarmData'])
 
-# alias for getRawAlarmData -> show_alarms
-register('show_alarms')(globals()['getRawAlarmData'])
-
 # alias for getRawAlarmData -> alarms
 register('alarms')(globals()['getRawAlarmData'])
 
 # alias for getRawAlarmData -> get_alarms
 register('get_alarms')(globals()['getRawAlarmData'])
+
+# alias for getRawAlarmData -> show_alarms
+register('show_alarms')(globals()['getRawAlarmData'])
 
 @register('postRawAlarmData')
 def postRawAlarmData(page: int = None, pageSize: int = None, sortBy: str = None, sortOrder: str = None, site_id: str = None, includeTenants: bool = None):
@@ -13661,6 +13661,18 @@ def getAllDeviceStatus():
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+# alias for getAllDeviceStatus -> show_device_status
+register('show_device_status')(globals()['getAllDeviceStatus'])
+
+# alias for getAllDeviceStatus -> status_devices
+register('status_devices')(globals()['getAllDeviceStatus'])
+
+# alias for getAllDeviceStatus -> get_device_status
+register('get_device_status')(globals()['getAllDeviceStatus'])
+
+# alias for getAllDeviceStatus -> device_status
+register('device_status')(globals()['getAllDeviceStatus'])
+
 @register('getSxpConnections')
 def getSxpConnections(deviceId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -17131,6 +17143,18 @@ def getDevicesHealth(page: int = None, pageSize: int = None, sortBy: str = None,
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
+
+# alias for getDevicesHealth -> show_device_health
+register('show_device_health')(globals()['getDevicesHealth'])
+
+# alias for getDevicesHealth -> health_devices
+register('health_devices')(globals()['getDevicesHealth'])
+
+# alias for getDevicesHealth -> get_device_health
+register('get_device_health')(globals()['getDevicesHealth'])
+
+# alias for getDevicesHealth -> device_health
+register('device_health')(globals()['getDevicesHealth'])
 
 @register('getDevicesHealthOverview')
 def getDevicesHealthOverview(vpn_id: str = None, vpnId: str = None):
@@ -23346,6 +23370,18 @@ def getDeviceDetails(partnerId: str, uuid: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+# alias for getDeviceDetails -> get_device_details
+register('get_device_details')(globals()['getDeviceDetails'])
+
+# alias for getDeviceDetails -> device_info
+register('device_info')(globals()['getDeviceDetails'])
+
+# alias for getDeviceDetails -> show_device_details
+register('show_device_details')(globals()['getDeviceDetails'])
+
+# alias for getDeviceDetails -> device_details
+register('device_details')(globals()['getDeviceDetails'])
+
 @register('createSDAConfigFromNetconf')
 def createSDAConfigFromNetconf(partnerId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -24691,6 +24727,18 @@ def getSegment(id: str):
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
+
+# alias for getSegment -> segment
+register('segment')(globals()['getSegment'])
+
+# alias for getSegment -> show_segment
+register('show_segment')(globals()['getSegment'])
+
+# alias for getSegment -> get_segment
+register('get_segment')(globals()['getSegment'])
+
+# alias for getSegment -> network_segment
+register('network_segment')(globals()['getSegment'])
 
 @register('editSegment')
 def editSegment(id: str):
@@ -32342,6 +32390,18 @@ def getSiteHealth(isHeatMap: str = None, last_n_hours: int = None, interval: int
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
+
+# alias for getSiteHealth -> site_health
+register('site_health')(globals()['getSiteHealth'])
+
+# alias for getSiteHealth -> get_site_health
+register('get_site_health')(globals()['getSiteHealth'])
+
+# alias for getSiteHealth -> show_site_health
+register('show_site_health')(globals()['getSiteHealth'])
+
+# alias for getSiteHealth -> health_sites
+register('health_sites')(globals()['getSiteHealth'])
 
 @register('getStatDataRawDataAsCSV_14')
 def getStatDataRawDataAsCSV_14(query: str = None):

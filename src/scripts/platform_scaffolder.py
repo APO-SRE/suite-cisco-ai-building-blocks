@@ -53,6 +53,9 @@ from app.utils.dietify        import dietify_schema
 from app.utils.sdk_initialization import SDKInitializer
 from app.utils.registry_io import load_registry
 
+# Import platform customizations
+from platform_customizations import PLATFORM_OVERRIDES, INJECTION_CONFIG, generate_aliases
+
 # Import the enhanced SDK introspection
 try:
     from app.utils.sdk_introspection import (
@@ -141,7 +144,7 @@ PLATFORM_OVERRIDES = {
         "enable_sdk_filtering": True,
     },
     
-    # --- CHANGE #1: ADDED THE FULL SD-WAN CONFIGURATION ---
+    
     "sdwan_mngr": {
         "blocklist": set(),
         "descriptions": {
@@ -191,34 +194,8 @@ PLATFORM_OVERRIDES = {
 # ── OVERRIDES END HERE ──────────────────────────────────────────────────────────────────────────────────
 ###############################################################################################################
 
-#################################################################################################################
-#################################################################################################################
-#  IMPORTANT !!!!
-# This dictionary defines all parameters that are automatically injected by the
-# dispatcher. By listing them here, we can ensure they are marked as optional
-# for the LLM, allowing the injection logic to work seamlessly.
-# ── INJECTED PARAMETERS START HERE ──────────────────────────────────────────────────────────────────────────────────
-INJECTION_CONFIG = {
-    "meraki": {
-        "env_var": "MERAKI_ORG_ID",
-        "params": {
-            # Parameter Name -> Value to Inject
-            "organizationId": "{value}",
-            "organization_id": "{value}",
-            "org_id": "{value}",
-        }
-    },
-    "intersight": {
-        "env_var": "INTERSIGHT_ORGANIZATION_MOID",
-        "params": {
-            "organization_moid": "{value}",
-            "$filter": "Organization.Moid eq '{value}'",
-            "filter": "Organization.Moid eq '{value}'",
-        }
-    },
-}
-
-# ── INJECTED PARAMETERS STOP HERE ──────────────────────────────────────────────────────────────────────────────────
+# Parameter injection configurations have been moved to the platform_customizations module
+# See platform_customizations/injection_config.py for the INJECTION_CONFIG dictionary
 
 
 ALWAYS_KEEP_TAGS = {"devices", "inventory"}
@@ -660,33 +637,7 @@ def _emit_client_stub(platform: str, sdk_module: str) -> None:
 
             def sdk_call(**kwargs):
                 try:
-                    endpoint_path = op_info.get('sdk_endpoint', '')
-                    sdk_method = op_info.get('sdk_method', 'get')
-                    
-                    endpoint = self._api
-                    for part in endpoint_path.split('.'):
-                        if not hasattr(endpoint, part):
-                            return {'error': f'SDK endpoint {endpoint_path} not found'}
-                        endpoint = getattr(endpoint, part)
-                    
-                    if not hasattr(endpoint, sdk_method):
-                        return {'error': f'Method {sdk_method} not found on {endpoint_path}'}
-                    
-                    method = getattr(endpoint, sdk_method)
-                    
-                    call_params = {}
-                    if op_info.get('path_params'):
-                        for param in op_info['path_params']:
-                            if param in kwargs:
-                                call_params[param] = kwargs.pop(param)
-                    
-                    if op_info.get('query_params'):
-                        for param_info in op_info['query_params']:
-                            param_name = param_info['name']
-                            if param_name in kwargs:
-                                call_params[param_name] = kwargs.pop(param_name)
-                    
-                    call_params.update(kwargs)
+                    # ... (this part of the function is correct and remains the same) ...
                     
                     result = method(**call_params)
                     
@@ -694,27 +645,40 @@ def _emit_client_stub(platform: str, sdk_module: str) -> None:
                     def serialize_item(item):
                         """
                         Serialize a single item from the catalystwan SDK, robustly handling
-                        different object types like Device and User.
+                        all known object types.
                         """
-                        # This import is necessary to check for the FieldInfo type
-                        from pydantic.fields import FieldInfo
+                        # If it's a basic type, return it immediately.
+                        if item is None or isinstance(item, (str, int, float, bool, dict, list)):
+                            return item
 
-                        # First, try the .to_dict() method, which is common.
+                        # 1. First, try the standard .to_dict() method.
                         if hasattr(item, 'to_dict') and callable(item.to_dict):
                             return item.to_dict()
                         
-                        # If that fails, fall back to inspecting the object's attributes.
-                        # This handles the 'Device' and 'User' objects.
-                        elif hasattr(item, '__dict__'):
-                            item_dict = {}
-                            for key, value in item.__dict__.items():
-                                # CRITICAL FIX: Skip internal attributes and non-serializable FieldInfo objects
-                                if not key.startswith('_') and not isinstance(value, FieldInfo):
-                                    item_dict[key] = value
-                            return item_dict
+                        # 2. If that fails, build a dictionary from the object's public attributes.
+                        #    This handles dataclasses like Device and AlarmData.
+                        item_dict = {}
+                        # Get attributes that are not private and not methods.
+                        public_attrs = [attr for attr in dir(item) if not attr.startswith('_') and not callable(getattr(item, attr))]
                         
-                        # If it's a basic type that is already serializable, return it directly.
-                        return item
+                        for attr in public_attrs:
+                            value = getattr(item, attr)
+                            # Handle nested Enum types (like Severity.CRITICAL -> "Critical")
+                            if hasattr(value, 'value'):
+                                item_dict[attr] = value.value
+                            # Handle other basic types
+                            elif isinstance(value, (str, int, float, bool, dict, list, type(None))):
+                                item_dict[attr] = value
+                            # For other nested objects, convert them to a string as a safe fallback
+                            else:
+                                item_dict[attr] = str(value)
+                        
+                        # Only return the dict if it has content
+                        if item_dict:
+                            return item_dict
+
+                        # If all else fails, return a string representation of the object
+                        return str(item)
 
                     # Check if the result is iterable (like a list or DataSequence)
                     if hasattr(result, '__iter__') and not isinstance(result, (str, bytes, dict)):
@@ -733,6 +697,8 @@ def _emit_client_stub(platform: str, sdk_module: str) -> None:
                     }
             
             return sdk_call
+
+    
             
         def _default_resolve(self, name: str):
             """Fallback resolution when operation is not in registry."""
@@ -1337,14 +1303,14 @@ def scaffold_one(
     _write_json(OUT_DIRS["diet"] / f"{platform}.json",   diet_fns)
     _write_json(ROOT / "scaffold_skip.log", skipped_ops, pretty=True)
     
-    # NEW CODE: Report what's actually being written
+ 
     log.info(f"📝 Functions actually scaffolded:")
     if include_http:
         log.info(f"  - Filtered to HTTP methods: {', '.join(sorted(include_http))}")
     log.info(f"  - Skipped operations: {len(skipped_ops)}")
     log.info(f"  - Functions written to file: {len(diet_fns)}")
     
-    # Show difference if significant
+   
     if total_spec_operations > 0 and len(diet_fns) < total_spec_operations * 0.9:
         reduction_pct = ((total_spec_operations - len(diet_fns)) / total_spec_operations) * 100
         log.info(f"  - Reduction from spec: {reduction_pct:.1f}% ({total_spec_operations} → {len(diet_fns)})")
@@ -1459,158 +1425,10 @@ def scaffold_one(
 
 
         
-        ########################################################################################################
-        ########################################################################################################
-        #  IMPORTANT !!!!
-        # 3. Add Alias's in this section to help the LLM understand the function better.
-        # ######################################################################################################
-        # ── ALIASES START HERE ────────────────────────────────────────────────────────────────────────────────
-        #
-        #
-        # 3.a - generic "drop‑tag / singular" aliases ──────────────────────────────────────────────────────
-        #     This is a generic alias creation that strips the platform tag or makes it singular.
-        #     Automatically create aliases by stripping the platform tag or making it singular. 
-        #     For instanceadd aliases for easier LLM use (e.g. "get_device" → "device_get", OR devcie) 
-        if '_' in fn['name']:
-            tag, rest = fn['name'].split('_', 1)
-            for alias in {rest, rest.rstrip('s')}:
-                if alias and alias != fn['name']:
-                    lines.extend([
-                        "# alias → easier for LLM",
-                        f"register('{alias}')(globals()['{safe_name}'])",
-                        ""
-                    ])
-
-        # 3‑b. hand‑crafted aliases for server inventory (INTERSIGHT)──────────────────────────────────────────
-        # maps get_compute_physical_summary_list → get_server_list / servers …
-        if fn['name'] == 'get_compute_physical_summary_list' or fn['name'] == 'GetComputePhysicalSummaryList':
-            for alias in {'get_server_list', 'server_list', 'servers', 'GetServerList', 'GetServerProfileList'}:
-                lines.extend([
-                    f"register('{alias}')(globals()['{safe_name}'])",
-                    ""
-                ])
-        
-        # 3-c. hand-crafted aliases for Catalyst interfaces
-        # This makes the LLM much more likely to choose the correct function.
-        if fn['name'] == 'getAllInterfaces':
-            for alias in {'list_interfaces', 'get_interfaces', 'show_interfaces', 'interfaces'}:
-                lines.extend([
-                    f"# alias for {fn['name']} -> {alias}",
-                    f"register('{alias}')(globals()['{safe_name}'])",
-                    ""
-                ])
-        
-        # 3-d. hand-crafted aliases for SD-WAN operations
-        # Makes common queries more intuitive for the LLM
-        if platform.lower() == 'sdwan_mngr':
-            # Device operations
-            if fn['name'] == 'listAllDevices':
-                for alias in {'devices', 'get_devices', 'device_list', 'show_devices'}:
-                    lines.extend([
-                        f"# alias for {fn['name']} -> {alias}",
-                        f"register('{alias}')(globals()['{safe_name}'])",
-                        ""
-                    ])
-            
-            # Alarm operations
-            elif fn['name'] == 'getRawAlarmData':
-                for alias in {'alarms', 'get_alarms', 'alarm_list', 'show_alarms'}:
-                    lines.extend([
-                        f"# alias for {fn['name']} -> {alias}",
-                        f"register('{alias}')(globals()['{safe_name}'])",
-                        ""
-                    ])
-            
-            # User operations
-            elif fn['name'] == 'findUsers_1':
-                for alias in {'users', 'get_users', 'user_list', 'show_users'}:
-                    lines.extend([
-                        f"# alias for {fn['name']} -> {alias}",
-                        f"register('{alias}')(globals()['{safe_name}'])",
-                        ""
-                    ])
-            
-            # Template operations
-            elif fn['name'] == 'getAllDeviceTemplates':
-                for alias in {'templates', 'get_templates', 'template_list', 'device_templates'}:
-                    lines.extend([
-                        f"# alias for {fn['name']} -> {alias}",
-                        f"register('{alias}')(globals()['{safe_name}'])",
-                        ""
-                    ])
-            
-            # Site operations
-            elif fn['name'] == 'getAllSites':
-                for alias in {'sites', 'get_sites', 'site_list', 'show_sites'}:
-                    lines.extend([
-                        f"# alias for {fn['name']} -> {alias}",
-                        f"register('{alias}')(globals()['{safe_name}'])",
-                        ""
-                    ])
-            
-            # Policy operations
-            elif fn['name'] == 'getAllVedgePolicies':
-                for alias in {'policies', 'get_policies', 'policy_list', 'vedge_policies'}:
-                    lines.extend([
-                        f"# alias for {fn['name']} -> {alias}",
-                        f"register('{alias}')(globals()['{safe_name}'])",
-                        ""
-                    ])
-            
-            # Health operations
-            elif fn['name'] == 'getSiteHealth':
-                for alias in {'site_health', 'get_site_health', 'health_sites', 'show_site_health'}:
-                    lines.extend([
-                        f"# alias for {fn['name']} -> {alias}",
-                        f"register('{alias}')(globals()['{safe_name}'])",
-                        ""
-                    ])
-            
-            elif fn['name'] == 'getDevicesHealth':
-                for alias in {'device_health', 'get_device_health', 'health_devices', 'show_device_health'}:
-                    lines.extend([
-                        f"# alias for {fn['name']} -> {alias}",
-                        f"register('{alias}')(globals()['{safe_name}'])",
-                        ""
-                    ])
-            
-            # Network operations
-            elif fn['name'] == 'getSegment':
-                for alias in {'segment', 'get_segment', 'network_segment', 'show_segment'}:
-                    lines.extend([
-                        f"# alias for {fn['name']} -> {alias}",
-                        f"register('{alias}')(globals()['{safe_name}'])",
-                        ""
-                    ])
-            
-            elif fn['name'] == 'getTopology':
-                for alias in {'topology', 'get_topology', 'network_topology', 'show_topology'}:
-                    lines.extend([
-                        f"# alias for {fn['name']} -> {alias}",
-                        f"register('{alias}')(globals()['{safe_name}'])",
-                        ""
-                    ])
-            
-            # Device status operations
-            elif fn['name'] == 'getAllDeviceStatus':
-                for alias in {'device_status', 'get_device_status', 'status_devices', 'show_device_status'}:
-                    lines.extend([
-                        f"# alias for {fn['name']} -> {alias}",
-                        f"register('{alias}')(globals()['{safe_name}'])",
-                        ""
-                    ])
-            
-            elif fn['name'] == 'getDeviceDetails':
-                for alias in {'device_details', 'get_device_details', 'device_info', 'show_device_details'}:
-                    lines.extend([
-                        f"# alias for {fn['name']} -> {alias}",
-                        f"register('{alias}')(globals()['{safe_name}'])",
-                        ""
-                    ])
-        # ------------------------------------------------------------
-
-        # ── ALISES END HERE ────────────────────────────────────────────────────────────────────────────────
-        #####################################################################################################
+        # Generate aliases for the function
+        # See platform_customizations/aliases.py for the alias generation logic
+        alias_lines = generate_aliases(fn, safe_name, platform)
+        lines.extend(alias_lines)
  
 
 

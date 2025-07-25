@@ -58,7 +58,9 @@ from app.llm.prompt_templates import (
     USER_PROMPT_TEMPLATE,
     FUNCTIONS_LLM_PROMPT,
     GENERIC_RESPONSE_PROMPT,
-    HTML_SDWAN_DEVICE_STATUS_PROMPT
+    HTML_SDWAN_DEVICE_STATUS_PROMPT,
+    HTML_SDWAN_ALARM_STATUS_PROMPT,
+    HTML_SDWAN_GENERIC_RESPONSE_PROMPT
 )
 from app.retrievers.chroma_retriever import FunctionRetriever
 from app.routers._domain_keywords import DOMAIN_KEYWORDS_MAP
@@ -413,6 +415,8 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
     prompt = req.message
     messages: list[dict] = []
     llm: LLMClientBase = get_llm()
+    
+    log.info(f"🚀 Starting chat request - prompt: '{prompt[:100]}...'" if len(prompt) > 100 else f"🚀 Starting chat request - prompt: '{prompt}'")
 
     # 1️⃣ Retrieve docs or domain/event data
     with tracer.start_as_current_span("retriever") as rspan:
@@ -461,6 +465,7 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
 
         else:
             docs = retriever.retrieve_domain_info(prompt)
+            log.info(f"📚 Retrieved {len(docs)} documents for general query")
             messages = [
                 {"role": "system", "content": BASE_SYSTEM_PROMPT_DOCS_ONLY},
                 {"role": "user",   "content": USER_PROMPT_TEMPLATE.format(user_query=prompt)},
@@ -468,12 +473,14 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
             rspan.set_attribute("type", "general")
 
         rspan.set_attribute("docs", len(docs))
+        log.info(f"🔍 Retriever type: {type(retriever).__name__}, docs retrieved: {len(docs)}")
 
     # 2️⃣ Build candidate functions
     with tracer.start_as_current_span("build.functions") as bfspan:
         # This line should unpack the tuple
         functions, platform_map = build_functions_for_llm(prompt, platforms)
-         
+        
+        log.info(f"📋 Building functions - platforms: {platforms}, function count: {len(functions)}")
         
         # Set span attributes for observability
         bfspan.set_attribute("functions.count", len(functions))
@@ -524,7 +531,10 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
 
     # 4️⃣ If no function_call → return text
     if not fc:
-        return {"role": "assistant", "label": "Cisco AI", "response": llm_resp.get("content", "I don't know.")}
+        log.info(f"💬 No function call - returning direct LLM response")
+        response_content = llm_resp.get("content", "I don't know.")
+        log.info(f"Response content: {response_content[:200]}...")
+        return {"role": "assistant", "label": "Cisco AI", "response": response_content}
 
     # normalize function name + args
     fname = fc["name"].removeprefix("functions.")
@@ -639,16 +649,25 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
             },
         ]
 
-         # Select the system prompt based on the platform.
+        # Select the system prompt based on the platform.
         if function_platform == 'sdwan_mngr':
-            # Use the specific, detailed prompt for any SD-WAN function.
-            system_prompt = HTML_SDWAN_DEVICE_STATUS_PROMPT
-            log.info("Using SD-WAN specific response prompt.")
+            # Check for alarm-related functions first
+            if 'alarm' in fname.lower():
+                system_prompt = HTML_SDWAN_ALARM_STATUS_PROMPT
+                log.info("Using SD-WAN alarm specific response prompt.")
+            # Next, check for common device list functions
+            elif 'device' in fname.lower() or fname in ['listAllDevices', 'getAllDeviceStatus', 'getDevicesDetails']:
+                system_prompt = HTML_SDWAN_DEVICE_STATUS_PROMPT
+                log.info("Using SD-WAN device specific response prompt.")
+            # Fallback for all other SD-WAN functions
+            else:
+                system_prompt = HTML_SDWAN_GENERIC_RESPONSE_PROMPT
+                log.info("Using SD-WAN generic response prompt.")
         else:
             # For all other platforms, use the improved generic prompt.
             system_prompt = GENERIC_RESPONSE_PROMPT
-            log.info(f"Using generic response prompt for platform: {function_platform or 'unknown'}.")
-
+            log.info(f"Using improved generic response prompt for platform: {function_platform or 'unknown'}.")
+ 
         # Instruct the model using the selected prompt.
         follow_up[0]["content"] = system_prompt
         print("\n" + "="*50)
@@ -663,11 +682,14 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
         final = {"content": final}
     l2span.set_attribute("llm.final_length", len(final.get("content", "")))
 
+    final_response = final.get("content") or json.dumps(to_serialisable(result), indent=2)
+    log.info(f"✅ Final response length: {len(final_response)} chars")
+    log.info(f"✅ Response preview: {final_response[:200]}...")
+    
     return {
         "role": "assistant",
         "label": "Cisco AI",
-        "response": final.get("content")
-            or json.dumps(to_serialisable(result), indent=2),
+        "response": final_response,
      }
 
 
