@@ -39,6 +39,28 @@ from rich.traceback import install
 install()
 console = Console()
 
+# Add src to Python path for imports
+sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "src"))
+
+try:
+    from app.user_commands.update_platform_registry import load_registry, save_registry
+except ImportError:
+    # Fallback to local functions if import fails
+    def load_registry() -> dict:
+        """Load the registry JSON or return empty dict if file missing or invalid."""
+        if not PLATFORM_REGISTRY.exists():
+            return {}
+        try:
+            return json.loads(PLATFORM_REGISTRY.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            console.print(f"[red]Error:[/red] Failed to parse {PLATFORM_REGISTRY}.")
+            return {}
+    
+    def save_registry(registry: dict) -> None:
+        """Write the registry back to disk (creating parent dirs if needed)."""
+        PLATFORM_REGISTRY.parent.mkdir(parents=True, exist_ok=True)
+        PLATFORM_REGISTRY.write_text(json.dumps(registry, indent=2), encoding="utf-8")
+
 # ────────────────────────────────────────────────────────────────────────────────
 # Paths
 # ────────────────────────────────────────────────────────────────────────────────
@@ -133,22 +155,21 @@ def main() -> None:
 
     # Step 4: Update platform_registry.json (remove any matching "sdk_module" and its "created_by_us" flag)
     try:
-        if PLATFORM_REGISTRY.exists():
-            registry_data = json.loads(PLATFORM_REGISTRY.read_text(encoding="utf-8"))
-            updated = False
+        registry_data = load_registry()
+        updated = False
 
-            # Iterate over each platform entry and clear fields if "sdk_module" matches pkg_dir
-            for platform_key, entry in registry_data.items():
-                if entry.get("sdk_module") == pkg_dir:
-                    entry.pop("sdk_module", None)
-                    entry.pop("created_by_us", None)
-                    updated = True
+        # Iterate over each platform entry and clear fields if "sdk_module" matches pkg_dir
+        for platform_key, entry in registry_data.items():
+            if entry.get("sdk_module") == pkg_dir:
+                entry.pop("sdk_module", None)
+                entry.pop("created_by_us", None)
+                updated = True
 
-            if updated:
-                PLATFORM_REGISTRY.write_text(json.dumps(registry_data, indent=2), encoding="utf-8")
-                console.print(f"[green]Removed 'sdk_module: {pkg_dir}' and its 'created_by_us' flag from platform_registry.json[/green]")
-            else:
-                console.print(f"[yellow]No matching 'sdk_module' found for '{pkg_dir}' in platform_registry.json[/yellow]")
+        if updated:
+            save_registry(registry_data)
+            console.print(f"[green]Removed 'sdk_module: {pkg_dir}' and its 'created_by_us' flag from platform_registry.json[/green]")
+        else:
+            console.print(f"[yellow]No matching 'sdk_module' found for '{pkg_dir}' in platform_registry.json[/yellow]")
     except Exception as e:
         console.print(f"[yellow]Warning: could not update platform_registry.json: {e}[/yellow]")
 
