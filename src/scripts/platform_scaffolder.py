@@ -1556,6 +1556,57 @@ def scaffold_one(
                         f"register('{alias}')(globals()['{safe_name}'])",
                         ""
                     ])
+            
+            # Health operations
+            elif fn['name'] == 'getSiteHealth':
+                for alias in {'site_health', 'get_site_health', 'health_sites', 'show_site_health'}:
+                    lines.extend([
+                        f"# alias for {fn['name']} -> {alias}",
+                        f"register('{alias}')(globals()['{safe_name}'])",
+                        ""
+                    ])
+            
+            elif fn['name'] == 'getDevicesHealth':
+                for alias in {'device_health', 'get_device_health', 'health_devices', 'show_device_health'}:
+                    lines.extend([
+                        f"# alias for {fn['name']} -> {alias}",
+                        f"register('{alias}')(globals()['{safe_name}'])",
+                        ""
+                    ])
+            
+            # Network operations
+            elif fn['name'] == 'getSegment':
+                for alias in {'segment', 'get_segment', 'network_segment', 'show_segment'}:
+                    lines.extend([
+                        f"# alias for {fn['name']} -> {alias}",
+                        f"register('{alias}')(globals()['{safe_name}'])",
+                        ""
+                    ])
+            
+            elif fn['name'] == 'getTopology':
+                for alias in {'topology', 'get_topology', 'network_topology', 'show_topology'}:
+                    lines.extend([
+                        f"# alias for {fn['name']} -> {alias}",
+                        f"register('{alias}')(globals()['{safe_name}'])",
+                        ""
+                    ])
+            
+            # Device status operations
+            elif fn['name'] == 'getAllDeviceStatus':
+                for alias in {'device_status', 'get_device_status', 'status_devices', 'show_device_status'}:
+                    lines.extend([
+                        f"# alias for {fn['name']} -> {alias}",
+                        f"register('{alias}')(globals()['{safe_name}'])",
+                        ""
+                    ])
+            
+            elif fn['name'] == 'getDeviceDetails':
+                for alias in {'device_details', 'get_device_details', 'device_info', 'show_device_details'}:
+                    lines.extend([
+                        f"# alias for {fn['name']} -> {alias}",
+                        f"register('{alias}')(globals()['{safe_name}'])",
+                        ""
+                    ])
         # ------------------------------------------------------------
 
         # ── ALISES END HERE ────────────────────────────────────────────────────────────────────────────────

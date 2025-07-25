@@ -2,23 +2,87 @@
   "meraki": {
     "openapi_name": "meraki-dashboard-openapi-3.0.1",
     "sdk_module": "meraki",
+    "sdk_pattern": "meraki",
+    "sdk_class": "DashboardAPI",
     "created_by_us": false,
     "installed": true,
-    "route": true
+    "route": true,
+    "auth_config": {
+      "type": "api_key",
+      "env_vars": {
+        "api_key": "MERAKI_DASHBOARD_API_KEY"
+      },
+      "init_params": {
+        "required": [
+          "api_key"
+        ],
+        "optional": [
+          "base_url",
+          "timeout"
+        ]
+      }
+    },
+    "sub_clients": false,
+    "example_init": "client = DashboardAPI(api_key='YOUR_API_KEY')"
   },
   "catalyst": {
     "openapi_name": "cisco-catalyst-center-intent-api-openai-3.0.1",
     "sdk_module": "dnacentersdk",
+    "sdk_pattern": "catalyst",
+    "sdk_class": "DNACenterAPI",
     "created_by_us": false,
     "installed": true,
-    "route": true
+    "route": true,
+    "auth_config": {
+      "type": "basic_auth",
+      "env_vars": {
+        "username": "DNACENTER_USERNAME",
+        "password": "DNACENTER_PASSWORD",
+        "base_url": "DNACENTER_BASE_URL"
+      },
+      "init_params": {
+        "required": [
+          "username",
+          "password",
+          "base_url"
+        ],
+        "optional": [
+          "version",
+          "verify",
+          "timeout"
+        ]
+      }
+    },
+    "sub_clients": true,
+    "example_init": "client = DNACenterAPI(username='user', password='pass', base_url='https://dnac.example.com')"
   },
   "intersight": {
     "openapi_name": "intersight-openapi-v3-1.0.11-20250410042505149",
     "sdk_module": "intersight",
+    "sdk_pattern": "intersight",
+    "sdk_class": "ApiClient",
     "created_by_us": false,
     "installed": true,
-    "route": true
+    "route": true,
+    "auth_config": {
+      "type": "api_key_secret",
+      "env_vars": {
+        "api_key_id": "INTERSIGHT_API_KEY_ID",
+        "api_secret": "INTERSIGHT_API_SECRET"
+      },
+      "init_params": {
+        "required": [
+          "api_key_id",
+          "api_secret"
+        ],
+        "optional": [
+          "host",
+          "verify_ssl"
+        ]
+      }
+    },
+    "sub_clients": true,
+    "example_init": "client = ApiClient(api_key_id='KEY_ID', api_secret='SECRET')"
   },
   "nexus_dashboard": {
     "openapi_name": "nexus-dashboard-321",
@@ -147,9 +211,32 @@
   "sdwan_mngr": {
     "openapi_name": "cisco_catalyst_sd_wan_manager_api_2_0_0",
     "sdk_module": "catalystwan.session",
+    "sdk_pattern": "sdwan_mngr",
+    "sdk_class": "ManagerSession",
     "created_by_us": false,
     "installed": true,
-    "route": true
+    "route": true,
+    "auth_config": {
+      "type": "session_based",
+      "env_vars": {
+        "url": "CATALYSTWAN_URL",
+        "username": "CATALYSTWAN_USERNAME",
+        "password": "CATALYSTWAN_PASSWORD"
+      },
+      "init_params": {
+        "required": [
+          "url",
+          "username",
+          "password"
+        ],
+        "optional": [
+          "port",
+          "verify"
+        ]
+      }
+    },
+    "sub_clients": true,
+    "example_init": "client = ManagerSession(url='https://vmanage.example.com', username='admin', password='pass')"
   },
   "ai_defense": {
     "openapi_name": "ai_defense_ap_is_1_0_0_2025_02_28",
@@ -188,8 +275,29 @@
   "nexus_hyperfabric": {
     "openapi_name": "cisco_nexus_hyperfabric_rest_api_1_0_6_rev_2025_03_11_13103",
     "sdk_module": "cisco_nexus_hyperfabric_rest_api_client",
-    "created_by_us": false,
+    "sdk_pattern": "nexus_hyperfabric",
+    "sdk_class": "HyperfabricClient",
+    "created_by_us": true,
     "installed": true,
-    "route": true
+    "route": true,
+    "auth_config": {
+      "type": "api_key",
+      "env_vars": {
+        "api_key": "NEXUS_HYPERFABRIC_API_KEY",
+        "host": "NEXUS_HYPERFABRIC_HOST"
+      },
+      "init_params": {
+        "required": [
+          "api_key",
+          "host"
+        ],
+        "optional": [
+          "timeout",
+          "verify_ssl"
+        ]
+      }
+    },
+    "sub_clients": false,
+    "example_init": "client = HyperfabricClient(api_key='YOUR_KEY', host='hyperfabric.example.com')"
   }
 }
