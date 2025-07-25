@@ -35,6 +35,7 @@ Very thin wrapper around a *single* Chroma collection.
 """
  
 import os
+import json
 import logging
 from pathlib import Path
 from app.utils.paths import ensure_abs_env
@@ -66,7 +67,7 @@ class ChromaRetriever:
         )
         coll_name  = (
             collection_name
-            or os.getenv(f"{self.layer}_CHROMA_COLLECTION_PLATFORM", "platform-summaries-index")
+            or os.getenv(f"{self.layer}_CHROMA_COLLECTION_PLATFORM", "function-definitions-index")
         )
         
         # assemble and normalize the collection path
@@ -109,6 +110,7 @@ class ChromaRetriever:
         metas = res.get("metadatas", [[]])[0]
         dists = (res.get("distances") or [[None]])[0]
 
+ 
         return [
             {"content": doc, **(meta or {}), "distance": dist}
             for doc, meta, dist in zip(docs, metas, dists)

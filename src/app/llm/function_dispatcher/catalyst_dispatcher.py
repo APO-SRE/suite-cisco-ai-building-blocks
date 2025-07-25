@@ -3075,10 +3075,10 @@ def s_FactoryResetStatus(taskId: str):
     return target(**final_kwargs)
 
 # alias → easier for LLM
-register('FactoryResetStatus')(globals()['s_FactoryResetStatus'])
+register('FactoryResetStatu')(globals()['s_FactoryResetStatus'])
 
 # alias → easier for LLM
-register('FactoryResetStatu')(globals()['s_FactoryResetStatus'])
+register('FactoryResetStatus')(globals()['s_FactoryResetStatus'])
 
 @register('s_FactoryResetStatu')
 def s_FactoryResetStatu(taskId: str):
@@ -5605,47 +5605,10 @@ def getRest_WebhookEventSubscriptions(eventIds: str = None, offset: float = None
     return target(**final_kwargs)
 
 # alias → easier for LLM
-register('WebhookEventSubscriptions')(globals()['getRest_WebhookEventSubscriptions'])
-
-# alias → easier for LLM
 register('WebhookEventSubscription')(globals()['getRest_WebhookEventSubscriptions'])
 
-@register('WebhookEventSubscriptions')
-def WebhookEventSubscriptions(eventIds: str = None, offset: float = None, limit: float = None, sortBy: str = None, order: str = None, domain: str = None, subDomain: str = None, category: str = None, type: str = None, name: str = None):
-    """Auto-generated wrapper for clarity and maintainability."""
-    # Explicitly build keyword arguments, excluding None values.
-    final_kwargs = {}
-    if eventIds is not None:
-        final_kwargs['eventIds'] = eventIds
-    if offset is not None:
-        final_kwargs['offset'] = offset
-    if limit is not None:
-        final_kwargs['limit'] = limit
-    if sortBy is not None:
-        final_kwargs['sortBy'] = sortBy
-    if order is not None:
-        final_kwargs['order'] = order
-    if domain is not None:
-        final_kwargs['domain'] = domain
-    if subDomain is not None:
-        final_kwargs['subDomain'] = subDomain
-    if category is not None:
-        final_kwargs['category'] = category
-    if type is not None:
-        final_kwargs['type'] = type
-    if name is not None:
-        final_kwargs['name'] = name
-
-    # No body parameter for this function.
-    body_payload = None
-
-    client = CatalystClient()
-    # Use attribute access to trigger __getattr__ for dynamic resolution
-    target = client.WebhookEventSubscriptions
-
-    if body_payload is not None:
-        return target(body=body_payload, **final_kwargs)
-    return target(**final_kwargs)
+# alias → easier for LLM
+register('WebhookEventSubscriptions')(globals()['getRest_WebhookEventSubscriptions'])
 
 @register('WebhookEventSubscription')
 def WebhookEventSubscription(eventIds: str = None, offset: float = None, limit: float = None, sortBy: str = None, order: str = None, domain: str = None, subDomain: str = None, category: str = None, type: str = None, name: str = None):
@@ -5679,6 +5642,43 @@ def WebhookEventSubscription(eventIds: str = None, offset: float = None, limit: 
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.WebhookEventSubscription
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('WebhookEventSubscriptions')
+def WebhookEventSubscriptions(eventIds: str = None, offset: float = None, limit: float = None, sortBy: str = None, order: str = None, domain: str = None, subDomain: str = None, category: str = None, type: str = None, name: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if eventIds is not None:
+        final_kwargs['eventIds'] = eventIds
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if sortBy is not None:
+        final_kwargs['sortBy'] = sortBy
+    if order is not None:
+        final_kwargs['order'] = order
+    if domain is not None:
+        final_kwargs['domain'] = domain
+    if subDomain is not None:
+        final_kwargs['subDomain'] = subDomain
+    if category is not None:
+        final_kwargs['category'] = category
+    if type is not None:
+        final_kwargs['type'] = type
+    if name is not None:
+        final_kwargs['name'] = name
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.WebhookEventSubscriptions
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -5934,10 +5934,10 @@ def s_Details(id: str = None, name: str = None, offset: int = None, limit: int =
     return target(**final_kwargs)
 
 # alias → easier for LLM
-register('Detail')(globals()['s_Details'])
+register('Details')(globals()['s_Details'])
 
 # alias → easier for LLM
-register('Details')(globals()['s_Details'])
+register('Detail')(globals()['s_Details'])
 
 @register('s_Detail')
 def s_Detail(id: str = None, name: str = None, offset: int = None, limit: int = None, sortOrder: str = None):
@@ -8420,17 +8420,17 @@ def getAllInterfaces(offset: int = None, limit: int = None, lastInputTime: str =
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
-# alias for getAllInterfaces -> show_interfaces
-register('show_interfaces')(globals()['getAllInterfaces'])
-
-# alias for getAllInterfaces -> get_interfaces
-register('get_interfaces')(globals()['getAllInterfaces'])
+# alias for getAllInterfaces -> list_interfaces
+register('list_interfaces')(globals()['getAllInterfaces'])
 
 # alias for getAllInterfaces -> interfaces
 register('interfaces')(globals()['getAllInterfaces'])
 
-# alias for getAllInterfaces -> list_interfaces
-register('list_interfaces')(globals()['getAllInterfaces'])
+# alias for getAllInterfaces -> get_interfaces
+register('get_interfaces')(globals()['getAllInterfaces'])
+
+# alias for getAllInterfaces -> show_interfaces
+register('show_interfaces')(globals()['getAllInterfaces'])
 
 @register('returnsCountOfAdd-onImages')
 def returnsCountOfAdd_onImages(id: str):

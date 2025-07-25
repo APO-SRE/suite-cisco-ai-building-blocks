@@ -1,0 +1,63 @@
+{
+"ai_defense": [
+    "ai defense",
+    "cisco ai defense",
+    "ai_defense",
+    "cisco_ai_defense"
+  ],
+  "catalyst": [
+    "catalyst",
+    "dnac",
+    "dna center",
+    "catalyst center"
+  ],
+  "cloudlock": [
+    "cloudlock",
+    "cloud lock",
+    "cisco cloudlock",
+    "cisco cloud lock",
+    "cloud_lock",
+    "cloudlock api",
+    "cloudlock dashboard"
+  ],
+  "intersight": [
+    "intersight",
+    "ucs",
+    "hyperflex"
+  ],
+    "meraki": [
+    "meraki",
+    "meraki dashboard",
+    "meraki api",
+    "meraki cloud"
+  ],
+  "nexus_hyperfabric": [
+    "nexus",
+    "hyperfabric",
+    "ndfc"
+  ],
+    "secure_access": [
+    "secure_access",
+    "secure access",
+    "secure_access api",
+    "secure_access dashboard",
+    "secure access dashboard"
+    ],
+    "sdwan_mngr": [
+    "sdwan",
+    "sd-wan",
+    "vmanage",
+    "viptela",
+    "vedge",
+    "cedge",
+    "sdwan manager",
+    "sd-wan manager"
+  ],
+    "umbrella": [
+    "umbrella",
+    "umbrella dashboard",
+    "umbrella api",
+    "umbrella cloud"
+  ]
+
+}

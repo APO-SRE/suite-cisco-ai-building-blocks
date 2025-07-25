@@ -16,7 +16,7 @@ Environment variables (layer-aware â€“ replace <LAYER> with FASTAPI / DOMAIN / â
 
     # Index names
     <LAYER>_AZURE_DOMAIN_INDEX         domain-index            (required)
-    <LAYER>_AZURE_PLATFORM_INDEX       platform-summaries-index
+    <LAYER>_AZURE_PLATFORM_INDEX       function-definitions-index
     <LAYER>_AZURE_API_DOCS_INDEX       api-docs-index
     <LAYER>_AZURE_EVENTS_INDEX         events-index
 
@@ -28,6 +28,7 @@ Environment variables (layer-aware â€“ replace <LAYER> with FASTAPI / DOMAIN / â
 
 import logging
 import re
+import json
 from typing import Dict, List, Optional
 
 import requests
@@ -70,7 +71,7 @@ class AzureSearchRetriever:
             "AZURE_DOMAIN_INDEX", layer=self.layer, default="domain-index"
         )
         self.platform_summaries_index = cfg(
-            "AZURE_PLATFORM_INDEX", layer=self.layer, default=""
+            "AZURE_PLATFORM_INDEX", layer=self.layer, default="function-definitions-index"
         )
         self.api_docs_index = cfg("AZURE_API_DOCS_INDEX", layer=self.layer, default="")
         self.events_index = cfg("AZURE_EVENTS_INDEX", layer=self.layer, default="")
@@ -232,7 +233,33 @@ class AzureSearchRetriever:
                 }
             )
 
-        return self._query(self.platform_summaries_index, payload)
+                # Get the flat results from the Azure API
+        hits = self._query(self.platform_summaries_index, payload)
+
+        # Re-hydrate the results into the nested structure the application expects
+        rehydrated_functions = []
+        for hit in hits:
+            try:
+                # 1. Parse the clean function definition from the 'content' field.
+                content_str = hit.get('content', '{}')
+                func_def = json.loads(content_str)
+
+                # 2. Create the metadata dictionary from the other top-level fields.
+                db_meta = {
+                    'platform': hit.get('platform'),
+                    'name': hit.get('name'),
+                    'search_score': hit.get('@search.score')
+                }
+                
+                # 3. CRITICAL STEP: Attach the metadata to the function object.
+                func_def['metadata'] = db_meta
+                
+                rehydrated_functions.append(func_def)
+            except (json.JSONDecodeError, TypeError) as e:
+                _logger.error(f"Error processing Azure result: {e}. Hit: {hit}")
+                continue
+        
+        return rehydrated_functions
 
 
  

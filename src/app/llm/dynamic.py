@@ -726,7 +726,7 @@ def build_functions_for_llm(
     *,
     token_budget: int = int(os.getenv("FASTAPI_FUNCTION_TOKEN_BUDGET", 16_384)),
     k: int = int(os.getenv("FASTAPI_FUNCTION_TOP_K", 50)),
-) -> List[dict]:
+) -> Tuple[List[dict], Dict[str, str]]: # <-- Return a tuple
     """
     Return a list of diet-function JSON objects that the LLM will receive.
 
@@ -925,20 +925,28 @@ def build_functions_for_llm(
     # ── 4. unwrap + schema enhancement + trimming ─────────────────────────
     size = 0
     out: list[dict] = []
-
+    platform_map: Dict[str, str] = {} 
     for d in docs:
         try:
+            # The 'content' field is a JSON string of the core function definition
             fn_schema = json.loads(d["content"])
         except (KeyError, json.JSONDecodeError):
             continue
 
-        # Enhance description based on priority
-        platform = d.get("metadata", {}).get("platform", "")
-        func_name = fn_schema.get("name", "")
+        # --- CHANGE #3: This logic now correctly populates the platform map ---
+        # Get the platform from the top-level dictionary `d` from the retriever
+        platform = d.get("platform")
+        func_name = fn_schema.get("name")
+
+        # Populate the platform map if we have the necessary info
+        if func_name and platform:
+            platform_map[func_name] = platform
+        # --- END of platform map logic ---
+
+        # Enhance description based on priority (this existing logic is good)
         platform_priorities = FUNCTION_PRIORITIES.get(platform, {})
         priority = platform_priorities.get(func_name, 50)
         
-        # Add priority indicators to description
         original_desc = fn_schema.get("description", "")
         if priority >= 90:
             fn_schema["description"] = f"⭐ [PRIMARY] {original_desc}"
@@ -960,8 +968,7 @@ def build_functions_for_llm(
             if pschema.get("type") == "array" and "items" not in pschema:
                 pschema["items"] = {"type": "string"}
 
-        # Add platform metadata to the function schema
-        fn_schema["metadata"] = {"platform": platform}
+ 
 
         payload = json.dumps(fn_schema, separators=(",", ":"))
         if size + len(payload) > token_budget:
@@ -981,8 +988,7 @@ def build_functions_for_llm(
             print(f"{i+1}. {fn['name']}: {fn.get('description', '')[:80]}...")
         print(f"Total functions sent: {len(out)}\n")
 
-    return out
-
+    return out, platform_map
 
 def full_schema_lookup(platform: str, name: str) -> dict | None:
     """Return the full OpenAPI operation object (or `None` if not found)."""
