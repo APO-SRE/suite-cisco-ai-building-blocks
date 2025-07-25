@@ -211,32 +211,9 @@
   "sdwan_mngr": {
     "openapi_name": "cisco_catalyst_sd_wan_manager_api_2_0_0",
     "sdk_module": "catalystwan.session",
-    "sdk_pattern": "sdwan_mngr",
-    "sdk_class": "ManagerSession",
     "created_by_us": false,
     "installed": true,
-    "route": true,
-    "auth_config": {
-      "type": "session_based",
-      "env_vars": {
-        "url": "CATALYSTWAN_URL",
-        "username": "CATALYSTWAN_USERNAME",
-        "password": "CATALYSTWAN_PASSWORD"
-      },
-      "init_params": {
-        "required": [
-          "url",
-          "username",
-          "password"
-        ],
-        "optional": [
-          "port",
-          "verify"
-        ]
-      }
-    },
-    "sub_clients": true,
-    "example_init": "client = ManagerSession(url='https://vmanage.example.com', username='admin', password='pass')"
+    "route": true
   },
   "ai_defense": {
     "openapi_name": "ai_defense_ap_is_1_0_0_2025_02_28",

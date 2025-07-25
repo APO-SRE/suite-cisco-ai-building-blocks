@@ -40,3 +40,19 @@ class NullRetriever:
         :return: Empty list.
         """
         return []
+    
+    def retrieve_domain_info(self, query: str) -> list:
+        """
+        Always returns an empty list.
+        :param query: The search query.
+        :return: Empty list.
+        """
+        return []
+    
+    def retrieve_event_info(self, query: str) -> list:
+        """
+        Always returns an empty list.
+        :param query: The search query.
+        :return: Empty list.
+        """
+        return []

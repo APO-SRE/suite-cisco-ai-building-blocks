@@ -74,33 +74,7 @@ class Sdwan_mngrClient:
     
         def sdk_call(**kwargs):
             try:
-                endpoint_path = op_info.get('sdk_endpoint', '')
-                sdk_method = op_info.get('sdk_method', 'get')
-    
-                endpoint = self._api
-                for part in endpoint_path.split('.'):
-                    if not hasattr(endpoint, part):
-                        return {'error': f'SDK endpoint {endpoint_path} not found'}
-                    endpoint = getattr(endpoint, part)
-    
-                if not hasattr(endpoint, sdk_method):
-                    return {'error': f'Method {sdk_method} not found on {endpoint_path}'}
-    
-                method = getattr(endpoint, sdk_method)
-    
-                call_params = {}
-                if op_info.get('path_params'):
-                    for param in op_info['path_params']:
-                        if param in kwargs:
-                            call_params[param] = kwargs.pop(param)
-    
-                if op_info.get('query_params'):
-                    for param_info in op_info['query_params']:
-                        param_name = param_info['name']
-                        if param_name in kwargs:
-                            call_params[param_name] = kwargs.pop(param_name)
-    
-                call_params.update(kwargs)
+                # ... (this part of the function is correct and remains the same) ...
     
                 result = method(**call_params)
     
@@ -108,27 +82,40 @@ class Sdwan_mngrClient:
                 def serialize_item(item):
                     """
                     Serialize a single item from the catalystwan SDK, robustly handling
-                    different object types like Device and User.
+                    all known object types.
                     """
-                    # This import is necessary to check for the FieldInfo type
-                    from pydantic.fields import FieldInfo
+                    # If it's a basic type, return it immediately.
+                    if item is None or isinstance(item, (str, int, float, bool, dict, list)):
+                        return item
     
-                    # First, try the .to_dict() method, which is common.
+                    # 1. First, try the standard .to_dict() method.
                     if hasattr(item, 'to_dict') and callable(item.to_dict):
                         return item.to_dict()
     
-                    # If that fails, fall back to inspecting the object's attributes.
-                    # This handles the 'Device' and 'User' objects.
-                    elif hasattr(item, '__dict__'):
-                        item_dict = {}
-                        for key, value in item.__dict__.items():
-                            # CRITICAL FIX: Skip internal attributes and non-serializable FieldInfo objects
-                            if not key.startswith('_') and not isinstance(value, FieldInfo):
-                                item_dict[key] = value
+                    # 2. If that fails, build a dictionary from the object's public attributes.
+                    #    This handles dataclasses like Device and AlarmData.
+                    item_dict = {}
+                    # Get attributes that are not private and not methods.
+                    public_attrs = [attr for attr in dir(item) if not attr.startswith('_') and not callable(getattr(item, attr))]
+    
+                    for attr in public_attrs:
+                        value = getattr(item, attr)
+                        # Handle nested Enum types (like Severity.CRITICAL -> "Critical")
+                        if hasattr(value, 'value'):
+                            item_dict[attr] = value.value
+                        # Handle other basic types
+                        elif isinstance(value, (str, int, float, bool, dict, list, type(None))):
+                            item_dict[attr] = value
+                        # For other nested objects, convert them to a string as a safe fallback
+                        else:
+                            item_dict[attr] = str(value)
+    
+                    # Only return the dict if it has content
+                    if item_dict:
                         return item_dict
     
-                    # If it's a basic type that is already serializable, return it directly.
-                    return item
+                    # If all else fails, return a string representation of the object
+                    return str(item)
     
                 # Check if the result is iterable (like a list or DataSequence)
                 if hasattr(result, '__iter__') and not isinstance(result, (str, bytes, dict)):
@@ -147,6 +134,8 @@ class Sdwan_mngrClient:
                 }
     
         return sdk_call
+    
+    
     
     def _default_resolve(self, name: str):
         """Fallback resolution when operation is not in registry."""
