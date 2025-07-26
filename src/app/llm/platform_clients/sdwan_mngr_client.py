@@ -52,7 +52,6 @@ class Sdwan_mngrClient:
     # Load operation registry on first access
     _operation_registry = None
     
-    
     @classmethod
     def _load_registry(cls):
         """Load the SD-WAN operation registry"""
@@ -74,55 +73,87 @@ class Sdwan_mngrClient:
     
         def sdk_call(**kwargs):
             try:
-                # ... (this part of the function is correct and remains the same) ...
+                endpoint_path = op_info.get('sdk_endpoint', '')
+                sdk_method = op_info.get('sdk_method', 'get')
+    
+                endpoint = self._api
+                for part in endpoint_path.split('.'):
+                    if not hasattr(endpoint, part):
+                        return {'error': f'SDK endpoint {endpoint_path} not found'}
+                    endpoint = getattr(endpoint, part)
+    
+                if not hasattr(endpoint, sdk_method):
+                    return {'error': f'Method {sdk_method} not found on {endpoint_path}'}
+                method = getattr(endpoint, sdk_method)
+    
+                call_params = {}
+                if op_info.get('path_params'):
+                    for param in op_info['path_params']:
+                        if param in kwargs:
+                            call_params[param] = kwargs.pop(param)
+    
+                if op_info.get('query_params'):
+                    for param_info in op_info['query_params']:
+                        param_name = param_info['name']
+                        if param_name in kwargs:
+                            call_params[param_name] = kwargs.pop(param_name)
+    
+                call_params.update(kwargs)
     
                 result = method(**call_params)
     
-                # --- THIS IS THE NEW, BULLETPROOF SERIALIZATION LOGIC ---
-                def serialize_item(item):
+                # --- THIS IS THE UNIFIED, BULLETPROOF SERIALIZATION LOGIC ---
+                def serialize_recursively(obj):
                     """
-                    Serialize a single item from the catalystwan SDK, robustly handling
-                    all known object types.
+                    Recursively traverses an object and converts it into a JSON-serializable format,
+                    handling all known catalystwan object types.
                     """
-                    # If it's a basic type, return it immediately.
-                    if item is None or isinstance(item, (str, int, float, bool, dict, list)):
-                        return item
+                    try:
+                        from pydantic.fields import FieldInfo
+                    except ImportError:
+                        FieldInfo = type(None)
     
-                    # 1. First, try the standard .to_dict() method.
-                    if hasattr(item, 'to_dict') and callable(item.to_dict):
-                        return item.to_dict()
+                    # 1. Handle base cases immediately
+                    if obj is None or isinstance(obj, (str, int, float, bool)):
+                        return obj
     
-                    # 2. If that fails, build a dictionary from the object's public attributes.
-                    #    This handles dataclasses like Device and AlarmData.
-                    item_dict = {}
-                    # Get attributes that are not private and not methods.
-                    public_attrs = [attr for attr in dir(item) if not attr.startswith('_') and not callable(getattr(item, attr))]
+                    # 2. Handle already-serialized formats
+                    if isinstance(obj, dict):
+                        return {key: serialize_recursively(value) for key, value in obj.items()}
+                    if isinstance(obj, (list, tuple)):
+                        return [serialize_recursively(item) for item in obj]
     
+                    # 3. Handle specific object types with known methods
+                    if hasattr(obj, 'to_dict') and callable(obj.to_dict):
+                        return serialize_recursively(obj.to_dict())
+                    if hasattr(obj, 'model_dump') and callable(obj.model_dump):
+                        return obj.model_dump() # Already recursive and serializable
+                    if hasattr(obj, 'dict') and callable(obj.dict):
+                        return obj.dict() # Already recursive and serializable
+                    if hasattr(obj, 'value') and not callable(obj.value):
+                        return obj.value
+    
+                    # 4. Handle Pydantic models and other objects with __dict__
+                    if hasattr(obj, '__dict__'):
+                        data = {}
+                        for key, value in obj.__dict__.items():
+                            if not key.startswith('_') and not isinstance(value, FieldInfo):
+                                data[key] = serialize_recursively(value)
+                        if data: # Only return if we found data
+                            return data
+    
+                    # 5. Handle dataclasses (like Device/AlarmData) that don't use __dict__
+                    data = {}
+                    public_attrs = [attr for attr in dir(obj) if not attr.startswith('_') and not callable(getattr(obj, attr))]
                     for attr in public_attrs:
-                        value = getattr(item, attr)
-                        # Handle nested Enum types (like Severity.CRITICAL -> "Critical")
-                        if hasattr(value, 'value'):
-                            item_dict[attr] = value.value
-                        # Handle other basic types
-                        elif isinstance(value, (str, int, float, bool, dict, list, type(None))):
-                            item_dict[attr] = value
-                        # For other nested objects, convert them to a string as a safe fallback
-                        else:
-                            item_dict[attr] = str(value)
+                        data[attr] = serialize_recursively(getattr(obj, attr))
+                    if data:
+                        return data
     
-                    # Only return the dict if it has content
-                    if item_dict:
-                        return item_dict
+                    # 6. Final fallback
+                    return str(obj)
     
-                    # If all else fails, return a string representation of the object
-                    return str(item)
-    
-                # Check if the result is iterable (like a list or DataSequence)
-                if hasattr(result, '__iter__') and not isinstance(result, (str, bytes, dict)):
-                    return [serialize_item(item) for item in result]
-    
-                # If the result is a single object, serialize it.
-                return serialize_item(result)
+                return serialize_recursively(result)
     
             except Exception as e:
                 import traceback
@@ -134,7 +165,6 @@ class Sdwan_mngrClient:
                 }
     
         return sdk_call
-    
     
     
     def _default_resolve(self, name: str):
