@@ -130,7 +130,7 @@ def generate_aliases(fn: dict, safe_name: str, platform: str) -> list[str]:
         
         # Network operations
         elif fn['name'] == 'getSegment':
-            for alias in {'segment', 'get_segment', 'network_segment', 'show_segment'}:
+            for alias in {'segment', 'get_segment', 'network_segment', 'show_segment', "get_network","list_network"}:
                 lines.extend([
                     f"# alias for {fn['name']} -> {alias}",
                     f"register('{alias}')(globals()['{safe_name}'])",
