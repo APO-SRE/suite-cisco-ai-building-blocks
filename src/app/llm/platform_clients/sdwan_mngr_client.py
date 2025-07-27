@@ -8,6 +8,7 @@ from typing import get_origin, get_args, Any
 import os
 from catalystwan.session import create_manager_session
 import urllib3
+from urllib.parse import urljoin
 import json
 from pathlib import Path
 
@@ -37,6 +38,9 @@ class Sdwan_mngrClient:
                 'CISCO_SD_WAN_BASE_URL, CISCO_SD_WAN_USERNAME, CISCO_SD_WAN_PASSWORD'
             )
         
+        # Store base URL for REST API calls
+        self._base_url = url
+        
         # Create the manager session
         self._session = create_manager_session(
             url=url,
@@ -64,13 +68,102 @@ class Sdwan_mngrClient:
                 cls._operation_registry = {'operations': {}, 'comment': 'Registry file not found'}
         return cls._operation_registry
     
+    def _make_rest_api_call(self, op_info: dict, **kwargs):
+        """Make a direct REST API call when SDK method is not available."""
+        try:
+            # Build the URL
+            path = op_info['path']
+            method = op_info['method'].upper()
+    
+            # Replace path parameters
+            if op_info.get('path_params'):
+                for param in op_info['path_params']:
+                    if param in kwargs:
+                        path = path.replace(f'{{{param}}}', str(kwargs.pop(param)))
+    
+            # Build full URL
+            url = urljoin(self._base_url, f'/dataservice{path}')
+    
+            # Debug logging (optional - remove in production)
+            # print(f"[REST API Debug] URL: {url}")
+            # print(f"[REST API Debug] Method: {method}")
+    
+            # Prepare request parameters
+            # The session already has auth configured, so we don't need to manually add headers
+            request_kwargs = {
+                'verify': False  # For sandbox environments
+            }
+    
+            # Handle query parameters
+            query_params = {}
+            if op_info.get('query_params'):
+                for param_info in op_info['query_params']:
+                    param_name = param_info['name']
+                    if param_name in kwargs:
+                        query_params[param_name] = kwargs.pop(param_name)
+    
+            if query_params:
+                request_kwargs['params'] = query_params
+    
+            # Handle request body
+            if method in ['POST', 'PUT', 'PATCH']:
+                if 'body' in kwargs:
+                    request_kwargs['json'] = kwargs.pop('body')
+                elif kwargs:
+                    request_kwargs['json'] = kwargs
+    
+            # Make the request using the SDK session (which has auth already configured)
+            # The SDK session extends requests.Session, so we can use it directly
+            response = self._session.request(method, url, **request_kwargs)
+    
+            # Handle response
+            if response.status_code >= 400:
+                return {
+                    'error': f'HTTP {response.status_code}',
+                    'message': response.text,
+                    'url': url,
+                    'method': method
+                }
+    
+            # Parse JSON response
+            if response.text:
+                try:
+                    data = response.json()
+                    # Handle vManage response format
+                    if isinstance(data, dict) and 'data' in data:
+                        return data['data']
+                    return data
+                except json.JSONDecodeError:
+                    return response.text
+    
+            return {'status': 'success', 'status_code': response.status_code}
+    
+        except Exception as e:
+            import traceback
+            return {
+                'error': str(e),
+                'traceback': traceback.format_exc(),
+                'operation': op_info.get('operationId', 'unknown'),
+                'url': url if 'url' in locals() else 'unknown'
+            }
+    
     def _resolve(self, name: str):
-        """Custom resolution for SD-WAN operations"""
+        """Custom resolution for SD-WAN operations supporting both SDK and REST API."""
         registry = self._load_registry()
         op_info = registry.get('operations', {}).get(name)
+    
         if not op_info:
+            # Try default SDK resolution
             return self._default_resolve(name)
     
+        # Check if we should use direct API
+        if op_info.get('use_direct_api', False):
+            # Return a wrapper function for REST API call
+            def rest_api_call(**kwargs):
+                return self._make_rest_api_call(op_info, **kwargs)
+            return rest_api_call
+    
+        # Use SDK method
         def sdk_call(**kwargs):
             try:
                 endpoint_path = op_info.get('sdk_endpoint', '')
@@ -79,11 +172,14 @@ class Sdwan_mngrClient:
                 endpoint = self._api
                 for part in endpoint_path.split('.'):
                     if not hasattr(endpoint, part):
-                        return {'error': f'SDK endpoint {endpoint_path} not found'}
+                        # Fallback to REST API if SDK endpoint not found
+                        return self._make_rest_api_call(op_info, **kwargs)
                     endpoint = getattr(endpoint, part)
     
                 if not hasattr(endpoint, sdk_method):
-                    return {'error': f'Method {sdk_method} not found on {endpoint_path}'}
+                    # Fallback to REST API if SDK method not found
+                    return self._make_rest_api_call(op_info, **kwargs)
+    
                 method = getattr(endpoint, sdk_method)
     
                 call_params = {}
@@ -156,13 +252,8 @@ class Sdwan_mngrClient:
                 return serialize_recursively(result)
     
             except Exception as e:
-                import traceback
-                return {
-                    'error': str(e),
-                    'traceback': traceback.format_exc(),
-                    'operation': name,
-                    'operation_info': op_info
-                }
+                # Fallback to REST API on any SDK error
+                return self._make_rest_api_call(op_info, **kwargs)
     
         return sdk_call
     
