@@ -271,14 +271,14 @@ register('1')(globals()['findUsers_1'])
 # alias for findUsers_1 -> get_users
 register('get_users')(globals()['findUsers_1'])
 
-# alias for findUsers_1 -> user_list
-register('user_list')(globals()['findUsers_1'])
-
 # alias for findUsers_1 -> users
 register('users')(globals()['findUsers_1'])
 
 # alias for findUsers_1 -> show_users
 register('show_users')(globals()['findUsers_1'])
+
+# alias for findUsers_1 -> user_list
+register('user_list')(globals()['findUsers_1'])
 
 @register('createUser_1')
 def createUser_1():
@@ -766,14 +766,14 @@ def getRawAlarmData(query: str = None, site_id: str = None, includeTenants: bool
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+# alias for getRawAlarmData -> alarm_list
+register('alarm_list')(globals()['getRawAlarmData'])
+
 # alias for getRawAlarmData -> alarms
 register('alarms')(globals()['getRawAlarmData'])
 
 # alias for getRawAlarmData -> get_alarms
 register('get_alarms')(globals()['getRawAlarmData'])
-
-# alias for getRawAlarmData -> alarm_list
-register('alarm_list')(globals()['getRawAlarmData'])
 
 # alias for getRawAlarmData -> show_alarms
 register('show_alarms')(globals()['getRawAlarmData'])
@@ -4415,9 +4415,6 @@ def listAllDevices(site_id: str = None, includeTenantvSmart: bool = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
-# alias for listAllDevices -> device_list
-register('device_list')(globals()['listAllDevices'])
-
 # alias for listAllDevices -> show_devices
 register('show_devices')(globals()['listAllDevices'])
 
@@ -4426,6 +4423,9 @@ register('get_devices')(globals()['listAllDevices'])
 
 # alias for listAllDevices -> devices
 register('devices')(globals()['listAllDevices'])
+
+# alias for listAllDevices -> device_list
+register('device_list')(globals()['listAllDevices'])
 
 @register('getAAAservers')
 def getAAAservers(deviceId: str):
@@ -13661,14 +13661,14 @@ def getAllDeviceStatus():
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
-# alias for getAllDeviceStatus -> show_device_status
-register('show_device_status')(globals()['getAllDeviceStatus'])
+# alias for getAllDeviceStatus -> get_device_status
+register('get_device_status')(globals()['getAllDeviceStatus'])
 
 # alias for getAllDeviceStatus -> status_devices
 register('status_devices')(globals()['getAllDeviceStatus'])
 
-# alias for getAllDeviceStatus -> get_device_status
-register('get_device_status')(globals()['getAllDeviceStatus'])
+# alias for getAllDeviceStatus -> show_device_status
+register('show_device_status')(globals()['getAllDeviceStatus'])
 
 # alias for getAllDeviceStatus -> device_status
 register('device_status')(globals()['getAllDeviceStatus'])
@@ -17147,14 +17147,14 @@ def getDevicesHealth(page: int = None, pageSize: int = None, sortBy: str = None,
 # alias for getDevicesHealth -> device_health
 register('device_health')(globals()['getDevicesHealth'])
 
+# alias for getDevicesHealth -> health_devices
+register('health_devices')(globals()['getDevicesHealth'])
+
 # alias for getDevicesHealth -> show_device_health
 register('show_device_health')(globals()['getDevicesHealth'])
 
 # alias for getDevicesHealth -> get_device_health
 register('get_device_health')(globals()['getDevicesHealth'])
-
-# alias for getDevicesHealth -> health_devices
-register('health_devices')(globals()['getDevicesHealth'])
 
 @register('getDevicesHealthOverview')
 def getDevicesHealthOverview(vpn_id: str = None, vpnId: str = None):
@@ -23370,14 +23370,14 @@ def getDeviceDetails(partnerId: str, uuid: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+# alias for getDeviceDetails -> device_details
+register('device_details')(globals()['getDeviceDetails'])
+
 # alias for getDeviceDetails -> device_info
 register('device_info')(globals()['getDeviceDetails'])
 
 # alias for getDeviceDetails -> get_device_details
 register('get_device_details')(globals()['getDeviceDetails'])
-
-# alias for getDeviceDetails -> device_details
-register('device_details')(globals()['getDeviceDetails'])
 
 # alias for getDeviceDetails -> show_device_details
 register('show_device_details')(globals()['getDeviceDetails'])
@@ -24728,23 +24728,23 @@ def getSegment(id: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
-# alias for getSegment -> get_segment
-register('get_segment')(globals()['getSegment'])
-
-# alias for getSegment -> network_segment
-register('network_segment')(globals()['getSegment'])
+# alias for getSegment -> show_segment
+register('show_segment')(globals()['getSegment'])
 
 # alias for getSegment -> get_network
 register('get_network')(globals()['getSegment'])
 
-# alias for getSegment -> show_segment
-register('show_segment')(globals()['getSegment'])
+# alias for getSegment -> segment
+register('segment')(globals()['getSegment'])
 
 # alias for getSegment -> list_network
 register('list_network')(globals()['getSegment'])
 
-# alias for getSegment -> segment
-register('segment')(globals()['getSegment'])
+# alias for getSegment -> network_segment
+register('network_segment')(globals()['getSegment'])
+
+# alias for getSegment -> get_segment
+register('get_segment')(globals()['getSegment'])
 
 @register('editSegment')
 def editSegment(id: str):
@@ -32400,14 +32400,14 @@ def getSiteHealth(isHeatMap: str = None, last_n_hours: int = None, interval: int
 # alias for getSiteHealth -> get_site_health
 register('get_site_health')(globals()['getSiteHealth'])
 
-# alias for getSiteHealth -> show_site_health
-register('show_site_health')(globals()['getSiteHealth'])
+# alias for getSiteHealth -> site_health
+register('site_health')(globals()['getSiteHealth'])
 
 # alias for getSiteHealth -> health_sites
 register('health_sites')(globals()['getSiteHealth'])
 
-# alias for getSiteHealth -> site_health
-register('site_health')(globals()['getSiteHealth'])
+# alias for getSiteHealth -> show_site_health
+register('show_site_health')(globals()['getSiteHealth'])
 
 @register('getStatDataRawDataAsCSV_14')
 def getStatDataRawDataAsCSV_14(query: str = None):

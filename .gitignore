@@ -61,3 +61,4 @@ all_docker_files-*.json
 list-docker-directory.py
 all_files-*.json
 src/db_scripts/nltk_data/
+teeter-tools/
