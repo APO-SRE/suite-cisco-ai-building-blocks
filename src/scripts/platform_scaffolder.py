@@ -56,6 +56,16 @@ from app.utils.registry_io import load_registry
 # Import platform customizations
 from platform_customizations import PLATFORM_OVERRIDES, INJECTION_CONFIG, generate_aliases
 
+# Import function customizations directly
+import importlib.util
+spec = importlib.util.spec_from_file_location(
+    "function_customizations", 
+    Path(__file__).parent / "platform_scaffolder_utilities" / "function_customizations.py"
+)
+function_customizations = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(function_customizations)
+get_function_customization = function_customizations.get_function_customization
+
 # Import the enhanced SDK introspection
 try:
     from app.utils.sdk_introspection import (
@@ -980,14 +990,27 @@ def scaffold_one(
 
 
     disp_fp = OUT_DIRS["disp"] / f"{platform}_dispatcher.py"
+    
+    # Collect all custom imports needed
+    custom_imports = set()
+    for fn in diet_fns:
+        custom = get_function_customization(platform, fn['name'])
+        custom_imports.update(custom.get('imports', []))
+    
     lines = [
         f"# {disp_fp.relative_to(ROOT)}",
         "import os",
         "from typing import Any",
         "from app.llm.function_dispatcher import register",
         f"from app.llm.platform_clients.{platform}_client import {platform.capitalize()}Client",
-        "",
     ]
+    
+    # Add custom imports
+    if custom_imports:
+        for imp in sorted(custom_imports):
+            lines.append(imp)
+    
+    lines.append("")
 
     type_mapping: Dict[str, str] = {
         "string":  "str",
@@ -1031,10 +1054,22 @@ def scaffold_one(
         # dispatcher body
         non_body_params = {p: py_name(p) for p in props if p != "body"}
         
+        # Get function customizations
+        custom = get_function_customization(platform, fn['name'])
+        
         lines.extend([
             f"@register('{fn['name']}')",
             f"def {safe_name}({signature}):",
             '    """Auto-generated wrapper for clarity and maintainability."""',
+        ])
+        
+        # Add any custom imports at the function level as comments (since we can't import inside function)
+        # The imports should be added at module level instead
+        
+        # Add pre-kwargs customization code
+        lines.extend(custom.get('pre_kwargs', []))
+        
+        lines.extend([
             "    # Explicitly build keyword arguments, excluding None values.",
             "    final_kwargs = {}",
         ])
@@ -1058,6 +1093,9 @@ def scaffold_one(
                 "    body_payload = None",
             ])
         lines.append("")
+        
+        # Add post-kwargs customization code (after kwargs built, before injection)
+        lines.extend(custom.get('post_kwargs', []))
 
         # insert injection
         non_body_keys = list(non_body_params.keys())

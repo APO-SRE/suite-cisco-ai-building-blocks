@@ -229,6 +229,20 @@ def get_platform_auth(platform: str, sdk_module: str = None):
                 # Try default SDK resolution
                 return self._default_resolve(name)
             
+            # Special handling for getActiveAlarms to add default dates and count
+            if name == 'getActiveAlarms' and op_info.get('use_direct_api', False):
+                def active_alarms_wrapper(**kwargs):
+                    # If no dates provided, default to last 24 hours
+                    if 'startDate' not in kwargs and 'endDate' not in kwargs:
+                        from datetime import datetime, timedelta
+                        kwargs['endDate'] = datetime.now().strftime('%Y-%m-%dT%H:%M:%S')
+                        kwargs['startDate'] = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%dT%H:%M:%S')
+                    # If no count provided, default to 1000
+                    if 'count' not in kwargs:
+                        kwargs['count'] = 1000
+                    return self._make_rest_api_call(op_info, **kwargs)
+                return active_alarms_wrapper
+            
             # Check if we should use direct API
             if op_info.get('use_direct_api', False):
                 # Return a wrapper function for REST API call
