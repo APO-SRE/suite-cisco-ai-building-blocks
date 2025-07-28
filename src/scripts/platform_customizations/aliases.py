@@ -68,13 +68,24 @@ def generate_aliases(fn: dict, safe_name: str, platform: str) -> list[str]:
         
         # Alarm operations
         elif fn['name'] == 'getRawAlarmData':
-            for alias in {'alarms', 'get_alarms', 'alarm_list', 'show_alarms'}:
+            # Raw/all alarms - most general, gets the shortest aliases
+            for alias in {'alarms', 'all_alarms', 'get_all_alarms', 'alarm_list', 'show_alarms', 'raw_alarms'}:
                 lines.extend([
                     f"# alias for {fn['name']} -> {alias}",
                     f"register('{alias}')(globals()['{safe_name}'])",
                     ""
                 ])
         
+        elif fn['name'] == 'getActiveAlarms':
+            # Active alarms only - specific subset
+            for alias in {'active_alarms', 'get_active_alarms', 'list_active_alarms', 'show_active_alarms', 'alarms_active'}:
+                lines.extend([
+                    f"# alias for {fn['name']} -> {alias}",
+                    f"register('{alias}')(globals()['{safe_name}'])",
+                    ""
+                ])
+
+ 
         # User operations
         elif fn['name'] == 'findUsers_1':
             for alias in {'users', 'get_users', 'user_list', 'show_users'}:
@@ -84,17 +95,10 @@ def generate_aliases(fn: dict, safe_name: str, platform: str) -> list[str]:
                     ""
                 ])
         
-        # Template operations
-        elif fn['name'] == 'getAllDeviceTemplates':
-            for alias in {'templates', 'get_templates', 'template_list', 'device_templates'}:
-                lines.extend([
-                    f"# alias for {fn['name']} -> {alias}",
-                    f"register('{alias}')(globals()['{safe_name}'])",
-                    ""
-                ])
+ 
         
         # Site operations
-        elif fn['name'] == 'getAllSites':
+        elif fn['name'] == 'getSItes':
             for alias in {'sites', 'get_sites', 'site_list', 'show_sites'}:
                 lines.extend([
                     f"# alias for {fn['name']} -> {alias}",
@@ -103,7 +107,7 @@ def generate_aliases(fn: dict, safe_name: str, platform: str) -> list[str]:
                 ])
         
         # Policy operations
-        elif fn['name'] == 'getAllVedgePolicies':
+        elif fn['name'] == 'getAllPolicyLists':
             for alias in {'policies', 'get_policies', 'policy_list', 'vedge_policies'}:
                 lines.extend([
                     f"# alias for {fn['name']} -> {alias}",
@@ -112,16 +116,76 @@ def generate_aliases(fn: dict, safe_name: str, platform: str) -> list[str]:
                 ])
         
         # Health operations
-        elif fn['name'] == 'getSiteHealth':
-            for alias in {'site_health', 'get_site_health', 'health_sites', 'show_site_health'}:
+ 
+        
+        elif fn['name'] == 'getDevicesHealth':
+            for alias in {'device_health', 'get_device_health', 'health_devices', 'show_device_health'}:
                 lines.extend([
                     f"# alias for {fn['name']} -> {alias}",
                     f"register('{alias}')(globals()['{safe_name}'])",
                     ""
                 ])
         
-        elif fn['name'] == 'getDevicesHealth':
-            for alias in {'device_health', 'get_device_health', 'health_devices', 'show_device_health'}:
+        # License operations
+        elif fn['name'] == 'getLicenses':
+            for alias in {'licenses', 'get_licenses', 'license_list', 'show_licenses', 'sdwan_licenses'}:
+                lines.extend([
+                    f"# alias for {fn['name']} -> {alias}",
+                    f"register('{alias}')(globals()['{safe_name}'])",
+                    ""
+                ])
+        
+        elif fn['name'] == 'getLicensesCompliance':
+            for alias in {'license_compliance', 'get_license_compliance', 'compliance_licenses', 'show_compliance'}:
+                lines.extend([
+                    f"# alias for {fn['name']} -> {alias}",
+                    f"register('{alias}')(globals()['{safe_name}'])",
+                    ""
+                ])
+        
+        elif fn['name'] == 'getMslaLicenses':
+            for alias in {'msla_licenses', 'get_msla_licenses', 'msla_list', 'show_msla'}:
+                lines.extend([
+                    f"# alias for {fn['name']} -> {alias}",
+                    f"register('{alias}')(globals()['{safe_name}'])",
+                    ""
+                ])
+        
+        elif fn['name'] == 'getSubscriptions':
+            for alias in {'subscriptions', 'get_subscriptions', 'subscription_list', 'show_subscriptions'}:
+                lines.extend([
+                    f"# alias for {fn['name']} -> {alias}",
+                    f"register('{alias}')(globals()['{safe_name}'])",
+                    ""
+                ])
+        
+        # Software Version operations
+        elif fn['name'] == 'findSoftwareVersion':
+            for alias in {'software_version', 'get_software_version', 'version_list', 'show_versions'}:
+                lines.extend([
+                    f"# alias for {fn['name']} -> {alias}",
+                    f"register('{alias}')(globals()['{safe_name}'])",
+                    ""
+                ])
+        
+        elif fn['name'] == 'findVEdgeSoftwareVersion':
+            for alias in {'vedge_version', 'get_vedge_version', 'edge_software_version', 'vedge_software'}:
+                lines.extend([
+                    f"# alias for {fn['name']} -> {alias}",
+                    f"register('{alias}')(globals()['{safe_name}'])",
+                    ""
+                ])
+        
+        elif fn['name'] == 'getFirmwareImages':
+            for alias in {'firmware_images', 'get_firmware', 'firmware_list', 'show_firmware'}:
+                lines.extend([
+                    f"# alias for {fn['name']} -> {alias}",
+                    f"register('{alias}')(globals()['{safe_name}'])",
+                    ""
+                ])
+        
+        elif fn['name'] == 'findSoftwareImages':
+            for alias in {'software_images', 'get_software_images', 'image_list', 'show_images'}:
                 lines.extend([
                     f"# alias for {fn['name']} -> {alias}",
                     f"register('{alias}')(globals()['{safe_name}'])",
@@ -137,14 +201,7 @@ def generate_aliases(fn: dict, safe_name: str, platform: str) -> list[str]:
                     ""
                 ])
         
-        elif fn['name'] == 'getTopology':
-            for alias in {'topology', 'get_topology', 'network_topology', 'show_topology'}:
-                lines.extend([
-                    f"# alias for {fn['name']} -> {alias}",
-                    f"register('{alias}')(globals()['{safe_name}'])",
-                    ""
-                ])
-        
+       
         # Device status operations
         elif fn['name'] == 'getAllDeviceStatus':
             for alias in {'device_status', 'get_device_status', 'status_devices', 'show_device_status'}:
@@ -154,12 +211,6 @@ def generate_aliases(fn: dict, safe_name: str, platform: str) -> list[str]:
                     ""
                 ])
         
-        elif fn['name'] == 'getDeviceDetails':
-            for alias in {'device_details', 'get_device_details', 'device_info', 'show_device_details'}:
-                lines.extend([
-                    f"# alias for {fn['name']} -> {alias}",
-                    f"register('{alias}')(globals()['{safe_name}'])",
-                    ""
-                ])
+
     
     return lines

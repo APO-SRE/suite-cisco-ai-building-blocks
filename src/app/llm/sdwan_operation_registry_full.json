@@ -1343,7 +1343,14 @@
       "path": "/data/device/statistics/alarm/active",
       "method": "get",
       "description": "Get active alarms",
-      "use_direct_api": true
+      "use_direct_api": true,
+      "query_params": [
+        {"name": "scrollId", "type": "string"},
+        {"name": "startDate", "type": "string"},
+        {"name": "endDate", "type": "string"},
+        {"name": "count", "type": "integer"},
+        {"name": "timeZone", "type": "string"}
+      ]
     },
     "generateDeviceStatisticsData": {
       "path": "/data/device/statistics/{state_data_type}",
