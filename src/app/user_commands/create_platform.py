@@ -283,42 +283,49 @@ def main() -> None:
     console.print(f":white_check_mark: Platform = [bold]{platform}[/bold]\n")
 
     console.print(Panel.fit("Step 1b/4: SDK module import path", style="cyan"))
-    default_sdk = registry_get_sdk(platform) or platform
-    candidates = [default_sdk]
-    if default_sdk:
-        candidates.append(f"{default_sdk}.session")
-    candidates = list(dict.fromkeys(candidates))
+    
+    # Check if this platform has no SDK (REST API only)
+    registry_sdk = registry_get_sdk(platform)
+    if registry_sdk == "":  # Empty string means no SDK
+        console.print("[yellow]ℹ️  This platform uses REST API only (no SDK to configure)[/yellow]")
+        sdk_module = ""
+    else:
+        default_sdk = registry_sdk or platform
+        candidates = [default_sdk]
+        if default_sdk:
+            candidates.append(f"{default_sdk}.session")
+        candidates = list(dict.fromkeys(candidates))
 
-    import importlib
-    loadable = []
-    for modname in candidates:
-        try:
-            importlib.import_module(modname)
-            load_client(modname)
-            loadable.append(modname)
-        except (ImportError, Exception):
-            continue
+        import importlib
+        loadable = []
+        for modname in candidates:
+            try:
+                importlib.import_module(modname)
+                load_client(modname)
+                loadable.append(modname)
+            except (ImportError, Exception):
+                continue
 
-    options = loadable if loadable else candidates
-    default_index = 1 if options else None
+        options = loadable if loadable else candidates
+        default_index = 1 if options else None
 
-    table = Table(box=box.SIMPLE)
-    table.add_column("#", style="bold cyan")
-    table.add_column("Module")
-    for i, mod in enumerate(options, 1):
-        table.add_row(str(i), mod)
-    console.print(table)
+        table = Table(box=box.SIMPLE)
+        table.add_column("#", style="bold cyan")
+        table.add_column("Module")
+        for i, mod in enumerate(options, 1):
+            table.add_row(str(i), mod)
+        console.print(table)
 
-    while True:
-        sel_default = str(default_index) if default_index else None
-        sel = ask("Select module number or enter custom (or 'exit')", sel_default)
-        if sel.lower() == "exit": sys.exit(0)
-        if sel.isdigit() and 1 <= (j := int(sel)) <= len(options):
-            sdk_module = options[j-1]
-            break
-        if sel:
-            sdk_module = sel
-            break
+        while True:
+            sel_default = str(default_index) if default_index else None
+            sel = ask("Select module number or enter custom (or 'exit')", sel_default)
+            if sel.lower() == "exit": sys.exit(0)
+            if sel.isdigit() and 1 <= (j := int(sel)) <= len(options):
+                sdk_module = options[j-1]
+                break
+            if sel:
+                sdk_module = sel
+                break
         console.print("[red]→ Invalid selection.[/red]")
 
     sdk_ok = True

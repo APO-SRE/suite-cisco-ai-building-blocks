@@ -73,6 +73,46 @@ def clear_screen() -> None:
 def check_route_exists(short_name: str) -> bool:
     return (ROUTERS_DIR / f"{short_name}_routes.py").exists()
 
+def get_default_entry() -> dict:
+    """Return a complete default entry with all required fields."""
+    return {
+        "openapi_name": "",
+        "sdk_module": "",
+        "sdk_pattern": "",
+        "sdk_class": "Client",
+        "created_by_us": False,
+        "installed": False,
+        "route": False,
+        "auth_config": {
+            "type": "api_key",
+            "env_vars": {},
+            "init_params": {
+                "required": [],
+                "optional": []
+            }
+        },
+        "sub_clients": False,
+        "example_init": ""
+    }
+
+def ensure_all_fields(entry: dict) -> dict:
+    """Ensure an entry has all required fields, adding defaults for missing ones."""
+    default = get_default_entry()
+    # Create a new dict starting with defaults, then overlay existing values
+    complete_entry = default.copy()
+    complete_entry.update(entry)
+    
+    # Ensure auth_config has all required sub-fields
+    if "auth_config" in complete_entry and isinstance(complete_entry["auth_config"], dict):
+        default_auth = default["auth_config"]
+        auth = complete_entry["auth_config"]
+        # Ensure all auth_config sub-fields exist
+        for key in default_auth:
+            if key not in auth:
+                auth[key] = default_auth[key]
+    
+    return complete_entry
+
 def load_registry() -> dict:
     """Load the registry JSON or return empty dict if file missing or invalid."""
     if not REGISTRY_FILE.exists():
@@ -86,6 +126,10 @@ def load_registry() -> dict:
 
 def save_registry(registry: dict) -> None:
     """Write the registry back to disk (creating parent dirs if needed)."""
+    # Ensure all entries have all required fields before saving
+    for key in registry:
+        registry[key] = ensure_all_fields(registry[key])
+    
     REGISTRY_FILE.parent.mkdir(parents=True, exist_ok=True)
     REGISTRY_FILE.write_text(json.dumps(registry, indent=2), encoding="utf-8")
 
@@ -348,7 +392,8 @@ def main() -> None:
             route = check_route_exists(short_name)
 
             # Build entry and save
-            registry[short_name] = {
+            new_entry = get_default_entry()
+            new_entry.update({
                 "openapi_name": openapi_stem,
                 "sdk_module": sdk_module,
                 "sdk_pattern": sdk_pattern,
@@ -365,8 +410,8 @@ def main() -> None:
                     }
                 },
                 "sub_clients": has_sub_clients,
-                "example_init": ""
-            }
+            })
+            registry[short_name] = new_entry
             save_registry(registry)
             console.print(f"[green]Added '{short_name}' → spec '{openapi_stem}'.[/green]")
 
@@ -457,7 +502,7 @@ def main() -> None:
             new_route = check_route_exists(short_name)
 
             # Update and save, preserving other fields
-            updated_entry = entry.copy()
+            updated_entry = ensure_all_fields(entry.copy())
             updated_entry.update({
                 "openapi_name": new_openapi,
                 "sdk_module": new_sdk,
@@ -470,9 +515,7 @@ def main() -> None:
             })
             
             # Update auth type if changed
-            if "auth_config" not in updated_entry:
-                updated_entry["auth_config"] = {"type": new_auth_type, "env_vars": {}, "init_params": {"required": [], "optional": []}}
-            else:
+            if "auth_config" in updated_entry:
                 updated_entry["auth_config"]["type"] = new_auth_type
             
             registry[short_name] = updated_entry

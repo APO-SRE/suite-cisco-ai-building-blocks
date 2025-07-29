@@ -1,0 +1,14 @@
+{
+  "coverage_percentage": 100,
+  "note": "SDK filtering disabled",
+  "total_operations": 206,
+  "covered_operations": 206,
+  "missing_operations": [],
+  "http_method_breakdown": {
+    "get": 106,
+    "post": 50,
+    "put": 25,
+    "patch": 15,
+    "delete": 10
+  }
+}

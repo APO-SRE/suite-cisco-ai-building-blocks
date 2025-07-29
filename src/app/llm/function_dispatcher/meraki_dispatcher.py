@@ -58,6 +58,62 @@ def getAdministeredIdentitiesMeApiKeys():
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('generateAdministeredIdentitiesMeApiKeys')
+def generateAdministeredIdentitiesMeApiKeys():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in [] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in [] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in [] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.generateAdministeredIdentitiesMeApiKeys
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('revokeAdministeredIdentitiesMeApiKeys')
+def revokeAdministeredIdentitiesMeApiKeys(suffix: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if suffix is not None:
+        final_kwargs['suffix'] = suffix
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['suffix'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['suffix'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['suffix'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.revokeAdministeredIdentitiesMeApiKeys
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getAdministeredLicensingSubscriptionEntitlements')
 def getAdministeredLicensingSubscriptionEntitlements(skus: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -134,6 +190,62 @@ def getAdministeredLicensingSubscriptionSubscriptions(perPage: int = None, start
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('claimAdministeredLicensingSubscriptionSubscriptions')
+def claimAdministeredLicensingSubscriptionSubscriptions(validate: bool = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if validate is not None:
+        final_kwargs['validate'] = validate
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['validate'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['validate'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['validate'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.claimAdministeredLicensingSubscriptionSubscriptions
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('validateAdministeredLicensingSubscriptionSubscriptionsClaimKey')
+def validateAdministeredLicensingSubscriptionSubscriptionsClaimKey():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in [] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in [] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in [] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.validateAdministeredLicensingSubscriptionSubscriptionsClaimKey
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getAdministeredLicensingSubscriptionSubscriptionsComplianceStatu')
 def getAdministeredLicensingSubscriptionSubscriptionsComplianceStatu(organizationIds: list, subscriptionIds: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -165,6 +277,37 @@ def getAdministeredLicensingSubscriptionSubscriptionsComplianceStatu(organizatio
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('bindAdministeredLicensingSubscriptionSubscription')
+def bindAdministeredLicensingSubscriptionSubscription(subscriptionId: str, validate: bool = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if subscriptionId is not None:
+        final_kwargs['subscriptionId'] = subscriptionId
+    if validate is not None:
+        final_kwargs['validate'] = validate
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['subscriptionId', 'validate'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['subscriptionId', 'validate'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['subscriptionId', 'validate'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.bindAdministeredLicensingSubscriptionSubscription
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getDevice')
 def getDevice(serial: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -189,6 +332,35 @@ def getDevice(serial: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getDevice
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateDevice')
+def updateDevice(serial: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateDevice
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -345,6 +517,35 @@ def getDeviceApplianceRadioSettings(serial: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateDeviceApplianceRadioSettings')
+def updateDeviceApplianceRadioSettings(serial: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateDeviceApplianceRadioSettings
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getDeviceApplianceUplinksSettings')
 def getDeviceApplianceUplinksSettings(serial: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -369,6 +570,93 @@ def getDeviceApplianceUplinksSettings(serial: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getDeviceApplianceUplinksSettings
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateDeviceApplianceUplinksSettings')
+def updateDeviceApplianceUplinksSettings(serial: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateDeviceApplianceUplinksSettings
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createDeviceApplianceVmxAuthenticationToken')
+def createDeviceApplianceVmxAuthenticationToken(serial: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createDeviceApplianceVmxAuthenticationToken
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('blinkDeviceLeds')
+def blinkDeviceLeds(serial: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.blinkDeviceLeds
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -570,6 +858,64 @@ def getDeviceCameraCustomAnalytics(serial: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateDeviceCameraCustomAnalytics')
+def updateDeviceCameraCustomAnalytics(serial: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateDeviceCameraCustomAnalytics
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('generateDeviceCameraSnapshot')
+def generateDeviceCameraSnapshot(serial: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.generateDeviceCameraSnapshot
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getDeviceCameraQualityAndRetention')
 def getDeviceCameraQualityAndRetention(serial: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -599,6 +945,35 @@ def getDeviceCameraQualityAndRetention(serial: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateDeviceCameraQualityAndRetention')
+def updateDeviceCameraQualityAndRetention(serial: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateDeviceCameraQualityAndRetention
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getDeviceCameraSense')
 def getDeviceCameraSense(serial: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -623,6 +998,35 @@ def getDeviceCameraSense(serial: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getDeviceCameraSense
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateDeviceCameraSense')
+def updateDeviceCameraSense(serial: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateDeviceCameraSense
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -681,6 +1085,35 @@ def getDeviceCameraVideoSettings(serial: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getDeviceCameraVideoSettings
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateDeviceCameraVideoSettings')
+def updateDeviceCameraVideoSettings(serial: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateDeviceCameraVideoSettings
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -746,6 +1179,35 @@ def getDeviceCameraWirelessProfiles(serial: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateDeviceCameraWirelessProfiles')
+def updateDeviceCameraWirelessProfiles(serial: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateDeviceCameraWirelessProfiles
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getDeviceCellularSims')
 def getDeviceCellularSims(serial: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -770,6 +1232,35 @@ def getDeviceCellularSims(serial: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getDeviceCellularSims
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateDeviceCellularSims')
+def updateDeviceCellularSims(serial: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateDeviceCellularSims
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -804,6 +1295,35 @@ def getDeviceCellularGatewayLan(serial: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateDeviceCellularGatewayLan')
+def updateDeviceCellularGatewayLan(serial: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateDeviceCellularGatewayLan
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getDeviceCellularGatewayPortForwardingRules')
 def getDeviceCellularGatewayPortForwardingRules(serial: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -828,6 +1348,35 @@ def getDeviceCellularGatewayPortForwardingRules(serial: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getDeviceCellularGatewayPortForwardingRules
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateDeviceCellularGatewayPortForwardingRules')
+def updateDeviceCellularGatewayPortForwardingRules(serial: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateDeviceCellularGatewayPortForwardingRules
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -866,6 +1415,35 @@ def getDeviceClients(serial: str, t0: str = None, timespan: float = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createDeviceLiveToolsArpTable')
+def createDeviceLiveToolsArpTable(serial: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createDeviceLiveToolsArpTable
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getDeviceLiveToolsArpTable')
 def getDeviceLiveToolsArpTable(serial: str, arpTableId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -892,6 +1470,35 @@ def getDeviceLiveToolsArpTable(serial: str, arpTableId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getDeviceLiveToolsArpTable
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createDeviceLiveToolsCableTest')
+def createDeviceLiveToolsCableTest(serial: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createDeviceLiveToolsCableTest
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -928,6 +1535,35 @@ def getDeviceLiveToolsCableTest(serial: str, id: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createDeviceLiveToolsLedsBlink')
+def createDeviceLiveToolsLedsBlink(serial: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createDeviceLiveToolsLedsBlink
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getDeviceLiveToolsLedsBlink')
 def getDeviceLiveToolsLedsBlink(serial: str, ledsBlinkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -954,6 +1590,35 @@ def getDeviceLiveToolsLedsBlink(serial: str, ledsBlinkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getDeviceLiveToolsLedsBlink
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createDeviceLiveToolsPing')
+def createDeviceLiveToolsPing(serial: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createDeviceLiveToolsPing
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -990,6 +1655,35 @@ def getDeviceLiveToolsPing(serial: str, id: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createDeviceLiveToolsPingDevice')
+def createDeviceLiveToolsPingDevice(serial: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createDeviceLiveToolsPingDevice
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getDeviceLiveToolsPingDevice')
 def getDeviceLiveToolsPingDevice(serial: str, id: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -1021,6 +1715,35 @@ def getDeviceLiveToolsPingDevice(serial: str, id: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createDeviceLiveToolsThroughputTest')
+def createDeviceLiveToolsThroughputTest(serial: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createDeviceLiveToolsThroughputTest
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getDeviceLiveToolsThroughputTest')
 def getDeviceLiveToolsThroughputTest(serial: str, throughputTestId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -1047,6 +1770,35 @@ def getDeviceLiveToolsThroughputTest(serial: str, throughputTestId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getDeviceLiveToolsThroughputTest
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createDeviceLiveToolsWakeOnLan')
+def createDeviceLiveToolsWakeOnLan(serial: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createDeviceLiveToolsWakeOnLan
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -1182,6 +1934,64 @@ def getDeviceManagementInterface(serial: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateDeviceManagementInterface')
+def updateDeviceManagementInterface(serial: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateDeviceManagementInterface
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('rebootDevice')
+def rebootDevice(serial: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.rebootDevice
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getDeviceSensorCommands')
 def getDeviceSensorCommands(serial: str, operations: list = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, sortOrder: str = None, t0: str = None, t1: str = None, timespan: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -1222,6 +2032,35 @@ def getDeviceSensorCommands(serial: str, operations: list = None, perPage: int =
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getDeviceSensorCommands
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createDeviceSensorCommand')
+def createDeviceSensorCommand(serial: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createDeviceSensorCommand
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -1287,6 +2126,35 @@ def getDeviceSensorRelationships(serial: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateDeviceSensorRelationships')
+def updateDeviceSensorRelationships(serial: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateDeviceSensorRelationships
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getDeviceSwitchPorts')
 def getDeviceSwitchPorts(serial: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -1311,6 +2179,35 @@ def getDeviceSwitchPorts(serial: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getDeviceSwitchPorts
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('cycleDeviceSwitchPorts')
+def cycleDeviceSwitchPorts(serial: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.cycleDeviceSwitchPorts
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -1413,6 +2310,37 @@ def getDeviceSwitchPort(serial: str, portId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateDeviceSwitchPort')
+def updateDeviceSwitchPort(serial: str, portId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if portId is not None:
+        final_kwargs['portId'] = portId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial', 'portId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial', 'portId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial', 'portId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateDeviceSwitchPort
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getDeviceSwitchRoutingInterfaces')
 def getDeviceSwitchRoutingInterfaces(serial: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -1437,6 +2365,35 @@ def getDeviceSwitchRoutingInterfaces(serial: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getDeviceSwitchRoutingInterfaces
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createDeviceSwitchRoutingInterface')
+def createDeviceSwitchRoutingInterface(serial: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createDeviceSwitchRoutingInterface
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -1473,6 +2430,68 @@ def getDeviceSwitchRoutingInterface(serial: str, interfaceId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateDeviceSwitchRoutingInterface')
+def updateDeviceSwitchRoutingInterface(serial: str, interfaceId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if interfaceId is not None:
+        final_kwargs['interfaceId'] = interfaceId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial', 'interfaceId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial', 'interfaceId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial', 'interfaceId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateDeviceSwitchRoutingInterface
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteDeviceSwitchRoutingInterface')
+def deleteDeviceSwitchRoutingInterface(serial: str, interfaceId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if interfaceId is not None:
+        final_kwargs['interfaceId'] = interfaceId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial', 'interfaceId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial', 'interfaceId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial', 'interfaceId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteDeviceSwitchRoutingInterface
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getDeviceSwitchRoutingInterfaceDhcp')
 def getDeviceSwitchRoutingInterfaceDhcp(serial: str, interfaceId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -1504,6 +2523,37 @@ def getDeviceSwitchRoutingInterfaceDhcp(serial: str, interfaceId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateDeviceSwitchRoutingInterfaceDhcp')
+def updateDeviceSwitchRoutingInterfaceDhcp(serial: str, interfaceId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if interfaceId is not None:
+        final_kwargs['interfaceId'] = interfaceId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial', 'interfaceId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial', 'interfaceId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial', 'interfaceId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateDeviceSwitchRoutingInterfaceDhcp
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getDeviceSwitchRoutingStaticRoutes')
 def getDeviceSwitchRoutingStaticRoutes(serial: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -1528,6 +2578,35 @@ def getDeviceSwitchRoutingStaticRoutes(serial: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getDeviceSwitchRoutingStaticRoutes
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createDeviceSwitchRoutingStaticRoute')
+def createDeviceSwitchRoutingStaticRoute(serial: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createDeviceSwitchRoutingStaticRoute
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -1564,6 +2643,68 @@ def getDeviceSwitchRoutingStaticRoute(serial: str, staticRouteId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateDeviceSwitchRoutingStaticRoute')
+def updateDeviceSwitchRoutingStaticRoute(serial: str, staticRouteId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if staticRouteId is not None:
+        final_kwargs['staticRouteId'] = staticRouteId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial', 'staticRouteId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial', 'staticRouteId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial', 'staticRouteId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateDeviceSwitchRoutingStaticRoute
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteDeviceSwitchRoutingStaticRoute')
+def deleteDeviceSwitchRoutingStaticRoute(serial: str, staticRouteId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+    if staticRouteId is not None:
+        final_kwargs['staticRouteId'] = staticRouteId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial', 'staticRouteId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial', 'staticRouteId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial', 'staticRouteId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteDeviceSwitchRoutingStaticRoute
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getDeviceSwitchWarmSpare')
 def getDeviceSwitchWarmSpare(serial: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -1593,6 +2734,64 @@ def getDeviceSwitchWarmSpare(serial: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateDeviceSwitchWarmSpare')
+def updateDeviceSwitchWarmSpare(serial: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateDeviceSwitchWarmSpare
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateDeviceWirelessAlternateManagementInterfaceIpv6')
+def updateDeviceWirelessAlternateManagementInterfaceIpv6(serial: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateDeviceWirelessAlternateManagementInterfaceIpv6
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getDeviceWirelessBluetoothSettings')
 def getDeviceWirelessBluetoothSettings(serial: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -1617,6 +2816,35 @@ def getDeviceWirelessBluetoothSettings(serial: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getDeviceWirelessBluetoothSettings
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateDeviceWirelessBluetoothSettings')
+def updateDeviceWirelessBluetoothSettings(serial: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateDeviceWirelessBluetoothSettings
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -1689,6 +2917,35 @@ def getDeviceWirelessElectronicShelfLabel(serial: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getDeviceWirelessElectronicShelfLabel
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateDeviceWirelessElectronicShelfLabel')
+def updateDeviceWirelessElectronicShelfLabel(serial: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateDeviceWirelessElectronicShelfLabel
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -1768,6 +3025,35 @@ def getDeviceWirelessRadioSettings(serial: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateDeviceWirelessRadioSettings')
+def updateDeviceWirelessRadioSettings(serial: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if serial is not None:
+        final_kwargs['serial'] = serial
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['serial'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['serial'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['serial'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateDeviceWirelessRadioSettings
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getDeviceWirelessStatus')
 def getDeviceWirelessStatus(serial: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -1821,6 +3107,64 @@ def getNetwork(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetwork
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetwork')
+def updateNetwork(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetwork
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteNetwork')
+def deleteNetwork(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteNetwork
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -1885,6 +3229,35 @@ def getNetworkAlertsSettings(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkAlertsSettings
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkAlertsSettings')
+def updateNetworkAlertsSettings(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkAlertsSettings
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -1964,6 +3337,35 @@ def getNetworkApplianceConnectivityMonitoringDestinations(networkId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkApplianceConnectivityMonitoringDestinations')
+def updateNetworkApplianceConnectivityMonitoringDestinations(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkApplianceConnectivityMonitoringDestinations
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkApplianceContentFiltering')
 def getNetworkApplianceContentFiltering(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -1988,6 +3390,35 @@ def getNetworkApplianceContentFiltering(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkApplianceContentFiltering
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkApplianceContentFiltering')
+def updateNetworkApplianceContentFiltering(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkApplianceContentFiltering
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -2046,6 +3477,35 @@ def getNetworkApplianceFirewallCellularFirewallRules(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkApplianceFirewallCellularFirewallRules
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkApplianceFirewallCellularFirewallRules')
+def updateNetworkApplianceFirewallCellularFirewallRules(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkApplianceFirewallCellularFirewallRules
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -2111,6 +3571,37 @@ def getNetworkApplianceFirewallFirewalledService(networkId: str, service: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkApplianceFirewallFirewalledService')
+def updateNetworkApplianceFirewallFirewalledService(networkId: str, service: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if service is not None:
+        final_kwargs['service'] = service
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'service'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'service'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'service'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkApplianceFirewallFirewalledService
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkApplianceFirewallInboundCellularFirewallRules')
 def getNetworkApplianceFirewallInboundCellularFirewallRules(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -2135,6 +3626,35 @@ def getNetworkApplianceFirewallInboundCellularFirewallRules(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkApplianceFirewallInboundCellularFirewallRules
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkApplianceFirewallInboundCellularFirewallRules')
+def updateNetworkApplianceFirewallInboundCellularFirewallRules(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkApplianceFirewallInboundCellularFirewallRules
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -2169,6 +3689,35 @@ def getNetworkApplianceFirewallInboundFirewallRules(networkId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkApplianceFirewallInboundFirewallRules')
+def updateNetworkApplianceFirewallInboundFirewallRules(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkApplianceFirewallInboundFirewallRules
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkApplianceFirewallL3FirewallRules')
 def getNetworkApplianceFirewallL3FirewallRules(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -2198,6 +3747,35 @@ def getNetworkApplianceFirewallL3FirewallRules(networkId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkApplianceFirewallL3FirewallRules')
+def updateNetworkApplianceFirewallL3FirewallRules(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkApplianceFirewallL3FirewallRules
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkApplianceFirewallL7FirewallRules')
 def getNetworkApplianceFirewallL7FirewallRules(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -2222,6 +3800,35 @@ def getNetworkApplianceFirewallL7FirewallRules(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkApplianceFirewallL7FirewallRules
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkApplianceFirewallL7FirewallRules')
+def updateNetworkApplianceFirewallL7FirewallRules(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkApplianceFirewallL7FirewallRules
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -2285,6 +3892,35 @@ def getNetworkApplianceFirewallOneToManyNatRules(networkId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkApplianceFirewallOneToManyNatRules')
+def updateNetworkApplianceFirewallOneToManyNatRules(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkApplianceFirewallOneToManyNatRules
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkApplianceFirewallOneToOneNatRules')
 def getNetworkApplianceFirewallOneToOneNatRules(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -2309,6 +3945,35 @@ def getNetworkApplianceFirewallOneToOneNatRules(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkApplianceFirewallOneToOneNatRules
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkApplianceFirewallOneToOneNatRules')
+def updateNetworkApplianceFirewallOneToOneNatRules(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkApplianceFirewallOneToOneNatRules
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -2343,6 +4008,35 @@ def getNetworkApplianceFirewallPortForwardingRules(networkId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkApplianceFirewallPortForwardingRules')
+def updateNetworkApplianceFirewallPortForwardingRules(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkApplianceFirewallPortForwardingRules
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkApplianceFirewallSettings')
 def getNetworkApplianceFirewallSettings(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -2367,6 +4061,35 @@ def getNetworkApplianceFirewallSettings(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkApplianceFirewallSettings
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkApplianceFirewallSettings')
+def updateNetworkApplianceFirewallSettings(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkApplianceFirewallSettings
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -2432,6 +4155,37 @@ def getNetworkAppliancePort(networkId: str, portId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkAppliancePort')
+def updateNetworkAppliancePort(networkId: str, portId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if portId is not None:
+        final_kwargs['portId'] = portId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'portId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'portId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'portId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkAppliancePort
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkAppliancePrefixesDelegatedStatics')
 def getNetworkAppliancePrefixesDelegatedStatics(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -2456,6 +4210,35 @@ def getNetworkAppliancePrefixesDelegatedStatics(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkAppliancePrefixesDelegatedStatics
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createNetworkAppliancePrefixesDelegatedStatic')
+def createNetworkAppliancePrefixesDelegatedStatic(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkAppliancePrefixesDelegatedStatic
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -2492,6 +4275,68 @@ def getNetworkAppliancePrefixesDelegatedStatic(networkId: str, staticDelegatedPr
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkAppliancePrefixesDelegatedStatic')
+def updateNetworkAppliancePrefixesDelegatedStatic(networkId: str, staticDelegatedPrefixId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if staticDelegatedPrefixId is not None:
+        final_kwargs['staticDelegatedPrefixId'] = staticDelegatedPrefixId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'staticDelegatedPrefixId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'staticDelegatedPrefixId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'staticDelegatedPrefixId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkAppliancePrefixesDelegatedStatic
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteNetworkAppliancePrefixesDelegatedStatic')
+def deleteNetworkAppliancePrefixesDelegatedStatic(networkId: str, staticDelegatedPrefixId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if staticDelegatedPrefixId is not None:
+        final_kwargs['staticDelegatedPrefixId'] = staticDelegatedPrefixId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'staticDelegatedPrefixId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'staticDelegatedPrefixId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'staticDelegatedPrefixId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteNetworkAppliancePrefixesDelegatedStatic
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkApplianceRfProfiles')
 def getNetworkApplianceRfProfiles(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -2516,6 +4361,97 @@ def getNetworkApplianceRfProfiles(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkApplianceRfProfiles
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createNetworkApplianceRfProfile')
+def createNetworkApplianceRfProfile(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkApplianceRfProfile
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkApplianceRfProfile')
+def updateNetworkApplianceRfProfile(networkId: str, rfProfileId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if rfProfileId is not None:
+        final_kwargs['rfProfileId'] = rfProfileId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'rfProfileId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'rfProfileId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'rfProfileId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkApplianceRfProfile
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteNetworkApplianceRfProfile')
+def deleteNetworkApplianceRfProfile(networkId: str, rfProfileId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if rfProfileId is not None:
+        final_kwargs['rfProfileId'] = rfProfileId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'rfProfileId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'rfProfileId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'rfProfileId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteNetworkApplianceRfProfile
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -2547,6 +4483,35 @@ def getNetworkApplianceRfProfile(networkId: str, rfProfileId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkApplianceRfProfile
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkApplianceSdwanInternetPolicies')
+def updateNetworkApplianceSdwanInternetPolicies(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkApplianceSdwanInternetPolicies
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -2624,6 +4589,35 @@ def getNetworkApplianceSecurityIntrusion(networkId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkApplianceSecurityIntrusion')
+def updateNetworkApplianceSecurityIntrusion(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkApplianceSecurityIntrusion
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkApplianceSecurityMalware')
 def getNetworkApplianceSecurityMalware(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -2648,6 +4642,35 @@ def getNetworkApplianceSecurityMalware(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkApplianceSecurityMalware
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkApplianceSecurityMalware')
+def updateNetworkApplianceSecurityMalware(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkApplianceSecurityMalware
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -2682,6 +4705,35 @@ def getNetworkApplianceSettings(networkId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkApplianceSettings')
+def updateNetworkApplianceSettings(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkApplianceSettings
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkApplianceSingleLan')
 def getNetworkApplianceSingleLan(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -2706,6 +4758,35 @@ def getNetworkApplianceSingleLan(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkApplianceSingleLan
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkApplianceSingleLan')
+def updateNetworkApplianceSingleLan(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkApplianceSingleLan
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -2771,6 +4852,37 @@ def getNetworkApplianceSsid(networkId: str, number: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkApplianceSsid')
+def updateNetworkApplianceSsid(networkId: str, number: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if number is not None:
+        final_kwargs['number'] = number
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'number'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'number'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'number'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkApplianceSsid
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkApplianceStaticRoutes')
 def getNetworkApplianceStaticRoutes(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -2795,6 +4907,35 @@ def getNetworkApplianceStaticRoutes(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkApplianceStaticRoutes
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createNetworkApplianceStaticRoute')
+def createNetworkApplianceStaticRoute(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkApplianceStaticRoute
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -2831,6 +4972,68 @@ def getNetworkApplianceStaticRoute(networkId: str, staticRouteId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkApplianceStaticRoute')
+def updateNetworkApplianceStaticRoute(networkId: str, staticRouteId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if staticRouteId is not None:
+        final_kwargs['staticRouteId'] = staticRouteId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'staticRouteId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'staticRouteId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'staticRouteId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkApplianceStaticRoute
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteNetworkApplianceStaticRoute')
+def deleteNetworkApplianceStaticRoute(networkId: str, staticRouteId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if staticRouteId is not None:
+        final_kwargs['staticRouteId'] = staticRouteId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'staticRouteId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'staticRouteId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'staticRouteId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteNetworkApplianceStaticRoute
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkApplianceTrafficShaping')
 def getNetworkApplianceTrafficShaping(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -2855,6 +5058,35 @@ def getNetworkApplianceTrafficShaping(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkApplianceTrafficShaping
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkApplianceTrafficShaping')
+def updateNetworkApplianceTrafficShaping(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkApplianceTrafficShaping
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -2889,6 +5121,35 @@ def getNetworkApplianceTrafficShapingCustomPerformanceClasses(networkId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createNetworkApplianceTrafficShapingCustomPerformanceClass')
+def createNetworkApplianceTrafficShapingCustomPerformanceClass(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkApplianceTrafficShapingCustomPerformanceClass
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkApplianceTrafficShapingCustomPerformanceClass')
 def getNetworkApplianceTrafficShapingCustomPerformanceClass(networkId: str, customPerformanceClassId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -2915,6 +5176,97 @@ def getNetworkApplianceTrafficShapingCustomPerformanceClass(networkId: str, cust
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkApplianceTrafficShapingCustomPerformanceClass
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkApplianceTrafficShapingCustomPerformanceClass')
+def updateNetworkApplianceTrafficShapingCustomPerformanceClass(networkId: str, customPerformanceClassId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if customPerformanceClassId is not None:
+        final_kwargs['customPerformanceClassId'] = customPerformanceClassId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'customPerformanceClassId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'customPerformanceClassId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'customPerformanceClassId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkApplianceTrafficShapingCustomPerformanceClass
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteNetworkApplianceTrafficShapingCustomPerformanceClass')
+def deleteNetworkApplianceTrafficShapingCustomPerformanceClass(networkId: str, customPerformanceClassId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if customPerformanceClassId is not None:
+        final_kwargs['customPerformanceClassId'] = customPerformanceClassId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'customPerformanceClassId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'customPerformanceClassId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'customPerformanceClassId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteNetworkApplianceTrafficShapingCustomPerformanceClass
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkApplianceTrafficShapingRules')
+def updateNetworkApplianceTrafficShapingRules(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkApplianceTrafficShapingRules
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -2978,6 +5330,35 @@ def getNetworkApplianceTrafficShapingUplinkBandwidth(networkId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkApplianceTrafficShapingUplinkBandwidth')
+def updateNetworkApplianceTrafficShapingUplinkBandwidth(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkApplianceTrafficShapingUplinkBandwidth
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkApplianceTrafficShapingUplinkSelection')
 def getNetworkApplianceTrafficShapingUplinkSelection(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -3002,6 +5383,64 @@ def getNetworkApplianceTrafficShapingUplinkSelection(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkApplianceTrafficShapingUplinkSelection
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkApplianceTrafficShapingUplinkSelection')
+def updateNetworkApplianceTrafficShapingUplinkSelection(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkApplianceTrafficShapingUplinkSelection
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkApplianceTrafficShapingVpnExclusions')
+def updateNetworkApplianceTrafficShapingVpnExclusions(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkApplianceTrafficShapingVpnExclusions
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -3073,6 +5512,35 @@ def getNetworkApplianceVlans(networkId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createNetworkApplianceVlan')
+def createNetworkApplianceVlan(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkApplianceVlan
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkApplianceVlansSettings')
 def getNetworkApplianceVlansSettings(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -3097,6 +5565,35 @@ def getNetworkApplianceVlansSettings(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkApplianceVlansSettings
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkApplianceVlansSettings')
+def updateNetworkApplianceVlansSettings(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkApplianceVlansSettings
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -3133,6 +5630,68 @@ def getNetworkApplianceVlan(networkId: str, vlanId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkApplianceVlan')
+def updateNetworkApplianceVlan(networkId: str, vlanId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if vlanId is not None:
+        final_kwargs['vlanId'] = vlanId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'vlanId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'vlanId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'vlanId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkApplianceVlan
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteNetworkApplianceVlan')
+def deleteNetworkApplianceVlan(networkId: str, vlanId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if vlanId is not None:
+        final_kwargs['vlanId'] = vlanId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'vlanId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'vlanId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'vlanId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteNetworkApplianceVlan
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkApplianceVpnBgp')
 def getNetworkApplianceVpnBgp(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -3157,6 +5716,35 @@ def getNetworkApplianceVpnBgp(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkApplianceVpnBgp
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkApplianceVpnBgp')
+def updateNetworkApplianceVpnBgp(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkApplianceVpnBgp
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -3191,6 +5779,35 @@ def getNetworkApplianceVpnSiteToSiteVpn(networkId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkApplianceVpnSiteToSiteVpn')
+def updateNetworkApplianceVpnSiteToSiteVpn(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkApplianceVpnSiteToSiteVpn
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkApplianceWarmSpare')
 def getNetworkApplianceWarmSpare(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -3215,6 +5832,93 @@ def getNetworkApplianceWarmSpare(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkApplianceWarmSpare
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkApplianceWarmSpare')
+def updateNetworkApplianceWarmSpare(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkApplianceWarmSpare
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('swapNetworkApplianceWarmSpare')
+def swapNetworkApplianceWarmSpare(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.swapNetworkApplianceWarmSpare
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('bindNetwork')
+def bindNetwork(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.bindNetwork
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -3325,6 +6029,35 @@ def getNetworkCameraQualityRetentionProfiles(networkId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createNetworkCameraQualityRetentionProfile')
+def createNetworkCameraQualityRetentionProfile(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkCameraQualityRetentionProfile
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkCameraQualityRetentionProfile')
 def getNetworkCameraQualityRetentionProfile(networkId: str, qualityRetentionProfileId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -3356,6 +6089,68 @@ def getNetworkCameraQualityRetentionProfile(networkId: str, qualityRetentionProf
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkCameraQualityRetentionProfile')
+def updateNetworkCameraQualityRetentionProfile(networkId: str, qualityRetentionProfileId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if qualityRetentionProfileId is not None:
+        final_kwargs['qualityRetentionProfileId'] = qualityRetentionProfileId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'qualityRetentionProfileId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'qualityRetentionProfileId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'qualityRetentionProfileId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkCameraQualityRetentionProfile
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteNetworkCameraQualityRetentionProfile')
+def deleteNetworkCameraQualityRetentionProfile(networkId: str, qualityRetentionProfileId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if qualityRetentionProfileId is not None:
+        final_kwargs['qualityRetentionProfileId'] = qualityRetentionProfileId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'qualityRetentionProfileId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'qualityRetentionProfileId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'qualityRetentionProfileId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteNetworkCameraQualityRetentionProfile
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkCameraSchedules')
 def getNetworkCameraSchedules(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -3380,6 +6175,35 @@ def getNetworkCameraSchedules(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkCameraSchedules
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createNetworkCameraWirelessProfile')
+def createNetworkCameraWirelessProfile(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkCameraWirelessProfile
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -3445,6 +6269,68 @@ def getNetworkCameraWirelessProfile(networkId: str, wirelessProfileId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkCameraWirelessProfile')
+def updateNetworkCameraWirelessProfile(networkId: str, wirelessProfileId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if wirelessProfileId is not None:
+        final_kwargs['wirelessProfileId'] = wirelessProfileId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'wirelessProfileId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'wirelessProfileId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'wirelessProfileId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkCameraWirelessProfile
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteNetworkCameraWirelessProfile')
+def deleteNetworkCameraWirelessProfile(networkId: str, wirelessProfileId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if wirelessProfileId is not None:
+        final_kwargs['wirelessProfileId'] = wirelessProfileId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'wirelessProfileId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'wirelessProfileId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'wirelessProfileId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteNetworkCameraWirelessProfile
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkCellularGatewayConnectivityMonitoringDestinations')
 def getNetworkCellularGatewayConnectivityMonitoringDestinations(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -3469,6 +6355,35 @@ def getNetworkCellularGatewayConnectivityMonitoringDestinations(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkCellularGatewayConnectivityMonitoringDestinations
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkCellularGatewayConnectivityMonitoringDestinations')
+def updateNetworkCellularGatewayConnectivityMonitoringDestinations(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkCellularGatewayConnectivityMonitoringDestinations
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -3503,6 +6418,35 @@ def getNetworkCellularGatewayDhcp(networkId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkCellularGatewayDhcp')
+def updateNetworkCellularGatewayDhcp(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkCellularGatewayDhcp
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkCellularGatewaySubnetPool')
 def getNetworkCellularGatewaySubnetPool(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -3532,6 +6476,35 @@ def getNetworkCellularGatewaySubnetPool(networkId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkCellularGatewaySubnetPool')
+def updateNetworkCellularGatewaySubnetPool(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkCellularGatewaySubnetPool
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkCellularGatewayUplink')
 def getNetworkCellularGatewayUplink(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -3556,6 +6529,35 @@ def getNetworkCellularGatewayUplink(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkCellularGatewayUplink
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkCellularGatewayUplink')
+def updateNetworkCellularGatewayUplink(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkCellularGatewayUplink
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -3745,6 +6747,35 @@ def getNetworkClientsOverview(networkId: str, t0: str = None, t1: str = None, ti
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('provisionNetworkClients')
+def provisionNetworkClients(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.provisionNetworkClients
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkClientsUsageHistories')
 def getNetworkClientsUsageHistories(networkId: str, clients: str, ssidNumber: int = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, t0: str = None, t1: str = None, timespan: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -3852,6 +6883,37 @@ def getNetworkClientPolicy(networkId: str, clientId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkClientPolicy')
+def updateNetworkClientPolicy(networkId: str, clientId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if clientId is not None:
+        final_kwargs['clientId'] = clientId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'clientId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'clientId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'clientId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkClientPolicy
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkClientSplashAuthorizationStatus')
 def getNetworkClientSplashAuthorizationStatus(networkId: str, clientId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -3878,6 +6940,37 @@ def getNetworkClientSplashAuthorizationStatus(networkId: str, clientId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkClientSplashAuthorizationStatus
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkClientSplashAuthorizationStatus')
+def updateNetworkClientSplashAuthorizationStatus(networkId: str, clientId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if clientId is not None:
+        final_kwargs['clientId'] = clientId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'clientId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'clientId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'clientId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkClientSplashAuthorizationStatus
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -3975,6 +7068,95 @@ def getNetworkDevices(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkDevices
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('claimNetworkDevices')
+def claimNetworkDevices(networkId: str, addAtomically: bool = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if addAtomically is not None:
+        final_kwargs['addAtomically'] = addAtomically
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'addAtomically'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'addAtomically'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'addAtomically'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.claimNetworkDevices
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('vmxNetworkDevicesClaim')
+def vmxNetworkDevicesClaim(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.vmxNetworkDevicesClaim
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('removeNetworkDevices')
+def removeNetworkDevices(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.removeNetworkDevices
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -4101,6 +7283,64 @@ def getNetworkFirmwareUpgrades(networkId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkFirmwareUpgrades')
+def updateNetworkFirmwareUpgrades(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkFirmwareUpgrades
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createNetworkFirmwareUpgradesRollback')
+def createNetworkFirmwareUpgradesRollback(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkFirmwareUpgradesRollback
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkFirmwareUpgradesStagedEvents')
 def getNetworkFirmwareUpgradesStagedEvents(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -4130,6 +7370,122 @@ def getNetworkFirmwareUpgradesStagedEvents(networkId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createNetworkFirmwareUpgradesStagedEvent')
+def createNetworkFirmwareUpgradesStagedEvent(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkFirmwareUpgradesStagedEvent
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkFirmwareUpgradesStagedEvents')
+def updateNetworkFirmwareUpgradesStagedEvents(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkFirmwareUpgradesStagedEvents
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deferNetworkFirmwareUpgradesStagedEvents')
+def deferNetworkFirmwareUpgradesStagedEvents(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deferNetworkFirmwareUpgradesStagedEvents
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('rollbacksNetworkFirmwareUpgradesStagedEvents')
+def rollbacksNetworkFirmwareUpgradesStagedEvents(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.rollbacksNetworkFirmwareUpgradesStagedEvents
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkFirmwareUpgradesStagedGroups')
 def getNetworkFirmwareUpgradesStagedGroups(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -4154,6 +7510,35 @@ def getNetworkFirmwareUpgradesStagedGroups(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkFirmwareUpgradesStagedGroups
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createNetworkFirmwareUpgradesStagedGroup')
+def createNetworkFirmwareUpgradesStagedGroup(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkFirmwareUpgradesStagedGroup
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -4190,6 +7575,68 @@ def getNetworkFirmwareUpgradesStagedGroup(networkId: str, groupId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkFirmwareUpgradesStagedGroup')
+def updateNetworkFirmwareUpgradesStagedGroup(networkId: str, groupId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if groupId is not None:
+        final_kwargs['groupId'] = groupId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'groupId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'groupId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'groupId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkFirmwareUpgradesStagedGroup
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteNetworkFirmwareUpgradesStagedGroup')
+def deleteNetworkFirmwareUpgradesStagedGroup(networkId: str, groupId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if groupId is not None:
+        final_kwargs['groupId'] = groupId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'groupId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'groupId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'groupId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteNetworkFirmwareUpgradesStagedGroup
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkFirmwareUpgradesStagedStages')
 def getNetworkFirmwareUpgradesStagedStages(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -4219,6 +7666,35 @@ def getNetworkFirmwareUpgradesStagedStages(networkId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkFirmwareUpgradesStagedStages')
+def updateNetworkFirmwareUpgradesStagedStages(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkFirmwareUpgradesStagedStages
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkFloorPlans')
 def getNetworkFloorPlans(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -4243,6 +7719,186 @@ def getNetworkFloorPlans(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkFloorPlans
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createNetworkFloorPlan')
+def createNetworkFloorPlan(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkFloorPlan
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('batchNetworkFloorPlansAutoLocateJobs')
+def batchNetworkFloorPlansAutoLocateJobs(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.batchNetworkFloorPlansAutoLocateJobs
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('cancelNetworkFloorPlansAutoLocateJob')
+def cancelNetworkFloorPlansAutoLocateJob(networkId: str, jobId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if jobId is not None:
+        final_kwargs['jobId'] = jobId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'jobId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'jobId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'jobId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.cancelNetworkFloorPlansAutoLocateJob
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('publishNetworkFloorPlansAutoLocateJob')
+def publishNetworkFloorPlansAutoLocateJob(networkId: str, jobId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if jobId is not None:
+        final_kwargs['jobId'] = jobId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'jobId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'jobId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'jobId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.publishNetworkFloorPlansAutoLocateJob
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('recalculateNetworkFloorPlansAutoLocateJob')
+def recalculateNetworkFloorPlansAutoLocateJob(networkId: str, jobId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if jobId is not None:
+        final_kwargs['jobId'] = jobId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'jobId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'jobId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'jobId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.recalculateNetworkFloorPlansAutoLocateJob
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('batchNetworkFloorPlansDevicesUpdate')
+def batchNetworkFloorPlansDevicesUpdate(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.batchNetworkFloorPlansDevicesUpdate
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -4279,6 +7935,68 @@ def getNetworkFloorPlan(networkId: str, floorPlanId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkFloorPlan')
+def updateNetworkFloorPlan(networkId: str, floorPlanId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if floorPlanId is not None:
+        final_kwargs['floorPlanId'] = floorPlanId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'floorPlanId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'floorPlanId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'floorPlanId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkFloorPlan
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteNetworkFloorPlan')
+def deleteNetworkFloorPlan(networkId: str, floorPlanId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if floorPlanId is not None:
+        final_kwargs['floorPlanId'] = floorPlanId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'floorPlanId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'floorPlanId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'floorPlanId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteNetworkFloorPlan
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkGroupPolicies')
 def getNetworkGroupPolicies(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -4303,6 +8021,35 @@ def getNetworkGroupPolicies(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkGroupPolicies
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createNetworkGroupPolicy')
+def createNetworkGroupPolicy(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkGroupPolicy
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -4334,6 +8081,70 @@ def getNetworkGroupPolicy(networkId: str, groupPolicyId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkGroupPolicy
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkGroupPolicy')
+def updateNetworkGroupPolicy(networkId: str, groupPolicyId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if groupPolicyId is not None:
+        final_kwargs['groupPolicyId'] = groupPolicyId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'groupPolicyId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'groupPolicyId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'groupPolicyId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkGroupPolicy
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteNetworkGroupPolicy')
+def deleteNetworkGroupPolicy(networkId: str, groupPolicyId: str, force: bool = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if groupPolicyId is not None:
+        final_kwargs['groupPolicyId'] = groupPolicyId
+    if force is not None:
+        final_kwargs['force'] = force
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'groupPolicyId', 'force'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'groupPolicyId', 'force'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'groupPolicyId', 'force'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteNetworkGroupPolicy
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -4436,6 +8247,35 @@ def getNetworkMerakiAuthUsers(networkId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createNetworkMerakiAuthUser')
+def createNetworkMerakiAuthUser(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkMerakiAuthUser
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkMerakiAuthUser')
 def getNetworkMerakiAuthUser(networkId: str, merakiAuthUserId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -4467,6 +8307,70 @@ def getNetworkMerakiAuthUser(networkId: str, merakiAuthUserId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('deleteNetworkMerakiAuthUser')
+def deleteNetworkMerakiAuthUser(networkId: str, merakiAuthUserId: str, delete: bool = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if merakiAuthUserId is not None:
+        final_kwargs['merakiAuthUserId'] = merakiAuthUserId
+    if delete is not None:
+        final_kwargs['delete'] = delete
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'merakiAuthUserId', 'delete'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'merakiAuthUserId', 'delete'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'merakiAuthUserId', 'delete'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteNetworkMerakiAuthUser
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkMerakiAuthUser')
+def updateNetworkMerakiAuthUser(networkId: str, merakiAuthUserId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if merakiAuthUserId is not None:
+        final_kwargs['merakiAuthUserId'] = merakiAuthUserId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'merakiAuthUserId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'merakiAuthUserId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'merakiAuthUserId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkMerakiAuthUser
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkMqttBrokers')
 def getNetworkMqttBrokers(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -4491,6 +8395,35 @@ def getNetworkMqttBrokers(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkMqttBrokers
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createNetworkMqttBroker')
+def createNetworkMqttBroker(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkMqttBroker
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -4527,6 +8460,68 @@ def getNetworkMqttBroker(networkId: str, mqttBrokerId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkMqttBroker')
+def updateNetworkMqttBroker(networkId: str, mqttBrokerId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if mqttBrokerId is not None:
+        final_kwargs['mqttBrokerId'] = mqttBrokerId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'mqttBrokerId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'mqttBrokerId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'mqttBrokerId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkMqttBroker
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteNetworkMqttBroker')
+def deleteNetworkMqttBroker(networkId: str, mqttBrokerId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if mqttBrokerId is not None:
+        final_kwargs['mqttBrokerId'] = mqttBrokerId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'mqttBrokerId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'mqttBrokerId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'mqttBrokerId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteNetworkMqttBroker
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkNetflow')
 def getNetworkNetflow(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -4551,6 +8546,35 @@ def getNetworkNetflow(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkNetflow
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkNetflow')
+def updateNetworkNetflow(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkNetflow
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -4669,6 +8693,35 @@ def getNetworkPiiRequests(networkId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createNetworkPiiRequest')
+def createNetworkPiiRequest(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkPiiRequest
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkPiiRequest')
 def getNetworkPiiRequest(networkId: str, requestId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -4695,6 +8748,37 @@ def getNetworkPiiRequest(networkId: str, requestId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkPiiRequest
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteNetworkPiiRequest')
+def deleteNetworkPiiRequest(networkId: str, requestId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if requestId is not None:
+        final_kwargs['requestId'] = requestId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'requestId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'requestId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'requestId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteNetworkPiiRequest
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -4916,6 +9000,35 @@ def getNetworkSensorAlertsProfiles(networkId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createNetworkSensorAlertsProfile')
+def createNetworkSensorAlertsProfile(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkSensorAlertsProfile
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkSensorAlertsProfile')
 def getNetworkSensorAlertsProfile(networkId: str, id: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -4942,6 +9055,68 @@ def getNetworkSensorAlertsProfile(networkId: str, id: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkSensorAlertsProfile
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkSensorAlertsProfile')
+def updateNetworkSensorAlertsProfile(networkId: str, id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'id'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'id'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'id'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkSensorAlertsProfile
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteNetworkSensorAlertsProfile')
+def deleteNetworkSensorAlertsProfile(networkId: str, id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'id'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'id'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'id'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteNetworkSensorAlertsProfile
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -5007,6 +9182,37 @@ def getNetworkSensorMqttBroker(networkId: str, mqttBrokerId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkSensorMqttBroker')
+def updateNetworkSensorMqttBroker(networkId: str, mqttBrokerId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if mqttBrokerId is not None:
+        final_kwargs['mqttBrokerId'] = mqttBrokerId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'mqttBrokerId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'mqttBrokerId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'mqttBrokerId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkSensorMqttBroker
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkSensorRelationships')
 def getNetworkSensorRelationships(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -5060,6 +9266,64 @@ def getNetworkSettings(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkSettings
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkSettings')
+def updateNetworkSettings(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkSettings
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createNetworkSmBypassActivationLockAttempt')
+def createNetworkSmBypassActivationLockAttempt(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkSmBypassActivationLockAttempt
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -5140,6 +9404,238 @@ def getNetworkSmDevices(networkId: str, fields: list = None, wifiMacs: list = No
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkSmDevices
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('checkinNetworkSmDevices')
+def checkinNetworkSmDevices(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.checkinNetworkSmDevices
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkSmDevicesFields')
+def updateNetworkSmDevicesFields(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkSmDevicesFields
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('lockNetworkSmDevices')
+def lockNetworkSmDevices(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.lockNetworkSmDevices
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('modifyNetworkSmDevicesTags')
+def modifyNetworkSmDevicesTags(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.modifyNetworkSmDevicesTags
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('moveNetworkSmDevices')
+def moveNetworkSmDevices(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.moveNetworkSmDevices
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('rebootNetworkSmDevices')
+def rebootNetworkSmDevices(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.rebootNetworkSmDevices
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('shutdownNetworkSmDevices')
+def shutdownNetworkSmDevices(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.shutdownNetworkSmDevices
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('wipeNetworkSmDevices')
+def wipeNetworkSmDevices(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.wipeNetworkSmDevices
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -5349,6 +9845,37 @@ def getNetworkSmDeviceDeviceProfiles(networkId: str, deviceId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('installNetworkSmDeviceApps')
+def installNetworkSmDeviceApps(networkId: str, deviceId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'deviceId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'deviceId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'deviceId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.installNetworkSmDeviceApps
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkSmDeviceNetworkAdapters')
 def getNetworkSmDeviceNetworkAdapters(networkId: str, deviceId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -5412,6 +9939,37 @@ def getNetworkSmDevicePerformanceHistory(networkId: str, deviceId: str, perPage:
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkSmDevicePerformanceHistory
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('refreshNetworkSmDeviceDetails')
+def refreshNetworkSmDeviceDetails(networkId: str, deviceId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'deviceId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'deviceId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'deviceId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.refreshNetworkSmDeviceDetails
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -5510,6 +10068,68 @@ def getNetworkSmDeviceSoftwares(networkId: str, deviceId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('unenrollNetworkSmDevice')
+def unenrollNetworkSmDevice(networkId: str, deviceId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'deviceId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'deviceId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'deviceId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.unenrollNetworkSmDevice
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('uninstallNetworkSmDeviceApps')
+def uninstallNetworkSmDeviceApps(networkId: str, deviceId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'deviceId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'deviceId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'deviceId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.uninstallNetworkSmDeviceApps
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkSmDeviceWlanLists')
 def getNetworkSmDeviceWlanLists(networkId: str, deviceId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -5603,6 +10223,35 @@ def getNetworkSmTargetGroups(networkId: str, withDetails: bool = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createNetworkSmTargetGroup')
+def createNetworkSmTargetGroup(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkSmTargetGroup
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkSmTargetGroup')
 def getNetworkSmTargetGroup(networkId: str, targetGroupId: str, withDetails: bool = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -5631,6 +10280,68 @@ def getNetworkSmTargetGroup(networkId: str, targetGroupId: str, withDetails: boo
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkSmTargetGroup
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkSmTargetGroup')
+def updateNetworkSmTargetGroup(networkId: str, targetGroupId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if targetGroupId is not None:
+        final_kwargs['targetGroupId'] = targetGroupId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'targetGroupId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'targetGroupId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'targetGroupId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkSmTargetGroup
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteNetworkSmTargetGroup')
+def deleteNetworkSmTargetGroup(networkId: str, targetGroupId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if targetGroupId is not None:
+        final_kwargs['targetGroupId'] = targetGroupId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'targetGroupId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'targetGroupId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'targetGroupId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteNetworkSmTargetGroup
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -5701,6 +10412,37 @@ def getNetworkSmUserAccessDevices(networkId: str, perPage: int = None, startingA
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkSmUserAccessDevices
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteNetworkSmUserAccessDevice')
+def deleteNetworkSmUserAccessDevice(networkId: str, userAccessDeviceId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if userAccessDeviceId is not None:
+        final_kwargs['userAccessDeviceId'] = userAccessDeviceId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'userAccessDeviceId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'userAccessDeviceId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'userAccessDeviceId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteNetworkSmUserAccessDevice
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -5834,6 +10576,35 @@ def getNetworkSnmp(networkId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkSnmp')
+def updateNetworkSnmp(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkSnmp
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkSplashLoginAttempts')
 def getNetworkSplashLoginAttempts(networkId: str, ssidNumber: int = None, loginIdentifier: str = None, timespan: int = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -5869,6 +10640,35 @@ def getNetworkSplashLoginAttempts(networkId: str, ssidNumber: int = None, loginI
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('splitNetwork')
+def splitNetwork(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.splitNetwork
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkSwitchAccessControlLists')
 def getNetworkSwitchAccessControlLists(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -5898,6 +10698,35 @@ def getNetworkSwitchAccessControlLists(networkId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkSwitchAccessControlLists')
+def updateNetworkSwitchAccessControlLists(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkSwitchAccessControlLists
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkSwitchAccessPolicies')
 def getNetworkSwitchAccessPolicies(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -5922,6 +10751,35 @@ def getNetworkSwitchAccessPolicies(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkSwitchAccessPolicies
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createNetworkSwitchAccessPolicy')
+def createNetworkSwitchAccessPolicy(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkSwitchAccessPolicy
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -5958,6 +10816,68 @@ def getNetworkSwitchAccessPolicy(networkId: str, accessPolicyNumber: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkSwitchAccessPolicy')
+def updateNetworkSwitchAccessPolicy(networkId: str, accessPolicyNumber: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if accessPolicyNumber is not None:
+        final_kwargs['accessPolicyNumber'] = accessPolicyNumber
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'accessPolicyNumber'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'accessPolicyNumber'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'accessPolicyNumber'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkSwitchAccessPolicy
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteNetworkSwitchAccessPolicy')
+def deleteNetworkSwitchAccessPolicy(networkId: str, accessPolicyNumber: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if accessPolicyNumber is not None:
+        final_kwargs['accessPolicyNumber'] = accessPolicyNumber
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'accessPolicyNumber'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'accessPolicyNumber'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'accessPolicyNumber'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteNetworkSwitchAccessPolicy
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkSwitchAlternateManagementInterface')
 def getNetworkSwitchAlternateManagementInterface(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -5982,6 +10902,35 @@ def getNetworkSwitchAlternateManagementInterface(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkSwitchAlternateManagementInterface
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkSwitchAlternateManagementInterface')
+def updateNetworkSwitchAlternateManagementInterface(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkSwitchAlternateManagementInterface
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -6055,6 +11004,35 @@ def getNetworkSwitchDhcpServerPolicy(networkId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkSwitchDhcpServerPolicy')
+def updateNetworkSwitchDhcpServerPolicy(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkSwitchDhcpServerPolicy
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkSwitchDhcpServerPolicyArpInspectionTrustedServers')
 def getNetworkSwitchDhcpServerPolicyArpInspectionTrustedServers(networkId: str, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -6085,6 +11063,97 @@ def getNetworkSwitchDhcpServerPolicyArpInspectionTrustedServers(networkId: str, 
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkSwitchDhcpServerPolicyArpInspectionTrustedServers
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createNetworkSwitchDhcpServerPolicyArpInspectionTrustedServer')
+def createNetworkSwitchDhcpServerPolicyArpInspectionTrustedServer(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkSwitchDhcpServerPolicyArpInspectionTrustedServer
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkSwitchDhcpServerPolicyArpInspectionTrustedServer')
+def updateNetworkSwitchDhcpServerPolicyArpInspectionTrustedServer(networkId: str, trustedServerId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if trustedServerId is not None:
+        final_kwargs['trustedServerId'] = trustedServerId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'trustedServerId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'trustedServerId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'trustedServerId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkSwitchDhcpServerPolicyArpInspectionTrustedServer
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteNetworkSwitchDhcpServerPolicyArpInspectionTrustedServer')
+def deleteNetworkSwitchDhcpServerPolicyArpInspectionTrustedServer(networkId: str, trustedServerId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if trustedServerId is not None:
+        final_kwargs['trustedServerId'] = trustedServerId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'trustedServerId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'trustedServerId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'trustedServerId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteNetworkSwitchDhcpServerPolicyArpInspectionTrustedServer
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -6154,6 +11223,35 @@ def getNetworkSwitchDscpToCosMappings(networkId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkSwitchDscpToCosMappings')
+def updateNetworkSwitchDscpToCosMappings(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkSwitchDscpToCosMappings
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkSwitchLinkAggregations')
 def getNetworkSwitchLinkAggregations(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -6178,6 +11276,97 @@ def getNetworkSwitchLinkAggregations(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkSwitchLinkAggregations
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createNetworkSwitchLinkAggregation')
+def createNetworkSwitchLinkAggregation(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkSwitchLinkAggregation
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkSwitchLinkAggregation')
+def updateNetworkSwitchLinkAggregation(networkId: str, linkAggregationId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if linkAggregationId is not None:
+        final_kwargs['linkAggregationId'] = linkAggregationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'linkAggregationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'linkAggregationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'linkAggregationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkSwitchLinkAggregation
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteNetworkSwitchLinkAggregation')
+def deleteNetworkSwitchLinkAggregation(networkId: str, linkAggregationId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if linkAggregationId is not None:
+        final_kwargs['linkAggregationId'] = linkAggregationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'linkAggregationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'linkAggregationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'linkAggregationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteNetworkSwitchLinkAggregation
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -6212,6 +11401,35 @@ def getNetworkSwitchMtu(networkId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkSwitchMtu')
+def updateNetworkSwitchMtu(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkSwitchMtu
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkSwitchPortSchedules')
 def getNetworkSwitchPortSchedules(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -6236,6 +11454,97 @@ def getNetworkSwitchPortSchedules(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkSwitchPortSchedules
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createNetworkSwitchPortSchedule')
+def createNetworkSwitchPortSchedule(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkSwitchPortSchedule
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteNetworkSwitchPortSchedule')
+def deleteNetworkSwitchPortSchedule(networkId: str, portScheduleId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if portScheduleId is not None:
+        final_kwargs['portScheduleId'] = portScheduleId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'portScheduleId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'portScheduleId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'portScheduleId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteNetworkSwitchPortSchedule
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkSwitchPortSchedule')
+def updateNetworkSwitchPortSchedule(networkId: str, portScheduleId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if portScheduleId is not None:
+        final_kwargs['portScheduleId'] = portScheduleId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'portScheduleId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'portScheduleId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'portScheduleId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkSwitchPortSchedule
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -6270,6 +11579,35 @@ def getNetworkSwitchQosRules(networkId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createNetworkSwitchQosRule')
+def createNetworkSwitchQosRule(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkSwitchQosRule
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkSwitchQosRulesOrder')
 def getNetworkSwitchQosRulesOrder(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -6294,6 +11632,35 @@ def getNetworkSwitchQosRulesOrder(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkSwitchQosRulesOrder
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkSwitchQosRulesOrder')
+def updateNetworkSwitchQosRulesOrder(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkSwitchQosRulesOrder
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -6330,6 +11697,68 @@ def getNetworkSwitchQosRule(networkId: str, qosRuleId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('deleteNetworkSwitchQosRule')
+def deleteNetworkSwitchQosRule(networkId: str, qosRuleId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if qosRuleId is not None:
+        final_kwargs['qosRuleId'] = qosRuleId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'qosRuleId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'qosRuleId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'qosRuleId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteNetworkSwitchQosRule
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkSwitchQosRule')
+def updateNetworkSwitchQosRule(networkId: str, qosRuleId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if qosRuleId is not None:
+        final_kwargs['qosRuleId'] = qosRuleId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'qosRuleId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'qosRuleId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'qosRuleId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkSwitchQosRule
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkSwitchRoutingMulticast')
 def getNetworkSwitchRoutingMulticast(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -6359,6 +11788,35 @@ def getNetworkSwitchRoutingMulticast(networkId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkSwitchRoutingMulticast')
+def updateNetworkSwitchRoutingMulticast(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkSwitchRoutingMulticast
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkSwitchRoutingMulticastRendezvousPoints')
 def getNetworkSwitchRoutingMulticastRendezvousPoints(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -6383,6 +11841,35 @@ def getNetworkSwitchRoutingMulticastRendezvousPoints(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkSwitchRoutingMulticastRendezvousPoints
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createNetworkSwitchRoutingMulticastRendezvousPoint')
+def createNetworkSwitchRoutingMulticastRendezvousPoint(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkSwitchRoutingMulticastRendezvousPoint
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -6419,6 +11906,68 @@ def getNetworkSwitchRoutingMulticastRendezvousPoint(networkId: str, rendezvousPo
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('deleteNetworkSwitchRoutingMulticastRendezvousPoint')
+def deleteNetworkSwitchRoutingMulticastRendezvousPoint(networkId: str, rendezvousPointId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if rendezvousPointId is not None:
+        final_kwargs['rendezvousPointId'] = rendezvousPointId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'rendezvousPointId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'rendezvousPointId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'rendezvousPointId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteNetworkSwitchRoutingMulticastRendezvousPoint
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkSwitchRoutingMulticastRendezvousPoint')
+def updateNetworkSwitchRoutingMulticastRendezvousPoint(networkId: str, rendezvousPointId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if rendezvousPointId is not None:
+        final_kwargs['rendezvousPointId'] = rendezvousPointId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'rendezvousPointId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'rendezvousPointId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'rendezvousPointId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkSwitchRoutingMulticastRendezvousPoint
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkSwitchRoutingOspf')
 def getNetworkSwitchRoutingOspf(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -6443,6 +11992,35 @@ def getNetworkSwitchRoutingOspf(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkSwitchRoutingOspf
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkSwitchRoutingOspf')
+def updateNetworkSwitchRoutingOspf(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkSwitchRoutingOspf
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -6477,6 +12055,35 @@ def getNetworkSwitchSettings(networkId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkSwitchSettings')
+def updateNetworkSwitchSettings(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkSwitchSettings
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkSwitchStacks')
 def getNetworkSwitchStacks(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -6501,6 +12108,35 @@ def getNetworkSwitchStacks(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkSwitchStacks
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createNetworkSwitchStack')
+def createNetworkSwitchStack(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkSwitchStack
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -6537,6 +12173,99 @@ def getNetworkSwitchStack(networkId: str, switchStackId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('deleteNetworkSwitchStack')
+def deleteNetworkSwitchStack(networkId: str, switchStackId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if switchStackId is not None:
+        final_kwargs['switchStackId'] = switchStackId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'switchStackId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'switchStackId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'switchStackId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteNetworkSwitchStack
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('addNetworkSwitchStack')
+def addNetworkSwitchStack(networkId: str, switchStackId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if switchStackId is not None:
+        final_kwargs['switchStackId'] = switchStackId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'switchStackId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'switchStackId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'switchStackId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addNetworkSwitchStack
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('removeNetworkSwitchStack')
+def removeNetworkSwitchStack(networkId: str, switchStackId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if switchStackId is not None:
+        final_kwargs['switchStackId'] = switchStackId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'switchStackId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'switchStackId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'switchStackId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.removeNetworkSwitchStack
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkSwitchStackRoutingInterfaces')
 def getNetworkSwitchStackRoutingInterfaces(networkId: str, switchStackId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -6563,6 +12292,37 @@ def getNetworkSwitchStackRoutingInterfaces(networkId: str, switchStackId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkSwitchStackRoutingInterfaces
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createNetworkSwitchStackRoutingInterface')
+def createNetworkSwitchStackRoutingInterface(networkId: str, switchStackId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if switchStackId is not None:
+        final_kwargs['switchStackId'] = switchStackId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'switchStackId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'switchStackId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'switchStackId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkSwitchStackRoutingInterface
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -6601,6 +12361,72 @@ def getNetworkSwitchStackRoutingInterface(networkId: str, switchStackId: str, in
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkSwitchStackRoutingInterface')
+def updateNetworkSwitchStackRoutingInterface(networkId: str, switchStackId: str, interfaceId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if switchStackId is not None:
+        final_kwargs['switchStackId'] = switchStackId
+    if interfaceId is not None:
+        final_kwargs['interfaceId'] = interfaceId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'switchStackId', 'interfaceId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'switchStackId', 'interfaceId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'switchStackId', 'interfaceId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkSwitchStackRoutingInterface
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteNetworkSwitchStackRoutingInterface')
+def deleteNetworkSwitchStackRoutingInterface(networkId: str, switchStackId: str, interfaceId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if switchStackId is not None:
+        final_kwargs['switchStackId'] = switchStackId
+    if interfaceId is not None:
+        final_kwargs['interfaceId'] = interfaceId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'switchStackId', 'interfaceId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'switchStackId', 'interfaceId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'switchStackId', 'interfaceId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteNetworkSwitchStackRoutingInterface
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkSwitchStackRoutingInterfaceDhcp')
 def getNetworkSwitchStackRoutingInterfaceDhcp(networkId: str, switchStackId: str, interfaceId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -6634,6 +12460,39 @@ def getNetworkSwitchStackRoutingInterfaceDhcp(networkId: str, switchStackId: str
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkSwitchStackRoutingInterfaceDhcp')
+def updateNetworkSwitchStackRoutingInterfaceDhcp(networkId: str, switchStackId: str, interfaceId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if switchStackId is not None:
+        final_kwargs['switchStackId'] = switchStackId
+    if interfaceId is not None:
+        final_kwargs['interfaceId'] = interfaceId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'switchStackId', 'interfaceId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'switchStackId', 'interfaceId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'switchStackId', 'interfaceId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkSwitchStackRoutingInterfaceDhcp
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkSwitchStackRoutingStaticRoutes')
 def getNetworkSwitchStackRoutingStaticRoutes(networkId: str, switchStackId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -6660,6 +12519,37 @@ def getNetworkSwitchStackRoutingStaticRoutes(networkId: str, switchStackId: str)
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkSwitchStackRoutingStaticRoutes
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createNetworkSwitchStackRoutingStaticRoute')
+def createNetworkSwitchStackRoutingStaticRoute(networkId: str, switchStackId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if switchStackId is not None:
+        final_kwargs['switchStackId'] = switchStackId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'switchStackId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'switchStackId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'switchStackId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkSwitchStackRoutingStaticRoute
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -6698,6 +12588,72 @@ def getNetworkSwitchStackRoutingStaticRoute(networkId: str, switchStackId: str, 
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkSwitchStackRoutingStaticRoute')
+def updateNetworkSwitchStackRoutingStaticRoute(networkId: str, switchStackId: str, staticRouteId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if switchStackId is not None:
+        final_kwargs['switchStackId'] = switchStackId
+    if staticRouteId is not None:
+        final_kwargs['staticRouteId'] = staticRouteId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'switchStackId', 'staticRouteId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'switchStackId', 'staticRouteId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'switchStackId', 'staticRouteId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkSwitchStackRoutingStaticRoute
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteNetworkSwitchStackRoutingStaticRoute')
+def deleteNetworkSwitchStackRoutingStaticRoute(networkId: str, switchStackId: str, staticRouteId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if switchStackId is not None:
+        final_kwargs['switchStackId'] = switchStackId
+    if staticRouteId is not None:
+        final_kwargs['staticRouteId'] = staticRouteId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'switchStackId', 'staticRouteId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'switchStackId', 'staticRouteId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'switchStackId', 'staticRouteId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteNetworkSwitchStackRoutingStaticRoute
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkSwitchStormControl')
 def getNetworkSwitchStormControl(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -6722,6 +12678,35 @@ def getNetworkSwitchStormControl(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkSwitchStormControl
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkSwitchStormControl')
+def updateNetworkSwitchStormControl(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkSwitchStormControl
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -6756,6 +12741,35 @@ def getNetworkSwitchStp(networkId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkSwitchStp')
+def updateNetworkSwitchStp(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkSwitchStp
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkSyslogServers')
 def getNetworkSyslogServers(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -6780,6 +12794,35 @@ def getNetworkSyslogServers(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkSyslogServers
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkSyslogServers')
+def updateNetworkSyslogServers(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkSyslogServers
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -6878,6 +12921,35 @@ def getNetworkTrafficAnalysis(networkId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkTrafficAnalysis')
+def updateNetworkTrafficAnalysis(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkTrafficAnalysis
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkTrafficShapingApplicationCategories')
 def getNetworkTrafficShapingApplicationCategories(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -6936,6 +13008,35 @@ def getNetworkTrafficShapingDscpTaggingOptions(networkId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('unbindNetwork')
+def unbindNetwork(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.unbindNetwork
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkVlanProfiles')
 def getNetworkVlanProfiles(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -6960,6 +13061,35 @@ def getNetworkVlanProfiles(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkVlanProfiles
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createNetworkVlanProfile')
+def createNetworkVlanProfile(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkVlanProfile
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -7006,6 +13136,35 @@ def getNetworkVlanProfilesAssignmentsByDevice(networkId: str, perPage: int = Non
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('reassignNetworkVlanProfilesAssignments')
+def reassignNetworkVlanProfilesAssignments(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.reassignNetworkVlanProfilesAssignments
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkVlanProfile')
 def getNetworkVlanProfile(networkId: str, iname: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -7037,6 +13196,68 @@ def getNetworkVlanProfile(networkId: str, iname: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkVlanProfile')
+def updateNetworkVlanProfile(networkId: str, iname: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if iname is not None:
+        final_kwargs['iname'] = iname
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'iname'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'iname'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'iname'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkVlanProfile
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteNetworkVlanProfile')
+def deleteNetworkVlanProfile(networkId: str, iname: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if iname is not None:
+        final_kwargs['iname'] = iname
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'iname'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'iname'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'iname'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteNetworkVlanProfile
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkWebhooksHttpServers')
 def getNetworkWebhooksHttpServers(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -7061,6 +13282,35 @@ def getNetworkWebhooksHttpServers(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkWebhooksHttpServers
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createNetworkWebhooksHttpServer')
+def createNetworkWebhooksHttpServer(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkWebhooksHttpServer
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -7097,6 +13347,68 @@ def getNetworkWebhooksHttpServer(networkId: str, httpServerId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkWebhooksHttpServer')
+def updateNetworkWebhooksHttpServer(networkId: str, httpServerId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if httpServerId is not None:
+        final_kwargs['httpServerId'] = httpServerId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'httpServerId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'httpServerId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'httpServerId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkWebhooksHttpServer
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteNetworkWebhooksHttpServer')
+def deleteNetworkWebhooksHttpServer(networkId: str, httpServerId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if httpServerId is not None:
+        final_kwargs['httpServerId'] = httpServerId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'httpServerId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'httpServerId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'httpServerId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteNetworkWebhooksHttpServer
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkWebhooksPayloadTemplates')
 def getNetworkWebhooksPayloadTemplates(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -7121,6 +13433,35 @@ def getNetworkWebhooksPayloadTemplates(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkWebhooksPayloadTemplates
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createNetworkWebhooksPayloadTemplate')
+def createNetworkWebhooksPayloadTemplate(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkWebhooksPayloadTemplate
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -7152,6 +13493,97 @@ def getNetworkWebhooksPayloadTemplate(networkId: str, payloadTemplateId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkWebhooksPayloadTemplate
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteNetworkWebhooksPayloadTemplate')
+def deleteNetworkWebhooksPayloadTemplate(networkId: str, payloadTemplateId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if payloadTemplateId is not None:
+        final_kwargs['payloadTemplateId'] = payloadTemplateId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'payloadTemplateId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'payloadTemplateId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'payloadTemplateId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteNetworkWebhooksPayloadTemplate
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkWebhooksPayloadTemplate')
+def updateNetworkWebhooksPayloadTemplate(networkId: str, payloadTemplateId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if payloadTemplateId is not None:
+        final_kwargs['payloadTemplateId'] = payloadTemplateId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'payloadTemplateId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'payloadTemplateId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'payloadTemplateId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkWebhooksPayloadTemplate
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createNetworkWebhooksWebhookTest')
+def createNetworkWebhooksWebhookTest(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkWebhooksWebhookTest
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -7221,6 +13653,126 @@ def getNetworkWirelessAirMarshal(networkId: str, t0: str = None, timespan: float
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createNetworkWirelessAirMarshalRule')
+def createNetworkWirelessAirMarshalRule(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkWirelessAirMarshalRule
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkWirelessAirMarshalRule')
+def updateNetworkWirelessAirMarshalRule(networkId: str, ruleId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if ruleId is not None:
+        final_kwargs['ruleId'] = ruleId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'ruleId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'ruleId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'ruleId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkWirelessAirMarshalRule
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteNetworkWirelessAirMarshalRule')
+def deleteNetworkWirelessAirMarshalRule(networkId: str, ruleId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if ruleId is not None:
+        final_kwargs['ruleId'] = ruleId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'ruleId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'ruleId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'ruleId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteNetworkWirelessAirMarshalRule
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkWirelessAirMarshalSettings')
+def updateNetworkWirelessAirMarshalSettings(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkWirelessAirMarshalSettings
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkWirelessAlternateManagementInterface')
 def getNetworkWirelessAlternateManagementInterface(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -7245,6 +13797,35 @@ def getNetworkWirelessAlternateManagementInterface(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkWirelessAlternateManagementInterface
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkWirelessAlternateManagementInterface')
+def updateNetworkWirelessAlternateManagementInterface(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkWirelessAlternateManagementInterface
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -7279,6 +13860,35 @@ def getNetworkWirelessBilling(networkId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkWirelessBilling')
+def updateNetworkWirelessBilling(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkWirelessBilling
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkWirelessBluetoothSettings')
 def getNetworkWirelessBluetoothSettings(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -7303,6 +13913,35 @@ def getNetworkWirelessBluetoothSettings(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkWirelessBluetoothSettings
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkWirelessBluetoothSettings')
+def updateNetworkWirelessBluetoothSettings(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkWirelessBluetoothSettings
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -7887,6 +14526,35 @@ def getNetworkWirelessElectronicShelfLabel(networkId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkWirelessElectronicShelfLabel')
+def updateNetworkWirelessElectronicShelfLabel(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkWirelessElectronicShelfLabel
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkWirelessElectronicShelfLabelConfiguredDevices')
 def getNetworkWirelessElectronicShelfLabelConfiguredDevices(networkId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -7945,6 +14613,93 @@ def getNetworkWirelessEthernetPortsProfiles(networkId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createNetworkWirelessEthernetPortsProfile')
+def createNetworkWirelessEthernetPortsProfile(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkWirelessEthernetPortsProfile
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('assignNetworkWirelessEthernetPortsProfiles')
+def assignNetworkWirelessEthernetPortsProfiles(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.assignNetworkWirelessEthernetPortsProfiles
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('setNetworkWirelessEthernetPortsProfilesDefault')
+def setNetworkWirelessEthernetPortsProfilesDefault(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.setNetworkWirelessEthernetPortsProfilesDefault
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkWirelessEthernetPortsProfile')
 def getNetworkWirelessEthernetPortsProfile(networkId: str, profileId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -7971,6 +14726,68 @@ def getNetworkWirelessEthernetPortsProfile(networkId: str, profileId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkWirelessEthernetPortsProfile
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkWirelessEthernetPortsProfile')
+def updateNetworkWirelessEthernetPortsProfile(networkId: str, profileId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if profileId is not None:
+        final_kwargs['profileId'] = profileId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'profileId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'profileId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'profileId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkWirelessEthernetPortsProfile
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteNetworkWirelessEthernetPortsProfile')
+def deleteNetworkWirelessEthernetPortsProfile(networkId: str, profileId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if profileId is not None:
+        final_kwargs['profileId'] = profileId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'profileId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'profileId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'profileId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteNetworkWirelessEthernetPortsProfile
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -8185,6 +15002,97 @@ def getNetworkWirelessRfProfiles(networkId: str, includeTemplateProfiles: bool =
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createNetworkWirelessRfProfile')
+def createNetworkWirelessRfProfile(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkWirelessRfProfile
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkWirelessRfProfile')
+def updateNetworkWirelessRfProfile(networkId: str, rfProfileId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if rfProfileId is not None:
+        final_kwargs['rfProfileId'] = rfProfileId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'rfProfileId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'rfProfileId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'rfProfileId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkWirelessRfProfile
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteNetworkWirelessRfProfile')
+def deleteNetworkWirelessRfProfile(networkId: str, rfProfileId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if rfProfileId is not None:
+        final_kwargs['rfProfileId'] = rfProfileId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'rfProfileId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'rfProfileId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'rfProfileId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteNetworkWirelessRfProfile
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkWirelessRfProfile')
 def getNetworkWirelessRfProfile(networkId: str, rfProfileId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -8240,6 +15148,35 @@ def getNetworkWirelessSettings(networkId: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkWirelessSettings
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkWirelessSettings')
+def updateNetworkWirelessSettings(networkId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkWirelessSettings
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -8354,6 +15291,37 @@ def getNetworkWirelessSsid(networkId: str, number: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkWirelessSsid')
+def updateNetworkWirelessSsid(networkId: str, number: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if number is not None:
+        final_kwargs['number'] = number
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'number'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'number'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'number'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkWirelessSsid
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkWirelessSsidBonjourForwarding')
 def getNetworkWirelessSsidBonjourForwarding(networkId: str, number: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -8380,6 +15348,37 @@ def getNetworkWirelessSsidBonjourForwarding(networkId: str, number: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkWirelessSsidBonjourForwarding
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkWirelessSsidBonjourForwarding')
+def updateNetworkWirelessSsidBonjourForwarding(networkId: str, number: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if number is not None:
+        final_kwargs['number'] = number
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'number'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'number'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'number'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkWirelessSsidBonjourForwarding
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -8416,6 +15415,37 @@ def getNetworkWirelessSsidDeviceTypeGroupPolicies(networkId: str, number: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkWirelessSsidDeviceTypeGroupPolicies')
+def updateNetworkWirelessSsidDeviceTypeGroupPolicies(networkId: str, number: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if number is not None:
+        final_kwargs['number'] = number
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'number'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'number'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'number'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkWirelessSsidDeviceTypeGroupPolicies
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkWirelessSsidEapOverride')
 def getNetworkWirelessSsidEapOverride(networkId: str, number: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -8442,6 +15472,37 @@ def getNetworkWirelessSsidEapOverride(networkId: str, number: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkWirelessSsidEapOverride
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkWirelessSsidEapOverride')
+def updateNetworkWirelessSsidEapOverride(networkId: str, number: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if number is not None:
+        final_kwargs['number'] = number
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'number'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'number'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'number'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkWirelessSsidEapOverride
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -8478,6 +15539,37 @@ def getNetworkWirelessSsidFirewallL3FirewallRules(networkId: str, number: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkWirelessSsidFirewallL3FirewallRules')
+def updateNetworkWirelessSsidFirewallL3FirewallRules(networkId: str, number: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if number is not None:
+        final_kwargs['number'] = number
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'number'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'number'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'number'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkWirelessSsidFirewallL3FirewallRules
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkWirelessSsidFirewallL7FirewallRules')
 def getNetworkWirelessSsidFirewallL7FirewallRules(networkId: str, number: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -8504,6 +15596,37 @@ def getNetworkWirelessSsidFirewallL7FirewallRules(networkId: str, number: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkWirelessSsidFirewallL7FirewallRules
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkWirelessSsidFirewallL7FirewallRules')
+def updateNetworkWirelessSsidFirewallL7FirewallRules(networkId: str, number: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if number is not None:
+        final_kwargs['number'] = number
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'number'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'number'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'number'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkWirelessSsidFirewallL7FirewallRules
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -8540,6 +15663,37 @@ def getNetworkWirelessSsidHotspot20(networkId: str, number: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkWirelessSsidHotspot20')
+def updateNetworkWirelessSsidHotspot20(networkId: str, number: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if number is not None:
+        final_kwargs['number'] = number
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'number'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'number'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'number'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkWirelessSsidHotspot20
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkWirelessSsidIdentityPsks')
 def getNetworkWirelessSsidIdentityPsks(networkId: str, number: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -8566,6 +15720,37 @@ def getNetworkWirelessSsidIdentityPsks(networkId: str, number: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkWirelessSsidIdentityPsks
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createNetworkWirelessSsidIdentityPsk')
+def createNetworkWirelessSsidIdentityPsk(networkId: str, number: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if number is not None:
+        final_kwargs['number'] = number
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'number'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'number'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'number'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkWirelessSsidIdentityPsk
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -8604,6 +15789,72 @@ def getNetworkWirelessSsidIdentityPsk(networkId: str, number: str, identityPskId
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkWirelessSsidIdentityPsk')
+def updateNetworkWirelessSsidIdentityPsk(networkId: str, number: str, identityPskId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if number is not None:
+        final_kwargs['number'] = number
+    if identityPskId is not None:
+        final_kwargs['identityPskId'] = identityPskId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'number', 'identityPskId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'number', 'identityPskId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'number', 'identityPskId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkWirelessSsidIdentityPsk
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteNetworkWirelessSsidIdentityPsk')
+def deleteNetworkWirelessSsidIdentityPsk(networkId: str, number: str, identityPskId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if number is not None:
+        final_kwargs['number'] = number
+    if identityPskId is not None:
+        final_kwargs['identityPskId'] = identityPskId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'number', 'identityPskId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'number', 'identityPskId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'number', 'identityPskId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteNetworkWirelessSsidIdentityPsk
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkWirelessSsidSchedules')
 def getNetworkWirelessSsidSchedules(networkId: str, number: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -8635,6 +15886,37 @@ def getNetworkWirelessSsidSchedules(networkId: str, number: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetworkWirelessSsidSchedules')
+def updateNetworkWirelessSsidSchedules(networkId: str, number: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if number is not None:
+        final_kwargs['number'] = number
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'number'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'number'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'number'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkWirelessSsidSchedules
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNetworkWirelessSsidSplashSettings')
 def getNetworkWirelessSsidSplashSettings(networkId: str, number: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -8661,6 +15943,68 @@ def getNetworkWirelessSsidSplashSettings(networkId: str, number: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkWirelessSsidSplashSettings
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkWirelessSsidSplashSettings')
+def updateNetworkWirelessSsidSplashSettings(networkId: str, number: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if number is not None:
+        final_kwargs['number'] = number
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'number'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'number'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'number'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkWirelessSsidSplashSettings
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkWirelessSsidTrafficShapingRules')
+def updateNetworkWirelessSsidTrafficShapingRules(networkId: str, number: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if number is not None:
+        final_kwargs['number'] = number
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'number'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'number'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'number'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkWirelessSsidTrafficShapingRules
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -8723,6 +16067,37 @@ def getNetworkWirelessSsidVpn(networkId: str, number: str):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getNetworkWirelessSsidVpn
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkWirelessSsidVpn')
+def updateNetworkWirelessSsidVpn(networkId: str, number: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkId is not None:
+        final_kwargs['networkId'] = networkId
+    if number is not None:
+        final_kwargs['number'] = number
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['networkId', 'number'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['networkId', 'number'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['networkId', 'number'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkWirelessSsidVpn
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -8810,6 +16185,33 @@ def getOrganizations(perPage: int = None, startingAfter: str = None, endingBefor
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createOrganization')
+def createOrganization():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in [] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in [] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in [] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createOrganization
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getOrganization')
 def getOrganization(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -8834,6 +16236,93 @@ def getOrganization(organizationId: str = None):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganization
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateOrganization')
+def updateOrganization(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateOrganization
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteOrganization')
+def deleteOrganization(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteOrganization
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createOrganizationActionBatch')
+def createOrganizationActionBatch(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createOrganizationActionBatch
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -8901,6 +16390,68 @@ def getOrganizationActionBatch(actionBatchId: str, organizationId: str = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('deleteOrganizationActionBatch')
+def deleteOrganizationActionBatch(actionBatchId: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if actionBatchId is not None:
+        final_kwargs['actionBatchId'] = actionBatchId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'actionBatchId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'actionBatchId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'actionBatchId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteOrganizationActionBatch
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateOrganizationActionBatch')
+def updateOrganizationActionBatch(actionBatchId: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if actionBatchId is not None:
+        final_kwargs['actionBatchId'] = actionBatchId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'actionBatchId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'actionBatchId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'actionBatchId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateOrganizationActionBatch
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getOrganizationAdaptivePolicyAcls')
 def getOrganizationAdaptivePolicyAcls(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -8925,6 +16476,35 @@ def getOrganizationAdaptivePolicyAcls(organizationId: str = None):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationAdaptivePolicyAcls
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createOrganizationAdaptivePolicyAcl')
+def createOrganizationAdaptivePolicyAcl(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createOrganizationAdaptivePolicyAcl
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -8961,6 +16541,68 @@ def getOrganizationAdaptivePolicyAcl(aclId: str, organizationId: str = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateOrganizationAdaptivePolicyAcl')
+def updateOrganizationAdaptivePolicyAcl(aclId: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if aclId is not None:
+        final_kwargs['aclId'] = aclId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'aclId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'aclId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'aclId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateOrganizationAdaptivePolicyAcl
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteOrganizationAdaptivePolicyAcl')
+def deleteOrganizationAdaptivePolicyAcl(aclId: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if aclId is not None:
+        final_kwargs['aclId'] = aclId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'aclId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'aclId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'aclId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteOrganizationAdaptivePolicyAcl
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getOrganizationAdaptivePolicyGroups')
 def getOrganizationAdaptivePolicyGroups(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -8985,6 +16627,35 @@ def getOrganizationAdaptivePolicyGroups(organizationId: str = None):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationAdaptivePolicyGroups
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createOrganizationAdaptivePolicyGroup')
+def createOrganizationAdaptivePolicyGroup(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createOrganizationAdaptivePolicyGroup
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -9016,6 +16687,68 @@ def getOrganizationAdaptivePolicyGroup(id: str, organizationId: str = None):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationAdaptivePolicyGroup
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateOrganizationAdaptivePolicyGroup')
+def updateOrganizationAdaptivePolicyGroup(id: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'id'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'id'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'id'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateOrganizationAdaptivePolicyGroup
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteOrganizationAdaptivePolicyGroup')
+def deleteOrganizationAdaptivePolicyGroup(id: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'id'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'id'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'id'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteOrganizationAdaptivePolicyGroup
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -9079,6 +16812,35 @@ def getOrganizationAdaptivePolicyPolicies(organizationId: str = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createOrganizationAdaptivePolicyPolicy')
+def createOrganizationAdaptivePolicyPolicy(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createOrganizationAdaptivePolicyPolicy
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getOrganizationAdaptivePolicyPolicy')
 def getOrganizationAdaptivePolicyPolicy(id: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -9110,6 +16872,68 @@ def getOrganizationAdaptivePolicyPolicy(id: str, organizationId: str = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateOrganizationAdaptivePolicyPolicy')
+def updateOrganizationAdaptivePolicyPolicy(id: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'id'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'id'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'id'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateOrganizationAdaptivePolicyPolicy
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteOrganizationAdaptivePolicyPolicy')
+def deleteOrganizationAdaptivePolicyPolicy(id: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'id'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'id'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'id'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteOrganizationAdaptivePolicyPolicy
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getOrganizationAdaptivePolicySettings')
 def getOrganizationAdaptivePolicySettings(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -9134,6 +16958,35 @@ def getOrganizationAdaptivePolicySettings(organizationId: str = None):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationAdaptivePolicySettings
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateOrganizationAdaptivePolicySettings')
+def updateOrganizationAdaptivePolicySettings(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateOrganizationAdaptivePolicySettings
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -9170,6 +17023,97 @@ def getOrganizationAdmins(organizationId: str = None, networkIds: list = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createOrganizationAdmin')
+def createOrganizationAdmin(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createOrganizationAdmin
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateOrganizationAdmin')
+def updateOrganizationAdmin(adminId: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if adminId is not None:
+        final_kwargs['adminId'] = adminId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'adminId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'adminId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'adminId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateOrganizationAdmin
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteOrganizationAdmin')
+def deleteOrganizationAdmin(adminId: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if adminId is not None:
+        final_kwargs['adminId'] = adminId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'adminId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'adminId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'adminId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteOrganizationAdmin
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getOrganizationAlertsProfiles')
 def getOrganizationAlertsProfiles(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -9194,6 +17138,97 @@ def getOrganizationAlertsProfiles(organizationId: str = None):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationAlertsProfiles
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createOrganizationAlertsProfile')
+def createOrganizationAlertsProfile(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createOrganizationAlertsProfile
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateOrganizationAlertsProfile')
+def updateOrganizationAlertsProfile(alertConfigId: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if alertConfigId is not None:
+        final_kwargs['alertConfigId'] = alertConfigId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'alertConfigId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'alertConfigId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'alertConfigId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateOrganizationAlertsProfile
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteOrganizationAlertsProfile')
+def deleteOrganizationAlertsProfile(alertConfigId: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if alertConfigId is not None:
+        final_kwargs['alertConfigId'] = alertConfigId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'alertConfigId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'alertConfigId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'alertConfigId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteOrganizationAlertsProfile
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -9405,6 +17440,35 @@ def getOrganizationApplianceSecurityIntrusion(organizationId: str = None):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationApplianceSecurityIntrusion
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateOrganizationApplianceSecurityIntrusion')
+def updateOrganizationApplianceSecurityIntrusion(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateOrganizationApplianceSecurityIntrusion
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -9661,6 +17725,35 @@ def getOrganizationApplianceVpnThirdPartyVPNPeers(organizationId: str = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateOrganizationApplianceVpnThirdPartyVPNPeers')
+def updateOrganizationApplianceVpnThirdPartyVPNPeers(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateOrganizationApplianceVpnThirdPartyVPNPeers
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getOrganizationApplianceVpnVpnFirewallRules')
 def getOrganizationApplianceVpnVpnFirewallRules(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -9685,6 +17778,35 @@ def getOrganizationApplianceVpnVpnFirewallRules(organizationId: str = None):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationApplianceVpnVpnFirewallRules
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateOrganizationApplianceVpnVpnFirewallRules')
+def updateOrganizationApplianceVpnVpnFirewallRules(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateOrganizationApplianceVpnVpnFirewallRules
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -9750,6 +17872,35 @@ def getOrganizationAssuranceAlerts(organizationId: str = None, perPage: int = No
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationAssuranceAlerts
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('dismissOrganizationAssuranceAlerts')
+def dismissOrganizationAssuranceAlerts(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.dismissOrganizationAssuranceAlerts
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -9985,6 +18136,35 @@ def getOrganizationAssuranceAlertsOverviewHistorical(segmentDuration: int, tsSta
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('restoreOrganizationAssuranceAlerts')
+def restoreOrganizationAssuranceAlerts(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.restoreOrganizationAssuranceAlerts
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getOrganizationAssuranceAlert')
 def getOrganizationAssuranceAlert(id: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -10045,6 +18225,35 @@ def getOrganizationBrandingPolicies(organizationId: str = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createOrganizationBrandingPolicy')
+def createOrganizationBrandingPolicy(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createOrganizationBrandingPolicy
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getOrganizationBrandingPoliciesPriorities')
 def getOrganizationBrandingPoliciesPriorities(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -10069,6 +18278,35 @@ def getOrganizationBrandingPoliciesPriorities(organizationId: str = None):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationBrandingPoliciesPriorities
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateOrganizationBrandingPoliciesPriorities')
+def updateOrganizationBrandingPoliciesPriorities(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateOrganizationBrandingPoliciesPriorities
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -10100,6 +18338,68 @@ def getOrganizationBrandingPolicy(brandingPolicyId: str, organizationId: str = N
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationBrandingPolicy
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateOrganizationBrandingPolicy')
+def updateOrganizationBrandingPolicy(brandingPolicyId: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if brandingPolicyId is not None:
+        final_kwargs['brandingPolicyId'] = brandingPolicyId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'brandingPolicyId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'brandingPolicyId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'brandingPolicyId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateOrganizationBrandingPolicy
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteOrganizationBrandingPolicy')
+def deleteOrganizationBrandingPolicy(brandingPolicyId: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if brandingPolicyId is not None:
+        final_kwargs['brandingPolicyId'] = brandingPolicyId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'brandingPolicyId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'brandingPolicyId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'brandingPolicyId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteOrganizationBrandingPolicy
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -10196,6 +18496,35 @@ def getOrganizationCameraCustomAnalyticsArtifacts(organizationId: str = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createOrganizationCameraCustomAnalyticsArtifact')
+def createOrganizationCameraCustomAnalyticsArtifact(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createOrganizationCameraCustomAnalyticsArtifact
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getOrganizationCameraCustomAnalyticsArtifact')
 def getOrganizationCameraCustomAnalyticsArtifact(artifactId: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -10222,6 +18551,37 @@ def getOrganizationCameraCustomAnalyticsArtifact(artifactId: str, organizationId
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationCameraCustomAnalyticsArtifact
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteOrganizationCameraCustomAnalyticsArtifact')
+def deleteOrganizationCameraCustomAnalyticsArtifact(artifactId: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if artifactId is not None:
+        final_kwargs['artifactId'] = artifactId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'artifactId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'artifactId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'artifactId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteOrganizationCameraCustomAnalyticsArtifact
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -10294,6 +18654,35 @@ def getOrganizationCameraOnboardingStatuses(organizationId: str = None, serials:
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationCameraOnboardingStatuses
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateOrganizationCameraOnboardingStatuses')
+def updateOrganizationCameraOnboardingStatuses(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateOrganizationCameraOnboardingStatuses
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -10388,6 +18777,35 @@ def getOrganizationCameraRoles(organizationId: str = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createOrganizationCameraRole')
+def createOrganizationCameraRole(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createOrganizationCameraRole
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getOrganizationCameraRole')
 def getOrganizationCameraRole(roleId: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -10419,6 +18837,68 @@ def getOrganizationCameraRole(roleId: str, organizationId: str = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('deleteOrganizationCameraRole')
+def deleteOrganizationCameraRole(roleId: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if roleId is not None:
+        final_kwargs['roleId'] = roleId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'roleId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'roleId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'roleId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteOrganizationCameraRole
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateOrganizationCameraRole')
+def updateOrganizationCameraRole(roleId: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if roleId is not None:
+        final_kwargs['roleId'] = roleId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'roleId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'roleId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'roleId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateOrganizationCameraRole
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getOrganizationCellularGatewayEsimsInventory')
 def getOrganizationCellularGatewayEsimsInventory(organizationId: str = None, eids: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -10445,6 +18925,37 @@ def getOrganizationCellularGatewayEsimsInventory(organizationId: str = None, eid
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationCellularGatewayEsimsInventory
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateOrganizationCellularGatewayEsimsInventory')
+def updateOrganizationCellularGatewayEsimsInventory(id: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'id'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'id'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'id'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateOrganizationCellularGatewayEsimsInventory
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -10505,6 +19016,35 @@ def getOrganizationCellularGatewayEsimsServiceProvidersAccounts(organizationId: 
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationCellularGatewayEsimsServiceProvidersAccounts
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createOrganizationCellularGatewayEsimsServiceProvidersAccount')
+def createOrganizationCellularGatewayEsimsServiceProvidersAccount(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createOrganizationCellularGatewayEsimsServiceProvidersAccount
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -10572,6 +19112,128 @@ def getOrganizationCellularGatewayEsimsServiceProvidersAccountsRateP(accountIds:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateOrganizationCellularGatewayEsimsServiceProvidersAccount')
+def updateOrganizationCellularGatewayEsimsServiceProvidersAccount(accountId: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if accountId is not None:
+        final_kwargs['accountId'] = accountId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'accountId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'accountId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'accountId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateOrganizationCellularGatewayEsimsServiceProvidersAccount
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteOrganizationCellularGatewayEsimsServiceProvidersAccount')
+def deleteOrganizationCellularGatewayEsimsServiceProvidersAccount(accountId: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if accountId is not None:
+        final_kwargs['accountId'] = accountId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'accountId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'accountId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'accountId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteOrganizationCellularGatewayEsimsServiceProvidersAccount
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createOrganizationCellularGatewayEsimsSwap')
+def createOrganizationCellularGatewayEsimsSwap(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createOrganizationCellularGatewayEsimsSwap
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateOrganizationCellularGatewayEsimsSwap')
+def updateOrganizationCellularGatewayEsimsSwap(id: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['id', 'organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['id', 'organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['id', 'organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateOrganizationCellularGatewayEsimsSwap
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getOrganizationCellularGatewayUplinkStatuses')
 def getOrganizationCellularGatewayUplinkStatuses(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, networkIds: list = None, serials: list = None, iccids: list = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -10608,6 +19270,35 @@ def getOrganizationCellularGatewayUplinkStatuses(organizationId: str = None, per
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationCellularGatewayUplinkStatuses
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('claimIntoOrganization')
+def claimIntoOrganization(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.claimIntoOrganization
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -10728,6 +19419,35 @@ def getOrganizationClientsSearch(mac: str, organizationId: str = None, perPage: 
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('cloneOrganization')
+def cloneOrganization(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.cloneOrganization
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getOrganizationConfigTemplates')
 def getOrganizationConfigTemplates(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -10752,6 +19472,35 @@ def getOrganizationConfigTemplates(organizationId: str = None):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationConfigTemplates
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createOrganizationConfigTemplate')
+def createOrganizationConfigTemplate(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createOrganizationConfigTemplate
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -10783,6 +19532,68 @@ def getOrganizationConfigTemplate(configTemplateId: str, organizationId: str = N
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationConfigTemplate
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateOrganizationConfigTemplate')
+def updateOrganizationConfigTemplate(configTemplateId: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if configTemplateId is not None:
+        final_kwargs['configTemplateId'] = configTemplateId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'configTemplateId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'configTemplateId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'configTemplateId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateOrganizationConfigTemplate
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteOrganizationConfigTemplate')
+def deleteOrganizationConfigTemplate(configTemplateId: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if configTemplateId is not None:
+        final_kwargs['configTemplateId'] = configTemplateId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'configTemplateId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'configTemplateId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'configTemplateId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteOrganizationConfigTemplate
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -10882,6 +19693,41 @@ def getOrganizationConfigTemplateSwitchProfilePort(configTemplateId: str, profil
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationConfigTemplateSwitchProfilePort
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateOrganizationConfigTemplateSwitchProfilePort')
+def updateOrganizationConfigTemplateSwitchProfilePort(configTemplateId: str, profileId: str, portId: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if configTemplateId is not None:
+        final_kwargs['configTemplateId'] = configTemplateId
+    if profileId is not None:
+        final_kwargs['profileId'] = profileId
+    if portId is not None:
+        final_kwargs['portId'] = portId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'configTemplateId', 'profileId', 'portId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'configTemplateId', 'profileId', 'portId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'configTemplateId', 'profileId', 'portId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateOrganizationConfigTemplateSwitchProfilePort
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -11086,6 +19932,35 @@ def getOrganizationDevicesAvailabilitiesChangeHistory(organizationId: str = None
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationDevicesAvailabilitiesChangeHistory
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('bulkUpdateOrganizationDevicesDetails')
+def bulkUpdateOrganizationDevicesDetails(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.bulkUpdateOrganizationDevicesDetails
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -11442,6 +20317,35 @@ def getOrganizationEarlyAccessFeaturesOptIns(organizationId: str = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createOrganizationEarlyAccessFeaturesOptIn')
+def createOrganizationEarlyAccessFeaturesOptIn(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createOrganizationEarlyAccessFeaturesOptIn
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getOrganizationEarlyAccessFeaturesOptIn')
 def getOrganizationEarlyAccessFeaturesOptIn(optInId: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -11468,6 +20372,68 @@ def getOrganizationEarlyAccessFeaturesOptIn(optInId: str, organizationId: str = 
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationEarlyAccessFeaturesOptIn
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateOrganizationEarlyAccessFeaturesOptIn')
+def updateOrganizationEarlyAccessFeaturesOptIn(optInId: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if optInId is not None:
+        final_kwargs['optInId'] = optInId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'optInId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'optInId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'optInId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateOrganizationEarlyAccessFeaturesOptIn
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteOrganizationEarlyAccessFeaturesOptIn')
+def deleteOrganizationEarlyAccessFeaturesOptIn(optInId: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if optInId is not None:
+        final_kwargs['optInId'] = optInId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'optInId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'optInId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'optInId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteOrganizationEarlyAccessFeaturesOptIn
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -11695,6 +20661,35 @@ def getOrganizationInsightMonitoredMediaServers(organizationId: str = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createOrganizationInsightMonitoredMediaServer')
+def createOrganizationInsightMonitoredMediaServer(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createOrganizationInsightMonitoredMediaServer
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getOrganizationInsightMonitoredMediaServer')
 def getOrganizationInsightMonitoredMediaServer(monitoredMediaServerId: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -11721,6 +20716,97 @@ def getOrganizationInsightMonitoredMediaServer(monitoredMediaServerId: str, orga
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationInsightMonitoredMediaServer
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateOrganizationInsightMonitoredMediaServer')
+def updateOrganizationInsightMonitoredMediaServer(monitoredMediaServerId: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if monitoredMediaServerId is not None:
+        final_kwargs['monitoredMediaServerId'] = monitoredMediaServerId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'monitoredMediaServerId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'monitoredMediaServerId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'monitoredMediaServerId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateOrganizationInsightMonitoredMediaServer
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteOrganizationInsightMonitoredMediaServer')
+def deleteOrganizationInsightMonitoredMediaServer(monitoredMediaServerId: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if monitoredMediaServerId is not None:
+        final_kwargs['monitoredMediaServerId'] = monitoredMediaServerId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'monitoredMediaServerId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'monitoredMediaServerId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'monitoredMediaServerId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteOrganizationInsightMonitoredMediaServer
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('claimIntoOrganizationInventory')
+def claimIntoOrganizationInventory(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.claimIntoOrganizationInventory
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -11776,6 +20862,35 @@ def getOrganizationInventoryDevices(organizationId: str = None, perPage: int = N
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationInventoryDevices
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createOrganizationInventoryDevicesSwapsBulk')
+def createOrganizationInventoryDevicesSwapsBulk(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createOrganizationInventoryDevicesSwapsBulk
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -11838,6 +20953,64 @@ def getOrganizationInventoryDevice(serial: str, organizationId: str = None):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationInventoryDevice
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createOrganizationInventoryOnboardingCloudMonitoringExportEvent')
+def createOrganizationInventoryOnboardingCloudMonitoringExportEvent(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createOrganizationInventoryOnboardingCloudMonitoringExportEvent
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createOrganizationInventoryOnboardingCloudMonitoringImport')
+def createOrganizationInventoryOnboardingCloudMonitoringImport(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createOrganizationInventoryOnboardingCloudMonitoringImport
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -11913,6 +21086,64 @@ def getOrganizationInventoryOnboardingCloudMonitoringNetworks(deviceType: str, o
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createOrganizationInventoryOnboardingCloudMonitoringPrepare')
+def createOrganizationInventoryOnboardingCloudMonitoringPrepare(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createOrganizationInventoryOnboardingCloudMonitoringPrepare
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('releaseFromOrganizationInventory')
+def releaseFromOrganizationInventory(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.releaseFromOrganizationInventory
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getOrganizationLicenses')
 def getOrganizationLicenses(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None, deviceSerial: str = None, networkId: str = None, state: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -11954,6 +21185,93 @@ def getOrganizationLicenses(organizationId: str = None, perPage: int = None, sta
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('assignOrganizationLicensesSeats')
+def assignOrganizationLicensesSeats(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.assignOrganizationLicensesSeats
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('moveOrganizationLicenses')
+def moveOrganizationLicenses(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.moveOrganizationLicenses
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('moveOrganizationLicensesSeats')
+def moveOrganizationLicensesSeats(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.moveOrganizationLicensesSeats
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getOrganizationLicensesOverview')
 def getOrganizationLicensesOverview(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -11978,6 +21296,35 @@ def getOrganizationLicensesOverview(organizationId: str = None):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationLicensesOverview
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('renewOrganizationLicensesSeats')
+def renewOrganizationLicensesSeats(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.renewOrganizationLicensesSeats
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -12009,6 +21356,37 @@ def getOrganizationLicense(licenseId: str, organizationId: str = None):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationLicense
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateOrganizationLicense')
+def updateOrganizationLicense(licenseId: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if licenseId is not None:
+        final_kwargs['licenseId'] = licenseId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'licenseId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'licenseId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'licenseId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateOrganizationLicense
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -12053,6 +21431,35 @@ def getOrganizationLicensingCotermLicenses(organizationId: str = None, perPage: 
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('moveOrganizationLicensingCotermLicenses')
+def moveOrganizationLicensingCotermLicenses(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.moveOrganizationLicensingCotermLicenses
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getOrganizationLoginSecurity')
 def getOrganizationLoginSecurity(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -12077,6 +21484,35 @@ def getOrganizationLoginSecurity(organizationId: str = None):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationLoginSecurity
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateOrganizationLoginSecurity')
+def updateOrganizationLoginSecurity(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateOrganizationLoginSecurity
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -12122,6 +21558,64 @@ def getOrganizationNetworks(organizationId: str = None, configTemplateId: str = 
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationNetworks
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createOrganizationNetwork')
+def createOrganizationNetwork(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createOrganizationNetwork
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('combineOrganizationNetworks')
+def combineOrganizationNetworks(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.combineOrganizationNetworks
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -12193,6 +21687,35 @@ def getOrganizationPolicyObjects(organizationId: str = None, perPage: int = None
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createOrganizationPolicyObject')
+def createOrganizationPolicyObject(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createOrganizationPolicyObject
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getOrganizationPolicyObjectsGroups')
 def getOrganizationPolicyObjectsGroups(organizationId: str = None, perPage: int = None, startingAfter: str = None, endingBefore: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -12223,6 +21746,35 @@ def getOrganizationPolicyObjectsGroups(organizationId: str = None, perPage: int 
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationPolicyObjectsGroups
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createOrganizationPolicyObjectsGroup')
+def createOrganizationPolicyObjectsGroup(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createOrganizationPolicyObjectsGroup
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -12259,6 +21811,68 @@ def getOrganizationPolicyObjectsGroup(policyObjectGroupId: str, organizationId: 
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateOrganizationPolicyObjectsGroup')
+def updateOrganizationPolicyObjectsGroup(policyObjectGroupId: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if policyObjectGroupId is not None:
+        final_kwargs['policyObjectGroupId'] = policyObjectGroupId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'policyObjectGroupId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'policyObjectGroupId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'policyObjectGroupId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateOrganizationPolicyObjectsGroup
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteOrganizationPolicyObjectsGroup')
+def deleteOrganizationPolicyObjectsGroup(policyObjectGroupId: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if policyObjectGroupId is not None:
+        final_kwargs['policyObjectGroupId'] = policyObjectGroupId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'policyObjectGroupId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'policyObjectGroupId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'policyObjectGroupId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteOrganizationPolicyObjectsGroup
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getOrganizationPolicyObject')
 def getOrganizationPolicyObject(policyObjectId: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -12285,6 +21899,68 @@ def getOrganizationPolicyObject(policyObjectId: str, organizationId: str = None)
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationPolicyObject
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateOrganizationPolicyObject')
+def updateOrganizationPolicyObject(policyObjectId: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if policyObjectId is not None:
+        final_kwargs['policyObjectId'] = policyObjectId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'policyObjectId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'policyObjectId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'policyObjectId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateOrganizationPolicyObject
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteOrganizationPolicyObject')
+def deleteOrganizationPolicyObject(policyObjectId: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if policyObjectId is not None:
+        final_kwargs['policyObjectId'] = policyObjectId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'policyObjectId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'policyObjectId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'policyObjectId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteOrganizationPolicyObject
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -12319,6 +21995,35 @@ def getOrganizationSaml(organizationId: str = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateOrganizationSaml')
+def updateOrganizationSaml(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateOrganizationSaml
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getOrganizationSamlIdps')
 def getOrganizationSamlIdps(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -12343,6 +22048,66 @@ def getOrganizationSamlIdps(organizationId: str = None):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationSamlIdps
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createOrganizationSamlIdp')
+def createOrganizationSamlIdp(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createOrganizationSamlIdp
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateOrganizationSamlIdp')
+def updateOrganizationSamlIdp(idpId: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if idpId is not None:
+        final_kwargs['idpId'] = idpId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'idpId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'idpId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'idpId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateOrganizationSamlIdp
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -12379,6 +22144,37 @@ def getOrganizationSamlIdp(idpId: str, organizationId: str = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('deleteOrganizationSamlIdp')
+def deleteOrganizationSamlIdp(idpId: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if idpId is not None:
+        final_kwargs['idpId'] = idpId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'idpId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'idpId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'idpId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteOrganizationSamlIdp
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getOrganizationSamlRoles')
 def getOrganizationSamlRoles(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -12403,6 +22199,35 @@ def getOrganizationSamlRoles(organizationId: str = None):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationSamlRoles
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createOrganizationSamlRole')
+def createOrganizationSamlRole(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createOrganizationSamlRole
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -12434,6 +22259,68 @@ def getOrganizationSamlRole(samlRoleId: str, organizationId: str = None):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationSamlRole
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateOrganizationSamlRole')
+def updateOrganizationSamlRole(samlRoleId: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if samlRoleId is not None:
+        final_kwargs['samlRoleId'] = samlRoleId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'samlRoleId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'samlRoleId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'samlRoleId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateOrganizationSamlRole
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteOrganizationSamlRole')
+def deleteOrganizationSamlRole(samlRoleId: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if samlRoleId is not None:
+        final_kwargs['samlRoleId'] = samlRoleId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'samlRoleId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'samlRoleId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'samlRoleId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteOrganizationSamlRole
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -12562,6 +22449,35 @@ def getOrganizationSmAdminsRoles(organizationId: str = None, perPage: int = None
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createOrganizationSmAdminsRole')
+def createOrganizationSmAdminsRole(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createOrganizationSmAdminsRole
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getOrganizationSmAdminsRole')
 def getOrganizationSmAdminsRole(roleId: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -12593,6 +22509,68 @@ def getOrganizationSmAdminsRole(roleId: str, organizationId: str = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateOrganizationSmAdminsRole')
+def updateOrganizationSmAdminsRole(roleId: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if roleId is not None:
+        final_kwargs['roleId'] = roleId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'roleId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'roleId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'roleId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateOrganizationSmAdminsRole
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteOrganizationSmAdminsRole')
+def deleteOrganizationSmAdminsRole(roleId: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if roleId is not None:
+        final_kwargs['roleId'] = roleId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'roleId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'roleId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'roleId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteOrganizationSmAdminsRole
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getOrganizationSmApnsCert')
 def getOrganizationSmApnsCert(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -12617,6 +22595,35 @@ def getOrganizationSmApnsCert(organizationId: str = None):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationSmApnsCert
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateOrganizationSmSentryPoliciesAssignments')
+def updateOrganizationSmSentryPoliciesAssignments(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateOrganizationSmSentryPoliciesAssignments
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -12748,6 +22755,35 @@ def getOrganizationSnmp(organizationId: str = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateOrganizationSnmp')
+def updateOrganizationSnmp(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateOrganizationSnmp
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getOrganizationSplashAsset')
 def getOrganizationSplashAsset(id: str, organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -12779,6 +22815,37 @@ def getOrganizationSplashAsset(id: str, organizationId: str = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('deleteOrganizationSplashAsset')
+def deleteOrganizationSplashAsset(id: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'id'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'id'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'id'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteOrganizationSplashAsset
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getOrganizationSplashThemes')
 def getOrganizationSplashThemes(organizationId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -12803,6 +22870,97 @@ def getOrganizationSplashThemes(organizationId: str = None):
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationSplashThemes
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createOrganizationSplashTheme')
+def createOrganizationSplashTheme(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createOrganizationSplashTheme
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteOrganizationSplashTheme')
+def deleteOrganizationSplashTheme(id: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'id'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'id'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'id'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteOrganizationSplashTheme
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createOrganizationSplashThemeAsset')
+def createOrganizationSplashThemeAsset(themeIdentifier: str, organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+    if themeIdentifier is not None:
+        final_kwargs['themeIdentifier'] = themeIdentifier
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId', 'themeIdentifier'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId', 'themeIdentifier'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId', 'themeIdentifier'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createOrganizationSplashThemeAsset
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -13292,6 +23450,35 @@ def getOrganizationSummaryTopSwitchesByEnergyUsage(organizationId: str = None, n
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationSummaryTopSwitchesByEnergyUsage
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('cloneOrganizationSwitchDevices')
+def cloneOrganizationSwitchDevices(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.cloneOrganizationSwitchDevices
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -14213,6 +24400,35 @@ def getOrganizationWirelessDevicesWirelessControllersByDevice(organizationId: st
     client = MerakiClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getOrganizationWirelessDevicesWirelessControllersByDevice
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('recalculateOrganizationWirelessRadioAutoRfChannels')
+def recalculateOrganizationWirelessRadioAutoRfChannels(organizationId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if organizationId is not None:
+        final_kwargs['organizationId'] = organizationId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    # ── auto-inject MERAKI_ORG_ID ─────────────────
+    env_val = os.getenv('MERAKI_ORG_ID')
+    if env_val:
+        if 'organizationId' in ['organizationId'] and 'organizationId' not in final_kwargs:
+            final_kwargs['organizationId'] = f"""{env_val}"""
+        if 'organization_id' in ['organizationId'] and 'organization_id' not in final_kwargs:
+            final_kwargs['organization_id'] = f"""{env_val}"""
+        if 'org_id' in ['organizationId'] and 'org_id' not in final_kwargs:
+            final_kwargs['org_id'] = f"""{env_val}"""
+
+    client = MerakiClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.recalculateOrganizationWirelessRadioAutoRfChannels
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)

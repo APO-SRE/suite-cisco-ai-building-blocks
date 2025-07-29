@@ -2,226 +2,173 @@
   "meraki": {
     "openapi_name": "meraki-dashboard-openapi-3.0.1",
     "sdk_module": "meraki",
-    "sdk_pattern": "meraki",
-    "sdk_class": "DashboardAPI",
+    "sdk_pattern": "",
+    "sdk_class": "Client",
     "created_by_us": false,
     "installed": true,
     "route": true,
     "auth_config": {
       "type": "api_key",
-      "env_vars": {
-        "api_key": "MERAKI_DASHBOARD_API_KEY"
-      },
+      "env_vars": {},
       "init_params": {
-        "required": [
-          "api_key"
-        ],
-        "optional": [
-          "base_url",
-          "timeout"
-        ]
+        "required": [],
+        "optional": []
       }
     },
     "sub_clients": false,
-    "example_init": "client = DashboardAPI(api_key='YOUR_API_KEY')"
+    "example_init": ""
   },
   "catalyst": {
     "openapi_name": "cisco-catalyst-center-intent-api-openai-3.0.1",
     "sdk_module": "dnacentersdk",
-    "sdk_pattern": "catalyst",
-    "sdk_class": "DNACenterAPI",
+    "sdk_pattern": "",
+    "sdk_class": "Client",
+    "created_by_us": false,
+    "installed": true,
+    "route": true,
+    "auth_config": {
+      "type": "api_key",
+      "env_vars": {},
+      "init_params": {
+        "required": [],
+        "optional": []
+      }
+    },
+    "sub_clients": false,
+    "example_init": ""
+  },
+  "intersight": {
+    "openapi_name": "intersight-openapi-v3-1.0.11-20250410042505149",
+    "sdk_module": "intersight",
+    "sdk_pattern": "",
+    "sdk_class": "Client",
+    "created_by_us": false,
+    "installed": true,
+    "route": true,
+    "auth_config": {
+      "type": "api_key",
+      "env_vars": {},
+      "init_params": {
+        "required": [],
+        "optional": []
+      }
+    },
+    "sub_clients": false,
+    "example_init": ""
+  },
+  "nexus_dashboard": {
+    "openapi_name": "nexus-dashboard-321",
+    "sdk_module": "nexus_dashboard_client",
+    "sdk_pattern": "",
+    "sdk_class": "Client",
+    "created_by_us": true,
+    "installed": true,
+    "route": false,
+    "auth_config": {
+      "type": "api_key",
+      "env_vars": {},
+      "init_params": {
+        "required": [],
+        "optional": []
+      }
+    },
+    "sub_clients": false,
+    "example_init": ""
+  },
+  "secure_access": {
+    "openapi_name": "cisco_secure_access_token_authorization_api_2_0_0",
+    "sdk_module": "cisco_secure_access_token_authorization_api_client",
+    "sdk_pattern": "",
+    "sdk_class": "Client",
+    "created_by_us": true,
+    "installed": true,
+    "route": false,
+    "auth_config": {
+      "type": "api_key",
+      "env_vars": {},
+      "init_params": {
+        "required": [],
+        "optional": []
+      }
+    },
+    "sub_clients": false,
+    "example_init": ""
+  },
+  "umbrella": {
+    "openapi_name": "cisco_umbrella_token_authorization_api_2_0_0",
+    "sdk_module": "cisco_umbrella_token_authorization_api_client",
+    "sdk_pattern": "",
+    "sdk_class": "Client",
+    "created_by_us": true,
+    "installed": true,
+    "route": false,
+    "auth_config": {
+      "type": "api_key",
+      "env_vars": {},
+      "init_params": {
+        "required": [],
+        "optional": []
+      }
+    },
+    "sub_clients": false,
+    "example_init": ""
+  },
+  "cloudlock": {
+    "openapi_name": "cisco_cloudlock_api_1_0_0",
+    "sdk_module": "cisco_cloudlock_api_client",
+    "sdk_pattern": "",
+    "sdk_class": "Client",
+    "created_by_us": true,
+    "installed": true,
+    "route": false,
+    "auth_config": {
+      "type": "api_key",
+      "env_vars": {},
+      "init_params": {
+        "required": [],
+        "optional": []
+      }
+    },
+    "sub_clients": false,
+    "example_init": ""
+  },
+  "sdwan_mngr": {
+    "openapi_name": "cisco_catalyst_sd_wan_manager_api_2_0_0",
+    "sdk_module": "catalystwan.session",
+    "sdk_pattern": "sdwan",
+    "sdk_class": "ManagerSession",
     "created_by_us": false,
     "installed": true,
     "route": true,
     "auth_config": {
       "type": "basic_auth",
       "env_vars": {
-        "username": "DNACENTER_USERNAME",
-        "password": "DNACENTER_PASSWORD",
-        "base_url": "DNACENTER_BASE_URL"
+        "username": "CISCO_SD_WAN_USERNAME",
+        "password": "CISCO_SD_WAN_PASSWORD",
+        "base_url": "CISCO_SD_WAN_BASE_URL"
       },
       "init_params": {
         "required": [
-          "username",
-          "password",
-          "base_url"
-        ],
-        "optional": [
-          "version",
-          "verify",
-          "timeout"
-        ]
-      }
-    },
-    "sub_clients": true,
-    "example_init": "client = DNACenterAPI(username='user', password='pass', base_url='https://dnac.example.com')"
-  },
-  "intersight": {
-    "openapi_name": "intersight-openapi-v3-1.0.11-20250410042505149",
-    "sdk_module": "intersight",
-    "sdk_pattern": "intersight",
-    "sdk_class": "ApiClient",
-    "created_by_us": false,
-    "installed": true,
-    "route": true,
-    "auth_config": {
-      "type": "api_key_secret",
-      "env_vars": {
-        "api_key_id": "INTERSIGHT_API_KEY_ID",
-        "api_secret": "INTERSIGHT_API_SECRET"
-      },
-      "init_params": {
-        "required": [
-          "api_key_id",
-          "api_secret"
-        ],
-        "optional": [
-          "host",
-          "verify_ssl"
-        ]
-      }
-    },
-    "sub_clients": true,
-    "example_init": "client = ApiClient(api_key_id='KEY_ID', api_secret='SECRET')"
-  },
-  "nexus_dashboard": {
-    "openapi_name": "nexus-dashboard-321",
-    "sdk_module": "nd_sdk",
-    "sdk_pattern": "nexus_dashboard",
-    "sdk_class": "NDClient",
-    "created_by_us": false,
-    "installed": false,
-    "route": false,
-    "auth_config": {
-      "type": "session_based",
-      "env_vars": {
-        "host": "NEXUS_DASHBOARD_HOST",
-        "username": "NEXUS_DASHBOARD_USERNAME",
-        "password": "NEXUS_DASHBOARD_PASSWORD"
-      },
-      "init_params": {
-        "required": [
-          "host",
+          "url",
           "username",
           "password"
         ],
         "optional": [
           "port",
-          "verify_ssl",
-          "timeout"
-        ]
-      }
-    },
-    "sub_clients": true,
-    "example_init": "client = NDClient(host='nd.example.com', username='admin', password='pass')"
-  },
-  "secure_access": {
-    "openapi_name": "cisco_secure_access_token_authorization_api_2_0_0",
-    "sdk_module": "duo_client",
-    "sdk_pattern": "secure_access",
-    "sdk_class": "DuoAPI",
-    "created_by_us": false,
-    "installed": false,
-    "route": false,
-    "auth_config": {
-      "type": "duo_auth",
-      "env_vars": {
-        "ikey": "SECURE_ACCESS_IKEY",
-        "skey": "SECURE_ACCESS_SKEY",
-        "host": "SECURE_ACCESS_HOST"
-      },
-      "init_params": {
-        "required": [
-          "ikey",
-          "skey",
-          "host"
-        ],
-        "optional": [
-          "ca_certs",
-          "timeout",
-          "http_proxy"
+          "subdomain"
         ]
       }
     },
     "sub_clients": false,
-    "api_structure": "rest_based",
-    "example_init": "client = DuoAPI(ikey='INTEGRATION_KEY', skey='SECRET_KEY', host='api-xxxx.duosecurity.com')"
-  },
-  "umbrella": {
-    "openapi_name": "cisco_umbrella_token_authorization_api_2_0_0",
-    "sdk_module": "umbrella_sdk",
-    "sdk_pattern": "umbrella",
-    "sdk_class": "UmbrellaAPI",
-    "created_by_us": false,
-    "installed": false,
-    "route": false,
-    "auth_config": {
-      "type": "api_key_secret",
-      "env_vars": {
-        "key": "UMBRELLA_API_KEY",
-        "secret": "UMBRELLA_API_SECRET"
-      },
-      "init_params": {
-        "required": [
-          "key",
-          "secret"
-        ],
-        "optional": [
-          "base_url",
-          "org_id",
-          "timeout"
-        ]
-      }
-    },
-    "sub_clients": true,
-    "api_types": [
-      "reporting",
-      "management",
-      "enforcement"
-    ],
-    "example_init": "client = UmbrellaAPI(key='YOUR_KEY', secret='YOUR_SECRET')"
-  },
-  "cloudlock": {
-    "openapi_name": "cisco_cloudlock_api_1_0_0",
-    "sdk_module": "cloudlock_sdk",
-    "sdk_pattern": "cloudlock",
-    "sdk_class": "CloudlockAPI",
-    "created_by_us": false,
-    "installed": false,
-    "route": false,
-    "auth_config": {
-      "type": "bearer_token",
-      "env_vars": {
-        "api_token": "CLOUDLOCK_API_TOKEN"
-      },
-      "init_params": {
-        "required": [
-          "api_token"
-        ],
-        "optional": [
-          "base_url",
-          "timeout",
-          "verify_ssl"
-        ]
-      }
-    },
-    "sub_clients": true,
-    "example_init": "client = CloudlockAPI(api_token='YOUR_TOKEN')"
-  },
-  "sdwan_mngr": {
-    "openapi_name": "cisco_catalyst_sd_wan_manager_api_2_0_0",
-    "sdk_module": "catalystwan.session",
-    "created_by_us": false,
-    "installed": true,
-    "route": true
+    "example_init": "session = create_manager_session(url='https://vmanage.example.com', username='admin', password='pass')"
   },
   "ai_defense": {
     "openapi_name": "ai_defense_ap_is_1_0_0_2025_02_28",
-    "sdk_module": "cisco_ai_defense",
+    "sdk_module": "ai_defense_ap_is_client",
     "sdk_pattern": "ai_defense",
-    "sdk_class": "AIDefenseClient",
-    "created_by_us": false,
-    "installed": false,
+    "sdk_class": "Client",
+    "created_by_us": true,
+    "installed": true,
     "route": false,
     "auth_config": {
       "type": "api_key",
@@ -242,39 +189,30 @@
       }
     },
     "sub_clients": false,
+    "example_init": "client = Client(base_url='https://us.api.inspect.aidefense.security.cisco.com', headers={'X-Cisco-AI-Defense-API-Key': 'YOUR_KEY'})",
     "regions": [
       "us",
       "eu",
       "apac"
-    ],
-    "example_init": "client = AIDefenseClient(api_key='YOUR_KEY', region='us')"
+    ]
   },
   "nexus_hyperfabric": {
     "openapi_name": "cisco_nexus_hyperfabric_rest_api_1_0_6_rev_2025_03_11_13103",
     "sdk_module": "cisco_nexus_hyperfabric_rest_api_client",
-    "sdk_pattern": "nexus_hyperfabric",
-    "sdk_class": "HyperfabricClient",
+    "sdk_pattern": "",
+    "sdk_class": "Client",
     "created_by_us": true,
     "installed": true,
     "route": true,
     "auth_config": {
       "type": "api_key",
-      "env_vars": {
-        "api_key": "NEXUS_HYPERFABRIC_API_KEY",
-        "host": "NEXUS_HYPERFABRIC_HOST"
-      },
+      "env_vars": {},
       "init_params": {
-        "required": [
-          "api_key",
-          "host"
-        ],
-        "optional": [
-          "timeout",
-          "verify_ssl"
-        ]
+        "required": [],
+        "optional": []
       }
     },
     "sub_clients": false,
-    "example_init": "client = HyperfabricClient(api_key='YOUR_KEY', host='hyperfabric.example.com')"
+    "example_init": ""
   }
 }

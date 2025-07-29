@@ -4,6 +4,27 @@ from typing import Any
 from app.llm.function_dispatcher import register
 from app.llm.platform_clients.catalyst_client import CatalystClient
 
+@register('assignNetworkDeviceProductNameToTheGivenSoftwareImage')
+def assignNetworkDeviceProductNameToTheGivenSoftwareImage(Content_Type: str, imageId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if imageId is not None:
+        final_kwargs['imageId'] = imageId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.assignNetworkDeviceProductNameToTheGivenSoftwareImage
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('retrievesNetworkDeviceProductNamesAssignedToASoftwareImage.')
 def retrievesNetworkDeviceProductNamesAssignedToASoftwareImage_(imageId: str, productName: str = None, productId: str = None, recommended: str = None, assigned: str = None, offset: float = None, limit: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -49,6 +70,44 @@ def getsAllTheVersionsOfAGivenTemplate(templateId: str):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getsAllTheVersionsOfAGivenTemplate
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('configureAccessPointsV1')
+def configureAccessPointsV1(Content_Type: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.configureAccessPointsV1
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deployTemplateV2')
+def deployTemplateV2(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deployTemplateV2
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -100,6 +159,65 @@ def getMulticastVirtualNetworks(fabricId: str = None, virtualNetworkName: str = 
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('addMulticastVirtualNetworks')
+def addMulticastVirtualNetworks(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addMulticastVirtualNetworks
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateMulticastVirtualNetworks')
+def updateMulticastVirtualNetworks(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateMulticastVirtualNetworks
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('theTrendAnalyticsDataForTheNetworkDeviceInTheSpecifiedTimeRange')
+def theTrendAnalyticsDataForTheNetworkDeviceInTheSpecifiedTimeRange(Content_Type: str, id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.theTrendAnalyticsDataForTheNetworkDeviceInTheSpecifiedTimeRange
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getDeviceControllabilitySettings')
 def getDeviceControllabilitySettings():
     """Auto-generated wrapper for clarity and maintainability."""
@@ -112,6 +230,25 @@ def getDeviceControllabilitySettings():
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getDeviceControllabilitySettings
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateDeviceControllabilitySettings')
+def updateDeviceControllabilitySettings(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateDeviceControllabilitySettings
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -136,6 +273,46 @@ def getChassisDetailsForDevice(deviceId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updatesABuilding')
+def updatesABuilding(Content_Type: str, id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updatesABuilding
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deletesABuilding')
+def deletesABuilding(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deletesABuilding
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getsABuilding')
 def getsABuilding(id: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -150,6 +327,25 @@ def getsABuilding(id: str):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getsABuilding
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('unassignNetworkDevicesFromSites')
+def unassignNetworkDevicesFromSites(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.unassignNetworkDevicesFromSites
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -191,6 +387,27 @@ def getViewsForAGivenViewGroup(viewGroupId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateDevice')
+def updateDevice(Content_Type: str, id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateDevice
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getDeviceById')
 def getDeviceById(id: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -205,6 +422,70 @@ def getDeviceById(id: str):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getDeviceById
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteDeviceByIdFromPnP')
+def deleteDeviceByIdFromPnP(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteDeviceByIdFromPnP
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('add_UpdateOrRemoveSSIDMappingToAVLAN')
+def add_UpdateOrRemoveSSIDMappingToAVLAN(Content_Type: str, fabricId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if fabricId is not None:
+        final_kwargs['fabricId'] = fabricId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.add_UpdateOrRemoveSSIDMappingToAVLAN
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+# alias → easier for LLM
+register('UpdateOrRemoveSSIDMappingToAVLAN')(globals()['add_UpdateOrRemoveSSIDMappingToAVLAN'])
+
+@register('UpdateOrRemoveSSIDMappingToAVLAN')
+def UpdateOrRemoveSSIDMappingToAVLAN(Content_Type: str, fabricId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if fabricId is not None:
+        final_kwargs['fabricId'] = fabricId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.UpdateOrRemoveSSIDMappingToAVLAN
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -235,6 +516,25 @@ def retrieveTheVLANsAndSSIDsMappedToTheVLANWithinAFabricSite_(Content_Type: str,
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('addImageDistributionServer')
+def addImageDistributionServer(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addImageDistributionServer
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('retrieveImageDistributionServers')
 def retrieveImageDistributionServers():
     """Auto-generated wrapper for clarity and maintainability."""
@@ -247,6 +547,25 @@ def retrieveImageDistributionServers():
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.retrieveImageDistributionServers
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteApplicationPolicyQueuingProfile')
+def deleteApplicationPolicyQueuingProfile(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteApplicationPolicyQueuingProfile
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -292,6 +611,65 @@ def statusOfTemplateDeployment(deploymentId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('un-ClaimDevice')
+def un_ClaimDevice(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.un_ClaimDevice
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createITSMIntegrationSetting')
+def createITSMIntegrationSetting():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createITSMIntegrationSetting
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('issueTriggerDefinitionUpdate.')
+def issueTriggerDefinitionUpdate_(Content_Type: str, id: str, X_CALLER_ID: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.issueTriggerDefinitionUpdate_
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getIssueTriggerDefinitionForGivenId.')
 def getIssueTriggerDefinitionForGivenId_(id: str, X_CALLER_ID: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -308,6 +686,46 @@ def getIssueTriggerDefinitionForGivenId_(id: str, X_CALLER_ID: str = None):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getIssueTriggerDefinitionForGivenId_
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('getsTheTrendAnalyticsData.')
+def getsTheTrendAnalyticsData_(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.getsTheTrendAnalyticsData_
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('setBannerSettingsForASite')
+def setBannerSettingsForASite(Content_Type: str, id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.setBannerSettingsForASite
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -352,6 +770,44 @@ def getSiteAssignedNetworkDevices(siteId: str, offset: float = None, limit: floa
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getSiteAssignedNetworkDevices
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createSNMPDestination')
+def createSNMPDestination(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createSNMPDestination
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateSNMPDestination')
+def updateSNMPDestination(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateSNMPDestination
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -429,6 +885,46 @@ def getSoftwareImageDetails(imageUuid: str = None, name: str = None, family: str
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateInterface')
+def updateInterface(Content_Type: str, id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateInterface
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteInterface')
+def deleteInterface(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteInterface
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getInterfaceByID')
 def getInterfaceByID(id: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -443,6 +939,25 @@ def getInterfaceByID(id: str):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getInterfaceByID
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateAnycastGateways')
+def updateAnycastGateways(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateAnycastGateways
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -476,6 +991,25 @@ def getAnycastGateways(id: str = None, fabricId: str = None, virtualNetworkName:
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getAnycastGateways
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('addAnycastGateways')
+def addAnycastGateways(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addAnycastGateways
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -529,6 +1063,49 @@ def s(attributes: str, offset: float, limit: float, name: str = None):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.s
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createApplicationSet_s')
+def createApplicationSet_s(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createApplicationSet_s
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+# alias → easier for LLM
+register('s')(globals()['createApplicationSet_s'])
+
+@register('addMembersToTheTag')
+def addMembersToTheTag(Content_Type: str, id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addMembersToTheTag
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -622,6 +1199,27 @@ def retrievesTheListOfSitesThatTheGivenNetworkProfileForSitesIsAssig(profileId: 
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('assignANetworkProfileForSitesToTheGivenSite')
+def assignANetworkProfileForSitesToTheGivenSite(Content_Type: str, profileId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if profileId is not None:
+        final_kwargs['profileId'] = profileId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.assignANetworkProfileForSitesToTheGivenSite
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getFabricDevicesLayer2HandoffsCount')
 def getFabricDevicesLayer2HandoffsCount(fabricId: str, networkDeviceId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -643,6 +1241,25 @@ def getFabricDevicesLayer2HandoffsCount(fabricId: str, networkDeviceId: str = No
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('aPProvision')
+def aPProvision(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.aPProvision
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('countOfEventSubscriptions')
 def countOfEventSubscriptions(eventIds: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -657,6 +1274,27 @@ def countOfEventSubscriptions(eventIds: str):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.countOfEventSubscriptions
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createSSID')
+def createSSID(Content_Type: str, siteId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createSSID
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -704,6 +1342,44 @@ def getITSMIntegrationSettingById(instanceId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateITSMIntegrationSetting')
+def updateITSMIntegrationSetting(instanceId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if instanceId is not None:
+        final_kwargs['instanceId'] = instanceId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateITSMIntegrationSetting
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteITSMIntegrationSetting')
+def deleteITSMIntegrationSetting(instanceId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if instanceId is not None:
+        final_kwargs['instanceId'] = instanceId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteITSMIntegrationSetting
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getDetailsOfASingleAssuranceEvent')
 def getDetailsOfASingleAssuranceEvent(id: str, X_CALLER_ID: str = None, attribute: str = None, view: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -724,6 +1400,58 @@ def getDetailsOfASingleAssuranceEvent(id: str, X_CALLER_ID: str = None, attribut
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getDetailsOfASingleAssuranceEvent
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('importLocalSoftwareImage')
+def importLocalSoftwareImage(Content_Type: str, isThirdParty: bool = None, thirdPartyVendor: str = None, thirdPartyImageFamily: str = None, thirdPartyApplicationType: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if isThirdParty is not None:
+        final_kwargs['isThirdParty'] = isThirdParty
+    if thirdPartyVendor is not None:
+        final_kwargs['thirdPartyVendor'] = thirdPartyVendor
+    if thirdPartyImageFamily is not None:
+        final_kwargs['thirdPartyImageFamily'] = thirdPartyImageFamily
+    if thirdPartyApplicationType is not None:
+        final_kwargs['thirdPartyApplicationType'] = thirdPartyApplicationType
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.importLocalSoftwareImage
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createsACloneOfTheGivenTemplate')
+def createsACloneOfTheGivenTemplate(Content_Type: str, name: str, templateId: str, projectId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if name is not None:
+        final_kwargs['name'] = name
+    if templateId is not None:
+        final_kwargs['templateId'] = templateId
+    if projectId is not None:
+        final_kwargs['projectId'] = projectId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createsACloneOfTheGivenTemplate
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -750,6 +1478,25 @@ def getRFProfiles(limit: float = None, offset: float = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createRFProfile')
+def createRFProfile(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createRFProfile
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('retrieveTelemetrySettingsForASite')
 def retrieveTelemetrySettingsForASite(id: str, _inherited: bool = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -771,6 +1518,27 @@ def retrieveTelemetrySettingsForASite(id: str, _inherited: bool = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('setTelemetrySettingsForASite')
+def setTelemetrySettingsForASite(Content_Type: str, id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.setTelemetrySettingsForASite
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getAllUser-Defined-Fields')
 def getAllUser_Defined_Fields(id: str = None, name: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -787,6 +1555,23 @@ def getAllUser_Defined_Fields(id: str = None, name: str = None):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getAllUser_Defined_Fields
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createUser-Defined-Field')
+def createUser_Defined_Field():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createUser_Defined_Field
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -840,6 +1625,23 @@ def queryAssuranceEvents(deviceFamily: str, X_CALLER_ID: str = None, startTime: 
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.queryAssuranceEvents
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updatesFloorSettings')
+def updatesFloorSettings():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updatesFloorSettings
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -937,6 +1739,44 @@ def getTheTotalNumberOfIssuesForGivenSetOfFilters(X_CALLER_ID: str = None, start
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createTag')
+def createTag(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createTag
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateTag')
+def updateTag(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateTag
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getTag')
 def getTag(name: str = None, additionalInfo_nameSpace: str = None, additionalInfo_attributes: str = None, level: str = None, offset: float = None, limit: float = None, size: str = None, field: str = None, sortBy: str = None, order: str = None, systemTag: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -976,6 +1816,65 @@ def getTag(name: str = None, additionalInfo_nameSpace: str = None, additionalInf
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('lANAutomationStopAndUpdateDevices')
+def lANAutomationStopAndUpdateDevices(Content_Type: str, id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.lANAutomationStopAndUpdateDevices
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('lANAutomationStop')
+def lANAutomationStop(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.lANAutomationStop
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateLayer2VirtualNetworks')
+def updateLayer2VirtualNetworks(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateLayer2VirtualNetworks
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getLayer2VirtualNetworks')
 def getLayer2VirtualNetworks(id: str = None, fabricId: str = None, vlanName: str = None, vlanId: float = None, trafficType: str = None, associatedLayer3VirtualNetworkName: str = None, offset: float = None, limit: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -1009,6 +1908,52 @@ def getLayer2VirtualNetworks(id: str = None, fabricId: str = None, vlanName: str
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('deleteLayer2VirtualNetworks')
+def deleteLayer2VirtualNetworks(fabricId: str, vlanName: str = None, vlanId: float = None, trafficType: str = None, associatedLayer3VirtualNetworkName: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if fabricId is not None:
+        final_kwargs['fabricId'] = fabricId
+    if vlanName is not None:
+        final_kwargs['vlanName'] = vlanName
+    if vlanId is not None:
+        final_kwargs['vlanId'] = vlanId
+    if trafficType is not None:
+        final_kwargs['trafficType'] = trafficType
+    if associatedLayer3VirtualNetworkName is not None:
+        final_kwargs['associatedLayer3VirtualNetworkName'] = associatedLayer3VirtualNetworkName
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteLayer2VirtualNetworks
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('addLayer2VirtualNetworks')
+def addLayer2VirtualNetworks(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addLayer2VirtualNetworks
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getFabricZoneCount')
 def getFabricZoneCount():
     """Auto-generated wrapper for clarity and maintainability."""
@@ -1021,6 +1966,25 @@ def getFabricZoneCount():
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getFabricZoneCount
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateWebhookDestination')
+def updateWebhookDestination(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateWebhookDestination
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -1053,6 +2017,46 @@ def getWebhookDestination(webhookIds: str = None, offset: float = None, limit: f
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createWebhookDestination')
+def createWebhookDestination(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createWebhookDestination
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('setTimeZoneForASite')
+def setTimeZoneForASite(Content_Type: str, id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.setTimeZoneForASite
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('retrieveTimeZoneSettingsForASite')
 def retrieveTimeZoneSettingsForASite(id: str, _inherited: bool = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -1069,6 +2073,27 @@ def retrieveTimeZoneSettingsForASite(id: str, _inherited: bool = None):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.retrieveTimeZoneSettingsForASite
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteDeviceById')
+def deleteDeviceById(id: str, cleanConfig: bool = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if cleanConfig is not None:
+        final_kwargs['cleanConfig'] = cleanConfig
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteDeviceById
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -1112,6 +2137,63 @@ def getApplicationPolicyQueuingProfile(name: str = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createApplicationPolicyQueuingProfile')
+def createApplicationPolicyQueuingProfile(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createApplicationPolicyQueuingProfile
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateApplicationPolicyQueuingProfile')
+def updateApplicationPolicyQueuingProfile(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateApplicationPolicyQueuingProfile
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createSyslogDestination')
+def createSyslogDestination(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createSyslogDestination
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getSyslogDestination')
 def getSyslogDestination(configId: str = None, name: str = None, protocol: str = None, offset: float = None, limit: float = None, sortBy: str = None, order: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -1143,6 +2225,25 @@ def getSyslogDestination(configId: str = None, name: str = None, protocol: str =
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateSyslogDestination')
+def updateSyslogDestination(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateSyslogDestination
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getAll802.11beProfiles')
 def getAll802_11beProfiles(limit: float = None, offset: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -1164,6 +2265,25 @@ def getAll802_11beProfiles(limit: float = None, offset: float = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createA802.11beProfile')
+def createA802_11beProfile(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createA802_11beProfile
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getSyncResultForVirtualAccount')
 def getSyncResultForVirtualAccount(domain: str, name: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -1180,6 +2300,44 @@ def getSyncResultForVirtualAccount(domain: str, name: str):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getSyncResultForVirtualAccount
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('addVirtualAccount')
+def addVirtualAccount(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addVirtualAccount
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updatePnPServerProfile')
+def updatePnPServerProfile(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updatePnPServerProfile
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -1223,6 +2381,103 @@ def getAllTheCustomIssueDefinitionsBasedOnTheGivenFilters_(X_CALLER_ID: str = No
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getAllTheCustomIssueDefinitionsBasedOnTheGivenFilters_
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createsANewUser-definedIssueDefinitions.')
+def createsANewUser_definedIssueDefinitions_(Content_Type: str, X_CALLER_ID: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createsANewUser_definedIssueDefinitions_
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deployTemplate')
+def deployTemplate(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deployTemplate
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteAuthenticationAndPolicyServerAccessConfiguration')
+def deleteAuthenticationAndPolicyServerAccessConfiguration(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteAuthenticationAndPolicyServerAccessConfiguration
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('editAuthenticationAndPolicyServerAccessConfiguration')
+def editAuthenticationAndPolicyServerAccessConfiguration(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.editAuthenticationAndPolicyServerAccessConfiguration
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteMulticastVirtualNetworkById')
+def deleteMulticastVirtualNetworkById(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteMulticastVirtualNetworkById
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -1287,6 +2542,27 @@ def getModuleInfoById(id: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateHealthScoreDefinitions.')
+def updateHealthScoreDefinitions_(Content_Type: str, X_CALLER_ID: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateHealthScoreDefinitions_
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getFabricDevicesLayer3HandoffsWithSdaTransit')
 def getFabricDevicesLayer3HandoffsWithSdaTransit(fabricId: str, networkDeviceId: str = None, offset: float = None, limit: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -1312,6 +2588,105 @@ def getFabricDevicesLayer3HandoffsWithSdaTransit(fabricId: str, networkDeviceId:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('addFabricDevicesLayer3HandoffsWithSdaTransit')
+def addFabricDevicesLayer3HandoffsWithSdaTransit(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addFabricDevicesLayer3HandoffsWithSdaTransit
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteFabricDeviceLayer3HandoffsWithSdaTransit')
+def deleteFabricDeviceLayer3HandoffsWithSdaTransit(fabricId: str, networkDeviceId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if fabricId is not None:
+        final_kwargs['fabricId'] = fabricId
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteFabricDeviceLayer3HandoffsWithSdaTransit
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateFabricDevicesLayer3HandoffsWithSdaTransit')
+def updateFabricDevicesLayer3HandoffsWithSdaTransit(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateFabricDevicesLayer3HandoffsWithSdaTransit
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('addFabricDevicesLayer3HandoffsWithIpTransit')
+def addFabricDevicesLayer3HandoffsWithIpTransit(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addFabricDevicesLayer3HandoffsWithIpTransit
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteFabricDeviceLayer3HandoffsWithIpTransit')
+def deleteFabricDeviceLayer3HandoffsWithIpTransit(fabricId: str, networkDeviceId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if fabricId is not None:
+        final_kwargs['fabricId'] = fabricId
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteFabricDeviceLayer3HandoffsWithIpTransit
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getFabricDevicesLayer3HandoffsWithIpTransit')
 def getFabricDevicesLayer3HandoffsWithIpTransit(fabricId: str, networkDeviceId: str = None, offset: float = None, limit: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -1332,6 +2707,25 @@ def getFabricDevicesLayer3HandoffsWithIpTransit(fabricId: str, networkDeviceId: 
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getFabricDevicesLayer3HandoffsWithIpTransit
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateFabricDevicesLayer3HandoffsWithIpTransit')
+def updateFabricDevicesLayer3HandoffsWithIpTransit(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateFabricDevicesLayer3HandoffsWithIpTransit
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -1392,6 +2786,88 @@ def countOfNotifications(eventIds: str = None, startTime: float = None, endTime:
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.countOfNotifications
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateTheListOfSitesForTheNetworkDeviceProductNameAssignedToTheS')
+def updateTheListOfSitesForTheNetworkDeviceProductNameAssignedToTheS(Content_Type: str, imageId: str, productNameOrdinal: float):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if imageId is not None:
+        final_kwargs['imageId'] = imageId
+    if productNameOrdinal is not None:
+        final_kwargs['productNameOrdinal'] = productNameOrdinal
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateTheListOfSitesForTheNetworkDeviceProductNameAssignedToTheS
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('unassignNetworkDeviceProductNameFromTheGivenSoftwareImage')
+def unassignNetworkDeviceProductNameFromTheGivenSoftwareImage(imageId: str, productNameOrdinal: float):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if imageId is not None:
+        final_kwargs['imageId'] = imageId
+    if productNameOrdinal is not None:
+        final_kwargs['productNameOrdinal'] = productNameOrdinal
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.unassignNetworkDeviceProductNameFromTheGivenSoftwareImage
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('assignDeviceCredentialToSiteV2')
+def assignDeviceCredentialToSiteV2(siteId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.assignDeviceCredentialToSiteV2
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteAScheduledReport')
+def deleteAScheduledReport(reportId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if reportId is not None:
+        final_kwargs['reportId'] = reportId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteAScheduledReport
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -1508,6 +2984,155 @@ def retrievesTheListOfValidationWorkflows(startTime: float = None, endTime: floa
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('submitsTheWorkflowForExecutingValidations')
+def submitsTheWorkflowForExecutingValidations(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.submitsTheWorkflowForExecutingValidations
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('clearMac-AddressTable')
+def clearMac_AddressTable(interfaceUuid: str, Content_Type: str = None, deploymentMode: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if interfaceUuid is not None:
+        final_kwargs['interfaceUuid'] = interfaceUuid
+    if deploymentMode is not None:
+        final_kwargs['deploymentMode'] = deploymentMode
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.clearMac_AddressTable
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('getsTheTotalNumberNetworkDevicesBasedOnTheProvidedComplexFilters')
+def getsTheTotalNumberNetworkDevicesBasedOnTheProvidedComplexFilters(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.getsTheTotalNumberNetworkDevicesBasedOnTheProvidedComplexFilters
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('lANAutomationDeviceUpdate')
+def lANAutomationDeviceUpdate(Content_Type: str, feature: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if feature is not None:
+        final_kwargs['feature'] = feature
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.lANAutomationDeviceUpdate
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateSNMPWriteCommunity')
+def updateSNMPWriteCommunity(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateSNMPWriteCommunity
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createSNMPWriteCommunity')
+def createSNMPWriteCommunity(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createSNMPWriteCommunity
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('queryAnAggregatedSummaryOfSiteHealthData.')
+def queryAnAggregatedSummaryOfSiteHealthData_(Content_Type: str, X_CALLER_ID: str = None, siteHierarchy: str = None, siteHierarchyId: str = None, siteType: str = None, id: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+    if siteHierarchy is not None:
+        final_kwargs['siteHierarchy'] = siteHierarchy
+    if siteHierarchyId is not None:
+        final_kwargs['siteHierarchyId'] = siteHierarchyId
+    if siteType is not None:
+        final_kwargs['siteType'] = siteType
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.queryAnAggregatedSummaryOfSiteHealthData_
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('readAnAggregatedSummaryOfSiteHealthData.')
 def readAnAggregatedSummaryOfSiteHealthData_(X_CALLER_ID: str = None, startTime: float = None, endTime: float = None, siteHierarchy: str = None, siteHierarchyId: str = None, siteType: str = None, id: str = None, view: str = None, attribute: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -1618,6 +3243,25 @@ def returnsCountOfSoftwareImages(siteId: str = None, productNameOrdinal: float =
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('addExtranetPolicy')
+def addExtranetPolicy(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addExtranetPolicy
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getExtranetPolicies')
 def getExtranetPolicies(extranetPolicyName: str = None, offset: float = None, limit: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -1636,6 +3280,107 @@ def getExtranetPolicies(extranetPolicyName: str = None, offset: float = None, li
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getExtranetPolicies
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateExtranetPolicy')
+def updateExtranetPolicy(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateExtranetPolicy
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteExtranetPolicies')
+def deleteExtranetPolicies(extranetPolicyName: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if extranetPolicyName is not None:
+        final_kwargs['extranetPolicyName'] = extranetPolicyName
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteExtranetPolicies
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('importCertificate')
+def importCertificate(Content_Type: str, pkPassword: str = None, listOfUsers: list = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if pkPassword is not None:
+        final_kwargs['pkPassword'] = pkPassword
+    if listOfUsers is not None:
+        final_kwargs['listOfUsers'] = listOfUsers
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.importCertificate
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteWirelessProfile')
+def deleteWirelessProfile(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteWirelessProfile
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateWirelessProfile')
+def updateWirelessProfile(Content_Type: str, id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateWirelessProfile
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -1660,6 +3405,78 @@ def getWirelessProfileByID(id: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateADevice_s_TelemetrySettingsToConformToTheTelemetrySettings')
+def updateADevice_s_TelemetrySettingsToConformToTheTelemetrySettings(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateADevice_s_TelemetrySettingsToConformToTheTelemetrySettings
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+# alias → easier for LLM
+register('s_TelemetrySettingsToConformToTheTelemetrySetting')(globals()['updateADevice_s_TelemetrySettingsToConformToTheTelemetrySettings'])
+
+# alias → easier for LLM
+register('s_TelemetrySettingsToConformToTheTelemetrySettings')(globals()['updateADevice_s_TelemetrySettingsToConformToTheTelemetrySettings'])
+
+@register('s_TelemetrySettingsToConformToTheTelemetrySetting')
+def s_TelemetrySettingsToConformToTheTelemetrySetting(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.s_TelemetrySettingsToConformToTheTelemetrySetting
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+# alias → easier for LLM
+register('TelemetrySettingsToConformToTheTelemetrySetting')(globals()['s_TelemetrySettingsToConformToTheTelemetrySetting'])
+
+@register('s_TelemetrySettingsToConformToTheTelemetrySettings')
+def s_TelemetrySettingsToConformToTheTelemetrySettings(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.s_TelemetrySettingsToConformToTheTelemetrySettings
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+# alias → easier for LLM
+register('TelemetrySettingsToConformToTheTelemetrySettings')(globals()['s_TelemetrySettingsToConformToTheTelemetrySettings'])
+
+# alias → easier for LLM
+register('TelemetrySettingsToConformToTheTelemetrySetting')(globals()['s_TelemetrySettingsToConformToTheTelemetrySettings'])
+
 @register('getFlexibleReportScheduleByReportId')
 def getFlexibleReportScheduleByReportId(Content_Type: str, reportId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -1676,6 +3493,65 @@ def getFlexibleReportScheduleByReportId(Content_Type: str, reportId: str):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getFlexibleReportScheduleByReportId
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateScheduleOfFlexibleReport')
+def updateScheduleOfFlexibleReport(Content_Type: str, reportId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if reportId is not None:
+        final_kwargs['reportId'] = reportId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateScheduleOfFlexibleReport
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('authorizeDevice')
+def authorizeDevice(Content_Type: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.authorizeDevice
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('addPortChannels')
+def addPortChannels(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addPortChannels
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -1710,6 +3586,107 @@ def getPortChannels(fabricId: str = None, networkDeviceId: str = None, portChann
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updatePortChannels')
+def updatePortChannels(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updatePortChannels
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deletePortChannels')
+def deletePortChannels(fabricId: str, networkDeviceId: str, portChannelName: str = None, connectedDeviceType: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if fabricId is not None:
+        final_kwargs['fabricId'] = fabricId
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
+    if portChannelName is not None:
+        final_kwargs['portChannelName'] = portChannelName
+    if connectedDeviceType is not None:
+        final_kwargs['connectedDeviceType'] = connectedDeviceType
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deletePortChannels
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('uploadFile')
+def uploadFile(nameSpace: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if nameSpace is not None:
+        final_kwargs['nameSpace'] = nameSpace
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.uploadFile
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('getsTheSummaryAnalyticsDataRelatedToNetworkDevices.')
+def getsTheSummaryAnalyticsDataRelatedToNetworkDevices_(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.getsTheSummaryAnalyticsDataRelatedToNetworkDevices_
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteRFProfile')
+def deleteRFProfile(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteRFProfile
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getRFProfileByID')
 def getRFProfileByID(id: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -1724,6 +3701,84 @@ def getRFProfileByID(id: str):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getRFProfileByID
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateRFProfile')
+def updateRFProfile(Content_Type: str, id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateRFProfile
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createNetconfCredentials')
+def createNetconfCredentials(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetconfCredentials
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetconfCredentials')
+def updateNetconfCredentials(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetconfCredentials
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateTemplate')
+def updateTemplate(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateTemplate
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -1859,6 +3914,25 @@ def getListOfScheduledReports(viewGroupId: str = None, viewId: str = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createOrScheduleAReport')
+def createOrScheduleAReport(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createOrScheduleAReport
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getAAAAttributeAPI')
 def getAAAAttributeAPI():
     """Auto-generated wrapper for clarity and maintainability."""
@@ -1871,6 +3945,42 @@ def getAAAAttributeAPI():
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getAAAAttributeAPI
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('addAndUpdateAAAAttributeAPI')
+def addAndUpdateAAAAttributeAPI(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addAndUpdateAAAAttributeAPI
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteAAAAttributeAPI')
+def deleteAAAAttributeAPI():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteAAAAttributeAPI
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -1938,6 +4048,44 @@ def countTheNumberOfEvents(deviceFamily: str, X_CALLER_ID: str = None, startTime
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateSNMPv3Credentials')
+def updateSNMPv3Credentials(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateSNMPv3Credentials
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createSNMPv3Credentials')
+def createSNMPv3Credentials(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createSNMPv3Credentials
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getEoXStatusForAllDevices')
 def getEoXStatusForAllDevices():
     """Auto-generated wrapper for clarity and maintainability."""
@@ -1978,6 +4126,25 @@ def getTagMemberCount(id: str, memberType: str, memberAssociationType: str = Non
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createsConfigurationDetailsOfTheExternalIPAMServer.')
+def createsConfigurationDetailsOfTheExternalIPAMServer_(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createsConfigurationDetailsOfTheExternalIPAMServer_
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('retrievesConfigurationDetailsOfTheExternalIPAMServer.')
 def retrievesConfigurationDetailsOfTheExternalIPAMServer_():
     """Auto-generated wrapper for clarity and maintainability."""
@@ -1990,6 +4157,42 @@ def retrievesConfigurationDetailsOfTheExternalIPAMServer_():
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.retrievesConfigurationDetailsOfTheExternalIPAMServer_
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updatesConfigurationDetailsOfTheExternalIPAMServer.')
+def updatesConfigurationDetailsOfTheExternalIPAMServer_(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updatesConfigurationDetailsOfTheExternalIPAMServer_
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deletesConfigurationDetailsOfTheExternalIPAMServer.')
+def deletesConfigurationDetailsOfTheExternalIPAMServer_():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deletesConfigurationDetailsOfTheExternalIPAMServer_
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -2084,6 +4287,52 @@ def getDeviceInterfacesBySpecifiedRange(deviceId: str, startIndex: int, recordsT
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('associate')
+def associate(Content_Type: str, networkProfileId: str, siteId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if networkProfileId is not None:
+        final_kwargs['networkProfileId'] = networkProfileId
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.associate
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('disassociate')
+def disassociate(Content_Type: str, networkProfileId: str, siteId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if networkProfileId is not None:
+        final_kwargs['networkProfileId'] = networkProfileId
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.disassociate
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getPollingIntervalForAllDevices')
 def getPollingIntervalForAllDevices():
     """Auto-generated wrapper for clarity and maintainability."""
@@ -2096,6 +4345,29 @@ def getPollingIntervalForAllDevices():
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getPollingIntervalForAllDevices
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('getTopNAnalyticsDataOfIssues')
+def getTopNAnalyticsDataOfIssues(Content_Type: str, Accept_Language: str = None, X_CALLER_ID: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if Accept_Language is not None:
+        final_kwargs['Accept-Language'] = Accept_Language
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.getTopNAnalyticsDataOfIssues
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -2186,6 +4458,69 @@ def getDeviceList(hostname: list = None, managementIpAddress: list = None, macAd
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('addDevice')
+def addDevice(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addDevice
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateDeviceDetails')
+def updateDeviceDetails(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateDeviceDetails
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('importCertificateP12')
+def importCertificateP12(Content_Type: str, p12Password: str, pkPassword: str = None, listOfUsers: list = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if p12Password is not None:
+        final_kwargs['p12Password'] = p12Password
+    if pkPassword is not None:
+        final_kwargs['pkPassword'] = pkPassword
+    if listOfUsers is not None:
+        final_kwargs['listOfUsers'] = listOfUsers
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.importCertificateP12
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getAllKeywordsOfCLIsAcceptedByCommandRunner')
 def getAllKeywordsOfCLIsAcceptedByCommandRunner():
     """Auto-generated wrapper for clarity and maintainability."""
@@ -2198,6 +4533,67 @@ def getAllKeywordsOfCLIsAcceptedByCommandRunner():
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getAllKeywordsOfCLIsAcceptedByCommandRunner
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('syncDevices')
+def syncDevices(Content_Type: str, forceSync: bool = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if forceSync is not None:
+        final_kwargs['forceSync'] = forceSync
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.syncDevices
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deregisterVirtualAccount')
+def deregisterVirtualAccount(domain: str, name: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if domain is not None:
+        final_kwargs['domain'] = domain
+    if name is not None:
+        final_kwargs['name'] = name
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deregisterVirtualAccount
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createQosDeviceInterfaceInfo')
+def createQosDeviceInterfaceInfo(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createQosDeviceInterfaceInfo
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -2217,6 +4613,25 @@ def getQosDeviceInterfaceInfo(networkDeviceId: str = None):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getQosDeviceInterfaceInfo
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateQosDeviceInterfaceInfo')
+def updateQosDeviceInterfaceInfo(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateQosDeviceInterfaceInfo
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -2253,6 +4668,25 @@ def getDeviceFamilyIdentifiers(Accept: str = None):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getDeviceFamilyIdentifiers
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('importDevicesInBulk')
+def importDevicesInBulk(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.importDevicesInBulk
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -2412,6 +4846,63 @@ def getLayer3VirtualNetworks(virtualNetworkName: str = None, fabricId: str = Non
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('deleteLayer3VirtualNetworks')
+def deleteLayer3VirtualNetworks(virtualNetworkName: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if virtualNetworkName is not None:
+        final_kwargs['virtualNetworkName'] = virtualNetworkName
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteLayer3VirtualNetworks
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('addLayer3VirtualNetworks')
+def addLayer3VirtualNetworks(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addLayer3VirtualNetworks
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateLayer3VirtualNetworks')
+def updateLayer3VirtualNetworks(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateLayer3VirtualNetworks
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getListOfAvailableNamespaces')
 def getListOfAvailableNamespaces():
     """Auto-generated wrapper for clarity and maintainability."""
@@ -2424,6 +4915,29 @@ def getListOfAvailableNamespaces():
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getListOfAvailableNamespaces
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateSSID')
+def updateSSID(Content_Type: str, siteId: str, id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateSSID
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -2445,6 +4959,27 @@ def getSSIDByID(siteId: str, id: str):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getSSIDByID
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteSSID')
+def deleteSSID(siteId: str, id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteSSID
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -2526,6 +5061,23 @@ def getTaskDetailsByID(id: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateGlobalResyncInterval')
+def updateGlobalResyncInterval():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateGlobalResyncInterval
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('custom-promptSupportGETAPI')
 def custom_promptSupportGETAPI():
     """Auto-generated wrapper for clarity and maintainability."""
@@ -2543,6 +5095,25 @@ def custom_promptSupportGETAPI():
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('customPromptPOSTAPI')
+def customPromptPOSTAPI(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.customPromptPOSTAPI
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getAdvisoriesList')
 def getAdvisoriesList():
     """Auto-generated wrapper for clarity and maintainability."""
@@ -2555,6 +5126,25 @@ def getAdvisoriesList():
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getAdvisoriesList
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deployDeviceReplacementWorkflow')
+def deployDeviceReplacementWorkflow(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deployDeviceReplacementWorkflow
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -2600,6 +5190,46 @@ def getListOfFiles(nameSpace: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateRemoteImageDistributionServer')
+def updateRemoteImageDistributionServer(Content_Type: str, id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateRemoteImageDistributionServer
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('removeImageDistributionServer')
+def removeImageDistributionServer(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.removeImageDistributionServer
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('retrieveSpecificImageDistributionServer')
 def retrieveSpecificImageDistributionServer(id: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -2638,6 +5268,65 @@ def getApplicationPolicy(policyScope: str = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('previewTemplate')
+def previewTemplate(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.previewTemplate
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteExtranetPolicyById')
+def deleteExtranetPolicyById(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteExtranetPolicyById
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateWorkflow')
+def updateWorkflow(Content_Type: str, id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateWorkflow
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getWorkflowById')
 def getWorkflowById(id: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -2657,6 +5346,25 @@ def getWorkflowById(id: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('deleteWorkflowById')
+def deleteWorkflowById(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteWorkflowById
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getAdvisoriesSummary')
 def getAdvisoriesSummary():
     """Auto-generated wrapper for clarity and maintainability."""
@@ -2669,6 +5377,23 @@ def getAdvisoriesSummary():
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getAdvisoriesSummary
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('overrideResyncInterval')
+def overrideResyncInterval():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.overrideResyncInterval
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -2739,6 +5464,44 @@ def getDiscoveriesByRange(startIndex: int, recordsToReturn: int):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateSNMPReadCommunity')
+def updateSNMPReadCommunity(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateSNMPReadCommunity
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createSNMPReadCommunity')
+def createSNMPReadCommunity(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createSNMPReadCommunity
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getAllITSMIntegrationSettings')
 def getAllITSMIntegrationSettings():
     """Auto-generated wrapper for clarity and maintainability."""
@@ -2779,6 +5542,25 @@ def licenseUsageDetails(smart_account_id: str, virtual_account_name: str, device
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('deletesAnArea')
+def deletesAnArea(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deletesAnArea
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getsAnArea')
 def getsAnArea(id: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -2793,6 +5575,27 @@ def getsAnArea(id: str):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getsAnArea
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updatesAnArea')
+def updatesAnArea(Content_Type: str, id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updatesAnArea
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -2854,6 +5657,44 @@ def getResyncIntervalForTheNetworkDevice(id: str):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getResyncIntervalForTheNetworkDevice
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateResyncIntervalForTheNetworkDevice')
+def updateResyncIntervalForTheNetworkDevice(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateResyncIntervalForTheNetworkDevice
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createInterface')
+def createInterface(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createInterface
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -2942,6 +5783,63 @@ def getEmailEventSubscriptions(eventIds: str = None, offset: float = None, limit
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createEmailEventSubscription')
+def createEmailEventSubscription(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createEmailEventSubscription
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateEmailEventSubscription')
+def updateEmailEventSubscription(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateEmailEventSubscription
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteLayer3VirtualNetworkById')
+def deleteLayer3VirtualNetworkById(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteLayer3VirtualNetworkById
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getEmailSubscriptionDetails')
 def getEmailSubscriptionDetails(name: str = None, instanceId: str = None, offset: float = None, limit: float = None, sortBy: str = None, order: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -2971,6 +5869,46 @@ def getEmailSubscriptionDetails(name: str = None, instanceId: str = None, offset
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('ignoreTheGivenListOfIssues')
+def ignoreTheGivenListOfIssues(Content_Type: str, X_CALLER_ID: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.ignoreTheGivenListOfIssues
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateTagMembership')
+def updateTagMembership(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateTagMembership
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('retrieveAAASettingsForASite')
 def retrieveAAASettingsForASite(id: str, _inherited: bool = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -2987,6 +5925,27 @@ def retrieveAAASettingsForASite(id: str, _inherited: bool = None):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.retrieveAAASettingsForASite
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('setAAASettingsForASite')
+def setAAASettingsForASite(Content_Type: str, id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.setAAASettingsForASite
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -3013,6 +5972,23 @@ def getInterfaceDetailsByDeviceIdAndInterfaceName(deviceId: str, name: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createGlobalCredentialsV2')
+def createGlobalCredentialsV2():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createGlobalCredentialsV2
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getAllGlobalCredentialsV2')
 def getAllGlobalCredentialsV2():
     """Auto-generated wrapper for clarity and maintainability."""
@@ -3025,6 +6001,23 @@ def getAllGlobalCredentialsV2():
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getAllGlobalCredentialsV2
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateGlobalCredentialsV2')
+def updateGlobalCredentialsV2():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateGlobalCredentialsV2
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -3075,10 +6068,10 @@ def s_FactoryResetStatus(taskId: str):
     return target(**final_kwargs)
 
 # alias → easier for LLM
-register('FactoryResetStatu')(globals()['s_FactoryResetStatus'])
+register('FactoryResetStatus')(globals()['s_FactoryResetStatus'])
 
 # alias → easier for LLM
-register('FactoryResetStatus')(globals()['s_FactoryResetStatus'])
+register('FactoryResetStatu')(globals()['s_FactoryResetStatus'])
 
 @register('s_FactoryResetStatu')
 def s_FactoryResetStatu(taskId: str):
@@ -3185,6 +6178,65 @@ def returnTheCountOfAllTheFabricSiteWhichHasSSIDToIPPoolMapping():
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createEventSubscriptions')
+def createEventSubscriptions(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createEventSubscriptions
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateEventSubscriptions')
+def updateEventSubscriptions(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateEventSubscriptions
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteEventSubscriptions')
+def deleteEventSubscriptions(Content_Type: str, subscriptions: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if subscriptions is not None:
+        final_kwargs['subscriptions'] = subscriptions
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteEventSubscriptions
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getEventSubscriptions')
 def getEventSubscriptions(eventIds: str = None, offset: float = None, limit: float = None, sortBy: str = None, order: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -3241,6 +6293,27 @@ def readSiteHealthSummaryDataBySiteId_(id: str, X_CALLER_ID: str = None, startTi
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updatePlannedAccessPointForFloor')
+def updatePlannedAccessPointForFloor(Content_Type: str, floorId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if floorId is not None:
+        final_kwargs['floorId'] = floorId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updatePlannedAccessPointForFloor
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getPlannedAccessPointsForFloor')
 def getPlannedAccessPointsForFloor(floorId: str, limit: float = None, offset: float = None, radios: bool = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -3261,6 +6334,65 @@ def getPlannedAccessPointsForFloor(floorId: str, limit: float = None, offset: fl
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getPlannedAccessPointsForFloor
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createPlannedAccessPointForFloor')
+def createPlannedAccessPointForFloor(Content_Type: str, floorId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if floorId is not None:
+        final_kwargs['floorId'] = floorId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createPlannedAccessPointForFloor
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('unMarkDeviceForReplacement')
+def unMarkDeviceForReplacement(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.unMarkDeviceForReplacement
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('markDeviceForReplacement')
+def markDeviceForReplacement(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.markDeviceForReplacement
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -3300,6 +6432,25 @@ def returnListOfReplacementDevicesWithReplacementDetails(faultyDeviceName: str =
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.returnListOfReplacementDevicesWithReplacementDetails
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteDiscoveryById')
+def deleteDiscoveryById(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteDiscoveryById
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -3348,6 +6499,44 @@ def getConfigurationArchiveDetails(deviceId: str = None, fileType: str = None, c
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getConfigurationArchiveDetails
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createHTTPWriteCredentials')
+def createHTTPWriteCredentials(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createHTTPWriteCredentials
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateHTTPWriteCredentials')
+def updateHTTPWriteCredentials(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateHTTPWriteCredentials
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -3429,6 +6618,69 @@ def getSNMPProperties():
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('create_UpdateSNMPProperties')
+def create_UpdateSNMPProperties(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.create_UpdateSNMPProperties
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+# alias → easier for LLM
+register('UpdateSNMPProperties')(globals()['create_UpdateSNMPProperties'])
+
+# alias → easier for LLM
+register('UpdateSNMPPropertie')(globals()['create_UpdateSNMPProperties'])
+
+@register('UpdateSNMPProperties')
+def UpdateSNMPProperties(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.UpdateSNMPProperties
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('UpdateSNMPPropertie')
+def UpdateSNMPPropertie(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.UpdateSNMPPropertie
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getComplianceDetailCount')
 def getComplianceDetailCount(complianceType: str = None, complianceStatus: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -3445,6 +6697,25 @@ def getComplianceDetailCount(complianceType: str = None, complianceStatus: str =
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getComplianceDetailCount
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('getsTheListOfInterfacesAcrossTheNetworkDevicesBasedOnTheProvided')
+def getsTheListOfInterfacesAcrossTheNetworkDevicesBasedOnTheProvided(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.getsTheListOfInterfacesAcrossTheNetworkDevicesBasedOnTheProvided
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -3542,6 +6813,25 @@ def getWirelessProfilesCount():
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('deleteTag')
+def deleteTag(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteTag
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getTagById')
 def getTagById(id: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -3616,6 +6906,126 @@ def getAuditLogSummary(parentInstanceId: str = None, isParentOnly: bool = None, 
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('deleteAnycastGatewayById')
+def deleteAnycastGatewayById(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteAnycastGatewayById
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('importsTheTemplatesProvided')
+def importsTheTemplatesProvided(Content_Type: str, projectName: str, doVersion: bool = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if projectName is not None:
+        final_kwargs['projectName'] = projectName
+    if doVersion is not None:
+        final_kwargs['doVersion'] = doVersion
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.importsTheTemplatesProvided
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createNetworkV2')
+def createNetworkV2(siteId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetworkV2
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateNetworkV2')
+def updateNetworkV2(siteId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetworkV2
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('executingTheFlexibleReport')
+def executingTheFlexibleReport(Content_Type: str, reportId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if reportId is not None:
+        final_kwargs['reportId'] = reportId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.executingTheFlexibleReport
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteQosDeviceInterfaceInfo')
+def deleteQosDeviceInterfaceInfo(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteQosDeviceInterfaceInfo
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getsAListOfProjects')
 def getsAListOfProjects(name: str = None, sortOrder: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -3637,6 +7047,82 @@ def getsAListOfProjects(name: str = None, sortOrder: str = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createProject')
+def createProject(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createProject
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateProject')
+def updateProject(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateProject
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('exportDeviceConfigurations')
+def exportDeviceConfigurations(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.exportDeviceConfigurations
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('lANAutomationStartV2')
+def lANAutomationStartV2(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.lANAutomationStartV2
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('systemHealthCountAPI')
 def systemHealthCountAPI(domain: str = None, subdomain: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -3653,6 +7139,23 @@ def systemHealthCountAPI(domain: str = None, subdomain: str = None):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.systemHealthCountAPI
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('addAuthenticationAndPolicyServerAccessConfiguration')
+def addAuthenticationAndPolicyServerAccessConfiguration():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addAuthenticationAndPolicyServerAccessConfiguration
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -3737,6 +7240,25 @@ def deviceLicenseSummary(page_number: float, order: str, limit: float, sort_by: 
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('importMapArchive-CancelAnImport')
+def importMapArchive_CancelAnImport(importContextUuid: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if importContextUuid is not None:
+        final_kwargs['importContextUuid'] = importContextUuid
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.importMapArchive_CancelAnImport
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('complianceDetailsOfDevice')
 def complianceDetailsOfDevice(deviceUuid: str, category: str = None, complianceType: str = None, diffList: bool = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -3781,6 +7303,46 @@ def retrievesTheCountOfSitesThatTheGivenNetworkProfileForSitesIsAssi(profileId: 
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('deleteProvisionedDevices')
+def deleteProvisionedDevices(networkDeviceId: str = None, siteId: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteProvisionedDevices
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('provisionDevices')
+def provisionDevices(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.provisionDevices
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getProvisionedDevices')
 def getProvisionedDevices(id: str = None, networkDeviceId: str = None, siteId: str = None, offset: float = None, limit: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -3803,6 +7365,44 @@ def getProvisionedDevices(id: str = None, networkDeviceId: str = None, siteId: s
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getProvisionedDevices
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('re-provisionDevices')
+def re_provisionDevices(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.re_provisionDevices
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deletePortChannelById')
+def deletePortChannelById(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deletePortChannelById
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -3855,6 +7455,82 @@ def retrievesAllPreviousPathtracesSummary(periodicRefresh: bool = None, sourceIP
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('initiateANewPathtrace')
+def initiateANewPathtrace(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.initiateANewPathtrace
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('commitDeviceConfiguration')
+def commitDeviceConfiguration(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.commitDeviceConfiguration
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateRoleAPI')
+def updateRoleAPI(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateRoleAPI
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('addRoleAPI')
+def addRoleAPI(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addRoleAPI
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('inventoryInsightDeviceLinkMismatchAPI')
 def inventoryInsightDeviceLinkMismatchAPI(siteId: str, category: str, offset: int = None, limit: int = None, sortBy: str = None, order: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -3879,6 +7555,25 @@ def inventoryInsightDeviceLinkMismatchAPI(siteId: str, category: str, offset: in
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.inventoryInsightDeviceLinkMismatchAPI
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('claimADeviceToASite')
+def claimADeviceToASite(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.claimADeviceToASite
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -3960,6 +7655,27 @@ def lANAutomationLogById(id: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateDeviceCredentialSettingsForASite.')
+def updateDeviceCredentialSettingsForASite_(Content_Type: str, id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateDeviceCredentialSettingsForASite_
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getDeviceCredentialSettingsForASite')
 def getDeviceCredentialSettingsForASite(id: str, _inherited: bool = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -3976,6 +7692,61 @@ def getDeviceCredentialSettingsForASite(id: str, _inherited: bool = None):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getDeviceCredentialSettingsForASite
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('startDiscovery')
+def startDiscovery(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.startDiscovery
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updatesAnExistingDiscoveryBySpecifiedId')
+def updatesAnExistingDiscoveryBySpecifiedId(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updatesAnExistingDiscoveryBySpecifiedId
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteAllDiscovery')
+def deleteAllDiscovery():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteAllDiscovery
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -4017,6 +7788,27 @@ def ciscoDNACenterReleaseSummary():
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('tagAsGoldenImage')
+def tagAsGoldenImage(Accept: str = None, Content_Type: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Accept is not None:
+        final_kwargs['Accept'] = Accept
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.tagAsGoldenImage
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getLayer2VirtualNetworkCount')
 def getLayer2VirtualNetworkCount(fabricId: str = None, vlanName: str = None, vlanId: float = None, trafficType: str = None, associatedLayer3VirtualNetworkName: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -4044,6 +7836,25 @@ def getLayer2VirtualNetworkCount(fabricId: str = None, vlanName: str = None, vla
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('syncNetworkDevicesCredential')
+def syncNetworkDevicesCredential(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.syncNetworkDevicesCredential
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('retrievesTheCountOfNetworkProfilesForSites')
 def retrievesTheCountOfNetworkProfilesForSites(type: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -4058,6 +7869,27 @@ def retrievesTheCountOfNetworkProfilesForSites(type: str = None):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.retrievesTheCountOfNetworkProfilesForSites
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('retrievesTheTrendAnalyticsDataRelatedToClients.')
+def retrievesTheTrendAnalyticsDataRelatedToClients_(Content_Type: str, X_CALLER_ID: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.retrievesTheTrendAnalyticsDataRelatedToClients_
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -4088,6 +7920,84 @@ def getDeviceCount(hostname: list = None, managementIpAddress: list = None, macA
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('deleteSPProfileV2')
+def deleteSPProfileV2(spProfileName: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if spProfileName is not None:
+        final_kwargs['spProfileName'] = spProfileName
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteSPProfileV2
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('importMapArchive-PerformImport')
+def importMapArchive_PerformImport(Content_Type: str, importContextUuid: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if importContextUuid is not None:
+        final_kwargs['importContextUuid'] = importContextUuid
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.importMapArchive_PerformImport
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('rebootAccessPoints')
+def rebootAccessPoints(Content_Type: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.rebootAccessPoints
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('addFabricDevicesLayer2Handoffs')
+def addFabricDevicesLayer2Handoffs(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addFabricDevicesLayer2Handoffs
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getFabricDevicesLayer2Handoffs')
 def getFabricDevicesLayer2Handoffs(fabricId: str, networkDeviceId: str = None, offset: float = None, limit: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -4108,6 +8018,65 @@ def getFabricDevicesLayer2Handoffs(fabricId: str, networkDeviceId: str = None, o
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getFabricDevicesLayer2Handoffs
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteFabricDeviceLayer2Handoffs')
+def deleteFabricDeviceLayer2Handoffs(fabricId: str, networkDeviceId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if fabricId is not None:
+        final_kwargs['fabricId'] = fabricId
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteFabricDeviceLayer2Handoffs
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateSyslogEventSubscription')
+def updateSyslogEventSubscription(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateSyslogEventSubscription
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createSyslogEventSubscription')
+def createSyslogEventSubscription(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createSyslogEventSubscription
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -4186,6 +8155,44 @@ def getAllMobilityGroups_(networkDeviceId: str = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('deleteGlobalCredentialV2')
+def deleteGlobalCredentialV2(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteGlobalCredentialV2
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('queryTheTagsAssociatedWithNetworkDevices.')
+def queryTheTagsAssociatedWithNetworkDevices_(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.queryTheTagsAssociatedWithNetworkDevices_
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getSiteV2')
 def getSiteV2(groupNameHierarchy: str = None, id: str = None, type: str = None, offset: str = None, limit: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -4240,6 +8247,25 @@ def systemHealthAPI(summary: bool = None, domain: str = None, subdomain: str = N
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('importTrustedCertificate')
+def importTrustedCertificate(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.importTrustedCertificate
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('lANAutomationStatusById')
 def lANAutomationStatusById(id: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -4258,6 +8284,69 @@ def lANAutomationStatusById(id: str):
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
+
+@register('deleteFabricDeviceLayer2HandoffById')
+def deleteFabricDeviceLayer2HandoffById(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteFabricDeviceLayer2HandoffById
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('editApplication_s')
+def editApplication_s(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.editApplication_s
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+# alias → easier for LLM
+register('s')(globals()['editApplication_s'])
+
+@register('createApplication_s')
+def createApplication_s(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createApplication_s
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+# alias → easier for LLM
+register('s')(globals()['createApplication_s'])
 
 @register('getApplication_s')
 def getApplication_s(attributes: str, offset: float, limit: float, name: str = None):
@@ -4287,6 +8376,67 @@ def getApplication_s(attributes: str, offset: float, limit: float, name: str = N
 # alias → easier for LLM
 register('s')(globals()['getApplication_s'])
 
+@register('addFabricDevices')
+def addFabricDevices(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addFabricDevices
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteFabricDevices')
+def deleteFabricDevices(fabricId: str, networkDeviceId: str = None, deviceRoles: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if fabricId is not None:
+        final_kwargs['fabricId'] = fabricId
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
+    if deviceRoles is not None:
+        final_kwargs['deviceRoles'] = deviceRoles
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteFabricDevices
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateFabricDevices')
+def updateFabricDevices(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateFabricDevices
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getFabricDevices')
 def getFabricDevices(fabricId: str, networkDeviceId: str = None, deviceRoles: str = None, offset: float = None, limit: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -4314,6 +8464,46 @@ def getFabricDevices(fabricId: str, networkDeviceId: str = None, deviceRoles: st
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('update802.11beProfile')
+def update802_11beProfile(Content_Type: str, id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.update802_11beProfile
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteA802.11beProfile')
+def deleteA802_11beProfile(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteA802_11beProfile
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('get802.11beProfileByID')
 def get802_11beProfileByID(id: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -4328,6 +8518,48 @@ def get802_11beProfileByID(id: str):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.get802_11beProfileByID
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('assignANetworkProfileForSitesToAListOfSites')
+def assignANetworkProfileForSitesToAListOfSites(Content_Type: str, profileId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if profileId is not None:
+        final_kwargs['profileId'] = profileId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.assignANetworkProfileForSitesToAListOfSites
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('unassignsANetworkProfileForSitesFromMultipleSites')
+def unassignsANetworkProfileForSitesFromMultipleSites(profileId: str, siteId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if profileId is not None:
+        final_kwargs['profileId'] = profileId
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.unassignsANetworkProfileForSitesFromMultipleSites
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -4360,6 +8592,46 @@ def getTasksCount(startTime: int = None, endTime: int = None, parentId: str = No
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('deletesAFloor')
+def deletesAFloor(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deletesAFloor
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updatesAFloor')
+def updatesAFloor(Content_Type: str, id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updatesAFloor
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getsAFloor')
 def getsAFloor(id: str, _unitsOfMeasure: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -4381,6 +8653,25 @@ def getsAFloor(id: str, _unitsOfMeasure: str = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('addUserAPI')
+def addUserAPI(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addUserAPI
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getUsersAPI')
 def getUsersAPI(invokeSource: str, authSource: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -4397,6 +8688,44 @@ def getUsersAPI(invokeSource: str, authSource: str = None):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getUsersAPI
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateUserAPI')
+def updateUserAPI(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateUserAPI
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('addFabricZone')
+def addFabricZone(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addFabricZone
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -4427,6 +8756,44 @@ def getFabricZones(id: str = None, siteId: str = None, offset: float = None, lim
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateFabricZone')
+def updateFabricZone(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateFabricZone
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('configureAccessPointsV2')
+def configureAccessPointsV2(Content_Type: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.configureAccessPointsV2
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getVirtualAccountList')
 def getVirtualAccountList(domain: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -4441,6 +8808,86 @@ def getVirtualAccountList(domain: str):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getVirtualAccountList
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateGlobalCredentials')
+def updateGlobalCredentials(Content_Type: str, globalCredentialId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if globalCredentialId is not None:
+        final_kwargs['globalCredentialId'] = globalCredentialId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateGlobalCredentials
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteGlobalCredentialsById')
+def deleteGlobalCredentialsById(globalCredentialId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if globalCredentialId is not None:
+        final_kwargs['globalCredentialId'] = globalCredentialId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteGlobalCredentialsById
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deletePlannedAccessPointForFloor')
+def deletePlannedAccessPointForFloor(floorId: str, plannedAccessPointUuid: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if floorId is not None:
+        final_kwargs['floorId'] = floorId
+    if plannedAccessPointUuid is not None:
+        final_kwargs['plannedAccessPointUuid'] = plannedAccessPointUuid
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deletePlannedAccessPointForFloor
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('exportsTheProjectsForAGivenCriteria.')
+def exportsTheProjectsForAGivenCriteria_(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.exportsTheProjectsForAGivenCriteria_
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -4544,6 +8991,101 @@ def getNetworkDeviceImageUpdates(id: str = None, parentId: str = None, networkDe
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('mobilityProvision')
+def mobilityProvision(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.mobilityProvision
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteFabricDeviceById')
+def deleteFabricDeviceById(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteFabricDeviceById
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createsABuilding')
+def createsABuilding(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createsABuilding
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateTransitNetworks')
+def updateTransitNetworks(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateTransitNetworks
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('addTransitNetworks')
+def addTransitNetworks(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addTransitNetworks
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getTransitNetworks')
 def getTransitNetworks(id: str = None, name: str = None, type: str = None, offset: float = None, limit: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -4590,6 +9132,27 @@ def getStackDetailsForDevice(deviceId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('getDeviceInterfaceStatsInfo')
+def getDeviceInterfaceStatsInfo(Content_Type: str, deviceId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.getDeviceInterfaceStatsInfo
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getApplicationSetCount')
 def getApplicationSetCount(scalableGroupType: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -4623,6 +9186,25 @@ def getWorkflowCount(name: list = None):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getWorkflowCount
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteFabricZoneById')
+def deleteFabricZoneById(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteFabricZoneById
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -4666,6 +9248,25 @@ def retrievesPreviousPathtrace(flowAnalysisId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('deletesPathtraceById')
+def deletesPathtraceById(flowAnalysisId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if flowAnalysisId is not None:
+        final_kwargs['flowAnalysisId'] = flowAnalysisId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deletesPathtraceById
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getOverallNetworkHealth')
 def getOverallNetworkHealth(timestamp: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -4685,6 +9286,65 @@ def getOverallNetworkHealth(timestamp: float = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('complianceRemediation')
+def complianceRemediation(Content_Type: str, id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.complianceRemediation
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteUser-Defined-Field')
+def deleteUser_Defined_Field(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteUser_Defined_Field
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateUser-Defined-Field')
+def updateUser_Defined_Field(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateUser_Defined_Field
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getPnPGlobalSettings')
 def getPnPGlobalSettings():
     """Auto-generated wrapper for clarity and maintainability."""
@@ -4697,6 +9357,59 @@ def getPnPGlobalSettings():
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getPnPGlobalSettings
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updatePnPGlobalSettings')
+def updatePnPGlobalSettings(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updatePnPGlobalSettings
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateSPProfileV2')
+def updateSPProfileV2():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateSPProfileV2
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createSPProfileV2')
+def createSPProfileV2():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createSPProfileV2
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -4735,6 +9448,25 @@ def getWirelessProfiles(limit: float = None, offset: float = None):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getWirelessProfiles
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createWirelessProfile')
+def createWirelessProfile(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createWirelessProfile
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -4841,6 +9573,25 @@ def getDeviceSummary(id: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateAuthenticationProfile')
+def updateAuthenticationProfile(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateAuthenticationProfile
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getAuthenticationProfiles')
 def getAuthenticationProfiles(fabricId: str = None, authenticationProfileName: str = None, offset: float = None, limit: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -4923,6 +9674,25 @@ def getFunctionalCapabilityById(id: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('addFabricSite')
+def addFabricSite(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addFabricSite
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getFabricSites')
 def getFabricSites(id: str = None, siteId: str = None, offset: float = None, limit: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -4943,6 +9713,44 @@ def getFabricSites(id: str = None, siteId: str = None, offset: float = None, lim
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getFabricSites
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateFabricSite')
+def updateFabricSite(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateFabricSite
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('addAWorkflow')
+def addAWorkflow(Content_Type: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addAWorkflow
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -5063,6 +9871,25 @@ def getPollingIntervalById(id: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('queryTheTagsAssociatedWithInterfaces.')
+def queryTheTagsAssociatedWithInterfaces_(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.queryTheTagsAssociatedWithInterfaces_
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getNotifications')
 def getNotifications(eventIds: str = None, startTime: float = None, endTime: float = None, category: str = None, type: str = None, severity: str = None, domain: str = None, subDomain: str = None, source: str = None, offset: float = None, limit: float = None, sortBy: str = None, order: str = None, tags: str = None, namespace: str = None, siteId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -5158,6 +9985,67 @@ def legitOperationsForInterface(interfaceUuid: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createsAFloor')
+def createsAFloor(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createsAFloor
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateInterfaceDetails')
+def updateInterfaceDetails(Content_Type: str, interfaceUuid: str, deploymentMode: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if interfaceUuid is not None:
+        final_kwargs['interfaceUuid'] = interfaceUuid
+    if deploymentMode is not None:
+        final_kwargs['deploymentMode'] = deploymentMode
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateInterfaceDetails
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteUserAPI')
+def deleteUserAPI(userId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if userId is not None:
+        final_kwargs['userId'] = userId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteUserAPI
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getDeviceConfigCount')
 def getDeviceConfigCount():
     """Auto-generated wrapper for clarity and maintainability."""
@@ -5206,6 +10094,25 @@ def retrieveANetworkProfileForSitesById(id: str):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.retrieveANetworkProfileForSitesById
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deletesANetworkProfileForSites')
+def deletesANetworkProfileForSites(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deletesANetworkProfileForSites
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -5272,6 +10179,44 @@ def getAuditLogRecords(parentInstanceId: str = None, instanceId: str = None, nam
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateHTTPReadCredential')
+def updateHTTPReadCredential(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateHTTPReadCredential
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createHTTPReadCredentials')
+def createHTTPReadCredentials(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createHTTPReadCredentials
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('systemPerformanceHistoricalAPI')
 def systemPerformanceHistoricalAPI(kpi: str = None, startTime: float = None, endTime: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -5309,6 +10254,27 @@ def getSupervisorCardDetail(deviceUuid: str):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getSupervisorCardDetail
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('setImageDistributionSettingsForASite')
+def setImageDistributionSettingsForASite(Content_Type: str, id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.setImageDistributionSettingsForASite
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -5385,6 +10351,88 @@ def getsDetailsOfAGivenTemplate(templateId: str, latestVersion: bool = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('deletesTheTemplate')
+def deletesTheTemplate(templateId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if templateId is not None:
+        final_kwargs['templateId'] = templateId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deletesTheTemplate
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deviceDeregistration')
+def deviceDeregistration(Content_Type: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deviceDeregistration
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updatesAnExistingCustomIssueDefinitionBasedOnTheProvidedId.')
+def updatesAnExistingCustomIssueDefinitionBasedOnTheProvidedId_(Content_Type: str, id: str, X_CALLER_ID: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updatesAnExistingCustomIssueDefinitionBasedOnTheProvidedId_
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deletesAnExistingCustomIssueDefinition.')
+def deletesAnExistingCustomIssueDefinition_(id: str, X_CALLER_ID: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deletesAnExistingCustomIssueDefinition_
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getEventArtifacts')
 def getEventArtifacts(eventIds: str = None, tags: str = None, offset: float = None, limit: float = None, sortBy: str = None, order: str = None, search: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -5416,6 +10464,25 @@ def getEventArtifacts(eventIds: str = None, tags: str = None, offset: float = No
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('deletesTheProject')
+def deletesTheProject(projectId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if projectId is not None:
+        final_kwargs['projectId'] = projectId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deletesTheProject
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getsTheDetailsOfAGivenProject.')
 def getsTheDetailsOfAGivenProject_(projectId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -5430,6 +10497,46 @@ def getsTheDetailsOfAGivenProject_(projectId: str):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getsTheDetailsOfAGivenProject_
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('unassignsANetworkProfileForSitesFromASite')
+def unassignsANetworkProfileForSitesFromASite(profileId: str, id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if profileId is not None:
+        final_kwargs['profileId'] = profileId
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.unassignsANetworkProfileForSitesFromASite
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deletesAValidationWorkflow')
+def deletesAValidationWorkflow(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deletesAValidationWorkflow
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -5481,6 +10588,44 @@ def getModuleCount(deviceId: str, nameList: list = None, vendorEquipmentTypeList
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('deleteProvisionedDeviceById')
+def deleteProvisionedDeviceById(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteProvisionedDeviceById
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('triggerSoftwareImageDistribution')
+def triggerSoftwareImageDistribution(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.triggerSoftwareImageDistribution
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getTransitNetworksCount')
 def getTransitNetworksCount(type: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -5495,6 +10640,27 @@ def getTransitNetworksCount(type: str = None):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getTransitNetworksCount
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('lANAutomationStopAndUpdateDevicesV2')
+def lANAutomationStopAndUpdateDevicesV2(Content_Type: str, id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.lANAutomationStopAndUpdateDevicesV2
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -5567,6 +10733,69 @@ def getAllExecutionDetailsForAGivenReport(reportId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createRest_WebhookEventSubscription')
+def createRest_WebhookEventSubscription(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createRest_WebhookEventSubscription
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+# alias → easier for LLM
+register('WebhookEventSubscription')(globals()['createRest_WebhookEventSubscription'])
+
+@register('WebhookEventSubscription')
+def WebhookEventSubscription(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.WebhookEventSubscription
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateRest_WebhookEventSubscription')
+def updateRest_WebhookEventSubscription(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateRest_WebhookEventSubscription
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+# alias → easier for LLM
+register('WebhookEventSubscription')(globals()['updateRest_WebhookEventSubscription'])
+
 @register('getRest_WebhookEventSubscriptions')
 def getRest_WebhookEventSubscriptions(eventIds: str = None, offset: float = None, limit: float = None, sortBy: str = None, order: str = None, domain: str = None, subDomain: str = None, category: str = None, type: str = None, name: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -5605,47 +10834,10 @@ def getRest_WebhookEventSubscriptions(eventIds: str = None, offset: float = None
     return target(**final_kwargs)
 
 # alias → easier for LLM
-register('WebhookEventSubscription')(globals()['getRest_WebhookEventSubscriptions'])
-
-# alias → easier for LLM
 register('WebhookEventSubscriptions')(globals()['getRest_WebhookEventSubscriptions'])
 
-@register('WebhookEventSubscription')
-def WebhookEventSubscription(eventIds: str = None, offset: float = None, limit: float = None, sortBy: str = None, order: str = None, domain: str = None, subDomain: str = None, category: str = None, type: str = None, name: str = None):
-    """Auto-generated wrapper for clarity and maintainability."""
-    # Explicitly build keyword arguments, excluding None values.
-    final_kwargs = {}
-    if eventIds is not None:
-        final_kwargs['eventIds'] = eventIds
-    if offset is not None:
-        final_kwargs['offset'] = offset
-    if limit is not None:
-        final_kwargs['limit'] = limit
-    if sortBy is not None:
-        final_kwargs['sortBy'] = sortBy
-    if order is not None:
-        final_kwargs['order'] = order
-    if domain is not None:
-        final_kwargs['domain'] = domain
-    if subDomain is not None:
-        final_kwargs['subDomain'] = subDomain
-    if category is not None:
-        final_kwargs['category'] = category
-    if type is not None:
-        final_kwargs['type'] = type
-    if name is not None:
-        final_kwargs['name'] = name
-
-    # No body parameter for this function.
-    body_payload = None
-
-    client = CatalystClient()
-    # Use attribute access to trigger __getattr__ for dynamic resolution
-    target = client.WebhookEventSubscription
-
-    if body_payload is not None:
-        return target(body=body_payload, **final_kwargs)
-    return target(**final_kwargs)
+# alias → easier for LLM
+register('WebhookEventSubscription')(globals()['getRest_WebhookEventSubscriptions'])
 
 @register('WebhookEventSubscriptions')
 def WebhookEventSubscriptions(eventIds: str = None, offset: float = None, limit: float = None, sortBy: str = None, order: str = None, domain: str = None, subDomain: str = None, category: str = None, type: str = None, name: str = None):
@@ -5703,6 +10895,25 @@ def getRolesAPI(invokeSource: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('deleteApplication')
+def deleteApplication(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteApplication
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getGoldenTagStatusOfAnImage.')
 def getGoldenTagStatusOfAnImage_(Accept: str, siteId: str, deviceFamilyIdentifier: str, deviceRole: str, imageId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -5725,6 +10936,33 @@ def getGoldenTagStatusOfAnImage_(Accept: str, siteId: str, deviceFamilyIdentifie
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getGoldenTagStatusOfAnImage_
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('removeGoldenTagForImage.')
+def removeGoldenTagForImage_(siteId: str, deviceFamilyIdentifier: str, deviceRole: str, imageId: str, Accept: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Accept is not None:
+        final_kwargs['Accept'] = Accept
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if deviceFamilyIdentifier is not None:
+        final_kwargs['deviceFamilyIdentifier'] = deviceFamilyIdentifier
+    if deviceRole is not None:
+        final_kwargs['deviceRole'] = deviceRole
+    if imageId is not None:
+        final_kwargs['imageId'] = imageId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.removeGoldenTagForImage_
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -5831,6 +11069,27 @@ def getAuditLogParentRecords(instanceId: str = None, name: str = None, eventId: 
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('setDNSSettingsForASite')
+def setDNSSettingsForASite(Content_Type: str, id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.setDNSSettingsForASite
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('retrieveDNSSettingsForASite')
 def retrieveDNSSettingsForASite(id: str, _inherited: bool = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -5852,6 +11111,44 @@ def retrieveDNSSettingsForASite(id: str, _inherited: bool = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createCLICredentials')
+def createCLICredentials(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createCLICredentials
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateCLICredentials')
+def updateCLICredentials(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateCLICredentials
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getHealthScoreDefinitionForTheGivenId.')
 def getHealthScoreDefinitionForTheGivenId_(id: str, X_CALLER_ID: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -5868,6 +11165,29 @@ def getHealthScoreDefinitionForTheGivenId_(id: str, X_CALLER_ID: str = None):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getHealthScoreDefinitionForTheGivenId_
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateHealthScoreDefinitionForTheGivenId.')
+def updateHealthScoreDefinitionForTheGivenId_(Content_Type: str, id: str, X_CALLER_ID: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateHealthScoreDefinitionForTheGivenId_
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -5901,43 +11221,10 @@ def getProject_s_Details(id: str = None, name: str = None, offset: int = None, l
     return target(**final_kwargs)
 
 # alias → easier for LLM
-register('s_Details')(globals()['getProject_s_Details'])
-
-# alias → easier for LLM
 register('s_Detail')(globals()['getProject_s_Details'])
 
-@register('s_Details')
-def s_Details(id: str = None, name: str = None, offset: int = None, limit: int = None, sortOrder: str = None):
-    """Auto-generated wrapper for clarity and maintainability."""
-    # Explicitly build keyword arguments, excluding None values.
-    final_kwargs = {}
-    if id is not None:
-        final_kwargs['id'] = id
-    if name is not None:
-        final_kwargs['name'] = name
-    if offset is not None:
-        final_kwargs['offset'] = offset
-    if limit is not None:
-        final_kwargs['limit'] = limit
-    if sortOrder is not None:
-        final_kwargs['sortOrder'] = sortOrder
-
-    # No body parameter for this function.
-    body_payload = None
-
-    client = CatalystClient()
-    # Use attribute access to trigger __getattr__ for dynamic resolution
-    target = client.s_Details
-
-    if body_payload is not None:
-        return target(body=body_payload, **final_kwargs)
-    return target(**final_kwargs)
-
 # alias → easier for LLM
-register('Details')(globals()['s_Details'])
-
-# alias → easier for LLM
-register('Detail')(globals()['s_Details'])
+register('s_Details')(globals()['getProject_s_Details'])
 
 @register('s_Detail')
 def s_Detail(id: str = None, name: str = None, offset: int = None, limit: int = None, sortOrder: str = None):
@@ -5968,6 +11255,58 @@ def s_Detail(id: str = None, name: str = None, offset: int = None, limit: int = 
 
 # alias → easier for LLM
 register('Detail')(globals()['s_Detail'])
+
+@register('s_Details')
+def s_Details(id: str = None, name: str = None, offset: int = None, limit: int = None, sortOrder: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if name is not None:
+        final_kwargs['name'] = name
+    if offset is not None:
+        final_kwargs['offset'] = offset
+    if limit is not None:
+        final_kwargs['limit'] = limit
+    if sortOrder is not None:
+        final_kwargs['sortOrder'] = sortOrder
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.s_Details
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+# alias → easier for LLM
+register('Detail')(globals()['s_Details'])
+
+# alias → easier for LLM
+register('Details')(globals()['s_Details'])
+
+@register('lANAutomationStart')
+def lANAutomationStart(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.lANAutomationStart
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
 
 @register('downloadAFileByFileId')
 def downloadAFileByFileId(fileId: str):
@@ -6014,6 +11353,44 @@ def getAllHealthScoreDefinitionsForGivenFilters_(X_CALLER_ID: str = None, device
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getAllHealthScoreDefinitionsForGivenFilters_
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateEmailDestination')
+def updateEmailDestination(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateEmailDestination
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createEmailDestination')
+def createEmailDestination(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createEmailDestination
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -6085,6 +11462,23 @@ def getsInterfacesAlongWithStatisticsDataFromAllNetworkDevices_(startTime: float
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateLicenseSetting')
+def updateLicenseSetting():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateLicenseSetting
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('retrieveLicenseSetting')
 def retrieveLicenseSetting():
     """Auto-generated wrapper for clarity and maintainability."""
@@ -6097,6 +11491,69 @@ def retrieveLicenseSetting():
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.retrieveLicenseSetting
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('resetDevice')
+def resetDevice(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.resetDevice
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('getTheDetailsOfIssuesForGivenSetOfFilters')
+def getTheDetailsOfIssuesForGivenSetOfFilters(Content_Type: str, Accept_Language: str = None, X_CALLER_ID: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if Accept_Language is not None:
+        final_kwargs['Accept-Language'] = Accept_Language
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.getTheDetailsOfIssuesForGivenSetOfFilters
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('wirelessControllerProvision')
+def wirelessControllerProvision(Content_Type: str, deviceId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.wirelessControllerProvision
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -6154,6 +11611,25 @@ def get802_11beProfilesCount():
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateMulticast')
+def updateMulticast(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateMulticast
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getMulticast')
 def getMulticast(fabricId: str = None, offset: float = None, limit: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -6172,6 +11648,25 @@ def getMulticast(fabricId: str = None, offset: float = None, limit: float = None
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getMulticast
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('assignNetworkDevicesToASite')
+def assignNetworkDevicesToASite(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.assignNetworkDevicesToASite
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -6223,6 +11718,25 @@ def downloadFlexibleReport(Content_Type: str, reportId: str, executionId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('exportsTheTemplatesForAGivenCriteria.')
+def exportsTheTemplatesForAGivenCriteria_(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.exportsTheTemplatesForAGivenCriteria_
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getExternalAuthenticationServersAPI')
 def getExternalAuthenticationServersAPI(invokeSource: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -6263,6 +11777,25 @@ def getLayer3VirtualNetworksCount(fabricId: str = None, anchoredSiteId: str = No
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('theTotalInterfacesCountAcrossTheNetworkDevices.')
+def theTotalInterfacesCountAcrossTheNetworkDevices_(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.theTotalInterfacesCountAcrossTheNetworkDevices_
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('lANAutomationStatus')
 def lANAutomationStatus(offset: float = None, limit: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -6279,6 +11812,25 @@ def lANAutomationStatus(offset: float = None, limit: float = None):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.lANAutomationStatus
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deviceRegistration')
+def deviceRegistration(virtual_account_name: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if virtual_account_name is not None:
+        final_kwargs['virtual_account_name'] = virtual_account_name
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deviceRegistration
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -6459,6 +12011,86 @@ def retrievesTheListOfNetworkDeviceProductNames(productName: str = None, product
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('syncVirtualAccountDevices')
+def syncVirtualAccountDevices(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.syncVirtualAccountDevices
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('removeUser-Defined-FieldFromDevice')
+def removeUser_Defined_FieldFromDevice(deviceId: str, name: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
+    if name is not None:
+        final_kwargs['name'] = name
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.removeUser_Defined_FieldFromDevice
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('addUser-Defined-FieldToDevice')
+def addUser_Defined_FieldToDevice(deviceId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addUser_Defined_FieldToDevice
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createTemplate')
+def createTemplate(Content_Type: str, projectId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if projectId is not None:
+        final_kwargs['projectId'] = projectId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createTemplate
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getAnchorManagedAPLocationsForSpecificWirelessController')
 def getAnchorManagedAPLocationsForSpecificWirelessController(networkDeviceId: str, limit: float = None, offset: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -6530,6 +12162,67 @@ def getDevicesThatAreAssignedToASite(id: str, memberType: str, offset: str = Non
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('getSummaryAnalyticsDataOfIssues')
+def getSummaryAnalyticsDataOfIssues(Content_Type: str, Accept_Language: str = None, X_CALLER_ID: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if Accept_Language is not None:
+        final_kwargs['Accept-Language'] = Accept_Language
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.getSummaryAnalyticsDataOfIssues
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteTransitNetworkById')
+def deleteTransitNetworkById(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteTransitNetworkById
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteFabricSiteById')
+def deleteFabricSiteById(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteFabricSiteById
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('lANAutomationLog')
 def lANAutomationLog(offset: float = None, limit: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -6574,6 +12267,27 @@ def retrievesTheListOfNetworkProfilesThatTheGivenSiteHasBeenAssigned(siteId: str
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('assignManagedAPLocationsForWLC')
+def assignManagedAPLocationsForWLC(Content_Type: str, deviceId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if deviceId is not None:
+        final_kwargs['deviceId'] = deviceId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.assignManagedAPLocationsForWLC
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getDiscoveryJobsByIP')
 def getDiscoveryJobsByIP(ipAddress: str, offset: int = None, limit: int = None, name: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -6594,6 +12308,25 @@ def getDiscoveryJobsByIP(ipAddress: str, offset: int = None, limit: int = None, 
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getDiscoveryJobsByIP
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteApplicationSet')
+def deleteApplicationSet(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteApplicationSet
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -6651,10 +12384,29 @@ def getTemplate_s_Details(id: str = None, name: str = None, projectId: str = Non
     return target(**final_kwargs)
 
 # alias → easier for LLM
-register('s_Details')(globals()['getTemplate_s_Details'])
+register('s_Detail')(globals()['getTemplate_s_Details'])
 
 # alias → easier for LLM
-register('s_Detail')(globals()['getTemplate_s_Details'])
+register('s_Details')(globals()['getTemplate_s_Details'])
+
+@register('deleteLayer2VirtualNetworkById')
+def deleteLayer2VirtualNetworkById(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteLayer2VirtualNetworkById
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
 
 @register('lANAutomationLogsForIndividualDevices')
 def lANAutomationLogsForIndividualDevices(id: str, serialNumber: str, logLevel: str = None):
@@ -6674,6 +12426,31 @@ def lANAutomationLogsForIndividualDevices(id: str, serialNumber: str, logLevel: 
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.lANAutomationLogsForIndividualDevices
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateTheGivenIssueByUpdatingSelectedFields')
+def updateTheGivenIssueByUpdatingSelectedFields(Content_Type: str, id: str, Accept_Language: str = None, X_CALLER_ID: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if Accept_Language is not None:
+        final_kwargs['Accept-Language'] = Accept_Language
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateTheGivenIssueByUpdatingSelectedFields
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -6775,6 +12552,27 @@ def getSecondaryManagedAPLocationsForSpecificWirelessController(networkDeviceId:
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getSecondaryManagedAPLocationsForSpecificWirelessController
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('setNTPSettingsForASite')
+def setNTPSettingsForASite(Content_Type: str, id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.setNTPSettingsForASite
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -6967,6 +12765,50 @@ def getAccessPointConfiguration(key: str):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getAccessPointConfiguration
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateDeviceRole')
+def updateDeviceRole(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateDeviceRole
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('importSoftwareImageViaURL')
+def importSoftwareImageViaURL(Content_Type: str, scheduleAt: str = None, scheduleDesc: str = None, scheduleOrigin: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if scheduleAt is not None:
+        final_kwargs['scheduleAt'] = scheduleAt
+    if scheduleDesc is not None:
+        final_kwargs['scheduleDesc'] = scheduleDesc
+    if scheduleOrigin is not None:
+        final_kwargs['scheduleOrigin'] = scheduleOrigin
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.importSoftwareImageViaURL
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -7204,6 +13046,25 @@ def getFunctionalCapabilityForDevices(deviceId: str, functionName: list = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createsAnArea')
+def createsAnArea(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createsAnArea
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getPortAssignments')
 def getPortAssignments(fabricId: str = None, networkDeviceId: str = None, interfaceName: str = None, dataVlanName: str = None, voiceVlanName: str = None, offset: float = None, limit: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -7230,6 +13091,113 @@ def getPortAssignments(fabricId: str = None, networkDeviceId: str = None, interf
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getPortAssignments
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deletePortAssignments')
+def deletePortAssignments(fabricId: str, networkDeviceId: str, interfaceName: str = None, dataVlanName: str = None, voiceVlanName: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if fabricId is not None:
+        final_kwargs['fabricId'] = fabricId
+    if networkDeviceId is not None:
+        final_kwargs['networkDeviceId'] = networkDeviceId
+    if interfaceName is not None:
+        final_kwargs['interfaceName'] = interfaceName
+    if dataVlanName is not None:
+        final_kwargs['dataVlanName'] = dataVlanName
+    if voiceVlanName is not None:
+        final_kwargs['voiceVlanName'] = voiceVlanName
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deletePortAssignments
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updatePortAssignments')
+def updatePortAssignments(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updatePortAssignments
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('addPortAssignments')
+def addPortAssignments(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addPortAssignments
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('authenticationAPI')
+def authenticationAPI(Content_Type: str, Authorization: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if Authorization is not None:
+        final_kwargs['Authorization'] = Authorization
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.authenticationAPI
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('queryAssuranceEventsWithFilters')
+def queryAssuranceEventsWithFilters(Content_Type: str, X_CALLER_ID: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.queryAssuranceEventsWithFilters
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -7266,6 +13234,25 @@ def lANAutomationActiveSessions():
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.lANAutomationActiveSessions
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('applicationPolicyIntent')
+def applicationPolicyIntent(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.applicationPolicyIntent
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -7334,6 +13321,25 @@ def getDeviceDetail(identifier: str, searchBy: str, timestamp: float = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('acceptCiscoISEServerCertificateForCiscoISEServerIntegration')
+def acceptCiscoISEServerCertificateForCiscoISEServerIntegration(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.acceptCiscoISEServerCertificateForCiscoISEServerIntegration
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('lANAutomationSessionCount')
 def lANAutomationSessionCount():
     """Auto-generated wrapper for clarity and maintainability."""
@@ -7370,6 +13376,186 @@ def getNetworkDeviceByIP(ipAddress: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('exportDeviceList')
+def exportDeviceList(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.exportDeviceList
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateDeviceManagementAddress')
+def updateDeviceManagementAddress(deviceid: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceid is not None:
+        final_kwargs['deviceid'] = deviceid
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateDeviceManagementAddress
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('removeTagMember')
+def removeTagMember(id: str, memberId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+    if memberId is not None:
+        final_kwargs['memberId'] = memberId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.removeTagMember
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('previewConfig')
+def previewConfig(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.previewConfig
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('getTheTotalNumberOfIssuesForGivenSetOfFilters-2')
+def getTheTotalNumberOfIssuesForGivenSetOfFilters_2(Content_Type: str, X_CALLER_ID: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.getTheTotalNumberOfIssuesForGivenSetOfFilters_2
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('runRead-onlyCommandsOnDevicesToGetTheirReal-timeConfiguration')
+def runRead_onlyCommandsOnDevicesToGetTheirReal_timeConfiguration(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.runRead_onlyCommandsOnDevicesToGetTheirReal_timeConfiguration
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('factoryResetAccessPoint_s_')
+def factoryResetAccessPoint_s_(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.factoryResetAccessPoint_s_
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+# alias → easier for LLM
+register('s_')(globals()['factoryResetAccessPoint_s_'])
+
+@register('s_')
+def s_(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.s_
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('retrievesTheNumberOfClientsByApplyingComplexFilters.')
+def retrievesTheNumberOfClientsByApplyingComplexFilters_(Content_Type: str, X_CALLER_ID: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.retrievesTheNumberOfClientsByApplyingComplexFilters_
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getSiteNotAssignedNetworkDevicesCount')
 def getSiteNotAssignedNetworkDevicesCount():
     """Auto-generated wrapper for clarity and maintainability."""
@@ -7382,6 +13568,25 @@ def getSiteNotAssignedNetworkDevicesCount():
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getSiteNotAssignedNetworkDevicesCount
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteRoleAPI')
+def deleteRoleAPI(roleId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if roleId is not None:
+        final_kwargs['roleId'] = roleId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteRoleAPI
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -7446,6 +13651,25 @@ def downloadReportContent(reportId: str, executionId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('importMapArchive-StartImport')
+def importMapArchive_StartImport(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.importMapArchive_StartImport
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getDeviceCount-2')
 def getDeviceCount_2(serialNumber: list = None, state: list = None, onbState: list = None, name: list = None, pid: list = None, source: list = None, workflowId: list = None, workflowName: list = None, smartAccountId: list = None, virtualAccountId: list = None, lastContact: bool = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -7497,6 +13721,46 @@ def eventArtifactCount():
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.eventArtifactCount
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('claimDevice')
+def claimDevice(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.claimDevice
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('resolveTheGivenListsOfIssues')
+def resolveTheGivenListsOfIssues(Content_Type: str, X_CALLER_ID: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.resolveTheGivenListsOfIssues
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -7594,6 +13858,25 @@ def getProvisioningSettings():
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('setProvisioningSettings')
+def setProvisioningSettings(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.setProvisioningSettings
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('readSiteCount.')
 def readSiteCount_(X_CALLER_ID: str = None, endTime: float = None, siteHierarchy: str = None, siteHierarchyId: str = None, siteType: str = None, id: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -7673,6 +13956,25 @@ def importMapArchive_ImportStatus(importContextUuid: str):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.importMapArchive_ImportStatus
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('manageExternalAuthenticationSettingAPI')
+def manageExternalAuthenticationSettingAPI(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.manageExternalAuthenticationSettingAPI
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -7812,6 +14114,27 @@ def getInterfaceInfoById(deviceId: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('retrievesTheTop-NAnalyticsDataRelatedToClients.')
+def retrievesTheTop_NAnalyticsDataRelatedToClients_(Content_Type: str, X_CALLER_ID: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.retrievesTheTop_NAnalyticsDataRelatedToClients_
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getTaskByOperationId')
 def getTaskByOperationId(operationId: str, offset: int, limit: int):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -7871,6 +14194,27 @@ def getL3TopologyDetails(topologyType: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('changeVirtualAccount')
+def changeVirtualAccount(smart_account_id: str, virtual_account_name: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if smart_account_id is not None:
+        final_kwargs['smart_account_id'] = smart_account_id
+    if virtual_account_name is not None:
+        final_kwargs['virtual_account_name'] = virtual_account_name
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.changeVirtualAccount
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getAdvisoryDeviceDetail')
 def getAdvisoryDeviceDetail(deviceId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -7902,6 +14246,25 @@ def getConnectorTypes():
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getConnectorTypes
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('getsTheListOfNetworkDevicesBasedOnTheProvidedComplexFiltersAndAg')
+def getsTheListOfNetworkDevicesBasedOnTheProvidedComplexFiltersAndAg(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.getsTheListOfNetworkDevicesBasedOnTheProvidedComplexFiltersAndAg
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -7944,6 +14307,27 @@ def licenseTermDetails(smart_account_id: str, virtual_account_name: str, device_
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.licenseTermDetails
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('setDhcpSettingsForASite')
+def setDhcpSettingsForASite(Content_Type: str, id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.setDhcpSettingsForASite
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -8056,6 +14440,25 @@ def getsTheNetworkDeviceDetailsBasedOnTheProvidedQueryParameters_(startTime: flo
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('downloadTheSoftwareImage')
+def downloadTheSoftwareImage(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.downloadTheSoftwareImage
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('issues')
 def issues(startTime: float = None, endTime: float = None, siteId: str = None, deviceId: str = None, macAddress: str = None, priority: str = None, issueStatus: str = None, aiDriven: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -8105,6 +14508,25 @@ def getDevicesRegisteredForWSANotification(serialNumber: str = None, macaddress:
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getDevicesRegisteredForWSANotification
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createSites')
+def createSites(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createSites
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -8290,6 +14712,25 @@ def getEoXSummary():
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('deleteFabricDeviceLayer3HandoffWithIpTransitById')
+def deleteFabricDeviceLayer3HandoffWithIpTransitById(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteFabricDeviceLayer3HandoffWithIpTransitById
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('systemPerformanceAPI')
 def systemPerformanceAPI(kpi: str = None, function: str = None, startTime: float = None, endTime: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -8310,6 +14751,50 @@ def systemPerformanceAPI(kpi: str = None, function: str = None, startTime: float
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.systemPerformanceAPI
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('countTheNumberOfEventsWithFilters')
+def countTheNumberOfEventsWithFilters(Content_Type: str, X_CALLER_ID: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.countTheNumberOfEventsWithFilters
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('retrievesSpecificClientInformationOverASpecifiedPeriodOfTime.')
+def retrievesSpecificClientInformationOverASpecifiedPeriodOfTime_(Content_Type: str, id: str, X_CALLER_ID: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.retrievesSpecificClientInformationOverASpecifiedPeriodOfTime_
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -8426,11 +14911,11 @@ register('list_interfaces')(globals()['getAllInterfaces'])
 # alias for getAllInterfaces -> interfaces
 register('interfaces')(globals()['getAllInterfaces'])
 
-# alias for getAllInterfaces -> get_interfaces
-register('get_interfaces')(globals()['getAllInterfaces'])
-
 # alias for getAllInterfaces -> show_interfaces
 register('show_interfaces')(globals()['getAllInterfaces'])
+
+# alias for getAllInterfaces -> get_interfaces
+register('get_interfaces')(globals()['getAllInterfaces'])
 
 @register('returnsCountOfAdd-onImages')
 def returnsCountOfAdd_onImages(id: str):
@@ -8482,6 +14967,27 @@ def ciscoDNACenterPackagesSummary():
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.ciscoDNACenterPackagesSummary
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('retrievesSummaryAnalyticsDataRelatedToClients.')
+def retrievesSummaryAnalyticsDataRelatedToClients_(Content_Type: str, X_CALLER_ID: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.retrievesSummaryAnalyticsDataRelatedToClients_
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -8542,6 +15048,27 @@ def getAccessPointConfigurationTaskResult(task_id: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('importsTheProjectsProvided')
+def importsTheProjectsProvided(Content_Type: str, doVersion: bool = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if doVersion is not None:
+        final_kwargs['doVersion'] = doVersion
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.importsTheProjectsProvided
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getComplianceDetail')
 def getComplianceDetail(complianceType: str = None, complianceStatus: str = None, deviceUuid: str = None, offset: float = None, limit: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -8564,6 +15091,46 @@ def getComplianceDetail(complianceType: str = None, complianceStatus: str = None
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getComplianceDetail
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('uploadsFloorImage')
+def uploadsFloorImage(Content_Type: str, id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.uploadsFloorImage
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deletePortAssignmentById')
+def deletePortAssignmentById(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deletePortAssignmentById
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -8613,6 +15180,29 @@ def getGlobalCredentials(credentialSubType: str, sortBy: str = None, order: str 
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('getTrendAnalyticsDataOfIssues')
+def getTrendAnalyticsDataOfIssues(Content_Type: str, Accept_Language: str = None, X_CALLER_ID: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if Accept_Language is not None:
+        final_kwargs['Accept-Language'] = Accept_Language
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.getTrendAnalyticsDataOfIssues
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getComplianceStatus')
 def getComplianceStatus(complianceStatus: str = None, deviceUuid: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -8656,6 +15246,31 @@ def getSNMPDestination(configId: str = None, offset: float = None, limit: float 
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getSNMPDestination
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('triggerSoftwareImageActivation')
+def triggerSoftwareImageActivation(Content_Type: str, Client_Type: str = None, Client_Url: str = None, scheduleValidate: bool = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if Client_Type is not None:
+        final_kwargs['Client-Type'] = Client_Type
+    if Client_Url is not None:
+        final_kwargs['Client-Url'] = Client_Url
+    if scheduleValidate is not None:
+        final_kwargs['scheduleValidate'] = scheduleValidate
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.triggerSoftwareImageActivation
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -8733,6 +15348,25 @@ def getInterfacesCount():
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getInterfacesCount
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('mobilityReset')
+def mobilityReset(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.mobilityReset
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -8829,6 +15463,46 @@ def getDeviceList_2(limit: int = None, offset: int = None, sort: list = None, so
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getDeviceList_2
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('addDevice-2')
+def addDevice_2(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addDevice_2
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('retrievesTheListOfClientsByApplyingComplexFiltersWhileAlsoSuppor')
+def retrievesTheListOfClientsByApplyingComplexFiltersWhileAlsoSuppor(Content_Type: str, X_CALLER_ID: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if X_CALLER_ID is not None:
+        final_kwargs['X-CALLER-ID'] = X_CALLER_ID
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.retrievesTheListOfClientsByApplyingComplexFiltersWhileAlsoSuppor
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -9121,6 +15795,25 @@ def getsTheTotalNetworkDeviceCountsBasedOnTheProvidedQueryParameters(startTime: 
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('versionTemplate')
+def versionTemplate(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.versionTemplate
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getTaskTree')
 def getTaskTree(taskId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -9161,6 +15854,25 @@ def getDiscoveredNetworkDevicesByDiscoveryId(id: str, taskId: str = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('runCompliance')
+def runCompliance(Content_Type: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.runCompliance
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getStatusAPIForEvents')
 def getStatusAPIForEvents(executionId: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -9175,6 +15887,27 @@ def getStatusAPIForEvents(executionId: str):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getStatusAPIForEvents
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('exportMapArchive')
+def exportMapArchive(Content_Type: str, siteHierarchyUuid: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if Content_Type is not None:
+        final_kwargs['Content-Type'] = Content_Type
+    if siteHierarchyUuid is not None:
+        final_kwargs['siteHierarchyUuid'] = siteHierarchyUuid
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.exportMapArchive
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -9279,6 +16012,42 @@ def getDeviceValuesThatMatchFullyOrPartiallyAnAttribute(vrfName: str = None, man
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createSensorTestTemplate')
+def createSensorTestTemplate():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createSensorTestTemplate
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteSensorTest')
+def deleteSensorTest(templateName: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if templateName is not None:
+        final_kwargs['templateName'] = templateName
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteSensorTest
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('sensors')
 def sensors(siteId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -9317,6 +16086,27 @@ def getDeviceInfoFromSDAFabric(deviceManagementIpAddress: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('deletePortAssignmentForAccessPointInSDAFabric')
+def deletePortAssignmentForAccessPointInSDAFabric(deviceManagementIpAddress: str, interfaceName: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceManagementIpAddress is not None:
+        final_kwargs['deviceManagementIpAddress'] = deviceManagementIpAddress
+    if interfaceName is not None:
+        final_kwargs['interfaceName'] = interfaceName
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deletePortAssignmentForAccessPointInSDAFabric
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getPortAssignmentForAccessPointInSDAFabric')
 def getPortAssignmentForAccessPointInSDAFabric(deviceManagementIpAddress: str, interfaceName: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -9333,6 +16123,103 @@ def getPortAssignmentForAccessPointInSDAFabric(deviceManagementIpAddress: str, i
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getPortAssignmentForAccessPointInSDAFabric
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('addPortAssignmentForAccessPointInSDAFabric')
+def addPortAssignmentForAccessPointInSDAFabric():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addPortAssignmentForAccessPointInSDAFabric
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('removeWLCFromFabricDomain')
+def removeWLCFromFabricDomain(deviceIPAddress: str, __persistbapioutput: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if __persistbapioutput is not None:
+        final_kwargs['__persistbapioutput'] = __persistbapioutput
+    if deviceIPAddress is not None:
+        final_kwargs['deviceIPAddress'] = deviceIPAddress
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.removeWLCFromFabricDomain
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('addWLCToFabricDomain')
+def addWLCToFabricDomain(__persistbapioutput: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if __persistbapioutput is not None:
+        final_kwargs['__persistbapioutput'] = __persistbapioutput
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addWLCToFabricDomain
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('addIPPoolInSDAVirtualNetwork')
+def addIPPoolInSDAVirtualNetwork():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addIPPoolInSDAVirtualNetwork
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteIPPoolFromSDAVirtualNetwork')
+def deleteIPPoolFromSDAVirtualNetwork(siteNameHierarchy: str, virtualNetworkName: str, ipPoolName: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteNameHierarchy is not None:
+        final_kwargs['siteNameHierarchy'] = siteNameHierarchy
+    if virtualNetworkName is not None:
+        final_kwargs['virtualNetworkName'] = virtualNetworkName
+    if ipPoolName is not None:
+        final_kwargs['ipPoolName'] = ipPoolName
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteIPPoolFromSDAVirtualNetwork
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -9361,6 +16248,25 @@ def getIPPoolFromSDAVirtualNetwork(siteNameHierarchy: str, virtualNetworkName: s
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('deleteEdgeDeviceFromSDAFabric')
+def deleteEdgeDeviceFromSDAFabric(deviceManagementIpAddress: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceManagementIpAddress is not None:
+        final_kwargs['deviceManagementIpAddress'] = deviceManagementIpAddress
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteEdgeDeviceFromSDAFabric
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getEdgeDeviceFromSDAFabric')
 def getEdgeDeviceFromSDAFabric(deviceManagementIpAddress: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -9380,6 +16286,42 @@ def getEdgeDeviceFromSDAFabric(deviceManagementIpAddress: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('addEdgeDeviceInSDAFabric')
+def addEdgeDeviceInSDAFabric():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addEdgeDeviceInSDAFabric
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteMulticastFromSDAFabric')
+def deleteMulticastFromSDAFabric(siteNameHierarchy: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteNameHierarchy is not None:
+        final_kwargs['siteNameHierarchy'] = siteNameHierarchy
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteMulticastFromSDAFabric
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getMulticastDetailsFromSDAFabric')
 def getMulticastDetailsFromSDAFabric(siteNameHierarchy: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -9394,6 +16336,40 @@ def getMulticastDetailsFromSDAFabric(siteNameHierarchy: str):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getMulticastDetailsFromSDAFabric
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('addMulticastInSDAFabric')
+def addMulticastInSDAFabric():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addMulticastInSDAFabric
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('editApplication')
+def editApplication():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.editApplication
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -9422,6 +16398,42 @@ def getApplications(offset: float = None, limit: float = None, name: str = None)
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('deleteApplication-2')
+def deleteApplication_2(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteApplication_2
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createApplication')
+def createApplication():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createApplication
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('retrieveRFProfiles')
 def retrieveRFProfiles(rf_profile_name: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -9436,6 +16448,23 @@ def retrieveRFProfiles(rf_profile_name: str = None):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.retrieveRFProfiles
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createOrUpdateRFProfile')
+def createOrUpdateRFProfile():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createOrUpdateRFProfile
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -9508,6 +16537,42 @@ def getTransitPeerNetworkInfo(transitPeerNetworkName: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('addTransitPeerNetwork')
+def addTransitPeerNetwork():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addTransitPeerNetwork
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteTransitPeerNetwork')
+def deleteTransitPeerNetwork(transitPeerNetworkName: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if transitPeerNetworkName is not None:
+        final_kwargs['transitPeerNetworkName'] = transitPeerNetworkName
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteTransitPeerNetwork
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('clientProximity')
 def clientProximity(username: str, number_days: float = None, time_resolution: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -9526,6 +16591,44 @@ def clientProximity(username: str, number_days: float = None, time_resolution: f
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.clientProximity
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteDeviceCredential')
+def deleteDeviceCredential(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteDeviceCredential
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteSPProfile')
+def deleteSPProfile(spProfileName: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if spProfileName is not None:
+        final_kwargs['spProfileName'] = spProfileName
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteSPProfile
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -9561,6 +16664,42 @@ def applications(siteId: str = None, deviceId: str = None, macAddress: str = Non
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.applications
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createApplicationSet')
+def createApplicationSet():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createApplicationSet
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteApplicationSet-2')
+def deleteApplicationSet_2(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteApplicationSet_2
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -9606,6 +16745,42 @@ def getApplicationsCount():
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('deleteGlobalIPPool')
+def deleteGlobalIPPool(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteGlobalIPPool
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateGlobalPool')
+def updateGlobalPool():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateGlobalPool
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getGlobalPool')
 def getGlobalPool(offset: float = None, limit: float = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -9622,6 +16797,63 @@ def getGlobalPool(offset: float = None, limit: float = None):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getGlobalPool
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createGlobalPool')
+def createGlobalPool(__persistbapioutput: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if __persistbapioutput is not None:
+        final_kwargs['__persistbapioutput'] = __persistbapioutput
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createGlobalPool
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createAndProvisionSSID')
+def createAndProvisionSSID(__persistbapioutput: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if __persistbapioutput is not None:
+        final_kwargs['__persistbapioutput'] = __persistbapioutput
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createAndProvisionSSID
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteRFProfiles')
+def deleteRFProfiles(rfProfileName: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if rfProfileName is not None:
+        final_kwargs['rfProfileName'] = rfProfileName
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteRFProfiles
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -9648,6 +16880,80 @@ def getVNFromSDAFabric(virtualNetworkName: str, siteNameHierarchy: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('addVNInFabric')
+def addVNInFabric():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addVNInFabric
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteVNFromSDAFabric')
+def deleteVNFromSDAFabric(virtualNetworkName: str, siteNameHierarchy: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if virtualNetworkName is not None:
+        final_kwargs['virtualNetworkName'] = virtualNetworkName
+    if siteNameHierarchy is not None:
+        final_kwargs['siteNameHierarchy'] = siteNameHierarchy
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteVNFromSDAFabric
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteDefaultAuthenticationProfileFromSDAFabric')
+def deleteDefaultAuthenticationProfileFromSDAFabric(siteNameHierarchy: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteNameHierarchy is not None:
+        final_kwargs['siteNameHierarchy'] = siteNameHierarchy
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteDefaultAuthenticationProfileFromSDAFabric
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateDefaultAuthenticationProfileInSDAFabric')
+def updateDefaultAuthenticationProfileInSDAFabric():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateDefaultAuthenticationProfileInSDAFabric
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getDefaultAuthenticationProfileFromSDAFabric')
 def getDefaultAuthenticationProfileFromSDAFabric(siteNameHierarchy: str, authenticateTemplateName: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -9664,6 +16970,154 @@ def getDefaultAuthenticationProfileFromSDAFabric(siteNameHierarchy: str, authent
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getDefaultAuthenticationProfileFromSDAFabric
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('addDefaultAuthenticationTemplateInSDAFabric')
+def addDefaultAuthenticationTemplateInSDAFabric():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addDefaultAuthenticationTemplateInSDAFabric
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('reserveIPSubpool')
+def reserveIPSubpool(siteId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.reserveIPSubpool
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateReserveIPSubpool')
+def updateReserveIPSubpool(siteId: str, id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateReserveIPSubpool
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('pSKOverride')
+def pSKOverride():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.pSKOverride
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('assignDeviceCredentialToSite')
+def assignDeviceCredentialToSite(__persistbapioutput: str, siteId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if __persistbapioutput is not None:
+        final_kwargs['__persistbapioutput'] = __persistbapioutput
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.assignDeviceCredentialToSite
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('re-ProvisionWiredDevice')
+def re_ProvisionWiredDevice():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.re_ProvisionWiredDevice
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('provisionWiredDevice')
+def provisionWiredDevice():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.provisionWiredDevice
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteProvisionedWiredDevice')
+def deleteProvisionedWiredDevice(deviceManagementIpAddress: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceManagementIpAddress is not None:
+        final_kwargs['deviceManagementIpAddress'] = deviceManagementIpAddress
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteProvisionedWiredDevice
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -9688,6 +17142,23 @@ def getProvisionedWiredDevice(deviceManagementIpAddress: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateDeviceCredentials')
+def updateDeviceCredentials():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateDeviceCredentials
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getDeviceCredentialDetails')
 def getDeviceCredentialDetails(siteId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -9702,6 +17173,42 @@ def getDeviceCredentialDetails(siteId: str = None):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getDeviceCredentialDetails
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createDeviceCredentials')
+def createDeviceCredentials():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createDeviceCredentials
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteSiteFromSDAFabric')
+def deleteSiteFromSDAFabric(siteNameHierarchy: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteNameHierarchy is not None:
+        final_kwargs['siteNameHierarchy'] = siteNameHierarchy
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteSiteFromSDAFabric
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -9726,6 +17233,40 @@ def getSiteFromSDAFabric(siteNameHierarchy: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('addSiteInSDAFabric')
+def addSiteInSDAFabric():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addSiteInSDAFabric
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateSPProfile')
+def updateSPProfile():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateSPProfile
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getServiceProviderDetails')
 def getServiceProviderDetails():
     """Auto-generated wrapper for clarity and maintainability."""
@@ -9738,6 +17279,46 @@ def getServiceProviderDetails():
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getServiceProviderDetails
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createSPProfile')
+def createSPProfile():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createSPProfile
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createSite')
+def createSite(__runsync: bool, __persistbapioutput: bool, __timeout: float = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if __runsync is not None:
+        final_kwargs['__runsync'] = __runsync
+    if __timeout is not None:
+        final_kwargs['__timeout'] = __timeout
+    if __persistbapioutput is not None:
+        final_kwargs['__persistbapioutput'] = __persistbapioutput
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createSite
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -9770,6 +17351,48 @@ def getSite(name: str = None, siteId: str = None, type: str = None, offset: int 
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateNetwork')
+def updateNetwork(siteId: str, __persistbapioutput: bool = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if __persistbapioutput is not None:
+        final_kwargs['__persistbapioutput'] = __persistbapioutput
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateNetwork
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createNetwork')
+def createNetwork(siteId: str, __persistbapioutput: bool = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if __persistbapioutput is not None:
+        final_kwargs['__persistbapioutput'] = __persistbapioutput
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createNetwork
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getVirtualNetworkSummary')
 def getVirtualNetworkSummary(siteNameHierarchy: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -9784,6 +17407,23 @@ def getVirtualNetworkSummary(siteNameHierarchy: str):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getVirtualNetworkSummary
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createWirelessProfile-2')
+def createWirelessProfile_2():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createWirelessProfile_2
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -9808,6 +17448,59 @@ def getWirelessProfile(profileName: str = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateWirelessProfile-2')
+def updateWirelessProfile_2():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateWirelessProfile_2
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('releaseReserveIPSubpool')
+def releaseReserveIPSubpool(id: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if id is not None:
+        final_kwargs['id'] = id
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.releaseReserveIPSubpool
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('duplicateSensorTestTemplate')
+def duplicateSensorTestTemplate():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.duplicateSensorTestTemplate
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getIssueEnrichmentDetails')
 def getIssueEnrichmentDetails(entity_type: str, entity_value: str, __persistbapioutput: bool = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -9826,6 +17519,44 @@ def getIssueEnrichmentDetails(entity_type: str, entity_value: str, __persistbapi
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getIssueEnrichmentDetails
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('provisionUpdate')
+def provisionUpdate(__persistbapioutput: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if __persistbapioutput is not None:
+        final_kwargs['__persistbapioutput'] = __persistbapioutput
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.provisionUpdate
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('provision')
+def provision(__persistbapioutput: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if __persistbapioutput is not None:
+        final_kwargs['__persistbapioutput'] = __persistbapioutput
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.provision
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -9875,6 +17606,40 @@ def getDeviceRoleInSDAFabric(deviceManagementIpAddress: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('createEnterpriseSSID')
+def createEnterpriseSSID():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createEnterpriseSSID
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateEnterpriseSSID')
+def updateEnterpriseSSID():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateEnterpriseSSID
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getEnterpriseSSID')
 def getEnterpriseSSID(ssidName: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -9894,6 +17659,31 @@ def getEnterpriseSSID(ssidName: str = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('assignDevicesToSite')
+def assignDevicesToSite(__runsync: bool, __persistbapioutput: bool, siteId: str, __timeout: float = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if __runsync is not None:
+        final_kwargs['__runsync'] = __runsync
+    if __timeout is not None:
+        final_kwargs['__timeout'] = __timeout
+    if __persistbapioutput is not None:
+        final_kwargs['__persistbapioutput'] = __persistbapioutput
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.assignDevicesToSite
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getBorderDeviceDetailFromSDAFabric')
 def getBorderDeviceDetailFromSDAFabric(deviceManagementIpAddress: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -9908,6 +17698,59 @@ def getBorderDeviceDetailFromSDAFabric(deviceManagementIpAddress: str):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getBorderDeviceDetailFromSDAFabric
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('addBorderDeviceInSDAFabric')
+def addBorderDeviceInSDAFabric():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addBorderDeviceInSDAFabric
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteBorderDeviceFromSDAFabric')
+def deleteBorderDeviceFromSDAFabric(deviceManagementIpAddress: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceManagementIpAddress is not None:
+        final_kwargs['deviceManagementIpAddress'] = deviceManagementIpAddress
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteBorderDeviceFromSDAFabric
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('addPortAssignmentForUserDeviceInSDAFabric')
+def addPortAssignmentForUserDeviceInSDAFabric():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addPortAssignmentForUserDeviceInSDAFabric
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -9934,6 +17777,27 @@ def getPortAssignmentForUserDeviceInSDAFabric(deviceManagementIpAddress: str, in
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('deletePortAssignmentForUserDeviceInSDAFabric')
+def deletePortAssignmentForUserDeviceInSDAFabric(deviceManagementIpAddress: str, interfaceName: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceManagementIpAddress is not None:
+        final_kwargs['deviceManagementIpAddress'] = deviceManagementIpAddress
+    if interfaceName is not None:
+        final_kwargs['interfaceName'] = interfaceName
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deletePortAssignmentForUserDeviceInSDAFabric
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getFailedITSMEvents')
 def getFailedITSMEvents(instanceId: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -9948,6 +17812,57 @@ def getFailedITSMEvents(instanceId: str = None):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getFailedITSMEvents
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('retryIntegrationEvents')
+def retryIntegrationEvents():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.retryIntegrationEvents
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateSSIDToIPPoolMapping')
+def updateSSIDToIPPoolMapping():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateSSIDToIPPoolMapping
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('addSSIDToIPPoolMapping')
+def addSSIDToIPPoolMapping():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addSSIDToIPPoolMapping
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -9988,6 +17903,42 @@ def getControlPlaneDeviceFromSDAFabric(deviceManagementIpAddress: str):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getControlPlaneDeviceFromSDAFabric
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('addControlPlaneDeviceInSDAFabric')
+def addControlPlaneDeviceInSDAFabric():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addControlPlaneDeviceInSDAFabric
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteControlPlaneDeviceInSDAFabric')
+def deleteControlPlaneDeviceInSDAFabric(deviceManagementIpAddress: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if deviceManagementIpAddress is not None:
+        final_kwargs['deviceManagementIpAddress'] = deviceManagementIpAddress
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteControlPlaneDeviceInSDAFabric
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -10058,6 +18009,59 @@ def getClientEnrichmentDetails(entity_type: str, entity_value: str, issueCategor
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('updateVirtualNetworkWithScalableGroups')
+def updateVirtualNetworkWithScalableGroups():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateVirtualNetworkWithScalableGroups
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteVirtualNetworkWithScalableGroups')
+def deleteVirtualNetworkWithScalableGroups(virtualNetworkName: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if virtualNetworkName is not None:
+        final_kwargs['virtualNetworkName'] = virtualNetworkName
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteVirtualNetworkWithScalableGroups
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('addVirtualNetworkWithScalableGroups')
+def addVirtualNetworkWithScalableGroups():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.addVirtualNetworkWithScalableGroups
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getVirtualNetworkWithScalableGroups')
 def getVirtualNetworkWithScalableGroups(virtualNetworkName: str):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -10072,6 +18076,42 @@ def getVirtualNetworkWithScalableGroups(virtualNetworkName: str):
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getVirtualNetworkWithScalableGroups
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('editSensorTestTemplate')
+def editSensorTestTemplate():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.editSensorTestTemplate
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteEnterpriseSSID')
+def deleteEnterpriseSSID(ssidName: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if ssidName is not None:
+        final_kwargs['ssidName'] = ssidName
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteEnterpriseSSID
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -10095,6 +18135,67 @@ def getDynamicInterface(__runsync: bool = None, __timeout: float = None, interfa
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getDynamicInterface
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('createUpdateDynamicInterface')
+def createUpdateDynamicInterface(__runsync: bool = None, __timeout: float = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if __runsync is not None:
+        final_kwargs['__runsync'] = __runsync
+    if __timeout is not None:
+        final_kwargs['__timeout'] = __timeout
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.createUpdateDynamicInterface
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteDynamicInterface')
+def deleteDynamicInterface(interfaceName: str, __runsync: bool = None, __timeout: float = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if __runsync is not None:
+        final_kwargs['__runsync'] = __runsync
+    if __timeout is not None:
+        final_kwargs['__timeout'] = __timeout
+    if interfaceName is not None:
+        final_kwargs['interfaceName'] = interfaceName
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteDynamicInterface
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('executeSuggestedActionsCommands')
+def executeSuggestedActionsCommands():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.executeSuggestedActionsCommands
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -10140,6 +18241,25 @@ def getUserEnrichmentDetails(entity_type: str, entity_value: str, __persistbapio
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+@register('aPProvision-2')
+def aPProvision_2(__persistbapioutput: str = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if __persistbapioutput is not None:
+        final_kwargs['__persistbapioutput'] = __persistbapioutput
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.aPProvision_2
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
 @register('getDeviceEnrichmentDetails')
 def getDeviceEnrichmentDetails(entity_type: str, entity_value: str, __persistbapioutput: bool = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -10158,6 +18278,50 @@ def getDeviceEnrichmentDetails(entity_type: str, entity_value: str, __persistbap
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getDeviceEnrichmentDetails
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteSite')
+def deleteSite(siteId: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteSite
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('updateSite')
+def updateSite(__persistbapioutput: bool, siteId: str, __runsync: bool = None, __timeout: float = None):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if __runsync is not None:
+        final_kwargs['__runsync'] = __runsync
+    if __timeout is not None:
+        final_kwargs['__timeout'] = __timeout
+    if __persistbapioutput is not None:
+        final_kwargs['__persistbapioutput'] = __persistbapioutput
+    if siteId is not None:
+        final_kwargs['siteId'] = siteId
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.updateSite
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
@@ -10185,6 +18349,65 @@ def getMembership(siteId: str, offset: float = None, limit: float = None, device
     client = CatalystClient()
     # Use attribute access to trigger __getattr__ for dynamic resolution
     target = client.getMembership
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('runNowSensorTest')
+def runNowSensorTest():
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.runNowSensorTest
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteWirelessProfile-2')
+def deleteWirelessProfile_2(wirelessProfileName: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if wirelessProfileName is not None:
+        final_kwargs['wirelessProfileName'] = wirelessProfileName
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteWirelessProfile_2
+
+    if body_payload is not None:
+        return target(body=body_payload, **final_kwargs)
+    return target(**final_kwargs)
+
+@register('deleteSSIDAndProvisionItToDevices')
+def deleteSSIDAndProvisionItToDevices(__persistbapioutput: str, ssidName: str, managedAPLocations: str):
+    """Auto-generated wrapper for clarity and maintainability."""
+    # Explicitly build keyword arguments, excluding None values.
+    final_kwargs = {}
+    if __persistbapioutput is not None:
+        final_kwargs['__persistbapioutput'] = __persistbapioutput
+    if ssidName is not None:
+        final_kwargs['ssidName'] = ssidName
+    if managedAPLocations is not None:
+        final_kwargs['managedAPLocations'] = managedAPLocations
+
+    # No body parameter for this function.
+    body_payload = None
+
+    client = CatalystClient()
+    # Use attribute access to trigger __getattr__ for dynamic resolution
+    target = client.deleteSSIDAndProvisionItToDevices
 
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
