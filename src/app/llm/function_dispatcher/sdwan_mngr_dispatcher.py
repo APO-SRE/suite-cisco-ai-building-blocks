@@ -269,17 +269,23 @@ def findUsers_1():
 # alias → easier for LLM
 register('1')(globals()['findUsers_1'])
 
-# alias for findUsers_1 -> show_users
-register('show_users')(globals()['findUsers_1'])
+# alias for findUsers_1 -> list_users
+register('list_users')(globals()['findUsers_1'])
 
 # alias for findUsers_1 -> get_users
 register('get_users')(globals()['findUsers_1'])
 
-# alias for findUsers_1 -> user_list
-register('user_list')(globals()['findUsers_1'])
+# alias for findUsers_1 -> sdwan_users
+register('sdwan_users')(globals()['findUsers_1'])
 
 # alias for findUsers_1 -> users
 register('users')(globals()['findUsers_1'])
+
+# alias for findUsers_1 -> user_list
+register('user_list')(globals()['findUsers_1'])
+
+# alias for findUsers_1 -> show_users
+register('show_users')(globals()['findUsers_1'])
 
 @register('createUser_1')
 def createUser_1():
@@ -767,23 +773,26 @@ def getRawAlarmData(query: str = None, site_id: str = None, includeTenants: bool
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
-# alias for getRawAlarmData -> alarms
-register('alarms')(globals()['getRawAlarmData'])
-
-# alias for getRawAlarmData -> show_alarms
-register('show_alarms')(globals()['getRawAlarmData'])
-
-# alias for getRawAlarmData -> get_all_alarms
-register('get_all_alarms')(globals()['getRawAlarmData'])
+# alias for getRawAlarmData -> alarm_history
+register('alarm_history')(globals()['getRawAlarmData'])
 
 # alias for getRawAlarmData -> raw_alarms
 register('raw_alarms')(globals()['getRawAlarmData'])
 
-# alias for getRawAlarmData -> alarm_list
-register('alarm_list')(globals()['getRawAlarmData'])
+# alias for getRawAlarmData -> alarms
+register('alarms')(globals()['getRawAlarmData'])
+
+# alias for getRawAlarmData -> get_all_alarms
+register('get_all_alarms')(globals()['getRawAlarmData'])
+
+# alias for getRawAlarmData -> show_alarms
+register('show_alarms')(globals()['getRawAlarmData'])
 
 # alias for getRawAlarmData -> all_alarms
 register('all_alarms')(globals()['getRawAlarmData'])
+
+# alias for getRawAlarmData -> alarm_list
+register('alarm_list')(globals()['getRawAlarmData'])
 
 @register('postRawAlarmData')
 def postRawAlarmData(page: int = None, pageSize: int = None, sortBy: str = None, sortOrder: str = None, site_id: str = None, includeTenants: bool = None):
@@ -3869,20 +3878,23 @@ def getActiveAlarms(scrollId: str = None, startDate: str = None, endDate: str = 
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+# alias for getActiveAlarms -> current_alarms
+register('current_alarms')(globals()['getActiveAlarms'])
+
+# alias for getActiveAlarms -> list_active_alarms
+register('list_active_alarms')(globals()['getActiveAlarms'])
+
+# alias for getActiveAlarms -> show_active_alarms
+register('show_active_alarms')(globals()['getActiveAlarms'])
+
 # alias for getActiveAlarms -> active_alarms
 register('active_alarms')(globals()['getActiveAlarms'])
 
 # alias for getActiveAlarms -> get_active_alarms
 register('get_active_alarms')(globals()['getActiveAlarms'])
 
-# alias for getActiveAlarms -> alarms_active
-register('alarms_active')(globals()['getActiveAlarms'])
-
-# alias for getActiveAlarms -> show_active_alarms
-register('show_active_alarms')(globals()['getActiveAlarms'])
-
-# alias for getActiveAlarms -> list_active_alarms
-register('list_active_alarms')(globals()['getActiveAlarms'])
+# alias for getActiveAlarms -> open_alarms
+register('open_alarms')(globals()['getActiveAlarms'])
 
 @register('generateDeviceStatisticsData')
 def generateDeviceStatisticsData(state_data_type: str, scrollId: str = None, startDate: str = None, endDate: str = None, count: int = None, timeZone: str = None):
@@ -4445,17 +4457,23 @@ def listAllDevices(site_id: str = None, includeTenantvSmart: bool = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+# alias for listAllDevices -> list_devices
+register('list_devices')(globals()['listAllDevices'])
+
 # alias for listAllDevices -> device_list
 register('device_list')(globals()['listAllDevices'])
 
-# alias for listAllDevices -> devices
-register('devices')(globals()['listAllDevices'])
+# alias for listAllDevices -> get_devices
+register('get_devices')(globals()['listAllDevices'])
+
+# alias for listAllDevices -> sdwan_devices
+register('sdwan_devices')(globals()['listAllDevices'])
 
 # alias for listAllDevices -> show_devices
 register('show_devices')(globals()['listAllDevices'])
 
-# alias for listAllDevices -> get_devices
-register('get_devices')(globals()['listAllDevices'])
+# alias for listAllDevices -> devices
+register('devices')(globals()['listAllDevices'])
 
 @register('getAAAservers')
 def getAAAservers(deviceId: str):
@@ -4657,18 +4675,6 @@ def getFirmwareImages():
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
-
-# alias for getFirmwareImages -> get_firmware
-register('get_firmware')(globals()['getFirmwareImages'])
-
-# alias for getFirmwareImages -> firmware_images
-register('firmware_images')(globals()['getFirmwareImages'])
-
-# alias for getFirmwareImages -> firmware_list
-register('firmware_list')(globals()['getFirmwareImages'])
-
-# alias for getFirmwareImages -> show_firmware
-register('show_firmware')(globals()['getFirmwareImages'])
 
 @register('processFirmwareImage')
 def processFirmwareImage():
@@ -5437,18 +5443,6 @@ def findSoftwareImages():
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
-# alias for findSoftwareImages -> get_software_images
-register('get_software_images')(globals()['findSoftwareImages'])
-
-# alias for findSoftwareImages -> image_list
-register('image_list')(globals()['findSoftwareImages'])
-
-# alias for findSoftwareImages -> show_images
-register('show_images')(globals()['findSoftwareImages'])
-
-# alias for findSoftwareImages -> software_images
-register('software_images')(globals()['findSoftwareImages'])
-
 @register('createImageURL')
 def createImageURL():
     """Auto-generated wrapper for clarity and maintainability."""
@@ -5734,17 +5728,20 @@ def findVEdgeSoftwareVersion():
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
-# alias for findVEdgeSoftwareVersion -> get_vedge_version
-register('get_vedge_version')(globals()['findVEdgeSoftwareVersion'])
+# alias for findVEdgeSoftwareVersion -> vedge_software_list
+register('vedge_software_list')(globals()['findVEdgeSoftwareVersion'])
 
-# alias for findVEdgeSoftwareVersion -> vedge_version
-register('vedge_version')(globals()['findVEdgeSoftwareVersion'])
+# alias for findVEdgeSoftwareVersion -> vedge_versions
+register('vedge_versions')(globals()['findVEdgeSoftwareVersion'])
 
-# alias for findVEdgeSoftwareVersion -> edge_software_version
-register('edge_software_version')(globals()['findVEdgeSoftwareVersion'])
+# alias for findVEdgeSoftwareVersion -> get_vedge_versions
+register('get_vedge_versions')(globals()['findVEdgeSoftwareVersion'])
 
-# alias for findVEdgeSoftwareVersion -> vedge_software
-register('vedge_software')(globals()['findVEdgeSoftwareVersion'])
+# alias for findVEdgeSoftwareVersion -> edge_software_versions
+register('edge_software_versions')(globals()['findVEdgeSoftwareVersion'])
+
+# alias for findVEdgeSoftwareVersion -> edge_versions
+register('edge_versions')(globals()['findVEdgeSoftwareVersion'])
 
 @register('findSoftwareVersion')
 def findSoftwareVersion():
@@ -5763,17 +5760,23 @@ def findSoftwareVersion():
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+# alias for findSoftwareVersion -> get_software_versions
+register('get_software_versions')(globals()['findSoftwareVersion'])
+
+# alias for findSoftwareVersion -> available_versions
+register('available_versions')(globals()['findSoftwareVersion'])
+
+# alias for findSoftwareVersion -> software_versions
+register('software_versions')(globals()['findSoftwareVersion'])
+
 # alias for findSoftwareVersion -> show_versions
 register('show_versions')(globals()['findSoftwareVersion'])
 
 # alias for findSoftwareVersion -> version_list
 register('version_list')(globals()['findSoftwareVersion'])
 
-# alias for findSoftwareVersion -> software_version
-register('software_version')(globals()['findSoftwareVersion'])
-
-# alias for findSoftwareVersion -> get_software_version
-register('get_software_version')(globals()['findSoftwareVersion'])
+# alias for findSoftwareVersion -> list_versions
+register('list_versions')(globals()['findSoftwareVersion'])
 
 @register('getVnfProperties')
 def getVnfProperties(versionId: str):
@@ -13739,17 +13742,23 @@ def getAllDeviceStatus():
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+# alias for getAllDeviceStatus -> device_states
+register('device_states')(globals()['getAllDeviceStatus'])
+
 # alias for getAllDeviceStatus -> device_status
 register('device_status')(globals()['getAllDeviceStatus'])
 
-# alias for getAllDeviceStatus -> status_devices
-register('status_devices')(globals()['getAllDeviceStatus'])
+# alias for getAllDeviceStatus -> get_device_status
+register('get_device_status')(globals()['getAllDeviceStatus'])
 
 # alias for getAllDeviceStatus -> show_device_status
 register('show_device_status')(globals()['getAllDeviceStatus'])
 
-# alias for getAllDeviceStatus -> get_device_status
-register('get_device_status')(globals()['getAllDeviceStatus'])
+# alias for getAllDeviceStatus -> status_all_devices
+register('status_all_devices')(globals()['getAllDeviceStatus'])
+
+# alias for getAllDeviceStatus -> all_device_status
+register('all_device_status')(globals()['getAllDeviceStatus'])
 
 @register('getSxpConnections')
 def getSxpConnections(deviceId: str):
@@ -17222,17 +17231,23 @@ def getDevicesHealth(page: int = None, pageSize: int = None, sortBy: str = None,
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
-# alias for getDevicesHealth -> get_device_health
-register('get_device_health')(globals()['getDevicesHealth'])
-
 # alias for getDevicesHealth -> show_device_health
 register('show_device_health')(globals()['getDevicesHealth'])
 
+# alias for getDevicesHealth -> check_health
+register('check_health')(globals()['getDevicesHealth'])
+
+# alias for getDevicesHealth -> health_status
+register('health_status')(globals()['getDevicesHealth'])
+
+# alias for getDevicesHealth -> health_check
+register('health_check')(globals()['getDevicesHealth'])
+
+# alias for getDevicesHealth -> get_device_health
+register('get_device_health')(globals()['getDevicesHealth'])
+
 # alias for getDevicesHealth -> device_health
 register('device_health')(globals()['getDevicesHealth'])
-
-# alias for getDevicesHealth -> health_devices
-register('health_devices')(globals()['getDevicesHealth'])
 
 @register('getDevicesHealthOverview')
 def getDevicesHealthOverview(vpn_id: str = None, vpnId: str = None):
@@ -18052,18 +18067,6 @@ def getMslaLicenses(uuid: str = None):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
-# alias for getMslaLicenses -> msla_list
-register('msla_list')(globals()['getMslaLicenses'])
-
-# alias for getMslaLicenses -> msla_licenses
-register('msla_licenses')(globals()['getMslaLicenses'])
-
-# alias for getMslaLicenses -> get_msla_licenses
-register('get_msla_licenses')(globals()['getMslaLicenses'])
-
-# alias for getMslaLicenses -> show_msla
-register('show_msla')(globals()['getMslaLicenses'])
-
 @register('getLicensesCompliance')
 def getLicensesCompliance():
     """Auto-generated wrapper for clarity and maintainability."""
@@ -18080,18 +18083,6 @@ def getLicensesCompliance():
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
-
-# alias for getLicensesCompliance -> get_license_compliance
-register('get_license_compliance')(globals()['getLicensesCompliance'])
-
-# alias for getLicensesCompliance -> compliance_licenses
-register('compliance_licenses')(globals()['getLicensesCompliance'])
-
-# alias for getLicensesCompliance -> show_compliance
-register('show_compliance')(globals()['getLicensesCompliance'])
-
-# alias for getLicensesCompliance -> license_compliance
-register('license_compliance')(globals()['getLicensesCompliance'])
 
 @register('syncLicenses_1')
 def syncLicenses_1():
@@ -18221,18 +18212,6 @@ def getSubscriptions(virtual_account_id: str = None, licenseType: str = None):
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
-
-# alias for getSubscriptions -> show_subscriptions
-register('show_subscriptions')(globals()['getSubscriptions'])
-
-# alias for getSubscriptions -> subscription_list
-register('subscription_list')(globals()['getSubscriptions'])
-
-# alias for getSubscriptions -> subscriptions
-register('subscriptions')(globals()['getSubscriptions'])
-
-# alias for getSubscriptions -> get_subscriptions
-register('get_subscriptions')(globals()['getSubscriptions'])
 
 @register('getAllCloudAccounts')
 def getAllCloudAccounts(cloudType: str = None, cloudGatewayEnabled: str = None):
@@ -21648,21 +21627,6 @@ def getLicenses(edgeType: str = None, accountId: str = None, productType: str = 
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
-# alias for getLicenses -> get_licenses
-register('get_licenses')(globals()['getLicenses'])
-
-# alias for getLicenses -> show_licenses
-register('show_licenses')(globals()['getLicenses'])
-
-# alias for getLicenses -> sdwan_licenses
-register('sdwan_licenses')(globals()['getLicenses'])
-
-# alias for getLicenses -> licenses
-register('licenses')(globals()['getLicenses'])
-
-# alias for getLicenses -> license_list
-register('license_list')(globals()['getLicenses'])
-
 @register('getEdgeLocationsInfo')
 def getEdgeLocationsInfo(edgeType: str, accountId: str = None, region: str = None):
     """Auto-generated wrapper for clarity and maintainability."""
@@ -22174,6 +22138,27 @@ def getSites(color: str = None, attached: str = None, solution: str = None):
     if body_payload is not None:
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
+
+# alias for getSites -> get_sites
+register('get_sites')(globals()['getSites'])
+
+# alias for getSites -> show_sites
+register('show_sites')(globals()['getSites'])
+
+# alias for getSites -> locations
+register('locations')(globals()['getSites'])
+
+# alias for getSites -> sdwan_sites
+register('sdwan_sites')(globals()['getSites'])
+
+# alias for getSites -> site_list
+register('site_list')(globals()['getSites'])
+
+# alias for getSites -> list_sites
+register('list_sites')(globals()['getSites'])
+
+# alias for getSites -> sites
+register('sites')(globals()['getSites'])
 
 @register('getSshKeyList')
 def getSshKeyList(cloudType: str, accountId: str, cloudRegion: str):
@@ -24845,23 +24830,29 @@ def getSegment(id: str):
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
-# alias for getSegment -> list_network
-register('list_network')(globals()['getSegment'])
+# alias for getSegment -> show_segments
+register('show_segments')(globals()['getSegment'])
 
-# alias for getSegment -> segment
-register('segment')(globals()['getSegment'])
+# alias for getSegment -> list_vpns
+register('list_vpns')(globals()['getSegment'])
 
-# alias for getSegment -> network_segment
-register('network_segment')(globals()['getSegment'])
+# alias for getSegment -> sdwan_vpns
+register('sdwan_vpns')(globals()['getSegment'])
 
-# alias for getSegment -> get_network
-register('get_network')(globals()['getSegment'])
+# alias for getSegment -> segments
+register('segments')(globals()['getSegment'])
 
-# alias for getSegment -> get_segment
-register('get_segment')(globals()['getSegment'])
+# alias for getSegment -> vpn_list
+register('vpn_list')(globals()['getSegment'])
 
-# alias for getSegment -> show_segment
-register('show_segment')(globals()['getSegment'])
+# alias for getSegment -> networks
+register('networks')(globals()['getSegment'])
+
+# alias for getSegment -> get_segments
+register('get_segments')(globals()['getSegment'])
+
+# alias for getSegment -> network_segments
+register('network_segments')(globals()['getSegment'])
 
 @register('editSegment')
 def editSegment(id: str):
@@ -45814,17 +45805,23 @@ def getAllPolicyLists():
         return target(body=body_payload, **final_kwargs)
     return target(**final_kwargs)
 
+# alias for getAllPolicyLists -> get_policies
+register('get_policies')(globals()['getAllPolicyLists'])
+
 # alias for getAllPolicyLists -> policies
 register('policies')(globals()['getAllPolicyLists'])
 
-# alias for getAllPolicyLists -> get_policies
-register('get_policies')(globals()['getAllPolicyLists'])
+# alias for getAllPolicyLists -> show_policies
+register('show_policies')(globals()['getAllPolicyLists'])
+
+# alias for getAllPolicyLists -> sdwan_policies
+register('sdwan_policies')(globals()['getAllPolicyLists'])
 
 # alias for getAllPolicyLists -> policy_list
 register('policy_list')(globals()['getAllPolicyLists'])
 
-# alias for getAllPolicyLists -> vedge_policies
-register('vedge_policies')(globals()['getAllPolicyLists'])
+# alias for getAllPolicyLists -> list_policies
+register('list_policies')(globals()['getAllPolicyLists'])
 
 @register('getPolicyLists_3')
 def getPolicyLists_3():

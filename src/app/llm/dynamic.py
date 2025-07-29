@@ -123,250 +123,10 @@ SEMANTIC_MAPPINGS = {
 # ─────────────────────────────────────────────────────────────────────────────
 # PLATFORM-SPECIFIC FUNCTION PRIORITIES
 # ─────────────────────────────────────────────────────────────────────────────
-FUNCTION_PRIORITIES = {
-    "meraki": {
-        # Organization and network management (most common)
-        "getOrganizations": 95,
-        "getOrganization": 90,
-        "getNetworks": 90,
-        "getNetwork": 85,
-        "getOrganizationDevices": 85,
-        "getDevices": 85,
-        "getDevice": 80,
-        
-        # Configuration and monitoring
-        "getNetworkClients": 75,
-        "getOrganizationNetworks": 75,
-        "getNetworkDevices": 70,
-        "getDeviceClients": 70,
-        
-        # Specialized operations
-        "getNetworkTraffic": 50,
-        "getOrganizationInventoryDevices": 50,
-        "updateDevice": 40,
-        "createNetwork": 40,
-        
-        # Low priority - rarely needed directly
-        "getNetworkSmDevices": 20,
-        "getNetworkPiiRequests": 15,
-        "getNetworkMqttBrokers": 10,
-    },
-    
-    "catalyst": {
-        # Device and interface management (most common)
-        "getDeviceList": 95,
-        "getAllInterfaces": 90,
-        "getDeviceCount": 85,
-        "getNetworkDeviceList": 85,
-        "getInterfaces": 80,
-        "getDeviceDetail": 80,
-        
-        # Network health and monitoring
-        "getOverallNetworkHealth": 75,
-        "getDeviceHealthStats": 70,
-        "getSiteHealth": 70,
-        
-        # Configuration and discovery
-        "getDiscoveryById": 50,
-        "getGlobalPool": 50,
-        "getSites": 50,
-        
-        # Specialized/administrative
-        "getExecutionByExecutionId": 20,
-        "getTaskById": 20,
-        "getEventSubscriptions": 15,
-    },
-    
-    "intersight": {
-        # Server inventory (MOST common)
-        "GetComputePhysicalSummaryList": 100,  # PRIMARY server list function
-        "GetComputeRackUnitList": 75,
-        "GetComputeBladeList": 75,
-        "GetEquipmentChassisIdByMoid": 70,
-        
-        # Server management
-        "GetServerProfileList": 40,  # Profiles, not actual servers
-        "GetComputeServerSettingList": 35,
-        "GetBootPrecisionPolicyList": 30,
-        
-        # Alerts and monitoring
-        "GetCondAlarmList": 60,
-        "GetCondHclStatusList": 55,
-        
-        # Storage and network
-        "GetStoragePhysicalDiskList": 50,
-        "GetNetworkElementList": 50,
-        
-        # Specialized - rarely what users want
-        "GetServerDisruptionList": 10,  # NOT for general server listing
-        "GetThermalPolicyList": 15,
-        "GetVnicEthQosPolicyList": 15,
-        
-        # View endpoints - typically lower priority
-        "GetViewComputePhysicalSummaryList": 25,
-        "GetViewServerList": 25,
-    },
-    
-    "nexus_dashboard": {
-        # Fabric and site management
-        "getFabrics": 90,
-        "getSites": 85,
-        "getFabricHealth": 80,
-        "getNodes": 75,
-        
-        # Policy and configuration
-        "getPolicies": 60,
-        "getTemplates": 55,
-        
-        # Analytics and insights
-        "getAnalytics": 50,
-        "getInsights": 50,
-    },
-    
-    "nexus_hyperfabric": {
-        # Fabric operations
-        "fabricsGetAllFabrics": 95,
-        "fabricsGetFabric": 90,
-        "nodesGetAllNodes": 85,
-        "fabricsGetFabricHealth": 80,
-        
-        # Configuration
-        "policiesGetPolicies": 60,
-        "templatesGetTemplates": 55,
-    },
-    
-    "sdwan_mngr": {
-        # Device management (most common)
-        "listAllDevices": 95,  # Primary device inventory function
-        "getAllDeviceStatus": 90,  # Device operational status
-        "getDevicesDetails": 85,  # Detailed device information
-        "getDevicesHealth": 85,  # Device health metrics
-        "getDevicesHealthOverview": 80,  # Health overview
-        "getDeviceCounters": 75,
-        "getDeviceModels": 70,
-        "getControlStatus": 70,
-        
-        # Alarms and monitoring
-        "getRawAlarmData": 85,  # Primary alarm data function
-        "getActiveAlarms": 85,  # Active alarms only
-        "getNonViewedAlarms": 80,  # Unviewed alarms
-        "getAlarmsCount": 70,  # Just counts
-        "getRunningAlarmCount": 65,
-        
-        # Users and AAA
-        "findUsers_1": 85,  # Primary user list function
-        "getUserRole": 75,
-        "getUserGroups": 75,
-        "getAaaConfig": 70,
-        
-        # Templates and configuration
-        "getAllDeviceTemplates": 80,  # Device templates
-        "getFeatureTemplateList": 75,
-        "getTemplatePolicy": 70,
-        "getDeviceTemplateList": 70,
-        
-        # Sites and topology
-        "getAllSites": 85,  # Site list
-        "getSiteHealth": 80,
-        "getTopology": 75,
-        "getControlConnections": 70,
-        
-        # Policies
-        "getAllVedgePolicies": 75,  # vEdge policies
-        "getPolicyList": 70,
-        "getApplicationAwareRoutingPolicyList": 65,
-        "getControlPolicyList": 65,
-        
-        # Lower priority - specialized operations
-        "getDeviceRebootHistory": 30,
-        "getDeviceRunningConfig": 40,
-        "getStatisticsRawData": 35,
-        
-        # Deprecated or less useful
-        "getDevicesList": 20,  # Use listAllDevices instead
-    },
-    
-    "secure_access": {
-        # User and authentication
-        "getUsers": 90,
-        "getGroups": 85,
-        "getAuthentications": 80,
-        
-        # Policy and admin
-        "getPolicies": 60,
-        "getAdmins": 55,
-    },
-    
-    "umbrella": {
-        # Organization and identity
-        "getOrganizations": 90,
-        "getNetworks": 85,
-        "getIdentities": 80,
-        
-        # Security and reporting
-        "getSecurityActivity": 70,
-        "getDestinationLists": 65,
-        "getReports": 60,
-    },
-    
-    "cloudlock": {
-        # Incidents and policies
-        "getIncidents": 85,
-        "getPolicies": 80,
-        "getUsers": 75,
-        
-        # Data and compliance
-        "getDataPatterns": 60,
-        "getComplianceScans": 55,
-    },
-    
-    "ai_defense": {
-        # Threat detection
-        "getThreatDetections": 90,
-        "getSecurityAlerts": 85,
-        "getIncidentList": 80,
-        
-        # Analysis and response
-        "getAnalysisResults": 70,
-        "getResponseActions": 65,
-    },
-    
-    "sdwan_mngr": {
-        # Device management (MOST common)
-        "listAllDevices": 100,  # PRIMARY device list function
-        "getAllDeviceStatus": 95,  # PRIMARY device status
-        "getDeviceDetails": 85,
-        "getSystemDeviceList": 80,
-        
-        # Alarms and monitoring
-        "getRawAlarmData": 90,
-        "getActiveAlarms": 85,
-        "getAlarmsCount": 80,
-        "getCriticalAlarmsCount": 75,
-        
-        # Policy management (HIGH priority)
-        "getAllVedgePolicies": 90,
-        "getSecurityPolicyDeviceList": 85,
-        "getApplicationAwareRoutingPolicyList": 80,
-        "getControlPolicyList": 80,
-        "getDataPolicyList": 80,
-        "getTrafficPolicyList": 75,
-        
-        # Templates
-        "getAllDeviceTemplates": 75,
-        "getFeatureTemplateList": 70,
-        "getTemplatePolicy": 65,
-        
-        # Sites and topology
-        "getAllSites": 70,
-        "getTopology": 65,
-        
-        # Specialized operations (lower priority)
-        "getCloudxDeviceList": 30,
-        "getMasterOrchestrators": 25,
-        "getCloudConnections": 20,
-    }
-}
+# All function priorities are now loaded from:
+# platform_dynamic_cache/function_priorities.json
+# This allows for easy configuration without code changes.
+FUNCTION_PRIORITIES = {}
 
 # Query pattern to function boost mapping
 QUERY_PATTERN_BOOSTS = {
@@ -1006,12 +766,15 @@ def load_custom_priorities() -> None:
         try:
             with open(priority_file, 'r') as f:
                 custom_priorities = json.load(f)
-                # Merge with default priorities (custom takes precedence)
+                # Load priorities, skipping special keys that start with underscore
                 for platform, priorities in custom_priorities.items():
-                    if platform in FUNCTION_PRIORITIES:
-                        FUNCTION_PRIORITIES[platform].update(priorities)
-                    else:
-                        FUNCTION_PRIORITIES[platform] = priorities
+                    if platform.startswith('_'):
+                        continue  # Skip metadata keys like _README
+                    if isinstance(priorities, dict):
+                        # Clean the priorities dict to remove comment keys
+                        clean_priorities = {k: v for k, v in priorities.items() 
+                                          if not k.startswith('_') and isinstance(v, (int, float))}
+                        FUNCTION_PRIORITIES[platform] = clean_priorities
                 log.info(f"Loaded custom function priorities from {priority_file}")
         except Exception as e:
             log.warning(f"Failed to load custom priorities: {e}")
@@ -1037,7 +800,7 @@ def test_function_selection(query: str, platform: str) -> None:
     print(f"\nTesting query: '{query}' for platform: {platform}")
     print("-" * 60)
     
-    functions = build_functions_for_llm(query, [platform], k=10)
+    functions, platform_map = build_functions_for_llm(query, [platform], k=10)
     
     for i, func in enumerate(functions, 1):
         name = func.get("name", "Unknown")

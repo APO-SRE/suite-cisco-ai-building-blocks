@@ -57,19 +57,21 @@ def generate_aliases(fn: dict, safe_name: str, platform: str) -> list[str]:
     # 3-d. hand-crafted aliases for SD-WAN operations
     # Makes common queries more intuitive for the LLM
     if platform.lower() == 'sdwan_mngr':
-        # Device operations
+        # ========== Device Management Operations ==========
         if fn['name'] == 'listAllDevices':
-            for alias in {'devices', 'get_devices', 'device_list', 'show_devices'}:
+            # Lists all devices in the SD-WAN fabric (routers, switches, controllers)
+            for alias in {'devices', 'get_devices', 'device_list', 'show_devices', 'sdwan_devices', 'list_devices'}:
                 lines.extend([
                     f"# alias for {fn['name']} -> {alias}",
                     f"register('{alias}')(globals()['{safe_name}'])",
                     ""
                 ])
         
-        # Alarm operations
+        # ========== Alarm/Alert Operations ==========
         elif fn['name'] == 'getRawAlarmData':
-            # Raw/all alarms - most general, gets the shortest aliases
-            for alias in {'alarms', 'all_alarms', 'get_all_alarms', 'alarm_list', 'show_alarms', 'raw_alarms'}:
+            # Gets raw/all alarms - complete alarm history without filtering
+            # This is the most general alarm function, so it gets the shortest aliases
+            for alias in {'alarms', 'all_alarms', 'get_all_alarms', 'alarm_list', 'show_alarms', 'raw_alarms', 'alarm_history'}:
                 lines.extend([
                     f"# alias for {fn['name']} -> {alias}",
                     f"register('{alias}')(globals()['{safe_name}'])",
@@ -77,91 +79,59 @@ def generate_aliases(fn: dict, safe_name: str, platform: str) -> list[str]:
                 ])
         
         elif fn['name'] == 'getActiveAlarms':
-            # Active alarms only - specific subset
-            for alias in {'active_alarms', 'get_active_alarms', 'list_active_alarms', 'show_active_alarms', 'alarms_active'}:
+            # Gets only currently active alarms - filtered subset of alarms
+            # More specific than getRawAlarmData, so uses qualified aliases
+            for alias in {'active_alarms', 'get_active_alarms', 'list_active_alarms', 'show_active_alarms', 'current_alarms', 'open_alarms'}:
                 lines.extend([
                     f"# alias for {fn['name']} -> {alias}",
                     f"register('{alias}')(globals()['{safe_name}'])",
                     ""
                 ])
 
- 
-        # User operations
+        # ========== User Management Operations ==========
         elif fn['name'] == 'findUsers_1':
-            for alias in {'users', 'get_users', 'user_list', 'show_users'}:
+            # Lists all users configured in the SD-WAN management system
+            for alias in {'users', 'get_users', 'user_list', 'show_users', 'sdwan_users', 'list_users'}:
                 lines.extend([
                     f"# alias for {fn['name']} -> {alias}",
                     f"register('{alias}')(globals()['{safe_name}'])",
                     ""
                 ])
         
- 
-        
-        # Site operations
-        elif fn['name'] == 'getSItes':
-            for alias in {'sites', 'get_sites', 'site_list', 'show_sites'}:
+        # ========== Site/Location Operations ==========
+        elif fn['name'] == 'getSites':
+            # Lists all sites in the SD-WAN overlay network (branch offices, data centers, etc.)
+            for alias in {'sites', 'get_sites', 'site_list', 'show_sites', 'sdwan_sites', 'list_sites', 'locations'}:
                 lines.extend([
                     f"# alias for {fn['name']} -> {alias}",
                     f"register('{alias}')(globals()['{safe_name}'])",
                     ""
                 ])
         
-        # Policy operations
+        # ========== Policy Management Operations ==========
         elif fn['name'] == 'getAllPolicyLists':
-            for alias in {'policies', 'get_policies', 'policy_list', 'vedge_policies'}:
+            # Retrieves all configured SD-WAN policies (app-aware routing, security, QoS)
+            for alias in {'policies', 'get_policies', 'policy_list', 'sdwan_policies', 'show_policies', 'list_policies'}:
                 lines.extend([
                     f"# alias for {fn['name']} -> {alias}",
                     f"register('{alias}')(globals()['{safe_name}'])",
                     ""
                 ])
         
-        # Health operations
- 
-        
+        # ========== Health Monitoring Operations ==========
         elif fn['name'] == 'getDevicesHealth':
-            for alias in {'device_health', 'get_device_health', 'health_devices', 'show_device_health'}:
+            # Checks health status of all SD-WAN devices (CPU, memory, tunnel status)
+            for alias in {'device_health', 'get_device_health', 'health_check', 'show_device_health', 'health_status', 'check_health'}:
                 lines.extend([
                     f"# alias for {fn['name']} -> {alias}",
                     f"register('{alias}')(globals()['{safe_name}'])",
                     ""
                 ])
         
-        # License operations
-        elif fn['name'] == 'getLicenses':
-            for alias in {'licenses', 'get_licenses', 'license_list', 'show_licenses', 'sdwan_licenses'}:
-                lines.extend([
-                    f"# alias for {fn['name']} -> {alias}",
-                    f"register('{alias}')(globals()['{safe_name}'])",
-                    ""
-                ])
-        
-        elif fn['name'] == 'getLicensesCompliance':
-            for alias in {'license_compliance', 'get_license_compliance', 'compliance_licenses', 'show_compliance'}:
-                lines.extend([
-                    f"# alias for {fn['name']} -> {alias}",
-                    f"register('{alias}')(globals()['{safe_name}'])",
-                    ""
-                ])
-        
-        elif fn['name'] == 'getMslaLicenses':
-            for alias in {'msla_licenses', 'get_msla_licenses', 'msla_list', 'show_msla'}:
-                lines.extend([
-                    f"# alias for {fn['name']} -> {alias}",
-                    f"register('{alias}')(globals()['{safe_name}'])",
-                    ""
-                ])
-        
-        elif fn['name'] == 'getSubscriptions':
-            for alias in {'subscriptions', 'get_subscriptions', 'subscription_list', 'show_subscriptions'}:
-                lines.extend([
-                    f"# alias for {fn['name']} -> {alias}",
-                    f"register('{alias}')(globals()['{safe_name}'])",
-                    ""
-                ])
-        
-        # Software Version operations
+        # ========== Software Version Management ==========
         elif fn['name'] == 'findSoftwareVersion':
-            for alias in {'software_version', 'get_software_version', 'version_list', 'show_versions'}:
+            # Lists all available software versions in the SD-WAN controller repository
+            for alias in {'software_versions', 'get_software_versions', 'version_list', 'show_versions', 'available_versions', 'list_versions'}:
                 lines.extend([
                     f"# alias for {fn['name']} -> {alias}",
                     f"register('{alias}')(globals()['{safe_name}'])",
@@ -169,42 +139,28 @@ def generate_aliases(fn: dict, safe_name: str, platform: str) -> list[str]:
                 ])
         
         elif fn['name'] == 'findVEdgeSoftwareVersion':
-            for alias in {'vedge_version', 'get_vedge_version', 'edge_software_version', 'vedge_software'}:
+            # Lists software versions specifically for vEdge devices (virtual edge routers)
+            for alias in {'vedge_versions', 'get_vedge_versions', 'edge_software_versions', 'vedge_software_list', 'edge_versions'}:
                 lines.extend([
                     f"# alias for {fn['name']} -> {alias}",
                     f"register('{alias}')(globals()['{safe_name}'])",
                     ""
                 ])
         
-        elif fn['name'] == 'getFirmwareImages':
-            for alias in {'firmware_images', 'get_firmware', 'firmware_list', 'show_firmware'}:
-                lines.extend([
-                    f"# alias for {fn['name']} -> {alias}",
-                    f"register('{alias}')(globals()['{safe_name}'])",
-                    ""
-                ])
-        
-        elif fn['name'] == 'findSoftwareImages':
-            for alias in {'software_images', 'get_software_images', 'image_list', 'show_images'}:
-                lines.extend([
-                    f"# alias for {fn['name']} -> {alias}",
-                    f"register('{alias}')(globals()['{safe_name}'])",
-                    ""
-                ])
-        
-        # Network operations
+        # ========== Network Segmentation Operations ==========
         elif fn['name'] == 'getSegment':
-            for alias in {'segment', 'get_segment', 'network_segment', 'show_segment', "get_network","list_network"}:
+            # Gets network segments/VPNs configured in SD-WAN (VPN 0, VPN 512, service VPNs)
+            for alias in {'segments', 'networks', 'get_segments', 'network_segments', 'show_segments', 'vpn_list', 'sdwan_vpns', 'list_vpns'}:
                 lines.extend([
                     f"# alias for {fn['name']} -> {alias}",
                     f"register('{alias}')(globals()['{safe_name}'])",
                     ""
                 ])
         
-       
-        # Device status operations
+        # ========== Device Status Operations ==========
         elif fn['name'] == 'getAllDeviceStatus':
-            for alias in {'device_status', 'get_device_status', 'status_devices', 'show_device_status'}:
+            # Gets current operational status of all SD-WAN devices (reachability, sync status)
+            for alias in {'device_status', 'get_device_status', 'all_device_status', 'show_device_status', 'status_all_devices', 'device_states'}:
                 lines.extend([
                     f"# alias for {fn['name']} -> {alias}",
                     f"register('{alias}')(globals()['{safe_name}'])",
