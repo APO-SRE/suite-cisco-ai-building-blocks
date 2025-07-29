@@ -6932,7 +6932,35 @@
       "path": "/multicloud/license/edge",
       "method": "get",
       "description": "Get License Info for Edge Gateways/Connections",
-      "use_direct_api": true
+      "use_direct_api": true,
+      "query_params": [
+        {
+          "name": "edgeType",
+          "type": "string",
+          "enum": ["MEGAPORT"],
+          "description": "Edge type",
+          "required": false
+        },
+        {
+          "name": "accountId",
+          "type": "string",
+          "description": "Edge Account Id",
+          "required": false
+        },
+        {
+          "name": "productType",
+          "type": "string",
+          "enum": ["GATEWAY", "CONNECTION", "AWSHC"],
+          "description": "product Type",
+          "required": false
+        },
+        {
+          "name": "refresh",
+          "type": "string",
+          "description": "Refresh License Cache from Megaport",
+          "required": false
+        }
+      ]
     },
     "getEdgeLocationsInfo": {
       "path": "/multicloud/locations/edge/{edgeType}",

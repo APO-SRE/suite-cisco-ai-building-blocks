@@ -184,6 +184,12 @@ def get_platform_auth(platform: str, sdk_module: str = None):
                         request_kwargs['json'] = kwargs.pop('body')
                     elif kwargs:
                         request_kwargs['json'] = kwargs
+                elif method == 'GET' and kwargs:
+                    # For GET requests, any remaining kwargs should be query parameters
+                    if 'params' in request_kwargs:
+                        request_kwargs['params'].update(kwargs)
+                    else:
+                        request_kwargs['params'] = kwargs
                 
                 # Make the request using the SDK session (which has auth already configured)
                 # The SDK session extends requests.Session, so we can use it directly
