@@ -324,6 +324,9 @@ def _build_full_kv() -> Dict[str, Any]:
         spec     = json.loads(fp.read_text(encoding="utf-8"))
         for path_item in spec.get("paths", {}).values():
             for op in path_item.values():
+                # Skip non-dict values (like arrays, strings, etc.)
+                if not isinstance(op, dict):
+                    continue
                 op_id = op.get("operationId")
                 if op_id:
                     kv[f"{platform}:{op_id}"] = op

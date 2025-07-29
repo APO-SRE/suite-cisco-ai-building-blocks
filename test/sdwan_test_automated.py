@@ -128,7 +128,7 @@ class AutomatedSDWANTester:
         start_time = time.time()
         
         # Use longer timeout for queries that might return large datasets
-        timeout = 60 if any(word in query.lower() for word in ["all alarm", "all policies"]) else 30
+        timeout = 60  # Default timeout set to 60 seconds for all queries
         
         try:
             response = requests.post(

@@ -1,0 +1,87 @@
+{
+  "test_date": "2025-07-29T17:14:01.468633",
+  "server_port": 8001,
+  "summary": {
+    "total": 10,
+    "successful": 10,
+    "failed": 0,
+    "success_rate": "100.0%"
+  },
+  "environment": {
+    "CISCO_SD_WAN_BASE_URL": "Set",
+    "CISCO_SD_WAN_USERNAME": "Set",
+    "CISCO_SD_WAN_PASSWORD": "Set"
+  },
+  "results": [
+    {
+      "query": "sdwan get all alarms",
+      "status": "success",
+      "function_called": "getRawAlarmData",
+      "response_preview": "<table>\n  <thead>\n    <tr>\n      <th>Severity</th>\n      <th>Type</th>\n      <th>Component</th>\n      <th>System IP</th>\n      <th>Message</th>\n      <th>Timestamp</th>\n    </tr>\n  </thead>\n  <tbody>\n...",
+      "elapsed_time": 31.505875825881958
+    },
+    {
+      "query": "sdwan get active alarms",
+      "status": "success",
+      "function_called": "getActiveAlarms",
+      "response_preview": "<table>\n    <thead>\n        <tr>\n            <th>Severity</th>\n            <th>Type</th>\n            <th>Component</th>\n            <th>System IP</th>\n            <th>Message</th>\n            <th>Time...",
+      "elapsed_time": 13.879272699356079
+    },
+    {
+      "query": "sdwan list all devices",
+      "status": "success",
+      "function_called": "listAllDevices",
+      "response_preview": "<table>\n    <thead>\n        <tr>\n            <th>Hostname</th>\n            <th>System IP</th>\n            <th>Site ID</th>\n            <th>Status</th>\n            <th>Reachability</th>\n            <th...",
+      "elapsed_time": 11.423569679260254
+    },
+    {
+      "query": "get All Device Status",
+      "status": "success",
+      "function_called": "getAllDeviceStatus",
+      "response_preview": "<table>\n    <thead>\n        <tr>\n            <th>Hostname</th>\n            <th>System IP</th>\n            <th>Site ID</th>\n            <th>Status</th>\n            <th>Reachability</th>\n            <th...",
+      "elapsed_time": 20.16512703895569
+    },
+    {
+      "query": "sdwan get device health",
+      "status": "success",
+      "function_called": "getDeviceHealthDetails",
+      "response_preview": "<table>\n    <thead>\n        <tr>\n            <th>Hostname</th>\n            <th>System IP</th>\n            <th>Site ID</th>\n            <th>Status</th>\n            <th>Reachability</th>\n            <th...",
+      "elapsed_time": 33.486106872558594
+    },
+    {
+      "query": "sdwan get segment",
+      "status": "success",
+      "function_called": "getTransportSegmentation",
+      "response_preview": "<h3>SD-WAN Operation Result</h3>\n<table>\n  <thead>\n    <tr>\n      <th>Segment Name</th>\n      <th>Segment ID</th>\n      <th>ID</th>\n      <th>Reference Count</th>\n    </tr>\n  </thead>\n  <tbody>\n    <t...",
+      "elapsed_time": 7.026960849761963
+    },
+    {
+      "query": "sdwan get all policies",
+      "status": "success",
+      "function_called": "getAllPoliciesV1",
+      "response_preview": "<h3>SD-WAN Operation Result</h3>\n<table>\n  <thead>\n    <tr>\n      <th>List ID</th>\n      <th>Name</th>\n      <th>Type</th>\n      <th>Description</th>\n      <th>Last Updated</th>\n      <th>Owner</th>\n ...",
+      "elapsed_time": 19.51246190071106
+    },
+    {
+      "query": "sdwan get sites",
+      "status": "success",
+      "function_called": "getSiteHealthDetails",
+      "response_preview": "<h3>SD-WAN Operation Result</h3>\n<p>No sites were found in the SD-WAN configuration.</p>",
+      "elapsed_time": 4.6816582679748535
+    },
+    {
+      "query": "sdwan get users",
+      "status": "success",
+      "function_called": "findUsers_1",
+      "response_preview": "<h3>SD-WAN Operation Result</h3>\n<table>\n  <thead>\n    <tr>\n      <th>User Name</th>\n      <th>Description</th>\n      <th>Locale</th>\n      <th>Resource Group Name</th>\n      <th>Group</th>\n    </tr>\n...",
+      "elapsed_time": 7.4400928020477295
+    },
+    {
+      "query": "sdwan get software version",
+      "status": "success",
+      "function_called": "getSoftwareDistribution",
+      "response_preview": "<h3>SD-WAN Operation Result</h3>\n<table>\n  <thead>\n    <tr>\n      <th>Version ID</th>\n      <th>Version</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>95f8886d-29b8-43be-8917-6a1286a87636</td>...",
+      "elapsed_time": 10.91239619255066
+    }
+  ]
+}
