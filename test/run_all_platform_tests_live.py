@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Run All Platform Tests
-Executes multiple platform test suites sequentially
+Run All Platform Tests with Live Output
+Executes multiple platform test suites sequentially with real-time output
 Perfect for CI/CD or scheduled testing
 """
 import subprocess
@@ -36,7 +36,7 @@ TEST_SUITES = [
 ]
 
 def run_test_suite(suite: dict) -> dict:
-    """Run a single test suite"""
+    """Run a single test suite with live output"""
     print(f"\n{'='*60}")
     print(f"Running: {suite['name']}")
     print(f"Script: {suite['script']}")
@@ -54,47 +54,51 @@ def run_test_suite(suite: dict) -> dict:
             "error": f"Script {suite['script']} not found"
         }
     
-    # Run the test
+    # Run the test with live output
     start_time = datetime.now()
     try:
-        result = subprocess.run(
+        # Use Popen for real-time output
+        process = subprocess.Popen(
             [sys.executable, str(script_path), str(suite['port'])],
-            capture_output=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
             text=True,
-            timeout=300  # 5 minute timeout per suite
+            bufsize=1,  # Line buffered
+            universal_newlines=True
         )
         
-        elapsed = (datetime.now() - start_time).total_seconds()
+        # Stream output in real-time
+        output_lines = []
+        for line in process.stdout:
+            print(line, end='')  # Print in real-time
+            output_lines.append(line)
         
-        if result.returncode == 0:
-            print(f"✅ {suite['name']} completed successfully")
+        # Wait for completion
+        process.wait()
+        
+        elapsed = (datetime.now() - start_time).total_seconds()
+        full_output = ''.join(output_lines)
+        
+        if process.returncode == 0:
+            print(f"\n✅ {suite['name']} completed successfully")
             return {
                 "name": suite['name'],
                 "status": "success",
                 "elapsed_seconds": elapsed,
-                "stdout": result.stdout,
-                "stderr": result.stderr
+                "output": full_output
             }
         else:
-            print(f"❌ {suite['name']} failed with exit code {result.returncode}")
+            print(f"\n❌ {suite['name']} failed with exit code {process.returncode}")
             return {
                 "name": suite['name'],
                 "status": "failed",
-                "exit_code": result.returncode,
+                "exit_code": process.returncode,
                 "elapsed_seconds": elapsed,
-                "stdout": result.stdout,
-                "stderr": result.stderr
+                "output": full_output
             }
             
-    except subprocess.TimeoutExpired:
-        print(f"⏱️ {suite['name']} timed out")
-        return {
-            "name": suite['name'],
-            "status": "timeout",
-            "error": "Test suite timed out after 5 minutes"
-        }
     except Exception as e:
-        print(f"❌ {suite['name']} crashed: {e}")
+        print(f"\n❌ {suite['name']} crashed: {e}")
         return {
             "name": suite['name'],
             "status": "error",
@@ -103,7 +107,7 @@ def run_test_suite(suite: dict) -> dict:
 
 def main():
     """Run all test suites"""
-    print("🤖 Platform Test Suite Runner")
+    print("🤖 Platform Test Suite Runner (Live Output)")
     print(f"📅 {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print(f"📊 Running {len(TEST_SUITES)} test suite(s)")
     
@@ -124,7 +128,7 @@ def main():
     print("="*60)
     
     successful = [r for r in results if r["status"] == "success"]
-    failed = [r for r in results if r["status"] in ["failed", "error", "timeout"]]
+    failed = [r for r in results if r["status"] in ["failed", "error"]]
     not_found = [r for r in results if r["status"] == "not_found"]
     
     print(f"Total Suites: {len(results)}")
@@ -137,21 +141,27 @@ def main():
         for r in failed:
             print(f"  - {r['name']}: {r['status']}")
     
-    # Save master report
+    # Save master report (without full output to keep file size reasonable)
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     report_file = Path(__file__).parent / f"all_platforms_test_report_{timestamp}.json"
     
+    # Create report with summary output only
+    report_data = {
+        "test_date": datetime.now().isoformat(),
+        "summary": {
+            "total": len(results),
+            "successful": len(successful),
+            "failed": len(failed),
+            "not_found": len(not_found)
+        },
+        "results": [
+            {k: v for k, v in r.items() if k != 'output'} 
+            for r in results
+        ]
+    }
+    
     with open(report_file, "w") as f:
-        json.dump({
-            "test_date": datetime.now().isoformat(),
-            "summary": {
-                "total": len(results),
-                "successful": len(successful),
-                "failed": len(failed),
-                "not_found": len(not_found)
-            },
-            "results": results
-        }, f, indent=2)
+        json.dump(report_data, f, indent=2)
     
     print(f"\n📄 Master report saved to: {report_file}")
     
