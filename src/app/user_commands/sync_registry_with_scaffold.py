@@ -32,7 +32,7 @@ sys.path.insert(0, str(PROJECT_ROOT / "src"))
 try:
     from app.user_commands.update_platform_registry import (
         load_registry, save_registry, check_scaffold_exists,
-        SCAFFOLD_DIRS, REGISTRY_FILE,
+        SCAFFOLD_DIRS, REGISTRY_FILE, get_default_entry, ensure_all_fields
     )
 except ImportError as e:
     print(f"Error importing from update_platform_registry: {e}")
@@ -169,48 +169,26 @@ def main() -> None:
 
     # 3) Stub missing registry entries for newly scaffolded platforms -----------
     for short in sorted(scaffolded - registry.keys()):
-        registry[short] = {
-            "openapi_name":  "",
-            "sdk_module":   "",
+        new_entry = get_default_entry()
+        new_entry.update({
             "sdk_pattern": short,
-            "sdk_class": "Client",
-            "created_by_us": False,
-            "installed":     True,
-            "route":         check_route_exists(short),
-            "auth_config": {
-                "type": "api_key",
-                "env_vars": {},
-                "init_params": {
-                    "required": [],
-                    "optional": []
-                }
-            },
-            "sub_clients": False,
-            "example_init": ""
-        }
+            "installed": True,
+            "route": check_route_exists(short),
+        })
+        registry[short] = new_entry
         changes.append((short, "added stub entry (installed ✔)"))
 
     # 4) Add entries for SDKs that exist in output_sdk but not in registry ------
     for short in sorted(sdk_platforms - registry.keys()):
-        registry[short] = {
-            "openapi_name":  "",
-            "sdk_module":   short,  # SDK folder name is the module name
+        new_entry = get_default_entry()
+        new_entry.update({
+            "sdk_module": short,  # SDK folder name is the module name
             "sdk_pattern": short,
-            "sdk_class": "Client",
             "created_by_us": True,  # SDK exists, so it was created by us
-            "installed":     check_scaffold_exists(short),  # Check if also scaffolded
-            "route":         check_route_exists(short),
-            "auth_config": {
-                "type": "api_key",
-                "env_vars": {},
-                "init_params": {
-                    "required": [],
-                    "optional": []
-                }
-            },
-            "sub_clients": False,
-            "example_init": ""
-        }
+            "installed": check_scaffold_exists(short),  # Check if also scaffolded
+            "route": check_route_exists(short),
+        })
+        registry[short] = new_entry
         changes.append((short, "added SDK entry (created_by_us ✔)"))
 
     console.print()  # blank line before summary

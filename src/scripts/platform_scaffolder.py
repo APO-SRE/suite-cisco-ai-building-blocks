@@ -799,6 +799,10 @@ def scaffold_one(
         }
 
         for verb, op in path_item.items():
+            # Skip non-HTTP method entries (like 'parameters')
+            if verb.upper() not in {"GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"}:
+                continue
+            
             if include_http and verb.upper() not in include_http:
                 continue
 
@@ -878,26 +882,44 @@ def scaffold_one(
 
             if "requestBody" in op:
                 rb = op["requestBody"]
-                rb_content = rb.get("content", {}).get("application/json", {})
-                rb_schema_ref = rb_content.get("schema", {})
+                # Try different content types
+                rb_content = None
+                for content_type in ["application/json", "application/x-www-form-urlencoded", "multipart/form-data"]:
+                    rb_content = rb.get("content", {}).get(content_type, {})
+                    if rb_content:
+                        break
+                
+                rb_schema_ref = rb_content.get("schema", {}) if rb_content else {}
                 resolved_schema = resolve_schema(rb_schema_ref, full_spec)
 
                 schema_details = build_properties(resolved_schema, full_spec)
 
-                description = rb.get("description", "Request payload")
-                if not description.strip():
-                    description = "Request payload"
+                # For form-encoded data, flatten the properties into main parameters
+                if content_type == "application/x-www-form-urlencoded":
+                    # Add each property from the request body as a top-level parameter
+                    for prop_name, prop_schema in schema_details["properties"].items():
+                        all_params[prop_name] = {
+                            "name": prop_name,
+                            "schema": prop_schema,
+                            "description": prop_schema.get("description", ""),
+                            "required": prop_name in schema_details["required"],
+                        }
+                else:
+                    # For JSON bodies, keep as nested body parameter
+                    description = rb.get("description", "Request payload")
+                    if not description.strip():
+                        description = "Request payload"
 
-                all_params["body"] = {
-                    "name": "body",
-                    "schema": {
-                        "type": "object",
-                        "properties": schema_details["properties"],
-                        "required": schema_details["required"]
-                    },
-                    "description": description,
-                    "required": rb.get("required", False),
-                }
+                    all_params["body"] = {
+                        "name": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": schema_details["properties"],
+                            "required": schema_details["required"]
+                        },
+                        "description": description,
+                        "required": rb.get("required", False),
+                    }
 
             schema = {
                 "name": op_id,

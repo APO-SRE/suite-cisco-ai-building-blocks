@@ -1,0 +1,183 @@
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union
+
+from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..models.login_domain_spec_wrapper_v4_aaa_put_realm import LoginDomainSpecWrapperV4AaaPUTRealm
+from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.provider_data_v4_aaa_put_type_0 import ProviderDataV4AaaPUTType0
+    from ..models.provider_data_v4_aaa_put_type_1 import ProviderDataV4AaaPUTType1
+    from ..models.provider_data_v4_aaa_put_type_2 import ProviderDataV4AaaPUTType2
+    from ..models.provider_data_v4_aaa_put_type_3 import ProviderDataV4AaaPUTType3
+    from ..models.provider_data_v4_aaa_put_type_4 import ProviderDataV4AaaPUTType4
+
+
+T = TypeVar("T", bound="LoginDomainSpecWrapperV4AaaPUT")
+
+
+@_attrs_define
+class LoginDomainSpecWrapperV4AaaPUT:
+    """
+    Attributes:
+        description (Union[Unset, str]): Description about the login domain
+        domain (Union[Unset, str]): Login domain name
+        realm (Union[Unset, LoginDomainSpecWrapperV4AaaPUTRealm]): Login domain realm type
+        servers (Union['ProviderDataV4AaaPUTType0', 'ProviderDataV4AaaPUTType1', 'ProviderDataV4AaaPUTType2',
+            'ProviderDataV4AaaPUTType3', 'ProviderDataV4AaaPUTType4', Unset]):
+    """
+
+    description: Union[Unset, str] = UNSET
+    domain: Union[Unset, str] = UNSET
+    realm: Union[Unset, LoginDomainSpecWrapperV4AaaPUTRealm] = UNSET
+    servers: Union[
+        "ProviderDataV4AaaPUTType0",
+        "ProviderDataV4AaaPUTType1",
+        "ProviderDataV4AaaPUTType2",
+        "ProviderDataV4AaaPUTType3",
+        "ProviderDataV4AaaPUTType4",
+        Unset,
+    ] = UNSET
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+
+    def to_dict(self) -> dict[str, Any]:
+        from ..models.provider_data_v4_aaa_put_type_0 import ProviderDataV4AaaPUTType0
+        from ..models.provider_data_v4_aaa_put_type_1 import ProviderDataV4AaaPUTType1
+        from ..models.provider_data_v4_aaa_put_type_2 import ProviderDataV4AaaPUTType2
+        from ..models.provider_data_v4_aaa_put_type_3 import ProviderDataV4AaaPUTType3
+
+        description = self.description
+
+        domain = self.domain
+
+        realm: Union[Unset, str] = UNSET
+        if not isinstance(self.realm, Unset):
+            realm = self.realm.value
+
+        servers: Union[Unset, dict[str, Any]]
+        if isinstance(self.servers, Unset):
+            servers = UNSET
+        elif isinstance(self.servers, ProviderDataV4AaaPUTType0):
+            servers = self.servers.to_dict()
+        elif isinstance(self.servers, ProviderDataV4AaaPUTType1):
+            servers = self.servers.to_dict()
+        elif isinstance(self.servers, ProviderDataV4AaaPUTType2):
+            servers = self.servers.to_dict()
+        elif isinstance(self.servers, ProviderDataV4AaaPUTType3):
+            servers = self.servers.to_dict()
+        else:
+            servers = self.servers.to_dict()
+
+        field_dict: dict[str, Any] = {}
+        field_dict.update(self.additional_properties)
+        field_dict.update({})
+        if description is not UNSET:
+            field_dict["description"] = description
+        if domain is not UNSET:
+            field_dict["domain"] = domain
+        if realm is not UNSET:
+            field_dict["realm"] = realm
+        if servers is not UNSET:
+            field_dict["servers"] = servers
+
+        return field_dict
+
+    @classmethod
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.provider_data_v4_aaa_put_type_0 import ProviderDataV4AaaPUTType0
+        from ..models.provider_data_v4_aaa_put_type_1 import ProviderDataV4AaaPUTType1
+        from ..models.provider_data_v4_aaa_put_type_2 import ProviderDataV4AaaPUTType2
+        from ..models.provider_data_v4_aaa_put_type_3 import ProviderDataV4AaaPUTType3
+        from ..models.provider_data_v4_aaa_put_type_4 import ProviderDataV4AaaPUTType4
+
+        d = dict(src_dict)
+        description = d.pop("description", UNSET)
+
+        domain = d.pop("domain", UNSET)
+
+        _realm = d.pop("realm", UNSET)
+        realm: Union[Unset, LoginDomainSpecWrapperV4AaaPUTRealm]
+        if isinstance(_realm, Unset):
+            realm = UNSET
+        else:
+            realm = LoginDomainSpecWrapperV4AaaPUTRealm(_realm)
+
+        def _parse_servers(
+            data: object,
+        ) -> Union[
+            "ProviderDataV4AaaPUTType0",
+            "ProviderDataV4AaaPUTType1",
+            "ProviderDataV4AaaPUTType2",
+            "ProviderDataV4AaaPUTType3",
+            "ProviderDataV4AaaPUTType4",
+            Unset,
+        ]:
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                componentsschemas_provider_data_v_4_aaa_put_type_0 = ProviderDataV4AaaPUTType0.from_dict(data)
+
+                return componentsschemas_provider_data_v_4_aaa_put_type_0
+            except:  # noqa: E722
+                pass
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                componentsschemas_provider_data_v_4_aaa_put_type_1 = ProviderDataV4AaaPUTType1.from_dict(data)
+
+                return componentsschemas_provider_data_v_4_aaa_put_type_1
+            except:  # noqa: E722
+                pass
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                componentsschemas_provider_data_v_4_aaa_put_type_2 = ProviderDataV4AaaPUTType2.from_dict(data)
+
+                return componentsschemas_provider_data_v_4_aaa_put_type_2
+            except:  # noqa: E722
+                pass
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                componentsschemas_provider_data_v_4_aaa_put_type_3 = ProviderDataV4AaaPUTType3.from_dict(data)
+
+                return componentsschemas_provider_data_v_4_aaa_put_type_3
+            except:  # noqa: E722
+                pass
+            if not isinstance(data, dict):
+                raise TypeError()
+            componentsschemas_provider_data_v_4_aaa_put_type_4 = ProviderDataV4AaaPUTType4.from_dict(data)
+
+            return componentsschemas_provider_data_v_4_aaa_put_type_4
+
+        servers = _parse_servers(d.pop("servers", UNSET))
+
+        login_domain_spec_wrapper_v4_aaa_put = cls(
+            description=description,
+            domain=domain,
+            realm=realm,
+            servers=servers,
+        )
+
+        login_domain_spec_wrapper_v4_aaa_put.additional_properties = d
+        return login_domain_spec_wrapper_v4_aaa_put
+
+    @property
+    def additional_keys(self) -> list[str]:
+        return list(self.additional_properties.keys())
+
+    def __getitem__(self, key: str) -> Any:
+        return self.additional_properties[key]
+
+    def __setitem__(self, key: str, value: Any) -> None:
+        self.additional_properties[key] = value
+
+    def __delitem__(self, key: str) -> None:
+        del self.additional_properties[key]
+
+    def __contains__(self, key: str) -> bool:
+        return key in self.additional_properties

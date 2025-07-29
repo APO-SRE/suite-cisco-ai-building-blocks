@@ -4,10 +4,22 @@
 _SERVICE_REGISTRY: dict[str, type] = {}
 
 try:
+    from .ai_defense_service import Ai_defenseServiceClient
+    _SERVICE_REGISTRY['ai_defense'] = Ai_defenseServiceClient
+except ImportError:
+    Ai_defenseServiceClient = None
+
+try:
     from .catalyst_service import CatalystServiceClient
     _SERVICE_REGISTRY['catalyst'] = CatalystServiceClient
 except ImportError:
     CatalystServiceClient = None
+
+try:
+    from .cloudlock_service import CloudlockServiceClient
+    _SERVICE_REGISTRY['cloudlock'] = CloudlockServiceClient
+except ImportError:
+    CloudlockServiceClient = None
 
 try:
     from .intersight_service import IntersightServiceClient
@@ -22,6 +34,12 @@ except ImportError:
     MerakiServiceClient = None
 
 try:
+    from .nexus_dashboard_service import Nexus_dashboardServiceClient
+    _SERVICE_REGISTRY['nexus_dashboard'] = Nexus_dashboardServiceClient
+except ImportError:
+    Nexus_dashboardServiceClient = None
+
+try:
     from .nexus_hyperfabric_service import Nexus_hyperfabricServiceClient
     _SERVICE_REGISTRY['nexus_hyperfabric'] = Nexus_hyperfabricServiceClient
 except ImportError:
@@ -32,6 +50,18 @@ try:
     _SERVICE_REGISTRY['sdwan_mngr'] = Sdwan_mngrServiceClient
 except ImportError:
     Sdwan_mngrServiceClient = None
+
+try:
+    from .secure_access_service import Secure_accessServiceClient
+    _SERVICE_REGISTRY['secure_access'] = Secure_accessServiceClient
+except ImportError:
+    Secure_accessServiceClient = None
+
+try:
+    from .umbrella_service import UmbrellaServiceClient
+    _SERVICE_REGISTRY['umbrella'] = UmbrellaServiceClient
+except ImportError:
+    UmbrellaServiceClient = None
 
 class UnifiedService:
     """Return the correct ServiceClient for a given platform"""
@@ -47,9 +77,14 @@ class UnifiedService:
         return impl(*args, **kwargs)
 
 __all__ = ['UnifiedService',
+    'Ai_defenseServiceClient',
     'CatalystServiceClient',
+    'CloudlockServiceClient',
     'IntersightServiceClient',
     'MerakiServiceClient',
+    'Nexus_dashboardServiceClient',
     'Nexus_hyperfabricServiceClient',
     'Sdwan_mngrServiceClient',
+    'Secure_accessServiceClient',
+    'UmbrellaServiceClient',
 ]

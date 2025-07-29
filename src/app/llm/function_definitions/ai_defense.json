@@ -1,0 +1,1 @@
+[{"name":"inspectChat","description":"Inspect conversations","parameters":{"type":"object","properties":{},"required":["body"]},"metadata":{"platform":"ai_defense"}},{"name":"inspectHttp","description":"Inspect an HTTP request or response","parameters":{"type":"object","properties":{},"required":["body"]},"metadata":{"platform":"ai_defense"}}]
