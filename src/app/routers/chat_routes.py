@@ -60,7 +60,8 @@ from app.llm.prompt_templates import (
     GENERIC_RESPONSE_PROMPT,
     HTML_SDWAN_DEVICE_STATUS_PROMPT,
     HTML_SDWAN_ALARM_STATUS_PROMPT,
-    HTML_SDWAN_GENERIC_RESPONSE_PROMPT
+    HTML_SDWAN_GENERIC_RESPONSE_PROMPT,
+    HTML_MERAKI_INVENTORY_LIGHTWEIGHT_PROMPT
 )
 from app.retrievers.chroma_retriever import FunctionRetriever
 from app.routers._domain_keywords import DOMAIN_KEYWORDS_MAP
@@ -663,6 +664,15 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
             else:
                 system_prompt = HTML_SDWAN_GENERIC_RESPONSE_PROMPT
                 log.info("Using SD-WAN generic response prompt.")
+        elif function_platform == 'meraki':
+            # Use lightweight prompt for inventory functions
+            if fname == 'getOrganizationInventoryDevices':
+                system_prompt = HTML_MERAKI_INVENTORY_LIGHTWEIGHT_PROMPT
+                log.info("Using Meraki lightweight inventory prompt for better performance.")
+            else:
+                # For other Meraki functions, use generic
+                system_prompt = GENERIC_RESPONSE_PROMPT
+                log.info(f"Using generic response prompt for Meraki function: {fname}")
         else:
             # For all other platforms, use the improved generic prompt.
             system_prompt = GENERIC_RESPONSE_PROMPT
@@ -686,6 +696,78 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
     log.info(f"✅ Final response length: {len(final_response)} chars")
     log.info(f"✅ Response preview: {final_response[:200]}...")
     
+    # Check if response is too large for frontend (e.g., > 20KB)
+    MAX_RESPONSE_SIZE = 20000  # 20KB limit for frontend display
+    
+    if len(final_response) > MAX_RESPONSE_SIZE:
+        # For large responses, provide a summary with download option
+        log.warning(f"Response too large ({len(final_response)} chars), creating summary")
+        
+        # Count items if it's an HTML table
+        if "<table>" in final_response and "</table>" in final_response:
+            # Count <tr> tags in tbody to get row count
+            tbody_start = final_response.find("<tbody>")
+            tbody_end = final_response.find("</tbody>")
+            if tbody_start > -1 and tbody_end > -1:
+                tbody_content = final_response[tbody_start:tbody_end]
+                row_count = tbody_content.count("<tr>")
+            else:
+                row_count = final_response.count("<tr>") - 1  # Subtract header row
+            
+            # Extract table headers
+            thead_start = final_response.find("<thead>")
+            thead_end = final_response.find("</thead>")
+            headers = ""
+            if thead_start > -1 and thead_end > -1:
+                headers = final_response[thead_start:thead_end + 8]
+            
+            # Get first few rows as preview
+            preview_rows = []
+            tbody_start_idx = final_response.find("<tbody>") + 7
+            current_pos = tbody_start_idx
+            rows_extracted = 0
+            
+            while rows_extracted < 10 and current_pos < len(final_response):
+                tr_start = final_response.find("<tr>", current_pos)
+                if tr_start == -1:
+                    break
+                tr_end = final_response.find("</tr>", tr_start) + 5
+                if tr_end < tr_start:
+                    break
+                preview_rows.append(final_response[tr_start:tr_end])
+                current_pos = tr_end
+                rows_extracted += 1
+            
+            # Create a lightweight summary response
+            summary_response = f"""<h3>Large Dataset Response</h3>
+<p><strong>Total items:</strong> {row_count}</p>
+<p><strong>Response size:</strong> {len(final_response):,} characters (exceeds display limit of {MAX_RESPONSE_SIZE:,})</p>
+<p><strong>Preview of first 10 items:</strong></p>
+<table>
+{headers}
+<tbody>
+{''.join(preview_rows)}
+</tbody>
+</table>
+<p><em>Note: Full data has been retrieved successfully but is too large to display. Consider using filters or pagination in your query.</em></p>"""
+            
+            return {
+                "role": "assistant",
+                "label": "Cisco AI",
+                "response": summary_response,
+                "full_response_size": len(final_response),
+                "truncated": True
+            }
+        else:
+            # For non-table large responses
+            return {
+                "role": "assistant",
+                "label": "Cisco AI",
+                "response": f"<h3>Response Too Large</h3><p>The response contains {len(final_response):,} characters, which exceeds the display limit of {MAX_RESPONSE_SIZE:,} characters.</p><p>Preview: {final_response[:500]}...</p>",
+                "full_response_size": len(final_response),
+                "truncated": True
+            }
+    
     return {
         "role": "assistant",
         "label": "Cisco AI",
@@ -704,7 +786,17 @@ async def chat_endpoint(req: ChatRequest, request: Request):
     """
     with request_latency.time():
         with tracer.start_as_current_span("chat-workflow"):
-            return await handle_chat(req, request)
+            result = await handle_chat(req, request)
+            
+            # Print response to console for debugging
+            if result.get("response"):
+                print("\n" + "="*80)
+                print("RESPONSE OUTPUT:")
+                print("="*80)
+                print(result.get("response"))
+                print("="*80 + "\n")
+            
+            return result
 
 
 # ── Helper: Cisco Spaces floor-plan ─────────────────────────────────────────

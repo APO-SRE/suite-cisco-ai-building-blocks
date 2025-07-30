@@ -673,7 +673,10 @@ def build_functions_for_llm(
     # Sort by score (highest first)
     scored_hits.sort(key=lambda x: x[0], reverse=True)
     
-    if ("server" in query.lower() and "intersight" in enabled) or ("device" in query.lower() and "sdwan_mngr" in enabled):
+    # Show debug output if DEBUG_MODE is set to true
+    debug_mode = os.getenv("DEBUG_MODE", "false").lower() in ["true", "1", "yes", "on"]
+    
+    if debug_mode or ("server" in query.lower() and "intersight" in enabled) or ("device" in query.lower() and "sdwan_mngr" in enabled):
         print(f"\n=== DEBUG: Query '{query}' ===")
         primary_target, _ = extract_query_intent(query)
         print(f"Detected semantic target: '{primary_target}'")
