@@ -22,12 +22,11 @@ TEST_SUITES = [
         "script": "intersight_test_automated.py",
         "port": 8002
     },
-    # Add more test suites here as you create them:
-    # {
-    #     "name": "Meraki Tests",
-    #     "script": "meraki_test_automated.py", 
-    #     "port": 8003
-    # },
+    {
+        "name": "Meraki Tests",
+        "script": "meraki_test_automated.py", 
+        "port": 8003
+    },
     # {
     #     "name": "Catalyst Tests",
     #     "script": "catalyst_test_automated.py",

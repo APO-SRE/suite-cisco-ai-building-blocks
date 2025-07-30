@@ -38,6 +38,8 @@ class CatalystClient:
         Return the concrete model class if *annotation* is Optional[T],
         Union[T, None], etc.  Otherwise return the annotation itself.
         """
+        if annotation is None:
+            return None
         origin = get_origin(annotation)
         if origin is None:
             return annotation
@@ -71,13 +73,24 @@ class CatalystClient:
             return getattr(self._sdk, snake)
     
         # Strategy 2: Look inside nested sub-clients (for Meraki)
+        # Special handling for DNA Center event subscriptions
+        if name == "getEventSubscriptions" or snake == "get_event_subscriptions":
+            if hasattr(self._sdk, 'event_management'):
+                em = self._sdk.event_management
+                if hasattr(em, 'get_event_subscriptions'):
+                    return em.get_event_subscriptions
+        
         for sub_name in dir(self._sdk):
             if sub_name.startswith('_'):
                 continue
-            sub = getattr(self._sdk, sub_name)
-            for cand in (name, snake):
-                if hasattr(sub, cand):
-                    return getattr(sub, cand)
+            try:
+                sub = getattr(self._sdk, sub_name)
+                for cand in (name, snake):
+                    if hasattr(sub, cand):
+                        return getattr(sub, cand)
+            except Exception:
+                # Some attributes might raise exceptions when accessed
+                continue
     
         # Strategy 3: Handle openapi-python-client's standalone function pattern (for Nexus Hyperfabric)
         # Tries to import a module like: nexus_hyperfabric.api.fabrics.fabrics_get_all_fabrics
@@ -132,11 +145,15 @@ class CatalystClient:
     
     # expose everything through __getattr__
     def __getattr__(self, name: str):
-        print(f"[{self.__class__.__name__}] Attempting to resolve function: '{name}'") # <-- ADD THIS LINE
-        target = self._resolve(name)
-        if callable(target):
-            return self._wrap_method(target)
-        return target
+        print(f"[{self.__class__.__name__}] Attempting to resolve function: '{name}'")
+        try:
+            target = self._resolve(name)
+            if callable(target):
+                return self._wrap_method(target)
+            return target
+        except Exception as e:
+            print(f"[{self.__class__.__name__}] Error resolving {name}: {e}")
+            raise
     
     
     def _wrap_method(self, target):
@@ -144,9 +161,15 @@ class CatalystClient:
         Wrap SDK call so that a plain dict passed as *body* is automatically
         converted into the expected pydantic/model class.
         """
-        sig        = inspect.signature(target)
-        body_param = sig.parameters.get("body")
-        model_cls  = self._unwrap_model(body_param.annotation) if body_param else None
+        try:
+            sig        = inspect.signature(target)
+            body_param = sig.parameters.get("body")
+            model_cls  = self._unwrap_model(body_param.annotation) if body_param and body_param.annotation else None
+        except Exception as e:
+            print(f"[{self.__class__.__name__}] Error in _wrap_method: {e}")
+            print(f"  Target: {target}")
+            print(f"  Target type: {type(target)}")
+            raise
     
         def wrapper(body=None, **kwargs):
             if model_cls and isinstance(body, dict):

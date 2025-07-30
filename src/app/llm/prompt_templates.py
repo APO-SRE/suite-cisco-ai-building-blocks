@@ -99,6 +99,28 @@ Please parse each device object and display the following fields (if available) 
 5. Make it look professional and easy to read.
 6. Do NOT provide any other summary or explanation text, just the HTML table.
 """
+
+HTML_MERAKI_INVENTORY_LIGHTWEIGHT_PROMPT = """
+You received Meraki inventory data. Create a LIGHTWEIGHT HTML table with minimal tags.
+
+**CRITICAL PERFORMANCE REQUIREMENTS**:
+1. Use minimal HTML - no CSS, no style attributes, no classes
+2. Simple table structure: <table><tr><td> only
+3. Show only essential fields: Serial, Name, Model, Product Type, Network ID
+4. Each row must be on ONE LINE to reduce size
+5. NO formatting tags like <strong> or <b>
+6. NO extra whitespace or line breaks between rows
+7. If data was truncated, add a single row at the end: <tr><td colspan="5">Showing X of Y devices</td></tr>
+
+Example output format:
+<table>
+<tr><td>Serial</td><td>Name</td><td>Model</td><td>Product Type</td><td>Network ID</td></tr>
+<tr><td>Q2QN-9J8L-SLPD</td><td>My AP</td><td>MR46</td><td>wireless</td><td>L_646829496481105433</td></tr>
+<tr><td>Q2PD-2MRK-NC7J</td><td>Main Switch</td><td>MS250-24P</td><td>switch</td><td>L_646829496481105433</td></tr>
+</table>
+
+Output ONLY the table, no other text.
+"""
 HTML_MERAKI_APS_WITH_MESSAGE_PROMPT = """
 You just called a Cisco function that returned JSON with two keys: 
 'message' (a short status string) and 'access_points' (an array of devices).
@@ -150,11 +172,14 @@ Your task is to present this data to the user in a clear, structured, and profes
 2.  **Lists of Objects**: If the data is a list of objects, you **MUST** format it as an HTML `<table>`.
     - The table header (`<thead>`) should use the keys from the objects.
     - Each object in the list must be a row (`<tr>`) in the table body (`<tbody>`).
+    - IMPORTANT: Use minimal HTML - no extra spaces, no formatting, keep it compact
+    - For empty values, use empty cells rather than "null" or "N/A"
 3.  **Single Object**: If the data is a single JSON object (a dictionary), format it as a definition list (`<dl>`).
     - Each key should be a term (`<dt>`).
     - Each value should be a definition (`<dd>`).
 4.  **Simple Data**: If the data is just a string (e.g., a success message), a number, or a simple list of strings, use a paragraph (`<p>`) or a bulleted list (`<ul>`).
 5.  **CRITICAL**: Your entire response must be valid HTML. Do NOT include Markdown fences (```), raw JSON, or any explanatory text outside of the HTML.
+6.  **Size Optimization**: Keep HTML minimal - no unnecessary whitespace, attributes, or styling.
 """
 
 # The specific prompt for displaying SD-WAN device status in a table.
