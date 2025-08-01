@@ -32,6 +32,8 @@ htmlcov/
 .mypy_cache/
 .cache/
 __pycache__/
+.claude.json
+.claude.backup
 # ─── ignore generated snapshots ─── ──────────────────────────────
 all_files-*.txt
 

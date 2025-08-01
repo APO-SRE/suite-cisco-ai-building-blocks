@@ -1,1 +1,0 @@
-[{"name":"createAuthToken","description":"Create Authorization Token","parameters":{"type":"object","properties":{"grant_type":{"type":"string","description":"The type of client grant type."}},"required":["grant_type"]},"metadata":{"platform":"secure_access"}}]

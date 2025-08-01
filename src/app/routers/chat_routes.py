@@ -61,7 +61,10 @@ from app.llm.prompt_templates import (
     HTML_SDWAN_DEVICE_STATUS_PROMPT,
     HTML_SDWAN_ALARM_STATUS_PROMPT,
     HTML_SDWAN_GENERIC_RESPONSE_PROMPT,
-    HTML_MERAKI_INVENTORY_LIGHTWEIGHT_PROMPT
+    HTML_MERAKI_INVENTORY_LIGHTWEIGHT_PROMPT,
+    HTML_CATALYST_INTERFACES_PROMPT,
+    HTML_CATALYST_INTERFACES_LIGHTWEIGHT_PROMPT,
+    HTML_CATALYST_INTERFACES_ULTRALIGHTWEIGHT_PROMPT
 )
 from app.retrievers.chroma_retriever import FunctionRetriever
 from app.routers._domain_keywords import DOMAIN_KEYWORDS_MAP
@@ -376,6 +379,11 @@ def to_serialisable(obj):
         # This handles many catalystwan objects which store their payload in a .data dict
         return to_serialisable(obj.data)
     
+    # Handle dnacentersdk MyDict objects which are already dicts
+    if obj.__class__.__module__ == 'dnacentersdk.models.mydict' and isinstance(obj, dict):
+        # MyDict is a subclass of dict, just convert it as a regular dict
+        return {k: to_serialisable(v) for k, v in obj.items()}
+    
     to_dict = getattr(obj, "to_dict", None)
     if callable(to_dict):
         try:
@@ -673,6 +681,15 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
                 # For other Meraki functions, use generic
                 system_prompt = GENERIC_RESPONSE_PROMPT
                 log.info(f"Using generic response prompt for Meraki function: {fname}")
+        elif function_platform == 'catalyst':
+            # Use specific prompt for interface functions
+            if fname == 'getAllInterfaces':
+                system_prompt = HTML_CATALYST_INTERFACES_ULTRALIGHTWEIGHT_PROMPT
+                log.info("Using Catalyst interfaces ultralightweight response prompt.")
+            else:
+                # For other Catalyst functions, use generic
+                system_prompt = GENERIC_RESPONSE_PROMPT
+                log.info(f"Using generic response prompt for Catalyst function: {fname}")
         else:
             # For all other platforms, use the improved generic prompt.
             system_prompt = GENERIC_RESPONSE_PROMPT
