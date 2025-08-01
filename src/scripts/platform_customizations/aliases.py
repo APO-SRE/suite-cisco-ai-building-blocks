@@ -54,7 +54,61 @@ def generate_aliases(fn: dict, safe_name: str, platform: str) -> list[str]:
                 ""
             ])
     
-    # 3-d. hand-crafted aliases for SD-WAN operations
+    # 3-d. hand-crafted aliases for Catalyst system functions
+    # Makes system queries more intuitive for the LLM
+    if fn['name'] == 'ciscoDNACenterPackagesSummary':
+        for alias in {'center_packages_summary','dnac_center_packages_summary','dnac_package_summary','system_summary', 'system_package_summary', 'system_packages', 'package_summary', 'packages_summary', 'packages'}:
+            lines.extend([
+                f"# alias for {fn['name']} -> {alias}",
+                f"register('{alias}')(globals()['{safe_name}'])",
+                ""
+            ])
+    
+    if fn['name'] == 'ciscoDNACenterReleaseSummary':
+        for alias in {'release_info', 'software_release', 'dnac_release_info', 'system_version', 'dnac_version', 'center_version', 'release_details', 'software_info', 'dnac_software_release', 'current_release'}:
+            lines.extend([
+                f"# alias for {fn['name']} -> {alias}",
+                f"register('{alias}')(globals()['{safe_name}'])",
+                ""
+            ])
+    
+    # 3-e. hand-crafted aliases for Catalyst node configuration summary
+    if fn['name'] == 'ciscoDNACenterNodesConfigurationSummary':
+        for alias in {'config_summary', 'configuration_summary', 'node_config_summary', 'nodes_config', 'dnac_config_summary', 'center_config_summary', 'system_config', 'cluster_config'}:
+            lines.extend([
+                f"# alias for {fn['name']} -> {alias}",
+                f"register('{alias}')(globals()['{safe_name}'])",
+                ""
+            ])
+    
+    # 3-f. hand-crafted aliases for Catalyst device health functions
+    if fn['name'] == 'getSiteHealth':
+        for alias in {'site_health', 'get_site_health', 'show_site_health', 'health_by_site', 'site_health_status'}:
+            lines.extend([
+                f"# alias for {fn['name']} -> {alias}",
+                f"register('{alias}')(globals()['{safe_name}'])",
+                ""
+            ])
+    
+    # 3-g. hand-crafted aliases for Catalyst device status functions  
+    if fn['name'] == 'getNetworkDevicesCredentialsSyncStatus':
+        for alias in {'device_credential_status', 'credential_sync_status', 'device_sync_status', 'credentials_status'}:
+            lines.extend([
+                f"# alias for {fn['name']} -> {alias}",
+                f"register('{alias}')(globals()['{safe_name}'])",
+                ""
+            ])
+    
+    # 3-h. hand-crafted aliases for Catalyst device details
+    if fn['name'] == 'getDeviceById':
+        for alias in {'device_details', 'get_device_details', 'device_info', 'show_device'}:
+            lines.extend([
+                f"# alias for {fn['name']} -> {alias}",
+                f"register('{alias}')(globals()['{safe_name}'])",
+                ""
+            ])
+    
+    # 3-i. hand-crafted aliases for SD-WAN operations
     # Makes common queries more intuitive for the LLM
     if platform.lower() == 'sdwan_mngr':
         # ========== Device Management Operations ==========

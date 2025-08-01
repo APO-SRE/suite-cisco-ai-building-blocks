@@ -130,7 +130,13 @@ def _drop_dynamic_cache() -> None:
         except Exception as exc:
             log.warning("could not drop cache %s: %s", cache_file, exc)
 
-
+def suppress_meraki_logging():
+    """Suppress Meraki logging before any imports"""
+    # Set environment variables before import
+    os.environ['MERAKI_SUPPRESS_LOGGING'] = 'true'
+    os.environ['MERAKI_PRINT_CONSOLE'] = 'false'
+    os.environ['MERAKI_LOG_PATH'] = ''
+    os.environ['MERAKI_LOG_FILE_PREFIX'] = ''
 
 def _emit_org_injection(platform: str, non_body_keys: list[str]) -> list[str]:
     """
@@ -160,6 +166,51 @@ def _emit_org_injection(platform: str, non_body_keys: list[str]) -> list[str]:
         ])
     lines.append("")
     return lines
+
+
+# ──────────────────────────────────────────────────────────────────────
+# NEW: Catalyst-specific operation ID sanitization
+# ──────────────────────────────────────────────────────────────────────
+def sanitize_catalyst_operation_id(op_id: str, platform: str) -> str:
+    """
+    Sanitize operation IDs specifically for Catalyst platform.
+    This addresses the trailing punctuation issue and other Catalyst-specific problems.
+    """
+    if platform.lower() != 'catalyst':
+        return op_id
+    
+    original_op_id = op_id
+    
+    # Remove trailing punctuation (periods, commas, semicolons, etc.)
+    op_id = re.sub(r'[.,;:!?]+$', '', op_id)
+    
+    # Remove any trailing whitespace
+    op_id = op_id.strip()
+    
+    # Handle multiple consecutive underscores that might result from cleaning
+    op_id = re.sub(r'_{2,}', '_', op_id)
+    
+    # Remove trailing underscores that might result from cleaning
+    op_id = op_id.rstrip('_')
+    
+    # Ensure minimum length (prevent single character names)
+    if len(op_id) < 3:
+        # Try to generate a better name from the original
+        if len(original_op_id) > 3:
+            # Take first 3 alphanumeric characters
+            clean_chars = [c for c in original_op_id if c.isalnum()]
+            if len(clean_chars) >= 3:
+                op_id = ''.join(clean_chars[:3])
+            else:
+                op_id = 'op_' + ''.join(clean_chars)
+        else:
+            op_id = f"op_{op_id}"
+    
+    if original_op_id != op_id:
+        log.info(f"✨ [Catalyst] Sanitized operation ID: '{original_op_id}' → '{op_id}'")
+    
+    return op_id
+
 
 # ╭─────────────────────────────────────────────────────────────────────╮
 # │ 1 ─ package initialisation helpers                                 │
@@ -332,22 +383,61 @@ def _emit_client_stub(platform: str, sdk_module: str) -> None:
             4. Class-based API tag handler (for Intersight-style SDKs).
             5. Suffix match as a final fallback.
             """
+            # Handle Catalyst-specific prefixes
+            if name.startswith('ciscoDNACenter'):
+                # Remove the prefix and convert to snake_case
+                name_without_prefix = name[14:]  # Remove 'ciscoDNACenter'
+                name_without_prefix = name_without_prefix[0].lower() + name_without_prefix[1:] if name_without_prefix else ''
+            else:
+                name_without_prefix = name
+                
             snake = _CAMEL_TO_SNAKE.sub('_', name).lower()
+            snake_without_prefix = _CAMEL_TO_SNAKE.sub('_', name_without_prefix).lower()
 
             # Strategy 1: Direct attribute on the SDK client
-            if hasattr(self._sdk, name):
-                return getattr(self._sdk, name)
-            if hasattr(self._sdk, snake):
-                return getattr(self._sdk, snake)
+            for candidate in (name, snake, name_without_prefix, snake_without_prefix):
+                if hasattr(self._sdk, candidate):
+                    return getattr(self._sdk, candidate)
 
             # Strategy 2: Look inside nested sub-clients (for Meraki)
-            for sub_name in dir(self._sdk):
-                if sub_name.startswith('_'):
-                    continue
-                sub = getattr(self._sdk, sub_name)
-                for cand in (name, snake):
-                    if hasattr(sub, cand):
-                        return getattr(sub, cand)
+            # For Catalyst, prioritize certain API groups over others
+            platform_name = self.__class__.__name__.replace('Client', '').lower()
+            if platform_name == 'catalyst':
+                priority_groups = ['devices', 'sites', 'clients', 'system_health', 'topology', 'compliance', 'event_management', 'platform']
+                other_groups = []
+                
+                for sub_name in dir(self._sdk):
+                    if sub_name.startswith('_'):
+                        continue
+                    sub = getattr(self._sdk, sub_name, None)
+                    if sub is None:
+                        continue
+                        
+                    if sub_name in priority_groups:
+                        # Check priority groups first
+                        for cand in (name, snake, name_without_prefix, snake_without_prefix):
+                            if hasattr(sub, cand):
+                                return getattr(sub, cand)
+                    else:
+                        other_groups.append(sub_name)
+                
+                # Then check other groups
+                for sub_name in other_groups:
+                    sub = getattr(self._sdk, sub_name, None)
+                    if sub is None:
+                        continue
+                    for cand in (name, snake, name_without_prefix, snake_without_prefix):
+                        if hasattr(sub, cand):
+                            return getattr(sub, cand)
+            else:
+                # Original logic for other platforms
+                for sub_name in dir(self._sdk):
+                    if sub_name.startswith('_'):
+                        continue
+                    sub = getattr(self._sdk, sub_name)
+                    for cand in (name, snake, name_without_prefix, snake_without_prefix):
+                        if hasattr(sub, cand):
+                            return getattr(sub, cand)
 
             # Strategy 3: Handle openapi-python-client's standalone function pattern (for Nexus Hyperfabric)
             # Tries to import a module like: nexus_hyperfabric.api.fabrics.fabrics_get_all_fabrics
@@ -436,6 +526,12 @@ def _emit_client_stub(platform: str, sdk_module: str) -> None:
     extra_imports.extend(auth_config['extra_imports'])
     extra_init.extend(auth_config['extra_init'])
     extra_methods.extend(auth_config['extra_methods'])
+    
+    # --- FIX: Platform-specific logic to disable Meraki logging ---
+    if platform.lower() == 'meraki':
+        # This line will be added to the __init__ method of the generated MerakiClient
+        extra_init.append("kwargs['suppress_logging'] = True")
+    # --- END OF FIX ---
     
     # Handle custom common_helpers for specific platforms (like SD-WAN)
     if auth_config['common_helpers']:
@@ -835,6 +931,11 @@ def scaffold_one(
             # 👉 robust name sanitisation  (always OpenAI‑safe)
             # Use the raw_op_id we already fetched.
             op_id = raw_op_id or f"{verb}_{path}"
+            
+            # NEW: Apply Catalyst-specific sanitization
+            op_id = sanitize_catalyst_operation_id(op_id, platform)
+            
+            # Continue with existing sanitization logic
             op_id = NAME_ALLOWED_RX.sub('_', op_id)       # illegal → "_"
             op_id = re.sub(r'__+', '_', op_id)                # collapse "___"
             op_id = op_id.lstrip('.-')                        # cannot start with "." | "-"
@@ -921,6 +1022,22 @@ def scaffold_one(
                         "required": rb.get("required", False),
                     }
 
+            # ### CONDITIONAL RECOMMENDATION 1: Coerce array-of-string to string for Catalyst ###
+            # DISABLED: This special handling causes serialization issues and inconsistent behavior
+            # compared to other platforms like Meraki. Treating Catalyst specs literally now.
+            # if platform.lower() == 'catalyst':
+            #     for name, p in all_params.items():
+            #         schema_node = p.get("schema", {})
+            #         if (schema_node.get("type") == "array" and 
+            #             schema_node.get("items", {}).get("type") == "string"):
+            #             
+            #             if "id" in name.lower() and name != "platformId":
+            #                  continue
+            #
+            #             log.info(f"✓ [Catalyst-Only] Coercing array param '{name}' to string for function '{op_id}'.")
+            #             p["schema"] = {"type": "string"}
+            # ### END OF CONDITIONAL FIX ###
+
             schema = {
                 "name": op_id,
                 "description": op.get("summary") or op.get("description", ""),
@@ -941,6 +1058,33 @@ def scaffold_one(
                 },
             }
             schema['metadata'] = {'platform': platform}
+            
+            # Apply parameter safelist pruning for platforms that have it configured
+            param_safelist = platform_config.get("parameter_safelist", {}).get(op_id)
+            if param_safelist:
+                original_props = schema["parameters"]["properties"]
+                original_required = schema["parameters"].get("required", [])
+                
+                # Create a new properties dictionary with only the safelisted items
+                pruned_props = {
+                    key: value for key, value in original_props.items() 
+                    if key in param_safelist
+                }
+                
+                # Update required list to only include safelisted parameters
+                pruned_required = [
+                    param for param in original_required 
+                    if param in param_safelist
+                ]
+                
+                if len(pruned_props) < len(original_props):
+                    removed_params = set(original_props.keys()) - set(pruned_props.keys())
+                    log.info(f"✓ [Parameter Safelist] Pruning {len(removed_params)} parameters for '{op_id}' "
+                            f"(keeping {len(pruned_props)}/{len(original_props)}). "
+                            f"Removed: {', '.join(sorted(removed_params))}")
+                    schema["parameters"]["properties"] = pruned_props
+                    schema["parameters"]["required"] = pruned_required
+            
             # Get the set of injected parameter names for the current platform.
             injected_keys = INJECTION_CONFIG.get(platform.lower(), {}).get("params", {}).keys()
 
@@ -1022,9 +1166,12 @@ def scaffold_one(
     lines = [
         f"# {disp_fp.relative_to(ROOT)}",
         "import os",
+        "import structlog",
         "from typing import Any",
         "from app.llm.function_dispatcher import register",
         f"from app.llm.platform_clients.{platform}_client import {platform.capitalize()}Client",
+        "",
+        "log = structlog.get_logger(__name__)",
     ]
     
     # Add custom imports
@@ -1091,6 +1238,28 @@ def scaffold_one(
         # Add pre-kwargs customization code
         lines.extend(custom.get('pre_kwargs', []))
         
+        # ### CATALYST GLOBAL VALIDATION: Prevent platform names as parameter values ###
+        if platform.lower() == 'catalyst':
+            lines.append("    # [Catalyst-Only] Prevent platform names from being used as parameter values")
+            lines.append("    platform_names = ['catalyst', 'meraki', 'intersight', 'sdwan', 'nexus', 'umbrella', 'cloudlock']")
+            # Check all string parameters
+            for pname, pmeta in props.items():
+                if pmeta.get('type') == 'string':
+                    p_py_name = py_name(pname)
+                    lines.extend([
+                        f"    if {p_py_name} and isinstance({p_py_name}, str) and {p_py_name}.lower() in platform_names:",
+                        f"        log.warning(",
+                        f"            'platform_name_as_parameter',",
+                        f"            function='{fn['name']}',",
+                        f"            parameter='{pname}',",
+                        f"            value={p_py_name},",
+                        f"            message='Ignoring platform name used as parameter value'",
+                        f"        )",
+                        f"        {p_py_name} = None  # Reset to None to avoid SDK errors",
+                    ])
+            lines.append("")
+        # ### END OF CATALYST GLOBAL VALIDATION ###
+        
         lines.extend([
             "    # Explicitly build keyword arguments, excluding None values.",
             "    final_kwargs = {}",
@@ -1134,9 +1303,42 @@ def scaffold_one(
             f"    # Use attribute access to trigger __getattr__ for dynamic resolution",
             f"    target = client.{target_method_name}",
             "",
-            "    if body_payload is not None:",
-            "        return target(body=body_payload, **final_kwargs)",
-            "    return target(**final_kwargs)",
+            "    try:",
+            "        if body_payload is not None:",
+            "            result = target(body=body_payload, **final_kwargs)",
+            "        else:",
+            "            result = target(**final_kwargs)",
+            "        ",
+            "        # Handle SDK returning None when it should return empty list",
+            "        if result is None:",
+            "            log.warning(",
+            "                'sdk_returned_none',",
+            f"                function='{fn['name']}',",
+            "                message='SDK returned None, converting to empty list'",
+            "            )",
+            "            return []",
+            "        return result",
+            "    except TypeError as e:",
+            "        # Handle specific SDK bug where None causes 'not iterable' error",
+            "        if \"argument of type 'NoneType' is not iterable\" in str(e):",
+            "            log.warning(",
+            "                'sdk_bug_workaround',",
+            f"                function='{fn['name']}',",
+            "                error=str(e),",
+            "                message='Caught NoneType iterable error from SDK. Returning empty list.'",
+            "            )",
+            "            return []",
+            "        # Re-raise other TypeErrors",
+            "        raise",
+            "    except Exception as e:",
+            "        # Log unexpected errors but re-raise them",
+            "        log.error(",
+            "            'sdk_unexpected_error',",
+            f"            function='{fn['name']}',",
+            "            error=str(e),",
+            "            error_type=type(e).__name__",
+            "        )",
+            "        raise",
             "",
         ])
 
@@ -1202,6 +1404,7 @@ def main():
                 sdk_module = None
                 # Try to find it from existing generated files or config
                 if platform.lower() == "meraki":
+                    suppress_meraki_logging()
                     sdk_module = "meraki"
                 elif platform.lower() == "catalyst":
                     sdk_module = "dnacentersdk"

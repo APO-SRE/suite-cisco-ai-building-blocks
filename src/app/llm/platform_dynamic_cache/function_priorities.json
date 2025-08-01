@@ -69,12 +69,10 @@
     "getAllDataPrefixAndFQDNLists": 60,
     
     "_comment_user_functions": "User and AAA functions (verified)",
-    "getAaaConfig": 70,
-    "findUsers_1": 100,
+ 
     
     "_comment_site_functions": "Site-related functions (verified)",
-    "getSites": 100,
-    "getSiteHealth": 80,
+ 
     "getBFDSitesSummary": 65,
     "getApplicationSiteHealth": 65,
     
@@ -92,29 +90,26 @@
   
   "meraki": {
     "_comment": "Meraki Dashboard API function priorities",
-    "getOrganizations": 95,
-    "getOrganization": 90,
-    "getNetworks": 90,
-    "getNetwork": 85,
-    "getOrganizationDevices": 85,
-    "getDevices": 85,
-    "getDevice": 80,
-    "getNetworkClients": 75,
-    "getOrganizationNetworks": 75,
-    "getNetworkDevices": 70,
-    "getDeviceClients": 70,
-    "getNetworkTraffic": 50,
-    "getOrganizationInventoryDevices": 50,
-    "updateDevice": 40,
-    "createNetwork": 40,
-    "getNetworkSmDevices": 20,
-    "getNetworkPiiRequests": 15,
-    "getNetworkMqttBrokers": 10
+    "getOrganizationAssuranceAlerts": 95,
+    "getOrganizationDevices": 95,
+    "getOrganizationInventoryDevices": 95,
+    "getOrganizationPolicyObjects": 95,
+    "getOrganizationAdmins": 95,
+    "getAdministeredIdentitiesMe": 95,
   },
   
   "catalyst": {
     "_comment": "Cisco Catalyst Center (DNA Center) function priorities",
     "getDeviceList": 95,
+    "getNotifications": 95,
+    "getProject_s_Details": 95,
+    "getPhysicalTopology": 95,
+    "getApplicationPolicy": 95,
+    "ciscoDNACenterNodesConfigurationSummary": 95,
+    "getSites": 95,
+    "getSiteHealth": 95,
+    "ciscoDNACenterPackagesSummary": 95,
+    "ciscoDNACenterReleaseSummary": 95,
     "getAllInterfaces": 90,
     "getDeviceCount": 85,
     "getNetworkDeviceList": 85,
@@ -122,10 +117,8 @@
     "getDeviceDetail": 80,
     "getOverallNetworkHealth": 75,
     "getDeviceHealthStats": 70,
-    "getSiteHealth": 70,
     "getDiscoveryById": 50,
     "getGlobalPool": 50,
-    "getSites": 50,
     "getExecutionByExecutionId": 20,
     "getTaskById": 20,
     "getEventSubscriptions": 15
@@ -133,22 +126,16 @@
   
   "intersight": {
     "_comment": "Cisco Intersight function priorities",
+    "GetCondAlarmList": 100,
+    "GetMonitoringHealthStatusList": 100,
+    "GetHciAlarmList": 100,
+    "GetTechsupportmanagementTechSupportStatusList": 100,
+    "GetLicenseLicenseRegistrationStatusList": 100,
     "GetComputePhysicalSummaryList": 100,
-    "GetComputeRackUnitList": 75,
-    "GetComputeBladeList": 75,
-    "GetEquipmentChassisIdByMoid": 70,
-    "GetServerProfileList": 40,
-    "GetComputeServerSettingList": 35,
-    "GetBootPrecisionPolicyList": 30,
-    "GetCondAlarmList": 60,
-    "GetCondHclStatusList": 55,
-    "GetStoragePhysicalDiskList": 50,
-    "GetNetworkElementList": 50,
-    "GetServerDisruptionList": 10,
-    "GetThermalPolicyList": 15,
-    "GetVnicEthQosPolicyList": 15,
-    "GetViewComputePhysicalSummaryList": 25,
-    "GetViewServerList": 25
+    "GetComputeServerSettingList": 100,
+    "GetNetworkElementList": 100,
+    "GetPowerPolicyList": 100,
+    "GetIamUserList": 100,
   },
   
   "nexus_dashboard": {

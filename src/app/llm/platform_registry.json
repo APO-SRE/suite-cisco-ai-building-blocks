@@ -5,7 +5,7 @@
     "sdk_pattern": "",
     "sdk_class": "Client",
     "created_by_us": false,
-    "installed": true,
+    "installed": false,
     "route": true,
     "auth_config": {
       "type": "api_key",
@@ -24,7 +24,7 @@
     "sdk_pattern": "",
     "sdk_class": "Client",
     "created_by_us": false,
-    "installed": true,
+    "installed": false,
     "route": true,
     "auth_config": {
       "type": "api_key",
@@ -43,7 +43,7 @@
     "sdk_pattern": "",
     "sdk_class": "Client",
     "created_by_us": false,
-    "installed": true,
+    "installed": false,
     "route": true,
     "auth_config": {
       "type": "api_key",
@@ -62,7 +62,7 @@
     "sdk_pattern": "",
     "sdk_class": "Client",
     "created_by_us": true,
-    "installed": true,
+    "installed": false,
     "route": false,
     "auth_config": {
       "type": "api_key",
@@ -81,7 +81,7 @@
     "sdk_pattern": "",
     "sdk_class": "Client",
     "created_by_us": true,
-    "installed": true,
+    "installed": false,
     "route": false,
     "auth_config": {
       "type": "api_key",
@@ -100,7 +100,7 @@
     "sdk_pattern": "",
     "sdk_class": "Client",
     "created_by_us": true,
-    "installed": true,
+    "installed": false,
     "route": false,
     "auth_config": {
       "type": "api_key",
@@ -119,7 +119,7 @@
     "sdk_pattern": "",
     "sdk_class": "Client",
     "created_by_us": true,
-    "installed": true,
+    "installed": false,
     "route": false,
     "auth_config": {
       "type": "api_key",
@@ -135,32 +135,21 @@
   "sdwan_mngr": {
     "openapi_name": "cisco_catalyst_sd_wan_manager_api_2_0_0",
     "sdk_module": "catalystwan.session",
-    "sdk_pattern": "sdwan",
-    "sdk_class": "ManagerSession",
+    "sdk_pattern": "",
+    "sdk_class": "Client",
     "created_by_us": false,
-    "installed": true,
+    "installed": false,
     "route": true,
     "auth_config": {
-      "type": "basic_auth",
-      "env_vars": {
-        "username": "CISCO_SD_WAN_USERNAME",
-        "password": "CISCO_SD_WAN_PASSWORD",
-        "base_url": "CISCO_SD_WAN_BASE_URL"
-      },
+      "type": "api_key",
+      "env_vars": {},
       "init_params": {
-        "required": [
-          "url",
-          "username",
-          "password"
-        ],
-        "optional": [
-          "port",
-          "subdomain"
-        ]
+        "required": [],
+        "optional": []
       }
     },
     "sub_clients": false,
-    "example_init": "session = create_manager_session(url='https://vmanage.example.com', username='admin', password='pass')"
+    "example_init": ""
   },
   "ai_defense": {
     "openapi_name": "ai_defense_ap_is_1_0_0_2025_02_28",
@@ -168,7 +157,7 @@
     "sdk_pattern": "ai_defense",
     "sdk_class": "Client",
     "created_by_us": true,
-    "installed": true,
+    "installed": false,
     "route": false,
     "auth_config": {
       "type": "api_key",
@@ -202,7 +191,7 @@
     "sdk_pattern": "",
     "sdk_class": "Client",
     "created_by_us": true,
-    "installed": true,
+    "installed": false,
     "route": true,
     "auth_config": {
       "type": "api_key",

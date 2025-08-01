@@ -27,11 +27,11 @@ TEST_SUITES = [
         "script": "meraki_test_automated.py", 
         "port": 8003
     },
-    # {
-    #     "name": "Catalyst Tests",
-    #     "script": "catalyst_test_automated.py",
-    #     "port": 8004
-    # },
+    {
+        "name": "Catalyst Tests",
+        "script": "catalyst_test_automated.py",
+        "port": 8004
+    },
 ]
 
 def run_test_suite(suite: dict) -> dict:

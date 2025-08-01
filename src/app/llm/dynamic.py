@@ -117,6 +117,27 @@ SEMANTIC_MAPPINGS = {
         "boost_terms": ["sdwan", "sd-wan", "vmanage", "vedge", "cedge", "viptela"],
         "avoid_terms": ["meraki", "catalyst"],
         "primary_functions": ["listAllDevices", "getAllDeviceStatus", "getRawAlarmData"]
+    },
+    # Compound terms for better semantic matching
+    "dnac version": {
+        "boost_terms": ["release", "version", "software", "dnac"],
+        "avoid_terms": ["template", "policy"],
+        "primary_functions": ["ciscoDNACenterReleaseSummary"]
+    },
+    "dnac release": {
+        "boost_terms": ["release", "version", "software", "dnac"],
+        "avoid_terms": ["template", "policy"],
+        "primary_functions": ["ciscoDNACenterReleaseSummary"]
+    },
+    "system version": {
+        "boost_terms": ["release", "version", "software", "system"],
+        "avoid_terms": ["template", "policy"],
+        "primary_functions": ["ciscoDNACenterReleaseSummary"]
+    },
+    "dnac packages": {
+        "boost_terms": ["package", "packages", "dnac", "software"],
+        "avoid_terms": ["template", "policy"],
+        "primary_functions": ["ciscoDNACenterPackagesSummary"]
     }
 }
 
@@ -635,7 +656,47 @@ def build_functions_for_llm(
     
     have: set[str] = {d["name"] for d in vec_hits}
 
-    # ── 2. lexical fallback  ────────────────────────────────────────────
+    # ── 2. lexical fallback with alias preservation ────────────────────────
+    # First, try exact alias matching
+    alias_hits: list[dict] = []
+    query_lower_stripped = query.lower().replace(" ", "_")  # Convert spaces to underscores
+    
+    for platform in enabled:
+        every = retriever.query(
+            "",
+            k=500,
+            filter={"platform": {"$in": [platform]}},
+        )
+        for d in every:
+            if d["name"] in have:
+                continue
+            
+            # Check for exact alias match (with space/underscore variations)
+            name_lower = d["name"].lower()
+            
+            # Also check the content for alias matches
+            try:
+                content = json.loads(d.get("content", "{}"))
+                # Check if function name or description contains the query
+                func_desc = content.get("description", "").lower()
+                func_name = content.get("name", "").lower()
+                
+                # Check various matching patterns
+                if (query_lower in name_lower or 
+                    query_lower_stripped in name_lower or
+                    query_lower in func_name or
+                    query_lower_stripped in func_name or
+                    # Also check if the function name (with underscores as spaces) matches
+                    func_name.replace("_", " ") in query_lower or
+                    name_lower.replace("_", " ") in query_lower):
+                    alias_hits.append(d)
+                    have.add(d["name"])
+                    log.debug(f"Alias match: {d['name']} for query '{query}'")
+                    continue
+            except (json.JSONDecodeError, AttributeError):
+                pass
+    
+    # Then do regular token matching for remaining items
     raw_tokens = [t.lower().strip(".,!?") for t in query.split()]
     tokens: set[str] = set()
     for tok in raw_tokens:
@@ -658,7 +719,8 @@ def build_functions_for_llm(
                 have.add(d["name"])
 
     # ── 3. Priority-based reranking ─────────────────────────────────────
-    all_hits = lex_hits + vec_hits
+    # Combine with alias hits having higher priority
+    all_hits = alias_hits + vec_hits + lex_hits
     
     # Score and sort all candidates
     scored_hits: List[Tuple[float, dict]] = []
@@ -666,8 +728,14 @@ def build_functions_for_llm(
         platform = hit.get("metadata", {}).get("platform", "")
         func_name = hit["name"]
         is_lexical = hit in lex_hits
+        is_alias_match = hit in alias_hits
         
         score = calculate_function_score(func_name, platform, query, is_lexical)
+        
+        # Boost score for alias matches
+        if is_alias_match:
+            score += 30  # Significant boost for exact alias matches
+            
         scored_hits.append((score, hit))
     
     # Sort by score (highest first)
