@@ -95,7 +95,7 @@
     "getOrganizationInventoryDevices": 95,
     "getOrganizationPolicyObjects": 95,
     "getOrganizationAdmins": 95,
-    "getAdministeredIdentitiesMe": 95,
+    "getAdministeredIdentitiesMe": 95
   },
   
   "catalyst": {
@@ -135,7 +135,7 @@
     "GetComputeServerSettingList": 100,
     "GetNetworkElementList": 100,
     "GetPowerPolicyList": 100,
-    "GetIamUserList": 100,
+    "GetIamUserList": 100
   },
   
   "nexus_dashboard": {
