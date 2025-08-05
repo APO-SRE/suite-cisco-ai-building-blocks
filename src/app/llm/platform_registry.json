@@ -43,7 +43,7 @@
     "sdk_pattern": "",
     "sdk_class": "Client",
     "created_by_us": false,
-    "installed": false,
+    "installed": true,
     "route": true,
     "auth_config": {
       "type": "api_key",
