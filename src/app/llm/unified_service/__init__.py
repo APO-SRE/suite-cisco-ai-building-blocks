@@ -1,4 +1,3 @@
-\ 
 # Auto-generated – DO NOT EDIT
 from __future__ import annotations
 import sys
