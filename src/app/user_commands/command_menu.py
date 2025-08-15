@@ -282,7 +282,9 @@ def chroma_list_platforms() -> list[str]:
     """
     db_root = ensure_abs_env("FASTAPI_CHROMA_DB_PATH", "chroma_dbs/fastapi")
     found: set[str] = set()
-
+    
+    if not db_root.exists():
+        return []
     for coll_dir in db_root.iterdir():
         if not coll_dir.is_dir() or not (coll_dir / "chroma.sqlite3").exists():
             continue
