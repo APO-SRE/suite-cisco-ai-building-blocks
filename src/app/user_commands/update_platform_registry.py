@@ -73,6 +73,46 @@ def clear_screen() -> None:
 def check_route_exists(short_name: str) -> bool:
     return (ROUTERS_DIR / f"{short_name}_routes.py").exists()
 
+def get_default_entry() -> dict:
+    """Return a complete default entry with all required fields."""
+    return {
+        "openapi_name": "",
+        "sdk_module": "",
+        "sdk_pattern": "",
+        "sdk_class": "Client",
+        "created_by_us": False,
+        "installed": False,
+        "route": False,
+        "auth_config": {
+            "type": "api_key",
+            "env_vars": {},
+            "init_params": {
+                "required": [],
+                "optional": []
+            }
+        },
+        "sub_clients": False,
+        "example_init": ""
+    }
+
+def ensure_all_fields(entry: dict) -> dict:
+    """Ensure an entry has all required fields, adding defaults for missing ones."""
+    default = get_default_entry()
+    # Create a new dict starting with defaults, then overlay existing values
+    complete_entry = default.copy()
+    complete_entry.update(entry)
+    
+    # Ensure auth_config has all required sub-fields
+    if "auth_config" in complete_entry and isinstance(complete_entry["auth_config"], dict):
+        default_auth = default["auth_config"]
+        auth = complete_entry["auth_config"]
+        # Ensure all auth_config sub-fields exist
+        for key in default_auth:
+            if key not in auth:
+                auth[key] = default_auth[key]
+    
+    return complete_entry
+
 def load_registry() -> dict:
     """Load the registry JSON or return empty dict if file missing or invalid."""
     if not REGISTRY_FILE.exists():
@@ -86,6 +126,10 @@ def load_registry() -> dict:
 
 def save_registry(registry: dict) -> None:
     """Write the registry back to disk (creating parent dirs if needed)."""
+    # Ensure all entries have all required fields before saving
+    for key in registry:
+        registry[key] = ensure_all_fields(registry[key])
+    
     REGISTRY_FILE.parent.mkdir(parents=True, exist_ok=True)
     REGISTRY_FILE.write_text(json.dumps(registry, indent=2), encoding="utf-8")
 
@@ -288,15 +332,55 @@ def main() -> None:
                 console.print("[yellow]Add cancelled; returning to main menu.[/yellow]")
                 continue
 
-            # Prompt for sdk_module (optional; allow “update later”)
+            # Prompt for sdk_module (optional; allow "update later")
             sdk_module = Prompt.ask(
                 "[cyan]?[/cyan] [bold]Associated SDK module[/bold] "
-                "(e.g. dnacentersdk.session or type 'update later')",
+                "(e.g. dnacentersdk or type 'update later')",
                 default="update later",
             ).strip()
             if sdk_module.lower() in {"update later", "later", "skip", "none"}:
-                sdk_module = ""          # empty means “set it later”
- 
+                sdk_module = ""          # empty means "set it later"
+
+            # Prompt for sdk_pattern
+            sdk_pattern = Prompt.ask(
+                "[cyan]?[/cyan] [bold]SDK pattern[/bold] (e.g. catalyst)",
+                default=short_name,
+            ).strip()
+
+            # Prompt for sdk_class
+            sdk_class = Prompt.ask(
+                "[cyan]?[/cyan] [bold]SDK class name[/bold] (e.g. DNACenterAPI)",
+                default="Client",
+            ).strip()
+
+            # Prompt for auth type
+            console.print("\n[bold]Authentication types:[/bold]")
+            console.print("  1. api_key")
+            console.print("  2. api_key_secret")
+            console.print("  3. basic_auth")
+            console.print("  4. bearer_token")
+            console.print("  5. session_based")
+            console.print("  6. duo_auth")
+            console.print("  7. oauth2")
+            console.print("  8. none")
+            auth_choice = Prompt.ask("[cyan]?[/cyan] Select auth type [1-8]", default="1")
+            auth_types = {
+                "1": "api_key",
+                "2": "api_key_secret",
+                "3": "basic_auth",
+                "4": "bearer_token",
+                "5": "session_based",
+                "6": "duo_auth",
+                "7": "oauth2",
+                "8": "none"
+            }
+            auth_type = auth_types.get(auth_choice, "api_key")
+
+            # Ask about sub_clients
+            has_sub_clients = Prompt.ask(
+                "[cyan]?[/cyan] [bold]Does this SDK have sub-clients?[/bold] [y/N]",
+                default="N"
+            ).strip().lower() in ("y", "yes")
 
             # For new entries, leave 'created_by_us' as False (updated later by create_sdk.py)
             created_by_us = False
@@ -304,13 +388,30 @@ def main() -> None:
             # Determine 'installed' by checking for generated scaffolding
             installed = check_scaffold_exists(short_name)
 
+            # Check if route exists
+            route = check_route_exists(short_name)
+
             # Build entry and save
-            registry[short_name] = {
+            new_entry = get_default_entry()
+            new_entry.update({
                 "openapi_name": openapi_stem,
                 "sdk_module": sdk_module,
+                "sdk_pattern": sdk_pattern,
+                "sdk_class": sdk_class,
                 "created_by_us": created_by_us,
                 "installed": installed,
-            }
+                "route": route,
+                "auth_config": {
+                    "type": auth_type,
+                    "env_vars": {},
+                    "init_params": {
+                        "required": [],
+                        "optional": []
+                    }
+                },
+                "sub_clients": has_sub_clients,
+            })
+            registry[short_name] = new_entry
             save_registry(registry)
             console.print(f"[green]Added '{short_name}' → spec '{openapi_stem}'.[/green]")
 
@@ -343,6 +444,53 @@ def main() -> None:
             if new_sdk.lower() in {"update later", "later", "skip", "none"}:
                 new_sdk = ""              # clears the field
 
+            # Update SDK pattern
+            new_pattern = Prompt.ask(
+                "[cyan]?[/cyan] [bold]SDK pattern[/bold]",
+                default=entry.get("sdk_pattern", short_name),
+            ).strip()
+
+            # Update SDK class
+            new_class = Prompt.ask(
+                "[cyan]?[/cyan] [bold]SDK class[/bold]",
+                default=entry.get("sdk_class", "Client"),
+            ).strip()
+
+            # Keep existing auth_config but allow updating auth type
+            current_auth = entry.get("auth_config", {}).get("type", "api_key")
+            console.print(f"Current auth type: [bold]{current_auth}[/bold]")
+            if Prompt.ask(
+                "[cyan]?[/cyan] [bold]Change auth type?[/bold] [y/N]", default="N"
+            ).strip().lower() in ("y", "yes"):
+                console.print("\n[bold]Authentication types:[/bold]")
+                console.print("  1. api_key")
+                console.print("  2. api_key_secret")
+                console.print("  3. basic_auth")
+                console.print("  4. bearer_token")
+                console.print("  5. session_based")
+                console.print("  6. duo_auth")
+                console.print("  7. oauth2")
+                console.print("  8. none")
+                auth_choice = Prompt.ask("[cyan]?[/cyan] Select auth type [1-8]", default="1")
+                auth_types = {
+                    "1": "api_key",
+                    "2": "api_key_secret",
+                    "3": "basic_auth",
+                    "4": "bearer_token",
+                    "5": "session_based",
+                    "6": "duo_auth",
+                    "7": "oauth2",
+                    "8": "none"
+                }
+                new_auth_type = auth_types.get(auth_choice, current_auth)
+            else:
+                new_auth_type = current_auth
+
+            # Update sub_clients
+            new_sub_clients = Prompt.ask(
+                "[cyan]?[/cyan] [bold]Has sub-clients?[/bold] [y/N]",
+                default="Y" if entry.get("sub_clients", False) else "N"
+            ).strip().lower() in ("y", "yes")
 
             # Keep 'created_by_us' unchanged
             new_created = entry.get("created_by_us", False)
@@ -350,13 +498,27 @@ def main() -> None:
             # Recompute 'installed' by checking generated scaffolding again
             new_installed = check_scaffold_exists(short_name)
 
-            # Update and save
-            registry[short_name] = {
+            # Check if route exists
+            new_route = check_route_exists(short_name)
+
+            # Update and save, preserving other fields
+            updated_entry = ensure_all_fields(entry.copy())
+            updated_entry.update({
                 "openapi_name": new_openapi,
                 "sdk_module": new_sdk,
+                "sdk_pattern": new_pattern,
+                "sdk_class": new_class,
                 "created_by_us": new_created,
                 "installed": new_installed,
-            }
+                "route": new_route,
+                "sub_clients": new_sub_clients,
+            })
+            
+            # Update auth type if changed
+            if "auth_config" in updated_entry:
+                updated_entry["auth_config"]["type"] = new_auth_type
+            
+            registry[short_name] = updated_entry
             save_registry(registry)
             console.print(f"[green]Updated '{short_name}'.[/green]")
 

@@ -213,11 +213,25 @@ class PlatformFunctionIndexer(ChromaIndexer):
         )
 
         # ---------- worker used by the thread-pool ----------
+
         def _prep(fn: dict):
+            # 1. Create a copy to avoid changing the original object
+            doc_to_embed = fn.copy()
+            
+            # 2. Pop the metadata out. It won't be part of the embedded content.
+            operational_metadata = doc_to_embed.pop('metadata', {})
+            
+            # 3. The document for embedding is now clean.
             key  = _safe_id(f"{platform}-{fn['name']}")
             vec  = fn.get("embedding") or embed_text(fn["name"])[0]
-            meta = {"platform": platform, "name": fn["name"]}
-            return key, json.dumps(fn), meta, vec
+            
+            # 4. The metadata for Chroma can now correctly use the platform info.
+            meta = {"platform": operational_metadata.get("platform", platform), "name": fn["name"]}
+            
+            # 5. Return the key, the CLEANED document string, metadata, and vector.
+            return key, json.dumps(doc_to_embed), meta, vec
+
+
 
         ids, docs, metas, vecs = [], [], [], []
 
@@ -240,6 +254,12 @@ class PlatformFunctionIndexer(ChromaIndexer):
         # ---------- bulk upsert ----------
         print(f"[ChromaIndexer] Upserting {len(ids)} docs into '{self.collection_name}'")
         ids = dedupe_ids(ids)          # ← NEW
+        
+        # Skip upsert if no functions to index
+        if not ids:
+            print(f"[ChromaIndexer] No functions to index for this platform")
+            return
+            
         self.collection.upsert(
             ids=ids,
             documents=docs,

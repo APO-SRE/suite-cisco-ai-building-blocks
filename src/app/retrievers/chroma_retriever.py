@@ -35,6 +35,7 @@ Very thin wrapper around a *single* Chroma collection.
 """
  
 import os
+import json
 import logging
 from pathlib import Path
 from app.utils.paths import ensure_abs_env
@@ -66,7 +67,7 @@ class ChromaRetriever:
         )
         coll_name  = (
             collection_name
-            or os.getenv(f"{self.layer}_CHROMA_COLLECTION_PLATFORM", "platform-summaries-index")
+            or os.getenv(f"{self.layer}_CHROMA_COLLECTION_PLATFORM", "function-definitions-index")
         )
         
         # assemble and normalize the collection path
@@ -109,6 +110,7 @@ class ChromaRetriever:
         metas = res.get("metadatas", [[]])[0]
         dists = (res.get("distances") or [[None]])[0]
 
+ 
         return [
             {"content": doc, **(meta or {}), "distance": dist}
             for doc, meta, dist in zip(docs, metas, dists)
@@ -159,4 +161,62 @@ class FunctionRetriever:
         self._inner = ChromaRetriever(collection_name=collection_name)
 
     def query(self, *args, **kwargs):
-        return self._inner.query(*args, **kwargs)
+        results = self._inner.query(*args, **kwargs)
+        
+        # Only display for significant searches (not single result lookups)
+        if results and len(results) > 1:
+            try:
+                from rich.console import Console
+                from rich.table import Table
+                from rich.panel import Panel
+                
+                console = Console()
+                
+                # Only show SD-WAN related results or top results
+                sdwan_results = [r for r in results if r.get('platform') == 'sdwan_mngr'][:5]
+                top_results = results[:3] if len(sdwan_results) < 3 else []
+                display_results = sdwan_results + [r for r in top_results if r not in sdwan_results]
+                
+                if display_results:
+                    # Create a compact table
+                    table = Table(show_header=True, header_style="bold cyan", title_style="dim")
+                    table.add_column("Function", style="green", width=25)
+                    table.add_column("Platform", style="yellow", width=12)
+                    table.add_column("Score", style="red", width=8)
+                    table.add_column("Description", style="white", max_width=40)
+                    
+                    for result in display_results[:5]:  # Show top 5
+                        func_name = result.get('name', 'N/A')
+                        platform = result.get('platform', 'N/A')
+                        distance = result.get('distance', 0)
+                        
+                        # Extract description from content JSON
+                        desc = 'N/A'
+                        content = result.get('content', '')
+                        if isinstance(content, str) and content.startswith('{'):
+                            try:
+                                import json
+                                data = json.loads(content)
+                                desc = data.get('description', 'N/A')
+                            except:
+                                desc = content[:40] + '...' if len(content) > 40 else content
+                        
+                        if len(desc) > 40:
+                            desc = desc[:37] + "..."
+                        
+                        table.add_row(
+                            func_name,
+                            platform,
+                            f"{distance:.3f}",
+                            desc
+                        )
+                    
+                    # Only show if there are SD-WAN results or if it's a significant search
+                    if sdwan_results or len(results) > 10:
+                        console.print(f"\n[dim]ChromaDB: Found {len(results)} results, showing top {len(display_results)}[/dim]")
+                        console.print(table)
+            except Exception:
+                # Don't break if there's an error
+                pass
+        
+        return results

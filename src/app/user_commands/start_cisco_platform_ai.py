@@ -23,6 +23,7 @@ from rich.console import Console
 from rich.panel import Panel
 from rich.prompt import Prompt
 from rich.table import Table
+from rich.text import Text
 from app.llm.dynamic import DYNAMIC_CACHE_ROOT
 from rich.traceback import install
 from dotenv import load_dotenv
@@ -57,7 +58,7 @@ def explain(question: str, default: str | None = None) -> str:
     """
     Ask *question* with Rich Prompt.
 
-    • If the user types “exit”, “quit”, “q”, or “x” (case-insensitive) → exit(0)
+    • If the user types "exit", "quit", "q", or "x" (case-insensitive) → exit(0)
     • If they hit Enter on an empty question *with a default* → return default
     • Otherwise re-prompt until non-empty text is given
     """
@@ -79,6 +80,68 @@ def explain(question: str, default: str | None = None) -> str:
 
         console.print("[red]→ Please enter a value (or type exit).[/red]")
 
+def check_telemetry_stack(repo_root: Path) -> bool:
+    """
+    Check if the telemetry stack is running.
+    Returns True if running, False otherwise.
+    """
+    compose_file = repo_root / "docker" / "docker-compose.yaml"
+    if not compose_file.exists():
+        return False
+    
+    try:
+        result = subprocess.run(
+            ["docker", "compose", "-f", str(compose_file), "ps", "--quiet"],
+            cwd=str(repo_root),
+            check=False,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+        )
+        # If there are running containers, stdout will have container IDs
+        return bool(result.stdout.strip())
+    except FileNotFoundError:
+        return False
+
+def start_telemetry_stack(repo_root: Path) -> bool:
+    """
+    Start the telemetry stack using docker compose.
+    Returns True on success, False on failure.
+    """
+    compose_file = repo_root / "docker" / "docker-compose.yaml"
+    if not compose_file.exists():
+        console.print(
+            Panel(
+                f"[red]Error:[/red] Could not find docker-compose file at:\n"
+                f"    {compose_file}\n",
+                border_style="red",
+            )
+        )
+        return False
+    
+    console.print(Panel(f"⏳ Starting telemetry stack...", style="cyan"))
+    
+    try:
+        result = subprocess.run(
+            ["docker", "compose", "-f", str(compose_file), "up", "-d"],
+            cwd=str(repo_root),
+            check=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+        )
+        console.print(Panel(f"[green]✅ Telemetry stack started successfully[/green]", border_style="green"))
+        return True
+    except (FileNotFoundError, subprocess.CalledProcessError) as exc:
+        error_msg = getattr(exc, 'stderr', str(exc))
+        console.print(
+            Panel(
+                f"[red]Failed to start telemetry stack:[/red]\n{error_msg}",
+                border_style="red",
+            )
+        )
+        return False
+
 
 # ── main flow ────────────────────────────────────────────────────────────────
 def main() -> None:
@@ -89,7 +152,7 @@ def main() -> None:
     if PID_FILE.exists():
         console.print(
             Panel("[red]An agent is already running.[/red]\n"
-                  "Use [bold]Stop Cisco PLatform AI[/bold] first.",
+                  "Use [bold]Stop Cisco Platform AI[/bold] first.",
                   border_style="red"))
         sys.exit(0)
 
@@ -110,10 +173,23 @@ def main() -> None:
     # ── env vars ────────────────────────────────────────────────────────────
     env = os.environ.copy()
     if otel:
-        env.setdefault("OTEL_PYTHON_AUTO_INSTRUMENTATION", "1")
-        endpoint = env.get("OTEL_EXPORTER_OTLP_ENDPOINT") or \
-                   explain("OTEL exporter endpoint", default="http://localhost:4318")
-        env["OTEL_EXPORTER_OTLP_ENDPOINT"] = endpoint
+        # Check if telemetry stack is running, start if needed
+        if not check_telemetry_stack(ROOT):
+            console.print()
+            console.print(Panel("[yellow]Telemetry stack is not running.[/yellow]", border_style="yellow"))
+            start_stack = explain("Start telemetry stack? (y/n)", default="y").lower().startswith("y")
+            if start_stack:
+                if not start_telemetry_stack(ROOT):
+                    console.print("[red]Failed to start telemetry stack. Continuing without OpenTelemetry.[/red]")
+                    otel = False
+            else:
+                console.print("[yellow]Continuing without telemetry stack. OpenTelemetry export may fail.[/yellow]")
+        
+        if otel:
+            env.setdefault("OTEL_PYTHON_AUTO_INSTRUMENTATION", "1")
+            endpoint = env.get("OTEL_EXPORTER_OTLP_ENDPOINT") or \
+                       explain("OTEL exporter endpoint", default="http://localhost:4318")
+            env["OTEL_EXPORTER_OTLP_ENDPOINT"] = endpoint
     else:
         env.pop("OTEL_PYTHON_AUTO_INSTRUMENTATION", None)
         env.pop("OTEL_EXPORTER_OTLP_ENDPOINT", None)

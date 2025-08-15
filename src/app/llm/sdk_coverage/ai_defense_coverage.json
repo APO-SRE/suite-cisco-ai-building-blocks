@@ -1,0 +1,7 @@
+{
+  "coverage_percentage": 100,
+  "note": "SDK filtering disabled",
+  "http_method_breakdown": {
+    "POST": 2
+  }
+}

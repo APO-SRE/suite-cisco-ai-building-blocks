@@ -70,7 +70,7 @@ class AzureSearchRetriever:
             "AZURE_DOMAIN_INDEX", layer=self.layer, default="domain-index"
         )
         self.platform_summaries_index = cfg(
-            "AZURE_PLATFORM_INDEX", layer=self.layer, default=""
+            "AZURE_PLATFORM_INDEX", layer=self.layer, default="function-definitions-index"
         )
         self.api_docs_index = cfg("AZURE_API_DOCS_INDEX", layer=self.layer, default="")
         self.events_index = cfg("AZURE_EVENTS_INDEX", layer=self.layer, default="")

@@ -1,0 +1,201 @@
+{
+  "_README": {
+    "purpose": "This file controls ALL function priorities for the Cisco AI Agent's function selection.",
+    "how_it_works": [
+      "1. The AI Agent uses these priorities to rank functions when responding to queries",
+      "2. Higher numbers = higher priority (more likely to be selected)",
+      "3. Default priority is 50 if not specified",
+      "4. This is the ONLY place where function priorities are defined"
+    ],
+    "priority_scale": {
+      "90-100": "PRIMARY - Essential functions for common queries",
+      "70-89": "RECOMMENDED - Frequently used functions",
+      "50-69": "STANDARD - Normal priority (default)",
+      "30-49": "OCCASIONAL - Sometimes useful",
+      "10-29": "SPECIALIZED - Rarely needed",
+      "1-9": "AVOID - Only for very specific cases"
+    },
+    "usage": [
+      "1. Add your platform and function priorities below",
+      "2. Save this file",
+      "3. Restart the FastAPI application",
+      "4. Test with sample queries to verify the correct function is selected"
+    ],
+    "testing_tip": "Run 'cd src/app/llm && python dynamic.py' to test function selection",
+    "warning": "This file is loaded at startup. Changes require application restart."
+  },
+  
+  "sdwan_mngr": {
+    "_comment": "SD-WAN Manager (vManage) function priorities",
+    "getRawAlarmData": 100,
+    "getActiveAlarms": 100,
+    "listAllDevices": 100,
+    "getAllDeviceStatus": 100,
+    "getDevicesHealth": 100,
+    "getSegment": 100,
+    "getSites": 100,
+    "findUsers_1": 100,
+    "findVEdgeSoftwareVersion": 100,
+    "findSoftwareVersion": 100,
+    
+    "_comment_secondary": "Other frequently used functions (verified to exist)",
+    "getDevicesDetails": 85,
+    "getDevicesHealthOverview": 80,
+    "getDeviceCounters": 75,
+    "getDeviceModels": 70,
+    "getControlConnections": 70,
+    "getNonViewedAlarms": 80,
+    "getAaaConfig": 70,
+    "getSiteHealth": 80,
+    "getDeviceRunningConfig": 70,
+    "getDevicesList": 70,
+    
+    "_comment_alarm_functions": "Alarm-related functions",
+    "getAlarmDetails": 75,
+    "getAlarmSeverityMappings": 65,
+    "getAlarmTypesAsKeyValue": 65,
+    "getAlarmQueryFields": 60,
+    "getAlarmDataFields": 60,
+    
+    "_comment_template_functions": "Template management functions (verified)",
+    "getTemplateById": 70,
+    "getTemplateDefinition": 70,
+    "getMasterTemplateDefinition": 65,
+    "getGeneralTemplate": 65,
+    
+    "_comment_policy_functions": "Policy-related functions (verified to exist)",
+    "getListsForAllDataPrefixes": 70,
+    "getListsForAllPrefixes": 65,
+    "getAllDataPrefixAndFQDNLists": 60,
+    
+    "_comment_user_functions": "User and AAA functions (verified)",
+ 
+    
+    "_comment_site_functions": "Site-related functions (verified)",
+ 
+    "getBFDSitesSummary": 65,
+    "getApplicationSiteHealth": 65,
+    
+    "_comment_statistics": "Statistics and monitoring (verified)",
+    "getStatQueryFields": 35,
+    "getStatBulkRawData": 30,
+    "createStatisticsList": 30,
+    
+    "_comment_low": "Lower priority - specialized operations",
+    "getRebootHistoryDetails": 30,
+    "getRebootCount": 25,
+    "getCloudCredentials": 25,
+    "addCloudCredentials": 25
+  },
+  
+  "meraki": {
+    "_comment": "Meraki Dashboard API function priorities",
+    "getOrganizationAssuranceAlerts": 95,
+    "getOrganizationDevices": 95,
+    "getOrganizationInventoryDevices": 95,
+    "getOrganizationPolicyObjects": 95,
+    "getOrganizationAdmins": 95,
+    "getAdministeredIdentitiesMe": 95
+  },
+  
+  "catalyst": {
+    "_comment": "Cisco Catalyst Center (DNA Center) function priorities",
+    "getDeviceList": 95,
+    "getNotifications": 95,
+    "getProject_s_Details": 95,
+    "getPhysicalTopology": 95,
+    "getApplicationPolicy": 95,
+    "ciscoDNACenterNodesConfigurationSummary": 95,
+    "getSites": 95,
+    "getSiteHealth": 95,
+    "ciscoDNACenterPackagesSummary": 95,
+    "ciscoDNACenterReleaseSummary": 95,
+    "getAllInterfaces": 90,
+    "getDeviceCount": 85,
+    "getNetworkDeviceList": 85,
+    "getInterfaces": 80,
+    "getDeviceDetail": 80,
+    "getOverallNetworkHealth": 75,
+    "getDeviceHealthStats": 70,
+    "getDiscoveryById": 50,
+    "getGlobalPool": 50,
+    "getExecutionByExecutionId": 20,
+    "getTaskById": 20,
+    "getEventSubscriptions": 15
+  },
+  
+  "intersight": {
+    "_comment": "Cisco Intersight function priorities",
+    "GetCondAlarmList": 100,
+    "GetMonitoringHealthStatusList": 100,
+    "GetHciAlarmList": 100,
+    "GetTechsupportmanagementTechSupportStatusList": 100,
+    "GetLicenseLicenseRegistrationStatusList": 100,
+    "GetComputePhysicalSummaryList": 100,
+    "GetComputeServerSettingList": 100,
+    "GetNetworkElementList": 100,
+    "GetPowerPolicyList": 100,
+    "GetIamUserList": 100
+  },
+  
+  "nexus_dashboard": {
+    "_comment": "Nexus Dashboard function priorities",
+    "getFabrics": 90,
+    "getSites": 85,
+    "getFabricHealth": 80,
+    "getNodes": 75,
+    "getPolicies": 60,
+    "getTemplates": 55,
+    "getAnalytics": 50,
+    "getInsights": 50
+  },
+  
+  "nexus_hyperfabric": {
+    "_comment": "Nexus Hyperfabric function priorities",
+    "fabricsGetAllFabrics": 95,
+    "fabricsGetFabric": 90,
+    "nodesGetAllNodes": 85,
+    "fabricsGetFabricHealth": 80,
+    "policiesGetPolicies": 60,
+    "templatesGetTemplates": 55
+  },
+  
+  "secure_access": {
+    "_comment": "Cisco Secure Access function priorities",
+    "getUsers": 90,
+    "getGroups": 85,
+    "getAuthentications": 80,
+    "getPolicies": 60,
+    "getAdmins": 55
+  },
+  
+  "umbrella": {
+    "_comment": "Cisco Umbrella function priorities",
+    "getOrganizations": 90,
+    "getNetworks": 85,
+    "getIdentities": 80,
+    "getSecurityActivity": 70,
+    "getDestinationLists": 65,
+    "getReports": 60
+  },
+  
+  "cloudlock": {
+    "_comment": "Cisco Cloudlock function priorities",
+    "getIncidents": 85,
+    "getPolicies": 80,
+    "getUsers": 75,
+    "getDataPatterns": 60,
+    "getComplianceScans": 55
+  },
+  
+  "ai_defense": {
+    "_comment": "Cisco AI Defense function priorities",
+    "getThreatDetections": 90,
+    "getSecurityAlerts": 85,
+    "getIncidentList": 80,
+    "getAnalysisResults": 70,
+    "getResponseActions": 65
+  }
+}
+ 
+ 

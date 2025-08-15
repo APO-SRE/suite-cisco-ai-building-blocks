@@ -61,7 +61,7 @@ REGISTRY_PATH = AGENT_ROOT / "llm" / "platform_registry.json"
 # ╭─────────────────────────────────────────────────────────────────────╮
 # │ 1 ─ dynamic registry rebuild (unified_service/__init__.py)         │
 # ╰─────────────────────────────────────────────────────────────────────╯
-def _rebuild_service_registry() -> None:
+def _rebuild_service_registry(dry_run: bool = False) -> None:
     """Re-create app/llm/unified_service/__init__.py after deletions."""
     service_dir = AGENT_ROOT / "llm" / "unified_service"
     init_py = service_dir / "__init__.py"
@@ -78,11 +78,13 @@ def _rebuild_service_registry() -> None:
         reg_lines.append(f"    '{plat}': {cls},")
         all_exports.append(cls)
 
-    init_code = f"""\ 
-# Auto-generated – DO NOT EDIT
+    # Generate import statements (one per line)
+    import_lines = chr(10).join(imports) if imports else ''
+    
+    init_code = f"""# Auto-generated – DO NOT EDIT
 from __future__ import annotations
 import sys
-{'; '.join(imports) if imports else ''}
+{import_lines}
 
 _SERVICE_REGISTRY = {{
 {chr(10).join(reg_lines)}
@@ -105,8 +107,23 @@ __all__ = {all_exports!r}
 # optional top-level alias
 sys.modules.setdefault("unified_service", sys.modules[__name__])
 """
-    init_py.write_text(init_code, encoding="utf-8")
-    console.print(f"[green]✓ Rebuilt {init_py.relative_to(AGENT_ROOT)}[/green]")
+    
+    # Validate the generated code is valid Python syntax
+    try:
+        compile(init_code, str(init_py), 'exec')
+    except SyntaxError as e:
+        console.print(f"[red]Error: Generated code has syntax error at line {e.lineno}:[/red]")
+        console.print(f"[red]{e.msg}[/red]")
+        console.print("[yellow]Generated code:[/yellow]")
+        console.print(init_code)
+        raise
+    
+    if dry_run:
+        console.print(f"[yellow]Dry run - would write to {init_py.relative_to(AGENT_ROOT)}:[/yellow]")
+        console.print(Panel(init_code, title="Generated Code", border_style="yellow"))
+    else:
+        init_py.write_text(init_code, encoding="utf-8")
+        console.print(f"[green]✓ Rebuilt {init_py.relative_to(AGENT_ROOT)}[/green]")
 
 
 # ╭─────────────────────────────────────────────────────────────────────╮
@@ -196,7 +213,7 @@ def main() -> None:
         console.print("[yellow]No platforms found. Resetting all folders.[/yellow]")
         if not args.dry_run:
             reset_folders(FOLDERS_TO_RESET)
-            _rebuild_service_registry()
+            _rebuild_service_registry(dry_run=args.dry_run)
             clear_all_installed_flags()
         return
 
@@ -223,7 +240,7 @@ def main() -> None:
         console.print(Panel.fit("Resetting [bold]ALL[/bold] platform artifacts.", style="cyan"))
         if not args.dry_run:
             reset_folders(FOLDERS_TO_RESET)
-            _rebuild_service_registry()
+            _rebuild_service_registry(dry_run=args.dry_run)
             clear_all_installed_flags()
         else:
             console.print("[yellow]Dry run: no changes applied.[/yellow]")
@@ -264,7 +281,7 @@ def main() -> None:
                     console.print(f"Not found → {desc}")
 
         # 2) Rebuild __init__.py for unified_service
-        _rebuild_service_registry()
+        _rebuild_service_registry(dry_run=args.dry_run)
 
         # 3) Clear the 'installed' flag for this single platform
         clear_installed_flag(plat)

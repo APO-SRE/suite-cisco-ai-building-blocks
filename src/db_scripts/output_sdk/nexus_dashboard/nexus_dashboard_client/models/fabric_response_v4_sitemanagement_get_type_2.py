@@ -1,0 +1,75 @@
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union
+
+from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.dcnm_fabric_response_v4_sitemanagement_get import DCNMFabricResponseV4SitemanagementGET
+
+
+T = TypeVar("T", bound="FabricResponseV4SitemanagementGETType2")
+
+
+@_attrs_define
+class FabricResponseV4SitemanagementGETType2:
+    """
+    Attributes:
+        dcnm (Union[Unset, list['DCNMFabricResponseV4SitemanagementGET']]):
+    """
+
+    dcnm: Union[Unset, list["DCNMFabricResponseV4SitemanagementGET"]] = UNSET
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+
+    def to_dict(self) -> dict[str, Any]:
+        dcnm: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.dcnm, Unset):
+            dcnm = []
+            for dcnm_item_data in self.dcnm:
+                dcnm_item = dcnm_item_data.to_dict()
+                dcnm.append(dcnm_item)
+
+        field_dict: dict[str, Any] = {}
+        field_dict.update(self.additional_properties)
+        field_dict.update({})
+        if dcnm is not UNSET:
+            field_dict["dcnm"] = dcnm
+
+        return field_dict
+
+    @classmethod
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.dcnm_fabric_response_v4_sitemanagement_get import DCNMFabricResponseV4SitemanagementGET
+
+        d = dict(src_dict)
+        dcnm = []
+        _dcnm = d.pop("dcnm", UNSET)
+        for dcnm_item_data in _dcnm or []:
+            dcnm_item = DCNMFabricResponseV4SitemanagementGET.from_dict(dcnm_item_data)
+
+            dcnm.append(dcnm_item)
+
+        fabric_response_v4_sitemanagement_get_type_2 = cls(
+            dcnm=dcnm,
+        )
+
+        fabric_response_v4_sitemanagement_get_type_2.additional_properties = d
+        return fabric_response_v4_sitemanagement_get_type_2
+
+    @property
+    def additional_keys(self) -> list[str]:
+        return list(self.additional_properties.keys())
+
+    def __getitem__(self, key: str) -> Any:
+        return self.additional_properties[key]
+
+    def __setitem__(self, key: str, value: Any) -> None:
+        self.additional_properties[key] = value
+
+    def __delitem__(self, key: str) -> None:
+        del self.additional_properties[key]
+
+    def __contains__(self, key: str) -> bool:
+        return key in self.additional_properties

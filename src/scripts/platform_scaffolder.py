@@ -23,7 +23,7 @@ environments. You are solely responsible for any modifications or adaptations ma
 By using this code, you agree that you have read, understood, and accept these terms.
 """
 """
-Unified Platform Scaffolder – phase-1
+Unified Platform Scaffolder – phase-1 with Enhanced SDK Integration
 AUTO-GENERATES:
 
 * app/llm/function_definitions/<platform>.json
@@ -31,6 +31,7 @@ AUTO-GENERATES:
 * app/llm/platform_clients/<platform>_client.py
 * app/llm/function_dispatcher/<platform>_dispatcher.py
 * app/llm/unified_service/<platform>_service.py
+* app/llm/sdk_coverage/<platform>_coverage.json (NEW)
 """
 import sys
 import os
@@ -40,7 +41,7 @@ import json
 import logging
 import re
 import textwrap
-from typing import Dict, List
+from typing import Dict, List, Set, Tuple, Optional
 import keyword
 from dotenv import load_dotenv
 from functools import partial
@@ -49,6 +50,39 @@ from functools import partial
 from app.utils.openapi_loader import load_spec
 from app.utils.sdk_loader     import load_client
 from app.utils.dietify        import dietify_schema
+from app.utils.sdk_initialization import SDKInitializer
+from app.utils.registry_io import load_registry
+
+# Import platform customizations
+from platform_customizations import PLATFORM_OVERRIDES, INJECTION_CONFIG, generate_aliases
+
+# Import function customizations directly
+import importlib.util
+spec = importlib.util.spec_from_file_location(
+    "function_customizations", 
+    Path(__file__).parent / "platform_scaffolder_utilities" / "function_customizations.py"
+)
+function_customizations = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(function_customizations)
+get_function_customization = function_customizations.get_function_customization
+
+# Import the enhanced SDK introspection
+try:
+    from app.utils.sdk_introspection import (
+        SDKIntrospector,
+        SDKOpenAPIFilter,
+        SDKPattern
+    )
+    ENHANCED_INTROSPECTION = True
+except ImportError:
+    # Fall back to original introspection if enhanced not available
+    from app.utils.sdk_introspection import (
+        discover_sdk_methods,
+        discover_sdk_methods_from_client,
+        filter_openapi_by_sdk,
+        check_operation_id_availability
+    )
+    ENHANCED_INTROSPECTION = False
 
 # ───────── constants ───────────────────────────────────────────────────
 load_dotenv()
@@ -63,6 +97,7 @@ OUT_DIRS = {
     "client":  LLM_DIR / "platform_clients",
     "disp":    LLM_DIR / "function_dispatcher",
     "service": LLM_DIR / "unified_service",
+    "coverage": LLM_DIR / "sdk_coverage",  # NEW: Coverage reports
 }
 for p in OUT_DIRS.values():
     p.mkdir(parents=True, exist_ok=True)
@@ -70,63 +105,13 @@ for p in OUT_DIRS.values():
 logging.basicConfig(level=logging.INFO, format="%(levelname)s | %(message)s")
 log = logging.getLogger("scaffolder")
 
-
+# Section 0
 #################################################################################################################
-#################################################################################################################
-#  IMPORTANT !!!!
-# This dictionary holds all platform-specific rules and overrides.
-# It allows us to safely modify behavior for one platform without
-# affecting any others.
-# ── OVERRIDES START HERE ──────────────────────────────────────────────────────────────────────────────────
-PLATFORM_OVERRIDES = {
-    "catalyst": {
-        "blocklist": {
-            # This operationId is ambiguous and unhelpful for Catalyst.
-            "getInterfaces",
-        },
-        "descriptions": {
-            # This makes the correct function much more attractive to the LLM.
-            "getAllInterfaces": "Crucial for users asking to list, show, or get all network interfaces from all devices. This is the primary tool for interface inventory.",
-        },
-    },
-    "meraki": {
-        "blocklist": set(), # No blocked functions for Meraki yet
-        "descriptions": {}, # No description overrides for Meraki yet
-    },
-    # Add other platforms here as needed
-}
+# Platform overrides have been moved to the platform_customizations module
+# The PLATFORM_OVERRIDES dictionary is imported from platform_customizations/platform_overrides.py
 
-# ── OVERRIDES END HERE ──────────────────────────────────────────────────────────────────────────────────
-###############################################################################################################
-
-#################################################################################################################
-#################################################################################################################
-#  IMPORTANT !!!!
-# This dictionary defines all parameters that are automatically injected by the
-# dispatcher. By listing them here, we can ensure they are marked as optional
-# for the LLM, allowing the injection logic to work seamlessly.
-# ── INJECTED PARAMETERS START HERE ──────────────────────────────────────────────────────────────────────────────────
-INJECTION_CONFIG = {
-    "meraki": {
-        "env_var": "MERAKI_ORG_ID",
-        "params": {
-            # Parameter Name -> Value to Inject
-            "organizationId": "{value}",
-            "organization_id": "{value}",
-            "org_id": "{value}",
-        }
-    },
-    "intersight": {
-        "env_var": "INTERSIGHT_ORGANIZATION_MOID",
-        "params": {
-            "organization_moid": "{value}",
-            "$filter": "Organization.Moid eq '{value}'",
-            "filter": "Organization.Moid eq '{value}'",
-        }
-    },
-}
-
-# ── INJECTED PARAMETERS STOP HERE ──────────────────────────────────────────────────────────────────────────────────
+# Parameter injection configurations have been moved to the platform_customizations module
+# See platform_customizations/injection_config.py for the INJECTION_CONFIG dictionary
 
 
 ALWAYS_KEEP_TAGS = {"devices", "inventory"}
@@ -145,7 +130,13 @@ def _drop_dynamic_cache() -> None:
         except Exception as exc:
             log.warning("could not drop cache %s: %s", cache_file, exc)
 
-
+def suppress_meraki_logging():
+    """Suppress Meraki logging before any imports"""
+    # Set environment variables before import
+    os.environ['MERAKI_SUPPRESS_LOGGING'] = 'true'
+    os.environ['MERAKI_PRINT_CONSOLE'] = 'false'
+    os.environ['MERAKI_LOG_PATH'] = ''
+    os.environ['MERAKI_LOG_FILE_PREFIX'] = ''
 
 def _emit_org_injection(platform: str, non_body_keys: list[str]) -> list[str]:
     """
@@ -166,17 +157,9 @@ def _emit_org_injection(platform: str, non_body_keys: list[str]) -> list[str]:
     lines.append("    if env_val:")
     
     for param_name, value_template in params_to_inject.items():
-        # Build a string for the *generated* code. The generated code will use
-        # a variable named 'env_val'. Replace the placeholder '{value}' with
-        # the literal text '{env_val}' to construct the correct f-string.
         final_template = value_template.replace('{value}', '{env_val}')
-        
-        # --- THE FIX IS HERE ---
-        # Use triple quotes to create the f-string. This prevents syntax errors
-        # if the template itself contains single or double quotes.
         formatted_value = f'f"""{final_template}"""'
   
-
         lines.extend([
             f"        if '{param_name}' in {non_body_keys} and '{param_name}' not in final_kwargs:",
             f"            final_kwargs['{param_name}'] = {formatted_value}",
@@ -184,10 +167,50 @@ def _emit_org_injection(platform: str, non_body_keys: list[str]) -> list[str]:
     lines.append("")
     return lines
 
- 
 
- 
- 
+# ──────────────────────────────────────────────────────────────────────
+# NEW: Catalyst-specific operation ID sanitization
+# ──────────────────────────────────────────────────────────────────────
+def sanitize_catalyst_operation_id(op_id: str, platform: str) -> str:
+    """
+    Sanitize operation IDs specifically for Catalyst platform.
+    This addresses the trailing punctuation issue and other Catalyst-specific problems.
+    """
+    if platform.lower() != 'catalyst':
+        return op_id
+    
+    original_op_id = op_id
+    
+    # Remove trailing punctuation (periods, commas, semicolons, etc.)
+    op_id = re.sub(r'[.,;:!?]+$', '', op_id)
+    
+    # Remove any trailing whitespace
+    op_id = op_id.strip()
+    
+    # Handle multiple consecutive underscores that might result from cleaning
+    op_id = re.sub(r'_{2,}', '_', op_id)
+    
+    # Remove trailing underscores that might result from cleaning
+    op_id = op_id.rstrip('_')
+    
+    # Ensure minimum length (prevent single character names)
+    if len(op_id) < 3:
+        # Try to generate a better name from the original
+        if len(original_op_id) > 3:
+            # Take first 3 alphanumeric characters
+            clean_chars = [c for c in original_op_id if c.isalnum()]
+            if len(clean_chars) >= 3:
+                op_id = ''.join(clean_chars[:3])
+            else:
+                op_id = 'op_' + ''.join(clean_chars)
+        else:
+            op_id = f"op_{op_id}"
+    
+    if original_op_id != op_id:
+        log.info(f"✨ [Catalyst] Sanitized operation ID: '{original_op_id}' → '{op_id}'")
+    
+    return op_id
+
 
 # ╭─────────────────────────────────────────────────────────────────────╮
 # │ 1 ─ package initialisation helpers                                 │
@@ -309,6 +332,7 @@ def _py_identifier(raw: str, seen: Dict[str, int]) -> str:
  
 
 
+
 def _emit_client_stub(platform: str, sdk_module: str) -> None:
     """
     Write app/llm/platform_clients/<platform>_client.py
@@ -321,7 +345,7 @@ def _emit_client_stub(platform: str, sdk_module: str) -> None:
     "import re, importlib",
     "from functools import partial",
     "import inspect",
-    "from typing import get_origin, get_args",
+    "from typing import get_origin, get_args, Any",
 ]
    
     extra_init, extra_methods = [], []
@@ -359,22 +383,61 @@ def _emit_client_stub(platform: str, sdk_module: str) -> None:
             4. Class-based API tag handler (for Intersight-style SDKs).
             5. Suffix match as a final fallback.
             """
+            # Handle Catalyst-specific prefixes
+            if name.startswith('ciscoDNACenter'):
+                # Remove the prefix and convert to snake_case
+                name_without_prefix = name[14:]  # Remove 'ciscoDNACenter'
+                name_without_prefix = name_without_prefix[0].lower() + name_without_prefix[1:] if name_without_prefix else ''
+            else:
+                name_without_prefix = name
+                
             snake = _CAMEL_TO_SNAKE.sub('_', name).lower()
+            snake_without_prefix = _CAMEL_TO_SNAKE.sub('_', name_without_prefix).lower()
 
             # Strategy 1: Direct attribute on the SDK client
-            if hasattr(self._sdk, name):
-                return getattr(self._sdk, name)
-            if hasattr(self._sdk, snake):
-                return getattr(self._sdk, snake)
+            for candidate in (name, snake, name_without_prefix, snake_without_prefix):
+                if hasattr(self._sdk, candidate):
+                    return getattr(self._sdk, candidate)
 
             # Strategy 2: Look inside nested sub-clients (for Meraki)
-            for sub_name in dir(self._sdk):
-                if sub_name.startswith('_'):
-                    continue
-                sub = getattr(self._sdk, sub_name)
-                for cand in (name, snake):
-                    if hasattr(sub, cand):
-                        return getattr(sub, cand)
+            # For Catalyst, prioritize certain API groups over others
+            platform_name = self.__class__.__name__.replace('Client', '').lower()
+            if platform_name == 'catalyst':
+                priority_groups = ['devices', 'sites', 'clients', 'system_health', 'topology', 'compliance', 'event_management', 'platform']
+                other_groups = []
+                
+                for sub_name in dir(self._sdk):
+                    if sub_name.startswith('_'):
+                        continue
+                    sub = getattr(self._sdk, sub_name, None)
+                    if sub is None:
+                        continue
+                        
+                    if sub_name in priority_groups:
+                        # Check priority groups first
+                        for cand in (name, snake, name_without_prefix, snake_without_prefix):
+                            if hasattr(sub, cand):
+                                return getattr(sub, cand)
+                    else:
+                        other_groups.append(sub_name)
+                
+                # Then check other groups
+                for sub_name in other_groups:
+                    sub = getattr(self._sdk, sub_name, None)
+                    if sub is None:
+                        continue
+                    for cand in (name, snake, name_without_prefix, snake_without_prefix):
+                        if hasattr(sub, cand):
+                            return getattr(sub, cand)
+            else:
+                # Original logic for other platforms
+                for sub_name in dir(self._sdk):
+                    if sub_name.startswith('_'):
+                        continue
+                    sub = getattr(self._sdk, sub_name)
+                    for cand in (name, snake, name_without_prefix, snake_without_prefix):
+                        if hasattr(sub, cand):
+                            return getattr(sub, cand)
 
             # Strategy 3: Handle openapi-python-client's standalone function pattern (for Nexus Hyperfabric)
             # Tries to import a module like: nexus_hyperfabric.api.fabrics.fabrics_get_all_fabrics
@@ -394,9 +457,17 @@ def _emit_client_stub(platform: str, sdk_module: str) -> None:
             # Strategy 4: Class-based API tag handler (for Intersight)
             # Tries to import a class like intersight.api.compute_api.ComputeApi
             if parts:
+                # For Intersight, we need to handle get_/post_/patch_/delete_ prefixes
+                # get_compute_physical_summary_list -> compute_api.ComputeApi
+                if parts[0] in ['get', 'post', 'patch', 'delete', 'put']:
+                    # Skip the HTTP method prefix for API class detection
+                    api_parts = parts[1:]
+                else:
+                    api_parts = parts
+                
                 # This loop logic is important for Intersight's naming conventions
-                for i in range(len(parts), 0, -1):
-                    tag = '_'.join(parts[:i])
+                for i in range(len(api_parts), 0, -1):
+                    tag = '_'.join(api_parts[:i])
                     try:
                         cls_mod = importlib.import_module(f"{_SDK_PKG}.api.{tag}_api")
                         class_name = f"{''.join(p.capitalize() for p in tag.split('_'))}Api"
@@ -444,110 +515,34 @@ def _emit_client_stub(platform: str, sdk_module: str) -> None:
                     return target(body=body, **kwargs)
                 return target(**kwargs)
             return wrapper
-    ''').splitlines()
+    ''')
 
 
-#################################################################################################################
-#################################################################################################################
-#  IMPORTANT !!!!
-#  This is where you add AUTHORIZATION INFORMATION for different platforms. 
-#
-# ── PLATFORM AUTHORIZATION START HERE ──────────────────────────────────────────────────────────────────────────────────
-#
-    # Meraki-specific auth injection
-    if platform.lower() == "meraki":
-        extra_imports.append("import os")
-        extra_init.extend([
-            "api_key = os.getenv('CISCO_MERAKI_API_KEY')",
-            "if not api_key:",
-            "    raise ValueError('Missing CISCO_MERAKI_API_KEY environment variable')",
-            "kwargs['api_key'] = api_key",
-            "",
-        ])
-
-    # Catalyst Center (DNA Center) auth injection
-    if platform.lower() == "catalyst":
-        extra_imports.append("import os")
-        extra_init.extend([
-            "username = os.getenv('DNACENTER_USERNAME')",
-            "password = os.getenv('DNACENTER_PASSWORD')",
-            "base_url = os.getenv('DNACENTER_BASE_URL')",
-            "if not username or not password or not base_url:",
-            "    raise ValueError('Missing DNACENTER_USERNAME, DNACENTER_PASSWORD, or DNACENTER_BASE_URL')",
-            "kwargs['username'] = username",
-            "kwargs['password'] = password",
-            "kwargs['base_url']  = base_url",
-            "version = os.getenv('DNACENTER_VERSION', '2.3.7.6')",
-            "verify_env = os.getenv('DNACENTER_VERIFY_SSL','true').lower() in ('true','1','yes')",
-            "kwargs['verify'] = verify_env",
-            "kwargs['version']   = version",
-            "",
-        ])
-
-
-    # Nexus Hyperfabric auth injection
-    if platform.lower() == "nexus_hyperfabric":
-        extra_imports.append("import os")
-        extra_init.extend([
-            "base_url = os.getenv('NEXUS_HYPERFABRIC_BASE_URL')",
-            "token    = os.getenv('NEXUS_HYPERFABRIC_BEARER_TOKEN')",
-            "if not base_url or not token:",
-            "    raise ValueError('Missing NEXUS_HYPERFABRIC_BASE_URL or NEXUS_HYPERFABRIC_BEARER_TOKEN')",
-            "kwargs.setdefault('base_url', base_url)",
-            "kwargs.setdefault('token', token)",
-            "",
-        ])
-
-    # Intersight-specific auth injection
-    if platform.lower() == "intersight":
-        extra_imports.append("import os")
-        extra_imports.append("from pathlib import Path")
-        extra_imports.append("import intersight")
-        extra_init.extend([
-            "api_key = os.getenv('INTERSIGHT_API_KEY')",
-            "api_secret = os.getenv('INTERSIGHT_API_SECRET')",
-            "base_url = os.getenv('INTERSIGHT_BASE_URL', 'https://intersight.com')",
-            "if not api_key or not api_secret:",
-            "    raise ValueError('Missing INTERSIGHT_API_KEY or INTERSIGHT_API_SECRET environment variable')",
-            "",
-            "# --- resolve secret: treat value as path OR inline key text ---",
-            "key_path = Path(api_secret).expanduser()",
-            "if key_path.is_file():",
-            "    secret_content = key_path.read_text()",
-            "else:",
-            "    secret_content = api_secret.strip()",
-            "",
-            "if re.search('BEGIN RSA PRIVATE KEY', secret_content):",
-            "    signing_algorithm = intersight.signing.ALGORITHM_RSASSA_PKCS1v15",
-            "elif re.search('BEGIN EC PRIVATE KEY', secret_content):",
-            "    signing_algorithm = intersight.signing.ALGORITHM_ECDSA_MODE_DETERMINISTIC_RFC6979",
-            "else:",
-            "    raise ValueError('INTERSIGHT_API_SECRET is not a valid RSA or EC private key')",
-            "",
-            "config = intersight.Configuration(",
-            "    host=base_url,",
-            "    signing_info=intersight.signing.HttpSigningConfiguration(",
-            "        key_id=api_key,",
-            "        private_key_string=secret_content,",
-            "        signing_scheme=intersight.signing.SCHEME_HS2019,",
-            "        signing_algorithm=signing_algorithm,",
-            "        hash_algorithm=intersight.signing.HASH_SHA256,",
-            "        signed_headers=[",
-            "            intersight.signing.HEADER_REQUEST_TARGET,",
-            "            intersight.signing.HEADER_HOST,",
-            "            intersight.signing.HEADER_DATE,",
-            "            intersight.signing.HEADER_DIGEST,",
-            "        ]",
-            "    )",
-            ")",
-            "kwargs['configuration'] = config",
-            "",
-        ])
-#
-# ── PLATFORM AUTHRIZATIONS STOP HERE ─────────────────────────────────────────────────────────────────────────
-###############################################################################################################
+# Import platform authorization configurations
+    from platform_customizations.platform_auth import get_platform_auth
+    
+    # Get platform-specific auth configuration
+    auth_config = get_platform_auth(platform, sdk_module)
+    extra_imports.extend(auth_config['extra_imports'])
+    extra_init.extend(auth_config['extra_init'])
+    extra_methods.extend(auth_config['extra_methods'])
+    
+    # --- FIX: Platform-specific logic to disable Meraki logging ---
+    if platform.lower() == 'meraki':
+        # This line will be added to the __init__ method of the generated MerakiClient
+        extra_init.append("kwargs['suppress_logging'] = True")
+    # --- END OF FIX ---
+    
+    # Handle custom common_helpers for specific platforms (like SD-WAN)
+    if auth_config['common_helpers']:
+        common_helpers = auth_config['common_helpers']
     # inject common methods
-    extra_methods.extend(f"    {l}" for l in common_helpers)
+    # For SD-WAN, common_helpers was already defined with custom methods
+    if platform.lower() != "sdwan_mngr":
+        extra_methods.extend(f"    {l}" for l in common_helpers.split('\n'))
+    else:
+        # SD-WAN already has its custom common_helpers defined above
+        extra_methods.extend(f"    {l}" for l in common_helpers.split('\n'))
 
     # assemble client file:
     lines: list[str] = [
@@ -566,11 +561,18 @@ def _emit_client_stub(platform: str, sdk_module: str) -> None:
         "",
         "    def __init__(self, **kwargs):",
         *[f"        {l}" for l in extra_init],
-        f"        self._sdk = _sdk.{sdk_cls.__name__}(**kwargs)",
+    ]
+    
+    # Only add the SDK instantiation line if it's not SD-WAN
+    # (SD-WAN creates the session in extra_init)
+    if platform.lower() != "sdwan_mngr":
+        lines.append(f"        self._sdk = _sdk.{sdk_cls.__name__}(**kwargs)")
+    
+    lines.extend([
         "",
         *extra_methods,
         "",
-    ]
+    ])
 
     fp = OUT_DIRS["client"] / f"{platform}_client.py"
     fp.write_text("\n".join(lines), encoding="utf-8")
@@ -661,6 +663,149 @@ def _emit_unified_service(platform: str):
     log.info("✓ %s", fp.relative_to(ROOT))
 
 
+# ── Enhanced SDK introspection helpers ─────────────────────────────────────
+def perform_sdk_introspection(
+    platform: str, 
+    sdk_module_name: str, 
+    openapi_spec: dict
+) -> Tuple[dict, dict, dict]:
+    """
+    Perform enhanced SDK introspection and filter OpenAPI spec.
+    
+    Returns:
+        Tuple of (filtered_spec, operation_mapping, coverage_report)
+    """
+    platform_config = PLATFORM_OVERRIDES.get(platform.lower(), {})
+    
+    registry = load_registry()  
+    registry_config = registry.get(platform.lower(), {})
+
+    # Check if SDK filtering is enabled (opt-in, disabled by default)
+    if not platform_config.get("enable_sdk_filtering", False):
+        log.info(f"ℹ️  SDK filtering disabled for {platform} (default behavior)")
+        return openapi_spec, {}, {"coverage_percentage": 100, "note": "SDK filtering disabled"}
+    
+    if ENHANCED_INTROSPECTION:
+        try:
+            # Use the enhanced introspector
+            introspector = SDKIntrospector(platform, sdk_module_name)
+            
+            # Create the filter
+            sdk_filter = SDKOpenAPIFilter(introspector)
+            
+            # Apply custom operation_id_map if provided
+            custom_map = platform_config.get("operation_id_map", {})
+            if custom_map:
+                log.info(f"Applying custom operation ID mappings: {custom_map}")
+                for op_id, sdk_method in custom_map.items():
+                    # Create a mock SDK method for the mapping
+                    from app.utils.sdk_introspection import SDKMethod
+                    sdk_filter.methods[sdk_method] = SDKMethod(
+                        name=sdk_method,
+                        signature=None,
+                        parent_class="Unknown"
+                    )
+                    sdk_filter.operation_id_map[op_id] = sdk_filter.methods[sdk_method]
+            
+            # Filter the OpenAPI spec
+            filtered_spec, operation_mapping = sdk_filter.filter_openapi_spec(openapi_spec)
+            
+            # Generate coverage report
+            coverage_report = sdk_filter.generate_coverage_report(openapi_spec)
+            
+            log.info(f"✓ SDK Coverage for {platform}: {coverage_report['coverage_percentage']:.1f}%")
+            log.info(f"  - Total operations: {coverage_report['total_operations']}")
+            log.info(f"  - Covered: {coverage_report['covered_operations']}")
+            log.info(f"  - Missing: {len(coverage_report['missing_operations'])}")
+            
+            return filtered_spec, operation_mapping, coverage_report
+            
+        except Exception as e:
+            log.warning(f"⚠️  Enhanced SDK introspection failed for {platform}: {e}")
+            log.warning("Falling back to original introspection")
+            # Fall through to original introspection
+    
+    # Original introspection logic
+    sdk_methods = set()
+    log.info(f"🔍 Discovering SDK methods for {platform}...")
+    try:
+        # Create a temporary client instance to discover methods
+        sdk_client_module = load_client(sdk_module_name)
+        
+        # Try to create a minimal instance for introspection
+        temp_client = None
+        if platform.lower() == "meraki":
+            import os
+            api_key = os.getenv('CISCO_MERAKI_API_KEY', 'dummy-key-for-introspection')
+            temp_client = sdk_client_module(api_key=api_key, suppress_logging=True)
+        elif platform.lower() == "catalyst":
+            try:
+                temp_client = sdk_client_module()
+            except:
+                pass
+        elif platform.lower() == "intersight":
+            import importlib
+            intersight_module = importlib.import_module(sdk_module_name)
+            sdk_methods = discover_sdk_methods(intersight_module)
+            if sdk_methods:
+                log.info(f"✓ Discovered {len(sdk_methods)} SDK methods from module introspection")
+            else:
+                try:
+                    temp_client = sdk_client_module()
+                except:
+                    pass
+        else:
+            try:
+                temp_client = sdk_client_module()
+            except:
+                pass
+        
+        if temp_client and not sdk_methods:
+            sdk_methods = discover_sdk_methods_from_client(temp_client)
+            log.info(f"✓ Discovered {len(sdk_methods)} SDK methods")
+        elif not sdk_methods:
+            log.warning(f"⚠️  Could not discover SDK methods, proceeding without SDK filtering")
+    except Exception as e:
+        log.warning(f"⚠️  SDK introspection failed: {e}, proceeding without filtering")
+    
+    # Filter OpenAPI spec if we have SDK methods
+    if sdk_methods:
+        log.info("🔧 Filtering OpenAPI spec to match SDK capabilities...")
+        filtered_spec = filter_openapi_by_sdk(openapi_spec, sdk_methods)
+        log.info(f"✓ Filtered spec: {len(filtered_spec.get('paths', {}))} paths remaining from {len(openapi_spec.get('paths', {}))}")
+        
+        # Calculate coverage
+        total_ops = sum(1 for path in openapi_spec.get('paths', {}).values() 
+                       for method in path.values() 
+                       if isinstance(method, dict) and 'operationId' in method)
+        filtered_ops = sum(1 for path in filtered_spec.get('paths', {}).values() 
+                          for method in path.values() 
+                          if isinstance(method, dict) and 'operationId' in method)
+        coverage = (filtered_ops / total_ops * 100) if total_ops > 0 else 0
+        
+        coverage_report = {
+            "platform": platform,
+            "sdk_module": sdk_module_name,
+            "total_operations": total_ops,
+            "covered_operations": filtered_ops,
+            "coverage_percentage": coverage,
+            "sdk_methods_count": len(sdk_methods)
+        }
+        
+        return filtered_spec, {}, coverage_report
+    
+    return openapi_spec, {}, {"coverage_percentage": 100, "note": "No SDK filtering applied"}
+
+def write_coverage_report(platform: str, coverage_report: dict):
+    """Write SDK coverage report to file."""
+    coverage_file = OUT_DIRS["coverage"] / f"{platform}_coverage.json"
+    coverage_file.write_text(
+        json.dumps(coverage_report, indent=2),
+        encoding="utf-8"
+    )
+    log.info(f"✓ Coverage report: {coverage_file.relative_to(ROOT)}")
+
+
 # ╭─────────────────────────────────────────────────────────────────────╮
 # │ 3 ─ per-platform scaffolding                                        │
 # ╰─────────────────────────────────────────────────────────────────────╯
@@ -671,13 +816,68 @@ def scaffold_one(
     spec_path: Path,
     include_http: set[str] | None,
     name_re: re.Pattern | None,
+    disable_sdk_filtering: bool = False,
 ) -> None:
+    # Initialize total_spec_operations at function scope
+    total_spec_operations = 0
  
-    # Get the specific overrides for the current platform from the global config.
-    # This safely returns an empty dictionary if no rules are defined for the platform.
+    # EXISTING CODE: Get the specific overrides for the current platform from the global config.
     platform_config = PLATFORM_OVERRIDES.get(platform.lower(), {})
     
+    # NEW CODE: Load the full registry and merge with overrides
+    registry = load_registry()  # This loads your platform_registry.json
+    registry_config = registry.get(platform.lower(), {})
+    
+    # Merge registry config with PLATFORM_OVERRIDES (overrides take precedence)
+    full_platform_config = {**registry_config, **platform_config}
+    platform_config = full_platform_config
+    
+    # NEW CODE: Initialize SDK helper only if SDK filtering is enabled (opt-in)
+    if platform_config.get("enable_sdk_filtering", False):
+        try:
+            initializer = SDKInitializer()  # It will auto-find platform_registry.json
+        except Exception as e:
+            log.warning(f"Failed to initialize SDK helper: {e}")
+            # Continue without SDK initialization
+    
+    # Override sdk_module if specified in registry
+    if not sdk_module and platform_config.get("sdk_module"):
+        sdk_module = platform_config["sdk_module"]
+        log.info(f"Using SDK module from registry: {sdk_module}")
+    
+    # EXISTING CODE: Load the OpenAPI spec
     full_spec = load_spec(spec_path)
+    
+    # NEW CODE: Analyze HTTP method breakdown
+    http_method_counts = {}
+    for path, path_item in full_spec.get("paths", {}).items():
+        for verb, op in path_item.items():
+            if verb.upper() in {"GET", "POST", "PUT", "PATCH", "DELETE"}:
+                http_method_counts[verb.upper()] = http_method_counts.get(verb.upper(), 0) + 1
+                total_spec_operations += 1
+    
+    log.info(f"📊 OpenAPI Spec Analysis for {platform}:")
+    log.info(f"  - Total operations: {total_spec_operations}")
+    for method in ["GET", "POST", "PUT", "PATCH", "DELETE"]:
+        if method in http_method_counts:
+            log.info(f"  - {method}: {http_method_counts[method]} operations")
+    
+    # MODIFIED CODE: Enhanced SDK introspection with registry awareness
+    filtered_spec, operation_mapping, coverage_report = perform_sdk_introspection(
+        platform, sdk_module, full_spec
+    )
+    
+    # Add HTTP method counts to coverage report
+    coverage_report["http_method_breakdown"] = http_method_counts
+    
+    # EXISTING CODE: Write coverage report
+    write_coverage_report(platform, coverage_report)
+    
+    # Store operation mapping in platform config for later use
+    platform_config["_operation_mapping"] = operation_mapping
+    
+    # EXISTING CODE: Use filtered spec
+    full_spec = filtered_spec
 
     _write_json(OUT_DIRS["full"] / f"{platform}.json",        full_spec, pretty=True)
     _write_json(OUT_DIRS["full"] / f"full_{platform}.json",   full_spec, pretty=True)
@@ -695,6 +895,10 @@ def scaffold_one(
         }
 
         for verb, op in path_item.items():
+            # Skip non-HTTP method entries (like 'parameters')
+            if verb.upper() not in {"GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"}:
+                continue
+            
             if include_http and verb.upper() not in include_http:
                 continue
 
@@ -706,10 +910,32 @@ def scaffold_one(
             if raw_op_id in platform_config.get("blocklist", set()):
                 log.info(f"🚫  Skipping blocked operationId for '{platform}': {raw_op_id}")
                 continue
+            
+            # Check if operation is available in SDK (already filtered but double-check)
+            sdk_methods = set()  # This would come from introspection
+            if sdk_methods and raw_op_id:
+                # Check custom operation_id_map first
+                operation_id_map = platform_config.get("operation_id_map", {})
+                if raw_op_id in operation_id_map:
+                    # Use the mapped SDK method name
+                    sdk_method_name = operation_id_map[raw_op_id]
+                    if sdk_method_name not in sdk_methods:
+                        log.info(f"⚠️  Skipping {raw_op_id} - mapped method {sdk_method_name} not found in SDK")
+                        skipped_ops.append({"op": raw_op_id, "reason": f"mapped SDK method '{sdk_method_name}' not found"})
+                        continue
+                elif not check_operation_id_availability(raw_op_id, sdk_methods):
+                    log.info(f"⚠️  Skipping {raw_op_id} - not found in SDK")
+                    skipped_ops.append({"op": raw_op_id, "reason": "not available in SDK"})
+                    continue
 
             # 👉 robust name sanitisation  (always OpenAI‑safe)
             # Use the raw_op_id we already fetched.
             op_id = raw_op_id or f"{verb}_{path}"
+            
+            # NEW: Apply Catalyst-specific sanitization
+            op_id = sanitize_catalyst_operation_id(op_id, platform)
+            
+            # Continue with existing sanitization logic
             op_id = NAME_ALLOWED_RX.sub('_', op_id)       # illegal → "_"
             op_id = re.sub(r'__+', '_', op_id)                # collapse "___"
             op_id = op_id.lstrip('.-')                        # cannot start with "." | "-"
@@ -757,26 +983,60 @@ def scaffold_one(
 
             if "requestBody" in op:
                 rb = op["requestBody"]
-                rb_content = rb.get("content", {}).get("application/json", {})
-                rb_schema_ref = rb_content.get("schema", {})
+                # Try different content types
+                rb_content = None
+                for content_type in ["application/json", "application/x-www-form-urlencoded", "multipart/form-data"]:
+                    rb_content = rb.get("content", {}).get(content_type, {})
+                    if rb_content:
+                        break
+                
+                rb_schema_ref = rb_content.get("schema", {}) if rb_content else {}
                 resolved_schema = resolve_schema(rb_schema_ref, full_spec)
 
                 schema_details = build_properties(resolved_schema, full_spec)
 
-                description = rb.get("description", "Request payload")
-                if not description.strip():
-                    description = "Request payload"
+                # For form-encoded data, flatten the properties into main parameters
+                if content_type == "application/x-www-form-urlencoded":
+                    # Add each property from the request body as a top-level parameter
+                    for prop_name, prop_schema in schema_details["properties"].items():
+                        all_params[prop_name] = {
+                            "name": prop_name,
+                            "schema": prop_schema,
+                            "description": prop_schema.get("description", ""),
+                            "required": prop_name in schema_details["required"],
+                        }
+                else:
+                    # For JSON bodies, keep as nested body parameter
+                    description = rb.get("description", "Request payload")
+                    if not description.strip():
+                        description = "Request payload"
 
-                all_params["body"] = {
-                    "name": "body",
-                    "schema": {
-                        "type": "object",
-                        "properties": schema_details["properties"],
-                        "required": schema_details["required"]
-                    },
-                    "description": description,
-                    "required": rb.get("required", False),
-                }
+                    all_params["body"] = {
+                        "name": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": schema_details["properties"],
+                            "required": schema_details["required"]
+                        },
+                        "description": description,
+                        "required": rb.get("required", False),
+                    }
+
+            # ### CONDITIONAL RECOMMENDATION 1: Coerce array-of-string to string for Catalyst ###
+            # DISABLED: This special handling causes serialization issues and inconsistent behavior
+            # compared to other platforms like Meraki. Treating Catalyst specs literally now.
+            # if platform.lower() == 'catalyst':
+            #     for name, p in all_params.items():
+            #         schema_node = p.get("schema", {})
+            #         if (schema_node.get("type") == "array" and 
+            #             schema_node.get("items", {}).get("type") == "string"):
+            #             
+            #             if "id" in name.lower() and name != "platformId":
+            #                  continue
+            #
+            #             log.info(f"✓ [Catalyst-Only] Coercing array param '{name}' to string for function '{op_id}'.")
+            #             p["schema"] = {"type": "string"}
+            # ### END OF CONDITIONAL FIX ###
 
             schema = {
                 "name": op_id,
@@ -797,7 +1057,34 @@ def scaffold_one(
                     ] + list(path_level_params),
                 },
             }
- 
+            schema['metadata'] = {'platform': platform}
+            
+            # Apply parameter safelist pruning for platforms that have it configured
+            param_safelist = platform_config.get("parameter_safelist", {}).get(op_id)
+            if param_safelist:
+                original_props = schema["parameters"]["properties"]
+                original_required = schema["parameters"].get("required", [])
+                
+                # Create a new properties dictionary with only the safelisted items
+                pruned_props = {
+                    key: value for key, value in original_props.items() 
+                    if key in param_safelist
+                }
+                
+                # Update required list to only include safelisted parameters
+                pruned_required = [
+                    param for param in original_required 
+                    if param in param_safelist
+                ]
+                
+                if len(pruned_props) < len(original_props):
+                    removed_params = set(original_props.keys()) - set(pruned_props.keys())
+                    log.info(f"✓ [Parameter Safelist] Pruning {len(removed_params)} parameters for '{op_id}' "
+                            f"(keeping {len(pruned_props)}/{len(original_props)}). "
+                            f"Removed: {', '.join(sorted(removed_params))}")
+                    schema["parameters"]["properties"] = pruned_props
+                    schema["parameters"]["required"] = pruned_required
+            
             # Get the set of injected parameter names for the current platform.
             injected_keys = INJECTION_CONFIG.get(platform.lower(), {}).get("params", {}).keys()
 
@@ -836,18 +1123,32 @@ def scaffold_one(
 
 
             # ─────────────── NEW: helpful aliases (drop tag prefix, singularise) ───────────
-            if "_" in op_id:
+            if "_" in op_id and platform.lower() != "sdwan_mngr":  # Skip aliases for SD-WAN
                 _, rest = op_id.split("_", 1)
-                for alias in {rest, rest.rstrip("s")}:
-                    alias = alias[:MAX_NAME_LEN]
-                    if alias and alias not in {f["name"] for f in diet_fns}:
-                        s2          = schema.copy()
-                        s2["name"]  = alias
-                        diet_fns.append(dietify_schema(s2))
+                # Only create alias if it's not just a number
+                if rest and not rest.isdigit():
+                    for alias in {rest, rest.rstrip("s")}:
+                        alias = alias[:MAX_NAME_LEN]
+                        if alias and alias not in {f["name"] for f in diet_fns}:
+                            s2          = schema.copy()
+                            s2["name"]  = alias
+                            diet_fns.append(dietify_schema(s2))
  
 
     _write_json(OUT_DIRS["diet"] / f"{platform}.json",   diet_fns)
     _write_json(ROOT / "scaffold_skip.log", skipped_ops, pretty=True)
+    
+ 
+    log.info(f"📝 Functions actually scaffolded:")
+    if include_http:
+        log.info(f"  - Filtered to HTTP methods: {', '.join(sorted(include_http))}")
+    log.info(f"  - Skipped operations: {len(skipped_ops)}")
+    log.info(f"  - Functions written to file: {len(diet_fns)}")
+    
+   
+    if total_spec_operations > 0 and len(diet_fns) < total_spec_operations * 0.9:
+        reduction_pct = ((total_spec_operations - len(diet_fns)) / total_spec_operations) * 100
+        log.info(f"  - Reduction from spec: {reduction_pct:.1f}% ({total_spec_operations} → {len(diet_fns)})")
 
     _emit_client_stub(platform,   sdk_module)
     _emit_unified_service(platform)
@@ -855,14 +1156,30 @@ def scaffold_one(
 
 
     disp_fp = OUT_DIRS["disp"] / f"{platform}_dispatcher.py"
+    
+    # Collect all custom imports needed
+    custom_imports = set()
+    for fn in diet_fns:
+        custom = get_function_customization(platform, fn['name'])
+        custom_imports.update(custom.get('imports', []))
+    
     lines = [
         f"# {disp_fp.relative_to(ROOT)}",
         "import os",
+        "import structlog",
         "from typing import Any",
         "from app.llm.function_dispatcher import register",
         f"from app.llm.platform_clients.{platform}_client import {platform.capitalize()}Client",
         "",
+        "log = structlog.get_logger(__name__)",
     ]
+    
+    # Add custom imports
+    if custom_imports:
+        for imp in sorted(custom_imports):
+            lines.append(imp)
+    
+    lines.append("")
 
     type_mapping: Dict[str, str] = {
         "string":  "str",
@@ -872,8 +1189,16 @@ def scaffold_one(
         "array":   "list",
         "object":  "dict",
     }
+    # Reserved names that would conflict with imports
+    RESERVED_NAMES = {'register', 'Any', 'os'}
+    
     for fn in diet_fns:
         safe_name = _py_identifier(fn["name"], safe_name_seen)
+        
+        # Handle reserved name conflicts
+        if safe_name in RESERVED_NAMES:
+            safe_name = f"{safe_name}_op"
+            
         props     = fn["parameters"]["properties"]
         required  = set(fn["parameters"].get("required", []))
 
@@ -898,10 +1223,44 @@ def scaffold_one(
         # dispatcher body
         non_body_params = {p: py_name(p) for p in props if p != "body"}
         
+        # Get function customizations
+        custom = get_function_customization(platform, fn['name'])
+        
         lines.extend([
             f"@register('{fn['name']}')",
             f"def {safe_name}({signature}):",
             '    """Auto-generated wrapper for clarity and maintainability."""',
+        ])
+        
+        # Add any custom imports at the function level as comments (since we can't import inside function)
+        # The imports should be added at module level instead
+        
+        # Add pre-kwargs customization code
+        lines.extend(custom.get('pre_kwargs', []))
+        
+        # ### CATALYST GLOBAL VALIDATION: Prevent platform names as parameter values ###
+        if platform.lower() == 'catalyst':
+            lines.append("    # [Catalyst-Only] Prevent platform names from being used as parameter values")
+            lines.append("    platform_names = ['catalyst', 'meraki', 'intersight', 'sdwan', 'nexus', 'umbrella', 'cloudlock']")
+            # Check all string parameters
+            for pname, pmeta in props.items():
+                if pmeta.get('type') == 'string':
+                    p_py_name = py_name(pname)
+                    lines.extend([
+                        f"    if {p_py_name} and isinstance({p_py_name}, str) and {p_py_name}.lower() in platform_names:",
+                        f"        log.warning(",
+                        f"            'platform_name_as_parameter',",
+                        f"            function='{fn['name']}',",
+                        f"            parameter='{pname}',",
+                        f"            value={p_py_name},",
+                        f"            message='Ignoring platform name used as parameter value'",
+                        f"        )",
+                        f"        {p_py_name} = None  # Reset to None to avoid SDK errors",
+                    ])
+            lines.append("")
+        # ### END OF CATALYST GLOBAL VALIDATION ###
+        
+        lines.extend([
             "    # Explicitly build keyword arguments, excluding None values.",
             "    final_kwargs = {}",
         ])
@@ -925,19 +1284,61 @@ def scaffold_one(
                 "    body_payload = None",
             ])
         lines.append("")
+        
+        # Add post-kwargs customization code (after kwargs built, before injection)
+        lines.extend(custom.get('post_kwargs', []))
 
         # insert injection
         non_body_keys = list(non_body_params.keys())
         lines.extend(_emit_org_injection(platform, non_body_keys))
 
         # finish with a clearer target call
+        # Check if we have a mapped SDK method name for this operation
+        platform_config = PLATFORM_OVERRIDES.get(platform, {})
+        operation_id_map = platform_config.get("operation_id_map", {})
+        target_method_name = operation_id_map.get(fn['name'], safe_name)
+        
         lines.extend([
             f"    client = {platform.capitalize()}Client()",
-            f"    target = getattr(client, '{safe_name}')",
+            f"    # Use attribute access to trigger __getattr__ for dynamic resolution",
+            f"    target = client.{target_method_name}",
             "",
-            "    if body_payload is not None:",
-            "        return target(body=body_payload, **final_kwargs)",
-            "    return target(**final_kwargs)",
+            "    try:",
+            "        if body_payload is not None:",
+            "            result = target(body=body_payload, **final_kwargs)",
+            "        else:",
+            "            result = target(**final_kwargs)",
+            "        ",
+            "        # Handle SDK returning None when it should return empty list",
+            "        if result is None:",
+            "            log.warning(",
+            "                'sdk_returned_none',",
+            f"                function='{fn['name']}',",
+            "                message='SDK returned None, converting to empty list'",
+            "            )",
+            "            return []",
+            "        return result",
+            "    except TypeError as e:",
+            "        # Handle specific SDK bug where None causes 'not iterable' error",
+            "        if \"argument of type 'NoneType' is not iterable\" in str(e):",
+            "            log.warning(",
+            "                'sdk_bug_workaround',",
+            f"                function='{fn['name']}',",
+            "                error=str(e),",
+            "                message='Caught NoneType iterable error from SDK. Returning empty list.'",
+            "            )",
+            "            return []",
+            "        # Re-raise other TypeErrors",
+            "        raise",
+            "    except Exception as e:",
+            "        # Log unexpected errors but re-raise them",
+            "        log.error(",
+            "            'sdk_unexpected_error',",
+            f"            function='{fn['name']}',",
+            "            error=str(e),",
+            "            error_type=type(e).__name__",
+            "        )",
+            "        raise",
             "",
         ])
 
@@ -945,50 +1346,10 @@ def scaffold_one(
 
 
         
-        ########################################################################################################
-        ########################################################################################################
-        #  IMPORTANT !!!!
-        # 3. Add Alias's in this section to help the LLM understand the function better.
-        # ######################################################################################################
-        # ── ALIASES START HERE ────────────────────────────────────────────────────────────────────────────────
-        #
-        #
-        # 3.a - generic “drop‑tag / singular” aliases ──────────────────────────────────────────────────────
-        #     This is a generic alias creation that strips the platform tag or makes it singular.
-        #     Automatically create aliases by stripping the platform tag or making it singular. 
-        #     For instanceadd aliases for easier LLM use (e.g. "get_device" → "device_get", OR devcie) 
-        if '_' in fn['name']:
-            tag, rest = fn['name'].split('_', 1)
-            for alias in {rest, rest.rstrip('s')}:
-                if alias and alias != fn['name']:
-                    lines.extend([
-                        "# alias → easier for LLM",
-                        f"register('{alias}')(globals()['{safe_name}'])",
-                        ""
-                    ])
-
-        # 3‑b. hand‑crafted aliases for server inventory (INTERSIGHT)──────────────────────────────────────────
-        # maps get_compute_physical_summary_list → get_server_list / servers …
-        if fn['name'] == 'get_compute_physical_summary_list':
-            for alias in {'get_server_list', 'server_list', 'servers'}:
-                lines.extend([
-                    f"register('{alias}')(globals()['{safe_name}'])",
-                    ""
-                ])
-        
-        # 3-c. hand-crafted aliases for Catalyst interfaces
-        # This makes the LLM much more likely to choose the correct function.
-        if fn['name'] == 'getAllInterfaces':
-            for alias in {'list_interfaces', 'get_interfaces', 'show_interfaces', 'interfaces'}:
-                lines.extend([
-                    f"# alias for {fn['name']} -> {alias}",
-                    f"register('{alias}')(globals()['{safe_name}'])",
-                    ""
-                ])
-        # ------------------------------------------------------------
-
-        # ── ALISES END HERE ────────────────────────────────────────────────────────────────────────────────
-        #####################################################################################################
+        # Generate aliases for the function
+        # See platform_customizations/aliases.py for the alias generation logic
+        alias_lines = generate_aliases(fn, safe_name, platform)
+        lines.extend(alias_lines)
  
 
 
@@ -1009,6 +1370,10 @@ def _parse_cli():
     ap.add_argument("--name-pattern")
     ap.add_argument("--all", action="store_true",
                     help="Scaffold for every full_*.json already present")
+    ap.add_argument("--disable-sdk-filtering", action="store_true",
+                    help="Disable SDK introspection and filtering (generate all functions from OpenAPI)")
+    ap.add_argument("--coverage-only", action="store_true",
+                    help="Only generate coverage reports without scaffolding")
     return ap.parse_args()
 
 
@@ -1026,6 +1391,35 @@ def _looks_too_big(op: dict) -> bool:
 
 def main():
     args = _parse_cli()
+    
+    # Add coverage-only mode
+    if args.coverage_only:
+        log.info("Running in coverage-only mode")
+        for platform in PLATFORM_OVERRIDES.keys():
+            spec_path = OUT_DIRS["full"] / f"full_{platform}.json"
+            if spec_path.exists():
+                log.info(f"Generating coverage for {platform}")
+                full_spec = json.loads(spec_path.read_text())
+                # Look up SDK module from existing logic or config
+                sdk_module = None
+                # Try to find it from existing generated files or config
+                if platform.lower() == "meraki":
+                    suppress_meraki_logging()
+                    sdk_module = "meraki"
+                elif platform.lower() == "catalyst":
+                    sdk_module = "dnacentersdk"
+                elif platform.lower() == "intersight":
+                    sdk_module = "intersight"
+                # Add other platforms as needed
+                
+                if sdk_module:
+                    _, _, coverage = perform_sdk_introspection(
+                        platform, 
+                        sdk_module, 
+                        full_spec
+                    )
+                    write_coverage_report(platform, coverage)
+        return
 
     if args.all and (args.platform or args.sdk_module or args.openapi_spec):
         raise SystemExit("--all cannot be used with other flags")
@@ -1053,7 +1447,7 @@ def main():
             else OUT_DIRS["full"] / f"{plat}.json"
         )
         log.info("⏳ Scaffolding %s …", plat)
-        scaffold_one(plat, args.sdk_module, spec, include_http, name_re)
+        scaffold_one(plat, args.sdk_module or plat, spec, include_http, name_re, args.disable_sdk_filtering)
 
     log.info("✅ DONE – all artefacts generated")
     _drop_dynamic_cache()

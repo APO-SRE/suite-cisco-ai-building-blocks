@@ -41,7 +41,7 @@ from opentelemetry import trace
 from opentelemetry.trace import Tracer
 import structlog
 from pydantic import BaseModel
-
+from app.utils.paths import REPO_ROOT
 from datetime import datetime, date, time
 from enum import Enum
 from decimal import Decimal
@@ -57,14 +57,25 @@ from app.llm.prompt_templates import (
     BASE_SYSTEM_PROMPT_LOB as BASE_SYSTEM_PROMPT_DOMAIN,
     USER_PROMPT_TEMPLATE,
     FUNCTIONS_LLM_PROMPT,
+    GENERIC_RESPONSE_PROMPT,
+    HTML_SDWAN_DEVICE_STATUS_PROMPT,
+    HTML_SDWAN_ALARM_STATUS_PROMPT,
+    HTML_SDWAN_GENERIC_RESPONSE_PROMPT,
+    HTML_MERAKI_INVENTORY_LIGHTWEIGHT_PROMPT,
+    HTML_CATALYST_INTERFACES_PROMPT,
+    HTML_CATALYST_INTERFACES_LIGHTWEIGHT_PROMPT,
+    HTML_CATALYST_INTERFACES_ULTRALIGHTWEIGHT_PROMPT
 )
 from app.retrievers.chroma_retriever import FunctionRetriever
 from app.routers._domain_keywords import DOMAIN_KEYWORDS_MAP
 from app.main import request_latency  # prometheus histogram
 from app.user_commands.update_platform_registry import load_registry
+LLM_DIR = REPO_ROOT / "src" / "app" / "llm"
 # ──────────────────────────────── env / logging / tracing
 load_dotenv()
 registry = load_registry()
+
+
 
 structlog.configure(
     wrapper_class=structlog.make_filtering_bound_logger(logging.INFO),
@@ -78,7 +89,15 @@ tracer: Tracer = trace.get_tracer("chat_routes")
 
 TIMING = os.getenv("DEBUG_TIMING", "false").lower() == "true"
 VECTOR_BACKEND = os.getenv("FASTAPI_VECTOR_BACKEND", "chroma").lower()
+try:
+    with open(LLM_DIR / "platform_hints.json", 'r') as f:
+        platform_hints = json.load(f)
+    log.info("✅ Loaded platform hints.")
+except (FileNotFoundError, json.JSONDecodeError) as e:
+    log.warning(f"⚠️ Platform hints file not found or invalid, hint filter will be disabled: {e}")
+    platform_hints = {} #
 
+    
 # ──────────────────────────────── helper timer ctx mgr
 @contextmanager
 def timer(label: str):
@@ -220,14 +239,51 @@ async def webex_webhook(req: Request):
 
     return JSONResponse({"status": "sent"})
 
-def summarize_api_data(data: Any, max_items: int = 10) -> str:
+def summarize_api_data(data: Any, max_items: int = 50, platform: str = None, function_name: str = None) -> str:
     """
     Intelligently summarizes raw API data to create a concise payload for the LLM,
     preventing performance bottlenecks with large responses.
+    
+    Platform-aware summarization:
+    - SD-WAN: Preserves more detail for device/alarm operations
+    - Other platforms: Standard summarization
+    
+    Controlled by LLM2_SUMMARIZER environment variable:
+    - "false" or "0": Disable summarization, return full data
+    - numeric value (e.g., "50"): Use as max_items
+    - "true" or unset: Use default max_items with platform-aware logic
     """
+    # Check LLM2_SUMMARIZER environment variable
+    summarizer_config = os.getenv("LLM2_SUMMARIZER", "true").lower()
+    
+    # Disable summarization if set to false or 0
+    if summarizer_config in ["false", "0", "no", "disable", "disabled"]:
+        if data is None:
+            return "The API call returned no data (None)."
+        serialised_data = to_serialisable(data)
+        return json.dumps(serialised_data, indent=2)
+    
+    # Check if it's a numeric value to use as max_items override
+    if summarizer_config.isdigit():
+        max_items = int(summarizer_config)
+    
     if data is None:
         return "The API call returned no data (None)."
 
+    # Platform-specific handling for SD-WAN
+    if platform == "sdwan_mngr":
+        # Critical operations that need full data
+        if function_name in ["getRawAlarmData", "getActiveAlarms", "getNonViewedAlarms", 
+                             "listAllDevices", "getAllDeviceStatus", "getDevicesDetails",
+                             "getDevices", "getDeviceListAsKeyValue"]:
+            max_items = 100  # Show more items for these critical operations
+        # For alarm operations specifically, try to show all alarms
+        elif "alarm" in function_name.lower():
+            max_items = 200
+        # For user/admin operations, show reasonable amount
+        elif function_name in ["findUsers_1", "getAAAUsers", "getUserGroups"]:
+            max_items = 50
+        
     # Use the existing to_serialisable function to handle complex objects
     serialised_data = to_serialisable(data)
 
@@ -239,18 +295,64 @@ def summarize_api_data(data: Any, max_items: int = 10) -> str:
     if total_items == 0:
         return "The API call returned an empty list."
     
+    # For SD-WAN operations, provide smart summaries
+    if platform == "sdwan_mngr" and total_items > max_items:
+        # Device-specific summary
+        if "device" in function_name.lower() or function_name in ["listAllDevices", "getAllDeviceStatus"]:
+            device_summary = []
+            for device in serialised_data[:max_items]:
+                if isinstance(device, dict):
+                    # Extract key fields that vary based on the operation
+                    summary_item = {}
+                    # Common device identifiers
+                    for field in ["host-name", "hostname", "deviceId", "uuid", "system-ip", "systemIP"]:
+                        if field in device:
+                            summary_item[field] = device[field]
+                    # Status fields
+                    for field in ["reachability", "status", "state", "device-state"]:
+                        if field in device:
+                            summary_item[field] = device[field]
+                    # Additional useful fields
+                    for field in ["device-model", "deviceModel", "version", "site-id"]:
+                        if field in device:
+                            summary_item[field] = device[field]
+                    
+                    if summary_item:  # Only add if we extracted some data
+                        device_summary.append(summary_item)
+                    else:  # Fallback to full device data if no known fields
+                        device_summary.append(device)
+            
+            return (
+                f"The API call returned {total_items} devices. "
+                f"Showing details for the first {len(device_summary)}:\n\n"
+                f"{json.dumps(device_summary, indent=2)}"
+            )
+        
+        # Alarm-specific summary
+        elif "alarm" in function_name.lower():
+            alarm_summary = []
+            for alarm in serialised_data[:max_items]:
+                if isinstance(alarm, dict):
+                    # Include all alarm data as it's critical
+                    alarm_summary.append(alarm)
+            
+            return (
+                f"The API call returned {total_items} alarms. "
+                f"Showing all details for the first {len(alarm_summary)}:\n\n"
+                f"{json.dumps(alarm_summary, indent=2)}"
+            )
+    
     if total_items <= max_items:
         # If the list is small enough, return it as is
         return json.dumps(serialised_data, indent=2)
 
-    # If the list is large, truncate it and add a summary message
+    # Default truncation for other cases
     summary_message = (
         f"The API call returned {total_items} items. "
-        f"Showing the first {max_items} for summarization."
+        f"Showing the first {max_items} for detailed analysis."
     )
     truncated_data = serialised_data[:max_items]
     
-    # Combine the summary message with the truncated data
     return f"{summary_message}\n\n{json.dumps(truncated_data, indent=2)}"
 
 # ---------------------------------------------------------------------------
@@ -270,14 +372,42 @@ def to_serialisable(obj):
     if isinstance(obj, Decimal):
         return float(obj)
 
-    # ➡ 3) openapi-python-client / pydantic models: only if .to_dict() exists and is callable
+    # ➡ 3) Handle catalystwan SDK objects and other custom classes
+    # The catalystwan objects often have a .data attribute or can be cast to a dict.
+    # We also keep the original .to_dict() for other SDKs.
+    if hasattr(obj, 'data') and isinstance(obj.data, dict):
+        # This handles many catalystwan objects which store their payload in a .data dict
+        return to_serialisable(obj.data)
+    
+    # Handle dnacentersdk MyDict objects which are already dicts
+    if obj.__class__.__module__ == 'dnacentersdk.models.mydict' and isinstance(obj, dict):
+        # MyDict is a subclass of dict, just convert it as a regular dict
+        return {k: to_serialisable(v) for k, v in obj.items()}
+    
     to_dict = getattr(obj, "to_dict", None)
     if callable(to_dict):
         try:
             return to_serialisable(to_dict())
         except Exception:
-            # if something goes wrong inside to_dict(), fall back
-            pass
+            pass # Fall through if .to_dict() fails
+
+    # This is a robust way to handle Pydantic models (v1 and v2)
+    model_dump = getattr(obj, "model_dump", None)
+    if callable(model_dump):
+        try:
+            return model_dump() # model_dump already returns a serializable dict
+        except Exception:
+            pass # Fall through
+            
+    # As a last resort for custom objects, try converting its __dict__
+    if hasattr(obj, '__dict__'):
+        # This will convert an arbitrary class instance to a dict,
+        # excluding private/magic methods.
+        return {
+            k: to_serialisable(v)
+            for k, v in obj.__dict__.items()
+            if not k.startswith('_')
+        }
 
     # ➡ 4) containers
     if isinstance(obj, (list, tuple, set)):
@@ -294,6 +424,8 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
     prompt = req.message
     messages: list[dict] = []
     llm: LLMClientBase = get_llm()
+    
+    log.info(f"🚀 Starting chat request - prompt: '{prompt[:100]}...'" if len(prompt) > 100 else f"🚀 Starting chat request - prompt: '{prompt}'")
 
     # 1️⃣ Retrieve docs or domain/event data
     with tracer.start_as_current_span("retriever") as rspan:
@@ -306,10 +438,16 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
         lower      = prompt.lower()
         # ── DETECT EXPLICIT PLATFORM NAME IN PROMPT ────────────────────────────────────
         if PLATFORM_HINT_FILTER:
-            hinted = [
-                p for p, meta in registry.items()
-                if p in lower and meta.get("installed", False)
-            ]
+            hinted = []
+            # Iterate through the hints loaded from platform_hints.json
+            for platform_key, aliases in platform_hints.items():
+                # Check if this platform is actually installed and enabled
+                if not registry.get(platform_key, {}).get("installed", False):
+                    continue
+                
+                # Check if any of the platform's aliases are in the user's query
+                if any(alias in lower for alias in aliases):
+                    hinted.append(platform_key)
             if hinted:
                 # narrow to only the platforms explicitly named
                 platforms = hinted
@@ -336,6 +474,7 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
 
         else:
             docs = retriever.retrieve_domain_info(prompt)
+            log.info(f"📚 Retrieved {len(docs)} documents for general query")
             messages = [
                 {"role": "system", "content": BASE_SYSTEM_PROMPT_DOCS_ONLY},
                 {"role": "user",   "content": USER_PROMPT_TEMPLATE.format(user_query=prompt)},
@@ -343,37 +482,29 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
             rspan.set_attribute("type", "general")
 
         rspan.set_attribute("docs", len(docs))
+        log.info(f"🔍 Retriever type: {type(retriever).__name__}, docs retrieved: {len(docs)}")
 
     # 2️⃣ Build candidate functions
     with tracer.start_as_current_span("build.functions") as bfspan:
-        functions: List[dict] = []
-        if VECTOR_BACKEND == "chroma":
-            raw_hits = func_retriever.query(
-                prompt,
-                k=500,
-                filter={"platform": {"$in": platforms}}
-    )
-
-            hits     = sorted(raw_hits, key=lambda x: x.get("distance", 1.0))[:128]
-            for h in hits:
-                try:
-                    schema = json.loads(h["content"])
-                    # ─── ensure array parameters have an 'items' definition ────────────────
-                    for prop in schema.get("parameters", {}).get("properties", {}).values():
-                        if prop.get("type") == "array" and "items" not in prop:
-                            prop["items"] = {"type": "string"}
-                    # ─── (leave the rest of your sanitize code here as before) ─────────────
-                    functions.append(schema)
-                    '''
-                    schema = json.loads(h["content"])
-                    for ps in schema.get("parameters", {}).get("properties", {}).values():
-                        if ps.get("type") == "array" and "items" not in ps:
-                            ps["items"] = {"type": "string"}
-                    functions.append(schema) '''
-                except Exception as exc:
-                    log.warning("bad_schema", name=h.get("name"), err=str(exc))
-        else:
-            functions = build_functions_for_llm(prompt, platforms)
+        # This line should unpack the tuple
+        functions, platform_map = build_functions_for_llm(prompt, platforms)
+        
+        log.info(f"📋 Building functions - platforms: {platforms}, function count: {len(functions)}")
+        
+        # Set span attributes for observability
+        bfspan.set_attribute("functions.count", len(functions))
+        bfspan.set_attribute("platforms", platforms)
+        
+        # DEBUG: Log which functions were selected for the LLM
+        print(f"\n📋 FUNCTIONS PRESENTED TO LLM (top 10):")
+        for i, func in enumerate(functions[:10]):
+            func_name = func.get("name", "unknown")
+            func_platform = func.get("metadata", {}).get("platform", "unknown")
+            func_desc = func.get("description", "")[:50] + "..." if len(func.get("description", "")) > 50 else func.get("description", "")
+            print(f"   {i+1}. {func_name} ({func_platform}) - {func_desc}")
+        if len(functions) > 10:
+            print(f"   ... and {len(functions) - 10} more functions")
+        print()
   
       
 
@@ -409,17 +540,33 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
 
     # 4️⃣ If no function_call → return text
     if not fc:
-        return {"role": "assistant", "label": "Cisco AI", "response": llm_resp.get("content", "I don't know.")}
+        log.info(f"💬 No function call - returning direct LLM response")
+        response_content = llm_resp.get("content", "I don't know.")
+        log.info(f"Response content: {response_content[:200]}...")
+        return {"role": "assistant", "label": "Cisco AI", "response": response_content}
 
     # normalize function name + args
     fname = fc["name"].removeprefix("functions.")
     fargs = fc.get("arguments", {})
     if isinstance(fargs, str):
         fargs = json.loads(fargs)
-    fname = fc["name"].removeprefix("functions.")
-    fargs = fc.get("arguments", {})
-    if isinstance(fargs, str):
-        fargs = json.loads(fargs)
+    
+    # DEBUG: Log which function the LLM selected
+    log.info(f"🎯 LLM selected function: {fname}")
+    log.info(f"   Arguments: {json.dumps(fargs, indent=2)}")
+    
+    # Also print to console for visibility
+    print(f"\n🎯 LLM FUNCTION SELECTION:")
+    print(f"   Function: {fname}")
+    print(f"   Arguments: {json.dumps(fargs, indent=2)}")
+    
+    # Find which platform this function belongs to
+    selected_platform = None
+    for func in functions:
+        if func.get("name") == fname:
+            selected_platform = func.get("metadata", {}).get("platform", "unknown")
+            break
+    print(f"   Platform: {selected_platform}\n")
 
     # ------------------------------------------------------------------
     # PATCH: if the target function expects a 'body' argument but the
@@ -453,6 +600,24 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
     with tracer.start_as_current_span(f"dispatch.{fname}") as dspan:
         try:
             result = dispatch_function_call(fname, fargs)
+            
+            # DEBUG: Log the result
+            print(f"\n📊 SDK CALL RESULT:")
+            print(f"   Result type: {type(result)}")
+            if result is None:
+                print(f"   Result is None!")
+            elif isinstance(result, dict):
+                print(f"   Result keys: {list(result.keys())[:10]}")
+                if 'error' in result:
+                    print(f"   Error: {result['error']}")
+            elif isinstance(result, list):
+                print(f"   Result length: {len(result)}")
+                if result:
+                    print(f"   First item type: {type(result[0])}")
+            else:
+                print(f"   Result preview: {str(result)[:200]}")
+            print()
+            
         except Exception as exc:
             log.exception("dispatcher_error", name=fname, err=str(exc))
             msg = str(exc)
@@ -473,7 +638,15 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
         if isinstance(fc.get("arguments"), dict):
             fc["arguments"] = json.dumps(fc["arguments"])
 
-        summarized_content = summarize_api_data(result)
+        # Determine which platform this function belongs to by looking at the
+        # original list of functions retrieved from the vector store.
+        function_platform = platform_map.get(fname)
+        
+        summarized_content = summarize_api_data(
+            result, 
+            platform=function_platform,
+            function_name=fname
+        )
 
         follow_up = [
             *messages,
@@ -481,27 +654,141 @@ async def handle_chat(req: ChatRequest, request: Request) -> Dict[str, Any]:
             {
                 "role": "function",
                 "name": fname,
-                "content": summarized_content, # <-- Use the summarized content here
+                "content": summarized_content,  
             },
         ]
 
-        # instruct the model to return pure HTML
-        follow_up[0]["content"] = (
-           "You are a helpful Cisco AI assistant. "
-           "Use the data returned by the function to answer the user's question "
-           "and return the answer as valid HTML only—no Markdown, JSON, or code fences."
-      )
+        # Select the system prompt based on the platform.
+        if function_platform == 'sdwan_mngr':
+            # Check for alarm-related functions first
+            if 'alarm' in fname.lower():
+                system_prompt = HTML_SDWAN_ALARM_STATUS_PROMPT
+                log.info("Using SD-WAN alarm specific response prompt.")
+            # Next, check for common device list functions
+            elif 'device' in fname.lower() or fname in ['listAllDevices', 'getAllDeviceStatus', 'getDevicesDetails']:
+                system_prompt = HTML_SDWAN_DEVICE_STATUS_PROMPT
+                log.info("Using SD-WAN device specific response prompt.")
+            # Fallback for all other SD-WAN functions
+            else:
+                system_prompt = HTML_SDWAN_GENERIC_RESPONSE_PROMPT
+                log.info("Using SD-WAN generic response prompt.")
+        elif function_platform == 'meraki':
+            # Use lightweight prompt for inventory functions
+            if fname == 'getOrganizationInventoryDevices':
+                system_prompt = HTML_MERAKI_INVENTORY_LIGHTWEIGHT_PROMPT
+                log.info("Using Meraki lightweight inventory prompt for better performance.")
+            else:
+                # For other Meraki functions, use generic
+                system_prompt = GENERIC_RESPONSE_PROMPT
+                log.info(f"Using generic response prompt for Meraki function: {fname}")
+        elif function_platform == 'catalyst':
+            # Use specific prompt for interface functions
+            if fname == 'getAllInterfaces':
+                system_prompt = HTML_CATALYST_INTERFACES_ULTRALIGHTWEIGHT_PROMPT
+                log.info("Using Catalyst interfaces ultralightweight response prompt.")
+            else:
+                # For other Catalyst functions, use generic
+                system_prompt = GENERIC_RESPONSE_PROMPT
+                log.info(f"Using generic response prompt for Catalyst function: {fname}")
+        else:
+            # For all other platforms, use the improved generic prompt.
+            system_prompt = GENERIC_RESPONSE_PROMPT
+            log.info(f"Using improved generic response prompt for platform: {function_platform or 'unknown'}.")
+ 
+        # Instruct the model using the selected prompt.
+        follow_up[0]["content"] = system_prompt
+        print("\n" + "="*50)
+        print("  FINAL PAYLOAD BEING SENT TO LLM  ")
+        print("="*50)
+        # Use json.dumps for pretty printing the complex structure
+        print(json.dumps(follow_up, indent=2))
+        print("="*50 + "\n")
         final = await llm.chat(follow_up)
 
     if isinstance(final, str):
         final = {"content": final}
     l2span.set_attribute("llm.final_length", len(final.get("content", "")))
 
+    final_response = final.get("content") or json.dumps(to_serialisable(result), indent=2)
+    log.info(f"✅ Final response length: {len(final_response)} chars")
+    log.info(f"✅ Response preview: {final_response[:200]}...")
+    
+    # Check if response is too large for frontend (e.g., > 20KB)
+    MAX_RESPONSE_SIZE = 20000  # 20KB limit for frontend display
+    
+    if len(final_response) > MAX_RESPONSE_SIZE:
+        # For large responses, provide a summary with download option
+        log.warning(f"Response too large ({len(final_response)} chars), creating summary")
+        
+        # Count items if it's an HTML table
+        if "<table>" in final_response and "</table>" in final_response:
+            # Count <tr> tags in tbody to get row count
+            tbody_start = final_response.find("<tbody>")
+            tbody_end = final_response.find("</tbody>")
+            if tbody_start > -1 and tbody_end > -1:
+                tbody_content = final_response[tbody_start:tbody_end]
+                row_count = tbody_content.count("<tr>")
+            else:
+                row_count = final_response.count("<tr>") - 1  # Subtract header row
+            
+            # Extract table headers
+            thead_start = final_response.find("<thead>")
+            thead_end = final_response.find("</thead>")
+            headers = ""
+            if thead_start > -1 and thead_end > -1:
+                headers = final_response[thead_start:thead_end + 8]
+            
+            # Get first few rows as preview
+            preview_rows = []
+            tbody_start_idx = final_response.find("<tbody>") + 7
+            current_pos = tbody_start_idx
+            rows_extracted = 0
+            
+            while rows_extracted < 10 and current_pos < len(final_response):
+                tr_start = final_response.find("<tr>", current_pos)
+                if tr_start == -1:
+                    break
+                tr_end = final_response.find("</tr>", tr_start) + 5
+                if tr_end < tr_start:
+                    break
+                preview_rows.append(final_response[tr_start:tr_end])
+                current_pos = tr_end
+                rows_extracted += 1
+            
+            # Create a lightweight summary response
+            summary_response = f"""<h3>Large Dataset Response</h3>
+<p><strong>Total items:</strong> {row_count}</p>
+<p><strong>Response size:</strong> {len(final_response):,} characters (exceeds display limit of {MAX_RESPONSE_SIZE:,})</p>
+<p><strong>Preview of first 10 items:</strong></p>
+<table>
+{headers}
+<tbody>
+{''.join(preview_rows)}
+</tbody>
+</table>
+<p><em>Note: Full data has been retrieved successfully but is too large to display. Consider using filters or pagination in your query.</em></p>"""
+            
+            return {
+                "role": "assistant",
+                "label": "Cisco AI",
+                "response": summary_response,
+                "full_response_size": len(final_response),
+                "truncated": True
+            }
+        else:
+            # For non-table large responses
+            return {
+                "role": "assistant",
+                "label": "Cisco AI",
+                "response": f"<h3>Response Too Large</h3><p>The response contains {len(final_response):,} characters, which exceeds the display limit of {MAX_RESPONSE_SIZE:,} characters.</p><p>Preview: {final_response[:500]}...</p>",
+                "full_response_size": len(final_response),
+                "truncated": True
+            }
+    
     return {
         "role": "assistant",
         "label": "Cisco AI",
-        "response": final.get("content")
-            or json.dumps(to_serialisable(result), indent=2),
+        "response": final_response,
      }
 
 
@@ -516,7 +803,17 @@ async def chat_endpoint(req: ChatRequest, request: Request):
     """
     with request_latency.time():
         with tracer.start_as_current_span("chat-workflow"):
-            return await handle_chat(req, request)
+            result = await handle_chat(req, request)
+            
+            # Print response to console for debugging
+            if result.get("response"):
+                print("\n" + "="*80)
+                print("RESPONSE OUTPUT:")
+                print("="*80)
+                print(result.get("response"))
+                print("="*80 + "\n")
+            
+            return result
 
 
 # ── Helper: Cisco Spaces floor-plan ─────────────────────────────────────────

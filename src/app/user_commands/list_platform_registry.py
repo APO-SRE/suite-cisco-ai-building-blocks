@@ -66,17 +66,22 @@ def display_registry(registry: dict) -> None:
     table.add_column("#", style="bold cyan", justify="right")
     table.add_column("Short Name", style="bold green")
     table.add_column("OpenAPI Name")
-    table.add_column("SDK Package")
-    table.add_column("Created By Us", justify="center")
+    table.add_column("SDK Module")
+    table.add_column("SDK Class")
+    table.add_column("Auth Type")
+    table.add_column("Created", justify="center")
     table.add_column("Installed", justify="center")
     table.add_column("Route", justify="center")
     for idx, key in enumerate(sorted(registry.keys()), start=1):
         entry = registry[key]
+        auth_type = entry.get("auth_config", {}).get("type", "")
         table.add_row(
             str(idx),
             key,
             entry.get("openapi_name", ""),
             entry.get("sdk_module", ""),
+            entry.get("sdk_class", ""),
+            auth_type,
             "✔" if entry.get("created_by_us", False) else "✖",
             "✔" if entry.get("installed", False) else "✖",
             "✔" if entry.get("route", False) else "✖",

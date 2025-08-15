@@ -1,0 +1,15 @@
+{
+  "platform": "meraki",
+  "sdk_module": "meraki",
+  "total_operations": 758,
+  "covered_operations": 758,
+  "coverage_percentage": 100.0,
+  "missing_operations": [],
+  "sdk_methods_count": 760,
+  "http_method_breakdown": {
+    "GET": 416,
+    "POST": 128,
+    "PUT": 158,
+    "DELETE": 56
+  }
+}

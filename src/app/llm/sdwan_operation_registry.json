@@ -1,0 +1,65 @@
+{
+  "comment": "SD-WAN Operation Registry - Maps OpenAPI operations to SDK calls",
+  "operations": {
+    "findUsers_1": {
+      "path": "/admin/user",
+      "method": "get",
+      "sdk_endpoint": "administration.users",
+      "sdk_method": "get",
+      "description": "Get all users"
+    },
+    "createUser_1": {
+      "path": "/admin/user", 
+      "method": "post",
+      "sdk_endpoint": "administration.users",
+      "sdk_method": "create",
+      "description": "Create a new user"
+    },
+    "getAaaConfig": {
+      "path": "/admin/aaa",
+      "method": "get", 
+      "sdk_endpoint": "administration_settings",
+      "sdk_method": "get",
+      "custom_call": "get_aaa_config",
+      "description": "Get AAA configuration"
+    },
+    "getAllDeviceStatus": {
+      "path": "/device/status",
+      "method": "get",
+      "sdk_endpoint": "devices",
+      "sdk_method": "get",
+      "description": "Get device status"
+    },
+    "getDevicesHealth": {
+      "path": "/device/health/details",
+      "method": "get",
+      "sdk_endpoint": "monitoring_device_details",
+      "sdk_method": "get",
+      "description": "Get device health details"
+    },
+    "listAllDevices": {
+      "path": "/device",
+      "method": "get",
+      "sdk_endpoint": "devices",
+      "sdk_method": "get",
+      "description": "List all devices"
+    },
+    "getAlarms": {
+      "path": "/alarms",
+      "method": "get",
+      "sdk_endpoint": "alarms",
+      "sdk_method": "get",
+      "description": "Get alarms"
+    }
+  },
+  "path_patterns": {
+    "/admin/user": "administration.users",
+    "/admin/usergroup": "administration.user_groups",
+    "/admin/aaa": "administration_settings",
+    "/device": "devices",
+    "/device/status": "device_state",
+    "/device/health": "monitoring_device_details",
+    "/alarms": "alarms",
+    "/certificate": "certificate"
+  }
+}
